@@ -5,10 +5,6 @@
 
 class Mundo
 {
-	private:
-		Mundo();
-		~Mundo();
-
 	public:	
 		virtual Mapa* get_mapa_activo() = 0;
 };
