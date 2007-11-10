@@ -20,7 +20,8 @@ class MundoMockImpl : public Mundo
 	private:
 		std::list<Mapa*> mapas;
 		std::list<Mapa*>::iterator cursor;
-		
+	
+	public:
 		Mapa& get_mapa_activo();
 };
 
