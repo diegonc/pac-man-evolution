@@ -1,4 +1,4 @@
-#ifndef __OPERACION_H__
+﻿#ifndef __OPERACION_H__
 #define __OPERACION_H__
 
 class Operacion
