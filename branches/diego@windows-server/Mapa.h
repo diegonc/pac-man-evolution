@@ -11,7 +11,7 @@ class Mapa
 			Oeste
 		};
 		
-		void mover( int id, Direccion dir ) = 0;
+		virtual void mover( int id, Direccion dir ) = 0;
 };
 
 #endif /* __MAPA_H__ */

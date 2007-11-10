@@ -10,7 +10,7 @@ class Mundo
 		~Mundo();
 
 	public:	
-		Mapa* get_mapa_activo() = 0;
+		virtual Mapa* get_mapa_activo() = 0;
 };
 
 #endif /* __MUNDO_H__ */
