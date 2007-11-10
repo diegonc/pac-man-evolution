@@ -6,8 +6,8 @@ class Mapa
 	public:
 		enum Direccion {
 			Norte,
-			Este,
 			Sur,
+			Este,
 			Oeste
 		};
 		
