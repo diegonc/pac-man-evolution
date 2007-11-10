@@ -1,6 +1,8 @@
 #include "KeyOp.h"
 #include "MundoBasicImp.h"
 #include "Mapa.h"
+#include "Direccion.h"
+#include "Personaje.h"
 
 void KeyOp::ejecutar()
 {
@@ -16,9 +18,6 @@ void KeyOp::ejecutar()
 	 *   4. Mueve el personaje.
 	 */
 	Personaje& p = mapa.get_personaje( id );
-	Mapa::Direccion d = p.get_direccion();
-
-	d = (d + flecha) % 4;
-
+	Direccion d = p.get_direccion().combinar( flecha );
 	mapa.mover( id, d );
 }
