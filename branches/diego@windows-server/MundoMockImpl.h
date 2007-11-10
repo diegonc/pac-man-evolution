@@ -21,7 +21,7 @@ class MundoMockImpl : public Mundo
 		std::list<Mapa*> mapas;
 		std::list<Mapa*>::iterator cursor;
 		
-		Mapa* get_mapa_activo();
+		Mapa& get_mapa_activo();
 };
 
 #endif /* __MUNDOMOCKIMPL_H__ */

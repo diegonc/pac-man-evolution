@@ -30,10 +30,10 @@ MundoMockImpl::~MundoMockImpl()
 		delete *(it++);
 }
 
-Mapa* MundoMockImpl::get_mapa_activo()
+Mapa& MundoMockImpl::get_mapa_activo()
 {
 	if( cursor == mapas.end() )
 		return 0;
 
-	return *cursor;
+	return *(*cursor);
 }
