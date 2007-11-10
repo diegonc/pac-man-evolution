@@ -4,7 +4,7 @@
 class Operacion
 {
 	public:
-		void ejecutar() = 0;
+		virtual void ejecutar() = 0;
 };
 
 #endif /* __OPERACION_H__ */
