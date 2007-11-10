@@ -3,7 +3,7 @@
 
 #include "Mapa.h"
 
-class MapaMockImpl : Mapa
+class MapaMockImpl : public Mapa
 {
 	public:
 		void mover( int id, Mapa::Direccion dir );

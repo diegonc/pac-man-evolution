@@ -14,7 +14,7 @@ class MundoMockImpl : public Mundo
 		static Mundo* instance;
 
 	public:
-		static MundoMockImpl& get_instance();
+		static Mundo& get_instance();
 		static void destroy();
 		
 	private:
@@ -25,4 +25,3 @@ class MundoMockImpl : public Mundo
 };
 
 #endif /* __MUNDOMOCKIMPL_H__ */
- 
