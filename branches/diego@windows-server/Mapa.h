@@ -1,4 +1,4 @@
-﻿#ifndef __MAPA_H__
+#ifndef __MAPA_H__
 #define __MAPA_H__
 
 class Mapa

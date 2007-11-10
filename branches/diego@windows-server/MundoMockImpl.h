@@ -1,4 +1,4 @@
-﻿#ifndef __MUNDOMOCKIMPL_H__
+#ifndef __MUNDOMOCKIMPL_H__
 #define __MUNDOMOCKIMPL_H__
 
 #include <list>

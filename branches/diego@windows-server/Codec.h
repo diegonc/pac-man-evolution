@@ -1,4 +1,4 @@
-﻿#ifndef __CODEC_H__
+#ifndef __CODEC_H__
 #define __CODEC_H__
 
 #include "Operacion.h"

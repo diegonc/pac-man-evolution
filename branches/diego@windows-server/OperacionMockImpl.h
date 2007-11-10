@@ -1,4 +1,4 @@
-﻿#ifndef __OPERACIONMOCKIMPL_H__
+#ifndef __OPERACIONMOCKIMPL_H__
 #define __OPERACIONMOCKIMPL_H__
 
 #include "Operacion.h"

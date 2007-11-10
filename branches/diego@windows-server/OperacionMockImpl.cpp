@@ -1,4 +1,4 @@
-﻿#include "OperacionMockImpl.h"
+#include "OperacionMockImpl.h"
 #include "MundoMockImpl.h"
 #include "Mapa.h"
 

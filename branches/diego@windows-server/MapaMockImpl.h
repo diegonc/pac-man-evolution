@@ -1,4 +1,4 @@
-﻿#ifndef __MAPAMOCKIMPL_H__
+#ifndef __MAPAMOCKIMPL_H__
 #define __MAPAMOCKIMPL_H__
 
 #include "Mapa.h"

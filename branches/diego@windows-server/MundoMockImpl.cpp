@@ -1,4 +1,4 @@
-﻿#include "MundoMockImpl.h"
+#include "MundoMockImpl.h"
 #include "MapaMockImpl.h"
 
 Mundo* MundoMockImpl::instance = 0;

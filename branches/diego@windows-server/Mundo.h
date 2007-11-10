@@ -1,4 +1,4 @@
-﻿#ifndef __MUNDO_H__
+#ifndef __MUNDO_H__
 #define __MUNDO_H__
 
 #include "Mapa.h"

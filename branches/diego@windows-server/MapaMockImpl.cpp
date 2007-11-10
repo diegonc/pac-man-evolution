@@ -1,4 +1,4 @@
-﻿#include "MapaMockImpl.h"
+#include "MapaMockImpl.h"
 
 void mover( int id, Mapa::Direccion dir )
 {
