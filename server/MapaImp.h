@@ -11,6 +11,8 @@ class MapaImp : public Mapa
 		void mover( int id, Direccion dir );
 
 		Personaje& get_personaje( int id );
+	
+		Personaje& get_personaje(int pos_x, int pos_x);
 };
 
 #endif /* __MAPAIMP_H__ */

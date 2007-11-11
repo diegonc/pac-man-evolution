@@ -15,3 +15,7 @@ Personaje& MapaImp::get_personaje( int id )
 {
 	
 }
+
+Personaje& MapaImp::get_personaje(int pos_x, int pos_x){
+
+}
