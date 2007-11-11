@@ -1,7 +1,7 @@
 #include "MundoBasicImp.h"
 #include "MapaImp.h"
 
-MundoBasicImp* MundoBasicImp::instance = 0;
+S_ptr<Mundo> MundoBasicImp::instancia;
 
 MundoBasicImp::MundoBasicImp()
 {
@@ -13,20 +13,12 @@ MundoBasicImp::~MundoBasicImp()
 	delete mapas.back();
 }
 
-Mundo& MundoBasicImp::get_instance()
+S_ptr<Mundo> MundoBasicImp::get_instancia()
 {
-	if( ! instance )
-		instance = new MundoBasicImp();
+	if( instancia.es_nulo() )
+		instancia = S_ptr<Mundo>(new MundoBasicImp());
 
-	return *instance;
-}
-
-void MundoBasicImp::destroy()
-{
-	if( instance ) {
-		delete instance;
-		instance = 0;
-	}
+	return instancia;
 }
 
 Mapa& MundoBasicImp::get_mapa_activo()

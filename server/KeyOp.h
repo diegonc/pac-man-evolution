@@ -6,6 +6,9 @@
 class KeyOp : public Operacion
 {
 	private:
+		/* Id de cliente que presiona la tecla. */
+		int id;
+
 		/* Tecla presionada
 		 *
 		 * Por ahora un entero:
@@ -19,9 +22,6 @@ class KeyOp : public Operacion
 		 *         DF = ( DI + Flecha ) % 4
 		 */
 		int flecha;
-		
-		/* Id de cliente que presiona la tecla. */
-		int id;
 	
 	public:
 		KeyOp( int id, int flecha ) : id( id ), flecha( flecha ) {}

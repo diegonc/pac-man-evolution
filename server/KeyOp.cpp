@@ -3,14 +3,15 @@
 #include "Mapa.h"
 #include "Direccion.h"
 #include "Personaje.h"
+#include "../common/smart_pointer.h"
 
 void KeyOp::ejecutar()
 {
 	/* TODO: Si bien se usa la interfaz se debe conocer la implementacion
 	 * particular.
 	 */
-	Mundo& mundo = MundoBasicImp::get_instance();
-	Mapa& mapa = mundo.get_mapa_activo();
+	S_ptr<Mundo> mundo = MundoBasicImp::get_instancia();
+	Mapa& mapa = mundo->get_mapa_activo();
 	/* Por ahora:
 	 *   1. Pide personaje segun id.
 	 *   2. Obtiene su direccion.

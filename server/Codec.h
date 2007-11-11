@@ -3,10 +3,18 @@
 
 #include "Operacion.h"
 #include "Paquete.h"
+#include "../common/smart_pointer.h"
 
 class Codec
 {
+	private:
+		Codec();
+		Codec(Codec& c);
+		static S_ptr<Codec> instancia;
+		
 	public:
+		static S_ptr<Codec> get_instancia();
+		~Codec();
 		Operacion* procesar( Paquete* pkt );
 		Paquete* procesar( Operacion* op );
 };

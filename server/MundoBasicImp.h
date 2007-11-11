@@ -4,6 +4,7 @@
 #include <list>
 #include "Mundo.h"
 #include "Mapa.h"
+#include "../common/smart_pointer.h"
 
 class MundoBasicImp : public Mundo
 {
@@ -11,12 +12,11 @@ class MundoBasicImp : public Mundo
 		MundoBasicImp();
 		~MundoBasicImp();
 
-		static MundoBasicImp* instance;
+		static S_ptr<Mundo> instancia;
 	
 	public:
-		static Mundo& get_instance();
-		static void destroy();
-
+		static S_ptr<Mundo> get_instancia();
+		
 	private:
 		std::list<Mapa*> mapas;
 
