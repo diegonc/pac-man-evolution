@@ -5,7 +5,9 @@
 
 class Mapa
 {
-	public:		
+	public:
+		virtual ~Mapa();
+
 		virtual void mover( int id, Direccion dir ) = 0;
 
 		virtual Personaje& get_personaje( int id ) = 0;
