@@ -1,7 +1,8 @@
 #ifndef __MAPA_H__
 #define __MAPA_H__
 
-#include "Personaje.h"
+#include "Jugador.h"
+#include "smart_pointer.h"
 
 /** @brief Interfaz de acceso al mapa.
  *
@@ -21,19 +22,19 @@ class Mapa
 		 */
 		virtual void mover( int id, Direccion dir ) = 0;
 
-		/** @brief Obtiene un personaje.
+		/** @brief Obtiene un jugador.
 		 *
-		 *  @param id Identificador del personaje a obtener.
-		 *  @return Se devuelve una referencia al personaje.
+		 *  @param id Identificador del jugador a obtener.
+		 *  @return Se devuelve un smart pointer con el jugador.
 		 */
-		virtual Personaje& get_personaje( int id ) = 0;
+		virtual S_ptr<Jugador> get_jugador( int id ) = 0;
 			
-		/** @brief Obtiene un personaje en una cierta posicion del mapa
+		/** @brief Obtiene un jugador en una cierta posicion del mapa
 		 *
 		 *  @param  Cooerdenadas de la posicion en el mapa
-		 *  @return Se devuelve una referencia al personaje.
+		 *  @return Se devuelve un smart pointer con el jugador.
 		 */	
-		virtual Personaje& get_personaje(int pos_x, int pos_x) = 0;
+		virtual S_ptr<Jugador> get_personaje(int pos_x, int pos_x) = 0;
 };
 
 #endif /* __MAPA_H__ */
