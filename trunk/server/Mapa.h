@@ -27,6 +27,13 @@ class Mapa
 		 *  @return Se devuelve una referencia al personaje.
 		 */
 		virtual Personaje& get_personaje( int id ) = 0;
+			
+		/** @brief Obtiene un personaje en una cierta posicion del mapa
+		 *
+		 *  @param  Cooerdenadas de la posicion en el mapa
+		 *  @return Se devuelve una referencia al personaje.
+		 */	
+		virtual Personaje& get_personaje(int pos_x, int pos_x) = 0;
 };
 
 #endif /* __MAPA_H__ */
