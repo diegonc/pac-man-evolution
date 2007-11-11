@@ -13,5 +13,5 @@ void MapaImp::mover( int id, Direccion dir )
 
 Personaje& MapaImp::get_personaje( int id )
 {
-
+	
 }
