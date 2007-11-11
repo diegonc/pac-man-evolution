@@ -6,7 +6,7 @@
 class Mapa
 {
 	public:
-		virtual ~Mapa();
+		virtual ~Mapa() {}
 
 		virtual void mover( int id, Direccion dir ) = 0;
 
