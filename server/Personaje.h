@@ -6,9 +6,10 @@
 class Personaje
 {
 	private:
+		Direccion dir;
 	
 	public:
-		Direccion get_direccion();
+		Direccion get_direccion() { return dir; }
 };
 
 #endif /* __PERSONAJE_H__ */
