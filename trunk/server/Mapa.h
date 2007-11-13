@@ -2,7 +2,7 @@
 #define __MAPA_H__
 
 #include "Jugador.h"
-#include "smart_pointer.h"
+#include "../common/smart_pointer.h"
 
 /** @brief Interfaz de acceso al mapa.
  *
@@ -34,7 +34,7 @@ class Mapa
 		 *  @param  Cooerdenadas de la posicion en el mapa
 		 *  @return Se devuelve un smart pointer con el jugador.
 		 */	
-		virtual S_ptr<Jugador> get_personaje(int pos_x, int pos_x) = 0;
+		virtual S_ptr<Jugador> get_jugador(int pos_x, int pos_y) = 0;
 };
 
 #endif /* __MAPA_H__ */
