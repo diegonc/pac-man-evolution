@@ -1,18 +1,18 @@
 #include "MundoBasicImp.h"
 #include "MapaImp.h"
 
-S_ptr<Mundo> MundoBasicImp::instancia;
+//S_ptr<Mundo> MundoBasicImp::instancia;
 
-MundoBasicImp::MundoBasicImp()
+MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 {
 	mapas.push_back( new MapaImp() );
 }
 
 MundoBasicImp::~MundoBasicImp()
 {
-	delete mapas.back();
+	delete mapas.back();/*???????*/
 }
-
+/*
 S_ptr<Mundo> MundoBasicImp::get_instancia()
 {
 	if( instancia.es_nulo() )
@@ -20,7 +20,7 @@ S_ptr<Mundo> MundoBasicImp::get_instancia()
 
 	return instancia;
 }
-
+*/
 Mapa& MundoBasicImp::get_mapa_activo()
 {
 	return *mapas.back();

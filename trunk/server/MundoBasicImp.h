@@ -5,17 +5,19 @@
 #include "Mundo.h"
 #include "Mapa.h"
 #include "../common/smart_pointer.h"
+#include <string>
 
 class MundoBasicImp : public Mundo
 {
-	private:
-		MundoBasicImp();
+	public:
+	//private:
+		MundoBasicImp(std::string ruta_mundo);
 		~MundoBasicImp();
 
-		static S_ptr<Mundo> instancia;
+		//static S_ptr<Mundo> instancia;
 	
-	public:
-		static S_ptr<Mundo> get_instancia();
+	//public:
+		//static S_ptr<Mundo> get_instancia();
 		
 	private:
 		std::list<Mapa*> mapas;
