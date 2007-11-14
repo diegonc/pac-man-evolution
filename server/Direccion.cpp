@@ -14,3 +14,6 @@ Direccion Direccion::combinar( int i )
 {
 	return Direccion( (dir + i) % 4 );
 }
+/*Direccion::Direccion(Direccion &d){
+	this->dir = d.dir;
+}*/

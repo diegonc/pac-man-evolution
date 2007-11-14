@@ -1,20 +1,11 @@
 #ifndef __JUGADOR_H__
 #define __JUGADOR_H__
 
-/****************************************************************************
-
- i m   m pppp oooo rrrr ttttt aaaa n  n ttttt eeee  !!!!!   
- i mm mm p  p o  o r  r   t   a  a nn n   t   e     !!!!!
- i m m m pppp o  o rrrr   t   aaaa n nn   t   ee     !!! 
- i m   m p    oooo r r    t   a  a n  n   t   eeee    0  
-	
-No se si sigue teniendo sentido esta clase, podemos pasar todo esto a cliente
-
-y listo.........
-
-******************************************************************************/
 #include "../common/smart_pointer.h"
 #include "Personaje.h"
+#include "Posicion.h"
+#include "Direccion.h"
+#include "Operacion.h"
 
 /** @brief Clase que representa al jugador.
  *
@@ -28,7 +19,9 @@ class Jugador{
 	private:
 		int id;
 		Tipo_Personaje personaje;
-	
+		Posicion posicion;
+		Direccion * dir;	
+		
 	public:
 		/** @brief Constructor de la clase.
 		 *
@@ -36,21 +29,45 @@ class Jugador{
 		 *  @param personaje Un tipo personaje correspondiente al jugador
 		 */
 	
-		Jugador(int id, Tipo_Personaje personaje ) : id(id), personaje(personaje){}
+		Jugador(int id, Tipo_Personaje personaje) : id(id), personaje(personaje){}
 		
+		~Jugador();
+			
 		/** @brief Devuelve el personaje del jugador.
 		 *
-		 *  @return id  El personaje del jugador.
+		 *  @return El personaje del jugador.
 		 */
 		Tipo_Personaje get_personaje();
 			
 		/** @brief Asigna un personaje nuevo al jugador.
 		 *
-		 *  @param id  Personaje que se desee asignar.
+		 *  @param personaje Personaje que se desee asignar.
 		 */
 		void set_personaje(Tipo_Personaje personaje);
-	
-	
+		
+		/** @brief Asigna una posicion nueva al jugador
+		 *
+		 *  @param pos_nueva Posicion nueva a settear
+		 */
+		void set_posicion(Posicion &pos_nueva);
+			
+		/** @brief Devuelve la posicion del jugador.
+		 *
+		 *  @return La posicion del jugador
+		 */
+		Posicion& get_posicion();
+		
+		/** @brief Devuelve el personaje del jugador.
+		 *
+		 *  @return id  El personaje del jugador.
+		 */
+		Direccion get_direccion() { return  *dir; }
+		
+		/** @brief Devuelve el personaje del jugador.
+		 *
+		 *  @param operacion Operacion que debe realizar el jugador
+		 */
+		void ejecutar_operacion(Operacion& operacion);
 };
 
 #endif /*__JUGADOR_H__*/

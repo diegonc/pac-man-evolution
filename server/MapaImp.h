@@ -2,6 +2,7 @@
 #define __MAPAIMP_H__
 
 #include "Mapa.h"
+#include "Jugador.h"
 
 /** @brief Implementa una interfaz de mapa
  *

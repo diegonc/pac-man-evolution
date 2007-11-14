@@ -26,6 +26,7 @@ class KeyOp : public Operacion
 		KeyOp( int id, int flecha ) : id( id ), flecha( flecha ) {}
 		
 		/** @brief Implementa los efectos de la operacion. */
+		
 		void ejecutar();
 };
 

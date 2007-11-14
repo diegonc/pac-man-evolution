@@ -18,6 +18,7 @@ class Direccion
 		static Direccion Oeste;
 	
 	private:
+		
 		int dir;
 
 	public:
@@ -32,6 +33,9 @@ class Direccion
 		 *  @return Direccion resultante.
 		 */
 		Direccion combinar( int i );
+	
+		//Direccion( Direccion& d );
+		
 };
 
 #endif /* __DIRECCION_H__ */

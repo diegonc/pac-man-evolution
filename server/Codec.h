@@ -15,10 +15,8 @@ class Codec
 	private:
 		Codec();
 		Codec(Codec& c);
-		static S_ptr<Codec> instancia;
-		
+				
 	public:
-		static S_ptr<Codec> get_instancia();
 		~Codec();
 		
 		/** @brief Transforma paquetes en operaciones.
@@ -26,14 +24,14 @@ class Codec
 		 *  @param pkt Paquete a traducir.
 		 *  @return Retorna una nueva operacion.
 		 */
-		Operacion* procesar( Paquete* pkt );
+		static Operacion* procesar( Paquete* pkt );
 
 		/** @brief Transforma operaciones en paquetes.
 		 *
 		 *  @param op Operacion a traducir.
 		 *  @return Retorna un nuevo paquete.
 		 */
-		Paquete* procesar( Operacion* op );
+		static Paquete* procesar( Operacion* op );
 };
 
 #endif /* __CODEC_H__ */
