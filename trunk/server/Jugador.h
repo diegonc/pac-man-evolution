@@ -20,7 +20,7 @@ class Jugador{
 		int id;
 		Tipo_Personaje personaje;
 		Posicion posicion;
-		Direccion * dir;	
+		Direccion dir;	
 		
 	public:
 		/** @brief Constructor de la clase.
@@ -29,8 +29,12 @@ class Jugador{
 		 *  @param personaje Un tipo personaje correspondiente al jugador
 		 */
 	
-		Jugador(int id, Tipo_Personaje personaje) : id(id), personaje(personaje){}
-		
+		Jugador(int id, Tipo_Personaje personaje)
+			id(id),
+			personaje(personaje),
+			direccion( Direccion::Norte ) /* Arrancan pa'l norte. */
+		{}
+
 		~Jugador();
 			
 		/** @brief Devuelve el personaje del jugador.
