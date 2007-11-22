@@ -19,6 +19,8 @@ class Paquete
 		/*TODO: enum? solo algun typedef y despues PaqueteEspecifico::ID?
 		 */char tipo;
 	public:
+		virtual ~Paquete();
+
 		char get_tipo();
 
 		//algo similar a esto, que pase a bits
