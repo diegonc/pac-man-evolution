@@ -28,14 +28,13 @@ class Jugador{
 		 *  @param id  Identificador numerico del jugador.
 		 *  @param personaje Un tipo personaje correspondiente al jugador
 		 */
-	
-		Jugador(int id, Tipo_Personaje personaje)
+		Jugador(int id, Tipo_Personaje personaje) :
 			id(id),
 			personaje(personaje),
-			direccion( Direccion::Norte ) /* Arrancan pa'l norte. */
+			dir( Direccion::Norte ) /* Arrancan pa'l norte. */
 		{}
 
-		~Jugador();
+		~Jugador() {}
 			
 		/** @brief Devuelve el personaje del jugador.
 		 *
@@ -65,7 +64,7 @@ class Jugador{
 		 *
 		 *  @return id  El personaje del jugador.
 		 */
-		Direccion get_direccion() { return  *dir; }
+		Direccion get_direccion() { return dir; }
 		
 		/** @brief Devuelve el personaje del jugador.
 		 *

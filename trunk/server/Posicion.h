@@ -9,10 +9,6 @@ class Posicion{
 	public:
 		Posicion(Tipo_Coordenada x = 0, Tipo_Coordenada y = 0);
 		
-		~Posicion();
-				
-		Posicion(Posicion &p);
-			
 		Tipo_Coordenada get_x();
 			
 		void set_x(Tipo_Coordenada x_nuevo);
