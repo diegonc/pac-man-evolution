@@ -1,6 +1,8 @@
 #ifndef __PAQUETE_H__
 #define __PAQUETE_H__
 
+#include "BitStream.h"
+
 class Paquete
 {
 	private:
@@ -19,6 +21,16 @@ class Paquete
 		/*TODO: enum? solo algun typedef y despues PaqueteEspecifico::ID?
 		 */char tipo;
 	public:
+		/** @brief Metodo fabrica de paquetes.
+		 *
+		 *  Crea nuevos paquetes del tipo requerido sin inicializar,
+		 *  aptos para ser deserializados.
+		 *
+		 *  @param tipo Identificador numerico del tipo de paquete.
+		 *  @return Paquete creado.
+		 */
+		static Paquete* crear( int tipo );
+
 		virtual ~Paquete();
 
 		char get_tipo();
@@ -26,6 +38,12 @@ class Paquete
 		//algo similar a esto, que pase a bits
 	
 		/*Tipo*/void serialize();
+
+		/** @brief Carga el estado del objeto desde un BitStream.
+		 *
+		 *  @param bs Fuente de datos.
+		 */
+		void deserialize( BitStream& bs );
 };
 
 #endif /* __PAQUETE_H__ */
