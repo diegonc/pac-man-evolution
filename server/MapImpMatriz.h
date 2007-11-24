@@ -3,7 +3,9 @@
 
 #include "Mapa.h"
 #include "Jugador.h"
-#include <list>
+#include "Posicion.h"
+
+#define TAM_CASILLERO	1;
 
 /** @brief Implementa una interfaz de mapa
  *
@@ -16,27 +18,33 @@ class MapaImpMatriz : public Mapa
 	//de ultima se cambia el typedef
 	typedef unsigned int Tipo_Dimensiones; 
 	
-	typedef double Tipo_Coordenada;
-	
 	typedef S_ptr<Comestible> Tipo_Comestible;
+	
+	public:
+		enum Tipo {
+        	Nada, Pasillo, Salida_PacMan, CasaFantasma
+    	};
 	
 	private:
 		
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
 		
-		struct Casillero {
-			Tipo_Comestible comestible;
+		Casillero * matriz;		
 		
+		Casillero& get_comestible(Posicion &posicion);	
 		
 	public:
+		
 		MapaImpMatriz(Tipo_Dimensiones ancho, Tipo_Dimensiones alto);
 
 		~MapaImpMatriz();
 	
-		void mover( S_ptr<Jugador> jugador, Direccion dir );
-
-		S_ptr<Comestible> get_comestible(Tipo_Coordenada pos_x, Tipo_Coordenada pos_y);	
+		void mover( Jugador * jugador, Direccion dir );
+	
+		virtual void establecer_posicion_inicial(Jugador * jugador);
+			
+		void agregar_comestible( Tipo_Comestible comestible, Posicion &posicion);
 	
 		Tipo_Dimensiones get_ancho();
 	

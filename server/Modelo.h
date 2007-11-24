@@ -18,6 +18,7 @@ class Modelo : public Thread{
 	
 	private:
 		Mundo * mundo;
+	
 		std::list<Tipo_Jugador> jugadores;
 		
 		Modelo(Modelo &m);
