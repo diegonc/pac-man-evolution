@@ -2,7 +2,6 @@
 #define __MAPA_H__
 
 #include "Jugador.h"
-#include "../common/smart_pointer.h"
 #include "Comestible.h"
 
 /** @brief Interfaz de acceso al mapa.
@@ -23,7 +22,7 @@ class Mapa
 		 *  @param id  Identificador numerico del personaje.
 		 *  @param dir Direccion en la que se mueve el personaje.
 		 */
-		virtual void mover( S_ptr<Jugador> jugador, Direccion dir ) = 0;
+		virtual void mover( Jugador * jugador, Direccion dir ) = 0;
 
 		/* @brief Obtiene un jugador.
 		 *
@@ -46,6 +45,13 @@ class Mapa
 		 *  @return Se devuelve un smart pointer con el comestible.
 		*/
 		virtual S_ptr<Comestible> get_comestible(Tipo_Coordenada pos_x, Tipo_Coordenada pos_y) = 0;
+		
+		/** @brief Le asigna la posicion inicial al jugador dependiendo si es 
+		 *		   Pac-Man o Fantasma
+		 *
+		 *  @param  Jugador a agregar
+		 */
+		virtual void establecer_posicion_inicial(Jugador * jugador) = 0;
 };
 
 #endif /* __MAPA_H__ */

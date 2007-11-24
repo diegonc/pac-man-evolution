@@ -71,6 +71,13 @@ class Jugador{
 		 *  @param operacion Operacion que debe realizar el jugador
 		 */
 		void ejecutar_operacion(Operacion& operacion);
+		
+		/** @brief Implementa un metodo de acceso para que el jugador coma
+		 *	   la comida que hay en el mapa.
+		 *
+		 *	@param comestible Puntero que referencia al comestible a comer
+		 */
+		void comer(Comestible * comestible);
 };
 
 #endif /*__JUGADOR_H__*/
