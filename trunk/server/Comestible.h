@@ -10,7 +10,7 @@ class Comestible{
 	public:
 		virtual ~Comestible(){}
 	
-		virtual void comer() = 0;
+		//virtual void comer() = 0;
 };
 
 #endif /*__COMESTIBLE_H__*/

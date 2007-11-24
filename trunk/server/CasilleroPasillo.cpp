@@ -1,6 +1,6 @@
 #include "CasilleroPasillo.h"
 
-CasilleroPasillo::CasilleroPasillo(Tipo_Comestible& tipo){
+CasilleroPasillo::CasilleroPasillo(ComestibleFactory::Tipo_Comestible &tipo){
 	ComestibleFactory fabrica;
 	
 	this->comida = fabrica.construir(tipo); 	

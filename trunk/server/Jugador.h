@@ -6,6 +6,7 @@
 #include "Posicion.h"
 #include "Direccion.h"
 #include "Operacion.h"
+#include "Comestible.h"
 
 /** @brief Clase que representa al jugador.
  *
