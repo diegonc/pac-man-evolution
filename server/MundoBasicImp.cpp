@@ -1,11 +1,12 @@
 #include "MundoBasicImp.h"
-#include "MapaImp.h"
+#include "MapImpMatriz.h"
 
 //S_ptr<Mundo> MundoBasicImp::instancia;
 
 MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 {
-	mapas.push_back( new MapaImp() );
+	Mapa * mapa_nuevo = new MapaImpMatriz(7,7);
+	mapas.push_back( mapa_nuevo );
 }
 
 MundoBasicImp::~MundoBasicImp()

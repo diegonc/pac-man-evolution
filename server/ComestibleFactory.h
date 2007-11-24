@@ -6,12 +6,13 @@
 class ComestibleFactory{
 	
 	private:
-		
-		ComestibleFactory(&c);
+	
+		ComestibleFactory(ComestibleFactory &c);
 	
 	public:
-		enum Tipo_Comestible{PowerUp,Queso,Fruta};
-			
+		
+		enum Tipo_Comestible{power_up,quesito,frutita};	
+				
 		ComestibleFactory();
 	
 		~ComestibleFactory();

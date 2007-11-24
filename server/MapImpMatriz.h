@@ -4,6 +4,8 @@
 #include "Mapa.h"
 #include "Jugador.h"
 #include "Posicion.h"
+#include "Casillero.h"
+#include "ComestibleFactory.h"
 
 #define TAM_CASILLERO	1;
 
@@ -11,13 +13,13 @@
  *
  */
 
-class MapaImpMatriz : public Mapa
-{
-	//Como vamos a mapear el grafo que tiene cantidades enteras de lados y 
-	//hacer la conversion entre (x,y) a lugar en el grafo, lo pongo asi,
-	//de ultima se cambia el typedef
-	typedef unsigned int Tipo_Dimensiones; 
-	
+//Como vamos a mapear el grafo que tiene cantidades enteras de lados y 
+//hacer la conversion entre (x,y) a lugar en el grafo, lo pongo asi,
+//de ultima se cambia el typedef
+typedef unsigned int Tipo_Dimensiones; 
+
+class MapaImpMatriz : public Mapa{
+		
 	typedef S_ptr<Comestible> Tipo_Comestible;
 	
 	public:
@@ -30,21 +32,21 @@ class MapaImpMatriz : public Mapa
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
 		
-		Casillero * matriz;		
+		S_ptr<Casillero> ** matriz;		
 		
-		Casillero& get_comestible(Posicion &posicion);	
+		//Casillero& get_comestible(Posicion &posicion);	
 		
 	public:
 		
-		MapaImpMatriz(Tipo_Dimensiones ancho, Tipo_Dimensiones alto);
+		MapaImpMatriz(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto);
 
 		~MapaImpMatriz();
 	
-		void mover( Jugador * jugador, Direccion dir );
+		void mover( Jugador * jugador, Direccion &dir );
 	
-		virtual void establecer_posicion_inicial(Jugador * jugador);
+		void establecer_posicion_inicial(Jugador * jugador);
 			
-		void agregar_comestible( Tipo_Comestible comestible, Posicion &posicion);
+		void agregar_comestible( ComestibleFactory::Tipo_Comestible comestible, Posicion &posicion);
 	
 		Tipo_Dimensiones get_ancho();
 	

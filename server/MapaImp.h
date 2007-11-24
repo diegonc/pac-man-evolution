@@ -1,13 +1,14 @@
-#ifndef __MAPAIMP_H__
+/*#ifndef __MAPAIMP_H__
 #define __MAPAIMP_H__
 
 #include "Mapa.h"
 #include "Jugador.h"
 #include <list>
 
-/** @brief Implementa una interfaz de mapa
+* @brief Implementa una interfaz de mapa
  *
- */
+ *
+ 
 
 class MapaImp : public Mapa
 {
@@ -34,10 +35,10 @@ class MapaImp : public Mapa
 	
 		virtual void mover( S_ptr<Jugador> jugador, Direccion dir );
 
-		/*S_ptr<Jugador> get_jugador( int id );
+		S_ptr<Jugador> get_jugador( int id );
 	
 		S_ptr<Jugador> get_jugador(Tipo_Coordenada pos_x, Tipo_Coordenada pos_y);
-		*/
+		
 	
 		virtual S_ptr<Comestible> get_comestible(Tipo_Coordenada pos_x, Tipo_Coordenada pos_y);	
 	
@@ -46,4 +47,4 @@ class MapaImp : public Mapa
 		Tipo_Dimensiones get_alto();
 };
 
-#endif /* __MAPAIMP_H__ */
+#endif __MAPAIMP_H__ */
