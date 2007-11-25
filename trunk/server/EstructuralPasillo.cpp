@@ -1,17 +1,17 @@
-#include "CasilleroPasillo.h"
+#include "EstructuralPasillo.h"
 
-CasilleroPasillo::CasilleroPasillo(ComestibleFactory::Tipo_Comestible &tipo){
+EstructuralPasillo::EstructuralPasillo(ComestibleFactory::Tipo_Comestible &tipo){
 	ComestibleFactory fabrica;
 	
 	this->comida = fabrica.construir(tipo); 	
 }
 
-CasilleroPasillo::~CasilleroPasillo(){
+EstructuralPasillo::~EstructuralPasillo(){
 	if(this->comida != 0)
 		delete this->comida;		
 }
 
-void CasilleroPasillo::ingresar(Jugador *jugador){
+void EstructuralPasillo::ingresar(Jugador *jugador){
 	jugador->comer(this->comida);
 	this->comida = 0;
 }

@@ -2,12 +2,12 @@
 
 #define TIPO_CASA_FANTASMA	1
 
-CasilleroCasaFantasma::CasilleroCasaFantasma(){}
+EstructuralCasaFantasma::EstructuralCasaFantasma(){}
 	
-void CasilleroCasaFantasma::ingresar(Jugador *jugador){}
+void EstructuralCasaFantasma::ingresar(Jugador *jugador){}
 	
-CasilleroCasaFantasma::~CasilleroCasaFantasma(){}
+EstructuralCasaFantasma::~EstructuralCasaFantasma(){}
 
-CasilleroCasaFantasma::int get_tipo(){
+EstructuralCasaFantasma::int get_tipo(){
 	return TIPO_CASA_FANTASMA;
 }

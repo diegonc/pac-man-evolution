@@ -1,16 +1,16 @@
 #ifndef __CASILLERO_CASA_FANSTASMA_H__
 #define __CASILLERO_CASA_FANSTASMA_H__
 
-#include "Casillero.h"
+#include "Estructural.h"
 
-class CasilleroCasaFantasma : public Casillero{
+class EstructuralCasaFantasma : public Estructural{
 				
 	public:
-		CasilleroCasaFantasma();
+		EstructuralCasaFantasma();
 	
 		void ingresar(Jugador *jugador);
 	
-		~CasilleroCasaFantasma();
+		~EstructuralCasaFantasma();
 	
 		int get_tipo();
 };
