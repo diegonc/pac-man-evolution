@@ -43,6 +43,8 @@ class Socket{
 
 		std::string recibir(int cant_caracteres);
 
+		void recibir( char* buf, int cant );
+
 		void escribir(Socket * destino, std::string& cadena_a_enviar);
 		
 		int get_descriptor();
