@@ -4,7 +4,7 @@
 #include "Mapa.h"
 #include "Jugador.h"
 #include "Posicion.h"
-#include "ComparadorPosicion.h"
+//#include "ComparadorPosicion.h"
 
 #include <set>
 
@@ -20,25 +20,35 @@ typedef unsigned int Tipo_Dimensiones;
 class MapaImpSet : public Mapa{
 		
 	private:
-		friend class ComparadorPosicion;	
-	
-	
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
-		
-		struct Elemento{
-			Posicion posicion;
-			S_ptr<Estructural> estructural;	
-						
-		}
-		
+	
+		class Elemento{
+			public:
+				Posicion posicion;
+				S_ptr<Estructural> estructural;	
+		};
+	public:
+		class ComparadorPosicion{
+			public:
+				bool operator()(const Elemento &e1, const Elemento &e2){
+					Posicion pos1 = (e1.posicion);
+					Posicion pos2 = (e2.posicion);
+					
+					if( pos1 == pos2 )
+						return true;
+					else
+						return false;
+				}
+		};
+	private:
 		std::set<Elemento,ComparadorPosicion> estructurales;	
 		
 	public:
 		
-		MapaImpMatriz(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto);
+		MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto);
 
-		~MapaImpMatriz();
+		~MapaImpSet();
 	
 		void mover( Jugador * jugador, Direccion &dir );
 		
