@@ -1,6 +1,6 @@
 #include "MapImpMatriz.h"
 
-MapaImpMatriz::MapaImpMatriz(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto){
+MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto){
 	//TODO : VALIDAR ESTO!!!!!!
 	this->ancho = ancho;
 	this->alto = alto;
@@ -10,7 +10,7 @@ MapaImpMatriz::MapaImpMatriz(const Tipo_Dimensiones ancho, const Tipo_Dimensione
 		matriz[indice] = new S_ptr<Casillero>[alto];
 }
 
-MapaImpMatriz::~MapaImpMatriz(){
+MapaImpSet::~MapaImpSet(){
 	for(Tipo_Dimensiones indice = 0; indice < ancho; indice++)
 		delete[] matriz[indice];
 	delete this->matriz;
@@ -20,11 +20,11 @@ void mover( Jugador * jugador, Direccion &dir ){
 	
 }
 
-void MapaImpMatriz::establecer_posicion_inicial(Jugador * jugador){
+void MapaImpSet::establecer_posicion_inicial(Jugador * jugador){
 	
 	
 }
-void agregar_estructural(S_ptr<Estructural> e, Posicion &p){
+void MapaImpSet::agregar_estructural(S_ptr<Estructural> e, Posicion &p){
 									
 	Elemento estructural_nuevo;
 	estructural_nuevo.posicion = p;
@@ -32,7 +32,7 @@ void agregar_estructural(S_ptr<Estructural> e, Posicion &p){
 	estructurales.insert(estructural_nuevo);
 			
 }
-S_ptr<Estructural> get_estructural(Posicion &p){
+S_ptr<Estructural> MapaImpSet::get_estructural(Posicion &p){
 	std::set<Elemento, ComparadorPosicion>::iterator busqueda;
 	
 	Elemento estructural_busqueda;
@@ -46,10 +46,10 @@ S_ptr<Estructural> get_estructural(Posicion &p){
 		return (S_ptr<Estructural> nulo);
 }
 
-Tipo_Dimensiones MapaImpMatriz::get_ancho(){
+Tipo_Dimensiones MapaImpSet::get_ancho(){
 	return this->ancho;
 }
 	
-Tipo_Dimensiones MapaImpMatriz::get_alto(){
+Tipo_Dimensiones MapaImpSet::get_alto(){
 	return this->alto;
 }
