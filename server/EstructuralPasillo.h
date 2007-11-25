@@ -11,11 +11,11 @@ class EstructuralPasillo : public Estructural{
 		Comestible *comida;
 			
 	public:
-		CasilleroPasillo(ComestibleFactory::Tipo_Comestible &tipo);
+		EstructuralPasillo(ComestibleFactory::Tipo_Comestible &tipo);
 	
 		void ingresar(Jugador *jugador);
 	
-		~CasilleroPasillo();
+		~EstructuralPasillo();
 	
 		int get_tipo();
 	

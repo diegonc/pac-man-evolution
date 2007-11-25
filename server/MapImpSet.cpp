@@ -1,27 +1,14 @@
-#include "MapImpMatriz.h"
+#include "MapImpSet.h"
 
 MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto){
 	//TODO : VALIDAR ESTO!!!!!!
 	this->ancho = ancho;
 	this->alto = alto;
-	
-	matriz = new S_ptr<Casillero>*[ancho];
-	for (Tipo_Dimensiones indice = 0; indice < ancho; indice++)
-		matriz[indice] = new S_ptr<Casillero>[alto];
 }
 
-MapaImpSet::~MapaImpSet(){
-	for(Tipo_Dimensiones indice = 0; indice < ancho; indice++)
-		delete[] matriz[indice];
-	delete this->matriz;
-}
+MapaImpSet::~MapaImpSet(){}
 
-void mover( Jugador * jugador, Direccion &dir ){
-	
-}
-
-void MapaImpSet::establecer_posicion_inicial(Jugador * jugador){
-	
+void MapaImpSet::mover( Jugador * jugador, Direccion &dir ){
 	
 }
 void MapaImpSet::agregar_estructural(S_ptr<Estructural> e, Posicion &p){
@@ -36,14 +23,16 @@ S_ptr<Estructural> MapaImpSet::get_estructural(Posicion &p){
 	std::set<Elemento, ComparadorPosicion>::iterator busqueda;
 	
 	Elemento estructural_busqueda;
-	estructural_nuevo.posicion = p;
+	estructural_busqueda.posicion = p;
 	
 	busqueda = this->estructurales.find(estructural_busqueda);
 	
-	if(busqueda != estructurales::end)
+	if(busqueda != estructurales.end())
 		return busqueda->estructural;
-	else
-		return (S_ptr<Estructural> nulo);
+	else{
+		S_ptr<Estructural> nulo;
+		return nulo;
+	}
 }
 
 Tipo_Dimensiones MapaImpSet::get_ancho(){

@@ -1,4 +1,4 @@
-#include "CasilleroCasaFantasma.h"
+#include "EstructuralCasaFantasma.h"
 
 #define TIPO_CASA_FANTASMA	1
 
@@ -8,6 +8,6 @@ void EstructuralCasaFantasma::ingresar(Jugador *jugador){}
 	
 EstructuralCasaFantasma::~EstructuralCasaFantasma(){}
 
-EstructuralCasaFantasma::int get_tipo(){
+int EstructuralCasaFantasma::get_tipo(){
 	return TIPO_CASA_FANTASMA;
 }

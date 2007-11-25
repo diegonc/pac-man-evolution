@@ -1,12 +1,12 @@
 #ifndef __COMPARADOR_POSICION_H__
 #define __COMPARADOR_POSICION_H__
 
-#include "MapaImpMatriz.h"
 
+	
 class ComparadorPosicion{
 	
 	public:
-		bool operator()(Elemento &e1, Elemento &e2){
+		bool operator()(const MapaImpSet::Elemento &e1, const MapaImpSet::Elemento &e2){
 			if(e1.posicion == e2.posicion )
 				return true;
 			else
