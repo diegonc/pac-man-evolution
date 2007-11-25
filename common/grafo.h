@@ -159,9 +159,9 @@ template <class ContenidoVertice, class ContenidoArco> class Grafo{
 			//obtengo el que voy a eliminar
          S_ptr<Clase_Vertice> v_a_eliminar;
          if( c != 0)			
-            v_a_eliminar = buscar_vertice(vertice, c);
+            v_a_eliminar = buscar_vertice(&vertice, c);
 			else
-            v_a_eliminar = buscar_vertice(vertice);         
+            v_a_eliminar = buscar_vertice(&vertice);         
 			//si no era nulo
 			if(!v_a_eliminar.es_nulo()){
 				
