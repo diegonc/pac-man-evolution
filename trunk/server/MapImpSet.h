@@ -8,8 +8,6 @@
 
 #include <set>
 
-#define TAM_CASILLERO	1;
-
 /** @brief Implementa una interfaz de mapa
  *
  */
@@ -19,7 +17,7 @@
 //de ultima se cambia el typedef
 typedef unsigned int Tipo_Dimensiones; 
 
-class MapaImpMatriz : public Mapa{
+class MapaImpSet : public Mapa{
 		
 	private:
 		friend class ComparadorPosicion;	
