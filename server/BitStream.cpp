@@ -1,13 +1,9 @@
 #include "BitStream.h"
 #include <cassert>
+#include <stdexcept>
 
-BitStream::BitStream( Socket& s ) : sock( s )
-{
-}
-
-int BitStream::read( int n )
-{
-	assert( n <= 8*sizeof( int ) );
+namespace {
+	char test[2] = { 44, -92/* 164 */ };
 
 	unsigned int mask_table[8] = {
 		1,   // 00000001b
@@ -19,17 +15,28 @@ int BitStream::read( int n )
 		127, // 01111111b
 		255  // 11111111b
 	};
-	char test = 44;
-	char* buffer = &test;
-	int size = 1;
-	int index = 0;
-	int bindex = 8;
+}
+
+BitStream::BitStream( Socket& s ) : sock( s )
+{
+	buffer = test;
+	size = 2;
+	index = 0;
+	bindex = 8;
+}
+
+int BitStream::read( int n )
+{
+	assert( n > 0 );
+	assert( n <= 8*sizeof( int ) );
 
 	int bavail = bindex + 8 * ( size - index - 1 );
 	
 	if( bavail < n ) {
 		// leer: n-bavail bits
 	}
+
+	if( bavail < n ) throw std::runtime_error( "Datos insuficientes provenientes del socket." );
 
 	int r = 0;
 
@@ -45,6 +52,7 @@ int BitStream::read( int n )
 		r <<= n;
 		r |= ( ( buffer[index] & mask ) >> ( bindex-n ) );
 		bindex -= n;
+		if( bindex == 0 ) { index++; bindex = 8; }
 	}
 	return r;
 }

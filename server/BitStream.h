@@ -8,6 +8,28 @@ class BitStream
 	private:
 		Socket& sock;
 
+		/** @brief Almacenamiento para mantener los datos a procesar.
+		 */
+		char* buffer;
+
+		/** @brief Tamano del buffer.
+		 */
+		int size;
+
+		/** @brief Puntero al byte actual.
+		 *
+		 *  Se utiliza para acceder al buffer. Apunta al byte del cual
+		 *  se extraeran los datos.
+		 */
+		int index;
+		
+		/** @brief Puntero al bit actual.
+		 *
+		 *  Se utiliza para acceder al buffer. Es un indicador de la
+		 *  cantidad de bits disponibles en el stream que corresponden
+		 *  al byte actual.
+		 */
+		int bindex;
 	public:
 		/** @brief Construye un BitStream para leer desde un Socket.
 		 *
