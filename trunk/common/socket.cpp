@@ -39,11 +39,6 @@ void Socket::recibir( char* buf, int cant ){
 	int retorno=0;
 	int cantidad_intentos = 0;
 
-	//TODO: fake. dejar la impl de abajo.////
-	for( int i=0; i<cant; i++ ) buf[i] = 44;
-	return;
-	/////////////////////////////////////////
-
 	while( cant_recibidos < cant && cantidad_intentos < 3 ){
 		//leo los datos	
 		retorno = recv(this->get_descriptor(), buf + cant_recibidos, cant - cant_recibidos, MSG_NOSIGNAL);
