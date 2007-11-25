@@ -45,6 +45,8 @@ class BitStream
 		 */
 		BitStream( Socket& s );
 
+		~BitStream();
+
 		/** @brief Lee del stream n bits.
 		 *
 		 *  Devuelve el valor numerico de los siguientes n bits en el
