@@ -6,7 +6,7 @@
 #include "Comestible.h"
 #include "Estructural.h"
 
-class CasilleroPasillo : public Estructural{
+class EstructuralPasillo : public Estructural{
 	private:
 		Comestible *comida;
 			
