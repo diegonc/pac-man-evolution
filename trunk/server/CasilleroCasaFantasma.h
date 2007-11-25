@@ -11,6 +11,8 @@ class CasilleroCasaFantasma : public Casillero{
 		void ingresar(Jugador *jugador);
 	
 		~CasilleroCasaFantasma();
+	
+		int get_tipo();
 };
 
 #endif /*__CASILLERO_CASA_FANSTASMA_H__*/

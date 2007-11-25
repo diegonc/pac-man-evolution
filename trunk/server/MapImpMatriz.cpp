@@ -25,8 +25,22 @@ void MapaImpMatriz::establecer_posicion_inicial(Jugador * jugador){
 	
 }
 
-void MapaImpMatriz::agregar_comestible( ComestibleFactory::Tipo_Comestible comestible, Posicion &posicion){
-	
+void agregar_casillero( S_ptr<Casillero> casillero_nuevo, Posicion posicion, 
+	                            bool tiene_vecino_izq, bool tiene_vecino_arr ){
+									
+	int coordenada_x = (int) posicion.get_x();
+	int coordenada_y = (int) posicion.get_y();
+	//agrego el casillero								
+	matriz[coordenada_y][coordenada_x] = casillero_nuevo;
+	//si tiene vecino los vinculo
+	if(tiene_vecino_izq){
+		casillero_nuevo->set_izquierda(matriz[coordenada_y][coordenada_x-1] );
+		matriz[coordenada_y][coordenada_x-1]->set_derecha(casillero_nuevo);
+	}
+	if(tiene_vecino_arr){
+		casillero_nuevo->set_arriba(matriz[coordenada_y-1][coordenada_x]);
+		matriz[coordenada_y-1][coordenada_x]->set_abajo(casillero_nuevo);		
+	}
 }
 
 /*S_ptr<Comestible> MapaImpMatriz::get_comestible(Posicion &posicion){

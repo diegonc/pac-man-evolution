@@ -46,12 +46,14 @@ class Mapa
 		*/
 		//virtual S_ptr<Comestible> get_comestible(Tipo_Coordenada pos_x, Tipo_Coordenada pos_y) = 0;
 		
+		virtual S_ptr<Comestible> get_comestible(Posicion &pos)=0;
+		
 		/** @brief Le asigna la posicion inicial al jugador dependiendo si es 
 		 *		   Pac-Man o Fantasma
 		 *
 		 *  @param  Jugador a agregar
 		 */
-		virtual void establecer_posicion_inicial(Jugador * jugador) = 0;
+		//virtual void establecer_posicion_inicial(Jugador * jugador) = 0;
 };
 
 #endif /* __MAPA_H__ */

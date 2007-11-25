@@ -15,3 +15,7 @@ void CasilleroPasillo::ingresar(Jugador *jugador){
 	jugador->comer(this->comida);
 	this->comida = 0;
 }
+
+int get_tipo(){
+	return -1;//no tiene tipo
+}

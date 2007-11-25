@@ -16,6 +16,9 @@ class CasilleroPasillo : public Casillero{
 		void ingresar(Jugador *jugador);
 	
 		~CasilleroPasillo();
+	
+		int get_tipo();
+	
 };
 
 #endif /*__CASILLERO_PASILLO_H__*/

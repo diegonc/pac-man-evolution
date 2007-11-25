@@ -44,10 +44,11 @@ class MapaImpMatriz : public Mapa{
 	
 		void mover( Jugador * jugador, Direccion &dir );
 	
-		void establecer_posicion_inicial(Jugador * jugador);
-			
-		void agregar_comestible( ComestibleFactory::Tipo_Comestible comestible, Posicion &posicion);
+		void agregar_casillero( S_ptr<Casillero> casillero_nuevo, Posicion posicion, 
+	                            bool tiene_vecino_izq, bool tiene_vecino_arr );
 	
+		
+			
 		Tipo_Dimensiones get_ancho();
 	
 		Tipo_Dimensiones get_alto();
