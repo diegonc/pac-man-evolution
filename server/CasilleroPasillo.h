@@ -4,9 +4,9 @@
 #include "ComestibleFactory.h"
 #include "../common/smart_pointer.h"
 #include "Comestible.h"
-#include "Casillero.h"
+#include "Estructural.h"
 
-class CasilleroPasillo : public Casillero{
+class CasilleroPasillo : public Estructural{
 	private:
 		Comestible *comida;
 			
