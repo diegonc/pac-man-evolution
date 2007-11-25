@@ -14,14 +14,15 @@
  *
  */
 
+typedef S_ptr<Personaje> Tipo_Personaje;
+
 class Jugador{
-	typedef S_ptr<Personaje> Tipo_Personaje;
 	
 	private:
 		int id;
 		Tipo_Personaje personaje;
 		Posicion posicion;
-		Direccion dir;	
+		Direccion  * dir;	
 		
 	public:
 		/** @brief Constructor de la clase.
@@ -29,11 +30,7 @@ class Jugador{
 		 *  @param id  Identificador numerico del jugador.
 		 *  @param personaje Un tipo personaje correspondiente al jugador
 		 */
-		Jugador(int id, Tipo_Personaje personaje) :
-			id(id),
-			personaje(personaje),
-			dir( Direccion::Norte ) /* Arrancan pa'l norte. */
-		{}
+		Jugador(int id, Tipo_Personaje personaje);
 
 		~Jugador() {}
 			
@@ -65,7 +62,7 @@ class Jugador{
 		 *
 		 *  @return id  El personaje del jugador.
 		 */
-		Direccion get_direccion() { return dir; }
+		Direccion& get_direccion();
 		
 		/** @brief Devuelve el personaje del jugador.
 		 *
