@@ -33,6 +33,31 @@ void Socket::cerrar(){
 	}
 	
 }
+
+void Socket::recibir( char* buf, int cant ){
+	int cant_recibidos =0;
+	int retorno=0;
+	int cantidad_intentos = 0;
+
+	//TODO: fake. dejar la impl de abajo.////
+	for( int i=0; i<cant; i++ ) buf[i] = 44;
+	return;
+	/////////////////////////////////////////
+
+	while( cant_recibidos < cant && cantidad_intentos < 3 ){
+		//leo los datos	
+		retorno = recv(this->get_descriptor(), buf + cant_recibidos, cant - cant_recibidos, MSG_NOSIGNAL);
+		//si devolvio -1 lanzo la excepcion
+		if(retorno == -1 ){
+			std::string mensaje_error = "Error - "; 
+			mensaje_error += strerror(errno);
+			throw std::runtime_error(mensaje_error.c_str());
+		}
+		cant_recibidos += retorno;
+		cantidad_intentos++;
+	}
+}
+
 std::string Socket::recibir(int cant_caracteres){
 	
 	std::string mensaje_retorno;

@@ -1,6 +1,7 @@
 #include "BitStream.h"
 #include <cassert>
 #include <stdexcept>
+#include <cstring>
 
 namespace {
 	char test[2] = { 44, -92/* 164 */ };
@@ -19,33 +20,54 @@ namespace {
 
 BitStream::BitStream( Socket& s ) : sock( s )
 {
-	buffer = test;
-	size = 2;
+	buffer = 0;
+	size = 0;
 	index = 0;
 	bindex = 8;
 }
 
-int BitStream::read( int n )
+BitStream::~BitStream()
 {
-	assert( n > 0 );
+	if( buffer )
+		delete[] buffer;
+}
+
+void BitStream::grow( unsigned int n )
+{
+	unsigned int bavail = bindex + 8 * ( size - index - 1 );
+
+	if( bavail < n ) {
+		unsigned int bits_needed = n - bavail;
+		unsigned int bytes_needed = bits_needed / 8;
+		if( bits_needed % 8 ) bytes_needed++;
+		
+		unsigned int current_data_size = size - index;
+		char* new_buffer = new char[current_data_size + bytes_needed];
+
+		memcpy( new_buffer, buffer + index, current_data_size );
+		if( buffer ) delete[] buffer;
+		
+		sock.recibir( new_buffer + current_data_size, bytes_needed );
+		index = 0;
+		size = current_data_size + bytes_needed;
+		buffer = new_buffer;
+	}
+}
+
+int BitStream::read( unsigned int n )
+{
 	assert( n <= 8*sizeof( int ) );
 
-	int bavail = bindex + 8 * ( size - index - 1 );
-	
-	if( bavail < n ) {
-		// leer: n-bavail bits
-	}
-
-	if( bavail < n ) throw std::runtime_error( "Datos insuficientes provenientes del socket." );
+	grow( n );
 
 	int r = 0;
 
 	while( n > bindex ){
 		r <<= bindex;
 		r |= ( mask_table[bindex-1] & buffer[index] );
-		bindex = 8;
 		index++;
 		n -= bindex;
+		bindex = 8;
 	}
 	if( n > 0 ) {
 		unsigned int mask = ( mask_table[n-1] << ( bindex - n ) );
