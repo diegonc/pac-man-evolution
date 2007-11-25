@@ -16,7 +16,7 @@ MapaImpMatriz::~MapaImpMatriz(){
 	delete this->matriz;
 }
 
-void MapaImpMatriz::mover( Jugador * jugador, Direccion &dir ){
+void mover( Jugador * jugador, Direccion &dir ){
 	
 }
 
@@ -24,32 +24,28 @@ void MapaImpMatriz::establecer_posicion_inicial(Jugador * jugador){
 	
 	
 }
-
-void agregar_casillero( S_ptr<Casillero> casillero_nuevo, Posicion posicion, 
-	                            bool tiene_vecino_izq, bool tiene_vecino_arr ){
+void agregar_estructural(S_ptr<Estructural> e, Posicion &p){
 									
-	int coordenada_x = (int) posicion.get_x();
-	int coordenada_y = (int) posicion.get_y();
-	//agrego el casillero								
-	matriz[coordenada_y][coordenada_x] = casillero_nuevo;
-	//si tiene vecino los vinculo
-	if(tiene_vecino_izq){
-		casillero_nuevo->set_izquierda(matriz[coordenada_y][coordenada_x-1] );
-		matriz[coordenada_y][coordenada_x-1]->set_derecha(casillero_nuevo);
-	}
-	if(tiene_vecino_arr){
-		casillero_nuevo->set_arriba(matriz[coordenada_y-1][coordenada_x]);
-		matriz[coordenada_y-1][coordenada_x]->set_abajo(casillero_nuevo);		
-	}
+	Elemento estructural_nuevo;
+	estructural_nuevo.posicion = p;
+	estructural_nuevo.estructural = e;
+	estructurales.insert(estructural_nuevo);
+			
+}
+S_ptr<Estructural> get_estructural(Posicion &p){
+	std::set<Elemento, ComparadorPosicion>::iterator busqueda;
+	
+	Elemento estructural_busqueda;
+	estructural_nuevo.posicion = p;
+	
+	busqueda = this->estructurales.find(estructural_busqueda);
+	
+	if(busqueda != estructurales::end)
+		return busqueda->estructural;
+	else
+		return (S_ptr<Estructural> nulo);
 }
 
-/*S_ptr<Comestible> MapaImpMatriz::get_comestible(Posicion &posicion){
-	int coordenada_x = (int) posicion.get_x();
-	int coordenada_y = (int) posicion.get_y();
-	
-	return (matriz[coordenada_y][coordenada_x]).comestible
-}*/
-	
 Tipo_Dimensiones MapaImpMatriz::get_ancho(){
 	return this->ancho;
 }

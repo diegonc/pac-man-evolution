@@ -4,8 +4,9 @@
 #include "Mapa.h"
 #include "Jugador.h"
 #include "Posicion.h"
-#include "Casillero.h"
-#include "ComestibleFactory.h"
+#include "ComparadorPosicion.h"
+
+#include <set>
 
 #define TAM_CASILLERO	1;
 
@@ -20,21 +21,20 @@ typedef unsigned int Tipo_Dimensiones;
 
 class MapaImpMatriz : public Mapa{
 		
-	typedef S_ptr<Comestible> Tipo_Comestible;
-	
-	public:
-		enum Tipo {
-        	Nada, Pasillo, Salida_PacMan, CasaFantasma
-    	};
-	
 	private:
-		
+		friend class ComparadorPosicion;	
+	
+	
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
 		
-		S_ptr<Casillero> ** matriz;		
+		struct Elemento{
+			Posicion posicion;
+			S_ptr<Estructural> estructural;	
+						
+		}
 		
-		//Casillero& get_comestible(Posicion &posicion);	
+		std::set<Elemento,ComparadorPosicion> estructurales;	
 		
 	public:
 		
@@ -43,12 +43,11 @@ class MapaImpMatriz : public Mapa{
 		~MapaImpMatriz();
 	
 		void mover( Jugador * jugador, Direccion &dir );
-	
-		void agregar_casillero( S_ptr<Casillero> casillero_nuevo, Posicion posicion, 
-	                            bool tiene_vecino_izq, bool tiene_vecino_arr );
-	
 		
-			
+		void agregar_estructural(S_ptr<Estructural> e, Posicion &p);
+		
+		S_ptr<Estructural> get_estructural(Posicion &p);
+	
 		Tipo_Dimensiones get_ancho();
 	
 		Tipo_Dimensiones get_alto();

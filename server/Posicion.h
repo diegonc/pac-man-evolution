@@ -17,6 +17,6 @@ class Posicion{
 			
 		void set_y(Tipo_Coordenada y_nuevo);
 			
-			
+		bool operator==(Posicion &p);
 };
 #endif /*__POSICION_H__*/

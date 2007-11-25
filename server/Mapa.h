@@ -3,6 +3,8 @@
 
 #include "Jugador.h"
 #include "Comestible.h"
+#include "Estructural.h"
+#include "Posicion.h"
 
 /** @brief Interfaz de acceso al mapa.
  *
@@ -23,37 +25,12 @@ class Mapa
 		 *  @param dir Direccion en la que se mueve el personaje.
 		 */
 		virtual void mover( Jugador * jugador, Direccion &dir ) = 0;
-
-		/* @brief Obtiene un jugador.
-		 *
-		 *  @param id Identificador del jugador a obtener.
-		 *  @return Se devuelve un smart pointer con el jugador.
-		 
-		virtual S_ptr<Jugador> get_jugador( int id ) = 0;
+		
+		virtual void agregar_estructural(S_ptr<Estructural>, Posicion &p)=0;
 			
-		* @brief Obtiene un jugador en una cierta posicion del mapa
-		 *
-		 *  @param  Cooerdenadas de la posicion en el mapa
-		 *  @return Se devuelve un smart pointer con el jugador.
-		
-		virtual S_ptr<Jugador> get_jugador(Tipo_Coordenada pos_x, Tipo_Coordenada pos_y) = 0;
-		*/
-		
-		/** @brief Obtiene un Comestible en una posicion del mapa
-		 *
-		 *  @param  Cooerdenadas de la posicion en el mapa
-		 *  @return Se devuelve un smart pointer con el comestible.
-		*/
-		//virtual S_ptr<Comestible> get_comestible(Tipo_Coordenada pos_x, Tipo_Coordenada pos_y) = 0;
-		
-		virtual S_ptr<Comestible> get_comestible(Posicion &pos)=0;
-		
-		/** @brief Le asigna la posicion inicial al jugador dependiendo si es 
-		 *		   Pac-Man o Fantasma
-		 *
-		 *  @param  Jugador a agregar
-		 */
-		//virtual void establecer_posicion_inicial(Jugador * jugador) = 0;
+		virtual S_ptr<Estructural> get_estructural(Posicion &p)=0;
+			
+	
 };
 
 #endif /* __MAPA_H__ */
