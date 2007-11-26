@@ -19,7 +19,7 @@ Modelo::~Modelo(){
 }
 
 void Modelo::agregar_jugador(Tipo_Jugador jugador){
-	
+	this->jugadores.push_back(jugador);
 }
 			
 void Modelo::run(){
