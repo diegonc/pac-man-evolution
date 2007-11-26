@@ -26,7 +26,7 @@ class Estructural{
 	
 		virtual ~Estructural(){}
 	
-		virtual void ingresar(Jugador *jugador) = 0;
+		virtual void ingresar(Jugador& jugador) = 0;
 		
 		virtual int get_tipo()=0;
 			

@@ -76,7 +76,7 @@ class Jugador{
 		 *
 		 *	@param comestible Puntero que referencia al comestible a comer
 		 */
-		void comer(Comestible * comestible);
+		void comer(Comestible& comestible);
 		
 		void incrementar_puntos(int cant);
 		
