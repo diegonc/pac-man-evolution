@@ -78,3 +78,33 @@ int BitStream::read( unsigned int n )
 	}
 	return r;
 }
+
+void BitStream::skip()
+{
+	if( index < size ) {
+		index++;
+		bindex = 8;
+	}
+}
+
+S_ptr<char> BitStream::read_block( unsigned int n )
+{
+	grow( n );
+
+	if( bindex == 8 ) {
+		/*
+		 * Buenisimo =P, los datos comienzan al principio de un byte.
+		 */
+		unsigned int nbytes = ( n % 8 ) ? ( n / 8 + 1 ) : ( n / 8 );
+		char* block = new char[nbytes];
+		memcpy( block, buffer+index, nbytes );
+		index += n / 8;
+		bindex -= n % 8;
+	       return S_ptr<char,aca_algo>( block );
+	} else {
+		/*
+		 * ... horrible. Espero no suceda.
+		 */
+		throw std::runtime_error( "Implementar read_block desalineado." );
+	}
+}
