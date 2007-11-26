@@ -102,7 +102,9 @@ S_ptr<char> BitStream::read_block( unsigned int n )
 		bindex -= n % 8;
          /*****************************************************************************
 
-         TOCO ACA PARA QUE COMPILEEEEEE!!
+         TOCO ACA PARA QUE COMPILEEEEEE y le mande lo del S_ptr_Array...
+         ---le faltaria el operador [], pero si le agregamos esto, no lo podes castear
+         a S_ptr....aunque tal vez todo bien....no se....fijate!!
 
          ***********************************************************************/
          return S_ptr_Array<char>(block);
