@@ -1,6 +1,7 @@
 #include "Cliente.h"
 
 #include "BitStream.h"
+#include "SocketReader.h"
 
 void Cliente::run()
 {
@@ -9,7 +10,8 @@ void Cliente::run()
 
 S_ptr<Paquete> Cliente::recibir_mensaje()
 {
-	BitStream bs( *socket );
+	SocketReader sr( *socket );
+	BitStream bs( sr );
 	Paquete* p = 0;
 
 	// Lectura de encabezado
