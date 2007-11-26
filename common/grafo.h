@@ -81,7 +81,7 @@ template <class ContenidoVertice, class ContenidoArco> class Grafo{
 			else
 				return v_nulo;//devuelvo un objeto nulo
 		}
-		S_ptr<Clase_Vertice> buscar_vertice(void * info_a_buscar, Comparador *c){
+		S_ptr<Clase_Vertice> buscar_vertice(ContenidoVertice &info_a_buscar, Comparador *c){
 			bool encontrado = false;
 			S_ptr<Clase_Vertice> v_aux, v_nulo;
 			//creo esta variable, porque voy a usar una referencia, y el valgrind
@@ -98,7 +98,7 @@ template <class ContenidoVertice, class ContenidoArco> class Grafo{
 				//o comparar directamente los vertices. Sirve mas que nada para
 				//contenidos del vertice el tipo puntero, en el que muchas veces
 				//no tienen mucho sentido comparar punteros
-				if( (*c)( &contenido_temporal, info_a_buscar) )
+				if( (*c)( &contenido_temporal, &info_a_buscar) )
 					encontrado = true;
 				else
 					++it;
@@ -155,13 +155,13 @@ template <class ContenidoVertice, class ContenidoArco> class Grafo{
 		const list<S_ptr<Clase_Vertice> >& get_vertices(){
 			return *(this->vertices);
 		}
-		void eliminar_vertice(ContenidoVertice vertice, Comparador *c=0){
+		void eliminar_vertice(ContenidoVertice &vertice, Comparador *c=0){
+			S_ptr<Clase_Vertice> v_a_eliminar;			
 			//obtengo el que voy a eliminar
-         S_ptr<Clase_Vertice> v_a_eliminar;
          if( c != 0)			
-            v_a_eliminar = buscar_vertice(&vertice, c);
+            v_a_eliminar = buscar_vertice(vertice, c);
 			else
-            v_a_eliminar = buscar_vertice(&vertice);         
+            v_a_eliminar = buscar_vertice(vertice);         
 			//si no era nulo
 			if(!v_a_eliminar.es_nulo()){
 				
