@@ -16,3 +16,7 @@ char Paquete::get_tipo()
 {
 	return tipo;
 }
+
+Paquete* Paquete::crear( int tipo ){
+      return 0;
+}
