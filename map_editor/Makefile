@@ -28,7 +28,10 @@ LDFLAGS=-lm -lpthread
 CC=gcc 
 CXX=g++ 
 
+gtk = si 
+
 CXXFLAGS = $(CFLAGS)
+
 # VARIABLES CALCULADAS A PARTIR DE LA CONFIGURACION
 ####################################################
 
