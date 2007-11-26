@@ -18,7 +18,7 @@
 #include <iostream>
 
 template <class Tipo> class S_ptr{
-	private:
+	protected:
 		typedef typename std::runtime_error Runtime_Error;
 		
 		Tipo* objeto; //objeto que contiene el puntero
@@ -42,7 +42,7 @@ template <class Tipo> class S_ptr{
 			this->set_cantidad_referencias((this->get_cantidad_referencias())-1);	
 		}
 		//elimina el objeto
-		void eliminar_objeto(){
+      virtual void eliminar_objeto(){
 			if(objeto != NULO){
 				//elimina el objeto
 				delete this->objeto;
@@ -83,7 +83,7 @@ template <class Tipo> class S_ptr{
 			if(this->cantidad_referencias != 0/*NULO*/)
 				this->incrementar_cantidad_referencias();
 		}	
-		~S_ptr(){
+		virtual ~S_ptr(){
 			//bloqueo el elemento para que no hay conflictos entre threads,
 			//por ejemplo, que dos decrementen y despues ninguno elimine porque
 			//la cantidad de referencias quedo en -1
