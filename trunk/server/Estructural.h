@@ -30,13 +30,13 @@ class Estructural{
 		
 		virtual int get_tipo()=0;
 			
-		void set_arriba(S_ptr<Estructural> casillero);
+		void set_arriba(S_ptr<Estructural> e);
 			
-		void set_abajo(S_ptr<Estructural> casillero);
+		void set_abajo(S_ptr<Estructural> e);
 			
-		void set_derecha(S_ptr<Estructural> casillero);
+		void set_derecha(S_ptr<Estructural> e);
 			
-		void set_izquierda(S_ptr<Estructural> casillero);
+		void set_izquierda(S_ptr<Estructural> e);
 			
 		S_ptr<Estructural> get_arriba();
 		
