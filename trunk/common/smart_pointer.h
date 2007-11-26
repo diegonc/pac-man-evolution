@@ -148,6 +148,12 @@ template <class Tipo> class S_ptr{
 			else
 				return false;
 		}
+		friend bool operator<(const S_ptr p1, const S_ptr p2){
+			if(p1.objeto < p2.objeto)
+				return true;
+			else
+				return false;
+		}
 			
 };
 
