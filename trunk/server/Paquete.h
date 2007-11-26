@@ -20,6 +20,15 @@ class Paquete
 		 */
 		/*TODO: enum? solo algun typedef y despues PaqueteEspecifico::ID?
 		 */char tipo;
+
+	protected:
+		/** @brief Constructor para subtipos.
+		 *
+		 *  Constructor protegido para que subtipos puedan establecer
+		 *  el valor correcto del tipo.
+		 */ 
+		Paquete( char tipo );
+
 	public:
 		/** @brief Metodo fabrica de paquetes.
 		 *
@@ -43,7 +52,7 @@ class Paquete
 		 *
 		 *  @param bs Fuente de datos.
 		 */
-		void deserialize( BitStream& bs );
+		void deserialize( BitStream& bs ) = 0;
 };
 
 #endif /* __PAQUETE_H__ */
