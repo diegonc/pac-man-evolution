@@ -6,8 +6,12 @@
 class ComparadorPosicion{
 	
 	public:
-		bool operator()(const MapaImpSet::Elemento &e1, const MapaImpSet::Elemento &e2){
-			if(e1.posicion == e2.posicion )
+		bool operator()(const Posicion &e1, const Posicion &e2){
+		/*	if(e1.posicion == e2.posicion )
+				return true;
+			else
+				return false;*/
+			if((int)e1.get_x() == (int)e2.get_x() && (int)e2.get_y() == (int)e2.get_y() )
 				return true;
 			else
 				return false;

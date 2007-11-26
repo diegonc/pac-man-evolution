@@ -11,7 +11,7 @@ class ComestibleFactory{
 	
 	public:
 		
-		enum Tipo_Comestible{power_up,quesito,frutita};	
+		enum Tipo_Comestible{power_up, quesito, frutita};	
 				
 		ComestibleFactory();
 	

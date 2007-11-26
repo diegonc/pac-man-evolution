@@ -1,4 +1,7 @@
 #include "App.h"
+#include <string>
+#include "Modelo.h"
+#include <pthread.h>
 
 S_ptr<App> App::instancia;
 
@@ -13,5 +16,10 @@ S_ptr<App> App::get_instancia(){
 	return instancia;
 }
 int App::ejecutar(){
+	std::string ruta = "a";
+	S_ptr<Modelo> modelo(new Modelo(ruta));
+	modelo->start();
+	pthread_join(modelo->get_hilo(), NULL);
+	
 	return 0;
 }

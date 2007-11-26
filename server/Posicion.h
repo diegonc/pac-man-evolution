@@ -1,6 +1,8 @@
 #ifndef __POSICION_H__
 #define __POSICION_H__
 
+#include "Direccion.h"
+
 typedef double Tipo_Coordenada;
 class Posicion{
 	
@@ -20,6 +22,8 @@ class Posicion{
 		Tipo_Coordenada get_y() const;
 			
 		void set_y(Tipo_Coordenada y_nuevo);
+	
+		void incrementar(Tipo_Coordenada cantidad, Direccion &direccion);
 			
 		bool operator==(const Posicion &p);
 };

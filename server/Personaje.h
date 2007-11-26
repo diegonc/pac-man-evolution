@@ -4,13 +4,13 @@
 class Jugador;
 class Comestible;
 
-class Personaje
-{
+class Personaje{
 	private:
 		
 		double Velocidad;
-		
-		Personaje();
+	
+	protected:	
+		Personaje(){}
 	
 	public:
 	
