@@ -24,10 +24,9 @@ Direccion& Jugador::get_direccion() {
 void Jugador::ejecutar_operacion(Operacion& operacion){
 	
 }
-void Jugador::comer(Comestible * comestible){
-	
+void Jugador::comer(Comestible& comestible){
+	this->personaje->comer(*this, comestible);
 }
-
 void Jugador::incrementar_puntos(int cant){
 	this->puntos+= cant;
 }

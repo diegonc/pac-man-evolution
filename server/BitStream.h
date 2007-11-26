@@ -2,7 +2,7 @@
 #define __BITSTREAM_H__
 
 #include "../common/socket.h"
-#include "../common/smart_pointer.h"
+#include "../common/smart_pointer_arrays.h"
 
 class BitStream
 {

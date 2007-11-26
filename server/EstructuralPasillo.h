@@ -13,7 +13,7 @@ class EstructuralPasillo : public Estructural{
 	public:
 		EstructuralPasillo(ComestibleFactory::Tipo_Comestible &tipo);
 	
-		void ingresar(Jugador *jugador);
+		void ingresar(Jugador& jugador);
 	
 		~EstructuralPasillo();
 	

@@ -8,7 +8,7 @@ class EstructuralCasaFantasma : public Estructural{
 	public:
 		EstructuralCasaFantasma();
 	
-		void ingresar(Jugador *jugador);
+		void ingresar(Jugador& jugador);
 	
 		~EstructuralCasaFantasma();
 	

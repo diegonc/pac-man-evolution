@@ -3,13 +3,15 @@
 
 #include "Comestible.h"
 
+#define PUNTOS_QUESO	1
+
 class Quesito : public Comestible{
 	public:
-		Quesito();
+		Quesito():Comestible(PUNTOS_QUESO){}
 		
-		~Quesito();
+		~Quesito(){}
 		
-		
+		void afectar_personaje(Personaje& personaje){}
 };
 
 #endif /*__QUESITO_H__*/

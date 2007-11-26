@@ -52,7 +52,7 @@ class Paquete
 		 *
 		 *  @param bs Fuente de datos.
 		 */
-		void deserialize( BitStream& bs ) = 0;
+		virtual void deserialize( BitStream& bs ) = 0;
 };
 
 #endif /* __PAQUETE_H__ */

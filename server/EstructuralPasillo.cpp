@@ -11,8 +11,8 @@ EstructuralPasillo::~EstructuralPasillo(){
 		delete this->comida;		
 }
 
-void EstructuralPasillo::ingresar(Jugador *jugador){
-	jugador->comer(this->comida);
+void EstructuralPasillo::ingresar(Jugador& jugador){
+	jugador.comer(*this->comida);
 	this->comida = 0;
 }
 

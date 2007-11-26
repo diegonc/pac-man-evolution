@@ -4,7 +4,7 @@
 
 EstructuralCasaFantasma::EstructuralCasaFantasma(){}
 	
-void EstructuralCasaFantasma::ingresar(Jugador *jugador){}
+void EstructuralCasaFantasma::ingresar(Jugador& jugador){}
 	
 EstructuralCasaFantasma::~EstructuralCasaFantasma(){}
 

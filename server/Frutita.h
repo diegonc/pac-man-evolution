@@ -5,10 +5,12 @@
 
 class Frutita : public Comestible{
 	public:
-		Frutita();
+		//TODO cambiar esto
+		Frutita():Comestible(10){}
 		
-		~Frutita();
-				
+		~Frutita(){}
+		
+		void afectar_personaje(Personaje& personaje){}
 };
 
 #endif /*__FRUTITA_H__*/

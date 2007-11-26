@@ -100,7 +100,13 @@ S_ptr<char> BitStream::read_block( unsigned int n )
 		memcpy( block, buffer+index, nbytes );
 		index += n / 8;
 		bindex -= n % 8;
-	       return S_ptr<char,aca_algo>( block );
+         /*****************************************************************************
+
+         TOCO ACA PARA QUE COMPILEEEEEE!!
+
+         ***********************************************************************/
+         return S_ptr_Array<char>(block);
+	       //return S_ptr<char,aca_algo>( block );
 	} else {
 		/*
 		 * ... horrible. Espero no suceda.
