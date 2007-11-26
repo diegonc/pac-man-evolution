@@ -1,4 +1,7 @@
 #include "MapImpSet.h"
+#include "ComparadorPosicion.h"
+
+#include <iostream>
 
 MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto){
 	//TODO : VALIDAR ESTO!!!!!!
@@ -8,8 +11,28 @@ MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto
 
 MapaImpSet::~MapaImpSet(){}
 
-void MapaImpSet::mover( Jugador * jugador, Direccion &dir ){
+void MapaImpSet::mover( Jugador& jugador, Direccion &dir, Tipo_Coordenada distancia ){
 	
+	Posicion posicion_jugador = jugador.get_posicion();
+	S_ptr<Estructural> donde_estaba = this->get_estructural(posicion_jugador);
+	std::cout << "("<<posicion_jugador.get_x() << "-" << posicion_jugador.get_y() << ") ->";
+	//si esta en algun lugar del mapa
+	if(! donde_estaba.es_nulo() ){
+		//TODO - cambiar el 0.5 por lo que tenga que ir
+		posicion_jugador.incrementar(distancia,dir);		
+		std::cout << "("<< posicion_jugador.get_x() << "-" << posicion_jugador.get_y() << ")\n";
+		//Aca discretizo los cuadrantes.
+		//Si cayo en el mismo estructural. Les pongo 1 unidad de separacion
+		ComparadorPosicion comp;
+		if(!comp(posicion_jugador, jugador.get_posicion()) ){
+			   //si cayeron distinto, me fijo si podia moverse para ese lado
+			   S_ptr<Estructural> vecino = donde_estaba->get_vecino(dir);
+			   if( !vecino.es_nulo() )
+				   vecino->ingresar(jugador);
+			   
+			   //TODO.....VER QUE SE HACE SI NO SE PODIA MOVER PARA ESE LADO
+		}
+	}			
 }
 void MapaImpSet::agregar_estructural(S_ptr<Estructural> e, Posicion &p){
 									

@@ -14,7 +14,8 @@
  */
 class Mapa
 {
-	typedef double Tipo_Coordenada;	
+	protected:
+		typedef double Tipo_Coordenada;	
 	
 	public:
 		virtual ~Mapa() {}
@@ -24,7 +25,7 @@ class Mapa
 		 *  @param id  Identificador numerico del personaje.
 		 *  @param dir Direccion en la que se mueve el personaje.
 		 */
-		virtual void mover( Jugador * jugador, Direccion &dir ) = 0;
+		virtual void mover( Jugador& jugador, Direccion &dir, Tipo_Coordenada distancia ) = 0;
 		
 		virtual void agregar_estructural(S_ptr<Estructural>, Posicion &p)=0;
 			

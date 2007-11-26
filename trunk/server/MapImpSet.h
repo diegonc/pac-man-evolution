@@ -29,7 +29,7 @@ class MapaImpSet : public Mapa{
 				S_ptr<Estructural> estructural;	
 		};
 	public:
-		class ComparadorPosicion{
+		class ComparadorElementoPosicion{
 			public:
 				bool operator()(const Elemento &e1, const Elemento &e2){
 					Posicion pos1 = (e1.posicion);
@@ -42,7 +42,7 @@ class MapaImpSet : public Mapa{
 				}
 		};
 	private:
-		std::set<Elemento,ComparadorPosicion> estructurales;	
+		std::set<Elemento,ComparadorElementoPosicion> estructurales;	
 		
 	public:
 		
@@ -50,7 +50,7 @@ class MapaImpSet : public Mapa{
 
 		~MapaImpSet();
 	
-		void mover( Jugador * jugador, Direccion &dir );
+		void mover( Jugador& jugador, Direccion &dir, Tipo_Coordenada distancia );
 		
 		void agregar_estructural(S_ptr<Estructural> e, Posicion &p);
 		
