@@ -1,13 +1,14 @@
 #ifndef __BITSTREAM_H__
 #define __BITSTREAM_H__
 
-#include "../common/socket.h"
-#include "../common/smart_pointer_arrays.h"
+#include "BufferReader.h"
 
 class BitStream
 {
 	private:
-		Socket& sock;
+		/** @brief Origen de datos.
+		 */
+		BufferReader& br;
 
 		/** @brief Almacenamiento para mantener los datos a procesar.
 		 */
@@ -36,7 +37,7 @@ class BitStream
 		/** @brief Construye un BitStream para leer desde un Socket.
 		 *
 		 */
-		BitStream( Socket& s );
+		BitStream( BufferReader& s );
 
 		~BitStream();
 
@@ -68,10 +69,14 @@ class BitStream
 		 *  siguientes n bits del stream.
 		 *  Los n bits se retiran del stream.
 		 *
+		 *  Precondicion:
+		 *      - el valor de retorno es un arreglo de char y debe ser
+		 *      liberado con delete[].
+		 *
 		 *  @param n Numero de bits leidos.
 		 *  @return Bloque que contiene los bits.
 		 */
-		S_ptr<char> read_block( unsigned int n );
+		char* read_block( unsigned int n );
 
 		/** @brief Rellena el buffer.
 		 *

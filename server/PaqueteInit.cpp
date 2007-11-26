@@ -17,11 +17,7 @@ void PaqueteInit::deserialize( BitStream& bs )
 	grafo_alto = bs.read( 8 );
 
 	int long_aristas = grafo_ancho * grafo_alto * 2;
-	bs.grow( long_aristas ); // Precarga el bloque de datos de las aristas
-
-   //REVISAR ESTA LINEA, NO COMPILA POR:
-   //PaqueteInit.cpp:21: error: 'grafo_aristas' was not declared in this scope
-   //grafo_aristas = bs.read_block( long_aristas );
-
+        
+	grafo_aristas = bs.read_block( long_aristas );
 	bs.skip();
 }

@@ -18,6 +18,8 @@ class PaqueteInit : public Paquete
 		 */
 		int grafo_alto;
 
+		char* grafo_aristas;
+
 	public:
 		PaqueteInit();
 

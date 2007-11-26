@@ -18,7 +18,7 @@ namespace {
 	};
 }
 
-BitStream::BitStream( Socket& s ) : sock( s )
+BitStream::BitStream( BufferReader& br ) : br( br )
 {
 	buffer = 0;
 	size = 0;
@@ -47,7 +47,7 @@ void BitStream::grow( unsigned int n )
 		memcpy( new_buffer, buffer + index, current_data_size );
 		if( buffer ) delete[] buffer;
 		
-		sock.recibir( new_buffer + current_data_size, bytes_needed );
+		br.recibir( new_buffer + current_data_size, bytes_needed );
 		index = 0;
 		size = current_data_size + bytes_needed;
 		buffer = new_buffer;
@@ -87,7 +87,7 @@ void BitStream::skip()
 	}
 }
 
-S_ptr<char> BitStream::read_block( unsigned int n )
+char* BitStream::read_block( unsigned int n )
 {
 	grow( n );
 
@@ -100,15 +100,7 @@ S_ptr<char> BitStream::read_block( unsigned int n )
 		memcpy( block, buffer+index, nbytes );
 		index += n / 8;
 		bindex -= n % 8;
-         /*****************************************************************************
-
-         TOCO ACA PARA QUE COMPILEEEEEE y le mande lo del S_ptr_Array...
-         ---le faltaria el operador [], pero si le agregamos esto, no lo podes castear
-         a S_ptr....aunque tal vez todo bien....no se....fijate!!
-
-         ***********************************************************************/
-         return S_ptr_Array<char>(block);
-	       //return S_ptr<char,aca_algo>( block );
+		return block;
 	} else {
 		/*
 		 * ... horrible. Espero no suceda.
