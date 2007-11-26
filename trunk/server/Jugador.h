@@ -23,6 +23,7 @@ class Jugador{
 		Tipo_Personaje personaje;
 		Posicion posicion;
 		Direccion  * dir;	
+		int puntos;
 		
 	public:
 		/** @brief Constructor de la clase.
@@ -76,6 +77,10 @@ class Jugador{
 		 *	@param comestible Puntero que referencia al comestible a comer
 		 */
 		void comer(Comestible * comestible);
+		
+		void incrementar_puntos(int cant);
+		
+		int get_puntos();
 };
 
 #endif /*__JUGADOR_H__*/
