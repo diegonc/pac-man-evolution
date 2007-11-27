@@ -4,13 +4,15 @@
 #include "Mapa.h"
 #include "Jugador.h"
 #include "Posicion.h"
-//#include "ComparadorPosicion.h"
+#include "ComparadorPosicion.h"
 
 #include <set>
 
 /** @brief Implementa una interfaz de mapa
  *
  */
+ 
+typedef unsigned int Tipo_Dimensiones;
 class MapaImpSet : public Mapa{
 		
 	private:
@@ -29,10 +31,19 @@ class MapaImpSet : public Mapa{
 					Posicion pos1 = (e1.posicion);
 					Posicion pos2 = (e2.posicion);
 					
-					if( pos1 == pos2 )
-						return true;
-					else
+					ComparadorPosicion comp;					
+					
+					bool resultado = comp(pos1, pos2);
+					
+					if(resultado)
 						return false;
+						
+					else
+						return true;
+					
+					
+					return resultado;
+					
 				}
 		};
 	private:

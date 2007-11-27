@@ -2,6 +2,7 @@
 #define __POSICION_H__
 
 #include "Direccion.h"
+#include <iostream>
 
 typedef double Tipo_Coordenada;
 class Posicion{
@@ -26,5 +27,12 @@ class Posicion{
 		void incrementar(Tipo_Coordenada cantidad, Direccion &direccion);
 			
 		bool operator==(const Posicion &p);
+	
+		friend std::ostream& operator <<( std::ostream& os, const Posicion &p) 
+     	{ 
+         	os << "(" << (int)p.get_x() << "," << (int)p.get_y() << ")"; 
+         	// return ostream object 
+         	return os; 
+     	} 
 };
 #endif /*__POSICION_H__*/
