@@ -130,8 +130,8 @@ template <class Tipo> class S_ptr{
 						this->eliminar_objeto();
 				}
 				//asigno el puntero al nuevo objeto
-				this->objeto = p.objeto;				
-				//copio la variable de cantidad de referencias
+				this->objeto = p.objeto;			
+      		//copio la variable de cantidad de referencias
 				this->cantidad_referencias = p.cantidad_referencias;
 				//incremento la cantidad de referencias
 				this->incrementar_cantidad_referencias();
