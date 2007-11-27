@@ -27,11 +27,15 @@ template <class Tipo> class S_ptr{
 	
 		//devuelve la cantidad de referencias del puntero
 		int get_cantidad_referencias(){
-			return *this->cantidad_referencias;	
+         if(this->cantidad_referencias != NULO)
+			   return *this->cantidad_referencias;	
+         else
+            return 0;
 		}
 		//asigna la cantidad de referencias
 		void set_cantidad_referencias(int cant){
-			*(this->cantidad_referencias) = cant;
+         if(this->cantidad_referencias != NULO)			
+            *(this->cantidad_referencias) = cant;
 		}
 		//incremente en 1 la cantidad de referencias
 		void incrementar_cantidad_referencias(){
