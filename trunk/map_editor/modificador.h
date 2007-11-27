@@ -33,7 +33,7 @@ class Modificador : public Elemento {
 	/* Agregate: Dado el mapa pasado por parametro, el modificador verifica si puede insertarse en la posicion con
 	   la que fue creado. Si no hay otro modificador en esa pos y ademas el lugar
 	   es habitable, se agrega y devuelve true. Sino no se agrega y devuelve false. */
-	virtual bool agregate(Mapa* mapa);
+	virtual bool agregate(S_ptr<Elemento> instancia, Mapa* mapa);
 	
 };
 

@@ -45,6 +45,9 @@ class Nivel {
 	/* Get Mapa: Devuelve el mapa del nivel */
 	Mapa* get_mapa();
 
+	/* /////////////TEMPORAL////////////// */
+	void imprimir_mapa();
+
 };
 
 #endif

@@ -49,6 +49,6 @@ Orientacion Elemento::get_orientacion(){
 
 /* Quitate: */
 
-void Elemento::quitate(Mapa* mapa){
-	mapa->quitar_elemento(this);
+void Elemento::quitate(S_ptr<Elemento> instancia, Mapa* mapa){
+	mapa->quitar_elemento(instancia);
 }
