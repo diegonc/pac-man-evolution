@@ -64,6 +64,17 @@ class Mapa {
 	/* Marcar Conectados: Metodo que se encarga de marcar todos los elementos estructurales que se   	            encuentran conectados al camino principal (el de mas arriba a la izq) */
 	void marcar_conectados();
 
+	/* Validar Coordenadas: Recibe coordenadas (x, y), y devuelve true si estan dentro del mapa, false en caso
+	   contrario */
+	bool validar_coordenadas(int x, int y);
+
+	/* Superficie Disponible: Dados un (x,y) coords superior izq de la superficie, y un ancho y alto de la misma,
+	   devuelve true si en el mapa esa superficie esta libre de elementos, false en caso contrario */
+	bool superficie_disponible(int x, int y, int alto, int ancho);
+
+	/* /////////////TEMPORAL////////////// */
+	void imprimir();
+
 };
 
 #endif

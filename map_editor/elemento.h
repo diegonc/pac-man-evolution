@@ -65,10 +65,10 @@ class Elemento {
 	/* Agregate: Dado el mapa pasado por parametro, el elemento verifica si puede insertarse en mismo,en 
 	   la posicion con la que fue creado. Si puede, se agrega y se conecta con todos los vecinos (si es estruct).
 	   Devuelve true si se pudo agregar, false en caso contrario. */
-	virtual bool agregate(Mapa* mapa) = 0;
+	virtual bool agregate(S_ptr<Elemento> instancia, Mapa* mapa) = 0;
 
 	/* Quitate: Dado el mapa pasado por parametro, el elemento se encarga de removerse del mismo. */
-	virtual void quitate(Mapa* mapa);
+	virtual void quitate(S_ptr<Elemento> instancia, Mapa* mapa);
 
 	/* Es Estructural: Devuelve true si el elemento es estructural, false en caso contrario */
 	virtual bool es_estructural() = 0;
@@ -98,6 +98,9 @@ class Elemento {
 			else
 				return false;
 	}
+
+	/* ///////////////TEMPORAL/////////////// */
+	virtual char* toString() = 0;
 	
 };
 

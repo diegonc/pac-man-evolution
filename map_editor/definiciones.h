@@ -29,4 +29,11 @@ enum TipoElem { PASILLO, ESQ, BIFUR, CRUCE, CASA, PORTAL, SALIDA, PWUP, BONUS};
 
 enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 
+//Defino los tamaños de las fichas
+
+#define PAS_HORIZ_ANCHO 3
+#define PAS_HORIZ_ALTO 1
+#define PAS_VERT_ANCHO 1
+#define PAS_VERT_ALTO 3
+
 #endif

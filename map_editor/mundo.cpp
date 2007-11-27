@@ -26,7 +26,7 @@ int Mundo::agregar_nivel(int tam_X, int tam_Y){
 
 void Mundo::quitar_nivel(unsigned int nOrden){
 	if ((nOrden > 0) && (nOrden <= this->niveles.size())) {
-		unsigned int cont = 0;
+		unsigned int cont = 1;
 		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 		while (cont < nOrden){
 			it++;
@@ -41,7 +41,7 @@ void Mundo::quitar_nivel(unsigned int nOrden){
 bool Mundo::agregar_elemento(TipoElem tipo, unsigned int nOrden, int posX, int posY, Orientacion orientacion){
 	bool result = true;
 	if ((nOrden > 0) && (nOrden <= this->niveles.size())){
-		unsigned int cont = 0;
+		unsigned int cont = 1;
 		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 		while (cont < nOrden){
 			it++;
@@ -59,7 +59,7 @@ bool Mundo::agregar_elemento(TipoElem tipo, unsigned int nOrden, int posX, int p
 bool Mundo::quitar_elemento(unsigned int nOrden, int posX, int posY){
 	bool result = true;
 	if ((nOrden > 0) && (nOrden <= this->niveles.size())){
-		unsigned int cont = 0;
+		unsigned int cont = 1;
 		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 		while (cont < nOrden){
 			it++;
@@ -82,4 +82,19 @@ void Mundo::promover(unsigned int nOrden){
 
 void Mundo::degradar(unsigned int nOrden){
 
+}
+
+/* ////////////////////TEMPORAL///////////////////////// */
+
+void Mundo::imprimir_nivel(unsigned int nOrden){
+	if ((nOrden > 0) && (nOrden <= this->niveles.size())){
+		unsigned int cont = 1;
+		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
+		while (cont < nOrden){
+			it++;
+			cont++;
+		}
+		S_ptr<Nivel> nivel = *it;
+		nivel->imprimir_mapa();
+	}
 }

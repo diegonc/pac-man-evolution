@@ -117,7 +117,7 @@ bool Mapa::es_congruente(){
 
 S_ptr<Casillero> Mapa::get_casillero(int pos_x, int pos_y){
 	//Si las posiciones recibidas estan dentro de los margenes del mapa devuelvo el casillero
-	if ((pos_x >= 0) && (pos_y >= 0) && (pos_x < this->ancho) && (pos_y < this->alto))
+	if (this->validar_coordenadas(pos_x, pos_y))
 		return this->mapa[pos_x][pos_y];
 	else { //Sino devuelvo un casillero nulo
 		S_ptr<Casillero> nulo;
@@ -136,4 +136,43 @@ void Mapa::conectar(S_ptr<Elemento> elem1, S_ptr<Elemento> elem2){
 
 void Mapa::marcar_conectados(){
 
+}
+
+/* Validar Coordenadas: */
+
+bool Mapa::validar_coordenadas(int x, int y){
+	if ((x >= 0) && (y >= 0) && (x < this->alto) && (y < this->ancho))
+		return true;
+	else
+		return false;
+}
+
+/* Superficie Disponible: */
+
+bool Mapa::superficie_disponible(int x, int y, int alto, int ancho){
+	bool result = true;
+	int cont1 = 0; int cont2 = 0;
+	//Recorro todos los casilleros de la superficie y me fijo si estan vacios
+	S_ptr<Casillero> casillero = this->get_casillero(x, y);
+	while ((result) && (cont1 < alto)){
+		while ((result) && (cont2 < ancho)){
+			if ((casillero.es_nulo()) || (!casillero->get_estructural().es_nulo()))
+				result = false;
+			cont2++;
+			casillero = this->get_casillero(x + cont1, y + cont2);
+		}
+		cont2 = 0;
+		cont1++;
+		casillero = this->get_casillero(x + cont1, y + cont2);
+	}
+	return result;
+}
+
+/* /////////////TEMPORAL////////////// */
+void Mapa::imprimir(){
+	for (int i = 0; i < alto; i++)
+			for (int j = 0; j < ancho; j++){
+				S_ptr<Casillero> casillero = this->get_casillero(i,j);
+				casillero->imprimir();
+			}
 }

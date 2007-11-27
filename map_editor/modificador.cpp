@@ -28,13 +28,13 @@ bool Modificador::es_habitable(int x, int y){
 
 /* Agregate: */
 
-bool Modificador::agregate(Mapa* mapa){
+bool Modificador::agregate(S_ptr<Elemento> instancia, Mapa* mapa){
 	bool result = true;
 	S_ptr<Casillero> casillero = mapa->get_casillero(this->get_pos_x(), this->get_pos_y());
 	if (!casillero.es_nulo()){
 		S_ptr<Elemento> estructural = casillero->get_estructural();
 		if ((!casillero->tiene_modificador()) && (!estructural.es_nulo()) && (estructural->es_habitable(this->get_pos_x(), this->get_pos_y()))){
-			mapa->insertar_elemento(this);
+			mapa->insertar_elemento(instancia);
 		} else
 			result = false;	
 	} else

@@ -26,7 +26,7 @@ bool Nivel::agregar_elemento(TipoElem tipo, int posX, int posY, Orientacion orie
 		S_ptr<Fab_Elementos> fabrica (new Fab_Elementos());
 		S_ptr<Elemento> elemento = fabrica->construir(tipo, posX, posY, orientacion);
 		if (!elemento.es_nulo())
-			result = elemento->agregate(this->mapa);
+			result = elemento->agregate(elemento, this->mapa);
 		else
 			result = false;
 	} else
@@ -47,7 +47,7 @@ bool Nivel::quitar_elemento(int posX, int posY){
 		else
 			elemento = casillero->get_estructural();
 		if (!elemento.es_nulo())
-			elemento->quitate(this->mapa);
+			elemento->quitate(elemento, this->mapa);
 	} else
 		result = false;
 	return result;
@@ -63,4 +63,9 @@ bool Nivel::es_congruente(){
 
 Mapa* Nivel::get_mapa(){
 	return this->mapa;
+}
+
+/* /////////////TEMPORAL////////////// */
+void Nivel::imprimir_mapa(){
+	this->mapa->imprimir();
 }

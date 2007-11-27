@@ -58,6 +58,9 @@ class Mundo {
 	   del principio de la lista. Si es el ultimo no hace nada */
 	void degradar(unsigned int nOrden);
 
+	/* ////////////////////TEMPORAL///////////////////////// */
+	void imprimir_nivel(unsigned int nOrden);
+
 };
 
 #endif

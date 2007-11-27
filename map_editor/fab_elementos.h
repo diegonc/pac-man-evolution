@@ -6,6 +6,8 @@
 #include "definiciones.h"
 #include "../common/smart_pointer.h"
 #include "elemento.h"
+#include "pas_horiz.h"
+#include "pas_vert.h"
 
 using namespace std;
 
@@ -23,9 +25,16 @@ class Fab_Elementos {
 
 	/* Construir: Construye un elemento segun el tipo mandado como parametro, con las posiciones pos_x, pos_y y la
 	   orientacion mandada por parametro. 
-	   Si lo puedo construir devuelve el elemento, sino devuelve NULL. */
+	   Si lo pudo construir devuelve el elemento, sino devuelve NULL. */
 
 	virtual S_ptr<Elemento> construir (TipoElem tipo, int pos_x, int pos_y, Orientacion orientacion);
+
+	private:
+
+	/* Construir Pasillo: Construye un pasillo segun la orientacion pasada por parametro, en las pos_x, pos_y.
+	   Si lo pudo construir devuelve el elemento, sino devuelve NULL. */
+
+	S_ptr<Elemento> construir_pasillo (int pos_x, int pos_y, Orientacion orientacion);
 
 };
 
