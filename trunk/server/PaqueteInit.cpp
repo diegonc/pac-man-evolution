@@ -4,11 +4,11 @@ namespace {
 	const char ID = 0;
 }
 
-PaqueteInit::PaqueteInit() : Paquete( ID )
+PaqueteInit::PaqueteInit( Mapa& m ) : Paquete( ID ), mapa( m )
 {
 }
 
-void PaqueteInit::deserialize( BitStream& bs )
+void PaqueteInit::deserialize( InputBitStream& bs )
 {
 	esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
 	bs.skip(); // Saltea el resto del campo auxiliar.
@@ -36,14 +36,14 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 
 	bs.grow( mapa.get_ancho()*mapa.get_alto()*2 );
 
-	for( int y=0; y < mapa.get_alto(); y++ ) {
+	for( unsigned int y=0; y < mapa.get_alto(); y++ ) {
 		// Aristas verticales
-		for( int x=0; x < mapa.get_ancho(); x++ ){
+		for( unsigned int x=0; x < mapa.get_ancho(); x++ ){
 			Posicion p( x, y );
 			bs.write( 1, !( mapa.get_estructural( p )->get_arriba().es_nulo() ) );
 		}
 		// Aristas horizontales
-		for( int x=0; x < mapa.get_ancho(); x++ ) {
+		for( unsigned int x=0; x < mapa.get_ancho(); x++ ) {
 			Posicion p( x, y );
 			bs.write( 1, !( mapa.get_estructural( p )->get_derecha().es_nulo() ) );
 		}

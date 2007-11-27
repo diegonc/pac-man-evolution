@@ -1,4 +1,4 @@
-#include "BitStream.h"
+#include "InputBitStream.h"
 #include <cassert>
 #include <stdexcept>
 #include <cstring>
@@ -18,7 +18,7 @@ namespace {
 	};
 }
 
-BitStream::BitStream( BufferReader& br ) : br( br )
+InputBitStream::InputBitStream( BufferReader& br ) : br( br )
 {
 	buffer = 0;
 	size = 0;
@@ -26,13 +26,13 @@ BitStream::BitStream( BufferReader& br ) : br( br )
 	bindex = 8;
 }
 
-BitStream::~BitStream()
+InputBitStream::~InputBitStream()
 {
 	if( buffer )
 		delete[] buffer;
 }
 
-void BitStream::grow( unsigned int n )
+void InputBitStream::grow( unsigned int n )
 {
 	unsigned int bavail = bindex + 8 * ( size - index - 1 );
 
@@ -54,7 +54,7 @@ void BitStream::grow( unsigned int n )
 	}
 }
 
-int BitStream::read( unsigned int n )
+int InputBitStream::read( unsigned int n )
 {
 	assert( n <= 8*sizeof( int ) );
 
@@ -79,7 +79,7 @@ int BitStream::read( unsigned int n )
 	return r;
 }
 
-void BitStream::skip()
+void InputBitStream::skip()
 {
 	if( index < size ) {
 		index++;
@@ -87,7 +87,7 @@ void BitStream::skip()
 	}
 }
 
-char* BitStream::read_block( unsigned int n )
+char* InputBitStream::read_block( unsigned int n )
 {
 	grow( n );
 
