@@ -6,6 +6,12 @@ Jugador::Jugador(int id, Tipo_Personaje personaje){
 	this->dir = &(Direccion::Oeste); /* Arrancan para el oeste. */
 	this->puntos = 0;
 }
+Jugador::Jugador(int id){
+	this->id = id;
+	this->dir = &(Direccion::Oeste); /* Arrancan para el oeste. */
+	this->puntos = 0;
+}
+
 Tipo_Personaje Jugador::get_personaje(){
 	return this->personaje;
 }
@@ -25,11 +31,14 @@ void Jugador::ejecutar_operacion(Operacion& operacion){
 	
 }
 void Jugador::comer(Comestible& comestible){
-	this->personaje->comer(*this, comestible);
+	this->personaje->comer(comestible);
 }
 void Jugador::incrementar_puntos(int cant){
 	this->puntos+= cant;
 }
 int Jugador::get_puntos(){
 	return this->puntos;
+}
+void Jugador::colisiono(Jugador &jugador){
+	this->personaje->colision(jugador);
 }

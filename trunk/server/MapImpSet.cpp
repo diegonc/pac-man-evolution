@@ -9,7 +9,21 @@ MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto
 }
 
 MapaImpSet::~MapaImpSet(){
-	this->estructurales.clear();	
+	std::set<Elemento,ComparadorElementoPosicion>::iterator it;
+	
+	S_ptr<Estructural> estruct_nulo;
+	S_ptr<Estructural> estruct_aux;
+	
+	for(it = this->estructurales.begin(); it != this->estructurales.end(); it++){
+		estruct_aux = (it->estructural);
+		estruct_aux->set_arriba(estruct_nulo);
+		estruct_aux->set_abajo(estruct_nulo);
+		estruct_aux->set_derecha(estruct_nulo);
+		estruct_aux->set_izquierda(estruct_nulo);
+	
+		
+	}
+	this->estructurales.clear();
 }
 
 void MapaImpSet::mover( Jugador& jugador, Direccion &dir, Tipo_Coordenada distancia ){

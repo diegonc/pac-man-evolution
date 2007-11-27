@@ -10,8 +10,7 @@ EstructuralPasillo::EstructuralPasillo(ComestibleFactory::Tipo_Comestible &tipo)
 }
 
 EstructuralPasillo::~EstructuralPasillo(){
-	/*if(this->comida != 0)
-		delete this->comida;		*/
+
 }
 
 void EstructuralPasillo::ingresar(Jugador& jugador){

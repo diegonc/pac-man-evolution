@@ -22,7 +22,7 @@ class Estructural{
 		
 		Estructural();	
 	
-		virtual ~Estructural(){}
+		virtual ~Estructural();
 	
 		virtual void ingresar(Jugador& jugador) = 0;
 		
