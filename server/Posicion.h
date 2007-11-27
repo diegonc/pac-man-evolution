@@ -30,7 +30,7 @@ class Posicion{
 	
 		friend std::ostream& operator <<( std::ostream& os, const Posicion &p) 
      	{ 
-         	os << "(" << (int)p.get_x() << "," << (int)p.get_y() << ")"; 
+         	os << "(" << p.get_x() << "," << p.get_y() << ")"; 
          	// return ostream object 
          	return os; 
      	} 

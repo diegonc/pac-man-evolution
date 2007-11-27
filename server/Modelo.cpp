@@ -15,7 +15,7 @@ void Modelo::cargar_modelo(std::string ruta_mundo){
 	this->mundo = new MundoBasicImp(ruta_mundo);
 	
 	/**************************************************************************/
-	S_ptr<Personaje> pacman(new PacMan);
+	S_ptr<Personaje> pacman(new Fantasma);
 	//S_ptr<Personaje> fantasmita(new Fantasma);
 	
 	Jugador *j1 = new Jugador(1, pacman);
@@ -49,7 +49,8 @@ void Modelo::run(){
 	Tipo_Jugador j = *it;
 	for(int i = 0; i < 10; i++){
 		(this->mundo->get_mapa_activo()).mover(*j,Direccion::Oeste, 0.5);
-		std::cout << "- El jugador tiene " << j->get_puntos() << " puntos\n";
+		std::cout << "- El jugador tiene " << j->get_puntos() << " puntos y esta en ";
+		std::cout << j->get_posicion() <<"\n";
 		sleep(1);
 	}
 	
