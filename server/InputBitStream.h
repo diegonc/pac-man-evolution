@@ -1,9 +1,9 @@
-#ifndef __BITSTREAM_H__
-#define __BITSTREAM_H__
+#ifndef __INPUTBITSTREAM_H__
+#define __INPUTBITSTREAM_H__
 
 #include "BufferReader.h"
 
-class BitStream
+class InputBitStream
 {
 	private:
 		/** @brief Origen de datos.
@@ -34,12 +34,12 @@ class BitStream
 		unsigned int bindex;
 
 	public:
-		/** @brief Construye un BitStream para leer desde un Socket.
+		/** @brief Construye un InputBitStream para leer desde un Socket.
 		 *
 		 */
-		BitStream( BufferReader& s );
+		InputBitStream( BufferReader& s );
 
-		~BitStream();
+		~InputBitStream();
 
 		/** @brief Lee del stream n bits.
 		 *
@@ -88,4 +88,4 @@ class BitStream
 		void grow( unsigned int n );
 };
 
-#endif /* __BITSTREAM_H__ */
+#endif /* __INPUTBITSTREAM_H__ */

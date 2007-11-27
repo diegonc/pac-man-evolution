@@ -20,3 +20,9 @@ char Paquete::get_tipo()
 Paquete* Paquete::crear( int tipo ){
       return 0;
 }
+
+void Paquete::serialize( OutputBitStream& bs )
+{
+	// TODO: Version
+	// TODO: Tipo
+}

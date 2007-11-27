@@ -27,7 +27,7 @@ class PaqueteInit : public Paquete
 		char* grafo_aristas;
 
 	public:
-		PaqueteInit();
+		PaqueteInit( Mapa& m );
 
 		void serialize( OutputBitStream& bs );
 
