@@ -29,9 +29,13 @@ int main(int argc, char *argv[])
   mundo->agregar_elemento(PASILLO, 1, 0, 1, ESTE);
   mundo->agregar_elemento(PASILLO, 1, 1, 1, ESTE);
   mundo->agregar_elemento(PASILLO, 1, 0, 4, ESTE);
+  mundo->agregar_elemento(ESQ, 1, 0, 7, SUR);
   mundo->agregar_elemento(PASILLO, 1, 0, 4, NORTE);
   mundo->agregar_elemento(PASILLO, 1, 1, 5, NORTE);
   mundo->agregar_elemento(PASILLO, 1, 8, 6, NORTE);
+  mundo->agregar_elemento(PWUP, 1, 0, 2, NULA);
+  mundo->agregar_elemento(PWUP, 1, 8, 8, NULA);
+  mundo->agregar_elemento(PWUP, 1, 1, 7, NULA);
   //Imprimo el nivel
   mundo->imprimir_nivel(1);
 

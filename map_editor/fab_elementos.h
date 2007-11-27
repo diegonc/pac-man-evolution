@@ -8,6 +8,11 @@
 #include "elemento.h"
 #include "pas_horiz.h"
 #include "pas_vert.h"
+#include "esq_este.h"
+#include "esq_oeste.h"
+#include "esq_norte.h"
+#include "esq_sur.h"
+#include "power_up.h"
 
 using namespace std;
 
@@ -35,6 +40,11 @@ class Fab_Elementos {
 	   Si lo pudo construir devuelve el elemento, sino devuelve NULL. */
 
 	S_ptr<Elemento> construir_pasillo (int pos_x, int pos_y, Orientacion orientacion);
+
+	/* Construir Esquina: Construye una esquina segun la orientacion pasada por parametro, en las pos_x, pos_y.
+	   Si pudo construir devuelve el elemento, sino devuelve NULL. */
+
+	S_ptr<Elemento> construir_esquina (int pos_x, int pos_y, Orientacion orientacion);
 
 };
 
