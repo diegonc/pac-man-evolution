@@ -30,7 +30,8 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 	S_ptr<Estructural> e_nuevo1(new EstructuralPasillo(a));
 	Posicion p1(1.0,0.0);
 	mapa_nuevo->agregar_estructural(e_nuevo1,p1);
-		
+	
+
 	S_ptr<Estructural> e_nuevo2(new EstructuralPasillo(a));
 	Posicion p2(2.0,0.0);
 	mapa_nuevo->agregar_estructural(e_nuevo2,p2);

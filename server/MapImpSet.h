@@ -19,10 +19,9 @@ class MapaImpSet : public Mapa{
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
 	
-		class Elemento{
-			public:
-				Posicion posicion;
-				S_ptr<Estructural> estructural;	
+		struct Elemento{
+			Posicion posicion;
+			S_ptr<Estructural> estructural;	
 		};
 	public:
 		class ComparadorElementoPosicion{

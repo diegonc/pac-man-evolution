@@ -11,7 +11,9 @@ class PacMan : public Personaje{
 		bool power_up_activado;
 	
 	public:
-		void comer(Jugador& jugador, Comestible& comestible);
+		PacMan(Jugador *jugador);
+	
+		void comer(Comestible& comestible);
 	
 		void colision(Jugador& jugador);
 	

@@ -5,7 +5,9 @@
 
 class Fantasma : public Personaje{
 	public:
-		void comer(Jugador& jugador, Comestible& comestible);
+		Fantasma(Jugador *jugador);	
+	
+		void comer(Comestible& comestible);
 	
 		void colision(Jugador& jugador);
 };

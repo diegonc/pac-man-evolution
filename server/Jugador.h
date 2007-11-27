@@ -33,6 +33,8 @@ class Jugador{
 		 */
 		Jugador(int id, Tipo_Personaje personaje);
 
+		Jugador(int id);
+	
 		~Jugador() {}
 			
 		/** @brief Devuelve el personaje del jugador.
@@ -77,6 +79,8 @@ class Jugador{
 		 *	@param comestible Puntero que referencia al comestible a comer
 		 */
 		void comer(Comestible& comestible);
+		
+		void colisiono(Jugador &jugador);
 		
 		void incrementar_puntos(int cant);
 		

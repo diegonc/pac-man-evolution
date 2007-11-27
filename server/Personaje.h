@@ -7,21 +7,30 @@ class Comestible;
 
 class Personaje{
 	private:
-		
+		Jugador * jugador;
+		double radio;
 		double Velocidad;
+		bool vivo;
 	
 	protected:	
-		Personaje(){}
+		Personaje(Jugador * jugador, double radio);
+	
+		Jugador& get_jugador();
 	
 	public:
+		void matar();
+
+		void revivir();
 	
-		virtual ~Personaje(){};	
+		bool esta_vivo();
+		
+		virtual ~Personaje();	
 	
-		virtual void comer(Jugador& jugador, Comestible& comestible) = 0;
+		virtual void comer(Comestible& comestible) = 0;
 	
 		virtual void colision(Jugador& jugador) = 0;
 	
-		
+		double get_radio();
 	
 };
 
