@@ -28,10 +28,7 @@ bool Posicion::operator==(const Posicion &p) {
 	else
 		return false;
 }
-#include <iostream>
-
 void Posicion::incrementar(Tipo_Coordenada cantidad, Direccion &direccion){
-	std::cout << "paso por aca!!!\n";
 	if(&direccion == &Direccion::Norte)
 		this->set_y(this->get_y() - cantidad);
 	else{
