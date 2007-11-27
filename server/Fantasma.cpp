@@ -2,7 +2,7 @@
 #include "PacMan.h"
 #include <math.h>
 
-#define RADIO_FANTASMA		0.5
+#define RADIO_FANTASMA		1
 
 
 Fantasma::Fantasma(Jugador *jugador):Personaje(jugador, RADIO_FANTASMA){}
@@ -27,13 +27,13 @@ void Fantasma::colision(Jugador& jugador){
 		distancia = sqrt(distancia);
 	
 		if(distancia  <= ( this->get_radio() + pacman.get_radio() ) ){
-			if(pacman.tiene_power_up() ){
-				std::cout << "Muere el pacman!!\n";
-				pacman.matar();
+			if( pacman.tiene_power_up() ){
+				std::cout << "Muere el fantasma!!\n";
+				pacman.matar();			
 			}
 			else{
-				std::cout << "Muere el fantasma!!\n";
-				this->matar();			
+				std::cout << "Muere el pacman!!\n";
+				this->matar();
 			}
 		}
 	}
