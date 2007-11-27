@@ -8,7 +8,7 @@
 
 class EstructuralPasillo : public Estructural{
 	private:
-		Comestible *comida;
+		S_ptr<Comestible> comida;
 			
 	public:
 		EstructuralPasillo(ComestibleFactory::Tipo_Comestible &tipo);

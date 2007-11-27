@@ -13,7 +13,7 @@
 #include <iostream>
 MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 {
-	Mapa * mapa_nuevo = new MapaImpSet(1,4);
+	S_ptr<Mapa> mapa_nuevo = new MapaImpSet(1,4);
 	/************************************************************************
 		CREO PARA PROBAR UN MAPITA DEL ESTILO
 	
@@ -52,7 +52,7 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 
 MundoBasicImp::~MundoBasicImp()
 {
-	delete mapas.back();/*???????*/
+	this->mapas.clear();
 }
 /*
 S_ptr<Mundo> MundoBasicImp::get_instancia()

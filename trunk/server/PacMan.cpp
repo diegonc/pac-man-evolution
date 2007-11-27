@@ -1,5 +1,7 @@
 #include "PacMan.h"
 
+#define RADIO_PACMAN	0.5
+
 void PacMan::comer(Jugador& jugador, Comestible& comestible){
 	jugador.incrementar_puntos(comestible.get_puntos());
 	comestible.afectar_personaje(*this);

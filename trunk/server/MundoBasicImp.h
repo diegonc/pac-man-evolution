@@ -20,7 +20,7 @@ class MundoBasicImp : public Mundo
 		//static S_ptr<Mundo> get_instancia();
 		
 	private:
-		std::list<Mapa*> mapas;
+		std::list<S_ptr<Mapa> > mapas;
 
 	public:
 		Mapa& get_mapa_activo();

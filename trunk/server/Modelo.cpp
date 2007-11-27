@@ -15,7 +15,7 @@ void Modelo::cargar_modelo(std::string ruta_mundo){
 	this->mundo = new MundoBasicImp(ruta_mundo);
 	
 	/**************************************************************************/
-	S_ptr<Personaje> pacman(new Fantasma);
+	S_ptr<Personaje> pacman(new PacMan);
 	//S_ptr<Personaje> fantasmita(new Fantasma);
 	
 	Jugador *j1 = new Jugador(1, pacman);
