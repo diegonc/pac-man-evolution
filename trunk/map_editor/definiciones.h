@@ -35,5 +35,7 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define PAS_HORIZ_ALTO 1
 #define PAS_VERT_ANCHO 1
 #define PAS_VERT_ALTO 3
+#define ESQ_ANCHO 2
+#define ESQ_ALTO 2
 
 #endif

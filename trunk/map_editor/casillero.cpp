@@ -87,8 +87,14 @@ bool Casillero::remover_estructural(){
 /* //////////TEMPORAL////////// */
 void Casillero::imprimir(){
 	cout << "(" << this->pos_x << "," << this->pos_y << "): Estructural: ";
-	if (!this->estructural.es_nulo())
+	if (!this->estructural.es_nulo()) {
 		cout << this->estructural->toString();
+		cout << " HABITABLE: "; 
+		if (this->estructural->es_habitable(this->pos_x, this->pos_y))
+			cout << "SI";
+		else
+			cout << "NO"; 
+	}
 	else
 		cout << "NINGUNO";
 	cout << '\n';
