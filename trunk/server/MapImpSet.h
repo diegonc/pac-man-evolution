@@ -30,21 +30,15 @@ class MapaImpSet : public Mapa{
 				bool operator()(const Elemento &e1, const Elemento &e2){
 					Posicion pos1 = (e1.posicion);
 					Posicion pos2 = (e2.posicion);
-					
-					ComparadorPosicion comp;					
-					
-					bool resultado = comp(pos1, pos2);
-					
-					if(resultado)
-						return false;
-						
-					else
+
+					if( (int)pos1.get_x() < (int)pos2.get_x() ) 
 						return true;
-					
-					
-					return resultado;
-					
-				}
+					else
+						if((int)pos1.get_y() < (int)pos2.get_y())
+							return true;
+						else
+							return false;
+					}
 		};
 	private:
 		std::set<Elemento,ComparadorElementoPosicion> estructurales;	
