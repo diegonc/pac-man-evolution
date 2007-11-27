@@ -20,6 +20,14 @@ class Mapa
 	public:
 		virtual ~Mapa() {}
 
+		/** @brief Obtiene el ancho del mapa.
+		 */
+		virtual int get_ancho() = 0;
+
+		/** @brief Obtiene el alto del mapa.
+		 */
+		virtual int get_alto() = 0;
+
 		/** @brief Mueve un personaje.
 		 *
 		 *  @param id  Identificador numerico del personaje.
