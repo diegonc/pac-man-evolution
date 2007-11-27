@@ -8,7 +8,9 @@ MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto
 	this->alto = alto;
 }
 
-MapaImpSet::~MapaImpSet(){}
+MapaImpSet::~MapaImpSet(){
+	this->estructurales.clear();	
+}
 
 void MapaImpSet::mover( Jugador& jugador, Direccion &dir, Tipo_Coordenada distancia ){
 	

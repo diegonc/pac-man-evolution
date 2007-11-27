@@ -1,6 +1,7 @@
 #ifndef __PERSONAJE_H__
 #define __PERSONAJE_H__
 
+
 class Jugador;
 class Comestible;
 
