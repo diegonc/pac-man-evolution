@@ -1,10 +1,10 @@
 #include "PacMan.h"
 #include <math.h>
 
-#define RADIO_PACMAN	0.5
+#define RADIO_PACMAN	1
 
 PacMan::PacMan(Jugador *jugador):Personaje(jugador,RADIO_PACMAN){
-	this->power_up_activado = false;
+	this->set_power_up(false);
 }
 
 void PacMan::comer(Comestible& comestible){
@@ -22,9 +22,8 @@ void PacMan::colision(Jugador& jugador){
 					  jugador.get_posicion().get_y() , 2);
 	
 	distancia = sqrt(distancia);
-	
 	if(distancia  <= (this->get_radio() + jugador.get_personaje()->get_radio() ) ){
-		if(power_up_activado){
+		if( this->tiene_power_up() ){
 			std::cout << "Muere el fantasma!!\n";
 			jugador.get_personaje()->matar();
 		}

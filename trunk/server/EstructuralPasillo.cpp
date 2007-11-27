@@ -15,7 +15,7 @@ EstructuralPasillo::~EstructuralPasillo(){
 
 void EstructuralPasillo::ingresar(Jugador& jugador){
 	jugador.comer(*this->comida);
-	
+		
 	S_ptr<Comestible> comida_nula;
 	
 	this->comida = comida_nula;

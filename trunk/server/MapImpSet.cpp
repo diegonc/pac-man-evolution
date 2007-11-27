@@ -36,7 +36,7 @@ void MapaImpSet::mover( Jugador& jugador, Direccion &dir, Tipo_Coordenada distan
 		//Aca discretizo los cuadrantes.
 		//Si cayo en el mismo estructural. Les pongo 1 unidad de separacion
 		ComparadorPosicion comp;
-		if(!comp(posicion_jugador, jugador.get_posicion()) ){
+		if(! comp(posicion_jugador, jugador.get_posicion()) ){
 			//si cayeron distinto, me fijo si podia moverse para ese lado
 			S_ptr<Estructural> vecino = donde_estaba->get_vecino(dir);
 			if( !vecino.es_nulo() ){

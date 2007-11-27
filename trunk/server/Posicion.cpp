@@ -36,9 +36,9 @@ void Posicion::incrementar(Tipo_Coordenada cantidad, Direccion &direccion){
 			this->set_y(this->get_y() + cantidad);
 		else{
 			if(&direccion == &Direccion::Este)
-				this->set_x(this->get_x() - cantidad);
-			else
 				this->set_x(this->get_x() + cantidad);
+			else
+				this->set_x(this->get_x() - cantidad);
 			
 		}
 	}

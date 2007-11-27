@@ -11,9 +11,9 @@ S_ptr<Estructural> Estructural::get_vecino(Direccion &direccion){
 			return this->get_abajo();
 		else{
 			if(&direccion == &Direccion::Este)
-				return this->get_izquierda();
-			else
 				return this->get_derecha();
+			else
+				return this->get_izquierda();
 		}
 	}
 }

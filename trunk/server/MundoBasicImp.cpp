@@ -23,11 +23,14 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 	************************************************************************/
 	
 	ComestibleFactory::Tipo_Comestible  a = ComestibleFactory::quesito;
+	ComestibleFactory::Tipo_Comestible  b = ComestibleFactory::power_up;
+	
 	S_ptr<Estructural> e_nuevo(new EstructuralPasillo(a));
 	Posicion p(0.0,0.0);
 	mapa_nuevo->agregar_estructural(e_nuevo,p);
 	
-	S_ptr<Estructural> e_nuevo1(new EstructuralPasillo(a));
+	S_ptr<Estructural> e_nuevo1(new EstructuralPasillo(b));
+	//S_ptr<Estructural> e_nuevo1(new EstructuralPasillo(a));
 	Posicion p1(1.0,0.0);
 	mapa_nuevo->agregar_estructural(e_nuevo1,p1);
 	
