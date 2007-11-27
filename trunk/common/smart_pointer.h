@@ -52,6 +52,9 @@ template <class Tipo> class S_ptr{
 				delete this->objeto;
 				//setea el objeto como NULO
 				this->objeto = NULO;
+            
+            delete this->cantidad_referencias;
+            this->cantidad_referencias = NULO;
 			}
 			//pone la cantidad de referencias en 0
 			this->set_cantidad_referencias(0);
