@@ -14,19 +14,18 @@
  */
 class Mapa
 {
-	protected:
+	public:
 		typedef double Tipo_Coordenada;	
 	
-	public:
 		virtual ~Mapa() {}
 
 		/** @brief Obtiene el ancho del mapa.
 		 */
-		virtual int get_ancho() = 0;
+		virtual Tipo_Coordenada get_ancho() = 0;
 
 		/** @brief Obtiene el alto del mapa.
 		 */
-		virtual int get_alto() = 0;
+		virtual Tipo_Coordenada get_alto() = 0;
 
 		/** @brief Mueve un personaje.
 		 *
@@ -38,8 +37,6 @@ class Mapa
 		virtual void agregar_estructural(S_ptr<Estructural>, Posicion &p)=0;
 			
 		virtual S_ptr<Estructural> get_estructural(Posicion &p)=0;
-			
-	
 };
 
 #endif /* __MAPA_H__ */
