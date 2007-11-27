@@ -1,7 +1,8 @@
 #ifndef __PAQUETE_H__
 #define __PAQUETE_H__
 
-#include "BitStream.h"
+#include "InputBitStream.h"
+#include "OutputBitStream.h"
 
 class Paquete
 {
@@ -46,13 +47,13 @@ class Paquete
 
 		//algo similar a esto, que pase a bits
 	
-		/*Tipo*/void serialize();
+		/*Tipo*/void serialize( OutputBitStream& bs );
 
 		/** @brief Carga el estado del objeto desde un BitStream.
 		 *
 		 *  @param bs Fuente de datos.
 		 */
-		virtual void deserialize( BitStream& bs ) = 0;
+		virtual void deserialize( InputBitStream& bs ) = 0;
 };
 
 #endif /* __PAQUETE_H__ */
