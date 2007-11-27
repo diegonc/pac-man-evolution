@@ -15,17 +15,24 @@
 class Mapa
 {
 	public:
+		/**
+		 * Como vamos a mapear el grafo que tiene cantidades enteras de lados y
+		 * hacer la conversion entre (x,y) a lugar en el grafo, lo pongo asi,
+		 * de ultima se cambia el typedef.
+		 */
+		typedef unsigned int Tipo_Dimensiones;
+
 		typedef double Tipo_Coordenada;	
 	
 		virtual ~Mapa() {}
 
 		/** @brief Obtiene el ancho del mapa.
 		 */
-		virtual Tipo_Coordenada get_ancho() = 0;
+		virtual Tipo_Dimensiones get_ancho() = 0;
 
 		/** @brief Obtiene el alto del mapa.
 		 */
-		virtual Tipo_Coordenada get_alto() = 0;
+		virtual Tipo_Dimensiones get_alto() = 0;
 
 		/** @brief Mueve un personaje.
 		 *

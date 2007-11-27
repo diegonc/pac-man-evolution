@@ -11,12 +11,6 @@
 /** @brief Implementa una interfaz de mapa
  *
  */
-
-//Como vamos a mapear el grafo que tiene cantidades enteras de lados y 
-//hacer la conversion entre (x,y) a lugar en el grafo, lo pongo asi,
-//de ultima se cambia el typedef
-typedef unsigned int Tipo_Dimensiones; 
-
 class MapaImpSet : public Mapa{
 		
 	private:
