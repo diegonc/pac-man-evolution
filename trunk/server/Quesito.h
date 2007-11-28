@@ -12,6 +12,8 @@ class Quesito : public Comestible{
 		~Quesito(){}
 		
 		void afectar_personaje(Personaje& personaje){}
+			
+		Enum_Comestible get_tipo(){return Comestible::quesito;}
 };
 
 #endif /*__QUESITO_H__*/

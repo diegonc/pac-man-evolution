@@ -7,6 +7,8 @@
 #include <string>
 #include <list>
 #include "Jugador.h"
+#include "Objeto.h"
+#include "Estructural.h"
 
 /** @brief Esta clase define el modelo.
 		   Hereda de thread, ya que se debe actualizar automaticamente todo
@@ -35,7 +37,12 @@ class Modelo : public Thread{
 			
 		void run();
 	
+		std::list<S_ptr<Objeto> > get_objetos();
 	
+		Mundo& get_mundo();
+	
+		S_ptr<Jugador> get_jugador(int id);
+			
 };
 
 

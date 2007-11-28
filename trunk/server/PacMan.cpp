@@ -41,3 +41,6 @@ void PacMan::set_power_up(bool activado){
 bool PacMan::tiene_power_up(){
 	return this->power_up_activado;
 }
+Personaje::Enum_Personaje PacMan::get_tipo(){
+	return pacman;
+}

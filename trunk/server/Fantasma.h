@@ -10,6 +10,8 @@ class Fantasma : public Personaje{
 		void comer(Comestible& comestible);
 	
 		void colision(Jugador& jugador);
+	
+		Enum_Personaje get_tipo();
 };
 
 #endif /*__FANTASMA_H__*/

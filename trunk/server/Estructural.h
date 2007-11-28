@@ -18,6 +18,8 @@ class Estructural{
 		S_ptr<Estructural> derecha;
 		S_ptr<Estructural> izquierda;
 	
+		Posicion posicion;
+	
 	public:
 		
 		Estructural();	
@@ -27,6 +29,8 @@ class Estructural{
 		virtual void ingresar(Jugador& jugador) = 0;
 		
 		virtual int get_tipo()=0;
+	
+		virtual S_ptr<Comestible> get_comestible();
 		
 		void set_arriba(S_ptr<Estructural> e);
 		void set_abajo(S_ptr<Estructural> e);
@@ -39,6 +43,10 @@ class Estructural{
 		S_ptr<Estructural> get_izquierda();
 			
 		S_ptr<Estructural> get_vecino(Direccion &dir);
+		
+		void set_posicion(Posicion &p);
+		
+		Posicion& get_posicion();
 	
 };
 #endif /*__ESTRUCTURAL_H__*/

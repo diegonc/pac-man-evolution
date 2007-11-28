@@ -40,3 +40,9 @@ void Fantasma::colision(Jugador& jugador){
 	catch(std::bad_cast &e){/*No hago nada ya que no pasa anda cuando choca
 							con fantasmas*/}
 }
+
+Personaje::Enum_Personaje Fantasma::get_tipo(){
+	Personaje::Enum_Personaje tipo = fantasma;
+	
+	return tipo;
+}

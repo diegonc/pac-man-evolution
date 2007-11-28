@@ -22,8 +22,8 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 	    --- --- --- ---
 	************************************************************************/
 	
-	ComestibleFactory::Tipo_Comestible  a = ComestibleFactory::quesito;
-	ComestibleFactory::Tipo_Comestible  b = ComestibleFactory::power_up;
+	Comestible::Enum_Comestible  a = Comestible::quesito;
+	Comestible::Enum_Comestible  b = Comestible::power_up;
 	
 	S_ptr<Estructural> e_nuevo(new EstructuralPasillo(a));
 	Posicion p(0.0,0.0);

@@ -20,6 +20,8 @@ class PacMan : public Personaje{
 		void set_power_up(bool activado);
 	
 		bool tiene_power_up();
+	
+		Personaje::Enum_Personaje get_tipo();
 };
 
 #endif /*__PACMAN_H__*/

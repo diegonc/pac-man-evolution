@@ -13,6 +13,8 @@ class PowerUp : public Comestible{
 		~PowerUp();
 	
 		void afectar_personaje(Personaje& personaje);
+	
+		Comestible::Enum_Comestible get_tipo();
 		
 };
 

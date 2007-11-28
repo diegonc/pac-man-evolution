@@ -10,14 +10,12 @@ class ComestibleFactory{
 		ComestibleFactory(ComestibleFactory &c);
 	
 	public:
-		
-		enum Tipo_Comestible{power_up, quesito, frutita};	
-				
+			
 		ComestibleFactory();
 	
 		~ComestibleFactory();
 		
-		Comestible * construir(Tipo_Comestible &tipo);
+		Comestible * construir(Comestible::Enum_Comestible tipo);
 		
 		
 };

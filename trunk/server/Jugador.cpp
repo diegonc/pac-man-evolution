@@ -27,8 +27,8 @@ Posicion& Jugador::get_posicion(){
 Direccion& Jugador::get_direccion() { 
 	return *dir; 
 }
-void Jugador::ejecutar_operacion(Operacion& operacion){
-	
+int Jugador::get_id(){
+	return this->id;
 }
 void Jugador::comer(Comestible& comestible){
 	this->personaje->comer(comestible);

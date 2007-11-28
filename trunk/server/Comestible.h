@@ -14,11 +14,20 @@ class Comestible{
 		Comestible(int puntos);			
 	
 	public:
+		
+		static const char power_up;
+		static const char quesito;
+		static const char frutita;
+		
+		typedef const char Enum_Comestible;
+		
 		virtual ~Comestible();
 	
 		int get_puntos();
 		
 		virtual void afectar_personaje(Personaje& personaje)=0;	
+	
+		virtual Enum_Comestible get_tipo()=0;
 		
 	
 		

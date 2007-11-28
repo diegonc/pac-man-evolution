@@ -5,7 +5,7 @@
 #include "Jugador.h"
 #include "Posicion.h"
 #include "ComparadorPosicion.h"
-
+#include "Comestibles.h"
 #include <set>
 
 /** @brief Implementa una interfaz de mapa
@@ -13,22 +13,23 @@
  */
  
 typedef unsigned int Tipo_Dimensiones;
+typedef S_ptr<Estructural> Tipo_Estructural;
+
 class MapaImpSet : public Mapa{
 		
 	private:
+		
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
 	
-		struct Elemento{
-			Posicion posicion;
-			S_ptr<Estructural> estructural;	
-		};
+		Tipo_Estructural estructural;	
+		
 	public:
-		class ComparadorElementoPosicion{
+		class CompSptrEstructuralPosicion{
 			public:
-				bool operator()(const Elemento &e1, const Elemento &e2){
-					Posicion pos1 = (e1.posicion);
-					Posicion pos2 = (e2.posicion);
+				bool operator()(const Tipo_Estructural e1, const Tipo_Estructural e2){
+					Posicion pos1 = e1->get_posicion();
+					Posicion pos2 = e1->get_posicion();
 
 					if( (int)pos1.get_x() < (int)pos2.get_x() ) 
 						return true;
@@ -40,19 +41,26 @@ class MapaImpSet : public Mapa{
 					}
 		};
 	private:
-		std::set<Elemento,ComparadorElementoPosicion> estructurales;	
-		
+		std::set<Tipo_Estructural,CompSptrEstructuralPosicion> estructurales;	
+		std::list<S_ptr<Comestible> > comestibles;	
+	
+		void quitar_comestible(S_ptr<Comestible> comestible);
+	
 	public:
 		
 		MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto);
 
 		~MapaImpSet();
 	
-		void mover( Jugador& jugador, Direccion &dir, Tipo_Coordenada distancia );
+		void mover( Jugador& jugador, Tipo_Coordenada distancia );
 		
-		void agregar_estructural(S_ptr<Estructural> e, Posicion &p);
+		void agregar_estructural(S_ptr<Estructural> e);
 		
 		S_ptr<Estructural> get_estructural(Posicion &p);
+	
+		std::list<S_ptr<Estructural> > get_estructurales();		
+	
+		std::list<S_ptr<Objeto> > get_comestibles();
 	
 		Tipo_Dimensiones get_ancho();
 	
