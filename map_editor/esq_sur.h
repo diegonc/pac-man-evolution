@@ -15,6 +15,9 @@ class EsqSur : public Estructural {
 	/* Constructor: Inicializa una esquina sur con las posiciones pasadas por parametros. */
 	EsqSur (int pos_x, int pos_y);
 
+	/* Get Ruta Imagen: Devuelve una cadena con la ruta donde se encuentra la imagen que representa al elemento */
+	virtual char* get_ruta_imagen();
+
 	/* ///////////////TEMPORAL/////////////// */
 	virtual char* toString();
 

@@ -38,4 +38,15 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define ESQ_ANCHO 2
 #define ESQ_ALTO 2
 
+//Defino rutas de imagenes
+
+#define RUTA_ESQ_ESTE "./imagenes/esq_este.jpg"
+#define RUTA_ESQ_OESTE "./imagenes/esq_oeste.jpg"
+#define RUTA_ESQ_NORTE "./imagenes/esq_norte.jpg"
+#define RUTA_ESQ_SUR "./imagenes/esq_sur.jpg"
+#define RUTA_PAS_HORIZ "./imagenes/pas_horiz.jpg"
+#define RUTA_PAS_VERT "./imagenes/pas_vert.jpg"
+#define RUTA_POWER_UP "./imagenes/power_up.jpg"
+#define RUTA_VACIO "./imagenes/vacio.jpg"
+
 #endif
