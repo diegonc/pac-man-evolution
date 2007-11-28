@@ -16,6 +16,9 @@ class PasilloHoriz : public Estructural {
 	/* Constructor: Inicializa un pasillo horizontal con las coords pasadas por parametro. */
 	PasilloHoriz (int pos_x, int pos_y);
 
+	/* Get Ruta Imagen: Devuelve una cadena con la ruta donde se encuentra la imagen que representa al elemento */
+	virtual char* get_ruta_imagen();
+
 	/* ///////////////TEMPORAL/////////////// */
 	virtual char* toString();
 

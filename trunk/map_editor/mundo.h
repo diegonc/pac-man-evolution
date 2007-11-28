@@ -49,6 +49,9 @@ class Mundo {
            junto con todos los elementos modificadores que posea.
 	   Devuelve true si se pudo quitar el elemento, false en caso contrario. */
 	bool quitar_elemento(unsigned int nOrden, int posX, int posY);
+	
+	/* Get Nivel: Devuelve el nivel cuyo numero de orden es nOrden. Si el orden es incorrecto devuelve un nivel nulo. */
+	S_ptr<Nivel> get_nivel(unsigned int nOrden);
 
 	/* Promover: Disminuye en 1 el orden del nivel cuyo numero actual de orden es nOrden, colocandolo mas cerca
 	   del principio de la lista. Si es el primero no hace nada */

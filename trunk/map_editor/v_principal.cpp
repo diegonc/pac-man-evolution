@@ -31,6 +31,7 @@ VPrincipal::~VPrincipal(){
 	delete(this->panel_mundo);
 	delete(this->panel_estruc);
 	delete(this->panel_modif);
+	delete(this->vista_mapa);
 }
 
 //Get Widget:
@@ -72,22 +73,27 @@ void VPrincipal::construir(){
 	GtkWidget* p_estruc = this->panel_estruc->get_widget();
 	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_estruc, FALSE, TRUE, 0);
 	
+	this->panel_estruc->agregar_elemento(RUTA_PAS_HORIZ);
+	this->panel_estruc->agregar_elemento(RUTA_ESQ_ESTE);
+	this->panel_estruc->agregar_elemento(RUTA_PAS_VERT);
+	
 	GtkWidget* p_modif = this->panel_modif->get_widget();
-	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_modif, FALSE, TRUE, 0);;
+	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_modif, FALSE, TRUE, 0);
 	
-	GtkWidget* tabla = gtk_table_new(15,15,TRUE);
+	//Creo un modelo
+ 	Modelo* modelo = new Modelo();
+  	//Obtengo su mundo
+    Mundo* mundo = modelo->get_mundo();
+    //Agrego un nivel de 10 x 10
+    mundo->agregar_nivel(10, 10);
+	mundo->agregar_elemento(PASILLO, 1, 0, 1, ESTE);
+	mundo->agregar_elemento(ESQ, 1, 5, 5, ESTE);
 	
-	GtkWidget* viewport = gtk_viewport_new (NULL, NULL);
-	GtkWidget* swindow = gtk_scrolled_window_new(gtk_viewport_get_hadjustment(GTK_VIEWPORT(viewport)), gtk_viewport_get_vadjustment(GTK_VIEWPORT(viewport)));
+  	this->vista_mapa = new VistaMapa(mundo->get_nivel(1));
+	gtk_container_add (GTK_CONTAINER (this->hbox_princ), this->vista_mapa->get_widget());
 	
-	for (int cont1 = 0; cont1 < 15; cont1++)
-		for (int cont2 = 0; cont2 < 15; cont2++){
-			GtkWidget* casillero = gtk_frame_new(NULL);
-			gtk_table_attach_defaults (GTK_TABLE (tabla), casillero, cont1, cont1 + 1, cont2, cont2 + 1);
-		 }
-
-	gtk_container_add(GTK_CONTAINER(swindow), tabla);
-	gtk_container_add(GTK_CONTAINER(this->hbox_princ), swindow);
+	delete(modelo);
+	
 }
 
 // Delete Event Handler:

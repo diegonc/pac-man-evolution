@@ -7,6 +7,8 @@
 #include "definiciones.h"
 #include "m_bar_factory.h"
 #include "menu.h"
+#include "vista_mapa.h"
+#include "modelo.h"
 #include "panel_mundo.h"
 #include "panel_elems.h"
 #include "../common/smart_pointer.h"
@@ -21,6 +23,7 @@ class VPrincipal {
     GtkWidget* vbox_princ; //Caja que separa al menu del resto de la ventana
    	GtkWidget* hbox_princ; //Caja que separa al mapa de los paneles de herramientas
     GtkWidget* vbox_tools; //Caja que separa los distintos paneles de herramientas
+    VistaMapa* vista_mapa; //Contiene la representacion grafica de un mapa
     PanelMundo* panel_mundo; //Contiene la lista de mapas del mundo y los botones para operar con los mismos
     PanelElems* panel_estruc; //Panel que contiene a los elementos estructurales
     PanelElems* panel_modif; //Panel que contiene a los elementos modificadores

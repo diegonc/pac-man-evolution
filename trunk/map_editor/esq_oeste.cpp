@@ -16,6 +16,12 @@ EsqOeste::EsqOeste (int pos_x, int pos_y) : Estructural(pos_x, pos_y, ESQ_ANCHO,
 	this->set_posible_conexion(1,0, conec2);
 }
 
+/* Get Ruta Imagen: */
+
+char* EsqOeste::get_ruta_imagen(){
+		return RUTA_ESQ_OESTE;
+}
+
 /* ///////////////TEMPORAL/////////////// */
 char* EsqOeste::toString(){
 	return "ESQ OESTE";

@@ -72,6 +72,22 @@ bool Mundo::quitar_elemento(unsigned int nOrden, int posX, int posY){
 	return result;
 }
 
+/* Get Nivel: */
+
+S_ptr<Nivel> Mundo::get_nivel(unsigned int nOrden){
+	S_ptr<Nivel> nivel;
+	if ((nOrden > 0) && (nOrden <= this->niveles.size())){
+		unsigned int cont = 1;
+		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
+		while (cont < nOrden){
+			it++;
+			cont++;
+		}
+		nivel = *it;
+	}
+	return nivel;
+}
+
 /* Promover: */
 
 void Mundo::promover(unsigned int nOrden){

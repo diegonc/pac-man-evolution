@@ -16,6 +16,12 @@ PasilloHoriz::PasilloHoriz (int pos_x, int pos_y) : Estructural(pos_x, pos_y, PA
 	this->set_posible_conexion(0,2, conec2);
 }
 
+/* Get Ruta Imagen: */
+
+char* PasilloHoriz::get_ruta_imagen(){
+		return RUTA_PAS_HORIZ;
+}
+
 /* ///////////////TEMPORAL/////////////// */
 char* PasilloHoriz::toString(){
 	return "PASILLO HORIZONTAL";

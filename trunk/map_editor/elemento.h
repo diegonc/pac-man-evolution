@@ -72,6 +72,9 @@ class Elemento {
 
 	/* Es Estructural: Devuelve true si el elemento es estructural, false en caso contrario */
 	virtual bool es_estructural() = 0;
+	
+	/* Get Ruta Imagen: Devuelve una cadena con la ruta donde se encuentra la imagen que representa al elemento */
+	virtual char* get_ruta_imagen() = 0;
 
 	//operadores de comparacion
 

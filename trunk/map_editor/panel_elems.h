@@ -26,6 +26,9 @@ class PanelElems {
 
 	//Get Widget: Obtiene la representacion del panel como widget.
 	GtkWidget* get_widget() const;
+   
+    //Agregar Elemento: Agrega un elemento al panel segun la ruta pasada por parametro
+    void agregar_elemento(char* ruta);
 
    private:
 	
