@@ -5,7 +5,7 @@
 #include "Jugador.h"
 #include "Posicion.h"
 #include "ComparadorPosicion.h"
-#include "Comestibles.h"
+#include "Comestible.h"
 #include <set>
 
 /** @brief Implementa una interfaz de mapa
@@ -27,7 +27,7 @@ class MapaImpSet : public Mapa{
 	public:
 		class CompSptrEstructuralPosicion{
 			public:
-				bool operator()(const Tipo_Estructural e1, const Tipo_Estructural e2){
+				bool operator()(Tipo_Estructural e1, Tipo_Estructural e2){
 					Posicion pos1 = e1->get_posicion();
 					Posicion pos2 = e1->get_posicion();
 

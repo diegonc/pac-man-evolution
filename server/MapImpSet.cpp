@@ -13,12 +13,14 @@ MapaImpSet::~MapaImpSet(){
 	
 	std::set<Tipo_Estructural,CompSptrEstructuralPosicion>::iterator it;
 	Tipo_Estructural estruct_nulo;
+	Tipo_Estructural estruct_aux;	
 	
 	for(it = this->estructurales.begin(); it != this->estructurales.end(); it++){
-		it->set_arriba(estruct_nulo);
-		it->set_abajo(estruct_nulo);
-		it->set_derecha(estruct_nulo);
-		it->set_izquierda(estruct_nulo);
+		estruct_aux = *it;
+		estruct_aux->set_arriba(estruct_nulo);
+		estruct_aux->set_abajo(estruct_nulo);
+		estruct_aux->set_derecha(estruct_nulo);
+		estruct_aux->set_izquierda(estruct_nulo);
 	}
 	this->estructurales.clear();
 }
@@ -68,14 +70,14 @@ S_ptr<Estructural> MapaImpSet::get_estructural(Posicion &p){
 	ComparadorPosicion comp;
 	
 	while( !encontrado && busqueda != estructurales.end() ){
-		if( comp(*busqueda->get_posicion(), p) )
+		if( comp(busqueda->get_posicion(), p) )
 			encontrado = true;
 		else
 			busqueda++;
 	}
 		
 	if( encontrado)
-		return busqueda->estructural;
+		return *busqueda;
 	else{
 		S_ptr<Estructural> nulo;
 		return nulo;
