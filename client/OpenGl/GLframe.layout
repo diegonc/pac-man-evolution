@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Win32 Release" />
+	<File name="3dsloader.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="928" topLine="31" />
+	</File>
+	<File name="3dsloader.h" open="1" top="0" tabpos="4">
+		<Cursor position="739" topLine="10" />
+	</File>
+	<File name="ObjetoVisual.h" open="1" top="0" tabpos="6">
+		<Cursor position="5" topLine="0" />
+	</File>
+	<File name="app.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="10047" topLine="274" />
+	</File>
+	<File name="error.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1623" topLine="68" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="10913" topLine="257" />
+	</File>
+	<File name="main.h" open="1" top="0" tabpos="2">
+		<Cursor position="3632" topLine="83" />
+	</File>
+</CodeBlocks_layout_file>
