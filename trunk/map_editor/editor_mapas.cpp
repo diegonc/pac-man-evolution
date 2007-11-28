@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-  /*
+
   //Creo la interfaz grafica
   GUI* gui = new GUI(argc, argv);
   //La hago arrancar
@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
   //Uno la interfaz grafica con el hilo principal, cuando termina
   gui->join(gui);
   //Elimino la interfaz grafica
-  delete(gui); */
-
+  delete(gui);
+/*
   //Creo un modelo
   Modelo* modelo = new Modelo();
   //Obtengo su mundo
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
   //Imprimo el nivel
   mundo->imprimir_nivel(1);
 
-  delete(modelo);
+  delete(modelo);*/
 
   return 0;
 
