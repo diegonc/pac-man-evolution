@@ -3,24 +3,24 @@
 #include "Frutita.h"
 #include "Quesito.h"
 
+
 ComestibleFactory::ComestibleFactory(ComestibleFactory &c){}
 
 ComestibleFactory::ComestibleFactory(){}
 	
 ComestibleFactory::~ComestibleFactory(){}
 
-Comestible * ComestibleFactory::construir(Tipo_Comestible &tipo){
+Comestible * ComestibleFactory::construir(Comestible::Enum_Comestible tipo){
 	
 	switch(tipo){
-		case power_up:	return new PowerUp();
-						break;
-		case quesito:	return new Quesito();
-						break;
-		case frutita:	return new Frutita();
-						break;
-		default: 		//TODO tirar excepcion
-						return 0;
-						break;
+		case 0:	return new PowerUp();
+				break;
+		case 1:	return new Quesito();
+				break;
+		case 2:	return new Frutita();
+				break;
+		default://TODO tirar excepcion?
+				return 0;
 	}
 
 }

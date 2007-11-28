@@ -5,6 +5,8 @@
 #include "Comestible.h"
 #include "Estructural.h"
 #include "Posicion.h"
+#include <list>
+#include "Objeto.h"
 
 /** @brief Interfaz de acceso al mapa.
  *
@@ -15,6 +17,7 @@
 class Mapa
 {
 	public:
+		
 		/**
 		 * Como vamos a mapear el grafo que tiene cantidades enteras de lados y
 		 * hacer la conversion entre (x,y) a lugar en el grafo, lo pongo asi,
@@ -39,11 +42,16 @@ class Mapa
 		 *  @param id  Identificador numerico del personaje.
 		 *  @param dir Direccion en la que se mueve el personaje.
 		 */
-		virtual void mover( Jugador& jugador, Direccion &dir, Tipo_Coordenada distancia ) = 0;
+		virtual void mover( Jugador& jugador, Tipo_Coordenada distancia ) = 0;
 		
 		virtual void agregar_estructural(S_ptr<Estructural>, Posicion &p)=0;
 			
 		virtual S_ptr<Estructural> get_estructural(Posicion &p)=0;
+			
+		virtual std::list<S_ptr<Estructural> > get_estructurales()=0;	
+		
+		virtual std::list<S_ptr<Objeto> > get_comestibles()=0;
+		
 };
 
 #endif /* __MAPA_H__ */

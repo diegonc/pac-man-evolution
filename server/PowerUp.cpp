@@ -17,3 +17,6 @@ void PowerUp::afectar_personaje(Personaje& personaje){
 	
 		
 }
+Comestible::Enum_Comestible PowerUp::get_tipo(){
+	return Comestible::power_up;
+}

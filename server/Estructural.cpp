@@ -17,7 +17,14 @@ S_ptr<Estructural> Estructural::get_vecino(Direccion &direccion){
 		}
 	}
 }
+
 Estructural::~Estructural(){}
+
+S_ptr<Comestible> Estructural::get_comestible(){
+	S_ptr<Comestible> nulo;
+	return nulo;
+}	
+	
 void Estructural::set_arriba(S_ptr<Estructural> e){
 	this->arriba = e;
 }
@@ -42,4 +49,11 @@ S_ptr<Estructural> Estructural::get_derecha(){
 			
 S_ptr<Estructural> Estructural::get_izquierda(){
 	return this->izquierda;
+}
+
+void Estructural::set_posicion(Posicion &p){
+	this->posicion = p;	
+}
+Posicion& Estructural::get_posicion(){
+	return this->posicion;
 }

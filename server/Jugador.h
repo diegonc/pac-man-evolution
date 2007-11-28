@@ -5,7 +5,6 @@
 #include "Personaje.h"
 #include "Posicion.h"
 #include "Direccion.h"
-#include "Operacion.h"
 #include "Comestible.h"
 
 /** @brief Clase que representa al jugador.
@@ -43,10 +42,13 @@ class Jugador{
 		 */
 		Tipo_Personaje get_personaje();
 			
+		int get_id();
+			
 		/** @brief Asigna un personaje nuevo al jugador.
 		 *
 		 *  @param personaje Personaje que se desee asignar.
 		 */
+			
 		void set_personaje(Tipo_Personaje personaje);
 		
 		/** @brief Asigna una posicion nueva al jugador
@@ -66,13 +68,7 @@ class Jugador{
 		 *  @return id  El personaje del jugador.
 		 */
 		Direccion& get_direccion();
-		
-		/** @brief Devuelve el personaje del jugador.
-		 *
-		 *  @param operacion Operacion que debe realizar el jugador
-		 */
-		void ejecutar_operacion(Operacion& operacion);
-		
+				
 		/** @brief Implementa un metodo de acceso para que el jugador coma
 		 *	   la comida que hay en el mapa.
 		 *

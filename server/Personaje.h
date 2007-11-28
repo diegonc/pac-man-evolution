@@ -18,6 +18,11 @@ class Personaje{
 		Jugador& get_jugador();
 	
 	public:
+		static const char pacman;
+		static const char fantasma;
+		
+		typedef const char Enum_Personaje;	
+	
 		void matar();
 
 		void revivir();
@@ -31,6 +36,8 @@ class Personaje{
 		virtual void colision(Jugador& jugador) = 0;
 	
 		double get_radio();
+		
+		virtual Enum_Personaje get_tipo() = 0;
 	
 };
 

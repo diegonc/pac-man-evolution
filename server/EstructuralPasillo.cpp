@@ -1,8 +1,8 @@
 #include "EstructuralPasillo.h"
 
-#include <iostream>
+#include "ComestibleFactory.h"
 
-EstructuralPasillo::EstructuralPasillo(ComestibleFactory::Tipo_Comestible &tipo){
+EstructuralPasillo::EstructuralPasillo(Comestible::Enum_Comestible &tipo){
 	ComestibleFactory fabrica;
 	S_ptr<Comestible> comida_a_asignar(fabrica.construir(tipo));
 	
@@ -12,7 +12,9 @@ EstructuralPasillo::EstructuralPasillo(ComestibleFactory::Tipo_Comestible &tipo)
 EstructuralPasillo::~EstructuralPasillo(){
 
 }
-
+S_ptr<Comestible> EstructuralPasillo::get_comida(){
+	return this->comida;	
+}
 void EstructuralPasillo::ingresar(Jugador& jugador){
 	jugador.comer(*this->comida);
 		
