@@ -3,12 +3,12 @@
 Jugador::Jugador(int id, Tipo_Personaje personaje){
 	this->id = id;
 	this->set_personaje(personaje);
-	this->dir = &(Direccion::Este); /* Arrancan para el este. */
+	this->dir = new Direccion(Direccion::Este); /* Arrancan para el este. */
 	this->puntos = 0;
 }
 Jugador::Jugador(int id){
 	this->id = id;
-	this->dir = &(Direccion::Este); /* Arrancan para el este. */
+	this->dir = new Direccion(Direccion::Este); /* Arrancan para el este. */
 	this->puntos = 0;
 }
 
@@ -41,4 +41,7 @@ int Jugador::get_puntos(){
 }
 void Jugador::colisiono(Jugador &jugador){
 	this->personaje->colision(jugador);
+}
+void Jugador::set_direccion(Direccion  *dir){
+	this->dir = dir;
 }

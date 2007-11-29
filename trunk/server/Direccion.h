@@ -11,14 +11,13 @@
  
 class Direccion
 {
-	private:
-		Direccion( int i );
-
 	public:
-		static Direccion Norte;
-		static Direccion Sur;
-		static Direccion Este;
-		static Direccion Oeste;
+		Direccion( int i );
+	
+		static const int Norte;
+		static const int Sur;
+		static const int Este;
+		static const int Oeste;
 	
 	private:
 		
@@ -35,8 +34,7 @@ class Direccion
 		 *  @param i Numero de giros.
 		 *  @return Direccion resultante.
 		 */
-		Direccion combinar( int i );
-	
+		void combinar( int i );
 	
 		friend std::ostream& operator <<( std::ostream& os, const Direccion &dir) 
      	{ 
@@ -55,6 +53,9 @@ class Direccion
          	// return ostream object 
          	return os; 
      	}
+		
+		const int get_dir();
+		
 		//Direccion( Direccion& d );
 		
 };

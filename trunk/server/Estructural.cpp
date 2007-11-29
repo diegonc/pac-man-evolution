@@ -4,13 +4,13 @@
 Estructural::Estructural(){}
 
 S_ptr<Estructural> Estructural::get_vecino(Direccion &direccion){
-	if(&direccion == &Direccion::Norte)
+	if(direccion.get_dir() == Direccion::Norte)
 		return this->get_arriba();
 	else{
-		if(&direccion == &Direccion::Sur)
+		if(direccion.get_dir() == Direccion::Sur)
 			return this->get_abajo();
 		else{
-			if(&direccion == &Direccion::Este)
+			if(direccion.get_dir() == Direccion::Este)
 				return this->get_derecha();
 			else
 				return this->get_izquierda();
