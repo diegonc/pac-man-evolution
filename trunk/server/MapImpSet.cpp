@@ -64,12 +64,13 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
 	
 	if(vecino.es_nulo() ){
+		
 		Tipo_Coordenada result = dim_final - dim_actual;
 		
 		if(result < 0)
 			result = -1 * result;
-		
-		if (result<= jugador.get_personaje()->get_radio() ){
+		std::cout<< dim_final<<" - "<< dim_actual <<" "<< result <<"\n";
+		if (result <= jugador.get_personaje()->get_radio() ){
 			return true;
 		}else{
 			return false;	
