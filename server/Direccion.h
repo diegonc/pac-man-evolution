@@ -41,9 +41,9 @@ class Direccion
          	switch(dir.dir){
 				case 0 : os << "Norte";
 						 break;	
-				case 1 : os << "Sur";
+				case 2 : os << "Sur";
 						break;
-				case 2 : os << "Este";
+				case 1 : os << "Este";
 						break;
 				case 3 : os << "Oeste";
 						 break;
