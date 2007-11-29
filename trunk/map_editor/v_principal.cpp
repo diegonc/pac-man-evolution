@@ -73,9 +73,9 @@ void VPrincipal::construir(){
 	GtkWidget* p_estruc = this->panel_estruc->get_widget();
 	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_estruc, FALSE, TRUE, 0);
 	
-	this->panel_estruc->agregar_elemento(RUTA_PAS_HORIZ);
-	this->panel_estruc->agregar_elemento(RUTA_ESQ_ESTE);
-	this->panel_estruc->agregar_elemento(RUTA_PAS_VERT);
+	this->panel_estruc->agregar_elemento(PASILLO, ESTE, RUTA_PAS_HORIZ);
+	this->panel_estruc->agregar_elemento(ESQ, ESTE, RUTA_ESQ_ESTE);
+	this->panel_estruc->agregar_elemento(PASILLO, NORTE, RUTA_PAS_VERT);
 	
 	GtkWidget* p_modif = this->panel_modif->get_widget();
 	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_modif, FALSE, TRUE, 0);

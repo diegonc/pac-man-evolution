@@ -33,16 +33,21 @@ void PanelElems::crear_lista_elems(){
 	gtk_icon_view_set_column_spacing (GTK_ICON_VIEW(this->icons_view),40);
 	
 	gtk_icon_view_set_row_spacing (GTK_ICON_VIEW(this->icons_view),20);
+	
+	gtk_icon_view_set_selection_mode(GTK_ICON_VIEW(this->icons_view), GTK_SELECTION_BROWSE);
+	
+	g_signal_connect(G_OBJECT(this->icons_view), "item-activated", G_CALLBACK(item_seleccionado), NULL);
 }
 
 //Agregar Elemento:
 
-void PanelElems::agregar_elemento(char* ruta){
+void PanelElems::agregar_elemento(TipoElem tipo, Orientacion orientacion, char* ruta_imagen){
+	
 	GtkTreeIter  iter;
   	GdkPixbuf    *pixbuf;
   	GError       *error = NULL;
 
-	pixbuf = gdk_pixbuf_new_from_file(ruta, &error);
+	pixbuf = gdk_pixbuf_new_from_file(ruta_imagen, &error);
 	
 	if (error)
 	{
@@ -52,8 +57,17 @@ void PanelElems::agregar_elemento(char* ruta){
 	}
 	
 	gtk_list_store_append(this->lista_elems, &iter);
-	
 	gtk_list_store_set(this->lista_elems, &iter, 0, pixbuf,-1);
-	
 	g_object_unref(pixbuf);
+	
+	this->elementos.push_back(tipo);
+	this->orientaciones.push_back(orientacion);
+	
+}
+
+//Item seleccionado:
+
+void PanelElems::item_seleccionado(GtkIconView *iconview, GtkTreePath *path, gpointer user_data){
+		int* int_path = gtk_tree_path_get_indices (path);
+		std::cout << int_path[0] << std::endl;
 }
