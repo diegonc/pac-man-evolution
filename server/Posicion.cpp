@@ -30,10 +30,10 @@ bool Posicion::operator==(const Posicion &p) {
 }
 void Posicion::incrementar(Tipo_Coordenada cantidad, Direccion &direccion){
 	if(direccion.get_dir() == Direccion::Norte)
-		this->set_y(this->get_y() + cantidad);
+		this->set_y(this->get_y() - cantidad);
 	else{
 		if(direccion.get_dir() == Direccion::Sur)
-			this->set_y(this->get_y() - cantidad);
+			this->set_y(this->get_y() + cantidad);
 		else{
 			if(direccion.get_dir() == Direccion::Este)
 				this->set_x(this->get_x() + cantidad);
