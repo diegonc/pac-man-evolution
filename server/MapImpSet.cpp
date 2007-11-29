@@ -39,7 +39,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 		Tipo_Coordenada dim_actual;
 		Tipo_Coordenada dim_final;
 		set_dim(posicion_jugador, dim_actual, dim_final, jugador.get_direccion() );
-		if( tocando( dim_actual, dim_final, vecino, jugador) ){
+		if( !tocando( dim_actual, dim_final, vecino, jugador) ){
 			//Aca discretizo los cuadrantes.
 			//Si cayo en el mismo estructural. 
 			ComparadorPosicion comp;
