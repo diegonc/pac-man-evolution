@@ -19,8 +19,8 @@ class KeyOp : public Operacion
 		 * Por ahora un entero:
 		 *    0: Flecha arriba
 		 *    1: Flecha abajo
-		 *    2: Flecha izquierda
-		 *    3: Flecha derecha
+		 *    2: Flecha derecha
+		 *    3: Flecha izquierda
 		 */
 		int flecha;
 	
