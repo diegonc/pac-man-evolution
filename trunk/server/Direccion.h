@@ -1,6 +1,12 @@
 #ifndef __DIRECCION_H__
 #define __DIRECCION_H__
 
+
+#define NORTE	0
+#define ESTE	1
+#define SUR		2
+#define OESTE	3
+
 /** @brief Define las direccion permitidas para un jugador.
  *  
  *  Las direcciones Norte, Sur, Este, Oeste se definen como atributos de clase.
@@ -39,13 +45,13 @@ class Direccion
 		friend std::ostream& operator <<( std::ostream& os, const Direccion &dir) 
      	{ 
          	switch(dir.dir){
-				case 0 : os << "Norte";
+				case NORTE : os << "Norte";
 						 break;	
-				case 2 : os << "Sur";
+				case SUR : os << "Sur";
 						break;
-				case 1 : os << "Este";
+				case ESTE : os << "Este";
 						break;
-				case 3 : os << "Oeste";
+				case OESTE : os << "Oeste";
 						 break;
 
 				
