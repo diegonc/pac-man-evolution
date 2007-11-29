@@ -27,7 +27,7 @@ void Modelo::cargar_modelo(std::string ruta_mundo){
 	Tipo_Jugador j_2(j2);
 	S_ptr<Personaje> fantasmita(new Fantasma(j2));
 	j_2->set_personaje(fantasmita);
-	Posicion p2(3.5,0);
+	Posicion p2(3.5,0.5);
 	j_2->set_posicion(p2);
 	
 	this->agregar_jugador(j_1);
@@ -57,7 +57,7 @@ void Modelo::run(){
 		std::cout << "- El jugador 1 tiene " << j1->get_puntos() << " puntos y esta en ";
 		std::cout << j1->get_posicion() <<"\n";
 	//	j1->colisiono(*j2);
-		usleep(20000);
+		usleep(2000);
 	}
 	/*
 	
