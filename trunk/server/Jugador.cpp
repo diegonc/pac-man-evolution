@@ -3,12 +3,12 @@
 Jugador::Jugador(int id, Tipo_Personaje personaje){
 	this->id = id;
 	this->set_personaje(personaje);
-	this->dir = &(Direccion::Oeste); /* Arrancan para el oeste. */
+	this->dir = &(Direccion::Este); /* Arrancan para el este. */
 	this->puntos = 0;
 }
 Jugador::Jugador(int id){
 	this->id = id;
-	this->dir = &(Direccion::Oeste); /* Arrancan para el oeste. */
+	this->dir = &(Direccion::Este); /* Arrancan para el este. */
 	this->puntos = 0;
 }
 

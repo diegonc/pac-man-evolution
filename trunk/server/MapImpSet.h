@@ -27,10 +27,13 @@ class MapaImpSet : public Mapa{
 	public:
 		class CompSptrEstructuralPosicion{
 			public:
-				bool operator()(Tipo_Estructural e1, Tipo_Estructural e2){
-					Posicion pos1 = e1->get_posicion();
-					Posicion pos2 = e1->get_posicion();
-
+				bool operator()(const Tipo_Estructural &e1, const Tipo_Estructural &e2){
+					Tipo_Estructural v1 = e1;
+					Tipo_Estructural v2 = e2;
+					
+					Posicion pos1 = v1->get_posicion();
+					Posicion pos2 = v2->get_posicion();
+					
 					if( (int)pos1.get_x() < (int)pos2.get_x() ) 
 						return true;
 					else
@@ -60,7 +63,7 @@ class MapaImpSet : public Mapa{
 	
 		std::list<S_ptr<Estructural> > get_estructurales();		
 	
-		std::list<S_ptr<Objeto> > get_comestibles();
+		std::list<S_ptr<Comestible> > get_comestibles();
 	
 		Tipo_Dimensiones get_ancho();
 	
