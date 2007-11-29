@@ -11,6 +11,8 @@ class KeyOp : public Operacion
 	private:
 		/** @brief Id de cliente que presiona la tecla. */
 		int id;
+	
+		/*TODO PONER STATICS PARA HACER KEYOP::ARRIBA */
 
 		/** @brief Tecla presionada
 		 *
