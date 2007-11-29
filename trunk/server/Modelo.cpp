@@ -53,7 +53,7 @@ void Modelo::run(){
 	Tipo_Jugador j2 = *it;
 	
 	while(true){
-		(this->mundo->get_mapa_activo()).mover(*j1, 0.1);
+		//(this->mundo->get_mapa_activo()).mover(*j1, 0.1);
 		//std::cout << "- El jugador 1 tiene " << j1->get_puntos() << " puntos y esta en ";
 		//std::cout << j1->get_posicion() <<"\n";
 	//	j1->colisiono(*j2);
