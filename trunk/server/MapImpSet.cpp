@@ -40,6 +40,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 		Tipo_Coordenada dim_final;
 		set_dim(posicion_jugador, dim_actual, dim_final, jugador.get_direccion() );
 		if( !tocando( dim_actual, dim_final, vecino, jugador) ){
+			posicion_jugador.incrementar(distancia,jugador.get_direccion());
 			//Aca discretizo los cuadrantes.
 			//Si cayo en el mismo estructural. 
 			ComparadorPosicion comp;
@@ -59,7 +60,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 				jugador.set_posicion(posicion_jugador);
 			
 		}	
-		posicion_jugador.incrementar(distancia,jugador.get_direccion());
+		
 	}
 }
 bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
