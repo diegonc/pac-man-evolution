@@ -16,13 +16,13 @@ extension = cpp
 ###########################
 
 # Opciones para el compilador C.
-CFLAGS = -Wall -ansi -pedantic-errors
+CFLAGS = -Wall -ansi -pedantic-errors `sdl-config --cflags`
 
 # Para valgrind o debug
-CFLAGS += -DDEBUG -ggdb -fno-inline
+CFLAGS += -DDEBUG -ggdb -fno-inline 
 
 # Opciones del enlazador.
-LDFLAGS=-lm -lpthread
+LDFLAGS=-lm -lpthread `sdl-config --libs` -lGL -lGLU
 
 # Usamos ccache para acelerar la cosa...
 CC=gcc 
