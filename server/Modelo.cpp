@@ -17,14 +17,14 @@ void Modelo::cargar_modelo(std::string ruta_mundo){
 	/**************************************************************************/
 	
 	Jugador *j1 = new Jugador(1);
-	S_ptr<Jugador> j_1(j1);
+	Tipo_Jugador j_1(j1);
 	S_ptr<Personaje> pacman(new PacMan(j1));
 	j_1->set_personaje(pacman);
 	Posicion p(0,0);
 	j_1->set_posicion(p);
 	
-	Jugador *j2 = new Jugador(1);
-	S_ptr<Jugador> j_2(j2);
+	Jugador *j2 = new Jugador(2);
+	Tipo_Jugador j_2(j2);
 	S_ptr<Personaje> fantasmita(new Fantasma(j2));
 	j_2->set_personaje(fantasmita);
 	Posicion p2(3.5,0);
@@ -32,7 +32,7 @@ void Modelo::cargar_modelo(std::string ruta_mundo){
 	
 	this->agregar_jugador(j_1);
 	this->agregar_jugador(j_2);
-	
+		
 	/**************************************************************************/
 	/*TODO TRUCHAR OPERACIONES Y DESPUES REEMPLAZAR POR UN PARSER*/
 }
@@ -51,6 +51,7 @@ void Modelo::run(){
 	Tipo_Jugador j1 = *it;
 	it++;
 	Tipo_Jugador j2 = *it;
+	
 	//for(int i = 0; i < 5; i++){
 		(this->mundo->get_mapa_activo()).mover(*j1, 0.5);
 		std::cout << "- El jugador 1 tiene " << j1->get_puntos() << " puntos y esta en ";
@@ -60,13 +61,12 @@ void Modelo::run(){
 	//}
 	
 	
-	
 	(this->mundo->get_mapa_activo()).mover(*j2, 0.5);
 	std::cout << "- El jugador 2 tiene " << j2->get_puntos() << " puntos y esta en ";
 	std::cout << j2->get_posicion() <<"\n";
 	
-	
 	j2->colisiono(*j1);
+	
 	sleep(1);
 	
 	(this->mundo->get_mapa_activo()).mover(*j1, 0.5);
@@ -78,6 +78,7 @@ void Modelo::run(){
 		
 }
 std::list<S_ptr<Objeto> > Modelo::get_objetos(){
+	
 	//defino la lista que se devuelve
 	std::list<S_ptr<Objeto> > lista; 
 	
@@ -103,6 +104,7 @@ std::list<S_ptr<Objeto> > Modelo::get_objetos(){
 		
 }
 S_ptr<Jugador> Modelo::get_jugador(int id){
+	
 	std::list< S_ptr<Jugador> >::iterator it_jugadores;
 	
 	S_ptr<Jugador> resultado_busqueda;

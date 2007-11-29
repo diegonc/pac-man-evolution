@@ -27,21 +27,25 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 	
 	S_ptr<Estructural> e_nuevo(new EstructuralPasillo(a));
 	Posicion p(0.0,0.0);
-	mapa_nuevo->agregar_estructural(e_nuevo,p);
+	e_nuevo->set_posicion(p);
+	mapa_nuevo->agregar_estructural(e_nuevo);
 	
 	//S_ptr<Estructural> e_nuevo1(new EstructuralPasillo(b));
 	S_ptr<Estructural> e_nuevo1(new EstructuralPasillo(a));
 	Posicion p1(1.0,0.0);
-	mapa_nuevo->agregar_estructural(e_nuevo1,p1);
+	e_nuevo1->set_posicion(p1);
+	mapa_nuevo->agregar_estructural(e_nuevo1);
 	
 
 	S_ptr<Estructural> e_nuevo2(new EstructuralPasillo(a));
 	Posicion p2(2.0,0.0);
-	mapa_nuevo->agregar_estructural(e_nuevo2,p2);
+	e_nuevo2->set_posicion(p2);
+	mapa_nuevo->agregar_estructural(e_nuevo2);
 		
 	S_ptr<Estructural> e_nuevo3(new EstructuralPasillo(a));
 	Posicion p3(3.0,0.0);
-	mapa_nuevo->agregar_estructural(e_nuevo3,p3);
+	e_nuevo3->set_posicion(p3);
+	mapa_nuevo->agregar_estructural(e_nuevo3);
 	
 	e_nuevo->set_derecha(e_nuevo1);
 	e_nuevo1->set_izquierda(e_nuevo);

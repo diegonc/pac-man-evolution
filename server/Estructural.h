@@ -30,7 +30,7 @@ class Estructural{
 		
 		virtual int get_tipo()=0;
 	
-		virtual S_ptr<Comestible> get_comestible();
+		virtual S_ptr<Comestible> get_comida();
 		
 		void set_arriba(S_ptr<Estructural> e);
 		void set_abajo(S_ptr<Estructural> e);

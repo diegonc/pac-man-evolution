@@ -20,10 +20,10 @@ S_ptr<Estructural> Estructural::get_vecino(Direccion &direccion){
 
 Estructural::~Estructural(){}
 
-S_ptr<Comestible> Estructural::get_comestible(){
+S_ptr<Comestible> Estructural::get_comida(){
 	S_ptr<Comestible> nulo;
 	return nulo;
-}	
+}
 	
 void Estructural::set_arriba(S_ptr<Estructural> e){
 	this->arriba = e;

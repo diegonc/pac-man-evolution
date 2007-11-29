@@ -6,6 +6,9 @@
  *  Las direcciones Norte, Sur, Este, Oeste se definen como atributos de clase.
  *  El objeto es inmutable.
  */
+ 
+ #include <iostream>
+ 
 class Direccion
 {
 	private:
@@ -34,6 +37,24 @@ class Direccion
 		 */
 		Direccion combinar( int i );
 	
+	
+		friend std::ostream& operator <<( std::ostream& os, const Direccion &dir) 
+     	{ 
+         	switch(dir.dir){
+				case 0 : os << "Norte";
+						 break;	
+				case 1 : os << "Sur";
+						break;
+				case 2 : os << "Este";
+						break;
+				case 3 : os << "Oeste";
+						 break;
+
+				
+			}
+         	// return ostream object 
+         	return os; 
+     	}
 		//Direccion( Direccion& d );
 		
 };

@@ -12,14 +12,14 @@ Tipo_Coordenada Posicion::get_x() const{
 	return this->x;
 }
 void Posicion::set_x(Tipo_Coordenada x_nuevo){
-	if(x_nuevo >= 0)
+	//if(x_nuevo >= 0)
 		this->x = x_nuevo;
 }
 Tipo_Coordenada Posicion::get_y() const{
 	return this->y;	
 }
 void Posicion::set_y(Tipo_Coordenada y_nuevo){
-	if(y_nuevo >= 0)
+	//if(y_nuevo >= 0)
 		this->y = y_nuevo;	
 }
 bool Posicion::operator==(const Posicion &p) {
