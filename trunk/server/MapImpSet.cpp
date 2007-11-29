@@ -1,5 +1,6 @@
 #include "MapImpSet.h"
 
+#include <math.h>
 #include <iostream>
 
 MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto){
@@ -35,27 +36,63 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 		//si cayeron distinto, me fijo si podia moverse para ese lado
 		S_ptr<Estructural> vecino = donde_estaba->get_vecino(jugador.get_direccion());
 		
-		/*Tipo_coordenada dimActual;
-		Tipo_coordenada dimFinal;
-		if( tocando( */
-		//Aca discretizo los cuadrantes.
-		//Si cayo en el mismo estructural. 
-		ComparadorPosicion comp;
-		if(! comp(posicion_jugador, jugador.get_posicion()) ){
-			
-			if( !vecino.es_nulo() ){
-				S_ptr<Comestible> com = vecino->get_comida();
-				vecino->ingresar(jugador);
-				if(vecino->get_comida().es_nulo() ){
-					this->quitar_comestible(com);
+		Tipo_Coordenada dim_actual;
+		Tipo_Coordenada dim_final;
+		set_dim(posicion_jugador, dim_actual, dim_final, jugador.get_direccion() );
+		if( tocando( dim_actual, dim_final, vecino, jugador) && vecino.es_nulo() ){
+			//Aca discretizo los cuadrantes.
+			//Si cayo en el mismo estructural. 
+			ComparadorPosicion comp;
+			if(! comp(posicion_jugador, jugador.get_posicion()) ){
+				
+				if( !vecino.es_nulo() ){
+					S_ptr<Comestible> com = vecino->get_comida();
+					vecino->ingresar(jugador);
+					if(vecino->get_comida().es_nulo() ){
+						this->quitar_comestible(com);
+					}
+					jugador.set_posicion(posicion_jugador);
 				}
-				jugador.set_posicion(posicion_jugador);
+				//TODO.....VER QUE SE HACE SI NO SE PODIA MOVER PARA ESE LADO
 			}
-			//TODO.....VER QUE SE HACE SI NO SE PODIA MOVER PARA ESE LADO
-		}
-		else
-			jugador.set_posicion(posicion_jugador);
-	}	
+			else
+				jugador.set_posicion(posicion_jugador);
+			
+		}	
+	}
+}
+bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
+	Tipo_Coordenada result = dim_final - dim_actual;
+	
+	if(result < 0)
+		result = -1 * result;
+	
+	if (result<= jugador.get_personaje()->get_radio() ){
+		return true;
+	}else{
+		return false;	
+	}
+}
+void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordenada& dim_final, Direccion& dir){
+	
+	switch(dir.get_dir()){
+		case NORTE:
+				dim_final = floor(p.get_y());
+				dim_actual = p.get_y();
+				break;
+		case SUR:
+				dim_final = ceil(p.get_y());
+				dim_actual = p.get_y();
+				break;
+		case ESTE:
+				dim_final = ceil(p.get_x());
+				dim_actual = p.get_x();
+				break;
+		case OESTE:
+				dim_final = floor(p.get_x());
+				dim_actual = p.get_x();
+				break;		
+	}		
 }
 void MapaImpSet::agregar_estructural(S_ptr<Estructural> e){
 	
