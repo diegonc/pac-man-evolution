@@ -5,6 +5,7 @@
 #include <iostream>
 
 typedef double Tipo_Coordenada;
+
 class Posicion{
 	
 	
