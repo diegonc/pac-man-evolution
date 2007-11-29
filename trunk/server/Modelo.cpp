@@ -52,14 +52,14 @@ void Modelo::run(){
 	it++;
 	Tipo_Jugador j2 = *it;
 	
-	//for(int i = 0; i < 5; i++){
+	for(int i = 0; i < 10; i++){
 		(this->mundo->get_mapa_activo()).mover(*j1, 0.5);
 		std::cout << "- El jugador 1 tiene " << j1->get_puntos() << " puntos y esta en ";
 		std::cout << j1->get_posicion() <<"\n";
-		j1->colisiono(*j2);
+	//	j1->colisiono(*j2);
 		sleep(1);
-	//}
-	
+	}
+	/*
 	
 	(this->mundo->get_mapa_activo()).mover(*j2, 0.5);
 	std::cout << "- El jugador 2 tiene " << j2->get_puntos() << " puntos y esta en ";
@@ -74,7 +74,7 @@ void Modelo::run(){
 	std::cout << j1->get_posicion() <<"\n";
 		
 	j1->colisiono(*j2);
-	sleep(1);
+	sleep(1);*/
 		
 }
 std::list<S_ptr<Objeto> > Modelo::get_objetos(){
