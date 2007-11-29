@@ -87,6 +87,9 @@ void VPrincipal::construir(){
     //Agrego un nivel de 10 x 10
     mundo->agregar_nivel(10, 10);
 	mundo->agregar_elemento(PASILLO, 1, 0, 1, ESTE);
+	mundo->agregar_elemento(PASILLO, 1, 0, 4, ESTE);
+	mundo->agregar_elemento(ESQ, 1, 0, 7, SUR);
+	mundo->agregar_elemento(PASILLO, 1, 2, 8, NORTE);
 	mundo->agregar_elemento(ESQ, 1, 5, 5, ESTE);
 	
   	this->vista_mapa = new VistaMapa(mundo->get_nivel(1));

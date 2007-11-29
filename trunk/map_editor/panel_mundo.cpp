@@ -50,7 +50,7 @@ void PanelMundo::crear_lista_mapas(){
 	renderer = gtk_cell_renderer_text_new ();
 	gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (this->lista_view),
 											   -1,      
-											   "RUTA",  
+											   "NOMBRE",  
 											   renderer,
 											   "text", 1,
 											   NULL);
