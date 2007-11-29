@@ -65,16 +65,16 @@ bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final
 	
 	Tipo_Coordenada result = dim_final - dim_actual;
 		
-	if(result < 0){
+	if(result < 0)
 		result = -1 * result;
-		std::cout<< dim_final<<" - "<< dim_actual <<" "<< result <<"\n";
-		if (result <= jugador.get_personaje()->get_radio() && vecino.es_nulo() ){
-			return true;
-		}else{
-			return false;	
-		}
-	}
 	
+	std::cout<< dim_final<<" - "<< dim_actual <<" "<< result <<"\n";
+	if (result <= jugador.get_personaje()->get_radio() && vecino.es_nulo() ){
+		return true;
+	}else{
+		return false;	
+	}
+		
 }
 void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordenada& dim_final, Direccion& dir){
 	
