@@ -13,6 +13,7 @@
  */
 void KeyOp::ejecutar(Modelo &modelo)
 {
+	std::cout << "Pulso la tecla " << this->id << "\n";
 	S_ptr<Jugador> jugador = modelo.get_jugador(this->id);
 	jugador->get_direccion().combinar(flecha);
 }
