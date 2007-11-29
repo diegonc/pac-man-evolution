@@ -52,12 +52,12 @@ void Modelo::run(){
 	it++;
 	Tipo_Jugador j2 = *it;
 	
-	for(int i = 0; i < 10; i++){
-		(this->mundo->get_mapa_activo()).mover(*j1, 0.5);
+	for(int i = 0; i < 1000; i++){
+		(this->mundo->get_mapa_activo()).mover(*j1, 0.1);
 		std::cout << "- El jugador 1 tiene " << j1->get_puntos() << " puntos y esta en ";
 		std::cout << j1->get_posicion() <<"\n";
 	//	j1->colisiono(*j2);
-		sleep(1);
+		usleep(200000);
 	}
 	/*
 	
