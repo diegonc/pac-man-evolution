@@ -54,8 +54,8 @@ void Modelo::run(){
 	
 	while(true){
 		(this->mundo->get_mapa_activo()).mover(*j1, 0.1);
-		//std::cout << "- El jugador 1 tiene " << j1->get_puntos() << " puntos y esta en ";
-		//std::cout << j1->get_posicion() <<"\n";
+		std::cout << "- El jugador 1 tiene " << j1->get_puntos() << " puntos y esta en ";
+		std::cout << j1->get_posicion() <<"\n";
 	//	j1->colisiono(*j2);
 		usleep(200000);
 	}
