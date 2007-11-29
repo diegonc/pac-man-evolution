@@ -20,7 +20,7 @@ void Modelo::cargar_modelo(std::string ruta_mundo){
 	Tipo_Jugador j_1(j1);
 	S_ptr<Personaje> pacman(new PacMan(j1));
 	j_1->set_personaje(pacman);
-	Posicion p(0,0);
+	Posicion p(0.5,0.5);
 	j_1->set_posicion(p);
 	
 	Jugador *j2 = new Jugador(2);
