@@ -11,35 +11,36 @@
 /** @brief Implementa una interfaz de mapa
  *
  */
- 
+
 typedef unsigned int Tipo_Dimensiones;
 typedef S_ptr<Estructural> Tipo_Estructural;
 
 class MapaImpSet : public Mapa{
-		
+
 	private:
-		
+
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
-	
-		Tipo_Estructural estructural;	
-	
-	
-		bool tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final, S_ptr<Estructural> vecino, Jugador& jugador);
-	
+
+		Tipo_Estructural estructural;
+
+
+		bool tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<Estructural> vecino, Jugador& jugador);
+
 		void set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordenada& dim_final, Direccion& dir);
-		
+
 	public:
 		class CompSptrEstructuralPosicion{
 			public:
 				bool operator()(const Tipo_Estructural &e1, const Tipo_Estructural &e2){
 					Tipo_Estructural v1 = e1;
 					Tipo_Estructural v2 = e2;
-					
+
 					Posicion pos1 = v1->get_posicion();
 					Posicion pos2 = v2->get_posicion();
-					
-					if( (int)pos1.get_x() < (int)pos2.get_x() ) 
+	//				std::cout << pos1 << "-" << pos2 << "\n";
+
+					if( (int)pos1.get_x() < (int)pos2.get_x() )
 						return true;
 					else
 						if((int)pos1.get_y() < (int)pos2.get_y())
@@ -49,29 +50,29 @@ class MapaImpSet : public Mapa{
 					}
 		};
 	private:
-		std::set<Tipo_Estructural,CompSptrEstructuralPosicion> estructurales;	
-		std::list<S_ptr<Comestible> > comestibles;	
-	
+		std::set<Tipo_Estructural,CompSptrEstructuralPosicion> estructurales;
+		std::list<S_ptr<Comestible> > comestibles;
+
 		void quitar_comestible(S_ptr<Comestible> comestible);
-	
+
 	public:
-		
+
 		MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto);
 
 		~MapaImpSet();
-	
+
 		void mover( Jugador& jugador, Tipo_Coordenada distancia );
-		
+
 		void agregar_estructural(S_ptr<Estructural> e);
-		
+
 		S_ptr<Estructural> get_estructural(Posicion &p);
-	
-		std::list<S_ptr<Estructural> > get_estructurales();		
-	
+
+		std::list<S_ptr<Estructural> > get_estructurales();
+
 		std::list<S_ptr<Comestible> > get_comestibles();
-	
+
 		Tipo_Dimensiones get_ancho();
-	
+
 		Tipo_Dimensiones get_alto();
 };
 

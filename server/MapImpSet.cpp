@@ -11,11 +11,11 @@ MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto
 
 MapaImpSet::~MapaImpSet(){
 	this->comestibles.clear();
-	
+
 	std::set<Tipo_Estructural,CompSptrEstructuralPosicion>::iterator it;
 	Tipo_Estructural estruct_nulo;
-	Tipo_Estructural estruct_aux;	
-	
+	Tipo_Estructural estruct_aux;
+
 	for(it = this->estructurales.begin(); it != this->estructurales.end(); it++){
 		estruct_aux = *it;
 		estruct_aux->set_arriba(estruct_nulo);
@@ -31,21 +31,21 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 	S_ptr<Estructural> donde_estaba = this->get_estructural(posicion_jugador);
 	//si esta en algun lugar del mapa
 	if(! donde_estaba.es_nulo() ){
-		
-		
+
+
 		//si cayeron distinto, me fijo si podia moverse para ese lado
 		S_ptr<Estructural> vecino = donde_estaba->get_vecino(jugador.get_direccion());
-		
+
 		Tipo_Coordenada dim_actual;
 		Tipo_Coordenada dim_final;
 		set_dim(posicion_jugador, dim_actual, dim_final, jugador.get_direccion() );
 		if( !tocando( dim_actual, dim_final, vecino, jugador) ){
 			posicion_jugador.incrementar(distancia,jugador.get_direccion());
 			//Aca discretizo los cuadrantes.
-			//Si cayo en el mismo estructural. 
+			//Si cayo en el mismo estructural.
 			ComparadorPosicion comp;
 			if(! comp(posicion_jugador, jugador.get_posicion()) ){
-				
+
 				//if( !vecino.es_nulo() ){
 					S_ptr<Comestible> com = vecino->get_comida();
 					vecino->ingresar(jugador);
@@ -58,30 +58,33 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 			}
 			else
 				jugador.set_posicion(posicion_jugador);
-			
-		}	
-		
+		}
+
 	}
 }
-bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
-	
+bool MapaImpSet::tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
+
 	Tipo_Coordenada result = dim_final - dim_actual;
-		
+
 	if(result < 0)
 		result = -1 * result;
-	
+
 	if ( (result < jugador.get_personaje()->get_radio()) && vecino.es_nulo() ){
+		//estoy mas cerca de lo q puedo y no existe el otro
+		//choque
 		return true;
-			
-
-	}else{
-		return false;	
-
+	}/*else if(result < jugador.get_personaje()->get_radio()){
+		//estoy justito y al lado existe
+		//debo verificar
+		return tocando(dim_actual, (dim_final - dim_actual)>0?dim_final+1:dim_final-1 , vecino->get_vecino(jugador.get_direccion()), jugador);
+	}*/else{
+		//estoy bien
+		return false;
 	}
-		
+
 }
 void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordenada& dim_final, Direccion& dir){
-	
+
 	switch(dir.get_dir()){
 		case NORTE:
 				dim_final = floor(p.get_y());
@@ -98,26 +101,28 @@ void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordena
 		case OESTE:
 				dim_final = floor(p.get_x());
 				dim_actual = p.get_x();
-				break;		
-	}		
+				break;
+	}
 }
 void MapaImpSet::agregar_estructural(S_ptr<Estructural> e){
-	
+
 	estructurales.insert(e);
+	std::cout << e->get_posicion() <<"\n";
 	S_ptr<Comestible> c = e->get_comida();
 	if(! c.es_nulo() )
 		this->comestibles.push_back(c);
-	
+	std::cout << estructurales.size() <<"\n";
+
 }
 S_ptr<Estructural> MapaImpSet::get_estructural(Posicion &p){
 
 	std::set<Tipo_Estructural, CompSptrEstructuralPosicion>::iterator busqueda;
 	busqueda = estructurales.begin();
-	
+
 	bool encontrado = false;
 	ComparadorPosicion comp;
 	Tipo_Estructural aux;
-	
+
 	while( !encontrado && busqueda != estructurales.end() ){
 		aux = *busqueda;
 		if( comp(aux->get_posicion(), p) )
@@ -136,14 +141,14 @@ S_ptr<Estructural> MapaImpSet::get_estructural(Posicion &p){
 Tipo_Dimensiones MapaImpSet::get_ancho(){
 	return this->ancho;
 }
-	
+
 Tipo_Dimensiones MapaImpSet::get_alto(){
 	return this->alto;
 }
 std::list<S_ptr<Estructural> > MapaImpSet::get_estructurales(){
 	std::set<Tipo_Estructural>::iterator it;
 	std::list<Tipo_Estructural> lista;
-	
+
 	for(it = this->estructurales.begin(); it != this->estructurales.end(); it++)
 		lista.push_back(*it);
 	return lista;
@@ -156,7 +161,7 @@ std::list<S_ptr<Comestible> > MapaImpSet::get_comestibles(){
 void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 	std::list<S_ptr<Comestible> >::iterator it = this->comestibles.begin();
 	bool encontrado = false;
-	
+
 	while( !encontrado && it != this->comestibles.end() ){
 		if( comestible == *it ){
 			comestibles.erase(it);

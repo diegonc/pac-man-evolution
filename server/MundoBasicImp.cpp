@@ -16,42 +16,42 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 	S_ptr<Mapa> mapa_nuevo = new MapaImpSet(1,4);
 	/************************************************************************
 		CREO PARA PROBAR UN MAPITA DEL ESTILO
-	
+
 		--- --- --- ---
 	   | p |   |   | f |
 	    --- --- --- ---
 	************************************************************************/
-	
+
 	Comestible::Enum_Comestible  a = Comestible::quesito;
 	Comestible::Enum_Comestible  b = Comestible::power_up;
-	
+
 	S_ptr<Estructural> e_nuevo(new EstructuralPasillo(a));
 	Posicion p(0.0,0.0);
 	e_nuevo->set_posicion(p);
 	mapa_nuevo->agregar_estructural(e_nuevo);
-	
+
 	//S_ptr<Estructural> e_nuevo1(new EstructuralPasillo(b));
 	S_ptr<Estructural> e_nuevo1(new EstructuralPasillo(a));
 	Posicion p1(1.0,0.0);
 	e_nuevo1->set_posicion(p1);
 	mapa_nuevo->agregar_estructural(e_nuevo1);
-	
+
 
 	S_ptr<Estructural> e_nuevo2(new EstructuralPasillo(a));
 	Posicion p2(2.0,0.0);
 	e_nuevo2->set_posicion(p2);
 	mapa_nuevo->agregar_estructural(e_nuevo2);
-		
+
 	S_ptr<Estructural> e_nuevo3(new EstructuralPasillo(a));
 	Posicion p3(3.0,0.0);
 	e_nuevo3->set_posicion(p3);
 	mapa_nuevo->agregar_estructural(e_nuevo3);
-	
+
 	S_ptr<Estructural> e_nuevo4(new EstructuralPasillo(a));
 	Posicion p4(1.0,1.0);
-	e_nuevo3->set_posicion(p4);
+	e_nuevo4->set_posicion(p4);
 	mapa_nuevo->agregar_estructural(e_nuevo4);
-	
+
 	e_nuevo->set_derecha(e_nuevo1);
 	e_nuevo1->set_izquierda(e_nuevo);
 	e_nuevo1->set_derecha(e_nuevo2);
@@ -60,7 +60,7 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 	e_nuevo3->set_izquierda(e_nuevo2);
 	e_nuevo4->set_arriba(e_nuevo1);
 	e_nuevo1->set_abajo(e_nuevo4);
-	
+
 	/////////////////////////////////////////////////////////////////////////
 	mapas.push_back( mapa_nuevo );
 }
