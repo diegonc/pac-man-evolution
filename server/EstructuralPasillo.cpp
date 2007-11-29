@@ -16,11 +16,13 @@ S_ptr<Comestible> EstructuralPasillo::get_comida(){
 	return this->comida;	
 }
 void EstructuralPasillo::ingresar(Jugador& jugador){
-	jugador.comer(*this->comida);
+	if(! this->comida.es_nulo() ){
+		jugador.comer(*this->comida);
 		
-	S_ptr<Comestible> comida_nula;
+		S_ptr<Comestible> comida_nula;
 	
-	this->comida = comida_nula;
+		this->comida = comida_nula;
+	}
 	/*delete this->comida;
 	
 	this->comida = 0;*/
