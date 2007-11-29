@@ -31,7 +31,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 	S_ptr<Estructural> donde_estaba = this->get_estructural(posicion_jugador);
 	//si esta en algun lugar del mapa
 	if(! donde_estaba.es_nulo() ){
-		posicion_jugador.incrementar(distancia,jugador.get_direccion());
+		
 		
 		//si cayeron distinto, me fijo si podia moverse para ese lado
 		S_ptr<Estructural> vecino = donde_estaba->get_vecino(jugador.get_direccion());
@@ -45,20 +45,21 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 			ComparadorPosicion comp;
 			if(! comp(posicion_jugador, jugador.get_posicion()) ){
 				
-				if( !vecino.es_nulo() ){
+				//if( !vecino.es_nulo() ){
 					S_ptr<Comestible> com = vecino->get_comida();
 					vecino->ingresar(jugador);
 					if(vecino->get_comida().es_nulo() ){
 						this->quitar_comestible(com);
 					}
 					jugador.set_posicion(posicion_jugador);
-				}
+				//}
 				//TODO.....VER QUE SE HACE SI NO SE PODIA MOVER PARA ESE LADO
 			}
 			else
 				jugador.set_posicion(posicion_jugador);
 			
 		}	
+		posicion_jugador.incrementar(distancia,jugador.get_direccion());
 	}
 }
 bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
@@ -70,9 +71,14 @@ bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final
 	
 	std::cout<< dim_final<<" - "<< dim_actual <<" "<< result <<"\n";
 	if ( (result < jugador.get_personaje()->get_radio()) && vecino.es_nulo() ){
+		std::cout<< "Choxo\n";
 		return true;
+			
+
 	}else{
+		std::cout<< "NOChoxo\n";
 		return false;	
+
 	}
 		
 }
