@@ -31,12 +31,18 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 	//si esta en algun lugar del mapa
 	if(! donde_estaba.es_nulo() ){
 		posicion_jugador.incrementar(distancia,jugador.get_direccion());
+		
+		//si cayeron distinto, me fijo si podia moverse para ese lado
+		S_ptr<Estructural> vecino = donde_estaba->get_vecino(jugador.get_direccion());
+		
+		/*Tipo_coordenada dimActual;
+		Tipo_coordenada dimFinal;
+		if( tocando( */
 		//Aca discretizo los cuadrantes.
 		//Si cayo en el mismo estructural. 
 		ComparadorPosicion comp;
 		if(! comp(posicion_jugador, jugador.get_posicion()) ){
-			//si cayeron distinto, me fijo si podia moverse para ese lado
-			S_ptr<Estructural> vecino = donde_estaba->get_vecino(jugador.get_direccion());
+			
 			if( !vecino.es_nulo() ){
 				S_ptr<Comestible> com = vecino->get_comida();
 				vecino->ingresar(jugador);
