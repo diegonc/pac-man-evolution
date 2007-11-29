@@ -69,7 +69,7 @@ bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final
 		result = -1 * result;
 	
 	std::cout<< dim_final<<" - "<< dim_actual <<" "<< result <<"\n";
-	if (result <= jugador.get_personaje()->get_radio() && vecino.es_nulo() ){
+	if ( (result < jugador.get_personaje()->get_radio()) && vecino.es_nulo() ){
 		return true;
 	}else{
 		return false;	
