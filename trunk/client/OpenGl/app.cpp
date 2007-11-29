@@ -53,8 +53,9 @@ SDL_Surface *SD_Logo;											// ...and a SD Logo
 bool        EsceneCreado=false;
 GLuint      Escenario;
 obj_type Pacman;
-std::map<std::string,obj_type> Cosas;
-
+std::map<std::string,ObjTextura*> Cosas;
+GLuint texturaPiso;
+GLuint texturaPared;
 
 // Code
 
@@ -67,65 +68,174 @@ bool InitGL(SDL_Surface *S)										// Any OpenGL Initialization Code Goes Here
 	glDepthFunc(GL_LEQUAL);										// The Type Of Depth Testing (Less Or Equal)
 	glEnable(GL_DEPTH_TEST);									// Enable Depth Testing
 	glShadeModel(GL_SMOOTH);									// Select Smooth Shading
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);			// Set Perspective Calculations To Most Accurate
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable( GL_TEXTURE_2D ); // Need this to display a texture
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);			// Set Perspective Calculations To Most Accurate
 
 	return true;												// Return TRUE (Initialization Successful)
 }
 
-void DibujarObjeto(obj_type* object){
+void DibujarObjeto(ObjTextura* objTex){
+    GLuint* texture=&objTex->textura;
+
+
+
+
     float const proporcion=0.04;
+    obj_type* object;
+    //float color[4]={0.1,0.3,0.5,1};
+    // Bind the texture object
+    glBindTexture( GL_TEXTURE_2D, *texture );
+/////////////opacidad
+//glColor4f( 1, 1, 1, 1.0f ); // aca le decimos que module la textura con negro, por lo tanto donde dibuje tan solo oscurecera, y que al alpha lo divida por la mitad.
+//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//glEnable(GL_BLEND);
+//glDisable(GL_DEPTH_TEST);
+/////////////ENDDDDDDDDopacidad
+glScalef( proporcion, proporcion, proporcion);
 
-    glScalef( proporcion, proporcion, proporcion);
-    glBegin(GL_TRIANGLES); // glBegin and glEnd delimit the vertices that define a primitive (in our case triangles)
-    for (int l_index=0;l_index<object->polygons_qty;l_index++)
-    {
-        //----------------- FIRST VERTEX -----------------
-        // Texture coordinates of the first vertex
-        glTexCoord2f( object->mapcoord[ object->polygon[l_index].a ].u,
-                      object->mapcoord[ object->polygon[l_index].a ].v);
-        // Coordinates of the first vertex
-        glVertex3f( object->vertex[ object->polygon[l_index].a ].x,
-                    object->vertex[ object->polygon[l_index].a ].y,
-                    object->vertex[ object->polygon[l_index].a ].z); //Vertex definition
+    //glShadeModel( GL_FLAT );
 
-        //----------------- SECOND VERTEX -----------------
-        // Texture coordinates of the second vertex
-        glTexCoord2f( object->mapcoord[ object->polygon[l_index].b ].u,
-                      object->mapcoord[ object->polygon[l_index].b ].v);
-        // Coordinates of the second vertex
-        glVertex3f( object->vertex[ object->polygon[l_index].b ].x,
-                    object->vertex[ object->polygon[l_index].b ].y,
-                    object->vertex[ object->polygon[l_index].b ].z);
+    //glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, color );
 
-        //----------------- THIRD VERTEX -----------------
-        // Texture coordinates of the third vertex
-        glTexCoord2f( object->mapcoord[ object->polygon[l_index].c ].u,
-                      object->mapcoord[ object->polygon[l_index].c ].v);
-        // Coordinates of the Third vertex
-        glVertex3f( object->vertex[ object->polygon[l_index].c ].x,
-                    object->vertex[ object->polygon[l_index].c ].y,
-                    object->vertex[ object->polygon[l_index].c ].z);
+
+    for (std::list<obj_type_ptr>::iterator it=objTex->Objeto3d.Figuras.begin();it!=objTex->Objeto3d.Figuras.end();++it){
+        object=*it;
+
+        glBegin(GL_TRIANGLES); // glBegin and glEnd delimit the vertices that define a primitive (in our case triangles)
+        for (int l_index=0;l_index<object->polygons_qty;l_index++)
+        {
+            //----------------- FIRST VERTEX -----------------
+            // Texture coordinates of the first vertex
+
+            glTexCoord2f( object->mapcoord[ object->polygon[l_index].a ].u,
+                          object->mapcoord[ object->polygon[l_index].a ].v);
+            // Coordinates of the first vertex
+
+            glVertex3f( object->vertex[ object->polygon[l_index].a ].x,
+                        object->vertex[ object->polygon[l_index].a ].y,
+                        object->vertex[ object->polygon[l_index].a ].z); //Vertex definition
+
+            //----------------- SECOND VERTEX -----------------
+            // Texture coordinates of the second vertex
+            glTexCoord2f( object->mapcoord[ object->polygon[l_index].b ].u,
+                          object->mapcoord[ object->polygon[l_index].b ].v);
+            // Coordinates of the second vertex
+            glVertex3f( object->vertex[ object->polygon[l_index].b ].x,
+                        object->vertex[ object->polygon[l_index].b ].y,
+                        object->vertex[ object->polygon[l_index].b ].z);
+
+            //----------------- THIRD VERTEX -----------------
+            // Texture coordinates of the third vertex
+            glTexCoord2f( object->mapcoord[ object->polygon[l_index].c ].u,
+                          object->mapcoord[ object->polygon[l_index].c ].v);
+            // Coordinates of the Third vertex
+            glVertex3f( object->vertex[ object->polygon[l_index].c ].x,
+                        object->vertex[ object->polygon[l_index].c ].y,
+                        object->vertex[ object->polygon[l_index].c ].z);
+        }
+        glEnd();
     }
-    glEnd();
-    glScalef( 1/proporcion, 1/proporcion, 1/proporcion);
+
+
+glScalef( 1/proporcion, 1/proporcion, 1/proporcion);
+//glDisable(GL_BLEND);
+//glEnable(GL_DEPTH_TEST);
+
+
+
+
+    glBindTexture( GL_TEXTURE_2D, 0 );
+
+
+
+
+
+
+}
+
+void CargarTextura(GLuint* texture,std::string nombrearchBMP){
+// Load the OpenGL texture
+
+    SDL_Surface *surface; // Gives us the information to make the texture
+
+    if ( (surface = SDL_LoadBMP(nombrearchBMP.c_str())) ) {
+
+        // Check that the image's width is a power of 2
+        if ( (surface->w & (surface->w - 1)) != 0 ) {
+            printf("warning: image.bmp's width is not a power of 2\n");
+        }
+
+        // Also check if the height is a power of 2
+        if ( (surface->h & (surface->h - 1)) != 0 ) {
+            printf("warning: image.bmp's height is not a power of 2\n");
+        }
+
+        // Have OpenGL generate a texture object handle for us
+        glGenTextures( 1, texture );
+
+        glBindTexture (GL_TEXTURE_2D, *texture);
+
+        // Set the texture's stretching properties
+        glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+        glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+        // Edit the texture object's image data using the information SDL_Surface gives us
+        glTexImage2D( GL_TEXTURE_2D, 0, 3, surface->w, surface->h, 0,
+                      GL_BGR, GL_UNSIGNED_BYTE, surface->pixels );
+    }
+    else {
+        printf("SDL could not load image.bmp: %s\n", SDL_GetError());
+        //SDL_Quit();
+        //return 1;
+    }
+
+    // Free the SDL_Surface only if it was successfully created
+    if ( surface ) {
+        SDL_FreeSurface( surface );
+    }
+    glBindTexture (GL_TEXTURE_2D, 0);
 }
 
 void CargarCosas(){
-    obj_type Cosa;
-    Load3DS(&Cosa,"banana.3DS");
-    Cosas["banana"]=Cosa;
-    Load3DS(&Cosa,"pacman.3DS");
-    Cosas["pacman"]=Cosa;
-    Load3DS(&Cosa,"spaceship.3DS");
-    Cosas["spaceship"]=Cosa;
+    ObjTextura* objtext=new ObjTextura;
+        Load3DS(&(objtext->Objeto3d),"banana.3DS");
+        CargarTextura(&(objtext->textura),"banana.bmp");
+        Cosas["banana"]=objtext;
+    objtext=new ObjTextura;
+        Load3DS(&(objtext->Objeto3d),"pacman.3DS");
+        CargarTextura(&(objtext->textura),"pacman.bmp");
+        Cosas["pacman"]=objtext;
+    objtext=new ObjTextura;
+        Load3DS(&(objtext->Objeto3d),"pastilla.3DS");
+        CargarTextura(&(objtext->textura),"pastilla.bmp");
+        Cosas["pastilla"]=objtext;
+    objtext=new ObjTextura;
+        Load3DS(&(objtext->Objeto3d),"cerecita.3DS");
+        CargarTextura(&(objtext->textura),"cerecita.bmp");
+        Cosas["cerecita"]=objtext;
+    objtext=new ObjTextura;
+        Load3DS(&(objtext->Objeto3d),"fantasma.3DS");
+        CargarTextura(&(objtext->textura),"fantasma.bmp");
+        Cosas["fantasma"]=objtext;
+    objtext=new ObjTextura;
+        Load3DS(&(objtext->Objeto3d),"powerup.3DS");
+        CargarTextura(&(objtext->textura),"powerup.bmp");
+        Cosas["powerup"]=objtext;
 
 }
+
 
 
 bool Initialize(void)											// Any Application & User Initialization Code Goes Here
 {
     //Load3DS(&Pacman,"banana.3DS");
     CargarCosas();
+    CargarTextura(&texturaPared,"pared.bmp");
+    CargarTextura(&texturaPiso,"piso.bmp");
     AppStatus.Visible		= true;								// At The Beginning, Our App Is Visible
 	AppStatus.MouseFocus	= true;								// And Have Both Mouse
 	AppStatus.KeyboardFocus = true;								// And Input Focus
@@ -156,8 +266,6 @@ bool Initialize(void)											// Any Application & User Initialization Code Go
 	SDL_SetColorKey(SD_Logo, SDL_SRCCOLORKEY|SDL_RLEACCEL,		// for more info about this
 		SDL_MapRGB(SD_Logo->format, 0, 0, 0) );					// topic.
 
-
-
 	return true;												// Return TRUE (Initialization Successful)
 }
 
@@ -170,7 +278,7 @@ void Deinitialize(void)											// Any User Deinitialization Goes Here
 void Update(Uint32 Milliseconds, Uint8 *Keys,Posicion* Pos)					// Perform Motion Updates Here
 {
     Pos->girar(Milliseconds);
-    const float Vel=0.4/40;
+    const float Vel=0.01;
 	if(Keys)													// If We're Sent A Key Event With The Update
 	{
 		if(Keys[SDLK_ESCAPE])									// And If The Key Pressed Was ESC
@@ -239,98 +347,119 @@ void Draw(SDL_Surface *Screen,Posicion* P)									// Our Drawing Code
 	return;
 }
 
-void addPared(float xIn,float xFin,float yIn,float yFin){
-    glBegin(GL_QUADS);
-      glVertex3f(xIn, yIn, 0.0);
-      glVertex3f(xFin, yFin,0.0);
-      glVertex3f(xFin, yFin, 2.0);
-      glVertex3f(xIn, yIn, 2.0);
-    glEnd();
+void addPared(float xIn,float xFin,float yIn,float yFin){//,float color[]){
+    //glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, color );
+    glBindTexture (GL_TEXTURE_2D, texturaPared);
+    float const AltoPasillo=3;
+    float const DimImagen=4;
+    float VecesLargo;
+    float VecesAlto=AltoPasillo/DimImagen;
+    if (xIn==xFin){
+        VecesLargo=abs((int)(yIn-yFin))/DimImagen;
+    }else{
+        VecesLargo=abs((int)(xIn-xFin))/DimImagen;
+    }
 
+    glBegin(GL_QUADS);
+      glTexCoord2f( 0, 0 );
+      glVertex3f(xIn, yIn, 0.0);
+      glTexCoord2f( VecesLargo, 0 );
+      glVertex3f(xFin, yFin,0.0);
+      glTexCoord2f( VecesLargo, VecesAlto);
+      glVertex3f(xFin, yFin, AltoPasillo);
+      glTexCoord2f( 0, VecesAlto);
+      glVertex3f(xIn, yIn, AltoPasillo);
+    glEnd();
+    glBindTexture (GL_TEXTURE_2D, 0);
 }
 
 
-void addPiso(double xIn,double xFin,double yIn,double yFin){
+void addPiso(double xIn,double xFin,double yIn,double yFin){//,float color[]){
+    //glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, color );
+    glBindTexture (GL_TEXTURE_2D, texturaPiso);
+    float const DimImagen=1.5;
+    float VecesAncho=abs((int)(xIn-xFin))/DimImagen;
+    float VecesLargo=abs((int)(yIn-yFin))/DimImagen;
+
+
     glBegin(GL_QUADS);
+      glTexCoord2f( 0, 0 );
       glVertex3f(xIn, yIn, 0.0);
+      glTexCoord2f( VecesAncho, 0 );
       glVertex3f(xFin, yIn, 0.0);
+      glTexCoord2f( VecesAncho, VecesLargo );
       glVertex3f(xFin, yFin, 0.0);
+      glTexCoord2f( 0, VecesLargo );
       glVertex3f(xIn, yFin,0.0);
     glEnd();
+    glBindTexture (GL_TEXTURE_2D, 0);
 }
 
 void DrawEscenario(){
-
-    glColor3f(1, 1, 0);  /* amarillo */
+    /*
+    float colorAmar[4]={1,1,0,0.01};
+    float colorBlan[4]={1,1,1,0.01};
+    float colorAzul[4]={0,0,1,0.01};
+    float colorVerd[4]={0,1,0,0.01};
+    float colorRojo[4]={1,0,0,0.01};
+    */
+    //glColor3f(1, 1, 0);  /* amarillo */
     addPiso(-2,2,-10,10);
-    glColor3f(1, 1, 0);  /* amarillo */
+    //glColor3f(1, 1, 0);  /* amarillo */
     addPiso(-10,10,10,14);
 
-    glColor3f(1, 1, 1);  /* blanco */
+    //glColor3f(1, 1, 1);  /* blanco */
     addPared(-10,10,14,14);
-    glColor3f(0.0, 0.0, 1);  /* blue */
+    //glColor3f(0.0, 0.0, 1);  /* blue */
     addPared(-10,-2,10,10);
-    glColor3f(0.0, 0.0, 1);  /* blue */
+    //glColor3f(0.0, 0.0, 1);  /* blue */
     addPared(2,10,10,10);
 
-    glColor3f(0.0, 0.7, 0.1);  /* green */
+    //glColor3f(0.0, 0.7, 0.1);  /* green */
     addPared(-2,-2,-10.0,10.0);
-    glColor3f(1.0, 0.0, 0.0);  /* Red */
+    //glColor3f(1.0, 0.0, 0.0);  /* Red */
     addPared(2,2,-10.0,10.0);
 }
 
 void DibujarObjetoObservadorPosicion(Posicion* P,std::string Nombre){
-    float Angulo=P->getAnguloActual();
-    Angulo=(Angulo/180)*3.14;
-    float deltaX=sin(Angulo);
-    float deltaY=cos(Angulo);
-    //printf("%d\n",P->getAnguloActual());
-    //glTranslatef(P->x,P->y, 0.0);
+  //  float Angulo=P->getAnguloActual();
+ //   Angulo=(Angulo/180)*3.14;
+//    float deltaX=sin(Angulo)*2;
+ //   float deltaY=cos(Angulo)*2;
+    float static j=0;
 
+    if (P->Velocid!=0.0){
+        j+=0.02*(P->Velocid/0.01);
+    }
+    float Angulo=sin(j)*7;
 
-    //glTranslatef(-P->x, -P->y, 0.0);
-
+    glRotatef(Angulo,0,1,0);
+    DibujarObjeto(Cosas[Nombre]);
+    glRotatef(-Angulo,0,1,0);
     glRotatef(P->getAnguloActual(), 0, 0, 1.0);
-
-    //glTranslatef(P->x, P->y, 0.0);
-
-  //  glTranslatef(P->x,P->y, 0.0);
-
-    DibujarObjeto(&Cosas[Nombre]);
     glTranslatef(P->x,P->y, 0.0);
 
-    //gluLookAt( GLdouble eyeX,GLdouble eyeY,GLdouble eyeZ,GLdouble centerX,GLdouble centerY,GLdouble centerZ,GLdouble upX,GLdouble upY,GLdouble upZ )
-//    gluLookAt(-deltaX,-deltaY,-1,0,0,0,deltaX,deltaY,0);
-   // glTranslatef(-deltaX,-deltaY, 0.0);
-
-
-
-//    glTranslatef(deltaX,deltaY, 0.0);
-    //glRotatef(P->getAnguloActual(), 0, 0, 1.0);
-
-
-
-    //glRotatef(-P->getAnguloActual(), 0, 0, 1.0);
-    //glTranslatef(P->x,P->y, 0.0);
-    //glRotatef(P->getAnguloActual(), 0, 0, 1.0);
-//    glTranslatef(deltaX,deltaY, 0.0);
-//    glTranslatef(P->x,P->y, 0.0);
-
-//    glTranslatef(P->x,P->y, 0.0);
-    //glTranslatef(P->x,P->y, 0.0);
-
+    //glTranslatef(-deltaX,-deltaY, 0.0);
+    //gluLookAt(P->x+deltaX, P->y+deltaY, 0, P->x, P->y, 0.0, 0.0, 1.0, 0.0);
 }
 
 void DibujarObjetoPosicion(Posicion* P,std::string Nombre){
+
     glTranslatef(P->x,P->y, 0.0);
-    DibujarObjeto(&Cosas[Nombre]);
+    glRotatef(P->getAnguloActual(), 0, 0, 1.0);
+    DibujarObjeto(Cosas[Nombre]);
+    glRotatef(-P->getAnguloActual(), 0, 0, 1.0);
     glTranslatef(-P->x,-P->y, 0.0);
+
 }
 
 void Draw3D(SDL_Surface *S,Posicion* P)										// OpenGL drawing code here
 {
+    static float j=0;
+    j+=0.003;
     //glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		// Clear Screen And Depth Buffer
 	//glLoadIdentity();
+    glPushMatrix();		// Apila la transformación geométrica actual
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		// Clear Screen And Depth Buffer
 
     glMatrixMode(GL_MODELVIEW);
@@ -340,10 +469,26 @@ void Draw3D(SDL_Surface *S,Posicion* P)										// OpenGL drawing code here
 
 
 
-
     //lo llevo a 1ra persona
-    glRotatef(-90, 1, 0.0, 0.0);
-    glTranslatef(0.0,0.0 , -2.5);
+   glRotatef(-90, 1, 0.0, 0.0);
+
+//////LUZZZZZZZZZ
+    static GLfloat pos[4] = {0, 0, 1, 0 };
+    glLightfv( GL_LIGHT0, GL_POSITION, pos );
+
+    glTranslatef(0.0,15 , -6);
+
+
+//END LUZ
+
+
+
+
+
+    //glLightfv( GL_LIGHT0, GL_SPOT_DIRECTION, pos );
+//    float color[4]={1,1,1,0.3};
+ //   glLightModelfv( GL_LIGHT_MODEL_AMBIENT, color);
+
     //glTranslatef(0.0,0.0 , -20);
     //avanzarr
     //glTranslatef(P->x, P->y, 0.0);
@@ -363,6 +508,8 @@ void Draw3D(SDL_Surface *S,Posicion* P)										// OpenGL drawing code here
        glEndList();
 	}
 
+
+
     /*for (list<Objetos>::iterator it=listaObjetos.begin();it!=listaObjetos.end();++it){
 	    DibujarObjetoPosicion(it->Pos,it->tipo);
     }*/
@@ -373,18 +520,27 @@ void Draw3D(SDL_Surface *S,Posicion* P)										// OpenGL drawing code here
 
 	//DibujarObjetoPosicion(&Pos,"banana");
 
-	DibujarObjetoObservadorPosicion(P,"banana");
+	DibujarObjetoObservadorPosicion(P,"pacman");
 	Posicion Pos;
-	Pos.x=0;
-	Pos.y=10;
-	DibujarObjetoPosicion(&Pos,"banana");
-	Pos.x=3;
+	//Pos.x=0;
+	//Pos.y=10;
+	//DibujarObjetoPosicion(&Pos,"powerup");
+	Pos.x=sin(j)*10;
 	Pos.y=12;
-	DibujarObjetoPosicion(&Pos,"banana");
+	DibujarObjetoPosicion(&Pos,"fantasma");
+    Pos.x=-sin(j)*10;
+	Pos.y=12;
+
+	if (cos(j)>=0){
+        Pos.setAnguloActual(90);
+	}else{
+        Pos.setAnguloActual(-90);
+    }
+    DibujarObjetoPosicion(&Pos,"pacman");
 
 
 
-	glCallList(Escenario);
+glCallList(Escenario);
 	/*
 	for (list<Objetos>::iterator it=listaObjetos.begin();it!=listaObjetos.end();++it){
 	    DibujarObjetoPosicion(it->Pos,it->tipo);

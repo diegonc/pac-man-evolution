@@ -26,6 +26,7 @@
 
 #define MAX_VERTICES 8000 // Max number of vertices (for each object)
 #define MAX_POLYGONS 8000 // Max number of polygons (for each object)
+#include <list>
 
 // Our vertex type
 typedef struct{
@@ -54,5 +55,9 @@ typedef struct {
     mapcoord_type mapcoord[MAX_VERTICES];
     int id_texture;
 } obj_type, *obj_type_ptr;
+
+typedef struct {
+    std::list<obj_type_ptr> Figuras;
+} ObjetoVisual;
 
 #endif
