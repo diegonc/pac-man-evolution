@@ -47,12 +47,19 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 	e_nuevo3->set_posicion(p3);
 	mapa_nuevo->agregar_estructural(e_nuevo3);
 	
+	S_ptr<Estructural> e_nuevo4(new EstructuralPasillo(a));
+	Posicion p4(1.0,1.0);
+	e_nuevo3->set_posicion(p4);
+	mapa_nuevo->agregar_estructural(e_nuevo4);
+	
 	e_nuevo->set_derecha(e_nuevo1);
 	e_nuevo1->set_izquierda(e_nuevo);
 	e_nuevo1->set_derecha(e_nuevo2);
 	e_nuevo2->set_izquierda(e_nuevo1);
 	e_nuevo2->set_derecha(e_nuevo3);
 	e_nuevo3->set_izquierda(e_nuevo2);
+	e_nuevo4->set_arriba(e_nuevo1);
+	e_nuevo1->set_abajo(e_nuevo4);
 	
 	/////////////////////////////////////////////////////////////////////////
 	mapas.push_back( mapa_nuevo );
