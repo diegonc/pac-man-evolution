@@ -6,8 +6,8 @@ Direccion Direccion::Este = Direccion( 2 );
 Direccion Direccion::Oeste = Direccion( 3 );
 */
 const int Direccion::Norte = 0;
-const int Direccion::Este = 1;
-const int Direccion::Sur = 2;
+const int Direccion::Sur = 1;
+const int Direccion::Este = 2;
 const int Direccion::Oeste = 3;
 
 Direccion::Direccion( int i )
