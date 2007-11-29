@@ -1,7 +1,7 @@
 #include "PacMan.h"
 #include <math.h>
 
-#define RADIO_PACMAN	1
+#define RADIO_PACMAN	0.5
 
 PacMan::PacMan(Jugador *jugador):Personaje(jugador,RADIO_PACMAN){
 	this->set_power_up(false);
