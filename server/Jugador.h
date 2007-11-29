@@ -68,7 +68,8 @@ class Jugador{
 		 *  @return id  El personaje del jugador.
 		 */
 		Direccion& get_direccion();
-				
+		
+		void set_direccion(Direccion *dir);		
 		/** @brief Implementa un metodo de acceso para que el jugador coma
 		 *	   la comida que hay en el mapa.
 		 *
