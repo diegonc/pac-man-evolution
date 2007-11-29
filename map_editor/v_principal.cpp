@@ -84,8 +84,8 @@ void VPrincipal::construir(){
  	Modelo* modelo = new Modelo();
   	//Obtengo su mundo
     Mundo* mundo = modelo->get_mundo();
-    //Agrego un nivel de 10 x 10
-    mundo->agregar_nivel(10, 10);
+    //Agrego un nivel de 50 x 50
+    mundo->agregar_nivel(50, 50);
 	mundo->agregar_elemento(PASILLO, 1, 0, 1, ESTE);
 	mundo->agregar_elemento(PASILLO, 1, 0, 4, ESTE);
 	mundo->agregar_elemento(ESQ, 1, 0, 7, SUR);
