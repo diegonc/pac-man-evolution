@@ -6,6 +6,7 @@
 #include <gtk/gtk.h>
 #include "definiciones.h"
 #include "../common/smart_pointer.h"
+#include <list>
 
 /* CLASE PANEL_ELEMS: Clase que representa un panel que contiene elementos
    simbolizados por iconos seleccionables. */
@@ -18,6 +19,10 @@ class PanelElems {
    	GtkWidget* swindow; //Scrolled window para poder hacer scroll de la lista de elems
     GtkWidget* icons_view; //Widget utilizado para mostrar a los iconos de los elementos
     GtkListStore* lista_elems; //List Store con la lista de los elementos a mostrar
+    std::list<TipoElem> elementos; //Lista de elementos contenidos en el panel
+   	std::list<Orientacion> orientaciones; //Lista paralela de orientaciones de los elementos anteriores
+    TipoElem elem_select; //Tipo del elemento seleccionado
+    Orientacion orient_select; //Orientacion del elemento seleccionado
    
    public:
 
@@ -27,14 +32,17 @@ class PanelElems {
 	//Get Widget: Obtiene la representacion del panel como widget.
 	GtkWidget* get_widget() const;
    
-    //Agregar Elemento: Agrega un elemento al panel segun la ruta pasada por parametro
-    void agregar_elemento(char* ruta);
+    //Agregar Elemento: Agrega un elemento con tipo y orientacion e imagen segun los datos pasados por parametro
+    void agregar_elemento(TipoElem tipo, Orientacion orientacion, char* ruta_imagen);
 
    private:
 	
 	/* Crear lista elems: Se encarga de crear la estructura de datos y la vista
    	   de la lista de elementos */
     void crear_lista_elems();
+   
+    /* Item Seleccionado: Determina la accion a realizar cuando se selecciona un item particular del panel */
+    static void item_seleccionado(GtkIconView *iconview, GtkTreePath *path, gpointer user_data);
    
 };
 
