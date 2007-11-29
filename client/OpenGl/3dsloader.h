@@ -26,5 +26,4 @@
  *
  *********************************************************/
 
-char Load3DS (obj_type_ptr ogg,const char *filename);
-
+char Load3DS (ObjetoVisual* Objeto,const char *p_filename);

@@ -37,19 +37,27 @@
 //#include <windows.h>										// We Need The Windows Header
 //#else														// Otherwhise
 #include <stdio.h>											// We Only Need The Standard IO Header
-//#endif														// And...
+#include <GL/gl.h>												// And Obviously The OpenGL Header
+#include <GL/glu.h>
 #include <SDL.h>											// The SDL Header Of Course :)
+#include "ObjetoVisual.h"											// The SDL Header Of Course :)
 
 
 //Defines
 #define APP_NAME	"NeHe OpenGL Basecode - SDL port by SnowDruid" // The App Name And Caption
 #define APP_VERSION	"0.2"
 
-#define SCREEN_W	640										// Screen Width Of Our App Is 640 Points
-#define SCREEN_H	480										// SCreen Height Of Our App Is 480 Points
-#define SCREEN_BPP	16										// Screen Depth Of Our App Is 16 bit (65536 Colors)
+#define SCREEN_W	1280										// Screen Width Of Our App Is 640 Points
+#define SCREEN_H	800										// SCreen Height Of Our App Is 480 Points
+#define SCREEN_BPP	32										// Screen Depth Of Our App Is 16 bit (65536 Colors)
 
 #define LOG_FILE	"log.txt"								// The Name Of The Log File
+
+class ObjTextura{
+    public:
+        GLuint textura;
+        ObjetoVisual Objeto3d;
+};
 
 
 // Data Types
@@ -80,16 +88,23 @@ public:
     Velocid=0;
   }
 
+  void setAnguloActual(int AnguloActual){
+      while (AnguloActual<0)
+        AnguloActual+=360;
+
+      AngActual=AnguloActual;
+  }
+
   void girarDerecha(){
-    AngActual=AngAGirar;
+    //AngActual=AngAGirar;
     AngAGirar+=90;
   }
 
   void girarIzquierda(){
     if (AngAGirar<90){
         AngAGirar+=360;
+        AngActual+=360;
     }
-    AngActual=AngAGirar;
     AngAGirar-=90;
   }
 
