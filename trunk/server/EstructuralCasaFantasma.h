@@ -6,7 +6,7 @@
 class EstructuralCasaFantasma : public EstructuralUnitario{
 				
 	public:
-		EstructuralCasaFantasma();
+		EstructuralCasaFantasma(Posicion &p);
 	
 		void ingresar(Jugador& jugador);
 	

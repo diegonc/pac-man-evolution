@@ -1,7 +1,9 @@
 #include "EstructuralUnitario.h"
 #include <iostream>
 
-EstructuralUnitario::EstructuralUnitario(){}
+EstructuralUnitario::EstructuralUnitario(Posicion &p){
+	this->set_posicion(p);
+}
 
 S_ptr<EstructuralUnitario> EstructuralUnitario::get_vecino(Direccion &direccion){
 	if(direccion.get_dir() == Direccion::Norte)

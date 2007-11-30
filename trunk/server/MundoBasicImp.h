@@ -2,22 +2,22 @@
 #define __MUNDOBASICIMP_H__
 
 #include <list>
-#include "Mundo.h"
+#include "MundoBajoNIvel.h"
 #include "MapaBajoNivel.h"
 #include "../common/smart_pointer.h"
 #include <string>
 
-class MundoBasicImp : public Mundo
+class MundoBasicImp : public MundoBajoNIvel
 {
 	public:
 	//private:
 		MundoBasicImp(std::string ruta_mundo);
 		~MundoBasicImp();
 
-		//static S_ptr<Mundo> instancia;
+		//static S_ptr<MundoBajoNIvel> instancia;
 	
 	//public:
-		//static S_ptr<Mundo> get_instancia();
+		//static S_ptr<MundoBajoNIvel> get_instancia();
 		
 	private:
 		std::list<S_ptr<MapaBajoNivel> > mapas;

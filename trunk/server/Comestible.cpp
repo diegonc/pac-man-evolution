@@ -7,6 +7,7 @@ const char Comestible::frutita 	= 2;
 Comestible::Comestible(int puntos, Posicion &pos){
 	this->puntaje = puntos;	
 	this->p = pos;
+	std::cout << this->p<<"\n";
 }
 	
 Comestible::~Comestible(){}

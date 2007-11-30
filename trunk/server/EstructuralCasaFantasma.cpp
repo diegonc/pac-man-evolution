@@ -2,7 +2,7 @@
 
 #define TIPO_CASA_FANTASMA	1
 
-EstructuralCasaFantasma::EstructuralCasaFantasma(){}
+EstructuralCasaFantasma::EstructuralCasaFantasma(Posicion &p):EstructuralUnitario(p){}
 	
 void EstructuralCasaFantasma::ingresar(Jugador& jugador){}
 	

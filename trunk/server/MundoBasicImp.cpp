@@ -1,7 +1,7 @@
 #include "MundoBasicImp.h"
 #include "MapImpSet.h"
 
-//S_ptr<Mundo> MundoBasicImp::instancia;
+//S_ptr<MundoBajoNIvel> MundoBasicImp::instancia;
 
 #include "EstructuralPasillo.h"
 #include "EstructuralUnitario.h"
@@ -24,32 +24,31 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 
 	Comestible::Enum_Comestible  a = Comestible::quesito;
 	Comestible::Enum_Comestible  b = Comestible::power_up;
-
-	S_ptr<EstructuralUnitario> e_nuevo(new EstructuralPasillo(a));
+	
 	Posicion p(0.0,0.0);
+	S_ptr<EstructuralUnitario> e_nuevo(new EstructuralPasillo(a,p));
+	
 	e_nuevo->set_posicion(p);
 	mapa_nuevo->agregar_estructural(e_nuevo);
 
-	//S_ptr<EstructuralUnitario> e_nuevo1(new EstructuralPasillo(b));
-	S_ptr<EstructuralUnitario> e_nuevo1(new EstructuralPasillo(a));
 	Posicion p1(1.0,0.0);
-	e_nuevo1->set_posicion(p1);
+	//S_ptr<EstructuralUnitario> e_nuevo1(new EstructuralPasillo(b));
+	S_ptr<EstructuralUnitario> e_nuevo1(new EstructuralPasillo(a, p1));
 	mapa_nuevo->agregar_estructural(e_nuevo1);
 
-
-	S_ptr<EstructuralUnitario> e_nuevo2(new EstructuralPasillo(a));
 	Posicion p2(2.0,0.0);
-	e_nuevo2->set_posicion(p2);
+	S_ptr<EstructuralUnitario> e_nuevo2(new EstructuralPasillo(a, p2));
+		
 	mapa_nuevo->agregar_estructural(e_nuevo2);
 
-	S_ptr<EstructuralUnitario> e_nuevo3(new EstructuralPasillo(a));
 	Posicion p3(3.0,0.0);
-	e_nuevo3->set_posicion(p3);
+	S_ptr<EstructuralUnitario> e_nuevo3(new EstructuralPasillo(a, p3));
+		
 	mapa_nuevo->agregar_estructural(e_nuevo3);
 
-	S_ptr<EstructuralUnitario> e_nuevo4(new EstructuralPasillo(a));
 	Posicion p4(1.0,1.0);
-	e_nuevo4->set_posicion(p4);
+	S_ptr<EstructuralUnitario> e_nuevo4(new EstructuralPasillo(a, p4));
+	
 	mapa_nuevo->agregar_estructural(e_nuevo4);
 
 	e_nuevo->set_derecha(e_nuevo1);
@@ -70,10 +69,10 @@ MundoBasicImp::~MundoBasicImp()
 	this->mapas.clear();
 }
 /*
-S_ptr<Mundo> MundoBasicImp::get_instancia()
+S_ptr<MundoBajoNIvel> MundoBasicImp::get_instancia()
 {
 	if( instancia.es_nulo() )
-		instancia = S_ptr<Mundo>(new MundoBasicImp());
+		instancia = S_ptr<MundoBajoNIvel>(new MundoBasicImp());
 
 	return instancia;
 }
