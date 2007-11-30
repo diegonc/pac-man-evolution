@@ -54,7 +54,8 @@ void ModeloServidor::run(){
 	
 	Tipo_Jugador j;
 	
-	for(int i = 0; this->mundo->cantidad_niveles(); i++ ){ 
+	std::cout<< "Hay " << this->mundo->cantidad_niveles() << " niveles\n";
+	for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
 		preparar_partida();
 		
 		while(!this->parar){
