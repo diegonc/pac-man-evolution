@@ -12,7 +12,10 @@ class KeyOp : public Operacion
 		/** @brief Id de cliente que presiona la tecla. */
 		int id;
 	
-		/*TODO PONER STATICS PARA HACER KEYOP::ARRIBA */
+		static const int arriba;
+		static const int abajo;
+		static const int derecha;
+		static const int izquierda;
 
 		/** @brief Tecla presionada
 		 *
