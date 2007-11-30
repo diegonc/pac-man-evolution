@@ -25,9 +25,10 @@ class MapaImpSet : public Mapa{
 		Tipo_Estructural estructural;
 
 
-		bool tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<Estructural> vecino, Jugador& jugador);
+		//bool tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<Estructural> vecino, Jugador& jugador);
 
-		void set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordenada& dim_final, Direccion& dir);
+		bool tocando(Jugador &jugador, Posicion &pnueva);
+		//void set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordenada& dim_final, Direccion& dir);
 
 	public:
 		class CompSptrEstructuralPosicion{

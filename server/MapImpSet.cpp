@@ -36,16 +36,16 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 		//si cayeron distinto, me fijo si podia moverse para ese lado
 		S_ptr<Estructural> vecino = donde_estaba->get_vecino(jugador.get_direccion());
 
-		Tipo_Coordenada dim_actual;
+		/*Tipo_Coordenada dim_actual;
 		Tipo_Coordenada dim_final;
+		//paso a una dimension el problema
 		set_dim(posicion_jugador, dim_actual, dim_final, jugador.get_direccion() );
-		if( !tocando( dim_actual, dim_final, vecino, jugador) ){
-			posicion_jugador.incrementar(distancia,jugador.get_direccion());
-			//Aca discretizo los cuadrantes.
-			//Si cayo en el mismo estructural.
+		//si no esta tocando alguno que es pared
+		if( !tocando( dim_actual, dim_final, vecino, jugador) ){*/
+		posicion_jugador.incrementar(distancia,jugador.get_direccion());
+		if( !tocando( jugador, posicion_jugador) ){
 			ComparadorPosicion comp;
 			if(! comp(posicion_jugador, jugador.get_posicion()) ){
-
 				//if( !vecino.es_nulo() ){
 					S_ptr<Comestible> com = vecino->get_comida();
 					vecino->ingresar(jugador);
@@ -62,20 +62,44 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 
 	}
 }
-bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
+
+bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
+	S_ptr<Estructural> e_critico;
+		
+	Tipo_Coordenada x0 = pnueva.get_x();
+	Tipo_Coordenada y0 = pnueva.get_y();
+	double phi = 0.0;
+	double radio = jugador.get_personaje()->get_radio();
+	bool toca = false;
+	while( phi < 6.28 && !toca/*2Pi*/ ){
+		Posicion p(	radio * cos(phi) + x0, radio * sin(phi) + y0 );
+		e_critico = get_estructural(p);
+		if( e_critico.es_nulo() ){
+			toca = true;
+		}
+		else
+			phi += 0.5;
+	}
+	//exit(0);
+	return toca;
+}
+/*
+bool MapaImpSet::tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
 	
 	Tipo_Coordenada result = dim_final - dim_actual;
-		
-	if(result < 0)
-		result = -1 * result;
+	Tipo_Coordenada mod_result;
+	double radio = jugador.get_personaje()->get_radio();
 	
-	if ( (result < jugador.get_personaje()->get_radio()) && vecino.es_nulo() ){
+	if(mod_result < 0)
+		mod_result = -1 * mod_result;
+	
+	
+	if ( (mod_result < radio ) && vecino.es_nulo() )
+		//aca entra si a donde se mueve es nulo y si la distancia entre los casilleros
+		//y el centro del pacman es menor que el radio (por lo tanto choca)
 		return true;
-			
-
-	}else{
-		return false;	
-
+	else{
+		return false;
 	}
 		
 }
@@ -99,7 +123,7 @@ void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordena
 				dim_actual = p.get_x();
 				break;
 	}
-}
+}*/
 void MapaImpSet::agregar_estructural(S_ptr<Estructural> e){
 
 	estructurales.insert(e);

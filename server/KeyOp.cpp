@@ -13,9 +13,9 @@
  */
 void KeyOp::ejecutar(Modelo &modelo)
 {
-	std::cout << "Pulso la tecla " << this->flecha << "\n";
+	//std::cout << "Pulso la tecla " << this->flecha << "\n";
 	S_ptr<Jugador> jugador = modelo.get_jugador(this->id);
-	std::cout << jugador->get_direccion() <<" -->";
+	//std::cout << jugador->get_direccion() <<" -->";
 	jugador->get_direccion().combinar(flecha);
-	std::cout << jugador->get_direccion() <<"\n";
+	//std::cout << jugador->get_direccion() <<"\n";
 }
