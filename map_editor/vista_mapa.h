@@ -10,9 +10,10 @@
 #include "control_seleccion.h"
 #include "../common/smart_pointer.h"
 
-/* CLASE VISTA_MAPA: Clase que representa la interfaz grafica del mapa en el editor. */
+/* CLASE VISTA_MAPA: Clase que representa la interfaz grafica del mapa en el editor. 
+   Observa al panel de niveles para saber cuando cambiar de nivel. */
 
-class VistaMapa {
+class VistaMapa : public Observador {
    
    private:
 
@@ -20,6 +21,8 @@ class VistaMapa {
    	GtkWidget* swindow; //Scrolled window para poder scrollear el mapa
 	GtkWidget* tabla; //Tabla que contiene los casilleros del mapa
     GtkWidget*** imagenes; //Matriz de imagenes contenidas en la tabla
+   	GtkWidget* vbox; //Widget de uso interno
+   	GtkWidget* hbox; //Widget de uso interno
     S_ptr<Nivel> nivel; //Nivel que contiene el mapa a representar
    
    public:
@@ -33,10 +36,18 @@ class VistaMapa {
 	//Get Widget: Obtiene la representacion del mapa como widget.
 	GtkWidget* get_widget() const;
    
-   	//Dibujar: Recorre todos los casilleros del mapa y los dibuja segun su contenido.
-    void dibujar();
+   	//Actualizar: Redibuja el mapa cuando la seleccion de nivel cambia.
+	virtual void actualizar(Observable * observable, void * param);
    
    private:
+	
+    //Redibujar: Redibuja el mapa con el contenido del nivel pasado por parametro
+   	
+    void redibujar(S_ptr<Nivel> nivel);
+   
+    //Dibujar: Recorre todos los casilleros del mapa y los dibuja segun su contenido.
+    
+    void dibujar();
 	   
    /* Dibujar Elemento: Dibuja el elemento pasado por parametro en el mapa, segun sus posiciones y su tamanio. */
 

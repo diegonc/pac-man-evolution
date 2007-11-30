@@ -94,8 +94,16 @@ void VPrincipal::construir(){
     Mundo* mundo = modelo->get_mundo();
     //Agrego un nivel de 50 x 50
     mundo->agregar_nivel(50, 50);
+	//Agrego uno de 10 x 10
+	mundo->agregar_nivel(10,10);
+	
+	this->panel_mundo->agregar_nivel(mundo->get_nivel(1), "nivel 50 x 50");
+	this->panel_mundo->agregar_nivel(mundo->get_nivel(2), "nivel 10 x 10");
 	
   	this->vista_mapa = new VistaMapa(mundo->get_nivel(1));
+	
+	this->panel_mundo->agregar_observador(this->vista_mapa);
+	
 	gtk_container_add (GTK_CONTAINER (this->hbox_princ), this->vista_mapa->get_widget());
 	
 	delete(modelo);

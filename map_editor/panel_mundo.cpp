@@ -18,11 +18,45 @@ PanelMundo::PanelMundo(){
 	this->crear_panel_botones();
 	
 }
+    
+//Destructor: Libera los recursos consumidos por el panel.
+
+PanelMundo::~PanelMundo(){
+	this->niveles.clear();
+}
 
 //Get Widget:
 
 GtkWidget* PanelMundo::get_widget() const{
 	return this->frame;
+}
+
+//Agregar Nivel:
+
+void PanelMundo::agregar_nivel(S_ptr<Nivel> nivel, char* nombre){
+	GtkTreeIter    iter;
+	
+	gtk_list_store_append (this->lista_mapas, &iter);
+	gtk_list_store_set (this->lista_mapas, &iter, 0, this->niveles.size()+1, 1, nombre, -1);
+	
+	this->niveles.push_back(nivel);
+	
+}
+
+//Item seleccionado:
+
+void PanelMundo::item_seleccionado(GtkTreeView *treeview, gpointer user_data){
+		GtkTreeViewColumn* columna = NULL;
+		GtkTreePath* path = NULL;
+		PanelMundo* panel = (PanelMundo*) user_data;
+		gtk_tree_view_get_cursor (treeview, &path, &columna);
+		if (path != NULL){
+			int* int_path = gtk_tree_path_get_indices (path);
+			S_ptr<Nivel> nivel = panel->niveles[int_path[0]];
+			gtk_tree_path_free(path);
+			panel->set_cambio();
+			panel->avisar_observadores(&nivel);
+		}
 }
 
 /* Crear lista mapas: */
@@ -54,16 +88,8 @@ void PanelMundo::crear_lista_mapas(){
 											   renderer,
 											   "text", 1,
 											   NULL);
-	
-	GtkTreeIter    iter;
-	
-	for (int i=0; i<20; i++){
-		gtk_list_store_append (this->lista_mapas, &iter);
-		gtk_list_store_set (this->lista_mapas, &iter,
-						  0, i,
-						  1, "mapa.xml",
-						  -1);
-	}
+											   
+	g_signal_connect(G_OBJECT(this->lista_view), "cursor-changed", G_CALLBACK(item_seleccionado), this);
 }
 
 /* Crear panel botones: */
