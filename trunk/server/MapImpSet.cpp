@@ -62,26 +62,22 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 
 	}
 }
-bool MapaImpSet::tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
-
+bool MapaImpSet::tocando(Tipo_Coordenada &dim_actual, Tipo_Coordenada &dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
+	
 	Tipo_Coordenada result = dim_final - dim_actual;
-
+		
 	if(result < 0)
 		result = -1 * result;
-
+	
 	if ( (result < jugador.get_personaje()->get_radio()) && vecino.es_nulo() ){
-		//estoy mas cerca de lo q puedo y no existe el otro
-		//choque
 		return true;
-	}/*else if(result < jugador.get_personaje()->get_radio()){
-		//estoy justito y al lado existe
-		//debo verificar
-		return tocando(dim_actual, (dim_final - dim_actual)>0?dim_final+1:dim_final-1 , vecino->get_vecino(jugador.get_direccion()), jugador);
-	}*/else{
-		//estoy bien
-		return false;
-	}
+			
 
+	}else{
+		return false;	
+
+	}
+		
 }
 void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordenada& dim_final, Direccion& dir){
 
