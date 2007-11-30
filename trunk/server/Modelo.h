@@ -15,7 +15,7 @@
 		   el tiempo.
  */
 
-class Modelo : public Thread{
+class ModeloServidor : public Thread{
 	typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	private:
@@ -23,15 +23,15 @@ class Modelo : public Thread{
 	
 		std::list<Tipo_Jugador> jugadores;
 		
-		Modelo(Modelo &m);
+		ModeloServidor(ModeloServidor &m);
 		
 		void cargar_modelo(std::string ruta_mundo);
 	
 	public:
 		
-		Modelo(std::string ruta_mundo);
+		ModeloServidor(std::string ruta_mundo);
 
-		~Modelo();	
+		~ModeloServidor();	
 	
 		void agregar_jugador(Tipo_Jugador jugador);
 			

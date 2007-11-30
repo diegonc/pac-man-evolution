@@ -1,5 +1,5 @@
 #include "KeyOp.h"
-#include "Modelo.h"
+#include "ModeloServidor.h"
 #include "../common/smart_pointer.h"
 #include "Direccion.h"
 #include "Jugador.h"
@@ -11,7 +11,7 @@
  *    -# Calcula la nueva direccion.
  *    -# Mueve el personaje.
  */
-void KeyOp::ejecutar(Modelo &modelo)
+void KeyOp::ejecutar(ModeloServidor &modelo)
 {
 	//std::cout << "Pulso la tecla " << this->flecha << "\n";
 	S_ptr<Jugador> jugador = modelo.get_jugador(this->id);
