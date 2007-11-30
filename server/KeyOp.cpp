@@ -4,13 +4,11 @@
 #include "Direccion.h"
 #include "Jugador.h"
 
-/**
- *  La ejecucion de la operacion lleva a cabo los siguientes pasos:
- *    -# Obtiene jugador segun id.
- *    -# Obtiene su direccion.
- *    -# Calcula la nueva direccion.
- *    -# Mueve el personaje.
- */
+const int arriba 	= 	0;
+const int abajo  	= 	2;
+const int derecha	= 	3;
+const int izquierda = 	4;
+
 void KeyOp::ejecutar(ModeloServidor &modelo)
 {
 	//std::cout << "Pulso la tecla " << this->flecha << "\n";
