@@ -62,7 +62,7 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 	e_nuevo1->set_abajo(e_nuevo4);
 
 	/////////////////////////////////////////////////////////////////////////
-	mapas.push_back( mapa_nuevo );
+	agregar_mapa( mapa_nuevo );
 }
 
 MundoBasicImp::~MundoBasicImp()

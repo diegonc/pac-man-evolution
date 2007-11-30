@@ -64,8 +64,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 		}
 
 	}
-	this->set_cambio();
-		this->avisar_observadores(NULL);
+	
 }
 
 bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
