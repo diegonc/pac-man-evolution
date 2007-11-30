@@ -10,7 +10,7 @@ class EstructuralPasillo : public EstructuralUnitario{
 		S_ptr<Comestible> comida;
 			
 	public:
-		EstructuralPasillo(Comestible::Enum_Comestible &tipo);
+		EstructuralPasillo(Comestible::Enum_Comestible &tipo, Posicion &p);
 	
 		void ingresar(Jugador& jugador);
 	

@@ -22,7 +22,7 @@ class EstructuralUnitario{
 	
 	public:
 		
-		EstructuralUnitario();	
+		EstructuralUnitario(Posicion &p);	
 	
 		virtual ~EstructuralUnitario();
 	

@@ -2,12 +2,12 @@
 
 #include "ComestibleFactory.h"
 
-EstructuralPasillo::EstructuralPasillo(Comestible::Enum_Comestible &tipo){
+EstructuralPasillo::EstructuralPasillo(Comestible::Enum_Comestible &tipo, Posicion &p):EstructuralUnitario(p){
 	ComestibleFactory fabrica;
-	Posicion p = this->get_posicion();
-	p.set_x(p.get_x() + 0.5);
-	p.set_y(p.get_y() + 0.5);
-	S_ptr<Comestible> comida_a_asignar(fabrica.construir(tipo,p) );
+	Posicion pos = p;
+	pos.set_x(p.get_x() + 0.5);
+	pos.set_y(p.get_y() + 0.5);
+	S_ptr<Comestible> comida_a_asignar(fabrica.construir(tipo,pos) );
 	
 	this->comida = comida_a_asignar;
 }

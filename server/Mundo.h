@@ -3,12 +3,12 @@
 
 #include "MapaBajoNivel.h"
 
-class Mundo
+class MundoBajoNIvel
 {
 	public:	
 		virtual MapaBajoNivel& get_mapa_activo() = 0;
 	
-		virtual ~Mundo(){}
+		virtual ~MundoBajoNIvel(){}
 };
 
 #endif /* __MUNDO_H__ */
