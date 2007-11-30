@@ -426,10 +426,10 @@ void addPiso(double xIn,double xFin,double yIn,double yFin){//,float color[]){
 }
 
 void DrawEscenario(){
-    typedef std::list<S_ptr<Estructural> > listaEstruc;
+    typedef std::list<S_ptr<EstructuralUnitario> > listaEstruc;
     listaEstruc Estructurales=mod.get_mundo().get_mapa_activo().get_estructurales();
-    S_ptr<Estructural> est;
-    S_ptr<Estructural> vecino;
+    S_ptr<EstructuralUnitario> est;
+    S_ptr<EstructuralUnitario> vecino;
     Posicion PosEst;
     float xIn;
     float xFin;
@@ -574,23 +574,26 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
        glEndList();
 	}
 
+   std::list< S_ptr<Jugador> >::const_iterator jugadores;
+   S_ptr<Jugador> jp;
+   for(jugadores = mod.get_jugadores().begin();jugadores != mod.get_jugadores().end(); ++jugadores){
+       jp = *jugadores;
+       if(jp->get_id() == 1){
+            Posicion p=jp->get_posicion();
+            P->x=p.get_x()*4;
+            P->y=-p.get_y()*4;
+            P->setAnguloActual(getAnguloDireccion(jp->get_direccion()));
+            DibujarObjetoObservadorPosicion(P,"pacman");
+       }
+       else{
 
-    S_ptr<Jugador> jp=mod.get_jugador(1);
-    Posicion p=jp->get_posicion();
-
-
-    P->x=p.get_x()*4;
-    P->y=-p.get_y()*4;
-
-    P->setAnguloActual(getAnguloDireccion(jp->get_direccion()));
-    DibujarObjetoObservadorPosicion(P,"pacman");
-
-	Posicion_Graf Pos;
-	jp=mod.get_jugador(2);
-	Posicion p2=jp->get_posicion();
-	Pos.x=p2.get_x()*4;
-    Pos.y=-p2.get_y()*4;
-	DibujarObjetoPosicion(&Pos,"fantasma");
+         Posicion_Graf Pos;
+	      Posicion p2=jp->get_posicion();
+      	Pos.x=p2.get_x()*4;
+         Pos.y=-p2.get_y()*4;
+      	DibujarObjetoPosicion(&Pos,"fantasma");
+      }  
+   }
 	/*
     Pos.x=-sin(j)*10;
 	Pos.y=12;
