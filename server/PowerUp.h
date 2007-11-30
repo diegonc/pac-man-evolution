@@ -8,7 +8,7 @@
 
 class PowerUp : public Comestible{
 	public:
-		PowerUp();
+		PowerUp(Posicion &p);
 		
 		~PowerUp();
 	

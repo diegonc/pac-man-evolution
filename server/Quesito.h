@@ -7,7 +7,7 @@
 
 class Quesito : public Comestible{
 	public:
-		Quesito():Comestible(PUNTOS_QUESO){}
+		Quesito(Posicion &p):Comestible(PUNTOS_QUESO, p){}
 		
 		~Quesito(){}
 		
