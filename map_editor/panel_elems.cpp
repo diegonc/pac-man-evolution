@@ -8,8 +8,13 @@
 
 PanelElems::PanelElems(char* titulo){
 	this->frame = gtk_frame_new(titulo);
-	
 	this->crear_lista_elems();
+}
+
+//Destructor:
+
+PanelElems::~PanelElems(){
+	this->items.clear();
 }
 
 //Get Widget:
@@ -36,7 +41,7 @@ void PanelElems::crear_lista_elems(){
 	
 	gtk_icon_view_set_selection_mode(GTK_ICON_VIEW(this->icons_view), GTK_SELECTION_BROWSE);
 	
-	g_signal_connect(G_OBJECT(this->icons_view), "item-activated", G_CALLBACK(item_seleccionado), NULL);
+	g_signal_connect(G_OBJECT(this->icons_view), "selection-changed", G_CALLBACK(item_seleccionado), this);
 }
 
 //Agregar Elemento:
@@ -60,14 +65,24 @@ void PanelElems::agregar_elemento(TipoElem tipo, Orientacion orientacion, char* 
 	gtk_list_store_set(this->lista_elems, &iter, 0, pixbuf,-1);
 	g_object_unref(pixbuf);
 	
-	this->elementos.push_back(tipo);
-	this->orientaciones.push_back(orientacion);
+	S_ptr<ItemElem> item (new ItemElem(tipo, orientacion, ruta_imagen));
+	this->items.push_back(item);
 	
 }
 
 //Item seleccionado:
 
-void PanelElems::item_seleccionado(GtkIconView *iconview, GtkTreePath *path, gpointer user_data){
-		int* int_path = gtk_tree_path_get_indices (path);
-		std::cout << int_path[0] << std::endl;
+void PanelElems::item_seleccionado(GtkIconView *iconview, gpointer user_data){
+		GtkCellRenderer* cell = NULL;
+		GtkTreePath* path = NULL;
+		PanelElems* panel = (PanelElems*) user_data;
+		gtk_icon_view_get_cursor (iconview, &path, &cell);
+		if (path != NULL){
+			int* int_path = gtk_tree_path_get_indices (path);
+			S_ptr<ItemElem> item = panel->items[int_path[0]];
+			panel->seleccionado = item;
+			gtk_tree_path_free(path);
+			panel->set_cambio();
+			panel->avisar_observadores(&item);
+		}
 }
