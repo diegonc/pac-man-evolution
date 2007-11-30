@@ -3,6 +3,9 @@
 #include <math.h>
 #include <iostream>
 
+#define INCREMENTO_PHI 	0.5
+#define DOS_PI			6.28
+
 MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto){
 	//TODO : VALIDAR ESTO!!!!!!
 	this->ancho = ancho;
@@ -71,14 +74,14 @@ bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
 	double phi = 0.0;
 	double radio = jugador.get_personaje()->get_radio();
 	bool toca = false;
-	while( phi < 6.28 && !toca/*2Pi*/ ){
+	while( phi < DOS_PI && !toca/*2Pi*/ ){
 		Posicion p(	radio * cos(phi) + x0, radio * sin(phi) + y0 );
 		e_critico = get_estructural(p);
 		if( e_critico.es_nulo() ){
 			toca = true;
 		}
 		else
-			phi += 0.5;
+			phi += INCREMENTO_PHI;
 	}
 	//exit(0);
 	return toca;
