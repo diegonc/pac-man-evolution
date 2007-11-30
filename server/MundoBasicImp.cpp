@@ -13,6 +13,7 @@
 #include <iostream>
 MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 {
+	this->cant_niveles = 0;
 	S_ptr<MapaBajoNivel> mapa_nuevo = new MapaImpSet(1,4);
 	/************************************************************************
 		CREO PARA PROBAR UN MAPITA DEL ESTILO
@@ -83,4 +84,8 @@ MapaBajoNivel& MundoBasicImp::get_mapa_activo()
 }
 void MundoBasicImp::agregar_mapa(S_ptr<MapaBajoNivel> mapa){
 	mapas.push_back(mapa);
+	this->cant_niveles++;
+}
+int MundoBasicImp::cantidad_niveles(){
+	return this->cant_niveles;
 }

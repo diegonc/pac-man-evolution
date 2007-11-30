@@ -39,6 +39,8 @@ class Personaje{
 		
 		virtual Enum_Personaje get_tipo() = 0;
 	
+		virtual int get_velocidad() = 0;
+	
 };
 
 #endif /* __PERSONAJE_H__ */

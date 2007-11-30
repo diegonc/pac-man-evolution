@@ -7,6 +7,7 @@
 #include "Posicion.h"
 #include <list>
 #include "Objeto.h"
+#include "../common/observable.h"
 
 /** @brief Interfaz de acceso al mapa.
  *
@@ -14,7 +15,7 @@
  *  que interactuan conforman un mapa.
  *  La interfaz MapaBajoNivel se define para permitir el acceso a estor elementos. 
  */
-class MapaBajoNivel
+class MapaBajoNivel : public Observable
 {
 	public:
 		

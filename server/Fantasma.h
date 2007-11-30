@@ -12,6 +12,9 @@ class Fantasma : public Personaje{
 		void colision(Jugador& jugador);
 	
 		Enum_Personaje get_tipo();
+	
+	
+		int get_velocidad();
 };
 
 #endif /*__FANTASMA_H__*/

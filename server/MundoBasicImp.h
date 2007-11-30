@@ -9,23 +9,20 @@
 
 class MundoBasicImp : public MundoBajoNivel
 {
-	public:
-	//private:
-		MundoBasicImp(std::string ruta_mundo);
-		~MundoBasicImp();
-
-		//static S_ptr<MundoBajoNivel> instancia;
-	
-	//public:
-		//static S_ptr<MundoBajoNivel> get_instancia();
-		
 	private:
 		std::list<S_ptr<MapaBajoNivel> > mapas;
+		int cant_niveles;
 
 	public:
+		MundoBasicImp(std::string ruta_mundo);
+		
+		~MundoBasicImp();
+	
 		MapaBajoNivel& get_mapa_activo();
 	
 		void agregar_mapa(S_ptr<MapaBajoNivel> mapa);
+	
+		int cantidad_niveles();
 };
 
 #endif /* __MUNDOBASICIMP_H__ */

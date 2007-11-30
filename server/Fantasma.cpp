@@ -2,7 +2,9 @@
 #include "PacMan.h"
 #include <math.h>
 
-#define RADIO_FANTASMA		1
+#define VELOCIDAD_FANTASMA_INICIAL		3	
+#define VELOCIDAD_FANTASMA_PW			5
+#define RADIO_FANTASMA					1
 
 
 Fantasma::Fantasma(Jugador *jugador):Personaje(jugador, RADIO_FANTASMA){}
@@ -46,3 +48,4 @@ Personaje::Enum_Personaje Fantasma::get_tipo(){
 	
 	return tipo;
 }
+int Fantasma::get_velocidad(){}
