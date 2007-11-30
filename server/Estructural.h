@@ -7,24 +7,24 @@
 #include "Jugador.h"
 #include "Direccion.h"
 
-class Estructural{
+class EstructuralUnitario{
 		
 	private:
 	
-		Estructural(Estructural &c);
+		EstructuralUnitario(EstructuralUnitario &c);
 	
-		S_ptr<Estructural> arriba;
-		S_ptr<Estructural> abajo;
-		S_ptr<Estructural> derecha;
-		S_ptr<Estructural> izquierda;
+		S_ptr<EstructuralUnitario> arriba;
+		S_ptr<EstructuralUnitario> abajo;
+		S_ptr<EstructuralUnitario> derecha;
+		S_ptr<EstructuralUnitario> izquierda;
 	
 		Posicion posicion;
 	
 	public:
 		
-		Estructural();	
+		EstructuralUnitario();	
 	
-		virtual ~Estructural();
+		virtual ~EstructuralUnitario();
 	
 		virtual void ingresar(Jugador& jugador) = 0;
 		
@@ -32,17 +32,17 @@ class Estructural{
 	
 		virtual S_ptr<Comestible> get_comida();
 		
-		void set_arriba(S_ptr<Estructural> e);
-		void set_abajo(S_ptr<Estructural> e);
-		void set_derecha(S_ptr<Estructural> e);
-		void set_izquierda(S_ptr<Estructural> e);
+		void set_arriba(S_ptr<EstructuralUnitario> e);
+		void set_abajo(S_ptr<EstructuralUnitario> e);
+		void set_derecha(S_ptr<EstructuralUnitario> e);
+		void set_izquierda(S_ptr<EstructuralUnitario> e);
 			
-		S_ptr<Estructural> get_arriba();
-		S_ptr<Estructural> get_abajo();
-		S_ptr<Estructural> get_derecha();
-		S_ptr<Estructural> get_izquierda();
+		S_ptr<EstructuralUnitario> get_arriba();
+		S_ptr<EstructuralUnitario> get_abajo();
+		S_ptr<EstructuralUnitario> get_derecha();
+		S_ptr<EstructuralUnitario> get_izquierda();
 			
-		S_ptr<Estructural> get_vecino(Direccion &dir);
+		S_ptr<EstructuralUnitario> get_vecino(Direccion &dir);
 		
 		void set_posicion(Posicion &p);
 		

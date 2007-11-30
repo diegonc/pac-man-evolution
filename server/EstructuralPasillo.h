@@ -3,9 +3,9 @@
 
 #include "../common/smart_pointer.h"
 #include "Comestible.h"
-#include "Estructural.h"
+#include "EstructuralUnitario.h"
 
-class EstructuralPasillo : public Estructural{
+class EstructuralPasillo : public EstructuralUnitario{
 	private:
 		S_ptr<Comestible> comida;
 			

@@ -8,7 +8,7 @@
 #include <list>
 #include "Jugador.h"
 #include "Objeto.h"
-#include "Estructural.h"
+#include "EstructuralUnitario.h"
 
 /** @brief Esta clase define el modelo.
 		   Hereda de thread, ya que se debe actualizar automaticamente todo

@@ -31,13 +31,13 @@ MapaImpSet::~MapaImpSet(){
 
 void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 	Posicion posicion_jugador = jugador.get_posicion();
-	S_ptr<Estructural> donde_estaba = this->get_estructural(posicion_jugador);
+	S_ptr<EstructuralUnitario> donde_estaba = this->get_estructural(posicion_jugador);
 	//si esta en algun lugar del mapa
 	if(! donde_estaba.es_nulo() ){
 
 
 		//si cayeron distinto, me fijo si podia moverse para ese lado
-		S_ptr<Estructural> vecino = donde_estaba->get_vecino(jugador.get_direccion());
+		S_ptr<EstructuralUnitario> vecino = donde_estaba->get_vecino(jugador.get_direccion());
 
 		/*Tipo_Coordenada dim_actual;
 		Tipo_Coordenada dim_final;
@@ -67,7 +67,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 }
 
 bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
-	S_ptr<Estructural> e_critico;
+	S_ptr<EstructuralUnitario> e_critico;
 		
 	Tipo_Coordenada x0 = pnueva.get_x();
 	Tipo_Coordenada y0 = pnueva.get_y();
@@ -87,7 +87,7 @@ bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
 	return toca;
 }
 /*
-bool MapaImpSet::tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<Estructural> vecino, Jugador& jugador){
+bool MapaImpSet::tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<EstructuralUnitario> vecino, Jugador& jugador){
 	
 	Tipo_Coordenada result = dim_final - dim_actual;
 	Tipo_Coordenada mod_result;
@@ -127,7 +127,7 @@ void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordena
 				break;
 	}
 }*/
-void MapaImpSet::agregar_estructural(S_ptr<Estructural> e){
+void MapaImpSet::agregar_estructural(S_ptr<EstructuralUnitario> e){
 
 	estructurales.insert(e);
 	std::cout << e->get_posicion() <<"\n";
@@ -137,7 +137,7 @@ void MapaImpSet::agregar_estructural(S_ptr<Estructural> e){
 	std::cout << estructurales.size() <<"\n";
 
 }
-S_ptr<Estructural> MapaImpSet::get_estructural(Posicion &p){
+S_ptr<EstructuralUnitario> MapaImpSet::get_estructural(Posicion &p){
 
 	std::set<Tipo_Estructural, CompSptrEstructuralPosicion>::iterator busqueda;
 	busqueda = estructurales.begin();
@@ -156,7 +156,7 @@ S_ptr<Estructural> MapaImpSet::get_estructural(Posicion &p){
 	if( encontrado)
 		return aux;
 	else{
-		S_ptr<Estructural> nulo;
+		S_ptr<EstructuralUnitario> nulo;
 		return nulo;
 	}
 }
@@ -168,7 +168,7 @@ Tipo_Dimensiones MapaImpSet::get_ancho(){
 Tipo_Dimensiones MapaImpSet::get_alto(){
 	return this->alto;
 }
-std::list<S_ptr<Estructural> > MapaImpSet::get_estructurales(){
+std::list<S_ptr<EstructuralUnitario> > MapaImpSet::get_estructurales(){
 	std::set<Tipo_Estructural>::iterator it;
 	std::list<Tipo_Estructural> lista;
 

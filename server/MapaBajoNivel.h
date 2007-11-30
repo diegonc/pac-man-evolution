@@ -3,7 +3,7 @@
 
 #include "Jugador.h"
 #include "Comestible.h"
-#include "Estructural.h"
+#include "EstructuralUnitario.h"
 #include "Posicion.h"
 #include <list>
 #include "Objeto.h"
@@ -44,11 +44,11 @@ class MapaBajoNivel
 		 */
 		virtual void mover( Jugador& jugador, Tipo_Coordenada distancia ) = 0;
 		
-		virtual void agregar_estructural(S_ptr<Estructural> e)=0;
+		virtual void agregar_estructural(S_ptr<EstructuralUnitario> e)=0;
 			
-		virtual S_ptr<Estructural> get_estructural(Posicion &p)=0;
+		virtual S_ptr<EstructuralUnitario> get_estructural(Posicion &p)=0;
 			
-		virtual std::list<S_ptr<Estructural> > get_estructurales()=0;	
+		virtual std::list<S_ptr<EstructuralUnitario> > get_estructurales()=0;	
 		
 		virtual std::list<S_ptr<Comestible> > get_comestibles()=0;
 		
