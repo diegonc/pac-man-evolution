@@ -81,3 +81,6 @@ MapaBajoNivel& MundoBasicImp::get_mapa_activo()
 {
 	return *mapas.back();
 }
+void MundoBasicImp::agregar_mapa(S_ptr<MapaBajoNivel> mapa){
+	mapas.push_back(mapa);
+}

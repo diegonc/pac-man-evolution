@@ -24,6 +24,8 @@ class MundoBasicImp : public MundoBajoNivel
 
 	public:
 		MapaBajoNivel& get_mapa_activo();
+	
+		void agregar_mapa(S_ptr<MapaBajoNivel> mapa);
 };
 
 #endif /* __MUNDOBASICIMP_H__ */
