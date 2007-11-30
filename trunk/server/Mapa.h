@@ -12,9 +12,9 @@
  *
  *  La dispocision de pasillos, conjunto de personajes y los objetos con los
  *  que interactuan conforman un mapa.
- *  La interfaz Mapa se define para permitir el acceso a estor elementos. 
+ *  La interfaz MapaBajoNivel se define para permitir el acceso a estor elementos. 
  */
-class Mapa
+class MapaBajoNivel
 {
 	public:
 		
@@ -27,7 +27,7 @@ class Mapa
 
 		typedef double Tipo_Coordenada;	
 	
-		virtual ~Mapa() {}
+		virtual ~MapaBajoNivel() {}
 
 		/** @brief Obtiene el ancho del mapa.
 		 */

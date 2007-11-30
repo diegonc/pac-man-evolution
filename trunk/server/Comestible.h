@@ -2,6 +2,7 @@
 #define __COMESTIBLE_H__
 
 #include "Personaje.h"
+#include "Direccion.h"
 
 /** @brief Define una interfaz para todos los elementos del mapa que pueden ser
            comidos, por ejemplo, quesitos, power ups, frutitas, etcs.			
@@ -29,6 +30,7 @@ class Comestible{
 	
 		virtual Enum_Comestible get_tipo()=0;
 		
+		virtual Direccion get_orientacion();
 	
 		
 };

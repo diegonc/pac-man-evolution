@@ -4,7 +4,7 @@ namespace {
 	const char ID = 0;
 }
 
-PaqueteInit::PaqueteInit( Mapa& m ) : Paquete( ID ), mapa( m )
+PaqueteInit::PaqueteInit( MapaBajoNivel& m ) : Paquete( ID ), mapa( m )
 {
 }
 

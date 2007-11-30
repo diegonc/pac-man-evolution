@@ -1,12 +1,12 @@
 #ifndef __MUNDO_H__
 #define __MUNDO_H__
 
-#include "Mapa.h"
+#include "MapaBajoNivel.h"
 
 class Mundo
 {
 	public:	
-		virtual Mapa& get_mapa_activo() = 0;
+		virtual MapaBajoNivel& get_mapa_activo() = 0;
 	
 		virtual ~Mundo(){}
 };

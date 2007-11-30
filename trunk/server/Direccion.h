@@ -20,6 +20,8 @@ class Direccion
 	public:
 		Direccion( int i );
 	
+		Direccion();
+	
 		static const int Norte;
 		static const int Sur;
 		static const int Este;
