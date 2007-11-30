@@ -39,6 +39,9 @@ class Estructural : public Elemento {
 	/* Es Punto Conexion: Dadas unas coordenadas x,y devuelve true si las mismas son un punto de conexion del
 	  elemento o false en caso contrario */
 	virtual bool es_punto_conexion(int x, int y);
+	
+	/* Hay Conexion: Dadas (x1,y1) pertenecientes al elemento, y (x2,y2) devuelve true si hay conexion, false en caso contrario. */
+	virtual bool hay_conexion(int x1, int y1, int x2, int y2);
 
 	/* Es Habitable: Dadas unas coordenadas x,y devuelve true si las mismas son habitables por un personaje o
 	   modificador y false en caso contrario */

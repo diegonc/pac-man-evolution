@@ -23,7 +23,6 @@ class PanelElems : public Observable {
    	GtkWidget* swindow; //Scrolled window para poder hacer scroll de la lista de elems
     GtkWidget* icons_view; //Widget utilizado para mostrar a los iconos de los elementos
     GtkListStore* lista_elems; //List Store con la lista de los elementos a mostrar
-    S_ptr<ItemElem> seleccionado; //Item seleccionado
    	vector<S_ptr<ItemElem> > items; //Vector de items contenidos en el panel
    
    public:

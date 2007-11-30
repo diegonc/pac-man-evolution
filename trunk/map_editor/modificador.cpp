@@ -20,6 +20,12 @@ bool Modificador::es_punto_conexion(int x, int y){
 	return false;
 }
 
+/* Hay Conexion: */
+
+bool Modificador::hay_conexion(int x1, int y1, int x2, int y2){
+	return false;	
+}
+
 /* Es Habitable: */
 
 bool Modificador::es_habitable(int x, int y){

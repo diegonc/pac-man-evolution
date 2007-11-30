@@ -13,14 +13,15 @@ VistaMapa::VistaMapa(S_ptr<Nivel> nivel){
 	GtkWidget* viewport = gtk_viewport_new (NULL, NULL);
 	this->swindow = gtk_scrolled_window_new(gtk_viewport_get_hadjustment(GTK_VIEWPORT(viewport)), gtk_viewport_get_vadjustment(GTK_VIEWPORT(viewport)));
 	
-	GtkWidget* vbox = gtk_vbox_new(FALSE,0);
-	GtkWidget* hbox = gtk_hbox_new(FALSE,0);
+	this->vbox = gtk_vbox_new(FALSE,0);
+	this->hbox = gtk_hbox_new(FALSE,0);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 	
 	gtk_container_add(GTK_CONTAINER(this->frame), this->swindow);
 	
 	this->tabla = gtk_table_new(nivel->get_mapa()->get_alto(),nivel->get_mapa()->get_ancho(),FALSE);
 	gtk_box_pack_start (GTK_BOX (hbox), this->tabla, FALSE, FALSE, 0);
+	
 	gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(this->swindow), vbox);
 	
 	g_signal_connect(G_OBJECT(this->swindow), "button_press_event", G_CALLBACK(click_handler), this);
@@ -53,6 +54,24 @@ VistaMapa::~VistaMapa(){
 
 GtkWidget* VistaMapa::get_widget() const{
 	return this->frame;
+}
+
+//Actualizar:
+
+void VistaMapa::actualizar(Observable * observable, void * param){
+	S_ptr<Nivel> nivel = *((S_ptr<Nivel>*) param);
+	this->redibujar(nivel);
+}
+
+//Redibujar:
+
+void VistaMapa::redibujar(S_ptr<Nivel> nivel){
+	this->nivel = nivel;
+	gtk_widget_destroy(this->tabla);
+	this->tabla = gtk_table_new(nivel->get_mapa()->get_alto(),nivel->get_mapa()->get_ancho(),FALSE);
+	gtk_box_pack_start (GTK_BOX (hbox), this->tabla, FALSE, FALSE, 0);
+	gtk_widget_show(this->tabla);
+	this->dibujar();
 }
 
 //Dibujar:

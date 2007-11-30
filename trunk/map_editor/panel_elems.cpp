@@ -80,7 +80,6 @@ void PanelElems::item_seleccionado(GtkIconView *iconview, gpointer user_data){
 		if (path != NULL){
 			int* int_path = gtk_tree_path_get_indices (path);
 			S_ptr<ItemElem> item = panel->items[int_path[0]];
-			panel->seleccionado = item;
 			gtk_tree_path_free(path);
 			panel->set_cambio();
 			panel->avisar_observadores(&item);

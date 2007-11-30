@@ -58,6 +58,21 @@ bool Estructural::es_punto_conexion(int x, int y){
 		return false;
 }
 
+/* Hay Conexion: */
+
+bool Estructural::hay_conexion(int x1, int y1, int x2, int y2){
+	int x_rel = x1 - this->get_pos_x();
+	int y_rel = y1 - this->get_pos_y();
+	if (this->es_punto_conexion(x1, y1)){
+		S_ptr<Punto> posib_conex = this->componentes[x_rel][y_rel]->get_posible_conexion();
+		if ((posib_conex->get_x() == x2) && (posib_conex->get_y() == y2))
+			return true;
+		else
+			return false;
+	} else
+		return false;	
+}
+
 /* Es Habitable: */
 
 bool Estructural::es_habitable(int x, int y){
@@ -97,7 +112,7 @@ bool Estructural::conectar(S_ptr<Elemento> instancia, Mapa* mapa) {
 				if (!casillero.es_nulo()){
 					S_ptr<Elemento> elem = casillero->get_estructural();
 					if (!elem.es_nulo()) {
-						if (elem->es_punto_conexion(posib_conex->get_x(), posib_conex->get_y()))
+						if (elem->hay_conexion(posib_conex->get_x(), posib_conex->get_y(), this->get_pos_x(), this->get_pos_y()))
 							elementos.push_back(elem);
 						else
 							result = false;
