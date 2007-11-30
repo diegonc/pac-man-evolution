@@ -112,7 +112,7 @@ bool Estructural::conectar(S_ptr<Elemento> instancia, Mapa* mapa) {
 				if (!casillero.es_nulo()){
 					S_ptr<Elemento> elem = casillero->get_estructural();
 					if (!elem.es_nulo()) {
-						if (elem->hay_conexion(posib_conex->get_x(), posib_conex->get_y(), this->get_pos_x() + cont1, this->get_pos_y() + cont2))
+						if ((elem->hay_conexion(posib_conex->get_x(), posib_conex->get_y(), this->get_pos_x() + cont1, this->get_pos_y() + cont2)))
 							elementos.push_back(elem);
 						else
 							result = false;
