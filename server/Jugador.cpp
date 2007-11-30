@@ -45,3 +45,6 @@ void Jugador::colisiono(Jugador &jugador){
 void Jugador::set_direccion(Direccion  *dir){
 	this->dir = dir;
 }
+Jugador::~Jugador(){
+	delete this->dir;
+}

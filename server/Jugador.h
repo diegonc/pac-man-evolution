@@ -34,7 +34,7 @@ class Jugador{
 
 		Jugador(int id);
 	
-		~Jugador() {}
+		~Jugador();
 			
 		/** @brief Devuelve el personaje del jugador.
 		 *
