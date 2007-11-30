@@ -1,9 +1,9 @@
 #ifndef __CASILLERO_CASA_FANSTASMA_H__
 #define __CASILLERO_CASA_FANSTASMA_H__
 
-#include "Estructural.h"
+#include "EstructuralUnitario.h"
 
-class EstructuralCasaFantasma : public Estructural{
+class EstructuralCasaFantasma : public EstructuralUnitario{
 				
 	public:
 		EstructuralCasaFantasma();

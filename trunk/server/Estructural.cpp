@@ -1,9 +1,9 @@
-#include "Estructural.h"
+#include "EstructuralUnitario.h"
 #include <iostream>
 
-Estructural::Estructural(){}
+EstructuralUnitario::EstructuralUnitario(){}
 
-S_ptr<Estructural> Estructural::get_vecino(Direccion &direccion){
+S_ptr<EstructuralUnitario> EstructuralUnitario::get_vecino(Direccion &direccion){
 	if(direccion.get_dir() == Direccion::Norte)
 		return this->get_arriba();
 	else{
@@ -18,42 +18,42 @@ S_ptr<Estructural> Estructural::get_vecino(Direccion &direccion){
 	}
 }
 
-Estructural::~Estructural(){}
+EstructuralUnitario::~EstructuralUnitario(){}
 
-S_ptr<Comestible> Estructural::get_comida(){
+S_ptr<Comestible> EstructuralUnitario::get_comida(){
 	S_ptr<Comestible> nulo;
 	return nulo;
 }
 	
-void Estructural::set_arriba(S_ptr<Estructural> e){
+void EstructuralUnitario::set_arriba(S_ptr<EstructuralUnitario> e){
 	this->arriba = e;
 }
-void Estructural::set_abajo(S_ptr<Estructural> e){
+void EstructuralUnitario::set_abajo(S_ptr<EstructuralUnitario> e){
 	this->abajo = e;
 }
-void Estructural::set_derecha(S_ptr<Estructural> e){
+void EstructuralUnitario::set_derecha(S_ptr<EstructuralUnitario> e){
 	this->derecha = e;
 }
-void Estructural::set_izquierda(S_ptr<Estructural> e){
+void EstructuralUnitario::set_izquierda(S_ptr<EstructuralUnitario> e){
 	this->izquierda = e;
 }
-S_ptr<Estructural> Estructural::get_arriba(){
+S_ptr<EstructuralUnitario> EstructuralUnitario::get_arriba(){
 	return this->arriba;
 }
-S_ptr<Estructural> Estructural::get_abajo(){
+S_ptr<EstructuralUnitario> EstructuralUnitario::get_abajo(){
 	return this->abajo;
 }
-S_ptr<Estructural> Estructural::get_derecha(){
+S_ptr<EstructuralUnitario> EstructuralUnitario::get_derecha(){
 	return this->derecha;
 }
 			
-S_ptr<Estructural> Estructural::get_izquierda(){
+S_ptr<EstructuralUnitario> EstructuralUnitario::get_izquierda(){
 	return this->izquierda;
 }
 
-void Estructural::set_posicion(Posicion &p){
+void EstructuralUnitario::set_posicion(Posicion &p){
 	this->posicion = p;	
 }
-Posicion& Estructural::get_posicion(){
+Posicion& EstructuralUnitario::get_posicion(){
 	return this->posicion;
 }

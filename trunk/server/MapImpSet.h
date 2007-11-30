@@ -13,7 +13,7 @@
  */
 
 typedef unsigned int Tipo_Dimensiones;
-typedef S_ptr<Estructural> Tipo_Estructural;
+typedef S_ptr<EstructuralUnitario> Tipo_Estructural;
 
 class MapaImpSet : public MapaBajoNivel{
 
@@ -25,7 +25,7 @@ class MapaImpSet : public MapaBajoNivel{
 		Tipo_Estructural estructural;
 
 
-		//bool tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<Estructural> vecino, Jugador& jugador);
+		//bool tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<EstructuralUnitario> vecino, Jugador& jugador);
 
 		bool tocando(Jugador &jugador, Posicion &pnueva);
 		//void set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordenada& dim_final, Direccion& dir);
@@ -64,11 +64,11 @@ class MapaImpSet : public MapaBajoNivel{
 
 		void mover( Jugador& jugador, Tipo_Coordenada distancia );
 
-		void agregar_estructural(S_ptr<Estructural> e);
+		void agregar_estructural(S_ptr<EstructuralUnitario> e);
 
-		S_ptr<Estructural> get_estructural(Posicion &p);
+		S_ptr<EstructuralUnitario> get_estructural(Posicion &p);
 
-		std::list<S_ptr<Estructural> > get_estructurales();
+		std::list<S_ptr<EstructuralUnitario> > get_estructurales();
 
 		std::list<S_ptr<Comestible> > get_comestibles();
 
