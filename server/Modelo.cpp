@@ -1,4 +1,4 @@
-#include "Modelo.h"
+#include "ModeloServidor.h"
 
 /////////////////////////////////
 #include "PacMan.h"
@@ -6,12 +6,12 @@
 
 /////////////////////////////////
 
-Modelo::Modelo(std::string ruta_mundo){
+ModeloServidor::ModeloServidor(std::string ruta_mundo){
 	cargar_modelo(ruta_mundo);
 	
 }
 
-void Modelo::cargar_modelo(std::string ruta_mundo){
+void ModeloServidor::cargar_modelo(std::string ruta_mundo){
 	this->mundo = new MundoBasicImp(ruta_mundo);
 	
 	/**************************************************************************/
@@ -37,15 +37,15 @@ void Modelo::cargar_modelo(std::string ruta_mundo){
 	/*TODO TRUCHAR OPERACIONES Y DESPUES REEMPLAZAR POR UN PARSER*/
 }
 
-Modelo::~Modelo(){
+ModeloServidor::~ModeloServidor(){
 	delete this->mundo;
 }
 
-void Modelo::agregar_jugador(Tipo_Jugador jugador){
+void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 	this->jugadores.push_back(jugador);
 }
 			
-void Modelo::run(){
+void ModeloServidor::run(){
 	std::list<Tipo_Jugador>::iterator it;
 	
 	Tipo_Jugador j;
@@ -80,7 +80,7 @@ void Modelo::run(){
 	sleep(1);*/
 		
 }
-void Modelo::revisar_colisiones(S_ptr<Jugador>& j){
+void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 	std::list<Tipo_Jugador>::iterator it;
 	
 	Tipo_Jugador j2;
@@ -90,10 +90,10 @@ void Modelo::revisar_colisiones(S_ptr<Jugador>& j){
 	}	
 }
 
-const std::list<S_ptr<Jugador> >& Modelo::get_jugadores(){
+const std::list<S_ptr<Jugador> >& ModeloServidor::get_jugadores(){
 	return this->jugadores;
 }
-std::list<S_ptr<Objeto> > Modelo::get_objetos(){
+std::list<S_ptr<Objeto> > ModeloServidor::get_objetos(){
 	/*
 	//defino la lista que se devuelve
 	std::list<S_ptr<Objeto> > lista; 
@@ -120,7 +120,7 @@ std::list<S_ptr<Objeto> > Modelo::get_objetos(){
 		
 }
 
-S_ptr<Jugador> Modelo::get_jugador(int id){
+S_ptr<Jugador> ModeloServidor::get_jugador(int id){
 	
 	std::list< S_ptr<Jugador> >::iterator it_jugadores;
 	
@@ -135,6 +135,6 @@ S_ptr<Jugador> Modelo::get_jugador(int id){
 	return resultado_busqueda;
 }
 	
-Mundo& Modelo::get_mundo(){
+Mundo& ModeloServidor::get_mundo(){
 	return *this->mundo;
 }

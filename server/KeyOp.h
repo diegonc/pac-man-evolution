@@ -29,7 +29,7 @@ class KeyOp : public Operacion
 		
 		/** @brief Implementa los efectos de la operacion. */
 		
-		void ejecutar(Modelo &modelo);
+		void ejecutar(ModeloServidor &modelo);
 };
 
 #endif /* __KEYOP_H__ */
