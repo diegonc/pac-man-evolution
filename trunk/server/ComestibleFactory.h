@@ -15,7 +15,7 @@ class ComestibleFactory{
 	
 		~ComestibleFactory();
 		
-		Comestible * construir(Comestible::Enum_Comestible tipo);
+		Comestible * construir(Comestible::Enum_Comestible tipo, Posicion &p);
 		
 		
 };

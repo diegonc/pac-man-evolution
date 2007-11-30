@@ -6,7 +6,7 @@
 class Frutita : public Comestible{
 	public:
 		//TODO cambiar esto
-		Frutita():Comestible(10){}
+		Frutita(Posicion &p):Comestible(10, p){}
 		
 		~Frutita(){}
 		

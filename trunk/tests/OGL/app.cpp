@@ -31,7 +31,7 @@
 #include <math.h>
 #include <map>
 #include <list>
-#include "../../server/Modelo.h"
+#include "../../server/ModeloServidor.h"
 #include "../../server/KeyOp.h"
 
 //#ifdef WIN32													// If We're Under MSVC
@@ -62,7 +62,7 @@ GLuint texturaPiso;
 GLuint texturaPared;
 
 std::string mierda="a";
-Modelo mod(mierda);
+ModeloServidor mod(mierda);
 
 
 
@@ -542,7 +542,7 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
 
    glTranslatef(0.0,15 , -6);
    //VistaUP
-   // glTranslatef(0,0 , -10);
+  //  glTranslatef(0,0 , -10);
 
 
 //END LUZ
@@ -594,7 +594,18 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
       	DibujarObjetoPosicion(&Pos,"fantasma");
       }  
    }
-	/*
+   std::list< S_ptr<Comestible> > lista_comestibles = mod.get_mundo().get_mapa_activo().get_comestibles();
+   std::list< S_ptr<Comestible> >::iterator comestibles;
+   S_ptr<Comestible> comestible;
+   for(comestibles = lista_comestibles.begin(); comestibles != lista_comestibles.end(); ++comestibles){
+         comestible = *comestibles;         
+         Posicion_Graf Pos;
+         Posicion p=comestible->get_posicion();
+      	Pos.x=p.get_x()*4;
+         Pos.y=-p.get_y()*4;
+      	DibujarObjetoPosicion(&Pos,"pastilla");
+   }
+   /*
     Pos.x=-sin(j)*10;
 	Pos.y=12;
 

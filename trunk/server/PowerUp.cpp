@@ -3,7 +3,7 @@
 #include "PacMan.h"
 #include <stdexcept>
 
-PowerUp::PowerUp():Comestible(PUNTOS_POWER_UP){}
+PowerUp::PowerUp(Posicion &p):Comestible(PUNTOS_POWER_UP, p){}
 		
 PowerUp::~PowerUp(){}
 		

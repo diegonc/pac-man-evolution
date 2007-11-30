@@ -39,8 +39,7 @@ class MapaImpSet : public MapaBajoNivel{
 
 					Posicion pos1 = v1->get_posicion();
 					Posicion pos2 = v2->get_posicion();
-	//				std::cout << pos1 << "-" << pos2 << "\n";
-
+	
 					if( (int)pos1.get_x() < (int)pos2.get_x() )
 						return true;
 					else
@@ -71,7 +70,7 @@ class MapaImpSet : public MapaBajoNivel{
 		std::list<S_ptr<EstructuralUnitario> > get_estructurales();
 
 		std::list<S_ptr<Comestible> > get_comestibles();
-
+	
 		Tipo_Dimensiones get_ancho();
 
 		Tipo_Dimensiones get_alto();

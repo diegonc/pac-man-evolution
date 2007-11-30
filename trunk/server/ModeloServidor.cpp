@@ -93,13 +93,14 @@ void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 const std::list<S_ptr<Jugador> >& ModeloServidor::get_jugadores(){
 	return this->jugadores;
 }
+/*
 std::list<S_ptr<Objeto> > ModeloServidor::get_objetos(){
-	/*
+	
 	//defino la lista que se devuelve
 	std::list<S_ptr<Objeto> > lista; 
 	
 	//iterador para los jugadores
-	std::list< S_ptr<Jugador> >::iterator it_jugadores;
+	std::list< S_ptr<Comestible> >::iterator it_comestibles ;
 	//variable auxiliar
 	S_ptr<Jugador> jugador;
 	//guardo primero los jugadores, itero sobre los mismos
@@ -115,11 +116,11 @@ std::list<S_ptr<Objeto> > ModeloServidor::get_objetos(){
 	}
 	
 	return lista;
-	*/
+	
 	
 		
 }
-
+*/
 S_ptr<Jugador> ModeloServidor::get_jugador(int id){
 	
 	std::list< S_ptr<Jugador> >::iterator it_jugadores;

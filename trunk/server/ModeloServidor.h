@@ -37,8 +37,6 @@ class ModeloServidor : public Thread{
 			
 		void run();
 	
-		std::list<S_ptr<Objeto> > get_objetos();
-	
 		Mundo& get_mundo();
 	
 		S_ptr<Jugador> get_jugador(int id);

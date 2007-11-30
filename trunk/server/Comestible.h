@@ -3,6 +3,7 @@
 
 #include "Personaje.h"
 #include "Direccion.h"
+#include "Posicion.h"
 
 /** @brief Define una interfaz para todos los elementos del mapa que pueden ser
            comidos, por ejemplo, quesitos, power ups, frutitas, etcs.			
@@ -10,9 +11,10 @@
 class Comestible{
 	private: 
 		int puntaje;
-	
+		Posicion p;
+		
 	protected:
-		Comestible(int puntos);			
+		Comestible(int puntos, Posicion &pos);			
 	
 	public:
 		
@@ -31,7 +33,8 @@ class Comestible{
 		virtual Enum_Comestible get_tipo()=0;
 		
 		virtual Direccion get_orientacion();
-	
+		
+		Posicion& get_posicion();
 		
 };
 
