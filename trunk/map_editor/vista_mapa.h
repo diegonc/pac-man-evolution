@@ -7,6 +7,7 @@
 #include "elemento.h"
 #include "nivel.h"
 #include "definiciones.h"
+#include "control_seleccion.h"
 #include "../common/smart_pointer.h"
 
 /* CLASE VISTA_MAPA: Clase que representa la interfaz grafica del mapa en el editor. */

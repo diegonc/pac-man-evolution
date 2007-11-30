@@ -11,6 +11,7 @@
 #include "modelo.h"
 #include "panel_mundo.h"
 #include "panel_elems.h"
+#include "control_seleccion.h"
 #include "../common/smart_pointer.h"
 
 /* CLASE VPRINCIPAL: Representa la ventana principal del editor de mapas. */

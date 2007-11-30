@@ -137,7 +137,10 @@ void VistaMapa::agregar_elemento(double posX, double posY){
 	int pos_y = (int) ((posY + gtk_adjustment_get_value(adjh)) / 25);
 	int pos_x = (int) ((posX + gtk_adjustment_get_value(adjv)) / 25);
 	
-	if (this->nivel->agregar_elemento(PASILLO, pos_x, pos_y, NORTE)){
+	TipoElem tipo = ControlSeleccion::get_instance()->get_tipo_selec();
+	Orientacion orientacion = ControlSeleccion::get_instance()->get_orientacion_selec();
+	
+	if (this->nivel->agregar_elemento(tipo, pos_x, pos_y, orientacion)){
 		S_ptr<Elemento> elem = this->nivel->get_mapa()->get_casillero(pos_x, pos_y)->get_estructural();
 		for (int i = elem->get_pos_x(); i < elem->get_pos_x() + elem->get_alto(); i++)
 			for (int j = elem->get_pos_y(); j < elem->get_pos_y() + elem->get_ancho(); j++)

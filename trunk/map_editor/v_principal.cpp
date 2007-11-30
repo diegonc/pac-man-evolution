@@ -17,6 +17,7 @@ VPrincipal::VPrincipal(){
 	//Conecto la señal delete event con el handler para la ventana
 	g_signal_connect(G_OBJECT(this->window), "delete_event", G_CALLBACK(delete_event_handler), NULL);
 	
+	ControlSeleccion::get_instance();
 	this->panel_mundo = new PanelMundo();
 	this->panel_estruc = new PanelElems("ESTRUCTURALES");
 	this->panel_modif = new PanelElems("MODIFICADORES");
@@ -32,6 +33,7 @@ VPrincipal::~VPrincipal(){
 	delete(this->panel_estruc);
 	delete(this->panel_modif);
 	delete(this->vista_mapa);
+	ControlSeleccion::destroy();
 }
 
 //Get Widget:
@@ -74,8 +76,14 @@ void VPrincipal::construir(){
 	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_estruc, FALSE, TRUE, 0);
 	
 	this->panel_estruc->agregar_elemento(PASILLO, ESTE, RUTA_PAS_HORIZ);
-	this->panel_estruc->agregar_elemento(ESQ, ESTE, RUTA_ESQ_ESTE);
 	this->panel_estruc->agregar_elemento(PASILLO, NORTE, RUTA_PAS_VERT);
+	this->panel_estruc->agregar_elemento(ESQ, ESTE, RUTA_ESQ_ESTE);
+	this->panel_estruc->agregar_elemento(ESQ, SUR, RUTA_ESQ_SUR);
+	this->panel_estruc->agregar_elemento(ESQ, OESTE, RUTA_ESQ_OESTE);
+	this->panel_estruc->agregar_elemento(ESQ, NORTE, RUTA_ESQ_NORTE);
+	
+	this->panel_estruc->agregar_observador(ControlSeleccion::get_instance());
+	this->panel_modif->agregar_observador(ControlSeleccion::get_instance());
 	
 	GtkWidget* p_modif = this->panel_modif->get_widget();
 	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_modif, FALSE, TRUE, 0);
@@ -86,11 +94,6 @@ void VPrincipal::construir(){
     Mundo* mundo = modelo->get_mundo();
     //Agrego un nivel de 50 x 50
     mundo->agregar_nivel(50, 50);
-	mundo->agregar_elemento(PASILLO, 1, 0, 1, ESTE);
-	mundo->agregar_elemento(PASILLO, 1, 0, 4, ESTE);
-	mundo->agregar_elemento(ESQ, 1, 0, 7, SUR);
-	mundo->agregar_elemento(PASILLO, 1, 2, 8, NORTE);
-	mundo->agregar_elemento(ESQ, 1, 5, 5, ESTE);
 	
   	this->vista_mapa = new VistaMapa(mundo->get_nivel(1));
 	gtk_container_add (GTK_CONTAINER (this->hbox_princ), this->vista_mapa->get_widget());
