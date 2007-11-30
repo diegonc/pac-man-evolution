@@ -46,17 +46,20 @@ void Modelo::agregar_jugador(Tipo_Jugador jugador){
 }
 			
 void Modelo::run(){
-	std::list<Tipo_Jugador>::iterator it = jugadores.begin();
+	std::list<Tipo_Jugador>::iterator it;
 	
-	Tipo_Jugador j1 = *it;
-	it++;
-	Tipo_Jugador j2 = *it;
-	
+	Tipo_Jugador j;
+		
 	while(true){
-		(this->mundo->get_mapa_activo()).mover(*j1, 0.005);
-//		std::cout << "- El jugador 1 tiene " << j1->get_puntos() << " puntos y esta en ";
-//		std::cout << j1->get_posicion() <<"\n";
-	//	j1->colisiono(*j2);
+		
+		for(it = jugadores.begin(); it!= jugadores.end(); it++){
+			j = *it;
+			(this->mundo->get_mapa_activo()).mover(*j, 0.005);
+			revisar_colisiones(j);
+		}
+		//std::cout << "- El jugador tiene " << j->get_puntos() << " puntos y esta en ";
+		//std::cout << j->get_posicion() <<"\n";
+		//j1->colisiono(*j2);
 		usleep(2000);
 	}
 	/*
@@ -77,8 +80,21 @@ void Modelo::run(){
 	sleep(1);*/
 		
 }
-std::list<S_ptr<Objeto> > Modelo::get_objetos(){
+void Modelo::revisar_colisiones(S_ptr<Jugador>& j){
+	std::list<Tipo_Jugador>::iterator it;
 	
+	Tipo_Jugador j2;
+	for(it = jugadores.begin(); it!= jugadores.end(); it++){
+		j2 = *it;
+		j->colisiono(*j2);
+	}	
+}
+
+const std::list<S_ptr<Jugador> >& Modelo::get_jugadores(){
+	return this->jugadores;
+}
+std::list<S_ptr<Objeto> > Modelo::get_objetos(){
+	/*
 	//defino la lista que se devuelve
 	std::list<S_ptr<Objeto> > lista; 
 	
@@ -99,10 +115,11 @@ std::list<S_ptr<Objeto> > Modelo::get_objetos(){
 	}
 	
 	return lista;
-	
+	*/
 	
 		
 }
+
 S_ptr<Jugador> Modelo::get_jugador(int id){
 	
 	std::list< S_ptr<Jugador> >::iterator it_jugadores;

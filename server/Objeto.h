@@ -3,6 +3,7 @@
 
 #include "Posicion.h"
 #include "Personaje.h"
+#include "Direccion.h"
 #include "ComestibleFactory.h"
 
 class Objeto{
@@ -13,11 +14,13 @@ class Objeto{
 	private:
 		Tipo_Objeto tipo;
 		Posicion posicion;
+		Direccion orientacion();
 	
 	public:
-		Objeto(Tipo_Objeto tipo, Posicion &pos){
+		Objeto(Tipo_Objeto tipo, Posicion &pos, Direccion& orientacion){
 			this->tipo = tipo;
 			this->posicion = pos;
+			//this->orientacion = orientacion;
 		}
 		~Objeto(){}
 		Posicion& get_posicion(){
@@ -26,6 +29,10 @@ class Objeto{
 		Tipo_Objeto get_tipo(){
 			return this->tipo;
 		}
+		/*Direccion& get_orientacion(){
+			return this->orientacion;
+		}*/
+		
 };
 
 #endif /*__OBJETO_H__*/

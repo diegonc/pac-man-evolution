@@ -14,26 +14,26 @@ void Fantasma::comer(Comestible& comestible){
 	
 void Fantasma::colision(Jugador& jugador){
 	try{
-		PacMan pacman = dynamic_cast< PacMan& >(*jugador.get_personaje());
+		if(jugador.get_id() != get_jugador().get_id() ){
+			PacMan pacman = dynamic_cast< PacMan& >(*jugador.get_personaje());
+			
+			Tipo_Coordenada distancia;
 		
-		Tipo_Coordenada distancia;
-	
-		distancia = pow( get_jugador().get_posicion().get_x() - 	
-					 jugador.get_posicion().get_x() , 2);
-	
-		distancia += pow( get_jugador().get_posicion().get_y() - 	
-					  jugador.get_posicion().get_y() , 2);
-	
-		distancia = sqrt(distancia);
-	
-		if(distancia  <= ( this->get_radio() + pacman.get_radio() ) ){
-			if( pacman.tiene_power_up() ){
-				std::cout << "Muere el fantasma!!\n";
-				pacman.matar();			
-			}
-			else{
-				std::cout << "Muere el pacman!!\n";
-				this->matar();
+			distancia = pow( get_jugador().get_posicion().get_x() - 	
+						 jugador.get_posicion().get_x() , 2);
+		
+			distancia += pow( get_jugador().get_posicion().get_y() - 	
+						  jugador.get_posicion().get_y() , 2);
+		
+			distancia = sqrt(distancia);
+		
+			if(distancia  <= ( this->get_radio() + pacman.get_radio() ) ){
+				if( pacman.tiene_power_up() ){
+					pacman.matar();			
+				}
+				else{
+					this->matar();
+				}
 			}
 		}
 	}

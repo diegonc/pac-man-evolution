@@ -15,7 +15,9 @@ Direccion::Direccion( int i )
 {
 	dir = i;
 }
-
+Direccion::Direccion(){
+	dir = Direccion::Norte;
+}
 void Direccion::combinar( int i )
 {
 	this->dir = ( (dir + i) % 4 );

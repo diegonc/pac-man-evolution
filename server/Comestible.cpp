@@ -13,3 +13,6 @@ Comestible::~Comestible(){}
 int Comestible::get_puntos(){
 	return this->puntaje;
 }
+Direccion Comestible::get_orientacion(){
+	return Direccion::Norte;
+}

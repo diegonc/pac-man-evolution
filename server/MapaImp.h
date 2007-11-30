@@ -1,7 +1,7 @@
 /*#ifndef __MAPAIMP_H__
 #define __MAPAIMP_H__
 
-#include "Mapa.h"
+#include "MapaBajoNivel.h"
 #include "Jugador.h"
 #include <list>
 
@@ -10,7 +10,7 @@
  *
  
 
-class MapaImp : public Mapa
+class MapaBajoNivelImp : public MapaBajoNivel
 {
 	//Como vamos a mapear el grafo que tiene cantidades enteras de lados y 
 	//hacer la conversion entre (x,y) a lugar en el grafo, lo pongo asi,
@@ -29,9 +29,9 @@ class MapaImp : public Mapa
 		std::list<Tipo_Comestible> comestibles;
 	
 	public:
-		MapaImp(Tipo_Dimensiones ancho, Tipo_Dimensiones alto);
+		MapaBajoNivelImp(Tipo_Dimensiones ancho, Tipo_Dimensiones alto);
 
-		~MapaImp();
+		~MapaBajoNivelImp();
 	
 		virtual void mover( S_ptr<Jugador> jugador, Direccion dir );
 

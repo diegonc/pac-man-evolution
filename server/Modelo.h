@@ -42,6 +42,10 @@ class Modelo : public Thread{
 		Mundo& get_mundo();
 	
 		S_ptr<Jugador> get_jugador(int id);
+	
+		const std::list<S_ptr<Jugador> >& get_jugadores();
+	
+		void revisar_colisiones(S_ptr<Jugador>& j);
 			
 };
 

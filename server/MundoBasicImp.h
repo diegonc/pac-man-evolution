@@ -3,7 +3,7 @@
 
 #include <list>
 #include "Mundo.h"
-#include "Mapa.h"
+#include "MapaBajoNivel.h"
 #include "../common/smart_pointer.h"
 #include <string>
 
@@ -20,10 +20,10 @@ class MundoBasicImp : public Mundo
 		//static S_ptr<Mundo> get_instancia();
 		
 	private:
-		std::list<S_ptr<Mapa> > mapas;
+		std::list<S_ptr<MapaBajoNivel> > mapas;
 
 	public:
-		Mapa& get_mapa_activo();
+		MapaBajoNivel& get_mapa_activo();
 };
 
 #endif /* __MUNDOBASICIMP_H__ */

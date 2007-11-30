@@ -2,7 +2,7 @@
 #define __PAQUETEINIT_H__
 
 #include "Paquete.h"
-#include "Mapa.h"
+#include "MapaBajoNivel.h"
 
 class PaqueteInit : public Paquete
 {
@@ -11,9 +11,9 @@ class PaqueteInit : public Paquete
 		 */
 		bool esPacman;
 
-		/** @brief Mapa en el que se desarrolla el juego.
+		/** @brief MapaBajoNivel en el que se desarrolla el juego.
 		 */
-		Mapa& mapa;
+		MapaBajoNivel& mapa;
 		/* el atributo mapa deberia reemplazar a los que siguen. */
 
 		/** @brief Ancho del grafo.
@@ -27,7 +27,7 @@ class PaqueteInit : public Paquete
 		char* grafo_aristas;
 
 	public:
-		PaqueteInit( Mapa& m );
+		PaqueteInit( MapaBajoNivel& m );
 
 		void serialize( OutputBitStream& bs );
 

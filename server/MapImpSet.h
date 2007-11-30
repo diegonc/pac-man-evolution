@@ -1,7 +1,7 @@
 #ifndef __MAPAIMPMATRIZ_H__
 #define __MAPAIMPMATRIZ_H__
 
-#include "Mapa.h"
+#include "MapaBajoNivel.h"
 #include "Jugador.h"
 #include "Posicion.h"
 #include "ComparadorPosicion.h"
@@ -15,7 +15,7 @@
 typedef unsigned int Tipo_Dimensiones;
 typedef S_ptr<Estructural> Tipo_Estructural;
 
-class MapaImpSet : public Mapa{
+class MapaImpSet : public MapaBajoNivel{
 
 	private:
 
