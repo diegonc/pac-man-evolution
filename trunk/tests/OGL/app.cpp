@@ -534,15 +534,15 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
 
 
    //lo llevo a 1ra persona
-   glRotatef(-90, 1, 0.0, 0.0);
+  // glRotatef(-90, 1, 0.0, 0.0);
 
 //////LUZZZZZZZZZ
     static GLfloat pos[4] = {0, 0, 1, 0 };
     glLightfv( GL_LIGHT0, GL_POSITION, pos );
 
-   glTranslatef(0.0,15 , -6);
+//   glTranslatef(0.0,15 , -6);
    //VistaUP
-  //  glTranslatef(0,0 , -10);
+    glTranslatef(0,0 , -20);
 
 
 //END LUZ
