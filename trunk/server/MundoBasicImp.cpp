@@ -1,7 +1,7 @@
 #include "MundoBasicImp.h"
 #include "MapImpSet.h"
 
-//S_ptr<MundoBajoNIvel> MundoBasicImp::instancia;
+//S_ptr<MundoBajoNivel> MundoBasicImp::instancia;
 
 #include "EstructuralPasillo.h"
 #include "EstructuralUnitario.h"
@@ -69,10 +69,10 @@ MundoBasicImp::~MundoBasicImp()
 	this->mapas.clear();
 }
 /*
-S_ptr<MundoBajoNIvel> MundoBasicImp::get_instancia()
+S_ptr<MundoBajoNivel> MundoBasicImp::get_instancia()
 {
 	if( instancia.es_nulo() )
-		instancia = S_ptr<MundoBajoNIvel>(new MundoBasicImp());
+		instancia = S_ptr<MundoBajoNivel>(new MundoBasicImp());
 
 	return instancia;
 }
