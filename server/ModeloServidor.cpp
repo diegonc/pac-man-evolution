@@ -136,6 +136,6 @@ S_ptr<Jugador> ModeloServidor::get_jugador(int id){
 	return resultado_busqueda;
 }
 	
-MundoBajoNIvel& ModeloServidor::get_mundo(){
+MundoBajoNivel& ModeloServidor::get_mundo(){
 	return *this->mundo;
 }

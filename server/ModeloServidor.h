@@ -19,7 +19,7 @@ class ModeloServidor : public Thread{
 	typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	private:
-		MundoBajoNIvel * mundo;
+		MundoBajoNivel * mundo;
 	
 		std::list<Tipo_Jugador> jugadores;
 		
@@ -37,7 +37,7 @@ class ModeloServidor : public Thread{
 			
 		void run();
 	
-		MundoBajoNIvel& get_mundo();
+		MundoBajoNivel& get_mundo();
 	
 		S_ptr<Jugador> get_jugador(int id);
 	
