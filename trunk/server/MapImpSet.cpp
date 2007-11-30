@@ -64,6 +64,8 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 		}
 
 	}
+	this->set_cambio();
+		this->avisar_observadores(NULL);
 }
 
 bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
@@ -193,4 +195,9 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 		else
 			it++;
 	}
+	if(this->comestibles.size() == 0){
+		this->set_cambio();
+		this->avisar_observadores(NULL);
+	}
+		
 }

@@ -8,14 +8,15 @@
 #include <list>
 #include "Jugador.h"
 #include "Objeto.h"
-#include "EstructuralUnitario.h"
+//#include "EstructuralUnitario.h"
+#include "../common/observador.h"
 
 /** @brief Esta clase define el modelo.
 		   Hereda de thread, ya que se debe actualizar automaticamente todo
 		   el tiempo.
  */
 
-class ModeloServidor : public Thread{
+class ModeloServidor : public Thread , public Observador{
 	typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	private:
@@ -25,7 +26,12 @@ class ModeloServidor : public Thread{
 		
 		ModeloServidor(ModeloServidor &m);
 		
+		bool parar;
+	
 		void cargar_modelo(std::string ruta_mundo);
+	
+		void preparar_partida();
+					
 	
 	public:
 		
@@ -44,7 +50,8 @@ class ModeloServidor : public Thread{
 		const std::list<S_ptr<Jugador> >& get_jugadores();
 	
 		void revisar_colisiones(S_ptr<Jugador>& j);
-			
+		
+		virtual void actualizar(Observable * observable, void * param);
 };
 
 

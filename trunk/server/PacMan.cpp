@@ -1,7 +1,9 @@
 #include "PacMan.h"
 #include <math.h>
 
-#define RADIO_PACMAN	0.5
+#define VELOCIDAD_PACMAN_NORMAL		3	/*10 u/s */
+#define VELOCIDAD_PACMAN_PW			5
+#define RADIO_PACMAN				0.5
 
 PacMan::PacMan(Jugador *jugador):Personaje(jugador,RADIO_PACMAN){
 	this->set_power_up(false);
@@ -36,10 +38,17 @@ void PacMan::colision(Jugador& jugador){
 }
 void PacMan::set_power_up(bool activado){
 	this->power_up_activado = activado;
+	if(activado)
+		this->velocidad = VELOCIDAD_PACMAN_PW;
+	else
+		this->velocidad = VELOCIDAD_PACMAN_NORMAL;
 }
 bool PacMan::tiene_power_up(){
 	return this->power_up_activado;
 }
 Personaje::Enum_Personaje PacMan::get_tipo(){
 	return pacman;
+}
+int PacMan::get_velocidad(){
+	return 	this->velocidad;
 }

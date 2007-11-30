@@ -12,6 +12,8 @@ ModeloServidor::ModeloServidor(std::string ruta_mundo){
 }
 
 void ModeloServidor::cargar_modelo(std::string ruta_mundo){
+	this->parar = false;
+	
 	this->mundo = new MundoBasicImp(ruta_mundo);
 	
 	/**************************************************************************/
@@ -35,6 +37,8 @@ void ModeloServidor::cargar_modelo(std::string ruta_mundo){
 		
 	/**************************************************************************/
 	/*TODO TRUCHAR OPERACIONES Y DESPUES REEMPLAZAR POR UN PARSER*/
+	
+	this->mundo->get_mapa_activo().agregar_observador(this);
 }
 
 ModeloServidor::~ModeloServidor(){
@@ -49,36 +53,24 @@ void ModeloServidor::run(){
 	std::list<Tipo_Jugador>::iterator it;
 	
 	Tipo_Jugador j;
+	
+	for(int i = 0; this->mundo->cantidad_niveles(); i++ ){ 
+		preparar_partida();
 		
-	while(true){
-		
-		for(it = jugadores.begin(); it!= jugadores.end(); it++){
-			j = *it;
-			(this->mundo->get_mapa_activo()).mover(*j, 0.005);
-			revisar_colisiones(j);
+		while(!this->parar){
+			for(it = jugadores.begin(); it!= jugadores.end(); it++){
+				j = *it;
+				(this->mundo->get_mapa_activo()).mover(*j, j->get_personaje()->get_velocidad() * 0.002);
+				revisar_colisiones(j);
+			}
+			//std::cout << "- El jugador tiene " << j->get_puntos() << " puntos y esta en ";
+			//std::cout << j->get_posicion() <<"\n";
+			//j1->colisiono(*j2);
+			usleep(2000);
 		}
-		//std::cout << "- El jugador tiene " << j->get_puntos() << " puntos y esta en ";
-		//std::cout << j->get_posicion() <<"\n";
-		//j1->colisiono(*j2);
-		usleep(2000);
 	}
-	/*
-	
-	(this->mundo->get_mapa_activo()).mover(*j2, 0.5);
-	std::cout << "- El jugador 2 tiene " << j2->get_puntos() << " puntos y esta en ";
-	std::cout << j2->get_posicion() <<"\n";
-	
-	j2->colisiono(*j1);
-	
-	sleep(1);
-	
-	(this->mundo->get_mapa_activo()).mover(*j1, 0.5);
-	std::cout << "- El jugador 1 tiene " << j1->get_puntos() << " puntos y esta en ";
-	std::cout << j1->get_posicion() <<"\n";
-		
-	j1->colisiono(*j2);
-	sleep(1);*/
-		
+	std::cout << "termino esta caca\n";
+			
 }
 void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 	std::list<Tipo_Jugador>::iterator it;
@@ -93,34 +85,6 @@ void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 const std::list<S_ptr<Jugador> >& ModeloServidor::get_jugadores(){
 	return this->jugadores;
 }
-/*
-std::list<S_ptr<Objeto> > ModeloServidor::get_objetos(){
-	
-	//defino la lista que se devuelve
-	std::list<S_ptr<Objeto> > lista; 
-	
-	//iterador para los jugadores
-	std::list< S_ptr<Comestible> >::iterator it_comestibles ;
-	//variable auxiliar
-	S_ptr<Jugador> jugador;
-	//guardo primero los jugadores, itero sobre los mismos
-	for(it_jugadores = this->jugadores.begin(); 
-		it_jugadores != this->jugadores.end(); it_jugadores++){
-		//obtengo el jugador
-		jugador = *it_jugadores;	
-		//creo un objeto con los datos del jugador
-		Objeto * obj = new Objeto(jugador->get_personaje()->get_tipo(), jugador->get_posicion());		
-		//lo meto en la lista
-		S_ptr<Objeto> objeto(obj);
-		lista.push_back(objeto);
-	}
-	
-	return lista;
-	
-	
-		
-}
-*/
 S_ptr<Jugador> ModeloServidor::get_jugador(int id){
 	
 	std::list< S_ptr<Jugador> >::iterator it_jugadores;
@@ -138,4 +102,11 @@ S_ptr<Jugador> ModeloServidor::get_jugador(int id){
 	
 MundoBajoNivel& ModeloServidor::get_mundo(){
 	return *this->mundo;
+}
+void ModeloServidor::actualizar(Observable * observable, void * param){
+	this->parar = true;
+}
+
+void ModeloServidor::preparar_partida(){
+
 }

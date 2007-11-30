@@ -9,6 +9,7 @@
 class PacMan : public Personaje{
 	private:
 		bool power_up_activado;
+		int velocidad;
 	
 	public:
 		PacMan(Jugador *jugador);
@@ -22,6 +23,8 @@ class PacMan : public Personaje{
 		bool tiene_power_up();
 	
 		Personaje::Enum_Personaje get_tipo();
+	
+		int get_velocidad();
 };
 
 #endif /*__PACMAN_H__*/
