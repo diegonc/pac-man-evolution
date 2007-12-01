@@ -12,7 +12,7 @@ class EstructuralCasaFantasma : public EstructuralUnitario{
 	
 		~EstructuralCasaFantasma();
 	
-		int get_tipo();
+		char get_tipo();
 };
 
 #endif /*__CASILLERO_CASA_FANSTASMA_H__*/

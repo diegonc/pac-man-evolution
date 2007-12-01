@@ -1,6 +1,11 @@
 #include "EstructuralUnitario.h"
 #include <iostream>
 
+const char EstructuralUnitario::Casa_Fanstasma 	= CASA_FANTASMA;
+const char EstructuralUnitario::Pasillo		  	= PASILLO;
+const char EstructuralUnitario::Salida_Pacman	= SALIDA_PACMAN;
+
+
 EstructuralUnitario::EstructuralUnitario(Posicion &p){
 	this->set_posicion(p);
 }

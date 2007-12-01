@@ -7,6 +7,10 @@
 #include "Jugador.h"
 #include "Direccion.h"
 
+#define CASA_FANTASMA		1	
+#define PASILLO				-1
+#define SALIDA_PACMAN		0
+
 class EstructuralUnitario{
 		
 	private:
@@ -21,14 +25,20 @@ class EstructuralUnitario{
 		Posicion posicion;
 	
 	public:
+		static const char Casa_Fanstasma;
+		static const char Pasillo;
+		static const char Salida_Pacman;	
+	
 		
+		typedef char Enum_Estructural;
+	
 		EstructuralUnitario(Posicion &p);	
 	
 		virtual ~EstructuralUnitario();
 	
 		virtual void ingresar(Jugador& jugador) = 0;
 		
-		virtual int get_tipo()=0;
+		virtual char get_tipo()=0;
 	
 		virtual S_ptr<Comestible> get_comida();
 		

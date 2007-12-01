@@ -7,7 +7,7 @@
 #include "EstructuralUnitario.h"
 #include "../common/smart_pointer.h"
 #include "ComestibleFactory.h"
-
+#include "EstructuralUnitarioFactory.h"
 
 
 #include <iostream>
@@ -23,33 +23,32 @@ MundoBasicImp::MundoBasicImp()
 	    --- --- --- ---
 	************************************************************************/
 
+	EstructuralUnitarioFactory fab;
+	
 	Comestible::Enum_Comestible  a = Comestible::quesito;
 	Comestible::Enum_Comestible  b = Comestible::power_up;
 	
-	Posicion p(0.0,0.0);
-	S_ptr<EstructuralUnitario> e_nuevo(new EstructuralPasillo(a,p));
+	EstructuralUnitario::Enum_Estructural e = EstructuralUnitario::Pasillo;
 	
-	e_nuevo->set_posicion(p);
+	Posicion p(0.0,0.0);
+	S_ptr<EstructuralUnitario> e_nuevo = fab.construir(p,e,a);
 	mapa_nuevo->agregar_estructural(e_nuevo);
 
 	Posicion p1(1.0,0.0);
 	//S_ptr<EstructuralUnitario> e_nuevo1(new EstructuralPasillo(b));
-	S_ptr<EstructuralUnitario> e_nuevo1(new EstructuralPasillo(a, p1));
+	S_ptr<EstructuralUnitario> e_nuevo1 = fab.construir(p1,e,a);
 	mapa_nuevo->agregar_estructural(e_nuevo1);
 
 	Posicion p2(2.0,0.0);
-	S_ptr<EstructuralUnitario> e_nuevo2(new EstructuralPasillo(a, p2));
-		
+	S_ptr<EstructuralUnitario> e_nuevo2 = fab.construir(p2,e,a);
 	mapa_nuevo->agregar_estructural(e_nuevo2);
 
 	Posicion p3(3.0,0.0);
-	S_ptr<EstructuralUnitario> e_nuevo3(new EstructuralPasillo(a, p3));
-		
+	S_ptr<EstructuralUnitario> e_nuevo3 = fab.construir(p3,e,a);	
 	mapa_nuevo->agregar_estructural(e_nuevo3);
 
 	Posicion p4(1.0,1.0);
-	S_ptr<EstructuralUnitario> e_nuevo4(new EstructuralPasillo(a, p4));
-	
+	S_ptr<EstructuralUnitario> e_nuevo4 = fab.construir(p4,e,a);
 	mapa_nuevo->agregar_estructural(e_nuevo4);
 
 	e_nuevo->set_derecha(e_nuevo1);

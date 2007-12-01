@@ -31,6 +31,6 @@ void EstructuralPasillo::ingresar(Jugador& jugador){
 	this->comida = 0;*/
 }
 
-int EstructuralPasillo::get_tipo(){
+char EstructuralPasillo::get_tipo(){
 	return -1;//no tiene tipo
 }
