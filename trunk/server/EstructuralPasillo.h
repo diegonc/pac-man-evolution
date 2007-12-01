@@ -16,7 +16,7 @@ class EstructuralPasillo : public EstructuralUnitario{
 	
 		~EstructuralPasillo();
 	
-		int get_tipo();
+		char get_tipo();
 	
 		S_ptr<Comestible> get_comida();
 	
