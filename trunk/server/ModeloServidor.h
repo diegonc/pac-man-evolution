@@ -7,8 +7,6 @@
 #include <string>
 #include <list>
 #include "Jugador.h"
-#include "Objeto.h"
-//#include "EstructuralUnitario.h"
 #include "../common/observador.h"
 
 /** @brief Esta clase define el modelo.

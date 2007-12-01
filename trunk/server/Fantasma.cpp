@@ -34,7 +34,8 @@ void Fantasma::colision(Jugador& jugador){
 					pacman.matar();			
 				}
 				else{
-					this->matar();
+					if(jugador.get_personaje()->esta_vivo())
+						this->matar();
 				}
 			}
 		}

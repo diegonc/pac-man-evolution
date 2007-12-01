@@ -6,7 +6,6 @@
 #include "EstructuralUnitario.h"
 #include "Posicion.h"
 #include <list>
-#include "Objeto.h"
 #include "../common/observable.h"
 
 /** @brief Interfaz de acceso al mapa.
