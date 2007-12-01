@@ -52,7 +52,7 @@ class MapaBajoNivel : public Observable
 		virtual std::list<S_ptr<EstructuralUnitario> > get_estructurales()=0;	
 		
 		virtual std::list<S_ptr<Comestible> > get_comestibles()=0;
-		//virtual std::list<S_ptr<Objeto> > get_comestibles()=0;
+		
 		
 };
 
