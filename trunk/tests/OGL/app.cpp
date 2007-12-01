@@ -57,7 +57,8 @@ SDL_Surface *SD_Logo;
 											// ...and a SD Logo
 bool        EsceneCreado=false;
 GLuint      Escenario;
-std::map<std::string,ObjTextura*> Cosas;
+//std::map<std::string,ObjTextura*> Cosas;
+std::map<char,ObjTextura*> Cosas;
 GLuint texturaPiso;
 GLuint texturaPared;
 
@@ -213,27 +214,32 @@ void CargarCosas(){
     ObjTextura* objtext=new ObjTextura;
         Load3DS(&(objtext->Objeto3d),"banana.3DS");
         CargarTextura(&(objtext->textura),"banana.bmp");
-        Cosas["banana"]=objtext;
+        Cosas['b'] = objtext;
+        //Cosas["banana"]=objtext;
     objtext=new ObjTextura;
         Load3DS(&(objtext->Objeto3d),"pacman.3DS");
         CargarTextura(&(objtext->textura),"pacman.bmp");
-        Cosas["pacman"]=objtext;
+        Cosas[Personaje::pacman]=objtext; 
+       //Cosas["pacman"]=objtext;
     objtext=new ObjTextura;
         Load3DS(&(objtext->Objeto3d),"pastilla.3DS");
         CargarTextura(&(objtext->textura),"pastilla.bmp");
-        Cosas["pastilla"]=objtext;
+        Cosas[Comestible::quesito]=objtext;
+        //Cosas["pastilla"]=objtext;
     objtext=new ObjTextura;
         Load3DS(&(objtext->Objeto3d),"cerecita.3DS");
         CargarTextura(&(objtext->textura),"cerecita.bmp");
-        Cosas["cerecita"]=objtext;
+        //Cosas["cerecita"]=objtext;
     objtext=new ObjTextura;
         Load3DS(&(objtext->Objeto3d),"fantasma.3DS");
         CargarTextura(&(objtext->textura),"fantasma.bmp");
-        Cosas["fantasma"]=objtext;
+        Cosas[Personaje::fantasma]=objtext; 
+        //Cosas["fantasma"]=objtext;
     objtext=new ObjTextura;
         Load3DS(&(objtext->Objeto3d),"powerup.3DS");
         CargarTextura(&(objtext->textura),"powerup.bmp");
-        Cosas["powerup"]=objtext;
+        Cosas[Comestible::power_up]=objtext;
+        //Cosas["powerup"]=objtext;
 
 }
 
@@ -482,7 +488,7 @@ void DrawEscenario(){
     */
 }
 
-void DibujarObjetoObservadorPosicion(Posicion_Graf* P,std::string Nombre){
+void DibujarObjetoObservadorPosicion(Posicion_Graf* P,char Nombre){
   //  float Angulo=P->getAnguloActual();
  //   Angulo=(Angulo/180)*3.14;
 //    float deltaX=sin(Angulo)*2;
@@ -506,7 +512,7 @@ void DibujarObjetoObservadorPosicion(Posicion_Graf* P,std::string Nombre){
     //gluLookAt(P->x+deltaX, P->y+deltaY, 0, P->x, P->y, 0.0, 0.0, 1.0, 0.0);
 }
 
-void DibujarObjetoPosicion(Posicion_Graf* P,std::string Nombre){
+void DibujarObjetoPosicion(Posicion_Graf* P,char Nombre){
 
     glTranslatef(P->x,P->y, 0.0);
     glRotatef(P->getAnguloActual(), 0, 0, 1.0);
@@ -582,7 +588,7 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
             P->x=p.get_x()*4;
             P->y=-p.get_y()*4;
             P->setAnguloActual(getAnguloDireccion(jp->get_direccion()));
-            DibujarObjetoObservadorPosicion(P,"pacman");
+            DibujarObjetoObservadorPosicion(P,jp->get_personaje()->get_tipo());
        }
        else{
 /*         Posicion p=jp->get_posicion();
@@ -595,7 +601,7 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
 	      Posicion p2=jp->get_posicion();
       	Pos.x= -p2.get_x()*4;
          Pos.y= p2.get_y()*4;
-      	DibujarObjetoPosicion(&Pos,"fantasma");
+      	DibujarObjetoPosicion(&Pos,jp->get_personaje()->get_tipo());
       }  
    }
    std::list< S_ptr<Comestible> > lista_comestibles = mod.get_mundo().get_mapa_activo().get_comestibles();
@@ -609,7 +615,7 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
    
       	Pos.x= -p.get_x()*4;
          Pos.y= p.get_y()*4;
-      	DibujarObjetoPosicion(&Pos,"pastilla");
+      	DibujarObjetoPosicion(&Pos,comestible->get_tipo());
    }
    /*
     Pos.x=-sin(j)*10;
