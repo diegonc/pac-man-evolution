@@ -16,6 +16,12 @@ EsqEste::EsqEste (int pos_x, int pos_y) : Estructural(pos_x, pos_y, ESQ_ANCHO, E
 	this->set_posible_conexion(1,0, conec2);
 }
 
+/* Get Tipo: */
+
+TipoElem EsqEste::get_tipo(){
+	return ESQ;
+}
+
 /* Get Ruta Imagen: */
 
 char* EsqEste::get_ruta_imagen(){

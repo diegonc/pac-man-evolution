@@ -63,14 +63,21 @@ bool Estructural::es_punto_conexion(int x, int y){
 bool Estructural::hay_conexion(int x1, int y1, int x2, int y2){
 	int x_rel = x1 - this->get_pos_x();
 	int y_rel = y1 - this->get_pos_y();
-	if (this->es_punto_conexion(x1, y1)){
-		S_ptr<Punto> posib_conex = this->componentes[x_rel][y_rel]->get_posible_conexion();
-		if ((posib_conex->get_x() == x2) && (posib_conex->get_y() == y2))
-			return true;
-		else
+	int x_rel2 = x2 - this->get_pos_x();
+	int y_rel2 = y2 - this->get_pos_y();
+	//Si evaluo 2 puntos que caen adentro del mismo estructural directamente digo q estan conectados
+	if ((x_rel2 >= 0) && (x_rel2 < this->get_alto()) && (y_rel2 >= 0) && (y_rel2 < this->get_alto()))
+		return true;
+	else {
+		if (this->es_punto_conexion(x1, y1)){
+			S_ptr<Punto> posib_conex = this->componentes[x_rel][y_rel]->get_posible_conexion();
+			if ((posib_conex->get_x() == x2) && (posib_conex->get_y() == y2))
+				return true;
+			else
+				return false;
+		} else
 			return false;
-	} else
-		return false;	
+	}	
 }
 
 /* Es Habitable: */

@@ -27,7 +27,12 @@ class Traductor {
 	
 	/* Trad Cod Elemento: Traduce un codigo de elemento de alto nivel a un codigo de elemento de 
 	   bajo nivel. */
-	const char trad_cod_elemento(TipoElem tipo);
+	char trad_cod_elemento(TipoElem tipo);
+	
+	/* Realizar Conexiones: Dados un mapa de alto nivel y uno de bajo nivel cargados, realiza las
+	   conexiones entre estructurales de bajo nivel, en el mapa de bajo nivel, basandose en el
+	   de alto nivel. */
+	void realizar_conexiones(Mapa* mapa, S_ptr<MapaBajoNivel> mapa_bajo_nivel);
 	
 };
 

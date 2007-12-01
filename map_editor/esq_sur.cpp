@@ -16,6 +16,12 @@ EsqSur::EsqSur (int pos_x, int pos_y) : Estructural(pos_x, pos_y, ESQ_ANCHO, ESQ
 	this->set_posible_conexion(1,1, conec2);
 }
 
+/* Get Tipo: */
+
+TipoElem EsqSur::get_tipo(){
+	return ESQ;
+}
+
 /* Get Ruta Imagen: */
 
 char* EsqSur::get_ruta_imagen(){
