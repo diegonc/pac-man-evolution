@@ -20,15 +20,11 @@ void ModeloServidor::cargar_modelo(){
 	
 	Jugador *j1 = new Jugador(1);
 	Tipo_Jugador j_1(j1);
-	S_ptr<Personaje> pacman(new PacMan(j1));
-	j_1->set_personaje(pacman);
 	Posicion p(0.5,0.5);
 	j_1->set_posicion(p);
 	
 	Jugador *j2 = new Jugador(2);
 	Tipo_Jugador j_2(j2);
-	S_ptr<Personaje> fantasmita(new Fantasma(j2));
-	j_2->set_personaje(fantasmita);
 	Posicion p2(3.5,0.5);
 	j_2->set_posicion(p2);
 	
@@ -47,6 +43,15 @@ ModeloServidor::~ModeloServidor(){
 }
 
 void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
+	S_ptr<Personaje> personaje;
+	
+	if(jugadores.size() != 0)
+		personaje = S_ptr<Personaje>(new PacMan(&(*jugador)));
+	else
+		personaje = S_ptr<Personaje>(new Fantasma(&(*jugador)));
+	
+	jugador->set_personaje(personaje);
+	
 	this->jugadores.push_back(jugador);
 }
 			
@@ -116,5 +121,9 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
 }
 
 void ModeloServidor::preparar_partida(){
-
+	/*std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+	
+	S_ptr<Jugador> j = *it_jugadores;
+	
+	j->set_personaje(*/
 }
