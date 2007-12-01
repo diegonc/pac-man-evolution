@@ -27,7 +27,8 @@ void PacMan::colision(Jugador& jugador){
 		distancia = sqrt(distancia);
 		if(distancia  <= (this->get_radio() + jugador.get_personaje()->get_radio() ) ){
 			if( this->tiene_power_up() ){
-				jugador.get_personaje()->matar();
+				if(jugador.get_personaje()->esta_vivo())
+					jugador.get_personaje()->matar();
 			}
 			else{
 				this->matar();			
