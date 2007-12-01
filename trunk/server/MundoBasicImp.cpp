@@ -11,7 +11,7 @@
 
 
 #include <iostream>
-MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
+MundoBasicImp::MundoBasicImp()
 {
 	this->cant_niveles = 0;
 	S_ptr<MapaBajoNivel> mapa_nuevo = new MapaImpSet(1,4);
@@ -62,6 +62,7 @@ MundoBasicImp::MundoBasicImp(std::string ruta_mundo)
 	e_nuevo1->set_abajo(e_nuevo4);
 
 	/////////////////////////////////////////////////////////////////////////
+	
 	agregar_mapa( mapa_nuevo );
 }
 
@@ -69,15 +70,6 @@ MundoBasicImp::~MundoBasicImp()
 {
 	this->mapas.clear();
 }
-/*
-S_ptr<MundoBajoNivel> MundoBasicImp::get_instancia()
-{
-	if( instancia.es_nulo() )
-		instancia = S_ptr<MundoBajoNivel>(new MundoBasicImp());
-
-	return instancia;
-}
-*/
 MapaBajoNivel& MundoBasicImp::get_mapa_activo()
 {
 	return *mapas.back();

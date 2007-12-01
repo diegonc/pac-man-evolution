@@ -65,6 +65,8 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 
 	}
 	
+	this->set_cambio();
+	this->avisar_observadores(NULL);
 }
 
 bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
@@ -131,12 +133,10 @@ void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordena
 void MapaImpSet::agregar_estructural(S_ptr<EstructuralUnitario> e){
 
 	estructurales.insert(e);
-	std::cout << e->get_posicion() <<"\n";
 	S_ptr<Comestible> c = e->get_comida();
 	if(! c.es_nulo() )
 		this->comestibles.push_back(c);
-	std::cout << estructurales.size() <<"\n";
-
+	
 }
 S_ptr<EstructuralUnitario> MapaImpSet::get_estructural(Posicion &p){
 

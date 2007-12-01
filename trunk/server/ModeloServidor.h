@@ -20,7 +20,7 @@ class ModeloServidor : public Thread , public Observador{
 	typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	private:
-		MundoBajoNivel * mundo;
+		S_ptr<MundoBajoNivel> mundo;
 	
 		std::list<Tipo_Jugador> jugadores;
 		
@@ -28,14 +28,15 @@ class ModeloServidor : public Thread , public Observador{
 		
 		bool parar;
 	
-		void cargar_modelo(std::string ruta_mundo);
+		void cargar_modelo(); //PROVISORIA PARA CARGAR; DESPUES SACAR
 	
 		void preparar_partida();
 					
+		void revisar_colisiones(S_ptr<Jugador>& j);	
 	
 	public:
 		
-		ModeloServidor(std::string ruta_mundo);
+		ModeloServidor();
 
 		~ModeloServidor();	
 	
@@ -49,9 +50,10 @@ class ModeloServidor : public Thread , public Observador{
 	
 		const std::list<S_ptr<Jugador> >& get_jugadores();
 	
-		void revisar_colisiones(S_ptr<Jugador>& j);
-		
 		virtual void actualizar(Observable * observable, void * param);
+	
+	
+		void set_mundo(S_ptr<MundoBajoNivel> mundo);
 };
 
 

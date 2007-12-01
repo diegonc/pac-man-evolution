@@ -6,15 +6,15 @@
 
 /////////////////////////////////
 
-ModeloServidor::ModeloServidor(std::string ruta_mundo){
-	cargar_modelo(ruta_mundo);
+ModeloServidor::ModeloServidor(){
+	cargar_modelo();
 	
 }
 
-void ModeloServidor::cargar_modelo(std::string ruta_mundo){
+void ModeloServidor::cargar_modelo(){
 	this->parar = false;
 	
-	this->mundo = new MundoBasicImp(ruta_mundo);
+	this->mundo = new MundoBasicImp();
 	
 	/**************************************************************************/
 	
@@ -40,9 +40,10 @@ void ModeloServidor::cargar_modelo(std::string ruta_mundo){
 	
 	this->mundo->get_mapa_activo().agregar_observador(this);
 }
-
+void ModeloServidor::set_mundo(S_ptr<MundoBajoNivel> mundo){
+	this->mundo = mundo;
+}
 ModeloServidor::~ModeloServidor(){
-	delete this->mundo;
 }
 
 void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
@@ -50,29 +51,35 @@ void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 }
 			
 void ModeloServidor::run(){
-	std::list<Tipo_Jugador>::iterator it;
 	
-	Tipo_Jugador j;
-	
-	std::cout<< "Hay " << this->mundo->cantidad_niveles() << " niveles\n";
-	for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
-		preparar_partida();
+	if(! mundo.es_nulo() ){
+		std::list<Tipo_Jugador>::iterator it;
 		
-		while(!this->parar){
-			for(it = jugadores.begin(); it!= jugadores.end(); it++){
-				j = *it;
-				(this->mundo->get_mapa_activo()).mover(*j, j->get_personaje()->get_velocidad() * 0.002);
-				revisar_colisiones(j);
+		Tipo_Jugador j;
+		
+		std::cout<< "Hay " << this->mundo->cantidad_niveles() << " niveles\n";
+		for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
+			mundo->get_mapa_activo().agregar_observador(this);
+			preparar_partida();
+			
+			while(!this->parar){
+				for(it = jugadores.begin(); it!= jugadores.end(); it++){
+					
+					j = *it;
+					(this->mundo->get_mapa_activo()).mover(*j, j->get_personaje()->get_velocidad() * 0.002);
+					revisar_colisiones(j);
+				}
+				//std::cout << "- El jugador tiene " << j->get_puntos() << " puntos y esta en ";
+				//std::cout << j->get_posicion() <<"\n";
+				//j1->colisiono(*j2);
+				usleep(2000);
+				
 			}
-			//std::cout << "- El jugador tiene " << j->get_puntos() << " puntos y esta en ";
-			//std::cout << j->get_posicion() <<"\n";
-			//j1->colisiono(*j2);
-			usleep(2000);
+			
 		}
 	}
-	std::cout << "termino esta caca\n";
-			
 }
+
 void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 	std::list<Tipo_Jugador>::iterator it;
 	
