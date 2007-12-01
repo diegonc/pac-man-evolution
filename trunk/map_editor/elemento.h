@@ -53,6 +53,9 @@ class Elemento {
 
 	/* Get Orientacion: Devuelve la orientacion del elemento */
 	Orientacion get_orientacion();
+		
+	/* Get Tipo: Devuelve el tipo del elemento */
+	virtual TipoElem get_tipo() = 0;
 	
 	/* Es Punto Conexion: Dadas unas coordenadas x,y devuelve true si las mismas son un punto de conexion del
 	  elemento o false en caso contrario */

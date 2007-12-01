@@ -16,6 +16,12 @@ EsqNorte::EsqNorte (int pos_x, int pos_y) : Estructural(pos_x, pos_y, ESQ_ANCHO,
 	this->set_posible_conexion(1,1, conec2);
 }
 
+/* Get Tipo: */
+
+TipoElem EsqNorte::get_tipo(){
+	return ESQ;
+}
+
 /* Get Ruta Imagen: */
 
 char* EsqNorte::get_ruta_imagen(){

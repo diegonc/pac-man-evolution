@@ -6,7 +6,13 @@
 /* Constructor: */
 
 PowerUp::PowerUp (int pos_x, int pos_y) : Modificador(pos_x, pos_y) {}
+
+/* Get Tipo: */
 	
+TipoElem PowerUp::get_tipo(){
+	return PWUP;	
+}
+
 /* Get Ruta Imagen: */
 
 char* PowerUp::get_ruta_imagen(){

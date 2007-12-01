@@ -16,6 +16,9 @@ class PasilloVert : public Estructural {
 	/* Constructor: Inicializa un pasillo vertical con las coords pasadas por parametro. */
 	PasilloVert (int pos_x, int pos_y);
 	
+	/* Get Tipo: Devuelve el tipo del elemento */
+	virtual TipoElem get_tipo();
+	
 	/* Get Ruta Imagen: Devuelve una cadena con la ruta donde se encuentra la imagen que representa al elemento */
 	virtual char* get_ruta_imagen();
 

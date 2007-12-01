@@ -16,6 +16,12 @@ PasilloVert::PasilloVert (int pos_x, int pos_y) : Estructural(pos_x, pos_y, PAS_
 	this->set_posible_conexion(2,0, conec2);
 }
 
+/* Get Tipo: */
+	
+TipoElem PasilloVert::get_tipo(){
+	return PASILLO;	
+}
+
 /* Get Ruta Imagen: */
 
 char* PasilloVert::get_ruta_imagen(){

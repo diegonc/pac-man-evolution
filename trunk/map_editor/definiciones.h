@@ -23,7 +23,7 @@
 
 //Defino el tipo enumerado que contiene todos los tipos de elementos posibles
 
-enum TipoElem { PASILLO, ESQ, BIFUR, CRUCE, CASA, PORTAL, SALIDA, PWUP, BONUS};
+enum TipoElem { PASILLO, ESQ, BIFUR, CRUCE, CASA, PORTAL, SALIDA, PWUP, BONUS, QUESO};
 
 //Defino el tipo enumerado que contiene todas las orientaciones posibles para los elementos
 
