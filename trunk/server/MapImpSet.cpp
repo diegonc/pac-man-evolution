@@ -49,17 +49,18 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 		if( !tocando( jugador, posicion_jugador) ){
 			ComparadorPosicion comp;
 			if(! comp(posicion_jugador, jugador.get_posicion()) ){
-				//if( !vecino.es_nulo() ){
-					S_ptr<Comestible> com = vecino->get_comida();
-					vecino->ingresar(jugador);
-					if(vecino->get_comida().es_nulo() ){
-						this->quitar_comestible(com);
-					}
-					jugador.set_posicion(posicion_jugador);
-				//}
+				S_ptr<Comestible> com = vecino->get_comida();
+				int puntosJugador = jugador.get_puntos();
+				vecino->ingresar(jugador);
+				if(jugador.get_puntos() != puntosJugador){
+				//if(vecino->get_comida().es_nulo()){
+					this->quitar_comestible(com);
+				}
+				//jugador.set_posicion(posicion_jugador);
+				
 				//TODO.....VER QUE SE HACE SI NO SE PODIA MOVER PARA ESE LADO
 			}
-			else
+			//else
 				jugador.set_posicion(posicion_jugador);
 		}
 
@@ -84,7 +85,6 @@ bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
 		else
 			phi += INCREMENTO_PHI;
 	}
-	//exit(0);
 	return toca;
 }
 /*
@@ -187,9 +187,13 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 	if( !comestible.es_nulo() ){
 		std::list<S_ptr<Comestible> >::iterator it = this->comestibles.begin();
 		bool encontrado = false;
-	
+		S_ptr<Comestible> aux;
+		
 		while( !encontrado && it != this->comestibles.end() ){
-			if( comestible == *it ){
+			aux = *it;
+			std::cout << &(*comestible)  << " ---- " << &(*aux)  << "\n";
+			///if( comestible == *it ){
+			if( &(*comestible) == &(*aux) ){
 				comestibles.erase(it);
 				encontrado = true;
 			}
