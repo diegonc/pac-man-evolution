@@ -61,8 +61,7 @@ std::map<std::string,ObjTextura*> Cosas;
 GLuint texturaPiso;
 GLuint texturaPared;
 
-std::string mierda="a";
-ModeloServidor mod(mierda);
+ModeloServidor mod;
 
 
 
@@ -497,9 +496,9 @@ void DibujarObjetoObservadorPosicion(Posicion_Graf* P,std::string Nombre){
 
     glRotatef(Angulo,0,1,0);
     DibujarObjeto(Cosas[Nombre]);
-    glRotatef(-Angulo,0,1,0);
-    //std::cout << (P->getAnguloActual()) <<"\n";
-    glRotatef(P->getAnguloActual(), 0, 0, 1.0);
+    glRotatef(-Angulo,0,0,0);
+    glRotatef(P->getAnguloActual(), 0, 0.0, 1.0);
+
 
     glTranslatef(P->x,P->y, 0.0);
 
@@ -542,7 +541,7 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
 
 //   glTranslatef(0.0,15 , -6);
    //VistaUP
-    glTranslatef(0,0 , -20);
+   glTranslatef(0,0 , -20);
 
 
 //END LUZ
@@ -586,23 +585,30 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
             DibujarObjetoObservadorPosicion(P,"pacman");
        }
        else{
-
+/*         Posicion p=jp->get_posicion();
+         P->x=p.get_x()*4;
+         P->y=-p.get_y()*4;
+         P->setAnguloActual(getAnguloDireccion(jp->get_direccion()));
+         DibujarObjetoPosicion(P,"fantasma");*/
+        
          Posicion_Graf Pos;
 	      Posicion p2=jp->get_posicion();
-      	Pos.x=p2.get_x()*4;
-         Pos.y=-p2.get_y()*4;
+      	Pos.x= -p2.get_x()*4;
+         Pos.y= p2.get_y()*4;
       	DibujarObjetoPosicion(&Pos,"fantasma");
       }  
    }
    std::list< S_ptr<Comestible> > lista_comestibles = mod.get_mundo().get_mapa_activo().get_comestibles();
    std::list< S_ptr<Comestible> >::iterator comestibles;
    S_ptr<Comestible> comestible;
+   
    for(comestibles = lista_comestibles.begin(); comestibles != lista_comestibles.end(); ++comestibles){
          comestible = *comestibles;         
          Posicion_Graf Pos;
          Posicion p=comestible->get_posicion();
-      	Pos.x=p.get_x()*4;
-         Pos.y=-p.get_y()*4;
+   
+      	Pos.x= -p.get_x()*4;
+         Pos.y= p.get_y()*4;
       	DibujarObjetoPosicion(&Pos,"pastilla");
    }
    /*
