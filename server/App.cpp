@@ -16,8 +16,10 @@ S_ptr<App> App::get_instancia(){
 	return instancia;
 }
 int App::ejecutar(){
-	std::string ruta = "a";
-	S_ptr<ModeloServidor> modelo(new ModeloServidor(ruta));
+	
+	S_ptr<ModeloServidor> modelo(new ModeloServidor());
+	S_ptr<MundoBajoNivel> mundo(new MundoBasicImp());
+	modelo->set_mundo(mundo);
 	modelo->start();
 	pthread_join(modelo->get_hilo(), NULL);
 	

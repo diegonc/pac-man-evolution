@@ -14,7 +14,7 @@ class MundoBasicImp : public MundoBajoNivel
 		int cant_niveles;
 
 	public:
-		MundoBasicImp(std::string ruta_mundo);
+		MundoBasicImp();
 		
 		~MundoBasicImp();
 	
