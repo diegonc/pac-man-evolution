@@ -4,7 +4,8 @@
 
 #define VELOCIDAD_FANTASMA_INICIAL		3	
 #define VELOCIDAD_FANTASMA_PW			5
-#define RADIO_FANTASMA					1
+
+#define RADIO_FANTASMA					0.5
 
 
 Fantasma::Fantasma(Jugador *jugador):Personaje(jugador, RADIO_FANTASMA){}
@@ -18,7 +19,6 @@ void Fantasma::colision(Jugador& jugador){
 	try{
 		if(jugador.get_id() != get_jugador().get_id() ){
 			PacMan pacman = dynamic_cast< PacMan& >(*jugador.get_personaje());
-			
 			Tipo_Coordenada distancia;
 		
 			distancia = pow( get_jugador().get_posicion().get_x() - 	
@@ -49,4 +49,6 @@ Personaje::Enum_Personaje Fantasma::get_tipo(){
 	
 	return tipo;
 }
-int Fantasma::get_velocidad(){}
+int Fantasma::get_velocidad(){
+	return 3;
+}

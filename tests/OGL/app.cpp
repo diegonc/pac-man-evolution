@@ -62,6 +62,7 @@ std::map<char,ObjTextura*> Cosas;
 GLuint texturaPiso;
 GLuint texturaPared;
 
+
 ModeloServidor mod;
 
 

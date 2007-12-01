@@ -26,9 +26,7 @@ void EstructuralPasillo::ingresar(Jugador& jugador){
 	
 		this->comida = comida_nula;
 	}
-	/*delete this->comida;
-	
-	this->comida = 0;*/
+
 }
 
 char EstructuralPasillo::get_tipo(){
