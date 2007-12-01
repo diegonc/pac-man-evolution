@@ -4,6 +4,9 @@
 
 #include "definiciones.h"
 #include "../common/smart_pointer.h"
+#include "mundo.h"
+#include "../server/MundoBajoNivel.h"
+#include "../server/MundoBasicImp.h"
 
 /* CLASE TRADUCTOR: Clase que se encarga de traducir un mundo de alto nivel (del editor),
    a un mundo de bajo nivel (para el servidor). */
@@ -17,6 +20,10 @@ class Traductor {
 	MundoBajoNivel* traducir(Mundo* mundo);
 	
 	private:
+		
+	/* Traducir Mapa: Recibe un mapa de alto nivel y lo traduce a un mapa de bajo nivel, devolviendo
+	   una referencia al mismo. */
+	S_ptr<MapaBajoNivel> traducir_mapa (Mapa* mapa);
 	
 	/* Trad Cod Elemento: Traduce un codigo de elemento de alto nivel a un codigo de elemento de 
 	   bajo nivel. */

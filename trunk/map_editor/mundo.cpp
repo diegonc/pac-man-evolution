@@ -100,6 +100,12 @@ void Mundo::degradar(unsigned int nOrden){
 
 }
 
+/* Get Cant Niveles: */
+
+unsigned int Mundo::get_cant_niveles(){
+	return this->niveles.size();
+}
+
 /* ////////////////////TEMPORAL///////////////////////// */
 
 void Mundo::imprimir_nivel(unsigned int nOrden){

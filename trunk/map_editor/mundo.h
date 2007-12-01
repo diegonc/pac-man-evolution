@@ -60,6 +60,9 @@ class Mundo {
 	/* Degradar: Aumenta en 1 el orden del nivel cuyo numero actual de orden es nOrden, colocandolo mas lejos
 	   del principio de la lista. Si es el ultimo no hace nada */
 	void degradar(unsigned int nOrden);
+	
+	/* Get Cant Niveles: Devuelve la cantidad de niveles del mundo. */
+	unsigned int get_cant_niveles();
 
 	/* ////////////////////TEMPORAL///////////////////////// */
 	void imprimir_nivel(unsigned int nOrden);
