@@ -57,6 +57,10 @@ class EstructuralUnitario{
 		void set_posicion(Posicion &p);
 		
 		Posicion& get_posicion();
+		
+		virtual bool es_salida_pacman();
+		
+		virtual bool es_casa_fantasma();
 	
 };
 #endif /*__ESTRUCTURAL_H__*/

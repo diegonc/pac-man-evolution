@@ -6,10 +6,10 @@ Direccion Direccion::Sur = Direccion( 1 );
 Direccion Direccion::Este = Direccion( 2 );
 Direccion Direccion::Oeste = Direccion( 3 );
 */
-const int Direccion::Norte = NORTE;
-const int Direccion::Sur = SUR;
-const int Direccion::Este = ESTE;
-const int Direccion::Oeste = OESTE;
+const int Direccion::Norte = _NORTE;
+const int Direccion::Sur = _SUR;
+const int Direccion::Este = _ESTE;
+const int Direccion::Oeste = _OESTE;
 
 Direccion::Direccion( int i )
 {

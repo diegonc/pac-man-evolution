@@ -118,9 +118,17 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
 }
 
 void ModeloServidor::preparar_partida(){
-	/*std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
 	
-	S_ptr<Jugador> j = *it_jugadores;
+	std::list< S_ptr<EstructuralUnitario> >::iterator it_estucturales;
+	S_ptr<Jugador> j;
+	S_ptr<EstructuralUnitario> e;
 	
-	j->set_personaje(*/
+	for(it_jugadores = this->jugadores.begin(); it_jugadores != this->jugadores.end() ; ++it_jugadores){
+		j = *it_jugadores;
+		if(j->get_tipo() == Personaje::pacman)
+			
+	
+	}
+	
 }
