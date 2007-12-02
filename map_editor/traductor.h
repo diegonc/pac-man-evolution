@@ -5,8 +5,15 @@
 #include "definiciones.h"
 #include "../common/smart_pointer.h"
 #include "mundo.h"
+#include "estructural.h"
+#include "modificador.h"
+#include "elemento.h"
 #include "../server/MundoBajoNivel.h"
 #include "../server/MundoBasicImp.h"
+#include "../server/MapaBajoNivel.h"
+#include "../server/MapImpSet.h"
+#include "../server/EstructuralUnitarioFactory.h"
+
 
 /* CLASE TRADUCTOR: Clase que se encarga de traducir un mundo de alto nivel (del editor),
    a un mundo de bajo nivel (para el servidor). */
@@ -39,7 +46,7 @@ class Traductor {
 	   del origen.
 	*/
 
-	void Traductor::conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> destino, S_ptr<MapaBajoNivel> mapa_bajo_nivel, Orientacion orientacion){
+	void conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> destino, S_ptr<MapaBajoNivel> mapa_bajo_nivel, Orientacion orientacion);
 
 };
 
