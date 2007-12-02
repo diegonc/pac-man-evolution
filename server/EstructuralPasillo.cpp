@@ -8,7 +8,7 @@ EstructuralPasillo::EstructuralPasillo(Comestible::Enum_Comestible &tipo, Posici
 	pos.set_x(p.get_x() + 0.5);
 	pos.set_y(p.get_y() + 0.5);
 	S_ptr<Comestible> comida_a_asignar(fabrica.construir(tipo,pos) );
-	
+	this->salida = false;
 	this->comida = comida_a_asignar;
 }
 
@@ -30,5 +30,15 @@ void EstructuralPasillo::ingresar(Jugador& jugador){
 }
 
 char EstructuralPasillo::get_tipo(){
-	return -1;//no tiene tipo
+	if(!salida)
+		return -1;//no tiene tipo
+	else
+		return EstructuralUnitario::Salida_Pacman;
+}
+bool EstructuralPasillo::es_salida_pacman(){
+	return this->salida;
+	
+}
+void EstructuralPasillo::set_salida_pacman(){
+	this->salida = true;	
 }

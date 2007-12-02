@@ -1,4 +1,5 @@
-#include "EstructuralSalidaPacman.h"
+
+/*#include "EstructuralSalidaPacman.h"
 
 
 EstructuralSalidaPacman::EstructuralSalidaPacman(Posicion &p):EstructuralUnitario(p){
@@ -13,3 +14,4 @@ char EstructuralSalidaPacman::get_tipo(){
 	return EstructuralUnitario::Salida_Pacman;
 		
 }
+*/

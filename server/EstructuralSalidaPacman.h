@@ -1,4 +1,4 @@
-#ifndef __ESTRUCTURAL_SALIDA_PACMAN_H__
+/*#ifndef __ESTRUCTURAL_SALIDA_PACMAN_H__
 #define __ESTRUCTURAL_SALIDA_PACMAN_H__
 
 
@@ -20,4 +20,4 @@ class EstructuralSalidaPacman : public EstructuralUnitario{
 
 };
 
-#endif /*__ESTRUCTURAL_SALIDA_PACMAN_H__*/
+#endif /*__ESTRUCTURAL_SALIDA_PACMAN_H__*/*/

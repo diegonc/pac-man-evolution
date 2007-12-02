@@ -3,7 +3,7 @@
 
 const char EstructuralUnitario::Casa_Fanstasma 	= CASA_FANTASMA;
 const char EstructuralUnitario::Pasillo		  	= PASILLO;
-const char EstructuralUnitario::Salida_Pacman	= SALIDA_PACMAN;
+//const char EstructuralUnitario::Salida_Pacman	= SALIDA_PACMAN;
 
 
 EstructuralUnitario::EstructuralUnitario(Posicion &p){
@@ -63,4 +63,10 @@ void EstructuralUnitario::set_posicion(Posicion &p){
 }
 Posicion& EstructuralUnitario::get_posicion(){
 	return this->posicion;
+}
+bool EstructuralUnitario::es_salida_pacman(){
+	return false; //por defecto	
+}
+bool EstructuralUnitario::es_casa_fantasma(){
+	return false;//por defecto
 }

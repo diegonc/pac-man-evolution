@@ -8,6 +8,8 @@
 class EstructuralPasillo : public EstructuralUnitario{
 	private:
 		S_ptr<Comestible> comida;
+	
+		bool salida;
 			
 	public:
 		EstructuralPasillo(Comestible::Enum_Comestible &tipo, Posicion &p);
@@ -19,6 +21,12 @@ class EstructuralPasillo : public EstructuralUnitario{
 		char get_tipo();
 	
 		S_ptr<Comestible> get_comida();
+	
+		bool es_salida_fantasma();
+	
+		bool es_salida_pacman();
+	
+		void set_salida_pacman();
 	
 };
 

@@ -2,7 +2,7 @@
 
 #include "EstructuralPasillo.h"
 #include "EstructuralCasaFantasma.h"
-#include "EstructuralSalidaPacman.h"
+//#include "EstructuralSalidaPacman.h"
 
 S_ptr<EstructuralUnitario> EstructuralUnitarioFactory::construir(Posicion &p,
 				EstructuralUnitario::Enum_Estructural tipo_estructural, 
@@ -19,10 +19,10 @@ S_ptr<EstructuralUnitario> EstructuralUnitarioFactory::construir(Posicion &p,
 			return e;
 			break;
 			
-		case SALIDA_PACMAN:
+		/*case SALIDA_PACMAN:
 			e = S_ptr<EstructuralUnitario>(new EstructuralSalidaPacman(p));	
 			return e;
-			break;
+			break;*/
 		default:
 			return e;
 			

@@ -18,3 +18,6 @@ EstructuralCasaFantasma::~EstructuralCasaFantasma(){}
 char EstructuralCasaFantasma::get_tipo(){
 	return EstructuralUnitario::Casa_Fanstasma;
 }
+bool EstructuralCasaFantasma::es_casa_fantasma(){
+	return true;
+}
