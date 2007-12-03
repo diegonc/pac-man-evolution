@@ -10,7 +10,7 @@ CPPFLAGS = "-DCOMPILER=\"$(CC)\"" "-DFLAGS=\"$(OPTFLAGS)\"" \
 LIBS = -lm -lrt
 OBJS = matmul.o timing.o
 
-TARGETS=matmul matmul-bloques matmul-lineas matmul-3loopi
+TARGETS=matmul matmul-bloques matmul-lineas matmul-3loopi matmul-transp
 
 .PHONY:	all
 all:	$(TARGETS)
@@ -23,10 +23,13 @@ matmul: $(OBJS) mmult_basico.o
 matmul-bloques:	$(OBJS) mmult_xbloques.o
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
 
-matmul-3loopi: $(OBJS) mmult_3loopi.c
+matmul-3loopi: $(OBJS) mmult_3loopi.o
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 matmul-lineas:	$(OBJS) mmult_xlinea.o
+	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
+
+matmul-transp: $(OBJS) mmult_transpose.o
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 # ---
