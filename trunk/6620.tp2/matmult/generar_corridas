@@ -1,0 +1,8 @@
+#!/bin/sh
+
+TARGETS=`grep TARGETS= Makefile | cut -f 2 -d '='`
+
+for i in ${TARGETS}; do
+	$i > $i.salida
+done
+
