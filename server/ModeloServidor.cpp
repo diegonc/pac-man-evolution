@@ -120,7 +120,7 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
 void ModeloServidor::preparar_partida(){
 	
 	//para la casa del fantasma y la salida del pacman
-	S_ptr<EstructuralUnitario> salida_pacman;
+	/*S_ptr<EstructuralUnitario> salida_pacman;
 	std::list< S_ptr<EstructuralUnitario> > casa_fantasma;
 	
 	std::list< S_ptr<EstructuralUnitario> >::iterator it_estucturales;
@@ -137,7 +137,7 @@ void ModeloServidor::preparar_partida(){
 			if(aux->es_salida_pacman() )
 				salida_pacman = *it_estucturales;
 		}
-	}		
+	}	*/	
 	
 	/*
 	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
