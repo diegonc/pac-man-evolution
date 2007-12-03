@@ -1,0 +1,125 @@
+\documentclass{article}
+
+\usepackage{babel}[spanish]
+\usepackage{inputenc}[latin1]
+
+\begin{document}
+\section{Multiplicacion por columnas.}
+
+Este método realiza la multiplicación de matrices en forma incremental, efectuando todas las operaciones posible con los elementos disponibles de una de las matrices y sumando los resultados parciales en la matriz resultado.
+
+Utilizando las propiedades de las matrices se consiguen las siguientes equivalencias que proporcionanan fundamento matemático al método. Por simplicidad, se utilizan matrices de 2x2.
+
+$$
+  \left[
+	\begin{array}{cc}
+		a_{11} & a_{12} \\
+		a_{21} & a_{22}
+	\end{array}
+   \right]
+   \left[
+	\begin{array}{cc}
+		b_{11} & b_{12} \\
+		b_{21} & b_{22}
+	\end{array}
+   \right]
+   =
+   \left[
+	\begin{array}{cc}
+		c_{11} & c_{12} \\
+		c_{21} & c_{22}
+	\end{array}
+   \right]
+$$
+
+El producto del miembro izquierdo se puede escribir como
+$$
+   \left(
+	\left[
+	\begin{array}{cc}
+		a_{11} & 0 \\
+		a_{21} & 0
+	\end{array}
+	\right]
+        +
+	\left[
+	\begin{array}{cc}
+		0 & a_{12} \\
+		0 & a_{22}
+	\end{array}
+	\right]
+   \right)
+   \left(
+   	\left[
+	\begin{array}{cc}
+		b_{11} & 0 \\
+		b_{21} & 0
+	\end{array}
+	\right]
+        +
+	\left[
+	\begin{array}{cc}
+		0 & b_{12} \\
+		0 & b_{22}
+	\end{array}
+	\right]
+   \right)
+$$
+
+Y expandiendo los paréntesis resulta
+
+$$
+	\left[
+	\begin{array}{cc}
+		a_{11} & 0 \\
+		a_{21} & 0
+	\end{array}
+	\right]
+	\left[
+	\begin{array}{cc}
+		b_{11} & 0 \\
+		b_{21} & 0
+	\end{array}
+	\right]
+        +
+	\left[
+	\begin{array}{cc}
+		0 & a_{12} \\
+		0 & a_{22}
+	\end{array}
+	\right]
+	\left[
+	\begin{array}{cc}
+		b_{11} & 0 \\
+		b_{21} & 0
+	\end{array}
+	\right]
+	+
+	\left[
+	\begin{array}{cc}
+		a_{11} & 0 \\
+		a_{21} & 0
+	\end{array}
+	\right]
+	\left[
+	\begin{array}{cc}
+		0 & b_{12} \\
+		0 & b_{22}
+	\end{array}
+	\right]
+        +
+	\left[
+	\begin{array}{cc}
+		0 & a_{12} \\
+		0 & a_{22}
+	\end{array}
+	\right]
+	\left[
+	\begin{array}{cc}
+		0 & b_{12} \\
+		0 & b_{22}
+	\end{array}
+	\right]
+$$
+
+\end{document}
