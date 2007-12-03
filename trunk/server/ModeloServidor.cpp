@@ -29,9 +29,10 @@ void ModeloServidor::cargar_modelo(){
 	
 	Jugador *j2 = new Jugador(2);
 	Tipo_Jugador j_2(j2);
-	Posicion p2(3.5,0.5);
+	Posicion p2(0.5,0.5);
 	j_2->set_posicion(p2);
 	this->agregar_jugador(j_2);
+	
 	
 	/**************************************************************************/
 	/*TODO TRUCHAR OPERACIONES Y DESPUES REEMPLAZAR POR UN PARSER*/

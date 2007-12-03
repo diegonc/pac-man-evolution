@@ -61,7 +61,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 				//TODO.....VER QUE SE HACE SI NO SE PODIA MOVER PARA ESE LADO
 			}
 			//else
-				jugador.set_posicion(posicion_jugador);
+			jugador.set_posicion(posicion_jugador);
 		}
 
 	}
@@ -137,9 +137,6 @@ void MapaImpSet::agregar_estructural(S_ptr<EstructuralUnitario> e){
 	S_ptr<Comestible> c = e->get_comida();
 	if(! c.es_nulo() )
 		this->comestibles.push_back(c);
-	
-	std::cout << comestibles.size()  << "\n";
-	
 }
 S_ptr<EstructuralUnitario> MapaImpSet::get_estructural(Posicion &p){
 
@@ -195,8 +192,8 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 		while( !encontrado && it != this->comestibles.end() ){
 			aux = *it;
 			
-			///if( comestible == *it ){
-			if( &(*comestible) == &(*aux) ){
+			if( comestible == *it ){
+			//if( &(*comestible) == &(*aux) ){
 				comestibles.erase(it);
 				encontrado = true;
 			}
