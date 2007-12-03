@@ -49,6 +49,6 @@ Personaje::Enum_Personaje Fantasma::get_tipo(){
 	
 	return tipo;
 }
-int Fantasma::get_velocidad(){
+double Fantasma::get_velocidad(){
 	return 3;
 }

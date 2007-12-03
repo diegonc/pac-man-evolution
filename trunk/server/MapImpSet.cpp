@@ -186,6 +186,7 @@ std::list<S_ptr<Comestible> > MapaImpSet::get_comestibles(){
 }
 
 void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
+	
 	if( !comestible.es_nulo() ){
 		std::list<S_ptr<Comestible> >::iterator it = this->comestibles.begin();
 		bool encontrado = false;
@@ -202,7 +203,6 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 			else
 				it++;
 		}
-		std::cout << comestibles.size() << "<-------------\n" << std::flush;
 		if(this->comestibles.size() == 0){
 			this->set_cambio();
 			this->avisar_observadores(NULL);

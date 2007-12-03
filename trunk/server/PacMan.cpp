@@ -51,6 +51,6 @@ bool PacMan::tiene_power_up(){
 Personaje::Enum_Personaje PacMan::get_tipo(){
 	return pacman;
 }
-int PacMan::get_velocidad(){
+double PacMan::get_velocidad(){
 	return 	this->velocidad;
 }

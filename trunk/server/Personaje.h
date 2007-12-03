@@ -39,7 +39,7 @@ class Personaje{
 		
 		virtual Enum_Personaje get_tipo() = 0;
 	
-		virtual int get_velocidad() = 0;
+		virtual double get_velocidad() = 0;
 	
 };
 

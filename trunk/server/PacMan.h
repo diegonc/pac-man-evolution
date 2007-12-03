@@ -24,7 +24,7 @@ class PacMan : public Personaje{
 	
 		Personaje::Enum_Personaje get_tipo();
 	
-		int get_velocidad();
+		double get_velocidad();
 };
 
 #endif /*__PACMAN_H__*/
