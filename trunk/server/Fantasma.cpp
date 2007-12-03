@@ -13,6 +13,7 @@ Fantasma::Fantasma(Jugador *jugador):Personaje(jugador, RADIO_FANTASMA){}
 
 void Fantasma::comer(Comestible& comestible){
 	/*POR EL MOMENTO NO COME NADA*/
+
 }
 	
 void Fantasma::colision(Jugador& jugador){
