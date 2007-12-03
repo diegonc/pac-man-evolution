@@ -7,7 +7,7 @@ class Fantasma : public Personaje{
 	public:
 		Fantasma(Jugador *jugador);	
 	
-		void comer(Comestible& comestible);
+		bool comer(Comestible& comestible);
 	
 		void colision(Jugador& jugador);
 	

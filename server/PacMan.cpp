@@ -9,10 +9,10 @@ PacMan::PacMan(Jugador *jugador):Personaje(jugador,RADIO_PACMAN){
 	this->set_power_up(false);
 }
 
-void PacMan::comer(Comestible& comestible){
+bool PacMan::comer(Comestible& comestible){
 	(this->get_jugador()).incrementar_puntos(comestible.get_puntos());
 	comestible.afectar_personaje(*this);
-	
+	return true;	
 }
 void PacMan::colision(Jugador& jugador){
 	

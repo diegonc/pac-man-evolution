@@ -30,7 +30,7 @@ Direccion& Jugador::get_direccion() {
 int Jugador::get_id(){
 	return this->id;
 }
-void Jugador::comer(Comestible& comestible){
+bool Jugador::comer(Comestible& comestible){
 	this->personaje->comer(comestible);
 }
 void Jugador::incrementar_puntos(int cant){

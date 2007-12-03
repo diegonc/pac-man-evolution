@@ -31,7 +31,7 @@ class Personaje{
 		
 		virtual ~Personaje();	
 	
-		virtual void comer(Comestible& comestible) = 0;
+		virtual bool comer(Comestible& comestible) = 0;
 	
 		virtual void colision(Jugador& jugador) = 0;
 	

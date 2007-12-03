@@ -593,12 +593,12 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
             DibujarObjetoObservadorPosicion(P,jp->get_personaje()->get_tipo());
        }
        else{
-/*         Posicion p=jp->get_posicion();
+       /*  Posicion p=jp->get_posicion();
          P->x=p.get_x()*4;
          P->y=-p.get_y()*4;
          P->setAnguloActual(getAnguloDireccion(jp->get_direccion()));
-         DibujarObjetoPosicion(P,"fantasma");*/
-        
+         DibujarObjetoPosicion(P,jp->get_personaje()->get_tipo());
+*/
          Posicion_Graf Pos;
 	      Posicion p2=jp->get_posicion();
       	Pos.x= -p2.get_x()*4;

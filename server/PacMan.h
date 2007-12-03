@@ -14,7 +14,7 @@ class PacMan : public Personaje{
 	public:
 		PacMan(Jugador *jugador);
 	
-		void comer(Comestible& comestible);
+		bool comer(Comestible& comestible);
 	
 		void colision(Jugador& jugador);
 	

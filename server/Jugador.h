@@ -75,7 +75,7 @@ class Jugador{
 		 *
 		 *	@param comestible Puntero que referencia al comestible a comer
 		 */
-		void comer(Comestible& comestible);
+		bool comer(Comestible& comestible);
 		
 		void colisiono(Jugador &jugador);
 		
