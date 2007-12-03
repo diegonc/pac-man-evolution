@@ -469,8 +469,8 @@ void DrawEscenario(){
         }
 
         addPiso(xIn,xFin,yIn,yFin);
-        printf("(%f, %f)->",xIn,yIn);
-        printf("(%f, %f)\n",xFin,yFin);
+     //   printf("(%f, %f)->",xIn,yIn);
+     //   printf("(%f, %f)\n",xFin,yFin);
     }
 
 
@@ -546,9 +546,10 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
     static GLfloat pos[4] = {0, 0, 1, 0 };
     glLightfv( GL_LIGHT0, GL_POSITION, pos );
 
-//   glTranslatef(0.0,15 , -6);
+
+  // glTranslatef(0.0,15 , -6);
    //VistaUP
-   glTranslatef(0,0 , -20);
+  glTranslatef(0,0 , -20);
 
 
 //END LUZ
