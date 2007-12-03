@@ -138,7 +138,7 @@ void MapaImpSet::agregar_estructural(S_ptr<EstructuralUnitario> e){
 	if(! c.es_nulo() )
 		this->comestibles.push_back(c);
 	
-	
+	std::cout << comestibles.size()  << "\n";
 	
 }
 S_ptr<EstructuralUnitario> MapaImpSet::get_estructural(Posicion &p){
@@ -194,7 +194,7 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 		
 		while( !encontrado && it != this->comestibles.end() ){
 			aux = *it;
-			//std::cout << &(*comestible)  << " ---- " << &(*aux)  << "\n";
+			
 			///if( comestible == *it ){
 			if( &(*comestible) == &(*aux) ){
 				comestibles.erase(it);

@@ -27,12 +27,12 @@ void ModeloServidor::cargar_modelo(){
 	j_1->set_posicion(p);
 	this->agregar_jugador(j_1);
 	
-	/*Jugador *j2 = new Jugador(2);
+	Jugador *j2 = new Jugador(2);
 	Tipo_Jugador j_2(j2);
 	Posicion p2(3.5,0.5);
 	j_2->set_posicion(p2);
 	this->agregar_jugador(j_2);
-	*/
+	
 	/**************************************************************************/
 	/*TODO TRUCHAR OPERACIONES Y DESPUES REEMPLAZAR POR UN PARSER*/
 	
@@ -67,7 +67,6 @@ void ModeloServidor::run(){
 		
 		Tipo_Jugador j;
 		
-		std::cout<< "Hay " << this->mundo->cantidad_niveles() << " niveles\n";
 		for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
 			mundo->get_mapa_activo().agregar_observador(this);
 			preparar_partida();
@@ -76,8 +75,8 @@ void ModeloServidor::run(){
 				for(it = jugadores.begin(); it!= jugadores.end(); it++){
 					j = *it;
 					(this->mundo->get_mapa_activo()).mover(*j, j->get_personaje()->get_velocidad() * intervalo_tiempo);
-					
 					revisar_colisiones(j);
+					
 				}
 				//std::cout << "- El jugador "<< j->get_id() << " tiene " << j->get_puntos() << " puntos y esta en ";
 				//std::cout << j->get_posicion() <<"\n";
