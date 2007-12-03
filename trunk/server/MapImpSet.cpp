@@ -77,7 +77,7 @@ bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
 	double radio = jugador.get_personaje()->get_radio();
 	bool toca = false;
 	while( phi < DOS_PI && !toca/*2Pi*/ ){
-		Posicion p(	radio * cos(phi) + x0, radio * sin(phi) + y0 );
+		Posicion p(	(radio-0.1) * cos(phi) + x0, (radio-0.1) * sin(phi) + y0 );
 		e_critico = get_estructural(p);
 		if( e_critico.es_nulo() ){
 			toca = true;
