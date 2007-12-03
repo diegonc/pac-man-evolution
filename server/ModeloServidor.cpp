@@ -1,8 +1,11 @@
 #include "ModeloServidor.h"
 
+#include "reloj.h"
+
 /////////////////////////////////
 #include "PacMan.h"
 #include "Fantasma.h"
+
 
 /////////////////////////////////
 
@@ -57,6 +60,9 @@ void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 			
 void ModeloServidor::run(){
 	if(! mundo.es_nulo() ){
+		double intervalo_tiempo = 0;
+		double hora_actual;
+		
 		std::list<Tipo_Jugador>::iterator it;
 		
 		Tipo_Jugador j;
@@ -66,16 +72,18 @@ void ModeloServidor::run(){
 			mundo->get_mapa_activo().agregar_observador(this);
 			preparar_partida();
 			while(!this->parar){
+				hora_actual = Reloj::get_instancia()->get_hora_actual_decimal();
 				for(it = jugadores.begin(); it!= jugadores.end(); it++){
 					j = *it;
-					(this->mundo->get_mapa_activo()).mover(*j, j->get_personaje()->get_velocidad() * 0.002);
+					(this->mundo->get_mapa_activo()).mover(*j, j->get_personaje()->get_velocidad() * intervalo_tiempo);
+					
 					revisar_colisiones(j);
 				}
 				//std::cout << "- El jugador "<< j->get_id() << " tiene " << j->get_puntos() << " puntos y esta en ";
 				//std::cout << j->get_posicion() <<"\n";
 				//j1->colisiono(*j2);
 				usleep(2000);
-				
+				intervalo_tiempo = (Reloj::get_instancia()->get_hora_actual_decimal() - hora_actual) / 1000;
 			}
 			
 		}
