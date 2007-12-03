@@ -5,22 +5,22 @@
 
 /* Constructor: */
 
-PowerUp::PowerUp (int pos_x, int pos_y) : Modificador(pos_x, pos_y) {}
+Power_Up::Power_Up (int pos_x, int pos_y) : Modificador(pos_x, pos_y) {}
 
 /* Get Tipo: */
 	
-TipoElem PowerUp::get_tipo(){
+TipoElem Power_Up::get_tipo(){
 	return PWUP;	
 }
 
 /* Get Ruta Imagen: */
 
-char* PowerUp::get_ruta_imagen(){
+char* Power_Up::get_ruta_imagen(){
 		return RUTA_POWER_UP;
 }
 
 /* ///////////////TEMPORAL/////////////// */
 
-char* PowerUp::toString(){
+char* Power_Up::toString(){
 	return "POWER UP";
 }

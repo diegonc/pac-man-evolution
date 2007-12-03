@@ -29,6 +29,8 @@ CC=gcc
 CXX=g++ 
 
 CXXFLAGS = $(CFLAGS)
+
+gtk = si 
 # VARIABLES CALCULADAS A PARTIR DE LA CONFIGURACION
 ####################################################
 
@@ -50,6 +52,7 @@ endif
 fuentes ?= $(wildcard *.$(extension))
 fuentes_common ?= $(wildcard ../../common/*.$(extension))
 fuentes_server ?= $(wildcard ../../server/*.$(extension))
+fuentes_map ?= $(wildcard ../../map_editor/*.$(extension))
 
 # REGLAS
 #########
@@ -59,8 +62,9 @@ fuentes_server ?= $(wildcard ../../server/*.$(extension))
 all: subproyecto
 
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
-o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server)) $(o_common_files)
-o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_server_files) 
+o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server))
+o_map_files = $(patsubst %.$(extension),%.o,$(fuentes_map)) $(o_server_files) $(o_common_files)
+o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_map_files)
 
 subproyecto: $(o_files)
 	@if [ -z "$(o_files)" ]; \
@@ -74,5 +78,6 @@ clean:
 	@$(RM) -fv *.o subproyecto \
    rm ../../common/*.o \
    rm ../../server/*.o \
+   rm ../../map_editor/*.o \
    rm miEjecutable
 

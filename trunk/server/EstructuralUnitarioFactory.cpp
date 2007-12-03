@@ -10,11 +10,11 @@ S_ptr<EstructuralUnitario> EstructuralUnitarioFactory::construir(Posicion &p,
 	S_ptr<EstructuralUnitario> e;
 	switch( tipo_estructural ){
 		
-		case CASA_FANTASMA: 
+		case _CASA_FANTASMA: 
 			e = S_ptr<EstructuralUnitario>(new EstructuralCasaFantasma(p));
 			return e;
 			break;
-		case PASILLO:
+		case _PASILLO:
 			e = S_ptr<EstructuralUnitario>(new EstructuralPasillo(tipo_comestible, p));
 			return e;
 			break;

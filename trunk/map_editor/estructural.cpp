@@ -66,7 +66,7 @@ bool Estructural::hay_conexion(int x1, int y1, int x2, int y2){
 	int x_rel2 = x2 - this->get_pos_x();
 	int y_rel2 = y2 - this->get_pos_y();
 	//Si evaluo 2 puntos que caen adentro del mismo estructural directamente digo q estan conectados
-	if ((x_rel2 >= 0) && (x_rel2 < this->get_alto()) && (y_rel2 >= 0) && (y_rel2 < this->get_alto()))
+	if ((x_rel2 >= 0) && (x_rel2 < this->get_alto()) && (y_rel2 >= 0) && (y_rel2 < this->get_ancho()))
 		return true;
 	else {
 		if (this->es_punto_conexion(x1, y1)){

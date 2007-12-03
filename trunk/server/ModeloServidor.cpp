@@ -14,7 +14,7 @@ ModeloServidor::ModeloServidor(){
 void ModeloServidor::cargar_modelo(){
 	this->parar = false;
 	
-	this->mundo = new MundoBasicImp();
+	//this->mundo = new MundoBasicImp();
 	
 	/**************************************************************************/
 	
@@ -24,19 +24,20 @@ void ModeloServidor::cargar_modelo(){
 	j_1->set_posicion(p);
 	this->agregar_jugador(j_1);
 	
-	Jugador *j2 = new Jugador(2);
+	/*Jugador *j2 = new Jugador(2);
 	Tipo_Jugador j_2(j2);
 	Posicion p2(3.5,0.5);
 	j_2->set_posicion(p2);
 	this->agregar_jugador(j_2);
-		
+	*/
 	/**************************************************************************/
 	/*TODO TRUCHAR OPERACIONES Y DESPUES REEMPLAZAR POR UN PARSER*/
 	
-	this->mundo->get_mapa_activo().agregar_observador(this);
+	
 }
 void ModeloServidor::set_mundo(S_ptr<MundoBajoNivel> mundo){
 	this->mundo = mundo;
+	this->mundo->get_mapa_activo().agregar_observador(this);
 }
 ModeloServidor::~ModeloServidor(){
 }
@@ -45,7 +46,7 @@ void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 	S_ptr<Personaje> personaje;
 	
 	Jugador * j = &(*jugador);
-	if(jugadores.size() != 0)
+	if(jugadores.size() == 0)
 		personaje = S_ptr<Personaje>(new PacMan(j));
 	else
 		personaje = S_ptr<Personaje>(new Fantasma(j));
@@ -55,7 +56,6 @@ void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 }
 			
 void ModeloServidor::run(){
-	
 	if(! mundo.es_nulo() ){
 		std::list<Tipo_Jugador>::iterator it;
 		
@@ -89,6 +89,7 @@ void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 	for(it = jugadores.begin(); it!= jugadores.end(); it++){
 		j2 = *it;
 		j->colisiono(*j2);
+		
 	}	
 }
 
@@ -118,9 +119,9 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
 }
 
 void ModeloServidor::preparar_partida(){
-	
+	/*
 	//para la casa del fantasma y la salida del pacman
-	/*S_ptr<EstructuralUnitario> salida_pacman;
+	S_ptr<EstructuralUnitario> salida_pacman;
 	std::list< S_ptr<EstructuralUnitario> > casa_fantasma;
 	
 	std::list< S_ptr<EstructuralUnitario> >::iterator it_estucturales;
@@ -130,6 +131,7 @@ void ModeloServidor::preparar_partida(){
 	for(it_estucturales = this->get_mundo().get_mapa_activo().get_estructurales().begin();
 		it_estucturales != this->get_mundo().get_mapa_activo().get_estructurales().end();
 		++it_estucturales){
+			
 		aux = *it_estucturales;
 		if( aux->es_casa_fantasma() )
 			casa_fantasma.push_back(*it_estucturales);
@@ -137,8 +139,8 @@ void ModeloServidor::preparar_partida(){
 			if(aux->es_salida_pacman() )
 				salida_pacman = *it_estucturales;
 		}
-	}	*/	
-	
+	}		
+	*/
 	/*
 	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
 	

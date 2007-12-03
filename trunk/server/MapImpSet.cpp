@@ -130,13 +130,15 @@ void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordena
 }*/
 void MapaImpSet::agregar_estructural(S_ptr<EstructuralUnitario> e){
 	S_ptr<EstructuralUnitario> e_aux = this->get_estructural(e->get_posicion());
-	if( !e_aux.es_nulo() )
-		quitar_comestible(e_aux->get_comida() );
+	//if( !e_aux.es_nulo() )
+		//quitar_comestible(e_aux->get_comida() );
 	
 	estructurales.insert(e);
 	S_ptr<Comestible> c = e->get_comida();
 	if(! c.es_nulo() )
 		this->comestibles.push_back(c);
+	
+	
 	
 }
 S_ptr<EstructuralUnitario> MapaImpSet::get_estructural(Posicion &p){
@@ -191,7 +193,7 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 		
 		while( !encontrado && it != this->comestibles.end() ){
 			aux = *it;
-			std::cout << &(*comestible)  << " ---- " << &(*aux)  << "\n";
+			//std::cout << &(*comestible)  << " ---- " << &(*aux)  << "\n";
 			///if( comestible == *it ){
 			if( &(*comestible) == &(*aux) ){
 				comestibles.erase(it);
@@ -200,6 +202,7 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 			else
 				it++;
 		}
+		std::cout << comestibles.size() << "<-------------\n" << std::flush;
 		if(this->comestibles.size() == 0){
 			this->set_cambio();
 			this->avisar_observadores(NULL);

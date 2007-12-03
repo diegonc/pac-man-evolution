@@ -34,8 +34,8 @@ S_ptr<MapaBajoNivel> Traductor::traducir_mapa (Mapa* mapa){
 			S_ptr<Elemento> modificador = casillero->get_modificador();
 			Posicion pos(cont2, cont1);
 			S_ptr<EstructuralUnitario>  estruct_bajo_nivel;
-			//Si hay estructural en el casillero, creo un estructural de bajo nivel y lo agrego al mapa de bajo nivel
-			if (!estructural.es_nulo()) {
+			//Si hay estructural en el casillero y es habitable, creo un estructural de bajo nivel y lo agrego al mapa de bajo nivel
+			if ((!estructural.es_nulo()) && (estructural->es_habitable(cont1,cont2))) {
 				//Creo una fabrica de estructurales unitarios (de bajo nivel)
 				S_ptr<EstructuralUnitarioFactory> fabrica (new EstructuralUnitarioFactory());
 				//Obtengo el tipo de estructural de bajo nivel, a partir del tipo de alto nivel
@@ -67,7 +67,7 @@ void Traductor::realizar_conexiones(Mapa* mapa, S_ptr<MapaBajoNivel> mapa_bajo_n
 			S_ptr<Casillero> casillero = mapa->get_casillero(cont1, cont2);
 			S_ptr<Elemento> estructural = casillero->get_estructural();
 			//Si hay estructural
-			if (!estructural.es_nulo()) {
+			if ((!estructural.es_nulo()) && (estructural->es_habitable(cont1, cont2))) {
 					//Obtengo los casilleros en las 4 direcciones posibles de coneixon
 					S_ptr<Casillero> c_arriba = mapa->get_casillero(cont1 - 1, cont2);
 					S_ptr<Casillero> c_abajo = mapa->get_casillero(cont1 + 1, cont2);
@@ -90,15 +90,17 @@ void Traductor::conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> de
 			//Obtengo los estructurales de alto nivel origen y destino
 			S_ptr<Elemento> estruct_origen = origen->get_estructural();
 			S_ptr<Elemento> estruct_destino = destino->get_estructural();
-			if (!estruct_destino.es_nulo()){
+			if ((!estruct_destino.es_nulo()) && (estruct_destino->es_habitable(destino->get_pos_x(), destino->get_pos_y()))){
 				//Obtengo los estructurales de bajo nivel que se corresponden con los de
 				//alto nivel recien obtenidos.
 				Posicion pos_origen(origen->get_pos_y(), origen->get_pos_x());
 				S_ptr<EstructuralUnitario>  est_bajo_nivel_origen = mapa_bajo_nivel->get_estructural(pos_origen);
 				Posicion pos_destino(destino->get_pos_y(), destino->get_pos_x());
 				S_ptr<EstructuralUnitario>  est_bajo_nivel_destino = mapa_bajo_nivel->get_estructural(pos_destino);
+				//std::cout << "Probando entre: (" << origen->get_pos_x() << "," << origen->get_pos_y() << ") y (" << destino->get_pos_x() << "," << destino->get_pos_y() << ") " << std::endl << std::flush;
 				//Si existe una conexion en el mapa de alto nivel entre los estructurales origen y destino:
 				if (estruct_origen->hay_conexion(origen->get_pos_x(), origen->get_pos_y(), destino->get_pos_x(), destino->get_pos_y())){
+					//std::cout << "Conexion entre: (" << origen->get_pos_x() << "," << origen->get_pos_y() << ") y (" << destino->get_pos_x() << "," << destino->get_pos_y() << ") " << std::endl << std::flush;
 					//Segun la orientacion de conexion, realizo la misma en el mapa de bajo nivel
 					switch(orientacion){
 						case NORTE: {
