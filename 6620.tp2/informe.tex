@@ -122,4 +122,38 @@ $$
 	\right]
 $$
 
+Así, la matriz producto se puede descomponer en la siguiente suma
+$$
+	\left[
+	\begin{array}{cc}
+		a_{11} b_{11} & 0 \\
+		a_{21} b_{11} & 0
+	\end{array}
+	\right]
+        +
+	\left[
+	\begin{array}{cc}
+		a_{12} b_{21} & 0 \\
+		a_{22} b_{21} & 0
+	\end{array}
+	\right]
+	+
+	\left[
+	\begin{array}{cc}
+		0 & a_{11} b_{12} \\
+		0 & a_{21} b_{12}
+	\end{array}
+	\right]
+        +
+	\left[
+	\begin{array}{cc}
+		0 & a_{12} b_{22} \\
+		0 & a_{22} b_{22}
+	\end{array}
+	\right]
+$$
+
+Como se puede apreciar, las tres matrices se acceden por columnas. Esto resulta en una mejor utilización de la memoria cache.
+
+Sin embargo, para funcione correctamente, requiere que la matriz donde se almacena el resultado haya sido inicializada, ya sea previamente en 0 o con los primeros valores calculados de cada elemento.
 \end{document}
