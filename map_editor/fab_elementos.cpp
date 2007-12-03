@@ -16,7 +16,7 @@ S_ptr<Elemento> Fab_Elementos::construir (TipoElem tipo, int pos_x, int pos_y, O
 			elemento = construir_esquina(pos_x, pos_y, orientacion);
 			break;
 		case PWUP: {
-			S_ptr<Elemento> power_up (new PowerUp(pos_x, pos_y));
+			S_ptr<Elemento> power_up (new Power_Up(pos_x, pos_y));
 			elemento = power_up;
 			break;
 		}

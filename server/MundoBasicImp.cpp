@@ -14,14 +14,14 @@
 MundoBasicImp::MundoBasicImp()
 {
 	this->cant_niveles = 0;
-	S_ptr<MapaBajoNivel> mapa_nuevo = new MapaImpSet(1,4);
+	/*S_ptr<MapaBajoNivel> mapa_nuevo = new MapaImpSet(1,4);
 	/************************************************************************
 		CREO PARA PROBAR UN MAPITA DEL ESTILO
 
 		--- --- --- ---
 	   | p |   |   | f |
 	    --- --- --- ---
-	************************************************************************/
+	***********************************************************************
 
 	EstructuralUnitarioFactory fab;
 	
@@ -62,7 +62,7 @@ MundoBasicImp::MundoBasicImp()
 
 	/////////////////////////////////////////////////////////////////////////
 	
-	agregar_mapa( mapa_nuevo );
+	agregar_mapa( mapa_nuevo );*/
 }
 
 MundoBasicImp::~MundoBasicImp()

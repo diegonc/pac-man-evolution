@@ -3,7 +3,7 @@
 
 #define VELOCIDAD_PACMAN_NORMAL		3	/*10 u/s */
 #define VELOCIDAD_PACMAN_PW			5
-#define RADIO_PACMAN				0.5
+#define RADIO_PACMAN				0.25
 
 PacMan::PacMan(Jugador *jugador):Personaje(jugador,RADIO_PACMAN){
 	this->set_power_up(false);

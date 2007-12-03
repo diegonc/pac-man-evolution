@@ -7,9 +7,9 @@
 #include "Jugador.h"
 #include "Direccion.h"
 
-#define CASA_FANTASMA		1	
-#define PASILLO				-1
-#define SALIDA_PACMAN		0
+#define _CASA_FANTASMA		1	
+#define _PASILLO				-1
+#define _SALIDA_PACMAN		0
 
 class EstructuralUnitario{
 		

@@ -15,7 +15,8 @@ VPrincipal::VPrincipal(){
 	gtk_window_set_title (GTK_WINDOW(this->window), TITULO);
 	
 	//Conecto la señal delete event con el handler para la ventana
-	g_signal_connect(G_OBJECT(this->window), "delete_event", G_CALLBACK(delete_event_handler), NULL);
+	//g_signal_connect(G_OBJECT(this->window), "delete_event", G_CALLBACK(delete_event_handler), NULL);
+	g_signal_connect(G_OBJECT(this->window), "delete_event", G_CALLBACK(delete_event_handler), this);
 	
 	ControlSeleccion::get_instance();
 	this->panel_mundo = new PanelMundo();
@@ -89,16 +90,16 @@ void VPrincipal::construir(){
 	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_modif, FALSE, TRUE, 0);
 	
 	//Creo un modelo
- 	Modelo* modelo = new Modelo();
+ 	modeloTemporal = new Modelo();
   	//Obtengo su mundo
-    Mundo* mundo = modelo->get_mundo();
+    Mundo* mundo = modeloTemporal->get_mundo();
     //Agrego un nivel de 50 x 50
-    mundo->agregar_nivel(50, 50);
+    //mundo->agregar_nivel(50, 50);
 	//Agrego uno de 10 x 10
 	mundo->agregar_nivel(10,10);
 	
-	this->panel_mundo->agregar_nivel(mundo->get_nivel(1), "nivel 50 x 50");
-	this->panel_mundo->agregar_nivel(mundo->get_nivel(2), "nivel 10 x 10");
+	//this->panel_mundo->agregar_nivel(mundo->get_nivel(1), "nivel 50 x 50");
+	this->panel_mundo->agregar_nivel(mundo->get_nivel(1), "nivel 10 x 10");
 	
   	this->vista_mapa = new VistaMapa(mundo->get_nivel(1));
 	
@@ -106,7 +107,7 @@ void VPrincipal::construir(){
 	
 	gtk_container_add (GTK_CONTAINER (this->hbox_princ), this->vista_mapa->get_widget());
 	
-	delete(modelo);
+	//delete(modelo);
 	
 }
 
@@ -116,6 +117,19 @@ gboolean VPrincipal::delete_event_handler(GtkWidget* widget, GdkEvent* event, gp
 	
 	/* finaliza el loop de gtk_main() y libera memoria */
 	gtk_main_quit();
+	
+	/**************************************************/
+	VPrincipal* v_princ = (VPrincipal*) data;
+	Mundo* mundo_alto_nivel = v_princ->modeloTemporal->get_mundo();
+	Traductor traductor;
+	MundoBajoNivel* mundo_bajo_nivel = traductor.traducir(mundo_alto_nivel);
+	S_ptr<MundoBajoNivel> mundo_ptr(mundo_bajo_nivel);
+	mod.set_mundo(mundo_ptr);
+	delete(v_princ->modeloTemporal);
+	
+	/**************************************************/
+	
+	
 	
 	/* Devuelve FALSE, asi que la ventana se destruye */
 	return FALSE;

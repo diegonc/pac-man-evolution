@@ -42,6 +42,16 @@
 //#endif																		// Then...
 
 
+/****************************/
+
+#include "../../map_editor/gui.h"
+#include "../../map_editor/modelo.h"
+#include "../../map_editor/mundo.h"
+
+extern ModeloServidor mod;
+
+/*******************************/
+
 // Globals
 bool isProgramLooping;														// We're Using This One To Know If The Program Must Go On In The Main Loop
 S_AppStatus AppStatus;														// The Struct That Holds The Runtime Data Of The Application
@@ -121,7 +131,16 @@ bool CreateWindowGL(int W, int H, int B, Uint32 F)							// This Code Creates Ou
 
 int main(int argc, char **argv)												// Our Main Funcion!
 {
-    Posicion_Graf* Pos=new Posicion_Graf();
+  //Creo la interfaz grafica
+  GUI* gui = new GUI(argc, argv);
+  //La hago arrancar
+  gui->start();
+  //Uno la interfaz grafica con el hilo principal, cuando termina
+  gui->join(gui);
+  //Elimino la interfaz grafica
+  delete(gui);  
+
+   Posicion_Graf* Pos=new Posicion_Graf();
 	SDL_Event	E;															// And Event Used In The Polling Process
 	Uint8		*Keys;														// A Pointer To An Array That Will Contain The Keyboard Snapshot
 	Uint32		Vflags;														// Our Video Flags

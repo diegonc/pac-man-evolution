@@ -14,6 +14,15 @@
 #include "control_seleccion.h"
 #include "../common/smart_pointer.h"
 
+/******************************/
+
+#include "traductor.h"
+#include "../server/MundoBajoNivel.h"
+#include "../server/ModeloServidor.h"
+extern ModeloServidor mod;
+
+/******************************/
+
 /* CLASE VPRINCIPAL: Representa la ventana principal del editor de mapas. */
 
 class VPrincipal {
@@ -29,6 +38,10 @@ class VPrincipal {
     PanelElems* panel_estruc; //Panel que contiene a los elementos estructurales
     PanelElems* panel_modif; //Panel que contiene a los elementos modificadores
     S_ptr<Menu> menubar; //Referencia a la barra de menus
+   
+   	/******************************************/
+   	Modelo* modeloTemporal;
+   	/******************************************/
    
    public:
 

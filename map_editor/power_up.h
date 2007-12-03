@@ -7,12 +7,12 @@
 
 /* CLASE POWER UP: Clase que representa un power up. Desciende de modificador. Ocupa un casillero. */
 
-class PowerUp : public Modificador {
+class Power_Up : public Modificador {
 
 	public:
 
 	/* Constructor: Inicializa un power up en una posicion determinada. */
-	PowerUp (int pos_x, int pos_y);
+	Power_Up (int pos_x, int pos_y);
 	
 	/* Get Tipo: Devuelve el tipo del elemento */
 	virtual TipoElem get_tipo();
