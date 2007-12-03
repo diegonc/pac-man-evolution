@@ -118,17 +118,48 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
 }
 
 void ModeloServidor::preparar_partida(){
-	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+	
+	//para la casa del fantasma y la salida del pacman
+	S_ptr<EstructuralUnitario> salida_pacman;
+	std::list< S_ptr<EstructuralUnitario> > casa_fantasma;
 	
 	std::list< S_ptr<EstructuralUnitario> >::iterator it_estucturales;
-	S_ptr<Jugador> j;
-	S_ptr<EstructuralUnitario> e;
 	
+	
+	S_ptr<EstructuralUnitario> aux;
+	for(it_estucturales = this->get_mundo().get_mapa_activo().get_estructurales().begin();
+		it_estucturales != this->get_mundo().get_mapa_activo().get_estructurales().end();
+		++it_estucturales){
+		aux = *it_estucturales;
+		if( aux->es_casa_fantasma() )
+			casa_fantasma.push_back(*it_estucturales);
+		else{
+			if(aux->es_salida_pacman() )
+				salida_pacman = *it_estucturales;
+		}
+	}		
+	
+	/*
+	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+	
+	it_estucturales = casa_fantasma.begin();
+	S_ptr<Jugador> j;
 	for(it_jugadores = this->jugadores.begin(); it_jugadores != this->jugadores.end() ; ++it_jugadores){
 		j = *it_jugadores;
-		if(j->get_tipo() == Personaje::pacman)
-			
-	
-	}
-	
+		if(j->get_personaje()->get_tipo() == Personaje::pacman){
+			Posicion p = salida_pacman->get_posicion();
+			p.set_x(p.get_x() + 0.5);
+			p.set_y(p.get_y() + 0.5);
+			j->set_posicion(p);
+		}
+		else
+			if(j->get_personaje()->get_tipo() == Personaje::fantasma){
+				aux = *it_estucturales;
+				Posicion p = aux->get_posicion();
+				p.set_x(p.get_x() + 0.5);
+				p.set_y(p.get_y() + 0.5);
+				if(it_estucturales == casa_fantasma.end() )
+					it_estucturales = casa_fantasma.begin();
+			}
+	}*/
 }
