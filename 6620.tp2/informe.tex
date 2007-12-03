@@ -4,11 +4,14 @@
 \usepackage[latin1]{inputenc}
 
 \begin{document}
-\section{Inversión de ciclos.}
+
+\section{Optimizaciones.}
+
+\subsection{Inversión de ciclos.}
 
 El método consiste en invertir los ciclos exteriores del método básico para lograr que la matriz de resultado se recorra por columnas aprovechando mejor la memoria cache.
 
-\section{Multiplicación por columnas.}
+\subsection{Multiplicación por columnas.}
 
 Este método realiza la multiplicación de matrices en forma incremental, efectuando todas las operaciones posible con los elementos disponibles de una de las matrices y sumando los resultados parciales en la matriz resultado.
 
@@ -160,4 +163,11 @@ $$
 Como se puede apreciar, las tres matrices se acceden por columnas. Esto resulta en una mejor utilización de la memoria cache.
 
 Sin embargo, para funcione correctamente, requiere que la matriz donde se almacena el resultado haya sido inicializada, ya sea previamente en 0 o con los primeros valores calculados de cada elemento.
+
+\subsection{Básico con trasposición.}
+
+Al igual que en el método anterior, la trasposición de la primera matriz del producto permite que posiciones contiguas de memoria sean accedidas para las tres matrices, optimizando el uso de memoria cache.
+
+Sin embargo, el desempeño de este método se ve impactado por la penalidad de calcular la matriz traspuesta, que requiere movimientos de grandes cantidades de datos.
+
 \end{document}
