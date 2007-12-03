@@ -52,7 +52,7 @@ endif
 # Si no especifica archivos, tomo todos.
 fuentes ?= $(wildcard *.$(extension))
 fuentes_common ?= $(wildcard ../common/*.$(extension))
-
+fuentes_server ?= $(wildcard ../server/*.$(extension))
 
 # REGLAS
 #########
@@ -62,7 +62,8 @@ fuentes_common ?= $(wildcard ../common/*.$(extension))
 all: subproyecto
 
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
-o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files)
+o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server))
+o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_server_files)
 
 subproyecto: $(o_files)
 	@if [ -z "$(o_files)" ]; \
@@ -75,5 +76,6 @@ subproyecto: $(o_files)
 clean:
 	@$(RM) -fv *.o subproyecto \
    rm ../common/*.o \
+   rm ../server/*.o \
    rm miEjecutable
 
