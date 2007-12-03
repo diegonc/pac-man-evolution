@@ -9,11 +9,11 @@
 
 \subsection{Inversión de ciclos.}
 
-El método consiste en invertir los ciclos exteriores del método básico para lograr que la matriz de resultado se recorra por columnas aprovechando mejor la memoria cache.
+El método consiste en invertir los ciclos exteriores del método básico para lograr que la matriz de resultados se recorra por columnas, aprovechando mejor la memoria cache.
 
 \subsection{Multiplicación por columnas.}
 
-Este método realiza la multiplicación de matrices en forma incremental, efectuando todas las operaciones posible con los elementos disponibles de una de las matrices y sumando los resultados parciales en la matriz resultado.
+Este método realiza la multiplicación de matrices en forma incremental, efectuando todas las operaciones posibles con los elementos disponibles de una de las matrices y sumando los resultados parciales en la matriz resultado.
 
 Utilizando las propiedades de las matrices se consiguen las siguientes equivalencias que proporcionanan fundamento matemático al método. Por simplicidad, se utilizan matrices de 2x2.
 
@@ -162,7 +162,7 @@ $$
 
 Como se puede apreciar, las tres matrices se acceden por columnas. Esto resulta en una mejor utilización de la memoria cache.
 
-Sin embargo, para funcione correctamente, requiere que la matriz donde se almacena el resultado haya sido inicializada, ya sea previamente en 0 o con los primeros valores calculados de cada elemento.
+Sin embargo, para que funcione correctamente, se requiere que la matriz donde se almacena el resultado haya sido inicializada, ya sea previamente en 0 o con los primeros valores calculados de cada elemento.
 
 \subsection{Básico con trasposición.}
 
