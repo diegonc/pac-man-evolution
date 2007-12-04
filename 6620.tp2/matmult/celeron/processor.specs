@@ -1,0 +1,14 @@
+sSpec Number:	SL46U
+CPU Speed:	600 MHz
+PCG:	
+Bus Speed:	66 MHz
+Bus/Core Ratio:	9.1
+L2 Cache Size:	128 KB
+L2 Cache Speed:	600 MHz
+Package Type:	FC-PGA
+Manufacturing Technology:	0.18 micron
+Core Stepping:	CB0
+CPUID String:	0683
+Thermal Design Power:	12.6W
+Thermal Specification:	90°C
+VID Voltage Range:	1.5V
