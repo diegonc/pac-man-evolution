@@ -3,6 +3,7 @@
 #include <math.h>
 #include <iostream>
 
+//definiciones para usar
 #define INCREMENTO_PHI 	0.5
 #define DOS_PI			6.28
 
@@ -13,8 +14,11 @@ MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto
 }
 
 MapaImpSet::~MapaImpSet(){
+	//limpia los comestibles
 	this->comestibles.clear();
-
+	
+	//recorro los estructurales y los desconecto para que no quede memoria
+	//colgada
 	std::set<Tipo_Estructural,CompSptrEstructuralPosicion>::iterator it;
 	Tipo_Estructural estruct_nulo;
 	Tipo_Estructural estruct_aux;
@@ -34,33 +38,27 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 	S_ptr<EstructuralUnitario> donde_estaba = this->get_estructural(posicion_jugador);
 	//si esta en algun lugar del mapa
 	if(! donde_estaba.es_nulo() ){
-
-
-		//si cayeron distinto, me fijo si podia moverse para ese lado
+		//obtengo a donde se tiene que mover
 		S_ptr<EstructuralUnitario> vecino = donde_estaba->get_vecino(jugador.get_direccion());
-
-		/*Tipo_Coordenada dim_actual;
-		Tipo_Coordenada dim_final;
-		//paso a una dimension el problema
-		set_dim(posicion_jugador, dim_actual, dim_final, jugador.get_direccion() );
-		//si no esta tocando alguno que es pared
-		if( !tocando( dim_actual, dim_final, vecino, jugador) ){*/
+		//incremento la distancia
 		posicion_jugador.incrementar(distancia,jugador.get_direccion());
+		//si no esta tocando alguna pared o esquina prohibida
 		if( !tocando( jugador, posicion_jugador) ){
 			ComparadorPosicion comp;
+			//si cayeron distinto, me fijo si podia moverse para ese lado
 			if(! comp(posicion_jugador, jugador.get_posicion()) ){
+				//guardo la comida, ya que si la come la tengo que eliminar despues
 				S_ptr<Comestible> com = vecino->get_comida();
+				//obtengo los puntos antes de ingresar
 				int puntosJugador = jugador.get_puntos();
 				vecino->ingresar(jugador);
-				if(jugador.get_puntos() != puntosJugador){
-				//if(vecino->get_comida().es_nulo()){
+				//si variaron los puntos, quito el comestible de la lista ya que
+				//lo comio
+				if(jugador.get_puntos() != puntosJugador)
 					this->quitar_comestible(com);
-				}
-				//jugador.set_posicion(posicion_jugador);
 				
-				//TODO.....VER QUE SE HACE SI NO SE PODIA MOVER PARA ESE LADO
 			}
-			//else
+			//si se movio correctamente, le modifico la posicion al jugador
 			jugador.set_posicion(posicion_jugador);
 		}
 
@@ -76,6 +74,9 @@ bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
 	double phi = 0.0;
 	double radio = jugador.get_personaje()->get_radio();
 	bool toca = false;
+	//lo que hace basicamente es recorrer todos los puntos del radio del pacman
+	//y ver si tocan un lugar que no puede, digase pared, esquina.
+	//Se puede modificar el paso como para que no recorra todos los puntos
 	while( phi < DOS_PI && !toca/*2Pi*/ ){
 		Posicion p(	(radio-0.1) * cos(phi) + x0, (radio-0.1) * sin(phi) + y0 );
 		e_critico = get_estructural(p);
@@ -87,52 +88,10 @@ bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
 	}
 	return toca;
 }
-/*
-bool MapaImpSet::tocando(Tipo_Coordenada dim_actual, Tipo_Coordenada dim_final, S_ptr<EstructuralUnitario> vecino, Jugador& jugador){
-	
-	Tipo_Coordenada result = dim_final - dim_actual;
-	Tipo_Coordenada mod_result;
-	double radio = jugador.get_personaje()->get_radio();
-	
-	if(mod_result < 0)
-		mod_result = -1 * mod_result;
-	
-	
-	if ( (mod_result < radio ) && vecino.es_nulo() )
-		//aca entra si a donde se mueve es nulo y si la distancia entre los casilleros
-		//y el centro del pacman es menor que el radio (por lo tanto choca)
-		return true;
-	else{
-		return false;
-	}
-		
-}
-void MapaImpSet::set_dim(Posicion& p, Tipo_Coordenada& dim_actual, Tipo_Coordenada& dim_final, Direccion& dir){
 
-	switch(dir.get_dir()){
-		case NORTE:
-				dim_final = floor(p.get_y());
-				dim_actual = p.get_y();
-				break;
-		case SUR:
-				dim_final = ceil(p.get_y());
-				dim_actual = p.get_y();
-				break;
-		case ESTE:
-				dim_final = ceil(p.get_x());
-				dim_actual = p.get_x();
-				break;
-		case OESTE:
-				dim_final = floor(p.get_x());
-				dim_actual = p.get_x();
-				break;
-	}
-}*/
 void MapaImpSet::agregar_estructural(S_ptr<EstructuralUnitario> e){
 	S_ptr<EstructuralUnitario> e_aux = this->get_estructural(e->get_posicion());
-	//if( !e_aux.es_nulo() )
-		//quitar_comestible(e_aux->get_comida() );
-	
+		
 	estructurales.insert(e);
 	S_ptr<Comestible> c = e->get_comida();
 	if(! c.es_nulo() )
@@ -193,7 +152,6 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 			aux = *it;
 			
 			if( comestible == *it ){
-			//if( &(*comestible) == &(*aux) ){
 				comestibles.erase(it);
 				encontrado = true;
 			}

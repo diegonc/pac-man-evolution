@@ -11,9 +11,8 @@ const int izquierda = 	4;
 
 void KeyOp::ejecutar(ModeloServidor &modelo)
 {
-	//std::cout << "Pulso la tecla " << this->flecha << "\n";
+	//obtiene el jugador
 	S_ptr<Jugador> jugador = modelo.get_jugador(this->id);
-	//std::cout << jugador->get_direccion() <<" -->";
+	//combina la direccion
 	jugador->get_direccion().combinar(flecha);
-	//std::cout << jugador->get_direccion() <<"\n";
 }

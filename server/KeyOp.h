@@ -28,9 +28,14 @@ class KeyOp : public Operacion
 		int flecha;
 	
 	public:
+		/**
+		*	@brief Constructor de la clase
+		*/
 		KeyOp( int id, int flecha ) : id( id ), flecha( flecha ) {}
 		
-		/** @brief Implementa los efectos de la operacion. */
+		/** 
+		*	@brief Implementa los efectos de la operacion. 
+		*/
 		
 		void ejecutar(ModeloServidor &modelo);
 };
