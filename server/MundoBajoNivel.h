@@ -22,9 +22,22 @@ class MundoBajoNivel
 		*	@brief 	Destructor de la clase
 		*/
 		virtual ~MundoBajoNivel(){}
-			
+		
+<<<<<<< .mine
+		/**
+		*	@brief	Debe permitir agregar un mapa.
+		*
+=======
+>>>>>>> .r249
+		*	@param	Smart pointer con el mapa a agregar
+		*/		
 		virtual void agregar_mapa(S_ptr<MapaBajoNivel> mapa)=0;
-			
+		
+		/**
+		*	@brief 	Debe retornar la cantidad de niveles del mapa
+		*	
+		*	@return cantidad de niveles del mapa
+		*/
 		virtual int cantidad_niveles()= 0;
 };
 
