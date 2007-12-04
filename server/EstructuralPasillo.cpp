@@ -42,7 +42,7 @@ void EstructuralPasillo::ingresar(Jugador& jugador){
 
 EstructuralUnitario::Enum_Estructural EstructuralPasillo::get_tipo(){
 	if(!salida)
-		return -1;//no tiene tipo
+		return EstructuralUnitario::Pasillo;
 	else
 		return EstructuralUnitario::Salida_Pacman;
 }

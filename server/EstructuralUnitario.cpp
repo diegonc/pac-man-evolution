@@ -1,6 +1,7 @@
 #include "EstructuralUnitario.h"
 #include <iostream>
 
+//definiciones
 EstructuralUnitario::Enum_Estructural EstructuralUnitario::Casa_Fanstasma 	= _CASA_FANTASMA;
 EstructuralUnitario::Enum_Estructural EstructuralUnitario::Pasillo		  	= _PASILLO;
 EstructuralUnitario::Enum_Estructural EstructuralUnitario::Salida_Pacman	= _SALIDA_PACMAN;
@@ -11,17 +12,16 @@ EstructuralUnitario::EstructuralUnitario(Posicion &p){
 }
 
 S_ptr<EstructuralUnitario> EstructuralUnitario::get_vecino(Direccion &direccion){
-	if(direccion.get_dir() == Direccion::Norte)
-		return this->get_arriba();
-	else{
-		if(direccion.get_dir() == Direccion::Sur)
+	//vtraduce la dureccion con la posicion
+	switch(direccion.get_dir()){
+		case _NORTE:
+			return this->get_arriba();
+		case _SUR:
 			return this->get_abajo();
-		else{
-			if(direccion.get_dir() == Direccion::Este)
-				return this->get_derecha();
-			else
-				return this->get_izquierda();
-		}
+		case _ESTE:
+			return this->get_derecha();
+		case _OESTE:
+			return this->get_izquierda();
 	}
 }
 

@@ -17,11 +17,17 @@ bool Fantasma::comer(Comestible& comestible){
 }
 	
 void Fantasma::colision(Jugador& jugador){
+	//verifica que el personaje con el que colisiono sea uno al cual le afecte,
+	//en este caso, pacman
 	try{
+		//si el jugador no es si mismo, ya que no tiene sentido
 		if(jugador.get_id() != get_jugador().get_id() ){
+			//trata de castear a pacman, si da error, pasa al catch
 			PacMan pacman = dynamic_cast< PacMan& >(*jugador.get_personaje());
 			Tipo_Coordenada distancia;
-		
+			
+			//calcula la distancia entre los dos personajes calculando el modulo
+			// dist = ( ( x0 - x1 )² + ( y0 - y1)² )^ ½
 			distancia = pow( get_jugador().get_posicion().get_x() - 	
 						 jugador.get_posicion().get_x() , 2);
 		
@@ -29,7 +35,9 @@ void Fantasma::colision(Jugador& jugador){
 						  jugador.get_posicion().get_y() , 2);
 		
 			distancia = sqrt(distancia);
-		
+			
+			//si la distancia es menor o igual que la suma de los radios, 
+			//quiere decir que chocaron
 			if(distancia  <= ( this->get_radio() + pacman.get_radio() ) ){
 				if( pacman.tiene_power_up() ){
 					pacman.matar();			
@@ -51,5 +59,6 @@ Personaje::Enum_Personaje Fantasma::get_tipo(){
 	return tipo;
 }
 double Fantasma::get_velocidad(){
-	return 3;
+	//TODO intercambio de velocidades cuando esta muerto y vivo, etcs
+	return VELOCIDAD_FANTASMA_INICIAL;
 }

@@ -2,12 +2,13 @@
 
 #include "EstructuralPasillo.h"
 #include "EstructuralCasaFantasma.h"
-//#include "EstructuralSalidaPacman.h"
 
 S_ptr<EstructuralUnitario> EstructuralUnitarioFactory::construir(Posicion &p,
 				EstructuralUnitario::Enum_Estructural tipo_estructural, 
 				Comestible::Enum_Comestible  tipo_comestible){
+	
 	S_ptr<EstructuralUnitario> e;
+	//implementado con un switch
 	switch( tipo_estructural ){
 		
 		case _CASA_FANTASMA: 
@@ -18,13 +19,8 @@ S_ptr<EstructuralUnitario> EstructuralUnitarioFactory::construir(Posicion &p,
 			e = S_ptr<EstructuralUnitario>(new EstructuralPasillo(tipo_comestible, p));
 			return e;
 			break;
-			
-		/*case SALIDA_PACMAN:
-			e = S_ptr<EstructuralUnitario>(new EstructuralSalidaPacman(p));	
-			return e;
-			break;*/
 		default:
-			return e;
+			return e; //devuelve uno nulo en caso de no haber podido ser creado
 			
 	}
 					
