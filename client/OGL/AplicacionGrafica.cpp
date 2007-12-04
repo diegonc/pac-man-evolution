@@ -3,6 +3,10 @@
 EstadoAplicacion* AplicacionGrafica::getEstadoAplicacion(){
             return &AppEstado;
         }
+		
+void AplicacionGrafica::CambiarCamara(){
+	CamaraPrimeraPersona=!CamaraPrimeraPersona;
+}
 
 ModeloServidor* AplicacionGrafica::getModelo(){
     return &modelo;
@@ -102,35 +106,20 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
     glLoadIdentity();
 
 
-    //seleccion de camara
-
-   //1ra persona
-   //glRotatef(-90, 1, 0.0, 0.0);
-
-    //seteo la pos de la luz sobre el eje y
-    static GLfloat pos[4] = {0, 0, 1, 0 };
-    //la agrego(estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
-    glLightfv( GL_LIGHT0, GL_POSITION, pos );
-
-    //1ra persona
-    //glTranslatef(0.0,15 , -6);
-    //VistaUP
-    glTranslatef(0,0 , -20);
-    /*
-    //si no cargue el escenario
-	if (!EsceneCreado){
-        //levanto el flag
-        EsceneCreado=true;
-        //creo la lista
-        Escenario = glGenLists (1);
-        //empiezo la def de la lista
-        glNewList(Escenario, GL_COMPILE);
-        //dibujo el modelo
-        DrawEscenario();
-        //fin de lista
-        glEndList();
+    //seleccion de camara   
+    if (CamaraPrimeraPersona){
+		glRotatef(-90, 1, 0.0, 0.0);
+		//seteo la pos de la luz sobre el eje y
+		static GLfloat pos[4] = {0, 0, 1, 0 };
+		//agrego la luz (estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
+		glLightfv( GL_LIGHT0, GL_POSITION, pos );
+		glTranslatef(0.0,15 , -6);
+	}else{
+		static GLfloat pos[4] = {0, 0, 1, 0 };
+		//agrego la luz (estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
+		glLightfv( GL_LIGHT0, GL_POSITION, pos );	
+		glTranslatef(0,0 , -20);
 	}
-	*/
 
     Posicion_Graf Pos;
     std::list< S_ptr<Jugador> >::const_iterator jugadores;
@@ -170,7 +159,6 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 
     //llamo a la lista precompilada del Escenario
     escenario.ModelarEscenario();
-    //glCallList(Escenario);
 }
 
 //dibuja en 2D

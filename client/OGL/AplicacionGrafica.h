@@ -34,11 +34,16 @@ class AplicacionGrafica{
         Escenario escenario;
 
         ModeladorObjetos ModeladorOBJ;
+		
+		bool CamaraPrimeraPersona;
     public:
 
         AplicacionGrafica(){
             escenario.setModelo(&modelo);
+			CamaraPrimeraPersona=true;
         }
+		
+		void CambiarCamara();
 
         EstadoAplicacion* getEstadoAplicacion();
 

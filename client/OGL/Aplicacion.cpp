@@ -31,6 +31,11 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 		    //cambio ModoVentana
 			ToggleFullscreen();
 		}
+		
+		if(Keys[SDLK_c]){
+			getAplicacionGrafica()->CambiarCamara();			
+			Keys[SDLK_c]=0;
+		}
 
         //si se apreto arriba
 		if(Keys[SDLK_UP]){
