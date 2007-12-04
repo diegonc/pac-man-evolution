@@ -29,17 +29,18 @@ bool Posicion::operator==(const Posicion &p) {
 		return false;
 }
 void Posicion::incrementar(Tipo_Coordenada cantidad, Direccion &direccion){
-	if(direccion.get_dir() == Direccion::Norte)
-		this->set_y(this->get_y() - cantidad);
-	else{
-		if(direccion.get_dir() == Direccion::Sur)
+	switch(direccion.get_dir()){
+		case _NORTE:
+			this->set_y(this->get_y() - cantidad);
+			break;
+		case _SUR:
 			this->set_y(this->get_y() + cantidad);
-		else{
-			if(direccion.get_dir() == Direccion::Este)
-				this->set_x(this->get_x() + cantidad);
-			else
-				this->set_x(this->get_x() - cantidad);
-			
-		}
+			break;
+		case _ESTE:
+			this->set_x(this->get_x() + cantidad);
+			break;
+		case _OESTE:
+			this->set_x(this->get_x() - cantidad);
+			break;		
 	}
 }

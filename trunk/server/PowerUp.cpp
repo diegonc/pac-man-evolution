@@ -8,9 +8,10 @@ PowerUp::PowerUp(Posicion &p):Comestible(PUNTOS_POWER_UP, p){}
 PowerUp::~PowerUp(){}
 		
 void PowerUp::afectar_personaje(Personaje& personaje){
-	std::cout << "El pacman come powerup\n";
 	try{
+		//trato de castear al pacman ya que es al unico que lo afecta
 		PacMan *pacman = dynamic_cast<PacMan*>(&personaje);
+		//le pongo al pacman el power_up activado
 		pacman->set_power_up(true);
 	}
 	catch(std::bad_cast &e){/*No hago nada*/}

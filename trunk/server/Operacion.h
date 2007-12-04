@@ -10,7 +10,7 @@ class Operacion
 		/** @brief Ejecuta la operacion.
 		 */
 		virtual void ejecutar(ModeloServidor &modelo) = 0;
-	
+			
 		virtual ~Operacion(){}
 };
 
