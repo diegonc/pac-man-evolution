@@ -1,8 +1,10 @@
 #include "Aplicacion.h"
+
+
 //principal
 int main(int argc, char **argv)
 {
-
+	
   //Creo la interfaz grafica
   GUI* gui = new GUI(argc, argv);
   //La hago arrancar
@@ -11,7 +13,8 @@ int main(int argc, char **argv)
   gui->join(gui);
   //Elimino la interfaz grafica
   delete(gui);
-
+ 
+	
     Aplicacion APP;
     //evento
 	SDL_Event	E;

@@ -1,15 +1,17 @@
 #include "AplicacionGrafica.h"
 
+ModeloServidor AplicacionGrafica::modelo;//<----para unir los binarios, luego sacar
+
 EstadoAplicacion* AplicacionGrafica::getEstadoAplicacion(){
-            return &AppEstado;
-        }
+      return &AppEstado;
+}
 		
 void AplicacionGrafica::CambiarCamara(){
 	CamaraPrimeraPersona=!CamaraPrimeraPersona;
 }
 
 ModeloServidor* AplicacionGrafica::getModelo(){
-    return &modelo;
+    return &modelo; // <<---para unir todo, luego sacarlo
 }
 
 //inicializacion de OpenGL
@@ -65,17 +67,19 @@ int AplicacionGrafica::getAnguloDireccion(Direccion &dir){
     //dependiendo de la direccion
     switch (dir.get_dir()){
         //norte
-        case (0):
+        case (_NORTE):
             return 180;
         //este
-        case (1):
+        case (_ESTE):
             return 270;
         //sur
-        case (2):
+        case (_SUR):
             return 0;
         //oeste
-        case (3):
+        case (_OESTE):
             return 90;
+		default://<<----para que no tire warning
+			return 0;
     }
 }
 
