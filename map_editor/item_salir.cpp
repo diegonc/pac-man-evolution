@@ -14,4 +14,5 @@ ItemSalir::ItemSalir() : Item(N_SALIR){}
 void ItemSalir::ejecutar(GtkWidget* widget, gpointer data){
 	g_print("[Apretaste menu archivo->salir]\n");
 	gtk_main_quit();
+	gtk_widget_destroy(GUI::get_instance(0, 0)->get_ventana_principal()->get_widget());
 }

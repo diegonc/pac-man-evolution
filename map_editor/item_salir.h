@@ -4,6 +4,7 @@
 #define ITEM_SALIR_H_
 
 #include "item.h"
+#include "gui.h"
 
 /* CLASE ITEM SALIR: Clase que representa el item "salir" para un menu.
    Hereda de item, implementa el ejecutar para realizar la accion correspondiente cuando se lo clikea. */

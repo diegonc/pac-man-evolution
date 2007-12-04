@@ -15,8 +15,8 @@ VPrincipal::VPrincipal(){
 	gtk_window_set_title (GTK_WINDOW(this->window), TITULO);
 	
 	//Conecto la señal delete event con el handler para la ventana
-	//g_signal_connect(G_OBJECT(this->window), "delete_event", G_CALLBACK(delete_event_handler), NULL);
-	g_signal_connect(G_OBJECT(this->window), "delete_event", G_CALLBACK(delete_event_handler), this);
+	g_signal_connect(G_OBJECT(this->window), "delete_event", G_CALLBACK(delete_event_handler), NULL);
+	g_signal_connect(G_OBJECT(this->window), "destroy", G_CALLBACK(destroy_handler), this);
 	
 	ControlSeleccion::get_instance();
 	this->panel_mundo = new PanelMundo();
@@ -109,8 +109,6 @@ void VPrincipal::construir(){
 	
 	gtk_container_add (GTK_CONTAINER (this->hbox_princ), this->vista_mapa->get_widget());
 	
-	//delete(modelo);
-	
 }
 
 // Delete Event Handler:
@@ -120,7 +118,16 @@ gboolean VPrincipal::delete_event_handler(GtkWidget* widget, GdkEvent* event, gp
 	/* finaliza el loop de gtk_main() y libera memoria */
 	gtk_main_quit();
 	
+	/* Devuelve FALSE, asi que la ventana se destruye */
+	return FALSE;
+}
+
+/* Destroy Handler: */
+
+gboolean VPrincipal::destroy_handler(GtkWidget* widget, gpointer data){
+	
 	/**************************************************/
+	
 	VPrincipal* v_princ = (VPrincipal*) data;
 	Mundo* mundo_alto_nivel = v_princ->modeloTemporal->get_mundo();
 	Traductor traductor;
@@ -131,8 +138,5 @@ gboolean VPrincipal::delete_event_handler(GtkWidget* widget, GdkEvent* event, gp
 	
 	/**************************************************/
 	
-	
-	
-	/* Devuelve FALSE, asi que la ventana se destruye */
-	return FALSE;
+	return TRUE;
 }
