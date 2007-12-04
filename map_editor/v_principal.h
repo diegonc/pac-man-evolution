@@ -19,7 +19,7 @@
 #include "traductor.h"
 #include "../server/MundoBajoNivel.h"
 #include "../server/ModeloServidor.h"
-extern ModeloServidor mod;
+#include "../client/OGL/AplicacionGrafica.h"
 
 /******************************/
 

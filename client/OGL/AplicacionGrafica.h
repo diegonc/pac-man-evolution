@@ -29,9 +29,12 @@ class AplicacionGrafica{
         EstadoAplicacion AppEstado;
 
         //modelo local al cliente
-        ModeloServidor modelo;
-
-        Escenario escenario;
+        
+	public:	// <<------ESTA LINEA COMENTADA PARA UNIR TODO, sacarla cuando se separen los binarios
+		static ModeloServidor modelo;
+    
+	private: 
+		Escenario escenario;
 
         ModeladorObjetos ModeladorOBJ;
 		

@@ -124,7 +124,7 @@ gboolean VPrincipal::delete_event_handler(GtkWidget* widget, GdkEvent* event, gp
 	Traductor traductor;
 	MundoBajoNivel* mundo_bajo_nivel = traductor.traducir(mundo_alto_nivel);
 	S_ptr<MundoBajoNivel> mundo_ptr(mundo_bajo_nivel);
-	mod.set_mundo(mundo_ptr);
+	AplicacionGrafica::modelo.set_mundo(mundo_ptr);
 	delete(v_princ->modeloTemporal);
 	
 	/**************************************************/
