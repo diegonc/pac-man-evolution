@@ -133,6 +133,15 @@ class EstructuralUnitario{
 		*			redefnir
 		*/
 		virtual bool es_casa_fantasma();
+		
+		/**
+		*	@brief	Permite saber si este estructural esta conectado a otro
+		*
+		*	@param  Estructural con el que se quiere conectar
+		*
+		*	@return true si estan conectados, false en caso contrario
+		*/
+		bool tiene_conexion(S_ptr<EstructuralUnitario> e);
 	
 };
 #endif /*__ESTRUCTURAL_H__*/
