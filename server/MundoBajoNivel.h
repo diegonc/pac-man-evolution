@@ -23,8 +23,6 @@ class MundoBajoNivel
 		*/
 		virtual ~MundoBajoNivel(){}
 			
-		/**
-		*
 		virtual void agregar_mapa(S_ptr<MapaBajoNivel> mapa)=0;
 			
 		virtual int cantidad_niveles()= 0;
