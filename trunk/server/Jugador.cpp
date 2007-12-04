@@ -31,7 +31,7 @@ int Jugador::get_id(){
 	return this->id;
 }
 bool Jugador::comer(Comestible& comestible){
-	this->personaje->comer(comestible);
+	return this->personaje->comer(comestible);
 }
 void Jugador::incrementar_puntos(int cant){
 	this->puntos+= cant;

@@ -33,7 +33,7 @@ class MapaImpSet : public MapaBajoNivel{
 		*	@param	jugador Jugador sobre el cual se desea chequear
 		*	@param	pnueva	Posicion a donde va a ir el jugador
 		*/
-		bool tocando(Jugador &jugador, Posicion &pnueva);
+		bool tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta, Posicion &pnueva);
 		
 
 	public:

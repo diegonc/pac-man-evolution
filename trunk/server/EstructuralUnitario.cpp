@@ -70,3 +70,16 @@ bool EstructuralUnitario::es_salida_pacman(){
 bool EstructuralUnitario::es_casa_fantasma(){
 	return false;//por defecto
 }
+bool EstructuralUnitario::tiene_conexion(S_ptr<EstructuralUnitario> e){
+	if(e == get_arriba() )
+		return true;		
+	if(e == get_abajo() )
+		return true;
+	if(e == get_derecha() )
+		return true;
+	if(e == get_izquierda() )
+		return true;
+	if(&(*e) == this)
+		return true;
+	return false;
+}

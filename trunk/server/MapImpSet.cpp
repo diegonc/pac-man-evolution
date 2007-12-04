@@ -43,10 +43,10 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 		//incremento la distancia
 		posicion_jugador.incrementar(distancia,jugador.get_direccion());
 		//si no esta tocando alguna pared o esquina prohibida
-		if( !tocando( jugador, posicion_jugador) ){
+		if( !tocando( jugador,donde_estaba, posicion_jugador) ){
 			ComparadorPosicion comp;
 			//si cayeron distinto, me fijo si podia moverse para ese lado
-			if(! comp(posicion_jugador, jugador.get_posicion()) ){
+			if(! comp(posicion_jugador,jugador.get_posicion()) ){
 				//guardo la comida, ya que si la come la tengo que eliminar despues
 				S_ptr<Comestible> com = vecino->get_comida();
 				//obtengo los puntos antes de ingresar
@@ -66,7 +66,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 	
 }
 
-bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
+bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta, Posicion &pnueva){
 	S_ptr<EstructuralUnitario> e_critico;
 		
 	Tipo_Coordenada x0 = pnueva.get_x();
@@ -83,8 +83,12 @@ bool MapaImpSet::tocando(Jugador &jugador, Posicion &pnueva){
 		if( e_critico.es_nulo() ){
 			toca = true;
 		}
-		else
-			phi += INCREMENTO_PHI;
+		else{
+			if(! donde_esta->tiene_conexion(e_critico) )
+				toca = true;
+			else
+				phi += INCREMENTO_PHI;
+		}
 	}
 	return toca;
 }
