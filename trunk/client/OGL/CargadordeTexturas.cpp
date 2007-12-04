@@ -4,7 +4,6 @@
 void CargadorDeTexturas::CargarTextura(GLuint* texture,std::string nombrearchBMP){
     //superficie SDL
     SDL_Surface *surface;
-    std::cout << "procesando " << nombrearchBMP << std::endl;
     surface = SDL_LoadBMP(nombrearchBMP.c_str());
 
     //la imagen no tiene un ancho de potencia de 2
@@ -36,7 +35,6 @@ void CargadorDeTexturas::CargarTextura(GLuint* texture,std::string nombrearchBMP
 
     //libero la memoria de la superfice SDL utilizada de forma temporal
     if ( surface ) {
-        std::cout << "liberando recursos de " << nombrearchBMP << std::endl;
         SDL_FreeSurface( surface );
     }
 

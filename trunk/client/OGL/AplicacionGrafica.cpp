@@ -112,12 +112,12 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 
     //seleccion de camara   
     if (CamaraPrimeraPersona){
-		glRotatef(-90, 1, 0.0, 0.0);
+		glRotatef(-65, 1, 0.0, 0.0);
 		//seteo la pos de la luz sobre el eje y
 		static GLfloat pos[4] = {0, 0, 1, 0 };
 		//agrego la luz (estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
 		glLightfv( GL_LIGHT0, GL_POSITION, pos );
-		glTranslatef(0.0,15 , -6);
+		glTranslatef(0.0,15 , -10);
 	}else{
 		static GLfloat pos[4] = {0, 0, 1, 0 };
 		//agrego la luz (estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
