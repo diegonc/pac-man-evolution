@@ -5,6 +5,8 @@
 /* CLASE GUI: Representa la interfaz grafica de usuario del editor.
    Corre sobre un hilo propio de ejecucion, en el cual espera eventos. */
 
+GUI* GUI::instancia = NULL;
+
 //Constructor:
 
 GUI::GUI(int &argc, char** &argv){
@@ -21,6 +23,13 @@ GUI::~GUI(){
 	delete(this->ventana);
 }
 
+/* Get Instance: */
+GUI* GUI::get_instance(int argc, char* argv[]){
+	if (instancia == NULL)
+		instancia = new GUI(argc, argv);
+	return instancia;
+}
+
 /* Run: */
 	
 void GUI::run(){
@@ -29,3 +38,14 @@ void GUI::run(){
 	gtk_main ();
 }
 
+/* Destroy: */
+
+void GUI::destroy(){
+	delete(instancia);
+}
+
+/* Get Ventana Principal: */
+
+VPrincipal* GUI::get_ventana_principal(){
+	return this->ventana;
+}

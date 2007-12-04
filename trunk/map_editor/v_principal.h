@@ -67,6 +67,10 @@ class VPrincipal {
 	/* Delete Event Handler: Función 'callback' para atender la señal del evento "delete_event" */
 
 	static gboolean delete_event_handler(GtkWidget* widget, GdkEvent* event, gpointer data);
+   
+   	/* Destroy Handler: Función 'callback' para atender la señal del evento "destroy" */
+
+	static gboolean destroy_handler(GtkWidget* widget, gpointer data);
 	
 };
 
