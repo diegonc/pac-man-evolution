@@ -13,6 +13,7 @@
 #include "esq_norte.h"
 #include "esq_sur.h"
 #include "power_up.h"
+#include "bonus.h"
 
 using namespace std;
 

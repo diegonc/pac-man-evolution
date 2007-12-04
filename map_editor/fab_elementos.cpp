@@ -20,6 +20,11 @@ S_ptr<Elemento> Fab_Elementos::construir (TipoElem tipo, int pos_x, int pos_y, O
 			elemento = power_up;
 			break;
 		}
+		case BONUS: {
+			S_ptr<Elemento> bonus (new Bonus(pos_x, pos_y));
+			elemento = bonus;
+			break;
+		}
 	}
 	return elemento;
 }

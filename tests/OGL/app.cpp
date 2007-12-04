@@ -617,7 +617,7 @@ void Draw3D(SDL_Surface *S,Posicion_Graf* P)										// OpenGL drawing code her
    
       	Pos.x= -p.get_x()*4;
          Pos.y= p.get_y()*4;
-      	DibujarObjetoPosicion(&Pos,comestible->get_tipo());
+      	//DibujarObjetoPosicion(&Pos,comestible->get_tipo());
    }
    /*
     Pos.x=-sin(j)*10;

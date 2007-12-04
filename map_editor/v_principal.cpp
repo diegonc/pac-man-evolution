@@ -82,6 +82,8 @@ void VPrincipal::construir(){
 	this->panel_estruc->agregar_elemento(ESQ, SUR, RUTA_ESQ_SUR);
 	this->panel_estruc->agregar_elemento(ESQ, OESTE, RUTA_ESQ_OESTE);
 	this->panel_estruc->agregar_elemento(ESQ, NORTE, RUTA_ESQ_NORTE);
+	this->panel_modif->agregar_elemento(PWUP, NULA, RUTA_POWER_UP);
+	this->panel_modif->agregar_elemento(BONUS, NULA, RUTA_BONUS);
 	
 	this->panel_estruc->agregar_observador(ControlSeleccion::get_instance());
 	this->panel_modif->agregar_observador(ControlSeleccion::get_instance());
@@ -94,12 +96,12 @@ void VPrincipal::construir(){
   	//Obtengo su mundo
     Mundo* mundo = modeloTemporal->get_mundo();
     //Agrego un nivel de 50 x 50
-    //mundo->agregar_nivel(50, 50);
+    mundo->agregar_nivel(50, 50);
 	//Agrego uno de 10 x 10
 	mundo->agregar_nivel(10,10);
 	
-	//this->panel_mundo->agregar_nivel(mundo->get_nivel(1), "nivel 50 x 50");
-	this->panel_mundo->agregar_nivel(mundo->get_nivel(1), "nivel 10 x 10");
+	this->panel_mundo->agregar_nivel(mundo->get_nivel(1), "nivel 50 x 50");
+	this->panel_mundo->agregar_nivel(mundo->get_nivel(2), "nivel 10 x 10");
 	
   	this->vista_mapa = new VistaMapa(mundo->get_nivel(1));
 	

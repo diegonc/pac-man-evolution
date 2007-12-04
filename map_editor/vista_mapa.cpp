@@ -17,12 +17,11 @@ VistaMapa::VistaMapa(S_ptr<Nivel> nivel){
 	this->hbox = gtk_hbox_new(FALSE,0);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 	
-	gtk_container_add(GTK_CONTAINER(this->frame), this->swindow);
-	
 	this->tabla = gtk_table_new(nivel->get_mapa()->get_alto(),nivel->get_mapa()->get_ancho(),FALSE);
 	gtk_box_pack_start (GTK_BOX (hbox), this->tabla, FALSE, FALSE, 0);
 	
-	gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(this->swindow), vbox);
+	gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(this->swindow), this->vbox);
+	gtk_container_add(GTK_CONTAINER(this->frame), this->swindow);
 	
 	g_signal_connect(G_OBJECT(this->swindow), "button_press_event", G_CALLBACK(click_handler), this);
 	
@@ -81,11 +80,14 @@ void VistaMapa::dibujar() {
 	Mapa* mapa = this->nivel->get_mapa();
 	while (cont1 < mapa->get_alto()){
 		while (cont2 < mapa->get_ancho()){
-			S_ptr<Elemento> elem = mapa->get_casillero(cont1, cont2)->get_estructural();
-			if (!elem.es_nulo()){
-				if ((elem->get_pos_x() == cont1) && (elem->get_pos_y() == cont2)){
-					this->dibujar_elemento(elem);
-				}
+			S_ptr<Casillero> casillero = mapa->get_casillero(cont1, cont2);
+			S_ptr<Elemento> estruct = casillero->get_estructural();
+			S_ptr<Elemento> modificador = casillero->get_modificador();
+			if (!estruct.es_nulo()){
+				if ((estruct->get_pos_x() == cont1) && (estruct->get_pos_y() == cont2))
+					this->dibujar_elemento(estruct);
+				if (!modificador.es_nulo())
+					this->dibujar_elemento(modificador);
 			} else {
 				this->dibujar_casillero_vacio(cont1, cont2);
 			}
@@ -99,16 +101,28 @@ void VistaMapa::dibujar() {
 /* Dibujar Elemento: */
 
 void VistaMapa::dibujar_elemento(S_ptr<Elemento> elem){
-		GtkWidget* imagen;
+		GtkWidget* fixed;
+		GtkWidget* imagenEstruc;
+		GtkWidget* imagenModif;
 		int pos_x = elem->get_pos_x();
 		int pos_y = elem->get_pos_y();
-		imagen = gtk_image_new();
-		gtk_image_set_from_file(GTK_IMAGE(imagen), elem->get_ruta_imagen());
-		gtk_table_attach_defaults (GTK_TABLE (this->tabla), imagen, pos_y, pos_y + elem->get_ancho(), pos_x, pos_x + elem->get_alto());
-		for (int i = pos_x; i < pos_x + elem->get_alto(); i++)
-			for (int j = pos_y; j < pos_y + elem->get_ancho(); j++)
-					this->imagenes[i][j] = imagen;
-		gtk_widget_show(imagen);
+		if (elem->es_estructural()){
+			fixed = gtk_fixed_new();
+			imagenEstruc = gtk_image_new();
+			gtk_image_set_from_file(GTK_IMAGE(imagenEstruc), elem->get_ruta_imagen());
+			gtk_fixed_put(GTK_FIXED(fixed), imagenEstruc, 0, 0);
+			gtk_table_attach_defaults (GTK_TABLE (this->tabla), fixed, pos_y, pos_y + elem->get_ancho(), pos_x, pos_x + elem->get_alto());
+			for (int i = pos_x; i < pos_x + elem->get_alto(); i++)
+				for (int j = pos_y; j < pos_y + elem->get_ancho(); j++)
+					this->imagenes[i][j] = fixed;
+		} else {
+			S_ptr<Elemento> estruct = this->nivel->get_mapa()->get_casillero(pos_x, pos_y)->get_estructural();
+			fixed = this->imagenes[pos_x][pos_y];
+			imagenModif = gtk_image_new();
+			gtk_image_set_from_file(GTK_IMAGE(imagenModif), elem->get_ruta_imagen());
+			gtk_fixed_put(GTK_FIXED(fixed), imagenModif, (pos_y - estruct->get_pos_y()) * 25, (pos_x - estruct->get_pos_x()) * 25);			
+		}
+		gtk_widget_show_all(fixed);
 }
 
 /* Dibujar Casillero Vacio: */
@@ -160,10 +174,14 @@ void VistaMapa::agregar_elemento(double posX, double posY){
 	Orientacion orientacion = ControlSeleccion::get_instance()->get_orientacion_selec();
 	
 	if (this->nivel->agregar_elemento(tipo, pos_x, pos_y, orientacion)){
-		S_ptr<Elemento> elem = this->nivel->get_mapa()->get_casillero(pos_x, pos_y)->get_estructural();
-		for (int i = elem->get_pos_x(); i < elem->get_pos_x() + elem->get_alto(); i++)
-			for (int j = elem->get_pos_y(); j < elem->get_pos_y() + elem->get_ancho(); j++)
-				this->borrar_casillero_vacio(i, j);
+		S_ptr<Casillero> casillero = this->nivel->get_mapa()->get_casillero(pos_x, pos_y);
+		S_ptr<Elemento> elem = casillero->get_modificador();
+		if (!casillero->tiene_modificador()){
+			elem = casillero->get_estructural();
+			for (int i = elem->get_pos_x(); i < elem->get_pos_x() + elem->get_alto(); i++)
+				for (int j = elem->get_pos_y(); j < elem->get_pos_y() + elem->get_ancho(); j++)
+					this->borrar_casillero_vacio(i, j);
+		}
 		this->dibujar_elemento(elem);
 	}
 }
@@ -180,6 +198,9 @@ void VistaMapa::quitar_elemento(double posX, double posY){
 	
 	S_ptr<Casillero> casillero = this->nivel->get_mapa()->get_casillero(pos_x, pos_y);
 	if (!casillero.es_nulo()){
+		
+		if (casillero->tiene_modificador())
+			this->nivel->quitar_elemento(pos_x,pos_y);
 		
 		S_ptr<Elemento> elem = casillero->get_estructural();
 		
