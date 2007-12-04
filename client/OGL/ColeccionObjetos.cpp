@@ -28,7 +28,7 @@ void ColeccionObjetos::CargarObjetos(){
     objtext=new ObjTextura;
         CargadorDe3DS::Cargar3DS(&(objtext->Objeto3d),"cerecita.3DS");
         CargadorDeTexturas::CargarTextura(&(objtext->textura),"cerecita.bmp");
-		Objetos[Personaje::frutita]=objtext;
+		Objetos[Comestible::frutita]=objtext;
 
     objtext=new ObjTextura;
         CargadorDe3DS::Cargar3DS(&(objtext->Objeto3d),"fantasma.3DS");
