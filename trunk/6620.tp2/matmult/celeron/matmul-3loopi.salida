@@ -1,0 +1,31 @@
+Compilador:	gcc
+Opciones:	-O3 -mcpu=pentium3
+Plataforma:	i686-pc-linux-gnu
+Descripcion:	Multiplicacion por 3 bucles invertido.
+
+Tam: 31	mflop/s: 249.46
+Tam: 32	mflop/s: 250.019
+Tam: 96	mflop/s: 37.2366
+Tam: 97	mflop/s: 28.562
+Tam: 127	mflop/s: 23.3121
+Tam: 128	mflop/s: 6.36637
+Tam: 129	mflop/s: 23.5611
+Tam: 191	mflop/s: 16.439
+Tam: 192	mflop/s: 8.46746
+Tam: 229	mflop/s: 15.9371
+Tam: 255	mflop/s: 15.9418
+Tam: 256	mflop/s: 4.1076
+Tam: 257	mflop/s: 15.9414
+Tam: 319	mflop/s: 15.9699
+Tam: 320	mflop/s: 4.90446
+Tam: 321	mflop/s: 15.9753
+Tam: 417	mflop/s: 16.0427
+Tam: 479	mflop/s: 15.9177
+Tam: 480	mflop/s: 11.5488
+Tam: 511	mflop/s: 31.8612
+Tam: 512	mflop/s: 8.17854
+Tam: 639	mflop/s: 31.0794
+Tam: 640	mflop/s: 8.07775
+Tam: 767	mflop/s: 31.0675
+Tam: 768	mflop/s: 8.14393
+Tam: 769	mflop/s: 31.0148
