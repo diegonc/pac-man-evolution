@@ -5,15 +5,9 @@
 int main(int argc, char **argv)
 {
 	
-  //Creo la interfaz grafica
-  GUI* gui = new GUI(argc, argv);
-  //La hago arrancar
-  gui->start();
-  //Uno la interfaz grafica con el hilo principal, cuando termina
-  gui->join(gui);
-  //Elimino la interfaz grafica
-  delete(gui);
- 
+  //Conecto con el editor
+  AppCleanerEditor cleaner_editor;
+  AppEditor::get_instance(argc, argv)->ejecutar();
 	
     Aplicacion APP;
     //evento

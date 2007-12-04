@@ -10,11 +10,10 @@
 #include <stdio.h>
 #include "AplicacionGrafica.h"
 
-
 /******************************/
-#include "../../map_editor/gui.h"
-#include "../../map_editor/modelo.h"
-#include "../../map_editor/mundo.h"
+
+#include "../../map_editor/app_editor.h"
+#include "../../map_editor/app_cleaner_editor.h"
 
 /*******************************/
 
