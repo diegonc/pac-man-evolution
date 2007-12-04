@@ -16,11 +16,13 @@ S_ptr<App> App::get_instancia(){
 	return instancia;
 }
 int App::ejecutar(){
-	
+	//crea el modelo	
 	S_ptr<ModeloServidor> modelo(new ModeloServidor());
-	S_ptr<MundoBajoNivel> mundo(new MundoBasicImp());
-	modelo->set_mundo(mundo);
+	//TODO....PARTE DE LA CLASE PARA CARGAR, AHORA ESTA PUENTEADA
+	
+	//inicia el hilo del modelo
 	modelo->start();
+	//se une al hilo
 	pthread_join(modelo->get_hilo(), NULL);
 	
 	return 0;

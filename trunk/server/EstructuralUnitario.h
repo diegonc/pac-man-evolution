@@ -25,20 +25,20 @@ class EstructuralUnitario{
 		Posicion posicion;
 	
 	public:
-		static const char Casa_Fanstasma;
-		static const char Pasillo;
-		static const char Salida_Pacman;	
-	
 		
-		typedef char Enum_Estructural;
+		typedef const char Enum_Estructural;
 	
+		static Enum_Estructural Casa_Fanstasma;
+		static Enum_Estructural Pasillo;
+		static Enum_Estructural Salida_Pacman;	
+		
 		EstructuralUnitario(Posicion &p);	
 	
 		virtual ~EstructuralUnitario();
 	
 		virtual void ingresar(Jugador& jugador) = 0;
 		
-		virtual char get_tipo()=0;
+		virtual EstructuralUnitario::Enum_Estructural get_tipo()=0;
 	
 		virtual S_ptr<Comestible> get_comida();
 		
