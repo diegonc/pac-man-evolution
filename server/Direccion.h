@@ -1,6 +1,7 @@
 #ifndef __DIRECCION_H__
 #define __DIRECCION_H__
 
+//definiciones
 
 #define _NORTE	0
 #define _ESTE	1
@@ -43,7 +44,9 @@ class Direccion
 		 *  @return Direccion resultante.
 		 */
 		void combinar( int i );
+		
 	
+		//TODO: solo para testeo, sacar despues
 		friend std::ostream& operator <<( std::ostream& os, const Direccion &dir) 
      	{ 
          	switch(dir.dir){
@@ -58,14 +61,16 @@ class Direccion
 
 				
 			}
-         	// return ostream object 
-         	return os; 
+           	return os; 
      	}
 		
+		/**
+		*	@brief Devuelve la direccion contenida
+		*
+		*	@return La direccion
+		*/
 		const int get_dir();
-		
-		//Direccion( Direccion& d );
-		
+				
 };
 
 #endif /* __DIRECCION_H__ */

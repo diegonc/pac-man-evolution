@@ -1,9 +1,9 @@
 #include "EstructuralUnitario.h"
 #include <iostream>
 
-const char EstructuralUnitario::Casa_Fanstasma 	= _CASA_FANTASMA;
-const char EstructuralUnitario::Pasillo		  	= _PASILLO;
-const char EstructuralUnitario::Salida_Pacman	= _SALIDA_PACMAN;
+EstructuralUnitario::Enum_Estructural EstructuralUnitario::Casa_Fanstasma 	= _CASA_FANTASMA;
+EstructuralUnitario::Enum_Estructural EstructuralUnitario::Pasillo		  	= _PASILLO;
+EstructuralUnitario::Enum_Estructural EstructuralUnitario::Salida_Pacman	= _SALIDA_PACMAN;
 
 
 EstructuralUnitario::EstructuralUnitario(Posicion &p){

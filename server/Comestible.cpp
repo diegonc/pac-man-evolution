@@ -1,8 +1,8 @@
 #include "Comestible.h"
 
-const char Comestible::power_up = 0;
-const char Comestible::quesito 	= 1;
-const char Comestible::frutita 	= 2;
+Comestible::Enum_Comestible Comestible::power_up    = _POWER_UP;
+Comestible::Enum_Comestible Comestible::quesito 	= _QUESITO;
+Comestible::Enum_Comestible Comestible::frutita 	= _FRUTITA;
 
 Comestible::Comestible(int puntos, Posicion &pos){
 	this->puntaje = puntos;	
