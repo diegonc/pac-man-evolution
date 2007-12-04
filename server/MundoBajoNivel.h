@@ -23,12 +23,9 @@ class MundoBajoNivel
 		*/
 		virtual ~MundoBajoNivel(){}
 		
-<<<<<<< .mine
 		/**
 		*	@brief	Debe permitir agregar un mapa.
 		*
-=======
->>>>>>> .r249
 		*	@param	Smart pointer con el mapa a agregar
 		*/		
 		virtual void agregar_mapa(S_ptr<MapaBajoNivel> mapa)=0;
