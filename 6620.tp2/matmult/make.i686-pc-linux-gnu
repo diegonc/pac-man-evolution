@@ -1,7 +1,7 @@
 CC = gcc
 F77 = g77
 OPTFLAGS = -O3 -mcpu=pentium3
-CFLAGS = -std=gnu9x $(OPTFLAGS) -DDEBUG_RUN
+CFLAGS = -std=gnu9x $(OPTFLAGS)
 BLASLIB = -lblas2
 
 # Alternate: using Intel's compiler

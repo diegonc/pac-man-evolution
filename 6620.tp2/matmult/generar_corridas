@@ -3,6 +3,11 @@
 TARGETS=`grep TARGETS= Makefile | cut -f 2 -d '='`
 
 for i in ${TARGETS}; do
-	$i > $i.salida
+   hora=`date`	
+   echo "Comienzo corrida $i -> " $hora
+   "./$i" > $i.salida
+   hora=`date`
+   echo "Termino la salida $i -> " $hora
+   
 done
-
+echo "Fin de las corridas."
