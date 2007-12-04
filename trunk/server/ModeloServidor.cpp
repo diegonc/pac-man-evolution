@@ -1,26 +1,18 @@
 #include "ModeloServidor.h"
 
 #include "reloj.h"
-
-/////////////////////////////////
 #include "PacMan.h"
 #include "Fantasma.h"
 
-
-/////////////////////////////////
-
 ModeloServidor::ModeloServidor(){
-	cargar_modelo();
-	
+	cargar_modelo(); // provisorio
 }
 
 void ModeloServidor::cargar_modelo(){
 	this->parar = false;
 	
+	/************parte provisoria cuando esta todo conectado*******************/
 	//this->mundo = new MundoBasicImp();
-	
-	/**************************************************************************/
-	
 	Jugador *j1 = new Jugador(1);
 	Tipo_Jugador j_1(j1);
 	Posicion p(0.5,0.5);
@@ -32,34 +24,32 @@ void ModeloServidor::cargar_modelo(){
 	Posicion p2(0.5,0.5);
 	j_2->set_posicion(p2);
 	this->agregar_jugador(j_2);
-	
-	
 	/**************************************************************************/
-	/*TODO TRUCHAR OPERACIONES Y DESPUES REEMPLAZAR POR UN PARSER*/
-	
-	
 }
 void ModeloServidor::set_mundo(S_ptr<MundoBajoNivel> mundo){
 	this->mundo = mundo;
-	this->mundo->get_mapa_activo().agregar_observador(this);
+	
+	//this->mundo->get_mapa_activo().agregar_observador(this);
 }
 ModeloServidor::~ModeloServidor(){
 }
 
 void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 	S_ptr<Personaje> personaje;
-	
 	Jugador * j = &(*jugador);
+	//si es el primer jugador, le asigno el personaje de pacman, si no
+	//fantasma
 	if(jugadores.size() == 0)
 		personaje = S_ptr<Personaje>(new PacMan(j));
 	else
 		personaje = S_ptr<Personaje>(new Fantasma(j));
 	jugador->set_personaje(personaje);
-	
+	//lo agrego a los jugadores
 	this->jugadores.push_back(jugador);
 }
 			
 void ModeloServidor::run(){
+	//si hay mundo
 	if(! mundo.es_nulo() ){
 		double intervalo_tiempo = 0;
 		double hora_actual;
@@ -68,14 +58,23 @@ void ModeloServidor::run(){
 		
 		Tipo_Jugador j;
 		
+		//itero por todos los niveles
 		for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
+			//lo agrego como observador del mapa, ya que cuando no hay mas quesitos 
+			//me avisa
 			mundo->get_mapa_activo().agregar_observador(this);
+			//preparo la partida
 			preparar_partida();
+			//mientras este en juego
 			while(!this->parar){
+				//obtengo la hora actual para evitar el error acumulativo
 				hora_actual = Reloj::get_instancia()->get_hora_actual_decimal();
+				//recorro todos los jugadores
 				for(it = jugadores.begin(); it!= jugadores.end(); it++){
 					j = *it;
+					//lo muevo
 					(this->mundo->get_mapa_activo()).mover(*j, j->get_personaje()->get_velocidad() * intervalo_tiempo);
+					//reviso las colisiones
 					revisar_colisiones(j);
 					
 				}
@@ -127,6 +126,8 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
 }
 
 void ModeloServidor::preparar_partida(){
+	//TODO: no funciona bien, hay que probarla de nuevo
+	
 	/*
 	//para la casa del fantasma y la salida del pacman
 	S_ptr<EstructuralUnitario> salida_pacman;

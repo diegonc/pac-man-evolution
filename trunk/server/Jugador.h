@@ -32,16 +32,28 @@ class Jugador{
 		 */
 		Jugador(int id, Tipo_Personaje personaje);
 
+		/** @brief Constructor de la clase.
+		 *
+		 *  @param id  Identificador numerico del jugador.
+		 */
 		Jugador(int id);
-	
+		
+		/**
+		 *	@brief Destructor de la clase
+		 */
 		~Jugador();
 			
-		/** @brief Devuelve el personaje del jugador.
+		/** @brief 	Devuelve el personaje del jugador.
 		 *
 		 *  @return El personaje del jugador.
 		 */
 		Tipo_Personaje get_personaje();
-			
+		
+		/**
+		 *	@brief	Devuelve el id del jugador
+		 *
+		 *	@return El id del jugador
+		 */
 		int get_id();
 			
 		/** @brief Asigna un personaje nuevo al jugador.
@@ -69,7 +81,13 @@ class Jugador{
 		 */
 		Direccion& get_direccion();
 		
+		/**
+		*	@brief	Asigna la direccion al jugador
+		*
+		*	@param dir direccion a asignar
+		*/
 		void set_direccion(Direccion *dir);		
+		
 		/** @brief Implementa un metodo de acceso para que el jugador coma
 		 *	   la comida que hay en el mapa.
 		 *
@@ -77,10 +95,26 @@ class Jugador{
 		 */
 		bool comer(Comestible& comestible);
 		
+		/**
+		 *	@brief 	Permite evaluar si colisiono con otro jugador, para esto,
+		 *			utiliza el metodo respectivo de su personaje
+		 *
+		 *	@param	Jugador con el que colisiono
+		 */
 		void colisiono(Jugador &jugador);
 		
+		/**
+		*	@brief 	Incrementa la cantidad de puntos que posee el jugador
+		*
+		*	@param 	cant Cantidad de puntos que se deben incrementar
+		*/
 		void incrementar_puntos(int cant);
 		
+		/**
+		*	@brief	Permite obtener la cantidad de puntos que posee el jugador
+		*
+		*	@return La cantidad de puntos que posee el jugador
+		*/
 		int get_puntos();
 };
 

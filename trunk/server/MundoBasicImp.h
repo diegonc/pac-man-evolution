@@ -1,6 +1,10 @@
 #ifndef __MUNDOBASICIMP_H__
 #define __MUNDOBASICIMP_H__
 
+/**
+*	@brief Implementacion basica del mundo
+*/
+
 #include <list>
 #include "MundoBajoNivel.h"
 #include "MapaBajoNivel.h"
@@ -14,12 +18,24 @@ class MundoBasicImp : public MundoBajoNivel
 		int cant_niveles;
 
 	public:
+		/**
+		*	@brief Constructor
+		*/
 		MundoBasicImp();
-		
+			
+		/**
+		*	@brief Destructor
+		*/
 		~MundoBasicImp();
 	
+		/**
+		*	@brief Implementacion del metodo de la interfaz mundo
+		*/
 		MapaBajoNivel& get_mapa_activo();
 	
+		/**
+		*	@brief Implementacion del metodo de la interfaz mundo
+		*/
 		void agregar_mapa(S_ptr<MapaBajoNivel> mapa);
 	
 		int cantidad_niveles();
