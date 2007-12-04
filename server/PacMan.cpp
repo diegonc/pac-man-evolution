@@ -10,15 +10,19 @@ PacMan::PacMan(Jugador *jugador):Personaje(jugador,RADIO_PACMAN){
 }
 
 bool PacMan::comer(Comestible& comestible){
+	//incremento los puntos del jugador dependiendo del comestible
 	(this->get_jugador()).incrementar_puntos(comestible.get_puntos());
+	//afecto a este personaje
 	comestible.afectar_personaje(*this);
+	//devuelvo true ya que lo comio
 	return true;	
 }
 void PacMan::colision(Jugador& jugador){
-	
+	//si no es el mismo jugador
 	if(jugador.get_id() != get_jugador().get_id() ){
 		Tipo_Coordenada distancia;
-		
+		//calcula la distancia entre los dos personajes calculando el modulo
+		// dist = ( ( x0 - x1 )² + ( y0 - y1)² )^ ½
 		distancia = pow( get_jugador().get_posicion().get_x() - 	
 						 jugador.get_posicion().get_x() , 2);
 		
@@ -26,6 +30,8 @@ void PacMan::colision(Jugador& jugador){
 						  jugador.get_posicion().get_y() , 2);
 		
 		distancia = sqrt(distancia);
+		//si la distancia es menor o igual que la suma de los radios, 
+		//quiere decir que choca
 		if(distancia  <= (this->get_radio() + jugador.get_personaje()->get_radio() ) ){
 			if( this->tiene_power_up() ){
 				if(jugador.get_personaje()->esta_vivo())

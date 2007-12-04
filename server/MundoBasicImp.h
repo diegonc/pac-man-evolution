@@ -38,6 +38,9 @@ class MundoBasicImp : public MundoBajoNivel
 		*/
 		void agregar_mapa(S_ptr<MapaBajoNivel> mapa);
 	
+		/**
+		*	@brief Implementacion del metodo de la interfaz mundo
+		*/
 		int cantidad_niveles();
 };
 
