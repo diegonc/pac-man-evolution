@@ -1,6 +1,13 @@
 #!/bin/sh
 
 SRC_DIR=$1
+DST_DIR=$2
+
+if [ -z "${DST_DIR}" ]; then
+	DST_DIR=.
+fi
+
+DST_DIR=`cd ${DST_DIR}; pwd`
 
 if [ ! -d "${SRC_DIR}" ]; then
 	echo "Carpeta de corridas ( $1 ) inexistente."
@@ -31,9 +38,9 @@ for i in ${TIMINGS}; do
 	perl -ne 'if (/Tam:\s+(\S+).*s:\s+(\S+)/) {print "$1 $2\n";}' ${i} > `basename ${i} .salida`.data
 done
 
-cat | gnuplot - << EOF
-set term latex
-set output ${CWD}/${SRC_DIR}-plot.tex
+cat | gnuplot -persist - << EOF
+set term x11
+set output "${DST_DIR}/${SRC_DIR}-plot.tex"
 set xlabel 'Dimension'
 set ylabel 'Mflop/s'
 set key default
