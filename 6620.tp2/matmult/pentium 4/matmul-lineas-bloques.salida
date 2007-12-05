@@ -1,0 +1,31 @@
+Compilador:	gcc
+Opciones:	-O3 -mcpu=pentium3
+Plataforma:	i686-pc-linux-gnu
+Descripcion:	Multiplicacion de matrices por linea por bloques.
+
+Tam: 31	mflop/s: 959.041
+Tam: 32	mflop/s: 1006.59
+Tam: 96	mflop/s: 794.2
+Tam: 97	mflop/s: 1119.94
+Tam: 127	mflop/s: 1147.44
+Tam: 128	mflop/s: 1003.9
+Tam: 129	mflop/s: 690.122
+Tam: 191	mflop/s: 921.179
+Tam: 192	mflop/s: 878.928
+Tam: 229	mflop/s: 1000.02
+Tam: 255	mflop/s: 980.827
+Tam: 256	mflop/s: 900.446
+Tam: 257	mflop/s: 995.059
+Tam: 319	mflop/s: 1025.17
+Tam: 320	mflop/s: 994.055
+Tam: 321	mflop/s: 1031.15
+Tam: 417	mflop/s: 1022.9
+Tam: 479	mflop/s: 1033.38
+Tam: 480	mflop/s: 1014.14
+Tam: 511	mflop/s: 542.245
+Tam: 512	mflop/s: 426.009
+Tam: 639	mflop/s: 1007.75
+Tam: 640	mflop/s: 957.819
+Tam: 767	mflop/s: 985.892
+Tam: 768	mflop/s: 901.017
+Tam: 769	mflop/s: 986.609
