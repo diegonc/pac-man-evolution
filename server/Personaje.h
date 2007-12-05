@@ -19,7 +19,7 @@ class Personaje{
 	protected:	
 		Personaje(Jugador * jugador, double radio);
 	
-		Jugador& get_jugador();
+		Jugador * get_jugador();
 	
 	public:
 		//definiciones
@@ -91,7 +91,12 @@ class Personaje{
 		
 		double get_radio();
 		
-		
+		/**
+		*	@brief 	Permite settearle el jugador al personaje
+		*
+		*	@return jugador Referencia al jugador
+		*/		
+		void set_jugador(Jugador * jugador);
 	
 };
 

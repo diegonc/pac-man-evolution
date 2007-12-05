@@ -9,8 +9,8 @@ Personaje::Personaje(Jugador * jugador, double radio){
 	vivo = true;
 }
 	
-Jugador& Personaje::get_jugador(){
-	return *this->jugador;
+Jugador* Personaje::get_jugador(){
+	return this->jugador;
 }
 	
 void Personaje::matar(){
@@ -25,3 +25,7 @@ bool Personaje::esta_vivo(){
 Personaje::~Personaje(){}
 
 double Personaje::get_radio(){return this->radio;}
+
+void Personaje::set_jugador(Jugador * jugador){
+	this->jugador = jugador;
+}
