@@ -180,12 +180,12 @@ Otro factor importante es el grado de asociatividad de la cache, ya que para que
 
 Por último, si el tamaño de la matriz a multiplicar es muy grande, las columnas de cada matriz no se pueden mapear completmente en cada línea de la caché obteniendo una mayor tasa de miss y una consecuente disminución del rendimiento.
 
+\subsection{Multiplicaci�n por columnas, usando operación en bloques}
 
-\section{Hardware utilizado.}
+Este método es la unión de los 2 anteriores, combinando las ventajas de cada uno. Básicamente, con la operacion por bloques se logra reducir el problema que se produce en el método de multiplicación por columnas, al operar con matrices de gran tamaño. Si se escoje el valor adecuado para el tamaño de bloque, se puede lograr operar con matrices pequeñas cuyas columnas entran completamente en cada linea de la caché. De esta manera, se hace un gran aprovechamiento de la localidad espacial y temporal.
 
-El programa de multiplicaci�n de matrices, con cada optimizaci�n implementada, se ejecut� en dos configuraciones de hardware que se describen a continuaci�n.
+\section{Hardware utilizado}
 
-\subsection{}
-
+El programa de multiplicaci�n de matrices, con cada optimizaci�n implementada, se ejecut� en dos configuraciones de hardware que se describen a continuaci�n.
 
 \end{document}
