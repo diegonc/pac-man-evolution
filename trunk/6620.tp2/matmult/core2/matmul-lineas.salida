@@ -1,31 +1,32 @@
-Compilador:	gcc
-Opciones:	-O3 -mcpu=pentium3
-Plataforma:	i686-pc-linux-gnu
-Descripcion:	Multiplicacion por columnas de A.
-
-Tam: 31	mflop/s: 1627.4
-Tam: 32	mflop/s: 1580
-Tam: 96	mflop/s: 1420.21
-Tam: 97	mflop/s: 1416.65
-Tam: 127	mflop/s: 1474.29
-Tam: 128	mflop/s: 1386.12
-Tam: 129	mflop/s: 1491.18
-Tam: 191	mflop/s: 1457.47
-Tam: 192	mflop/s: 1381.82
-Tam: 229	mflop/s: 1547.82
-Tam: 255	mflop/s: 1527.84
-Tam: 256	mflop/s: 1388.78
-Tam: 257	mflop/s: 1536.32
-Tam: 319	mflop/s: 1525.52
-Tam: 320	mflop/s: 1542.17
-Tam: 321	mflop/s: 1488.85
-Tam: 417	mflop/s: 1355.6
-Tam: 479	mflop/s: 1195.36
-Tam: 480	mflop/s: 1200.6
-Tam: 511	mflop/s: 1122.46
-Tam: 512	mflop/s: 1033.02
-Tam: 639	mflop/s: 971.96
-Tam: 640	mflop/s: 873.935
-Tam: 767	mflop/s: 891.468
-Tam: 768	mflop/s: 930.549
-Tam: 769	mflop/s: 910.804
+Compilador:	gcc\\ 
+Opciones:	-O3 -mcpu=pentium3\\ 
+Plataforma:	i686-pc-linux-gnu\\ 
+Descripcion:	Multiplicacion por columnas de A.\\ 
+\\ 
+Tam: 31	mflop/s: 1627.4\\ 
+Tam: 32	mflop/s: 1580\\ 
+Tam: 96	mflop/s: 1420.21\\ 
+Tam: 97	mflop/s: 1416.65\\ 
+Tam: 127	mflop/s: 1474.29\\ 
+Tam: 128	mflop/s: 1386.12\\ 
+Tam: 129	mflop/s: 1491.18\\ 
+Tam: 191	mflop/s: 1457.47\\ 
+Tam: 192	mflop/s: 1381.82\\ 
+Tam: 229	mflop/s: 1547.82\\ 
+Tam: 255	mflop/s: 1527.84\\ 
+Tam: 256	mflop/s: 1388.78\\ 
+Tam: 257	mflop/s: 1536.32\\ 
+Tam: 319	mflop/s: 1525.52\\ 
+Tam: 320	mflop/s: 1542.17\\ 
+Tam: 321	mflop/s: 1488.85\\ 
+Tam: 417	mflop/s: 1355.6\\ 
+Tam: 479	mflop/s: 1195.36\\ 
+Tam: 480	mflop/s: 1200.6\\ 
+Tam: 511	mflop/s: 1122.46\\ 
+Tam: 512	mflop/s: 1033.02\\ 
+Tam: 639	mflop/s: 971.96\\ 
+Tam: 640	mflop/s: 873.935\\ 
+Tam: 767	mflop/s: 891.468\\ 
+Tam: 768	mflop/s: 930.549\\ 
+Tam: 769	mflop/s: 910.804\\
+\\
