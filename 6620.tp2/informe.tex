@@ -1,7 +1,16 @@
-\documentclass{article}
+%\documentclass{article}
+
+%\usepackage[spanish]{babel}
+%\usepackage[latin1]{inputenc}
+%\usepackage[spanish,activeacute]{babel}
+
+\documentclass[a4paper,10pt]{article}
 
 \usepackage[spanish]{babel}
-%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{graphicx}
+
 
 \begin{document}
 
@@ -13,21 +22,21 @@ El método consiste en invertir los ciclos exteriores del método básico. Al re
 Al intercambiar el orden de los bucles, se cambia el sentido de recorrido de cada matriz, es decir, A y C por columnas y B por filas. Esto permite un mejor aprovechamiento de la localidad espacial que provee la dispocición de los elementos contiguos en la memoria bajo el criterio Column Major Order.
 
 
-\subsection{B�sico con trasposici�n.}
+\subsection{Básico con trasposición.}
 
-Como se explico en el método anterior, A y C se recorren originalmente por filas. Lo que hace este método es transponer A y luego efectuar la multiplicación recorriendo A y B por columnas simultáneamente. Como se utiliza un acumulador para cada elemento de C, se realizan menor cantidad de accesos a éstos últimos, con respecto a los elementos de las otras matrices. Al igual que en el caso anterior, el beneficio se obtiene debido al aprovechamiento de la localidad espacial.
+Como se explico en el m'etodo anterior, A y C se recorren originalmente por filas. Lo que hace este método es transponer A y luego efectuar la multiplicación recorriendo A y B por columnas simultáneamente. Como se utiliza un acumulador para cada elemento de C, se realizan menor cantidad de accesos a éstos últimos, con respecto a los elementos de las otras matrices. Al igual que en el caso anterior, el beneficio se obtiene debido al aprovechamiento de la localidad espacial.
 
-Sin embargo, el desempe�o de este m�todo se ve impactado por la penalidad de calcular la matriz traspuesta, porque deben accederse simultáneamente los elementos simétricos respecto a la diagonal (que pertenecen a distintas filas y columnas de la matriz transponer).
+Sin embargo, el desempeño de este método se ve impactado por la penalidad de calcular la matriz traspuesta, porque deben accederse simultáneamente los elementos simétricos respecto a la diagonal (que pertenecen a distintas filas y columnas de la matriz transponer).
 
-\subsection{Multiplicaci�n por bloques}
+\subsection{Multiplicación por bloques}
 
-Es posible dividir la matriz en bloques de tama�o arbitrario y, utilizando el método básico, realizar multiplicaciones sucesivas de matrices mas pequeñas, mejorando la localidad temporal, ya que se mantienen en la caché los datos que se usarán a corto plazo.
+Es posible dividir la matriz en bloques de tamaño arbitrario y, utilizando el método básico, realizar multiplicaciones sucesivas de matrices mas pequeñas, mejorando la localidad temporal, ya que se mantienen en la caché los datos que se usarán a corto plazo.
 
-\subsection{Multiplicaci�n por columnas.}
+\subsection{Multiplicación por columnas.}
 
-Este m�todo realiza la multiplicaci�n de matrices en forma incremental, efectuando todas las operaciones posibles con los elementos disponibles de una de las matrices y sumando los resultados parciales en la matriz resultado.
+Este método realiza la multiplicación de matrices en forma incremental, efectuando todas las operaciones posibles con los elementos disponibles de una de las matrices y sumando los resultados parciales en la matriz resultado.
 
-Utilizando las propiedades de las matrices se consiguen las siguientes equivalencias que proporcionanan fundamento matem�tico al m�todo. Por simplicidad, se utilizan matrices de 2x2.
+Utilizando las propiedades de las matrices se consiguen las siguientes equivalencias que proporcionanan fundamento matemático al método. Por simplicidad, se utilizan matrices de 2x2.
 
 $$
   \left[
@@ -85,7 +94,7 @@ $$
    \right)
 $$
 
-Y expandiendo los par�ntesis resulta
+Y expandiendo los paréntesis resulta
 
 $$
 	\left[
@@ -141,7 +150,7 @@ $$
 	\right]
 $$
 
-As�, la matriz producto se puede descomponer en la siguiente suma
+Así, la matriz producto se puede descomponer en la siguiente suma
 $$
 	\left[
 	\begin{array}{cc}
@@ -172,42 +181,68 @@ $$
 	\right]
 $$
 
-Como se puede apreciar, las tres matrices se acceden por columnas. Esto resulta en una mejor utilizaci�n de la memoria cache.
+Como se puede apreciar, las tres matrices se acceden por columnas. Esto resulta en una mejor utilización de la memoria cache.
 
 Para que este método funcione correctamente, se requiere que la matriz donde se almacena el resultado haya sido inicializada en 0. Sin embargo, como esto no es tenido en cuenta en el calculo del tiempo (ya que se realiza para todos los metodos), no presenta una desventaja.
 
-Otro factor importante es el grado de asociatividad de la cache, ya que para que no se produzca trashing tiene que tener como minimo 4 vías para evitar que se reemplacen entre si las columnas de las distintas matrices.
+Otro factor importante es el grado de asociatividad de la cache, ya que para que no se produzca trashing tiene que tener como minimo 4 vías para evitar que se reemplacen entre si las columnas de las matrices A, B y C.
 
-Por último, si el tamaño de la matriz a multiplicar es muy grande, las columnas de cada matriz no se pueden mapear completmente en cada línea de la caché obteniendo una mayor tasa de miss y una consecuente disminución del rendimiento.
+Por último, si el tamaño de la matriz a multiplicar es muy grande, las columnas de cada matriz no se pueden mapear completmente en la caché, y si el grado de asociatividad no es el suficiente como para que no se produzcan conflictos no solo entre las matrices, sino también entre las columnas que cada una posee, se puede generar trashing.
 
-\subsection{Multiplicaci�n por columnas, usando operación en bloques}
+\subsection{Multiplicación por columnas, usando operación en bloques}
 
 Este método es la unión de los 2 anteriores, combinando las ventajas de cada uno. Básicamente, con la operacion por bloques se logra reducir el problema que se produce en el método de multiplicación por columnas, al operar con matrices de gran tamaño. Si se escoje el valor adecuado para el tamaño de bloque, se puede lograr operar con matrices pequeñas cuyas columnas entran completamente en cada linea de la caché. De esta manera, se hace un gran aprovechamiento de la localidad espacial y temporal.
 
+\clearpage
 \section{Hardware utilizado}
 
-El programa de multiplicaci�n de matrices, con cada optimizaci�n implementada, se ejecut� en dos configuraciones de hardware que se describen a continuaci�n.
+El programa de multiplicación de matrices, con cada optimización implementada, se ejecutó en dos configuraciones de hardware que se describen a continuación.
 
+\subsection{Intel® Core™2 Duo Desktop Processor E6400}
+
+-\\
+Spec Number: SL9T9\\
+CPU Speed: 2.13 GHz\\
+PCG: 06\\
+Bus Speed: 1066 MHz\\
+\\
+Cache Info:\\
+        1st-level data cache: 32 KB, 8-way set associative, 64-byte line size\\
+        Data TLB: 4 KB Pages, 4-way set associative, 256 entries\\
+        1st-level instruction cache: 32 KB, 8-way set associative, 64-byte line size\\
+        2nd-level cache: 2 MB, 8-way set associative, 64-byte line size\\
+        L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries\\
+        L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries\\
+        64-byte Prefetching\\
+        Data TLB: 4 MB Pages, 4-way set associative, 32 entries\\
+        Instruction TLB: 4 KB Pages, 4-way set associative, 128 entries\\
+        Instruction TLB: 4 MB Pages, 4-way set associative, 4 entries Instruction TLB: 2 MB Pages, 4-way set associative, 8 entries\\
+
+
+
+\clearpage
 \section{Corridas}
 
-\subsection{NIETOOO}
+%\subsection{NIETOOO}
 
-\input{./matmult/celeron/matmul.salida}
-\clearpage
-\clearpage
-\input{./matmult/celeron/matmul-3loopi.salida}
-\clearpage
-\input{./matmult/celeron/matmul-bloques.salida}
-\clearpage
-\input{./matmult/celeron/matmul-lineas.salida}
-\clearpage
-\input{./matmult/celeron/matmul-transp.salida}
-\clearpage
+%\input{./matmult/celeron/matmul.salida}
+%\clearpage
+%\input{./matmult/celeron/matmul-3loopi.salida}
+%\clearpage
+%\input{./matmult/celeron/matmul-bloques.salida}
+%\clearpage
+%\input{./matmult/celeron/matmul-lineas.salida}
+%\clearpage
+%\input{./matmult/celeron/matmul-transp.salida}
+%\clearpage
+
+%\subsection{Grafico Comparativo: }
+%\input{./celeron-plot}
+%\clearpage
 
 \subsection{Core 2 Duo E6400}
 
 \input{./matmult/core2/matmul.salida}
-\clearpage
 \clearpage
 \input{./matmult/core2/matmul-3loopi.salida}
 \clearpage
@@ -219,5 +254,44 @@ El programa de multiplicaci�n de matrices, con cada optimizaci�n implementad
 \clearpage
 \input{./matmult/core2/matmul-lineas-bloques.salida}
 \clearpage
+
+\subsection{Grafico Comparativo: }
+\input{./core2-plot}
+\clearpage
+
+\section{Analisis de resultados y conclusiones: }
+
+\subsection{Inversión de ciclos.}
+
+Como se observa en los gráficos, el multiplicar básico es muy inestable respecto del tamaño de matriz utilizado y el más ineficiente. Asimismo, lo único que produce la mejora propuesta es un \textbf{pequeño} aumento de la estabilidad y del rendimiento. La curva mantiene la misma tendencia que la del método básico.
+
+\subsection{Básico con trasposición.}
+
+En este caso podemos notar que el método es bastante estable (en contraposición con los anteriores).
+
+Cuando la matriz es pequeña, el costo de transposición es pequeño, y la ventaja de recorrer por columnas no se ve tan perjudicada, obteniendo un buen desempeño. 
+
+Cuando la matrices a multiplicar son muy grandes, este método presenta 2 problemas: Por un lado el costo de transposición aumenta, porque los elementos simétricos están más separados en memoria y se pierde localidad espacial, y por el otro lado, cada columna columna sobrepasa el tamaño de la caché y se genera trashing. Este fenómeno se puede apreciar en el gráfico (con la brusca caída de mflops alrededor de un tamaño identificable).
+
+\subsection{Multiplicación por columnas.}
+
+Se puede ver que este método se comporta de manera similar al anterior (porque se basan en el mismo principio) sin el tiempo consumido por el proceso de transposición, por lo que la curva mflops(tamaño) se encuentra desplazada hacia arriba.
+
+\subsection{Multiplicación por bloques.}
+
+Este método evidencia la ventaja de trabajar con matrices de un tamaño deseado (pudiendo elegir el mas conveniente para cada situación).
+
+El desempeño es muy variable y depende de la compatibilidad entre las dimensiones de las matrices y el tamaño del bloque (sin dejar de lado el tamaño de la cache y el grado de asociatividad de la misma). Esto significa que se puede lograr un gran rendimiento al procesar matrices muy grandes, eligiendo correctamente el bloque, cosa que no se puede realizar con los otros métodos. 
+
+Todo esto esto se puede ver claramente en el gráfico.
+
+\subsection{Multiplicación por columnas y bloques.}
+
+Como supusimos, se logran aprovechar las ventajas de los dos métodos anteriores. 
+
+Se pudo elegir el tamaño de bloque de manera tal de operar la mayor parte del tiempo con matrices que povocan un rendimiento óptimo para el método de multiplicación por columnas. De esta manera se logra mantener este nivel sin importar el tamaño de la matriz original.
+
+\clearpage
+\section{Código fuente}
 
 \end{document}
