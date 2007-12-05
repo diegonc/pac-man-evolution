@@ -40,7 +40,7 @@ class EstructuralUnitario{
 		//define los tipos de estructurales
 		typedef const char Enum_Estructural;
 		
-		static Enum_Estructural Casa_Fanstasma;
+		static Enum_Estructural Casa_Fantasma;
 		static Enum_Estructural Pasillo;
 		static Enum_Estructural Salida_Pacman;	
 		

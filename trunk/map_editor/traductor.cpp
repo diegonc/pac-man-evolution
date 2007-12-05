@@ -126,7 +126,7 @@ void Traductor::conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> de
 char Traductor::trad_cod_elemento(TipoElem tipo){
 		switch (tipo) {
 			case CASA:
-				return EstructuralUnitario::Casa_Fanstasma;
+				return EstructuralUnitario::Casa_Fantasma;
 			case SALIDA:
 				return EstructuralUnitario::Salida_Pacman;
 			case PWUP:

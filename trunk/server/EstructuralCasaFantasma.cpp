@@ -18,7 +18,7 @@ void EstructuralCasaFantasma::ingresar(Jugador& jugador){
 EstructuralCasaFantasma::~EstructuralCasaFantasma(){}
 
 EstructuralUnitario::Enum_Estructural EstructuralCasaFantasma::get_tipo(){
-	return EstructuralUnitario::Casa_Fanstasma;
+	return EstructuralUnitario::Casa_Fantasma;
 }
 bool EstructuralCasaFantasma::es_casa_fantasma(){
 	return true;

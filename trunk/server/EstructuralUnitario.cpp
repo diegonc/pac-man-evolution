@@ -2,8 +2,8 @@
 #include <iostream>
 
 //definiciones
-EstructuralUnitario::Enum_Estructural EstructuralUnitario::Casa_Fanstasma 	= _CASA_FANTASMA;
-EstructuralUnitario::Enum_Estructural EstructuralUnitario::Pasillo		  	= _PASILLO;
+EstructuralUnitario::Enum_Estructural EstructuralUnitario::Casa_Fantasma 	= _CASA_FANTASMA;
+EstructuralUnitario::Enum_Estructural EstructuralUnitario::Pasillo		= _PASILLO;
 EstructuralUnitario::Enum_Estructural EstructuralUnitario::Salida_Pacman	= _SALIDA_PACMAN;
 
 
