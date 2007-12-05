@@ -1,15 +1,15 @@
 \documentclass{article}
 
 \usepackage[spanish]{babel}
-\usepackage[latin1]{inputenc}
+%\usepackage[latin1]{inputenc}
 
 \begin{document}
 
 \section{Optimizaciones.}
 
-\subsection{Inversi�n de ciclos.}
+\subsection{Inversión de ciclos.}
 
-El método consiste en invertir los ciclos exteriores del m�todo b�sico. Al realizar la multiplicación A x B = C con el método básico, las matrices A y C se recorren por filas y la B por columnas.
+El método consiste en invertir los ciclos exteriores del método básico. Al realizar la multiplicación A x B = C con el método básico, las matrices A y C se recorren por filas y la B por columnas.
 Al intercambiar el orden de los bucles, se cambia el sentido de recorrido de cada matriz, es decir, A y C por columnas y B por filas. Esto permite un mejor aprovechamiento de la localidad espacial que provee la dispocición de los elementos contiguos en la memoria bajo el criterio Column Major Order.
 
 
@@ -187,5 +187,37 @@ Este método es la unión de los 2 anteriores, combinando las ventajas de cada u
 \section{Hardware utilizado}
 
 El programa de multiplicaci�n de matrices, con cada optimizaci�n implementada, se ejecut� en dos configuraciones de hardware que se describen a continuaci�n.
+
+\section{Corridas}
+
+\subsection{NIETOOO}
+
+\clearpage
+\input{./matmult/celeron/matmul.salida}
+\clearpage
+\clearpage
+\input{./matmult/celeron/matmul-3loopi.salida}
+\clearpage
+\input{./matmult/celeron/matmul-bloques.salida}
+\clearpage
+\input{./matmult/celeron/matmul-lineas.salida}
+\clearpage
+\input{./matmult/celeron/matmul-transp.salida}
+\clearpage
+
+\subsection{Core 2 Duo E6400}
+
+\clearpage
+\input{./matmult/core2/matmul.salida}
+\clearpage
+\clearpage
+\input{./matmult/celeron/matmul-3loopi.salida}
+\clearpage
+\input{./matmult/celeron/matmul-bloques.salida}
+\clearpage
+\input{./matmult/celeron/matmul-lineas.salida}
+\clearpage
+\input{./matmult/celeron/matmul-transp.salida}
+\clearpage
 
 \end{document}
