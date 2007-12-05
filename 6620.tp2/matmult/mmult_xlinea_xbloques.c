@@ -3,7 +3,7 @@ const char* matmult_desc = "Multiplicacion de matrices por linea por bloques.";
 
 /* Se puede jugar con este valor */
 #if !defined(TAM_BLOQUE)
-#define TAM_BLOQUE ((int) 320)
+#define TAM_BLOQUE ((int) 31)
 #endif
 
 void

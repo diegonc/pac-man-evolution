@@ -7,15 +7,27 @@
 
 \section{Optimizaciones.}
 
-\subsection{Inversión de ciclos.}
+\subsection{Inversiï¿½n de ciclos.}
 
-El método consiste en invertir los ciclos exteriores del método básico para lograr que la matriz de resultados se recorra por columnas, aprovechando mejor la memoria cache.
+El mÃ©todo consiste en invertir los ciclos exteriores del mï¿½todo bï¿½sico. Al realizar la multiplicaciÃ³n A x B = C con el mÃ©todo bÃ¡sico, las matrices A y C se recorren por filas y la B por columnas.
+Al intercambiar el orden de los bucles, se cambia el sentido de recorrido de cada matriz, es decir, A y C por columnas y B por filas. Esto permite un mejor aprovechamiento de la localidad espacial que provee la dispociciÃ³n de los elementos contiguos en la memoria bajo el criterio Column Major Order.
 
-\subsection{Multiplicación por columnas.}
 
-Este método realiza la multiplicación de matrices en forma incremental, efectuando todas las operaciones posibles con los elementos disponibles de una de las matrices y sumando los resultados parciales en la matriz resultado.
+\subsection{Bï¿½sico con trasposiciï¿½n.}
 
-Utilizando las propiedades de las matrices se consiguen las siguientes equivalencias que proporcionanan fundamento matemático al método. Por simplicidad, se utilizan matrices de 2x2.
+Como se explico en el mÃ©todo anterior, A y C se recorren originalmente por filas. Lo que hace este mÃ©todo es transponer A y luego efectuar la multiplicaciÃ³n recorriendo A y B por columnas simultÃ¡neamente. Como se utiliza un acumulador para cada elemento de C, se realizan menor cantidad de accesos a Ã©stos Ãºltimos, con respecto a los elementos de las otras matrices. Al igual que en el caso anterior, el beneficio se obtiene debido al aprovechamiento de la localidad espacial.
+
+Sin embargo, el desempeï¿½o de este mï¿½todo se ve impactado por la penalidad de calcular la matriz traspuesta, porque deben accederse simultÃ¡neamente los elementos simÃ©tricos respecto a la diagonal (que pertenecen a distintas filas y columnas de la matriz transponer).
+
+\subsection{Multiplicaciï¿½n por bloques}
+
+Es posible dividir la matriz en bloques de tamaï¿½o arbitrario y, utilizando el mÃ©todo bÃ¡sico, realizar multiplicaciones sucesivas de matrices mas pequeÃ±as, mejorando la localidad temporal, ya que se mantienen en la cachÃ© los datos que se usarÃ¡n a corto plazo.
+
+\subsection{Multiplicaciï¿½n por columnas.}
+
+Este mï¿½todo realiza la multiplicaciï¿½n de matrices en forma incremental, efectuando todas las operaciones posibles con los elementos disponibles de una de las matrices y sumando los resultados parciales en la matriz resultado.
+
+Utilizando las propiedades de las matrices se consiguen las siguientes equivalencias que proporcionanan fundamento matemï¿½tico al mï¿½todo. Por simplicidad, se utilizan matrices de 2x2.
 
 $$
   \left[
@@ -73,7 +85,7 @@ $$
    \right)
 $$
 
-Y expandiendo los paréntesis resulta
+Y expandiendo los parï¿½ntesis resulta
 
 $$
 	\left[
@@ -129,7 +141,7 @@ $$
 	\right]
 $$
 
-Así, la matriz producto se puede descomponer en la siguiente suma
+Asï¿½, la matriz producto se puede descomponer en la siguiente suma
 $$
 	\left[
 	\begin{array}{cc}
@@ -160,18 +172,13 @@ $$
 	\right]
 $$
 
-Como se puede apreciar, las tres matrices se acceden por columnas. Esto resulta en una mejor utilización de la memoria cache.
+Como se puede apreciar, las tres matrices se acceden por columnas. Esto resulta en una mejor utilizaciï¿½n de la memoria cache.
 
-Sin embargo, para que funcione correctamente, se requiere que la matriz donde se almacena el resultado haya sido inicializada, ya sea previamente en 0 o con los primeros valores calculados de cada elemento.
+Para que este mÃ©todo funcione correctamente, se requiere que la matriz donde se almacena el resultado haya sido inicializada en 0. Sin embargo, como esto no es tenido en cuenta en el calculo del tiempo (ya que se realiza para todos los metodos), no presenta una desventaja.
 
-\subsection{Multiplicación por bloques}
+Otro factor importante es el grado de asociatividad de la cache, ya que para que no se produzca trashing tiene que tener como minimo 4 vÃ­as para evitar que se reemplacen entre si las columnas de las distintas matrices.
 
-Generalizando el método anterior, es posible dividir la matriz en bloques de tamaño arbitrario y, procediendo de la misma forma, se obtiene una suma de matrices que  permiten calcular la multiplicación progresivamente, empleando un conjunto de datos reducido.
+Por Ãºltimo, si el tamaÃ±o de la matriz a multiplicar es muy grande, las columnas de cada matriz no se pueden mapear completmente en cada lÃ­nea de la cachÃ© obteniendo una mayor tasa de miss y una consecuente disminuciÃ³n del rendimiento.
 
-\subsection{Básico con trasposición.}
-
-Al igual que en el método anterior, la trasposición de la primera matriz del producto permite que posiciones contiguas de memoria sean accedidas para las tres matrices, optimizando el uso de memoria cache.
-
-Sin embargo, el desempeño de este método se ve impactado por la penalidad de calcular la matriz traspuesta, que requiere movimientos de grandes cantidades de datos.
 
 \end{document}
