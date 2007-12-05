@@ -25,6 +25,12 @@ typedef struct __CPU_INFO {
 	CPU_CACHE_INFO* first_entry;
 } CPU_INFO;
 
+void cpu_info_startup();
+
 void cpu_info_init( CPU_INFO* ci );
+
+void cpu_info_print( CPU_INFO* ci );
+
+void cpu_info_free( CPU_INFO* ci );
 
 #endif /* __CPU_INFO_H__ */
