@@ -36,6 +36,13 @@ class MundoBajoNivel
 		*	@return cantidad de niveles del mapa
 		*/
 		virtual int cantidad_niveles()= 0;
+			
+		/**
+		*
+		*	@brief  Debe implementar las operaciones que se realizan al
+		*			avanzar de nivel
+		*/
+		virtual void pasar_de_nivel()=0;
 };
 
 #endif /* __MUNDO_H__ */

@@ -86,3 +86,7 @@ void MundoBasicImp::agregar_mapa(S_ptr<MapaBajoNivel> mapa){
 int MundoBasicImp::cantidad_niveles(){
 	return this->cant_niveles;
 }
+void MundoBasicImp::pasar_de_nivel(){
+	if(! this->mapas.empty() )
+		mapas.pop_front();
+}
