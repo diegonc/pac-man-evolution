@@ -198,47 +198,64 @@ Este método es la unión de los 2 anteriores, combinando las ventajas de cada u
 
 El programa de multiplicación de matrices, con cada optimización implementada, se ejecutó en dos configuraciones de hardware que se describen a continuación.
 
+\subsection{Intel® Pentium® 4 Processor}
+
 \subsection{Intel® Core™2 Duo Desktop Processor E6400}
 
--\\
-Spec Number: SL9T9\\
-CPU Speed: 2.13 GHz\\
-PCG: 06\\
-Bus Speed: 1066 MHz\\
-\\
-Cache Info:\\
-        1st-level data cache: 32 KB, 8-way set associative, 64-byte line size\\
-        Data TLB: 4 KB Pages, 4-way set associative, 256 entries\\
-        1st-level instruction cache: 32 KB, 8-way set associative, 64-byte line size\\
-        2nd-level cache: 2 MB, 8-way set associative, 64-byte line size\\
-        L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries\\
-        L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries\\
-        64-byte Prefetching\\
-        Data TLB: 4 MB Pages, 4-way set associative, 32 entries\\
-        Instruction TLB: 4 KB Pages, 4-way set associative, 128 entries\\
-        Instruction TLB: 4 MB Pages, 4-way set associative, 4 entries Instruction TLB: 2 MB Pages, 4-way set associative, 8 entries\\
+\begin{tabular}{|c|c||c|c|}
+\hline
+\multicolumn{4}{|c|}{Especificaciones} \\
+\hline
+sSpec Number  & SL9T9  & Package Type & LGA775 \\
+\hline
+CPU Speed  & 2.13 GHz  & Manufacturing Technology & 65 nm \\
+\hline
+PCG  & 06  & Core Stepping & L2 \\
+\hline
+Bus Speed  & 1066 MHz  & CPUID String & 06F2h \\
+\hline
+Bus/Core Ratio  & 8  & Thermal Design Power & 65W \\
+\hline
+L2 Cache Size  & 2 MB & Thermal Specification & 61.4ºC \\
+\hline
+L2 Cache Speed  & 2.13 GHz & VID Voltage Range & 0.85V  1.5V \\
+\hline
+\end{tabular}
 
-
+\begin{verbatim}
+Cache Info:
+        1st-level data cache: 32 KB, 8-way set associative, 64-byte line size
+        1st-level instruction cache: 32 KB, 8-way set associative, 64-byte line size
+        2nd-level cache: 2 MB, 8-way set associative, 64-byte line size
+        Data TLB: 4 KB Pages, 4-way set associative, 256 entries
+        Data TLB: 4 MB Pages, 4-way set associative, 32 entries
+        L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries
+        L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries
+        Instruction TLB: 4 KB Pages, 4-way set associative, 128 entries
+        Instruction TLB: 4 MB Pages, 4-way set associative, 4 entries
+        Instruction TLB: 2 MB Pages, 4-way set associative, 8 entries
+        64-byte Prefetching
+\end{verbatim}
 
 \clearpage
 \section{Corridas}
 
-%\subsection{NIETOOO}
+\subsection{Intel® Pentium® 4 Processor}
 
-%\input{./matmult/celeron/matmul.salida}
-%\clearpage
-%\input{./matmult/celeron/matmul-3loopi.salida}
-%\clearpage
-%\input{./matmult/celeron/matmul-bloques.salida}
-%\clearpage
-%\input{./matmult/celeron/matmul-lineas.salida}
-%\clearpage
-%\input{./matmult/celeron/matmul-transp.salida}
-%\clearpage
+\input{./matmult/pentium\ 4/matmul.salida}
+\clearpage
+\input{./matmult/pentium\ 4/matmul-3loopi.salida}
+\clearpage
+\input{./matmult/pentium\ 4/matmul-bloques.salida}
+\clearpage
+\input{./matmult/pentium\ 4/matmul-lineas.salida}
+\clearpage
+\input{./matmult/pentium\ 4/matmul-transp.salida}
+\clearpage
 
-%\subsection{Grafico Comparativo: }
-%\input{./celeron-plot}
-%\clearpage
+\subsection{Grafico Comparativo: }
+\includegraphics[width=15cm, bb=0 0 640 480]{./pentium\ 4-plot.png}
+\clearpage
 
 \subsection{Core 2 Duo E6400}
 
@@ -256,7 +273,8 @@ Cache Info:\\
 \clearpage
 
 \subsection{Grafico Comparativo: }
-\input{./core2-plot}
+
+\includegraphics[width=15cm, bb=0 0 640 480]{core2-plot.png}
 \clearpage
 
 \section{Analisis de resultados y conclusiones: }

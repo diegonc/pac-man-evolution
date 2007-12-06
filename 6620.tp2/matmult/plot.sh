@@ -16,7 +16,7 @@ fi
 
 CWD=`pwd`
 
-cd ${SRC_DIR}
+cd "${SRC_DIR}"
 
 TIMINGS=*.salida
 
@@ -39,8 +39,8 @@ for i in ${TIMINGS}; do
 done
 
 cat | gnuplot -persist - << EOF
-set term x11
-set output "${DST_DIR}/${SRC_DIR}-plot.tex"
+set term png
+set output "${DST_DIR}/${SRC_DIR}-plot.png"
 set xlabel 'Dimension'
 set ylabel 'Mflop/s'
 set key default
