@@ -18,7 +18,7 @@ class Personaje{
 	
 	protected:	
 		Personaje(Jugador * jugador, double radio);
-	
+	public:
 		Jugador * get_jugador();
 	
 	public:
@@ -66,7 +66,7 @@ class Personaje{
 		*
 		*	@param	jugador Jugador que posee el personaje con el cual choca
 		*/
-		virtual void colision(Jugador& jugador) = 0;
+		virtual void colision(Jugador * jugador) = 0;
 	
 		/**
 		*	@brief 	Debe devolver el tipo de personaje que es.

@@ -101,7 +101,7 @@ class Jugador{
 		 *
 		 *	@param	Jugador con el que colisiono
 		 */
-		void colisiono(Jugador &jugador);
+		void colisiono(Jugador* jugador);
 		
 		/**
 		*	@brief 	Incrementa la cantidad de puntos que posee el jugador
