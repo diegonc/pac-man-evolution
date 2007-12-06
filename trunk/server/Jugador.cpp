@@ -39,7 +39,7 @@ void Jugador::incrementar_puntos(int cant){
 int Jugador::get_puntos(){
 	return this->puntos;
 }
-void Jugador::colisiono(Jugador &jugador){
+void Jugador::colisiono(Jugador * jugador){
 	this->personaje->colision(jugador);
 }
 void Jugador::set_direccion(Direccion  *dir){

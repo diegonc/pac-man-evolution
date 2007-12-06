@@ -1,5 +1,5 @@
 #include "Personaje.h"
-
+#include <iostream>
 const char Personaje::pacman = 'p';
 const char Personaje::fantasma = 'f';
 

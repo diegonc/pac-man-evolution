@@ -31,7 +31,7 @@ class PacMan : public Personaje{
 		/**
 		*	@brief	Implementacion del metodo comer de personaje
 		*/
-		void colision(Jugador& jugador);
+		void colision(Jugador * jugador);
 	
 		/**
 		*	@brief	Permite activar o desactivar el power up

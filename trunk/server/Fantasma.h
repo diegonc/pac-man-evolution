@@ -32,7 +32,7 @@ class Fantasma : public Personaje{
 		*
 		*	@para 	jugador	Jugador con cuyo personaje colisiono
 		*/
-		void colision(Jugador& jugador);
+		void colision(Jugador * jugador);
 		
 		/**
 		*	@brief	Permite obtener el tipo de personaje

@@ -21,11 +21,11 @@ void ModeloServidor::cargar_modelo(){
 	j_1->set_posicion(p);
 	this->agregar_jugador(j_1);
 	
-	/*Jugador *j2 = new Jugador(2);
+	Jugador *j2 = new Jugador(2);
 	Tipo_Jugador j_2(j2);
 	Posicion p2(3.5,0.5);
 	j_2->set_posicion(p2);
-	this->agregar_jugador(j_2);*/
+	this->agregar_jugador(j_2);
 	/**************************************************************************/
 }
 void ModeloServidor::set_mundo(S_ptr<MundoBajoNivel> mundo){
@@ -104,13 +104,14 @@ void ModeloServidor::run(){
 
 void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 	std::list<Tipo_Jugador>::iterator it;
-	
+	 
 	Tipo_Jugador j2;
 	for(it = jugadores.begin(); it!= jugadores.end(); it++){
 		j2 = *it;
-		j->colisiono(*j2);
-		
+		j->colisiono(&(*j2));
 	}	
+	
+	
 }
 
 const std::list<S_ptr<Jugador> >& ModeloServidor::get_jugadores(){
