@@ -37,7 +37,7 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     //lanzo el hilo del modelo
     modelo.start();
-    escenario.Procesar();
+    //escenario.Procesar(); <----LO COMENTE YOOOOO!!!!
     ModeladorOBJ.hidratar();
 	return true;
 
@@ -148,7 +148,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
             ModeladorOBJ.DibujarObjetoPosicion(&Pos,jp->get_personaje()->get_tipo());
         }
     }
-    std::list< S_ptr<Comestible> > lista_comestibles = modelo.get_mundo().get_mapa_activo().get_comestibles();
+    std::list< S_ptr<Comestible> > lista_comestibles = modelo.get_mundo().get_mapa_activo()->get_comestibles();
     std::list< S_ptr<Comestible> >::iterator comestibles;
     S_ptr<Comestible> comestible;
 
@@ -163,6 +163,13 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 
     //llamo a la lista precompilada del Escenario
     escenario.ModelarEscenario();
+}
+
+void AplicacionGrafica::actualizar(Observable * observable, void * param){//<<----Observador del modelo para lo del escenario
+   ModeloServidor * modelo = (ModeloServidor*) observable; //Solo mira al modelo
+
+   if(! modelo->esta_terminado() ) //si el modelo no termino, dibuja el escenario actual
+      this->escenario.Procesar();
 }
 
 //dibuja en 2D
