@@ -220,7 +220,14 @@ L2 Cache Speed & 2.66 GHz & VID Voltage Range & 1.53V \\
 \hline
 \end{tabular}
 
-
+\begin{verbatim}
+Cache Info:
+	1st-level data cache: 8 KB, 4-way set associative, sectored cache, 64-byte line size
+	Trace cache: 12 K-uops, 8-way set associative
+        2nd-level cache: 512 KB, 8-way set associative, sectored cache, 64-byte line size
+        Data TLB: 4 KB or 4 MB pages, fully associative, 64 entries
+        Instruction TLB: 4 KB, 2 MB or 4 MB pages, fully associative, 128 entries
+\end{verbatim}
 
 \subsection{Intel® Core™2 Duo Desktop Processor E6400}
 
@@ -264,19 +271,19 @@ Cache Info:
 
 \subsection{Intel® Pentium® 4 Processor}
 
-\input{./matmult/pentium 4/matmul.salida}
+\input{./matmult/pentium4/matmul.salida}
 \clearpage
-\input{./matmult/pentium 4/matmul-3loopi.salida}
+\input{./matmult/pentium4/matmul-3loopi.salida}
 \clearpage
-\input{./matmult/pentium 4/matmul-bloques.salida}
+\input{./matmult/pentium4/matmul-bloques.salida}
 \clearpage
-\input{./matmult/pentium 4/matmul-lineas.salida}
+\input{./matmult/pentium4/matmul-lineas.salida}
 \clearpage
-\input{./matmult/pentium 4/matmul-transp.salida}
+\input{./matmult/pentium4/matmul-transp.salida}
 \clearpage
 
 \subsection{Grafico Comparativo: }
-\includegraphics[width=15cm, bb=0 0 640 480]{./pentium 4-plot.png}
+\includegraphics[width=15cm, bb=0 0 640 480]{./pentium4-plot.png}
 \clearpage
 
 \subsection{Core 2 Duo E6400}
