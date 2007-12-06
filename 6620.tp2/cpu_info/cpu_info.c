@@ -338,6 +338,9 @@ void cpu_info_print( CPU_INFO* ci )
 {
 	printf( "max_cpuid_func: %x\n", ci->max_cpuid_func );
 	printf( "vendor_id: %s\n", ci->vendor_id );
+	printf( "model: %i\n", ci->model );
+	printf( "family: %i\n", ci->family );
+	printf( "stepping: %i\n", ci->stepping );
 	printf( "Cache Info:\n" );
 	if( ci->first_entry ) {
 		CPU_CACHE_INFO* cci = ci->first_entry;
