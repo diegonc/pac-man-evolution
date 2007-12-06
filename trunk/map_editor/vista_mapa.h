@@ -21,6 +21,7 @@ class VistaMapa : public Observador {
    	GtkWidget* swindow; //Scrolled window para poder scrollear el mapa
 	GtkWidget* tabla; //Tabla que contiene los casilleros del mapa
     GtkWidget*** imagenes; //Matriz de imagenes contenidas en la tabla
+   	GtkWidget*** imag_modif; //Matriz de imagenes de modificadores contenidos en la tabla
    	GtkWidget* vbox; //Widget de uso interno
    	GtkWidget* hbox; //Widget de uso interno
     S_ptr<Nivel> nivel; //Nivel que contiene el mapa a representar
@@ -40,6 +41,12 @@ class VistaMapa : public Observador {
 	virtual void actualizar(Observable * observable, void * param);
    
    private:
+	   
+  	//Inicializar Matriz: Crea e inicializa la matriz de widgets pasada por parametro con NULL.
+    void inicializar_matriz(GtkWidget*** &matriz);
+   
+   	//Liberar Matriz: Libera la memoria consumida por la matriz de widgets pasada por parametro.
+   	void liberar_matriz(GtkWidget*** &matriz);
 	
     //Redibujar: Redibuja el mapa con el contenido del nivel pasado por parametro
    	

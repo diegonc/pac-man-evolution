@@ -25,15 +25,8 @@ VistaMapa::VistaMapa(S_ptr<Nivel> nivel){
 	
 	g_signal_connect(G_OBJECT(this->swindow), "button_press_event", G_CALLBACK(click_handler), this);
 	
-	//Creo la matriz de imagenes. Primero creo las filas.
-	this->imagenes = new GtkWidget** [this->nivel->get_mapa()->get_alto()];
-	//Por cada fila creo las columnas
-	for (int i = 0; i < this->nivel->get_mapa()->get_alto(); i++)
-		this->imagenes[i] = new GtkWidget* [this->nivel->get_mapa()->get_ancho()];
-	//Inicializo las imagenes
-	for (int i = 0; i < this->nivel->get_mapa()->get_alto(); i++)
-		for (int j = 0; j < this->nivel->get_mapa()->get_ancho(); j++)
-			imagenes[i][j] = NULL;
+	this->inicializar_matriz(this->imagenes);
+	this->inicializar_matriz(this->imag_modif);
 
 	this->dibujar();
 }
@@ -41,12 +34,8 @@ VistaMapa::VistaMapa(S_ptr<Nivel> nivel){
 //Destructor:
 
 VistaMapa::~VistaMapa(){
-	//Elimino la matriz de imagenes
-	//Por cada fila elimino las columnas
-	for (int i = 0; i < this->nivel->get_mapa()->get_alto(); i++)
-		delete[](this->imagenes[i]);
-	//Elimino las filas
-	delete[](this->imagenes);
+	this->liberar_matriz(this->imagenes);
+	this->liberar_matriz(this->imag_modif);
 }
 
 //Get Widget:
@@ -60,6 +49,31 @@ GtkWidget* VistaMapa::get_widget() const{
 void VistaMapa::actualizar(Observable * observable, void * param){
 	S_ptr<Nivel> nivel = *((S_ptr<Nivel>*) param);
 	this->redibujar(nivel);
+}
+
+//Inicializar Matriz:
+
+void VistaMapa::inicializar_matriz(GtkWidget*** &matriz){
+	//Creo la matriz de widgets. Primero creo las filas.
+	matriz = new GtkWidget** [this->nivel->get_mapa()->get_alto()];
+	//Por cada fila creo las columnas
+	for (int i = 0; i < this->nivel->get_mapa()->get_alto(); i++)
+		matriz[i] = new GtkWidget* [this->nivel->get_mapa()->get_ancho()];
+	//Inicializo los widgets en null
+	for (int i = 0; i < this->nivel->get_mapa()->get_alto(); i++)
+		for (int j = 0; j < this->nivel->get_mapa()->get_ancho(); j++)
+			matriz[i][j] = NULL;
+}
+
+//Liberar Matriz:
+
+void VistaMapa::liberar_matriz(GtkWidget*** &matriz){
+	//Elimino la matriz de widgets
+	//Por cada fila elimino las columnas
+	for (int i = 0; i < this->nivel->get_mapa()->get_alto(); i++)
+		delete[](matriz[i]);
+	//Elimino las filas
+	delete[](matriz);
 }
 
 //Redibujar:
@@ -121,6 +135,7 @@ void VistaMapa::dibujar_elemento(S_ptr<Elemento> elem){
 			imagenModif = gtk_image_new();
 			gtk_image_set_from_file(GTK_IMAGE(imagenModif), elem->get_ruta_imagen());
 			gtk_fixed_put(GTK_FIXED(fixed), imagenModif, (pos_y - estruct->get_pos_y()) * 25, (pos_x - estruct->get_pos_x()) * 25);			
+			this->imag_modif[pos_x][pos_y] = imagenModif;
 		}
 		gtk_widget_show_all(fixed);
 }
@@ -142,12 +157,20 @@ void VistaMapa::borrar_elemento(S_ptr<Elemento> elem){
 		if (!elem.es_nulo()){
 			int pos_x = elem->get_pos_x();
 			int pos_y = elem->get_pos_y();
-			int alto = elem->get_alto();
-			int ancho = elem->get_ancho();
-			gtk_container_remove(GTK_CONTAINER(this->tabla), imagenes[pos_x][pos_y]);
-			for (int i = pos_x; i < pos_x + alto; i++)
-				for (int j = pos_y; j < pos_y + ancho; j++)
-					this->imagenes[i][j] = NULL;
+			if (elem->es_estructural()) {
+				int alto = elem->get_alto();
+				int ancho = elem->get_ancho();
+				gtk_container_remove(GTK_CONTAINER(this->tabla), imagenes[pos_x][pos_y]);
+				for (int i = pos_x; i < pos_x + alto; i++)
+					for (int j = pos_y; j < pos_y + ancho; j++){
+						this->imagenes[i][j] = NULL;
+						this->imag_modif[i][j] = NULL;
+					}
+			} else {
+				GtkWidget* fixed = this->imagenes[pos_x][pos_y];
+				gtk_container_remove(GTK_CONTAINER(fixed), imag_modif[pos_x][pos_y]);
+				imag_modif[pos_x][pos_y] = NULL;
+			}
 		}
 }
 
@@ -199,18 +222,18 @@ void VistaMapa::quitar_elemento(double posX, double posY){
 	S_ptr<Casillero> casillero = this->nivel->get_mapa()->get_casillero(pos_x, pos_y);
 	if (!casillero.es_nulo()){
 		
-		if (casillero->tiene_modificador())
-			this->nivel->quitar_elemento(pos_x,pos_y);
-		
 		S_ptr<Elemento> elem = casillero->get_estructural();
+		
+		if (casillero->tiene_modificador())
+			elem = casillero->get_modificador();
 		
 		if ((!elem.es_nulo()) && (this->nivel->quitar_elemento(pos_x, pos_y))){
 			
 			this->borrar_elemento(elem);
-			
-			for (int i = elem->get_pos_x(); i < elem->get_pos_x() + elem->get_alto(); i++)
-				for (int j = elem->get_pos_y(); j < elem->get_pos_y() + elem->get_ancho(); j++)
-					this->dibujar_casillero_vacio(i,j);
+			if (elem->es_estructural())
+				for (int i = elem->get_pos_x(); i < elem->get_pos_x() + elem->get_alto(); i++)
+					for (int j = elem->get_pos_y(); j < elem->get_pos_y() + elem->get_ancho(); j++)
+						this->dibujar_casillero_vacio(i,j);
 		}
 	}
 }
