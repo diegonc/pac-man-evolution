@@ -40,7 +40,7 @@ class Escenario{
 
         //agrega el piso en un rectangulo, con su textura correspondiente
         void addPiso(double xIn,double xFin,double yIn,double yFin);
-
+      
         void DrawEscenario();
 
 

@@ -23,8 +23,9 @@
 #include <list>
 #include "../../server/ModeloServidor.h"
 #include "../../server/KeyOp.h"
+#include "../../common/observador.h" //<--------------para Observar al modelo, cambiar cualquier cosa
 
-class AplicacionGrafica{
+class AplicacionGrafica : public Observador{
         //estadp de la aplicaccion
         EstadoAplicacion AppEstado;
 
@@ -43,7 +44,8 @@ class AplicacionGrafica{
 
         AplicacionGrafica(){
             escenario.setModelo(&modelo);
-			CamaraPrimeraPersona=true;
+            modelo.agregar_observador(this);//<---para dibujar el mapa
+   			CamaraPrimeraPersona=true;
         }
 		
 		void CambiarCamara();
@@ -63,6 +65,9 @@ class AplicacionGrafica{
 
         // dibujo el modelo visual
         void Draw(SDL_Surface *Screen);
+      
+        void actualizar(Observable * observable, void * param);
+
     private:
         //dibujo el modelo 3D
         void Draw3D(SDL_Surface *S);
@@ -72,5 +77,6 @@ class AplicacionGrafica{
 
         //dibuja en 2D
         void Draw2D(SDL_Surface *S);
+   
 };
 #endif // APLICACION_H_INCLUDED

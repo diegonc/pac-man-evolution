@@ -90,7 +90,7 @@ void Aplicacion::ToggleFullscreen()
 {
     //Superficie
 	SDL_Surface *S;
-    //obtengo la siperficie de Video
+    //obtengo la superficie de Video
 	S = SDL_GetVideoSurface();
 
     //cambio a fullscreen
