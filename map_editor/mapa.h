@@ -27,7 +27,8 @@ class Mapa {
 		int alto; //Cantidad de filas
 		S_ptr<Casillero>** mapa; //Matriz de casilleros que conforman al mapa
 		Grafo<S_ptr<Elemento>, Obj_Nulo>* conexiones; //Grafo que contiene las conexiones entre los elementos estructurales
-
+		bool salida; //Booleano que controla si el mapa tiene o no salida de pacman
+	
 	public:
 
 	/* Constructor: Inicializa el mapa con el ancho y alto pasado por parametro. */
@@ -71,6 +72,12 @@ class Mapa {
 	/* Superficie Disponible: Dados un (x,y) coords superior izq de la superficie, y un ancho y alto de la misma,
 	   devuelve true si en el mapa esa superficie esta libre de elementos, false en caso contrario */
 	bool superficie_disponible(int x, int y, int alto, int ancho);
+	
+	/* Set Salida: Setea el estado al mapa de si tiene o no salida de pacman */
+	void set_salida(bool estado);
+	
+	/* Tiene Salida: Devuelve true si el mapa tiene salida de pacman, false en caso contrario */
+	bool tiene_salida();
 
 	/* /////////////TEMPORAL////////////// */
 	void imprimir();

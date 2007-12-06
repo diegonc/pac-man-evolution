@@ -14,6 +14,7 @@
 #include "esq_sur.h"
 #include "power_up.h"
 #include "bonus.h"
+#include "salida.h"
 
 using namespace std;
 

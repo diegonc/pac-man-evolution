@@ -48,6 +48,7 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define RUTA_PAS_VERT "./imagenes/pas_vert.jpg"
 #define RUTA_POWER_UP "./imagenes/power_up.png"
 #define RUTA_BONUS "./imagenes/frutita.png"
+#define RUTA_SALIDA "./imagenes/salida.png"
 #define RUTA_VACIO "./imagenes/vacio.jpg"
 
 #endif
