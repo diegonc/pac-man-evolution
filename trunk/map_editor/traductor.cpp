@@ -42,10 +42,18 @@ S_ptr<MapaBajoNivel> Traductor::traducir_mapa (Mapa* mapa){
 				EstructuralUnitario::Enum_Estructural tipoEstructural = this->trad_cod_elemento(estructural->get_tipo());
 				//Si el estructural tiene un modificador
 				if (!modificador.es_nulo()){
-					//Obtengo el tipo de comestible de bajo nivel, a partir del tipo de alto nivel
-					Comestible::Enum_Comestible  tipoComestible = this->trad_cod_elemento(modificador->get_tipo());
-					//Creo un estructural de bajo nivel con los datos obtenidos
-					estruct_bajo_nivel = fabrica->construir(pos, tipoEstructural, tipoComestible);
+					//Si estoy procesando la salida del pacman, creo un pasillo de bajo nivel y lo seteo como salida de pacman
+					if ((modificador->get_tipo() == SALIDA) && (tipoEstructural == EstructuralUnitario::Pasillo)){
+						EstructuralPasillo* pasillo = new EstructuralPasillo(Comestible::quesito, pos);
+						pasillo->set_salida_pacman();
+						S_ptr<EstructuralUnitario> ptr_temp (pasillo);
+						estruct_bajo_nivel = ptr_temp;
+					} else {
+						//Obtengo el tipo de comestible de bajo nivel, a partir del tipo de alto nivel
+						Comestible::Enum_Comestible tipoComestible = this->trad_cod_elemento(modificador->get_tipo());
+						//Creo un estructural de bajo nivel con los datos obtenidos
+						estruct_bajo_nivel = fabrica->construir(pos, tipoEstructural, tipoComestible);
+					}
 				} else //Si no tiene modif, creo un estructural con un quesito
 					estruct_bajo_nivel = fabrica->construir(pos, tipoEstructural, Comestible::quesito);
 				//Agrego el estructural al mapa de bajo nivel

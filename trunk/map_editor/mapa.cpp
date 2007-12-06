@@ -168,6 +168,18 @@ bool Mapa::superficie_disponible(int x, int y, int alto, int ancho){
 	return result;
 }
 
+/* Set Salida: */
+
+void Mapa::set_salida(bool estado){
+	this->salida = estado;
+}
+
+/* Tiene Salida: */
+
+bool Mapa::tiene_salida(){
+	return this->salida;
+}
+
 /* /////////////TEMPORAL////////////// */
 void Mapa::imprimir(){
 	for (int i = 0; i < alto; i++)

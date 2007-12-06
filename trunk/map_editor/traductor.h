@@ -13,7 +13,7 @@
 #include "../server/MapaBajoNivel.h"
 #include "../server/MapImpSet.h"
 #include "../server/EstructuralUnitarioFactory.h"
-
+#include "../server/EstructuralPasillo.h"
 
 /* CLASE TRADUCTOR: Clase que se encarga de traducir un mundo de alto nivel (del editor),
    a un mundo de bajo nivel (para el servidor). */

@@ -25,6 +25,11 @@ S_ptr<Elemento> Fab_Elementos::construir (TipoElem tipo, int pos_x, int pos_y, O
 			elemento = bonus;
 			break;
 		}
+		case SALIDA:{
+			S_ptr<Elemento> salida (new Salida(pos_x, pos_y));
+			elemento = salida;
+			break;
+		}
 	}
 	return elemento;
 }
