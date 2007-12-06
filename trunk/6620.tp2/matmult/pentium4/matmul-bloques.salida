@@ -1,31 +1,31 @@
-Compilador:	gcc
-Opciones:	-O3 -mcpu=pentium3
-Plataforma:	i686-pc-linux-gnu
-Descripcion:	Multiplicacion de matrices simple por bloques.
-
-Tam: 31	mflop/s: 640.929
-Tam: 32	mflop/s: 627.65
-Tam: 96	mflop/s: 614.566
-Tam: 97	mflop/s: 664.167
-Tam: 127	mflop/s: 624.057
-Tam: 128	mflop/s: 616.795
-Tam: 129	mflop/s: 625.757
-Tam: 191	mflop/s: 614.478
-Tam: 192	mflop/s: 586.076
-Tam: 229	mflop/s: 595.737
-Tam: 255	mflop/s: 526.154
-Tam: 256	mflop/s: 527.102
-Tam: 257	mflop/s: 516.869
-Tam: 319	mflop/s: 588.373
-Tam: 320	mflop/s: 559.414
-Tam: 321	mflop/s: 579.484
-Tam: 417	mflop/s: 554.675
-Tam: 479	mflop/s: 528.675
-Tam: 480	mflop/s: 500.063
-Tam: 511	mflop/s: 450.603
-Tam: 512	mflop/s: 398.436
-Tam: 639	mflop/s: 473.97
-Tam: 640	mflop/s: 464.458
-Tam: 767	mflop/s: 452.861
-Tam: 768	mflop/s: 447.658
-Tam: 769	mflop/s: 457.481
+Compilador:	gcc \\
+Opciones:	-O3 -mcpu=pentium3 \\
+Plataforma:	i686-pc-linux-gnu \\
+Descripcion:	Multiplicacion de matrices simple por bloques. \\
+ \\
+Tam: 31	mflop/s: 640.929 \\
+Tam: 32	mflop/s: 627.65 \\
+Tam: 96	mflop/s: 614.566 \\
+Tam: 97	mflop/s: 664.167 \\
+Tam: 127	mflop/s: 624.057 \\
+Tam: 128	mflop/s: 616.795 \\
+Tam: 129	mflop/s: 625.757 \\
+Tam: 191	mflop/s: 614.478 \\
+Tam: 192	mflop/s: 586.076 \\
+Tam: 229	mflop/s: 595.737 \\
+Tam: 255	mflop/s: 526.154 \\
+Tam: 256	mflop/s: 527.102 \\
+Tam: 257	mflop/s: 516.869 \\
+Tam: 319	mflop/s: 588.373 \\
+Tam: 320	mflop/s: 559.414 \\
+Tam: 321	mflop/s: 579.484 \\
+Tam: 417	mflop/s: 554.675 \\
+Tam: 479	mflop/s: 528.675 \\
+Tam: 480	mflop/s: 500.063 \\
+Tam: 511	mflop/s: 450.603 \\
+Tam: 512	mflop/s: 398.436 \\
+Tam: 639	mflop/s: 473.97 \\
+Tam: 640	mflop/s: 464.458 \\
+Tam: 767	mflop/s: 452.861 \\
+Tam: 768	mflop/s: 447.658 \\
+Tam: 769	mflop/s: 457.481 \\

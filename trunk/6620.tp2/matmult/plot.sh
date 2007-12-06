@@ -28,7 +28,7 @@ print_plots()
 		PLOTS_LINE="'${PLOT}.data' using 1:2 t \"${PLOT}\" with lines, "${PLOTS_LINE}
 	done
 
-	cat | sed -e 's/, $//'  << EOFmark
+	sed -e 's/, $//' << EOFmark
 ${PLOTS_LINE}
 EOFmark
 
@@ -39,7 +39,7 @@ for i in ${TIMINGS}; do
 	sed -i -e 's/\\\\$//' `basename ${i} .salida`.data
 done
 
-cat | gnuplot -persist - << EOF
+gnuplot -persist - << EOF
 set term png
 set output "${DST_DIR}/${SRC_DIR}-plot.png"
 set xlabel 'Dimension'
