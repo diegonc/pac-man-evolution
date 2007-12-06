@@ -82,6 +82,7 @@ void VPrincipal::construir(){
 	this->panel_estruc->agregar_elemento(ESQ, SUR, RUTA_ESQ_SUR);
 	this->panel_estruc->agregar_elemento(ESQ, OESTE, RUTA_ESQ_OESTE);
 	this->panel_estruc->agregar_elemento(ESQ, NORTE, RUTA_ESQ_NORTE);
+	this->panel_estruc->agregar_elemento(CASA, SUR, RUTA_CASA_SUR);
 	this->panel_modif->agregar_elemento(PWUP, NULA, RUTA_POWER_UP);
 	this->panel_modif->agregar_elemento(BONUS, NULA, RUTA_BONUS);
 	this->panel_modif->agregar_elemento(SALIDA, NULA, RUTA_SALIDA);

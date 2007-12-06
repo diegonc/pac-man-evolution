@@ -28,6 +28,7 @@ class Mapa {
 		S_ptr<Casillero>** mapa; //Matriz de casilleros que conforman al mapa
 		Grafo<S_ptr<Elemento>, Obj_Nulo>* conexiones; //Grafo que contiene las conexiones entre los elementos estructurales
 		bool salida; //Booleano que controla si el mapa tiene o no salida de pacman
+		bool casa; //Booleano que controla si el mapa tiene o no casa de fantasmas
 	
 	public:
 
@@ -73,11 +74,17 @@ class Mapa {
 	   devuelve true si en el mapa esa superficie esta libre de elementos, false en caso contrario */
 	bool superficie_disponible(int x, int y, int alto, int ancho);
 	
-	/* Set Salida: Setea el estado al mapa de si tiene o no salida de pacman */
+	/* Set Salida: Setea el estado al mapa, si tiene o no salida de pacman */
 	void set_salida(bool estado);
 	
 	/* Tiene Salida: Devuelve true si el mapa tiene salida de pacman, false en caso contrario */
 	bool tiene_salida();
+	
+	/* Set Casa Fantasmas: Setea el estado al mapa, si tiene o no casa de fantasmas */
+	void set_casa_fantasmas(bool estado);
+	
+	/* Tiene Casa Fantasmas: Devuelve true si el mapa tiene casa de fantasmas, false en caso contrario */
+	bool tiene_casa_fantamas();
 
 	/* /////////////TEMPORAL////////////// */
 	void imprimir();
