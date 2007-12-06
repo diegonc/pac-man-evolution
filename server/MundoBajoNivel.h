@@ -16,7 +16,7 @@ class MundoBajoNivel
 		*
 		*	@return	Objeto del tipo MapaBajoNivel que es el mapa activo
 		*/
-		virtual MapaBajoNivel& get_mapa_activo() = 0;
+		virtual S_ptr<MapaBajoNivel> get_mapa_activo() = 0;
 	
 		/**
 		*	@brief 	Destructor de la clase

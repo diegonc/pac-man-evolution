@@ -31,7 +31,7 @@ class MundoBasicImp : public MundoBajoNivel
 		/**
 		*	@brief Implementacion del metodo de la interfaz mundo
 		*/
-		MapaBajoNivel& get_mapa_activo();
+		S_ptr<MapaBajoNivel> get_mapa_activo();
 	
 		/**
 		*	@brief Implementacion del metodo de la interfaz mundo

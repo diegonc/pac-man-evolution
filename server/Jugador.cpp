@@ -17,7 +17,6 @@ Tipo_Personaje Jugador::get_personaje(){
 }
 void Jugador::set_personaje(Tipo_Personaje personaje){
 	this->personaje = personaje;
-	std::cout << this->id << " Cambio de personaje " << personaje->get_tipo() << "\n";
 }
 void Jugador::set_posicion(Posicion &pos_nueva){
 	this->posicion = pos_nueva;
