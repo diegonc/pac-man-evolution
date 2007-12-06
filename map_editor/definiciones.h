@@ -37,6 +37,8 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define PAS_VERT_ALTO 3
 #define ESQ_ANCHO 2
 #define ESQ_ALTO 2
+#define CASA_ALTO 3
+#define CASA_ANCHO 3
 
 //Defino rutas de imagenes
 
@@ -49,6 +51,10 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define RUTA_POWER_UP "./imagenes/power_up.png"
 #define RUTA_BONUS "./imagenes/frutita.png"
 #define RUTA_SALIDA "./imagenes/salida.png"
+#define RUTA_CASA_SUR "./imagenes/casa_sur.jpg"
+#define RUTA_CASA_NORTE "./imagenes/casa_norte.jpg"
+#define RUTA_CASA_ESTE "./imagenes/casa_este.jpg"
+#define RUTA_CASA_OESTE "./imagenes/casa_oeste.jpg"
 #define RUTA_VACIO "./imagenes/vacio.jpg"
 
 #endif

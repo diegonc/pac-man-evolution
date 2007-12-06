@@ -180,6 +180,18 @@ bool Mapa::tiene_salida(){
 	return this->salida;
 }
 
+/* Set Casa Fantasmas: */
+
+void Mapa::set_casa_fantasmas(bool estado){
+	this->casa = estado;
+}
+
+/* Tiene Casa Fantasmas: */
+
+bool Mapa::tiene_casa_fantamas(){
+	return this->casa;
+}
+
 /* /////////////TEMPORAL////////////// */
 void Mapa::imprimir(){
 	for (int i = 0; i < alto; i++)

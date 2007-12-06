@@ -12,6 +12,7 @@
 #include "esq_oeste.h"
 #include "esq_norte.h"
 #include "esq_sur.h"
+#include "casa_sur.h"
 #include "power_up.h"
 #include "bonus.h"
 #include "salida.h"
@@ -47,6 +48,11 @@ class Fab_Elementos {
 	   Si pudo construir devuelve el elemento, sino devuelve NULL. */
 
 	S_ptr<Elemento> construir_esquina (int pos_x, int pos_y, Orientacion orientacion);
+	
+	/* Construir Casa: Construye una casa de fantasmas segun la orientacion pasada por parametro, en las pos_x, pos_y.
+	   Si pudo construir devuelve el elemento, sino devuelve NULL. */
+
+	S_ptr<Elemento> construir_casa (int pos_x, int pos_y, Orientacion orientacion);
 
 };
 

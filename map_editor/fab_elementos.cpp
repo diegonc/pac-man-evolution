@@ -15,6 +15,9 @@ S_ptr<Elemento> Fab_Elementos::construir (TipoElem tipo, int pos_x, int pos_y, O
 		case ESQ:
 			elemento = construir_esquina(pos_x, pos_y, orientacion);
 			break;
+		case CASA:
+			elemento = construir_casa(pos_x, pos_y, orientacion);
+			break;
 		case PWUP: {
 			S_ptr<Elemento> power_up (new Power_Up(pos_x, pos_y));
 			elemento = power_up;
@@ -78,6 +81,35 @@ S_ptr<Elemento> Fab_Elementos::construir_esquina (int pos_x, int pos_y, Orientac
 		case SUR: {
 			S_ptr<Elemento> esq_sur (new EsqSur(pos_x, pos_y));
 			elemento = esq_sur;
+			break;
+		}
+	}
+	return elemento;
+}
+
+/* Construir Casa: */
+
+S_ptr<Elemento> Fab_Elementos::construir_casa (int pos_x, int pos_y, Orientacion orientacion){
+	S_ptr<Elemento> elemento;
+	switch (orientacion) {
+		case ESTE: {
+			/*S_ptr<Elemento> casa_este (new CasaEste(pos_x, pos_y));
+			elemento = casa_este;
+			break;*/
+		}
+		case OESTE: {
+			/*S_ptr<Elemento> casa_oeste (new CasaOeste(pos_x, pos_y));
+			elemento = casa_oeste;
+			break;*/
+		}
+		case NORTE: {
+			/*S_ptr<Elemento> casa_norte (new CasaNorte(pos_x, pos_y));
+			elemento = casa_norte;
+			break;*/
+		}
+		case SUR: {
+			S_ptr<Elemento> casa_sur (new CasaSur(pos_x, pos_y));
+			elemento = casa_sur;
 			break;
 		}
 	}
