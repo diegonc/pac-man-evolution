@@ -42,6 +42,11 @@ class MundoBasicImp : public MundoBajoNivel
 		*	@brief Implementacion del metodo de la interfaz mundo
 		*/
 		int cantidad_niveles();
+		
+		/**
+		*	@brief Implementacion del metodo de la interfaz mundo
+		*/
+		void pasar_de_nivel();
 };
 
 #endif /* __MUNDOBASICIMP_H__ */
