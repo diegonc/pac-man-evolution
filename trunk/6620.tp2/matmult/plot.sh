@@ -36,6 +36,7 @@ EOFmark
 
 for i in ${TIMINGS}; do
 	perl -ne 'if (/Tam:\s+(\S+).*s:\s+(\S+)/) {print "$1 $2\n";}' ${i} > `basename ${i} .salida`.data
+	sed -i -e 's/\\\\$//' `basename ${i} .salida`.data
 done
 
 cat | gnuplot -persist - << EOF
