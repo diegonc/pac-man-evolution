@@ -8,13 +8,14 @@
 #include <list>
 #include "Jugador.h"
 #include "../common/observador.h"
+//#include "../common/observable.h"
 
 /** @brief Esta clase define el modelo.
  *		   Hereda de thread, ya que se debe actualizar automaticamente todo
  *		   el tiempo la posicion de los jugadores.
  */
 
-class ModeloServidor : public Thread , public Observador{
+class ModeloServidor : public Thread , public Observador, public Observable{
 	typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	private:
@@ -25,6 +26,10 @@ class ModeloServidor : public Thread , public Observador{
 		ModeloServidor(ModeloServidor &m);
 		
 		bool parar;
+		bool termino;
+	
+		int cant_min_jugadores;
+		int cant_max_jugadores;
 	
 		void cargar_modelo(); //PROVISORIA PARA CARGAR; DESPUES SACAR
 	
@@ -36,8 +41,13 @@ class ModeloServidor : public Thread , public Observador{
 		
 		/**
 		*	@brief 	Constructor de la clase
+		*
+		*	@param	min_jugadores Cantidad minima de jugadores necesarios para
+		*						  poder jugar
+		*	@param  max_jugadores Cantidad maxima de jugadores que puede tener
+		*						  simultaneamente el juego
 		*/
-		ModeloServidor();
+		ModeloServidor(/*int min_jugadores, int max_jugadores*/); //TODO: DESCOMENTAR Y USAR
 		
 		/**
 		*	@brief 	Destructor de la clase
@@ -92,6 +102,15 @@ class ModeloServidor : public Thread , public Observador{
 		*	@param mundo Smart pointer cuyo contenido es el mundo
 		*/
 		void set_mundo(S_ptr<MundoBajoNivel> mundo);
+		
+		/**
+		*	@brief	Permite conocer el estado del juego
+		*
+		*	@return True si ya termino el juego, es decir se jugaron todos los
+		*			niveles o no hay mas jugadores, false en caso contrario
+		*
+		*/
+		bool esta_terminado();
 };
 
 

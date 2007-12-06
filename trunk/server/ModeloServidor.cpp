@@ -4,8 +4,10 @@
 #include "PacMan.h"
 #include "Fantasma.h"
 
-ModeloServidor::ModeloServidor(){
+ModeloServidor::ModeloServidor(/*int min_jugadores, int max_jugadores*/){
 	cargar_modelo(); // provisorio
+	//this->cant_min_jugadores = min_jugadores;
+	//this->cant_max_jugadores = max_jugadores;
 }
 
 void ModeloServidor::cargar_modelo(){
@@ -19,11 +21,11 @@ void ModeloServidor::cargar_modelo(){
 	j_1->set_posicion(p);
 	this->agregar_jugador(j_1);
 	
-	Jugador *j2 = new Jugador(2);
+	/*Jugador *j2 = new Jugador(2);
 	Tipo_Jugador j_2(j2);
 	Posicion p2(3.5,0.5);
 	j_2->set_posicion(p2);
-	this->agregar_jugador(j_2);
+	this->agregar_jugador(j_2);*/
 	/**************************************************************************/
 }
 void ModeloServidor::set_mundo(S_ptr<MundoBajoNivel> mundo){
@@ -35,22 +37,26 @@ ModeloServidor::~ModeloServidor(){
 }
 
 void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
-	S_ptr<Personaje> personaje;
-	Jugador * j = &(*jugador);
-	//si es el primer jugador, le asigno el personaje de pacman, si no
-	//fantasma
-	if(jugadores.size() == 0)
-		personaje = S_ptr<Personaje>(new PacMan(j));
-	else
-		personaje = S_ptr<Personaje>(new Fantasma(j));
-	jugador->set_personaje(personaje);
-	//lo agrego a los jugadores
-	this->jugadores.push_back(jugador);
+	
+	//if(this->jugadores.size() < this->cant_max_jugadores ){
+		S_ptr<Personaje> personaje;
+		Jugador * j = &(*jugador);
+		//si es el primer jugador, le asigno el personaje de pacman, si no
+		//fantasma
+		if(jugadores.size() == 0)
+			personaje = S_ptr<Personaje>(new PacMan(j));
+		else
+			personaje = S_ptr<Personaje>(new Fantasma(j));
+		jugador->set_personaje(personaje);
+		//lo agrego a los jugadores
+		this->jugadores.push_back(jugador);
+	//}
 }
 			
 void ModeloServidor::run(){
 	//si hay mundo
-	if(! mundo.es_nulo() ){
+	if(! mundo.es_nulo() /*&& this->jugadores.size() > this->cant_min_jugadores*/){
+		this->termino = false;
 		double intervalo_tiempo = 0;
 		double hora_actual;
 		
@@ -59,12 +65,12 @@ void ModeloServidor::run(){
 		Tipo_Jugador j;
 		
 		//itero por todos los niveles
-		for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
+		//for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
 			//lo agrego como observador del mapa, ya que cuando no hay mas quesitos 
 			//me avisa
-			mundo->get_mapa_activo().agregar_observador(this);
+			mundo->get_mapa_activo()->agregar_observador(this);
 			//preparo la partida
-			preparar_partida();
+			this->preparar_partida();
 			//mientras este en juego
 			while(!this->parar){
 				//obtengo la hora actual para evitar el error acumulativo
@@ -73,7 +79,7 @@ void ModeloServidor::run(){
 				for(it = jugadores.begin(); it!= jugadores.end(); it++){
 					j = *it;
 					//lo muevo
-					(this->mundo->get_mapa_activo()).mover(*j, j->get_personaje()->get_velocidad() * intervalo_tiempo);
+					(this->mundo->get_mapa_activo())->mover(*j, j->get_personaje()->get_velocidad() * intervalo_tiempo);
 					//reviso las colisiones
 					revisar_colisiones(j);
 					
@@ -85,7 +91,10 @@ void ModeloServidor::run(){
 				intervalo_tiempo = (Reloj::get_instancia()->get_hora_actual_decimal() - hora_actual) / 1000;
 			}
 			
-		}
+		//}
+		this->termino = true;
+		this->set_cambio();
+		this->avisar_observadores(NULL);
 	}
 }
 
@@ -126,34 +135,34 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
 }
 
 void ModeloServidor::preparar_partida(){
-	//TODO: no funciona bien, hay que probarla de nuevo
+	this->parar = false;
 	
-	/*
+	//TODO: no funciona bien, hay que probarla de nuevo
+		
 	//para la casa del fantasma y la salida del pacman
 	S_ptr<EstructuralUnitario> salida_pacman;
 	std::list< S_ptr<EstructuralUnitario> > casa_fantasma;
 	
 	std::list< S_ptr<EstructuralUnitario> >::iterator it_estucturales;
-	
+	std::list< S_ptr<EstructuralUnitario> > lista_estructurales = this->get_mundo().get_mapa_activo()->get_estructurales();
 	
 	S_ptr<EstructuralUnitario> aux;
-	for(it_estucturales = this->get_mundo().get_mapa_activo().get_estructurales().begin();
-		it_estucturales != this->get_mundo().get_mapa_activo().get_estructurales().end();
+	for(it_estucturales = lista_estructurales.begin();
+		it_estucturales != lista_estructurales.end();
 		++it_estucturales){
-			
 		aux = *it_estucturales;
-		if( aux->es_casa_fantasma() )
+		/*if( aux->es_casa_fantasma() )
 			casa_fantasma.push_back(*it_estucturales);
-		else{
+		else{*/
 			if(aux->es_salida_pacman() )
 				salida_pacman = *it_estucturales;
-		}
+		//}
 	}		
-	*/
-	/*
+	
+	
 	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
 	
-	it_estucturales = casa_fantasma.begin();
+	//it_estucturales = casa_fantasma.begin();
 	S_ptr<Jugador> j;
 	for(it_jugadores = this->jugadores.begin(); it_jugadores != this->jugadores.end() ; ++it_jugadores){
 		j = *it_jugadores;
@@ -163,7 +172,7 @@ void ModeloServidor::preparar_partida(){
 			p.set_y(p.get_y() + 0.5);
 			j->set_posicion(p);
 		}
-		else
+		/*else
 			if(j->get_personaje()->get_tipo() == Personaje::fantasma){
 				aux = *it_estucturales;
 				Posicion p = aux->get_posicion();
@@ -171,6 +180,9 @@ void ModeloServidor::preparar_partida(){
 				p.set_y(p.get_y() + 0.5);
 				if(it_estucturales == casa_fantasma.end() )
 					it_estucturales = casa_fantasma.begin();
-			}
-	}*/
+			}*/
+	}
+}
+bool ModeloServidor::esta_terminado(){
+	return this->termino;
 }
