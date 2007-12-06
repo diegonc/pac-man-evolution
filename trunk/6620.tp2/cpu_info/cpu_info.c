@@ -329,6 +329,7 @@ void cpu_info_startup()
 
 void cpu_info_init( CPU_INFO* ci )
 {
+	memset( ci, 0, sizeof(CPU_INFO) );
 	cpu_info_fill_basic( ci );
 	cpu_info_fill_version( ci );
 	cpu_info_fill_cache( ci );
