@@ -93,19 +93,19 @@ S_ptr<Elemento> Fab_Elementos::construir_casa (int pos_x, int pos_y, Orientacion
 	S_ptr<Elemento> elemento;
 	switch (orientacion) {
 		case ESTE: {
-			/*S_ptr<Elemento> casa_este (new CasaEste(pos_x, pos_y));
+			S_ptr<Elemento> casa_este (new CasaEste(pos_x, pos_y));
 			elemento = casa_este;
-			break;*/
+			break;
 		}
 		case OESTE: {
-			/*S_ptr<Elemento> casa_oeste (new CasaOeste(pos_x, pos_y));
+			S_ptr<Elemento> casa_oeste (new CasaOeste(pos_x, pos_y));
 			elemento = casa_oeste;
-			break;*/
+			break;
 		}
 		case NORTE: {
-			/*S_ptr<Elemento> casa_norte (new CasaNorte(pos_x, pos_y));
+			S_ptr<Elemento> casa_norte (new CasaNorte(pos_x, pos_y));
 			elemento = casa_norte;
-			break;*/
+			break;
 		}
 		case SUR: {
 			S_ptr<Elemento> casa_sur (new CasaSur(pos_x, pos_y));
