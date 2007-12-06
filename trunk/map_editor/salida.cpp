@@ -25,7 +25,8 @@ bool Salida::agregate(S_ptr<Elemento> instancia, Mapa* mapa){
 	bool resultado;
 	if (!mapa->tiene_salida()){
 		resultado = Modificador::agregate(instancia, mapa);
-		mapa->set_salida(true);
+		if (resultado)
+			mapa->set_salida(true);
 	} else
 		resultado = false;
 	return resultado;
