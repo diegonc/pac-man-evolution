@@ -11,8 +11,10 @@
 \usepackage{float}
 \usepackage{graphicx}
 
-\begin{document}
 
+\begin{document}
+\setcounter{page}{4}
+\setcounter{section}{9}
 \section{Optimizaciones.}
 
 \subsection{Inversión de ciclos.}
@@ -221,11 +223,18 @@ L2 Cache Speed & 2.66 GHz & VID Voltage Range & 1.53V \\
 
 \begin{verbatim}
 Cache Info:
-        1st-level data cache: 8 KB, 4-way set associative, sectored cache, 64-byte line size
-        Trace cache: 12 K-uops, 8-way set associative
-        2nd-level cache: 512 KB, 8-way set associative, sectored cache, 64-byte line size
-        Data TLB: 4 KB or 4 MB pages, fully associative, 64 entries
-        Instruction TLB: 4 KB, 2 MB or 4 MB pages, fully associative, 128 entries
+        - 1st-level data cache: 8 KB, 4-way set associative, sectored cache, 
+                                64-byte line size
+
+        - Trace cache: 12 K-uops, 8-way set associative
+
+        - 2nd-level cache: 512 KB, 8-way set associative, sectored cache, 
+                           64-byte line size
+
+        - Data TLB: 4 KB or 4 MB pages, fully associative, 64 entries
+
+        - Instruction TLB: 4 KB, 2 MB or 4 MB pages, fully associative, 
+                           128 entries
 \end{verbatim}
 
 \subsection{Intel® Core™2 Duo Desktop Processor E6400}
@@ -252,17 +261,29 @@ L2 Cache Speed  & 2.13 GHz & VID Voltage Range & 0.85V  1.5V \\
 
 \begin{verbatim}
 Cache Info:
-        1st-level data cache: 32 KB, 8-way set associative, 64-byte line size
-        1st-level instruction cache: 32 KB, 8-way set associative, 64-byte line size
-        2nd-level cache: 2 MB, 8-way set associative, 64-byte line size
-        Data TLB: 4 KB Pages, 4-way set associative, 256 entries
-        Data TLB: 4 MB Pages, 4-way set associative, 32 entries
-        L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries
-        L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries
-        Instruction TLB: 4 KB Pages, 4-way set associative, 128 entries
-        Instruction TLB: 4 MB Pages, 4-way set associative, 4 entries
-        Instruction TLB: 2 MB Pages, 4-way set associative, 8 entries
-        64-byte Prefetching
+        - 1st-level data cache: 32 KB, 8-way set associative, 64-byte 
+                                line size
+
+        - 1st-level instruction cache: 32 KB, 8-way set associative, 
+                                       64-byte line size
+
+        - 2nd-level cache: 2 MB, 8-way set associative, 64-byte line size
+        
+        - Data TLB: 4 KB Pages, 4-way set associative, 256 entries
+
+        - Data TLB: 4 MB Pages, 4-way set associative, 32 entries
+        
+        - L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries
+        
+        - L0 Data TLB: 4 MB pages, 4-way set associative, 16 entries
+        
+        - Instruction TLB: 4 KB Pages, 4-way set associative, 128 entries
+        
+        - Instruction TLB: 4 MB Pages, 4-way set associative, 4 entries
+        
+        -Instruction TLB: 2 MB Pages, 4-way set associative, 8 entries
+        
+        -64-byte Prefetching
 \end{verbatim}
 
 \clearpage

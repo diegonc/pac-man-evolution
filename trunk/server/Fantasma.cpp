@@ -19,13 +19,11 @@ bool Fantasma::comer(Comestible& comestible){
 void Fantasma::colision(Jugador * jugador){
 	//verifica que el personaje con el que colisiono sea uno al cual le afecte,
 	//en este caso, pacman
-	
 	if(this->esta_vivo() && jugador->get_personaje()->esta_vivo() ){
 		try{
 			//si el jugador no es si mismo, ya que no tiene sentido
-			std::cout << "c\n";
+			std::cout << "Fantasma " << jugador->get_id() <<" != "<<get_jugador()->get_id() << "\n";
 			if(jugador->get_id() != get_jugador()->get_id() ){
-				std::cout << "d\n";
 				//trata de castear a pacman, si da error, pasa al catch
 				PacMan pacman = dynamic_cast< PacMan& >(*jugador->get_personaje());
 				Tipo_Coordenada distancia;
@@ -44,14 +42,18 @@ void Fantasma::colision(Jugador * jugador){
 				//quiere decir que chocaron
 				if(distancia  <= ( this->get_radio() + pacman.get_radio() ) ){
 					if( !pacman.tiene_power_up() ){
-						//pacman.matar();			
-						S_ptr<Personaje> personaje_j1 = get_jugador()->get_personaje();
-						S_ptr<Personaje> personaje_j2 = jugador->get_personaje();
-						get_jugador()->set_personaje(personaje_j2);
-						jugador->set_personaje(personaje_j1);
-						personaje_j2->set_jugador(get_jugador());
-						personaje_j1->set_jugador(jugador);
-						personaje_j1->matar();
+						//obtengo los personajes					
+						S_ptr<Personaje> p_this = this->get_jugador()->get_personaje();
+						S_ptr<Personaje> p_jug = jugador->get_personaje();
+						//cambio los personajes
+						jugador->set_personaje(p_this);
+						this->get_jugador()->set_personaje(p_jug);
+						//cambio los jugadores
+						p_jug->set_jugador(this->get_jugador());
+						p_this->set_jugador(jugador);
+						//mato al fantasma
+						p_this->matar();
+						
 					}
 					else{
 						if(jugador->get_personaje()->esta_vivo())
@@ -63,6 +65,7 @@ void Fantasma::colision(Jugador * jugador){
 		catch(std::bad_cast &e){/*No hago nada ya que no pasa anda cuando choca
 									con fantasmas*/}
 	}
+	
 }
 
 Personaje::Enum_Personaje Fantasma::get_tipo(){
