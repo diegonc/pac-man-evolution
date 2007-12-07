@@ -1,0 +1,13 @@
+<Nivel Nombre="nivel 10 x 10" Ancho="10" Alto="10">
+    <Mapa>
+        <Elemento Tipo="1" Orientacion="1" PosX="0" PosY="0" />
+        <Elemento Tipo="0" Orientacion="1" PosX="0" PosY="2" />
+        <Elemento Tipo="0" Orientacion="1" PosX="0" PosY="5" />
+        <Elemento Tipo="1" Orientacion="4" PosX="0" PosY="8" />
+        <Elemento Tipo="6" Orientacion="0" PosX="1" PosY="9" />
+        <Elemento Tipo="0" Orientacion="3" PosX="2" PosY="0" />
+        <Elemento Tipo="1" Orientacion="3" PosX="5" PosY="0" />
+        <Elemento Tipo="4" Orientacion="2" PosX="5" PosY="2" />
+        <Elemento Tipo="7" Orientacion="0" PosX="6" PosY="1" />
+    </Mapa>
+</Nivel>
