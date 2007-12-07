@@ -36,8 +36,8 @@ class PanelMundo : public Observable {
 	//Get Widget: Obtiene la representacion del panel como widget.
 	GtkWidget* get_widget() const;
    
-    //Agregar Nivel: Agrega un nivel, con un nombre pasado por parametro.
-    void agregar_nivel(S_ptr<Nivel> nivel, char* nombre);
+    //Agregar Nivel: Agrega el nivel pasado por parametro al panel.
+    void agregar_nivel(S_ptr<Nivel> nivel);
 
    private:
 	

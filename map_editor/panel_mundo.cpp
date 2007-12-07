@@ -33,11 +33,11 @@ GtkWidget* PanelMundo::get_widget() const{
 
 //Agregar Nivel:
 
-void PanelMundo::agregar_nivel(S_ptr<Nivel> nivel, char* nombre){
+void PanelMundo::agregar_nivel(S_ptr<Nivel> nivel){
 	GtkTreeIter    iter;
 	
 	gtk_list_store_append (this->lista_mapas, &iter);
-	gtk_list_store_set (this->lista_mapas, &iter, 0, this->niveles.size()+1, 1, nombre, -1);
+	gtk_list_store_set (this->lista_mapas, &iter, 0, this->niveles.size()+1, 1, (nivel->get_nombre()).c_str(), -1);
 	
 	this->niveles.push_back(nivel);
 	

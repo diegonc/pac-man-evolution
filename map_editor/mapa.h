@@ -5,11 +5,13 @@
 //Incluyo las librerias necesarias
 #include "casillero.h"
 #include "elemento.h"
+#include "../common/tinyxml/tinyxml.h"
 #include "../common/smart_pointer.h"
 #include "../common/grafo.h"
 #include "../common/vertice.h"
 #include "../common/arco.h"
 #include "obj_nulo.h"
+#include <list>
 
 class Elemento;
 class Casillero;
@@ -27,6 +29,7 @@ class Mapa {
 		int alto; //Cantidad de filas
 		S_ptr<Casillero>** mapa; //Matriz de casilleros que conforman al mapa
 		Grafo<S_ptr<Elemento>, Obj_Nulo>* conexiones; //Grafo que contiene las conexiones entre los elementos estructurales
+		list<S_ptr<Elemento> > elementos; //Lista que contiene los elementos del mapa
 		bool salida; //Booleano que controla si el mapa tiene o no salida de pacman
 		bool casa; //Booleano que controla si el mapa tiene o no casa de fantasmas
 	
@@ -86,8 +89,9 @@ class Mapa {
 	/* Tiene Casa Fantasmas: Devuelve true si el mapa tiene casa de fantasmas, false en caso contrario */
 	bool tiene_casa_fantamas();
 
-	/* /////////////TEMPORAL////////////// */
-	void imprimir();
+	/* ToXML: Devuelve un elemento xml que contiene la representacion del mapa y todos sus casilleros.
+	   Si hubo un error devuelve NULL. */
+	S_ptr<TiXmlElement> toXml();
 
 };
 

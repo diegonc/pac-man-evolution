@@ -27,10 +27,10 @@ class Mundo {
 	/* Destructor: Libera los recursos consumidos por el mundo. */
 	~Mundo();
 
-	/* Agregar Nivel: Crea un nuevo nivel vacio con tamaño tam_X, tam_Y, y lo agrega al final de la lista de niveles
-	   (como ultimo nivel).
+	/* Agregar Nivel: Crea un nuevo nivel vacio con tamaño tam_X, tam_Y, y nombre pasados por parametros, 
+	   y lo agrega al final de la lista de niveles (como ultimo nivel).
 	   Devuelve el numero de orden dentro de la lista de niveles o -1 si hubo error. */
-	int agregar_nivel(int tam_X, int tam_Y);
+	int agregar_nivel(string nombre, int tam_X, int tam_Y);
 
 	/* Quitar Nivel: Quita el nivel que tiene como numero de orden el pasado por parametro. Si no lo encuentra
 	   no hace nada */
@@ -63,9 +63,15 @@ class Mundo {
 	
 	/* Get Cant Niveles: Devuelve la cantidad de niveles del mundo. */
 	unsigned int get_cant_niveles();
-
-	/* ////////////////////TEMPORAL///////////////////////// */
-	void imprimir_nivel(unsigned int nOrden);
+	
+	/* ToXML: Guarda el mundo y todos sus niveles en archivos xml. Se debe pasar por parametro el nombre del archivo
+	   que contiene la info del mundo.
+	   Devuelve true si se pudo guardar, false en caso contrario. */
+	bool toXml(char* nombre);
+	
+	/* fromXML: Carga el mundo con todos sus niveles desde el archivo xml cuyo nombre se pasa por parametro.
+	   Devuelve true si pudo cargar, false en caso contrario. */
+	bool fromXml(char* nombre);
 
 };
 
