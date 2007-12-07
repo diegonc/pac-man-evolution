@@ -2,6 +2,7 @@
 #define __SERVIDOR_H__
 
 #include "Cliente.h"
+#include "ClientPool.h"
 #include "../common/server_socket.h"
 #include "../common/thread.h"
 #include <map>
@@ -12,9 +13,12 @@ class Servidor : public Thread{
 	
 	private:
 		//clientes conectados
+		ClientPool pool;
+		/* se fue al pool.
 		std::map<Tipo_Id_Cliente, Cliente>  clientes;
 		//TODO forma de asignar los ids....por el momento, a manopla
 		unsigned int ultimo_id;
+		*/
 		//socket que permite la conexion
 		Socket_Server * socket;
 	
@@ -41,7 +45,5 @@ class Servidor : public Thread{
 		 *
 		 */
 		void run();
-		
-	
 };
 #endif /*__SERVIDOR_H__*/

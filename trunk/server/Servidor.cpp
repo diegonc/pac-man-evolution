@@ -6,8 +6,6 @@ Servidor::Servidor(std::string &direccion, unsigned short int puerto){
 		this->socket = new Socket_Server();
 		//lo bindeo
 		this->socket->bind_socket(direccion, puerto);
-		//setteo 0 los numeros de ingreso y lo marco como que no esta corriendo
-		this->ultimo_id = 0;
 	}
 	catch (std::runtime_error &e){
 		//si hubo error borro el socket que seguro se creo
@@ -30,6 +28,13 @@ Servidor::~Servidor(){
 
 }
 void Servidor::run(){
-
-
+    try {
+	while( true ) {
+		Socket_Cliente* client = socket->aceptar();
+		pool.lanzar_cliente( client );
+        }
+    } catch( std::runtime_error e ) {
+	    // Si es interrumpido.
+    }
+    pool.join_all();
 }
