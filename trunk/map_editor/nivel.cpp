@@ -81,44 +81,63 @@ string Nivel::get_nombre(){
 /* ToXML: */
 
 bool Nivel::toXml(){
+	//Armo el nombre de archivo segun el nombre del nivel + .xml
 	string filename = this->get_nombre() + ".xml";
 	//Creo el documento xml para guardar el nivel
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((this->get_nombre()).c_str());
+	//Si se pudo crear el documento
 	if (documento != NULL){
+			//Creo un nodo raiz denominado "nivel"
 			S_ptr<TiXmlElement> nodo_raiz = new TiXmlElement("Nivel");
+			//Almaceno los atributos del nivel: Nombre, Ancho y Alto
 			nodo_raiz->SetAttribute ("Nombre", (this->get_nombre()).c_str());
 			nodo_raiz->SetAttribute ("Ancho", this->get_mapa()->get_ancho());
 			nodo_raiz->SetAttribute ("Alto", this->get_mapa()->get_alto());
+			//Paso el mapa a xml, e inserto su nodo raiz como hijo de "nivel"
 			nodo_raiz->InsertEndChild(*(this->get_mapa()->toXml()));
+			//Inserto como hijo del archivo al nodo "nivel"
 			documento->InsertEndChild(*nodo_raiz);
+			//Devuelvo true si el documento se pudo guardar, false en caso contrario
 			return documento->SaveFile();
-	} else
+	} else //Si no se pudo crear el doc, devuelvo false
 			return false;
 }
 	
 /* FromXML: */
 
 bool Nivel::fromXml(){
+	//Armo el nombre de archivo segun el nombre del nivel + .xml
 	string filename = this->get_nombre() + ".xml";
 	//Creo el documento xml para cargar el nivel
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((this->get_nombre()).c_str());
+	//Si se pudo crear el documento y se pudo cargar
 	if ((documento != NULL) && (documento->LoadFile())){
-		TiXmlNode* nodo_raiz = documento->RootElement();
-		TiXmlNode* nodo_mapa = nodo_raiz->FirstChild();
-		TiXmlNode* nodo_nivel;
-		for(nodo_nivel = nodo_mapa->FirstChild(); nodo_nivel != NULL; nodo_nivel = nodo_nivel->NextSibling()) {
-					TiXmlElement* xml_elem = dynamic_cast<TiXmlElement*>(nodo_nivel);
-					int tipo_elem = 0;
-					xml_elem->QueryIntAttribute("Tipo", &tipo_elem);
-					int orientacion = 0;
-			        xml_elem->QueryIntAttribute("Orientacion", &orientacion);
-					int pos_x = 0;
-					xml_elem->QueryIntAttribute("PosX", &pos_x);
-					int pos_y = 0;
-					xml_elem->QueryIntAttribute("PosY", &pos_y);
-					this->agregar_elemento((TipoElem) tipo_elem, pos_x, pos_y, (Orientacion) orientacion);
+		//Obtengo el nodo raiz del documento (nodo "nivel")
+		TiXmlNode* nodo_raiz = documento->RootElement();		
+		if (nodo_raiz != NULL) {
+			//Obtengo el nodo "mapa"
+			TiXmlNode* nodo_mapa = nodo_raiz->FirstChild();
+			if (nodo_mapa != NULL){
+				//Obtengo todos los hijos del nodo "mapa", es decir los elementos
+				TiXmlNode* nodo_nivel;
+				for(nodo_nivel = nodo_mapa->FirstChild(); nodo_nivel != NULL; nodo_nivel = nodo_nivel->NextSibling()) {
+							//Veo a cada nodo como elemento
+							TiXmlElement* xml_elem = dynamic_cast<TiXmlElement*>(nodo_nivel);
+							//Obtengo los datos del elemento: tipo, orientacion, pos_x, pos_y
+							int tipo_elem = 0;
+							xml_elem->QueryIntAttribute("Tipo", &tipo_elem);
+							int orientacion = 0;
+							xml_elem->QueryIntAttribute("Orientacion", &orientacion);
+							int pos_x = 0;
+							xml_elem->QueryIntAttribute("PosX", &pos_x);
+							int pos_y = 0;
+							xml_elem->QueryIntAttribute("PosY", &pos_y);
+							//Agrego un elemento con los datos obtenidos
+							this->agregar_elemento((TipoElem) tipo_elem, pos_x, pos_y, (Orientacion) orientacion);
+				}
+				return true; //Si cargo todo devuelvo true
+			}
 		}
-		return true;
-	} else
-		return false;
+	}
+	return false; //Si hubo algun error devuelvo false
 }

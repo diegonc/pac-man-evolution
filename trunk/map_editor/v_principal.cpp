@@ -100,7 +100,8 @@ void VPrincipal::construir(){
  	modeloTemporal = new Modelo();
   	//Obtengo su mundo
     Mundo* mundo = modeloTemporal->get_mundo();
-	mundo->fromXml("mundo.xml");
+	if (!mundo->fromXml("mundo.xml"))
+		std::cout << "error cargando mundo" << std::endl << std::flush;
     //Agrego un nivel de 50 x 50
     //mundo->agregar_nivel("nivel 50 x 50", 50, 50);
 	//Agrego uno de 10 x 10
@@ -135,7 +136,8 @@ gboolean VPrincipal::destroy_handler(GtkWidget* widget, gpointer data){
 	
 	VPrincipal* v_princ = (VPrincipal*) data;
 	Mundo* mundo_alto_nivel = v_princ->modeloTemporal->get_mundo();
-	mundo_alto_nivel->toXml("mundo.xml");
+	if (!mundo_alto_nivel->toXml("mundo.xml"))
+		std::cout << "error guardando mundo" << std::endl << std::flush;
 	Traductor traductor;
 	MundoBajoNivel* mundo_bajo_nivel = traductor.traducir(mundo_alto_nivel);
 	S_ptr<MundoBajoNivel> mundo_ptr(mundo_bajo_nivel);

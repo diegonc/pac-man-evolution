@@ -109,48 +109,75 @@ unsigned int Mundo::get_cant_niveles(){
 /* ToXML: */
 
 bool Mundo::toXml(char* nombre){
+	bool no_error = true; //controla que no haya errores
+	//Intento crear un doc con el nombre pasado por parametro
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument (nombre);
+	//Si se pudo crear el documento
 	if (documento != NULL){
+			//Creo un nodo raiz denominado "mundo"
 			S_ptr<TiXmlElement> nodo_raiz = new TiXmlElement("Mundo");
+			//Le asigno la cantidad de niveles
 			nodo_raiz->SetAttribute ("Cant_Niveles", this->get_cant_niveles());
+			//Recorro todos los niveles del mundo
 			S_ptr<Nivel> nivel;
 			list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 			int num_nivel = 1;
-			while (it != this->niveles.end()){
+			//Recorro hasta alcanzar el ultimo nivel o hasta q haya un error
+			while ((it != this->niveles.end()) && (no_error)){
+				//Por cada nivel creo un elemento y le pongo como atributos el numero, nombre y tamaño
 				S_ptr<TiXmlElement> nodo_nivel = new TiXmlElement("Nivel");
 				nodo_nivel->SetAttribute("Numero" , num_nivel);
 				nodo_nivel->SetAttribute("Nombre" , ((*it)->get_nombre()).c_str());
 				nodo_nivel->SetAttribute("Ancho" , (*it)->get_mapa()->get_ancho());
 				nodo_nivel->SetAttribute("Alto" , (*it)->get_mapa()->get_alto());
+				//Inserto el "nivel" en el nodo raiz, o sea "mundo"
 				nodo_raiz->InsertEndChild(*nodo_nivel);
-				(*it)->toXml();
+				//Paso el nivel a un archivo xml
+				no_error = (*it)->toXml();
 				it++;
 				num_nivel++;
 			}
+			//Inserto el nodo raiz como hijo del documento
 			documento->InsertEndChild(*nodo_raiz);
-			return documento->SaveFile();
+			//Si no hubo error guardo el archivo
+			if (no_error)
+				no_error = documento->SaveFile();
+			return no_error; //devuelvo el estado de error
 	} else
-			return false;
+			return false; //Si no se pudo abrir el doc devuelvo false
 }
 
 /* fromXML: */
 	
 bool Mundo::fromXml(char* nombre){
+	bool no_error = true; //controla que no haya errores
+	//Intento abrir un doc con el nombre pasado por parametro
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument (nombre);
+	//Si se pudo crear el documento y se pudo cargar
 	if ((documento != NULL) && (documento->LoadFile())){
+			//Obtengo el nodo raiz
 			TiXmlNode* nodo_raiz = documento->RootElement();
-			TiXmlNode* nodo_nivel;
-			for( nodo_nivel = nodo_raiz->FirstChild(); nodo_nivel != NULL; nodo_nivel = nodo_nivel->NextSibling()) {
-					TiXmlElement* xml_elem = dynamic_cast<TiXmlElement*>(nodo_nivel);
-					char* nombre_nivel = (char*) xml_elem->Attribute("Nombre");
-					int ancho_nivel = 0; 
-					int alto_nivel = 0;
-					xml_elem->QueryIntAttribute("Ancho", &ancho_nivel);
-					xml_elem->QueryIntAttribute("Alto", &alto_nivel);
-					this->agregar_nivel(nombre_nivel, alto_nivel, ancho_nivel);
-					this->niveles.back()->fromXml();
-			}
-			return true;
-	} else
-			return false;
+			if (nodo_raiz != NULL) {
+				//Recorro todos los hijos del nodo raiz, es decir los niveles, hasta que se llegue al ultimo
+				//o haya algun error
+				TiXmlNode* nodo_nivel = nodo_raiz->FirstChild();
+				while ((nodo_nivel != NULL) && (no_error)) {
+						//Obtengo los datos del nivel: nombre y tamaño
+						TiXmlElement* xml_elem = dynamic_cast<TiXmlElement*>(nodo_nivel);
+						char* nombre_nivel = (char*) xml_elem->Attribute("Nombre");
+						int ancho_nivel = 0; 
+						int alto_nivel = 0;
+						xml_elem->QueryIntAttribute("Ancho", &ancho_nivel);
+						xml_elem->QueryIntAttribute("Alto", &alto_nivel);
+						//Agrego el nivel al mundo
+						this->agregar_nivel(nombre_nivel, alto_nivel, ancho_nivel);
+						//Cargo el mapa del nivel desde un xml
+						no_error = this->niveles.back()->fromXml();
+						//Obtengo el siguiente nivel
+						nodo_nivel = nodo_nivel->NextSibling();
+				}
+				return no_error; //Devuelvo el estado de error
+			}	
+	}
+	return false; //Si hubo algun error devuelvo false
 }
