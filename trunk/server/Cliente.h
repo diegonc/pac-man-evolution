@@ -32,12 +32,17 @@ class Cliente : public Thread{
 		 */
 		Cliente(Tipo_Id id, Socket_Cliente * socket);
 		
+		/** @brief Destructor de la clase
+		 *
+		 */
+		~Cliente();
+	
 		/** @brief Devuelve el id del Cliente
 		 *
 		 *  @return id Id del cliente
 		 */	
 		Tipo_Id get_id();
-			
+	
 		/*TODO no se si el paquete y las operacones pegan aca*/
 		
 		void enviar_mensaje(S_ptr<Paquete> paquete);
@@ -48,6 +53,8 @@ class Cliente : public Thread{
 		 *
 		 */
 		void run();
+		
+		
 
 };
 

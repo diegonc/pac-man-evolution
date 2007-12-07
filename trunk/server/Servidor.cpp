@@ -6,7 +6,7 @@ Servidor::Servidor(std::string &direccion, unsigned short int puerto){
 		this->socket = new Socket_Server();
 		//lo bindeo
 		this->socket->bind_socket(direccion, puerto);
-		//setteo 0 los numeros de increso y lo marco como que no esta corriendo
+		//setteo 0 los numeros de ingreso y lo marco como que no esta corriendo
 		this->ultimo_id = 0;
 	}
 	catch (std::runtime_error &e){
