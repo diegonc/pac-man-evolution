@@ -200,17 +200,22 @@ bool Mapa::tiene_casa_fantamas(){
 /* ToXML: */
 	
 S_ptr<TiXmlElement> Mapa::toXml(){
+	//Creo un nodo raiz denominado mapa
 	S_ptr<TiXmlElement> nodo_raiz = new TiXmlElement("Mapa");
 	S_ptr<Elemento> elem;
+	//Itero sobre todos los elementos contenidos en el mapa
 	list<S_ptr<Elemento> >::iterator it = this->elementos.begin();
 	while (it != this->elementos.end()){
+		//Por cada elemento, creo un nodo xml
 		S_ptr<TiXmlElement> nodo_elem = new TiXmlElement("Elemento");
+		//Asigno los atributos del elemento: tipo, orientacion, pos_x, pos_y
 		nodo_elem->SetAttribute("Tipo" , (*it)->get_tipo());
 		nodo_elem->SetAttribute("Orientacion" , (*it)->get_orientacion());
 		nodo_elem->SetAttribute("PosX" , (*it)->get_pos_x());
 		nodo_elem->SetAttribute("PosY" , (*it)->get_pos_y());
+		//Inserto el nodo de elemento en el nodo raiz (mapa)
 		nodo_raiz->InsertEndChild(*nodo_elem);
 		it++;
 	}
-	return nodo_raiz;
+	return nodo_raiz; //Devuelvo el nodo raiz creado
 }
