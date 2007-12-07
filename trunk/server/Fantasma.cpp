@@ -22,7 +22,6 @@ void Fantasma::colision(Jugador * jugador){
 	if(this->esta_vivo() && jugador->get_personaje()->esta_vivo() ){
 		try{
 			//si el jugador no es si mismo, ya que no tiene sentido
-			std::cout << "Fantasma " << jugador->get_id() <<" != "<<get_jugador()->get_id() << "\n";
 			if(jugador->get_id() != get_jugador()->get_id() ){
 				//trata de castear a pacman, si da error, pasa al catch
 				PacMan pacman = dynamic_cast< PacMan& >(*jugador->get_personaje());

@@ -20,7 +20,6 @@ bool PacMan::comer(Comestible& comestible){
 void PacMan::colision(Jugador * jugador){
 	if(this->esta_vivo() && jugador->get_personaje()->esta_vivo() ){
 		//si no es el mismo jugador
-		std::cout << "Pacman " << jugador->get_id() <<" != "<<get_jugador()->get_id() << "\n";
 		if(jugador->get_id() != get_jugador()->get_id() ){
 			Tipo_Coordenada distancia;
 			//calcula la distancia entre los dos personajes calculando el modulo
