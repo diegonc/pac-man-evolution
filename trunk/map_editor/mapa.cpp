@@ -40,6 +40,7 @@ Mapa::~Mapa(){
 	delete[](this->mapa);
 	//Elimino el grafo de conexiones
 	delete(this->conexiones);
+	this->elementos.clear(); //Vacio la lista de elementos
 }
 
 /* Get Ancho: */
@@ -77,6 +78,8 @@ void Mapa::insertar_elemento(S_ptr<Elemento> elemento){
 	}
 	//Agrego el elemento al grafo de conexiones
 	this->conexiones->agregar_vertice(elemento);
+	//Agrego el elemento en la lista de elems
+	this->elementos.push_back(elemento);
 }
 
 /* Quitar Elemento: */
@@ -105,6 +108,8 @@ void Mapa::quitar_elemento(S_ptr<Elemento> elemento){
 	}
 	//Quito el elemento del grafo de conexiones
 	this->conexiones->eliminar_vertice(elemento);
+	//Quito el elemento de la listas de elementos
+	this->elementos.remove(elemento);
 }
 
 /* Es Congruente: */
@@ -192,11 +197,20 @@ bool Mapa::tiene_casa_fantamas(){
 	return this->casa;
 }
 
-/* /////////////TEMPORAL////////////// */
-void Mapa::imprimir(){
-	for (int i = 0; i < alto; i++)
-			for (int j = 0; j < ancho; j++){
-				S_ptr<Casillero> casillero = this->get_casillero(i,j);
-				casillero->imprimir();
-			}
+/* ToXML: */
+	
+S_ptr<TiXmlElement> Mapa::toXml(){
+	S_ptr<TiXmlElement> nodo_raiz = new TiXmlElement("Mapa");
+	S_ptr<Elemento> elem;
+	list<S_ptr<Elemento> >::iterator it = this->elementos.begin();
+	while (it != this->elementos.end()){
+		S_ptr<TiXmlElement> nodo_elem = new TiXmlElement("Elemento");
+		nodo_elem->SetAttribute("Tipo" , (*it)->get_tipo());
+		nodo_elem->SetAttribute("Orientacion" , (*it)->get_orientacion());
+		nodo_elem->SetAttribute("PosX" , (*it)->get_pos_x());
+		nodo_elem->SetAttribute("PosY" , (*it)->get_pos_y());
+		nodo_raiz->InsertEndChild(*nodo_elem);
+		it++;
+	}
+	return nodo_raiz;
 }

@@ -19,12 +19,13 @@ class Nivel {
 
 	//Atributos
 	private:
+		string nombre; //Nombre del nivel, se usa despues para guardar en un xml con ese nombre.
 		Mapa* mapa; //Referencia al mapa contenido en el nivel
 
 	public:
 
-	/* Constructor: Inicializa el nivel con un mapa con el ancho y alto pasado por parametro. */
-	Nivel(int ancho, int alto);
+	/* Constructor: Inicializa el nivel con un mapa con el ancho, alto y nombre pasado por parametro. */
+	Nivel(string nombre, int ancho, int alto);
 
 	/* Destructor: Libera los recursos consumidos por el nivel. */
 	~Nivel();
@@ -44,9 +45,20 @@ class Nivel {
 
 	/* Get Mapa: Devuelve el mapa del nivel */
 	Mapa* get_mapa();
-
-	/* /////////////TEMPORAL////////////// */
-	void imprimir_mapa();
+	
+	/* Set Nombre: Coloca un nuevo nombre pasado por parametro al nivel. */
+	void set_nombre(string nombre);
+	
+	/* Get Nombre: Devuelve el nombre del nivel. */
+	string get_nombre();
+	
+	/* ToXML: Guarda el nivel en un archivo xml, que lleva como nombre el del nivel.
+	   Devuelve true si se pudo guardar, false en caso contrario. */
+	bool toXml();
+	
+	/* FromXML: Carga el nivel desde un archivo xml, que lleva como nombre el del nivel.
+	   Devuelve true si se pudo cargar, false en caso contrario. */
+	bool fromXml();
 
 };
 

@@ -7,8 +7,9 @@
 
 /* Constructor: */
 
-Nivel::Nivel(int ancho, int alto){
+Nivel::Nivel(string nombre, int ancho, int alto){
 	this->mapa = new Mapa(ancho, alto);
+	this->nombre = nombre;
 }
 
 /* Destructor: */
@@ -65,7 +66,59 @@ Mapa* Nivel::get_mapa(){
 	return this->mapa;
 }
 
-/* /////////////TEMPORAL////////////// */
-void Nivel::imprimir_mapa(){
-	this->mapa->imprimir();
+/* Set Nombre: */
+
+void Nivel::set_nombre(string nombre){
+	this->nombre = nombre;
+}
+	
+/* Get Nombre: */
+
+string Nivel::get_nombre(){
+	return this->nombre;
+}
+
+/* ToXML: */
+
+bool Nivel::toXml(){
+	string filename = this->get_nombre() + ".xml";
+	//Creo el documento xml para guardar el nivel
+	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((this->get_nombre()).c_str());
+	if (documento != NULL){
+			S_ptr<TiXmlElement> nodo_raiz = new TiXmlElement("Nivel");
+			nodo_raiz->SetAttribute ("Nombre", (this->get_nombre()).c_str());
+			nodo_raiz->SetAttribute ("Ancho", this->get_mapa()->get_ancho());
+			nodo_raiz->SetAttribute ("Alto", this->get_mapa()->get_alto());
+			nodo_raiz->InsertEndChild(*(this->get_mapa()->toXml()));
+			documento->InsertEndChild(*nodo_raiz);
+			return documento->SaveFile();
+	} else
+			return false;
+}
+	
+/* FromXML: */
+
+bool Nivel::fromXml(){
+	string filename = this->get_nombre() + ".xml";
+	//Creo el documento xml para cargar el nivel
+	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((this->get_nombre()).c_str());
+	if ((documento != NULL) && (documento->LoadFile())){
+		TiXmlNode* nodo_raiz = documento->RootElement();
+		TiXmlNode* nodo_mapa = nodo_raiz->FirstChild();
+		TiXmlNode* nodo_nivel;
+		for(nodo_nivel = nodo_mapa->FirstChild(); nodo_nivel != NULL; nodo_nivel = nodo_nivel->NextSibling()) {
+					TiXmlElement* xml_elem = dynamic_cast<TiXmlElement*>(nodo_nivel);
+					int tipo_elem = 0;
+					xml_elem->QueryIntAttribute("Tipo", &tipo_elem);
+					int orientacion = 0;
+			        xml_elem->QueryIntAttribute("Orientacion", &orientacion);
+					int pos_x = 0;
+					xml_elem->QueryIntAttribute("PosX", &pos_x);
+					int pos_y = 0;
+					xml_elem->QueryIntAttribute("PosY", &pos_y);
+					this->agregar_elemento((TipoElem) tipo_elem, pos_x, pos_y, (Orientacion) orientacion);
+		}
+		return true;
+	} else
+		return false;
 }
