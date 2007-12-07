@@ -102,15 +102,18 @@ void ModeloServidor::run(){
 	}
 }
 
+
 void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 	std::list<Tipo_Jugador>::iterator it;
 	 
 	Tipo_Jugador j2;
+	std::cout << "\n\n"<< j->get_id() << "\n";
 	for(it = jugadores.begin(); it!= jugadores.end(); it++){
 		j2 = *it;
+		std::cout << j2->get_id() << "-";
 		j->colisiono(&(*j2));
 	}	
-	
+	std::cout << "\n";
 	
 }
 

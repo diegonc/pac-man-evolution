@@ -20,9 +20,8 @@ bool PacMan::comer(Comestible& comestible){
 void PacMan::colision(Jugador * jugador){
 	if(this->esta_vivo() && jugador->get_personaje()->esta_vivo() ){
 		//si no es el mismo jugador
-		std::cout << "a\n";
+		std::cout << "Pacman " << jugador->get_id() <<" != "<<get_jugador()->get_id() << "\n";
 		if(jugador->get_id() != get_jugador()->get_id() ){
-			std::cout << "b\n";		
 			Tipo_Coordenada distancia;
 			//calcula la distancia entre los dos personajes calculando el modulo
 			// dist = ( ( x0 - x1 )² + ( y0 - y1)² )^ ½
@@ -37,23 +36,26 @@ void PacMan::colision(Jugador * jugador){
 			//quiere decir que choca
 			if(distancia  <= (this->get_radio() + jugador->get_personaje()->get_radio() ) ){
 				if( this->tiene_power_up() ){
-					if(jugador->get_personaje()->esta_vivo())
+					//if(jugador->get_personaje()->esta_vivo()) <<---CREO QUE NO HACE FALTA
 						jugador->get_personaje()->matar();
 				}
 				else{
-					//this->matar(); <<-------VER DESPUES SI DA O NO
+					//obtengo los personajes					
+					S_ptr<Personaje> p_this = this->get_jugador()->get_personaje();
+					S_ptr<Personaje> p_jug = jugador->get_personaje();
 					//cambio los personajes
-					S_ptr<Personaje> personaje_j1 = get_jugador()->get_personaje();
-					S_ptr<Personaje> personaje_j2 = jugador->get_personaje();
-					get_jugador()->set_personaje(personaje_j2);
-					jugador->set_personaje(personaje_j1);
-					personaje_j2->set_jugador(get_jugador());
-					personaje_j1->set_jugador(jugador);
-					personaje_j2->matar();
+					jugador->set_personaje(p_this);
+					this->get_jugador()->set_personaje(p_jug);
+					//cambio los jugadores
+					p_jug->set_jugador(this->get_jugador());
+					p_this->set_jugador(jugador);
+					//mato al personaje que no es pacman
+					p_jug->matar();
+					
 				}
 			}
 		}		
-	}	
+	}
 }
 void PacMan::set_power_up(bool activado){
 	this->power_up_activado = activado;
