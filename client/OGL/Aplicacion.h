@@ -24,9 +24,9 @@
 #define APP_VERSION	"0.5"
 
 // ResolucionAncho de pantalla
-#define SCREEN_W	800
+#define SCREEN_W	1280//800 <<---ALAN CANSADO
 // ResolucionAlto de pantalla
-#define SCREEN_H	600
+#define SCREEN_H	1024//600
 //profundidad de colores
 #define SCREEN_BPP	32
 
