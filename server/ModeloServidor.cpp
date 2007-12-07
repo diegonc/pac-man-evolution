@@ -17,15 +17,15 @@ void ModeloServidor::cargar_modelo(){
 	//this->mundo = new MundoBasicImp();
 	Jugador *j1 = new Jugador(1);
 	Tipo_Jugador j_1(j1);
-	Posicion p(0.5,0.5);
-	j_1->set_posicion(p);
 	this->agregar_jugador(j_1);
 	
 	Jugador *j2 = new Jugador(2);
 	Tipo_Jugador j_2(j2);
-	Posicion p2(3.5,0.5);
-	j_2->set_posicion(p2);
 	this->agregar_jugador(j_2);
+	
+	Jugador *j3 = new Jugador(3);
+	Tipo_Jugador j_3(j3);
+	this->agregar_jugador(j_3);
 	/**************************************************************************/
 }
 void ModeloServidor::set_mundo(S_ptr<MundoBajoNivel> mundo){
@@ -107,14 +107,11 @@ void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 	std::list<Tipo_Jugador>::iterator it;
 	 
 	Tipo_Jugador j2;
-	std::cout << "\n\n"<< j->get_id() << "\n";
+	
 	for(it = jugadores.begin(); it!= jugadores.end(); it++){
 		j2 = *it;
-		std::cout << j2->get_id() << "-";
 		j->colisiono(&(*j2));
 	}	
-	std::cout << "\n";
-	
 }
 
 const std::list<S_ptr<Jugador> >& ModeloServidor::get_jugadores(){
@@ -159,36 +156,39 @@ void ModeloServidor::preparar_partida(){
 		it_estucturales != lista_estructurales.end();
 		++it_estucturales){
 		aux = *it_estucturales;
-		/*if( aux->es_casa_fantasma() )
+		if( aux->es_casa_fantasma() )
 			casa_fantasma.push_back(*it_estucturales);
-		else{*/
+		else{
 			if(aux->es_salida_pacman() )
 				salida_pacman = *it_estucturales;
-		//}
+		}
 	}		
-	
-	
+		
 	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
 	
-	//it_estucturales = casa_fantasma.begin();
+	it_estucturales = casa_fantasma.begin();
 	S_ptr<Jugador> j;
+	Posicion p;
 	for(it_jugadores = this->jugadores.begin(); it_jugadores != this->jugadores.end() ; ++it_jugadores){
 		j = *it_jugadores;
 		if(j->get_personaje()->get_tipo() == Personaje::pacman){
-			Posicion p = salida_pacman->get_posicion();
+			p = salida_pacman->get_posicion();
 			p.set_x(p.get_x() + 0.5);
 			p.set_y(p.get_y() + 0.5);
-			j->set_posicion(p);
 		}
-		/*else
+		else
 			if(j->get_personaje()->get_tipo() == Personaje::fantasma){
 				aux = *it_estucturales;
-				Posicion p = aux->get_posicion();
+				p = aux->get_posicion();
 				p.set_x(p.get_x() + 0.5);
 				p.set_y(p.get_y() + 0.5);
 				if(it_estucturales == casa_fantasma.end() )
 					it_estucturales = casa_fantasma.begin();
-			}*/
+				else
+					it_estucturales++;
+			}
+			
+		j->set_posicion(p);
 	}
 }
 bool ModeloServidor::esta_terminado(){
