@@ -8,6 +8,10 @@
 # CONFIGURACION
 ################
 
+DEFS := -DTIXML_USE_STL
+
+CXXFLAGS := ${CXXFLAGS} ${DEFS}
+
 # Extensión de los archivos a compilar (c para C, cpp o cc o cxx para C++).
 extension = cpp
 
@@ -53,6 +57,7 @@ fuentes ?= $(wildcard *.$(extension))
 fuentes_common ?= $(wildcard ../../common/*.$(extension))
 fuentes_server ?= $(wildcard ../../server/*.$(extension))
 fuentes_map ?= $(wildcard ../../map_editor/*.$(extension))
+fuentes_tiny_xml ?= $(wildcard ../../common/tinyxml/*.$(extension))
 
 # REGLAS
 #########
@@ -63,7 +68,8 @@ all: subproyecto
 
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
 o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server))
-o_map_files = $(patsubst %.$(extension),%.o,$(fuentes_map)) $(o_server_files) $(o_common_files)
+o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
+o_map_files = $(patsubst %.$(extension),%.o,$(fuentes_map)) $(o_server_files) $(o_common_files) $(o_tinyxml_files)
 o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_map_files)
 
 subproyecto: $(o_files)
