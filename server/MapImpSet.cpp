@@ -84,7 +84,7 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 			toca = true;
 		}
 		else{
-			if(! donde_esta->tiene_conexion(e_critico) ){
+			if(!donde_esta->tiene_conexion(e_critico) ){
 				toca = true;
 				std::cout << "Toca uno critico donde no tiene conexion\n";	
 			}
