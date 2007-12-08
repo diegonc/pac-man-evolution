@@ -12,5 +12,5 @@ ItemArchivo::ItemArchivo() : Item(N_ARCHIVO){}
 //Ejecutar:
 
 void ItemArchivo::ejecutar(GtkWidget* widget, gpointer data){
-	g_print("[Apretaste menu archivo]\n");
+
 }

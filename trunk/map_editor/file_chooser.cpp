@@ -22,6 +22,7 @@ FileChooser::FileChooser(char* titulo, GtkWidget* window, GtkFileChooserAction a
 	gtk_file_chooser_set_do_overwrite_confirmation(GTK_FILE_CHOOSER(file_chooser), true);
 	//Creo el filtro para archivos con extension del mundo y le pongo el patron "*.ext_mundo"
 	this->filtro_mundo = gtk_file_filter_new ();
+	gtk_file_filter_set_name (this->filtro_mundo, EXT_MUNDO);
 	string pattern ("*");
 	pattern += EXT_MUNDO;
 	gtk_file_filter_add_pattern(filtro_mundo, pattern.c_str());

@@ -68,6 +68,8 @@ void VPrincipal::actualizar(Observable * observable, void * param){
 	mundo->agregar_observador(this->panel_mundo);
 	mundo->set_cambio();
 	mundo->avisar_observadores(NULL);
+	panel_mundo->set_cambio();
+	panel_mundo->avisar_observadores(NULL);
 }
 
 //Construir:
@@ -114,6 +116,9 @@ void VPrincipal::construir(){
 	
 	//Agrego a la vista del mapa como observadora del panel de niveles
 	this->panel_mundo->agregar_observador(this->vista_mapa);
+	
+	//Agrego al panel mundo como observador del mundo
+	Modelo::get_instance()->get_mundo()->agregar_observador(this->panel_mundo);
 	
 	//Agrego el widget de la vista del mapa a la ventana principal
 	gtk_container_add (GTK_CONTAINER (this->hbox_princ), this->vista_mapa->get_widget());
