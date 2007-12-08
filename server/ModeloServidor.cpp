@@ -156,10 +156,10 @@ void ModeloServidor::preparar_partida(){
 		it_estucturales != lista_estructurales.end();
 		++it_estucturales){
 		aux = *it_estucturales;
-		if( aux->es_casa_fantasma() )
+		if( /*aux->es_casa_fantasma()*/aux->get_tipo() == EstructuralUnitario::Casa_Fantasma )
 			casa_fantasma.push_back(*it_estucturales);
 		else{
-			if(aux->es_salida_pacman() )
+			if( /*aux->es_salida_pacman()*/ EstructuralUnitario::Salida_Pacman )
 				salida_pacman = *it_estucturales;
 		}
 	}		
