@@ -13,11 +13,14 @@
 
 class App{
 	private:
-		App();
+		App(int argc, char *argv[]);
 		App(App& a);
 	
 		static S_ptr<App> instancia;
 		
+		int argc;
+		char **argv;
+	
 	public:
 		~App();
 		
@@ -26,7 +29,7 @@ class App{
 		 *  @return Un smart pointer que contiene el la instancia de App
 		 */	
 	
-		static S_ptr<App> get_instancia();
+		static S_ptr<App> get_instancia(int argc, char *argv[]);
 	
 		/** @brief Ejecuta la aplicacion
 		 *
