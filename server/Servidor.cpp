@@ -1,6 +1,7 @@
 #include "Servidor.h"
 
-Servidor::Servidor(std::string &direccion, unsigned short int puerto){
+Servidor::Servidor(std::string &direccion, unsigned short int puerto, ModeloServidor& mod) : modelo( mod )
+{
 	try{
 		//creo el socket del servidor
 		this->socket = new Socket_Server();
@@ -13,7 +14,8 @@ Servidor::Servidor(std::string &direccion, unsigned short int puerto){
 		throw e;	
 	}
 }
-Servidor::Servidor(unsigned short int puerto){
+Servidor::Servidor(unsigned short int puerto, ModeloServidor& mod) : modelo(mod)
+{
 	try{
 		this->socket = new Socket_Server();
 		this->socket->bind_socket(puerto);
