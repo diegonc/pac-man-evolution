@@ -31,9 +31,9 @@ class KeyOp : public Operacion
 		/**
 		*	@brief Constructor de la clase
 		*/
-		KeyOp( int id, int flecha ) : id( id ), flecha( flecha ) {}
+		//KeyOp( int id, int flecha ) : id( id ), flecha( flecha ) {}
 
-		//KeyOp(int flecha ): flecha( flecha ),id(-1) {}
+		KeyOp(int flecha ): flecha( flecha ),id(-1) {}
 		
 		/** 
 		*	@brief Implementa los efectos de la operacion. 
