@@ -59,7 +59,7 @@ void test_4()
 	obs.append( 3, 1 );
 	obs.append( 8, 3 );
 	obs.append( 3, 4 );
-	obs.append( 4, 24 );
+	obs.append( 4, 12 );
 	obs.append( 1, 1 );
 	const unsigned char* raw = obs.get_data();
 	if( obs.get_size() != 3 )
