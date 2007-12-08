@@ -5,9 +5,9 @@
 #include "Jugador.h"
 
 const int arriba 	= 	0;
-const int abajo  	= 	2;
+const int abajo  	= 	1;
 const int derecha	= 	3;
-const int izquierda = 	4;  //estan mal.. => mirar las del .h
+const int izquierda	= 	2;  
 
 void KeyOp::ejecutar(ModeloServidor &modelo)
 {

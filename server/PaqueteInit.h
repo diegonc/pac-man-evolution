@@ -3,6 +3,7 @@
 
 #include "Paquete.h"
 #include "MapaBajoNivel.h"
+#include "../common/smart_pointer.h"
 
 class PaqueteInit : public Paquete
 {
@@ -13,20 +14,13 @@ class PaqueteInit : public Paquete
 
 		/** @brief MapaBajoNivel en el que se desarrolla el juego.
 		 */
-		MapaBajoNivel& mapa;
-		/* el atributo mapa deberia reemplazar a los que siguen. */
-
-		/** @brief Ancho del grafo.
-		 */
-		int grafo_ancho;
-
-		/** @brief Alto del grafo.
-		 */
-		int grafo_alto;
-
-		char* grafo_aristas;
+		S_ptr<MapaBajoNivel> mapa;
 
 	public:
+		/** Crea un paquete apto para deserializar. */
+		PaqueteInit();
+
+		/** Crea un paquete apto para serializar. */
 		PaqueteInit( bool pacman, MapaBajoNivel& m );
 
 		void serialize( OutputBitStream& bs );
