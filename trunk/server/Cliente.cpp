@@ -7,7 +7,7 @@ void Cliente::run()
 {
 
 }
-~Cliente(){}
+Cliente::~Cliente(){}
 
 S_ptr<Paquete> Cliente::recibir_mensaje()
 {
