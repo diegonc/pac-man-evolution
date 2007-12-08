@@ -31,13 +31,23 @@ class KeyOp : public Operacion
 		/**
 		*	@brief Constructor de la clase
 		*/
-		KeyOp( int id, int flecha ) : id( id ), flecha( flecha ) {}
+		//KeyOp( int id, int flecha ) : id( id ), flecha( flecha ) {}
+
+		KeyOp(int flecha ): flecha( flecha ),id(-1) {}
 		
 		/** 
 		*	@brief Implementa los efectos de la operacion. 
-		*/
-		
+		*/		
 		void ejecutar(ModeloServidor &modelo);
+
+		void set_id(int identifJugador)
+		{
+			id=identifJugador;
+		}
+
+		static int get_teclaFormatoPaquete(KeyOp* Key);
+		static int get_teclaFormatoOperacion(int flecha);
+
 };
 
 #endif /* __KEYOP_H__ */
