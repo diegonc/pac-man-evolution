@@ -15,15 +15,6 @@
 #include "../common/smart_pointer.h"
 #include "../common/observador.h"
 
-/**************TEMPORAL********************/
-
-#include "traductor.h"
-#include "../server/MundoBajoNivel.h"
-#include "../server/ModeloServidor.h"
-#include "../client/OGL/AplicacionGrafica.h"
-
-/******************************************/
-
 /* CLASE VPRINCIPAL: Representa la ventana principal del editor de mapas. 
    Se encarga de observar al modelo y mirar cuando cambia el mundo para
    actualizar a sus componentes. */

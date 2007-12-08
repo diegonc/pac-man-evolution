@@ -1,6 +1,5 @@
-/*#include "gui.h"
-#include "modelo.h"
-#include "mundo.h"
+#include "app_editor.h"
+#include "app_cleaner_editor.h"
 #include <iostream>
 
 using namespace std;
@@ -9,16 +8,11 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-
-  //Creo la interfaz grafica
-  GUI* gui = new GUI(argc, argv);
-  //La hago arrancar
-  gui->start();
-  //Uno la interfaz grafica con el hilo principal, cuando termina
-  gui->join(gui);
-  //Elimino la interfaz grafica
-  delete(gui);
+  //Creo un App Cleaner Editor para borrar a la aplicacion automaticamente
+  AppCleanerEditor app_cleaner;
+  //Creo la App del Editor y la ejecuto
+  AppEditor::get_instance(argc, argv)->ejecutar();
 
   return 0;
 
-}*/
+}
