@@ -4,8 +4,9 @@ namespace {
 	const char ID = 0;
 }
 
-PaqueteInit::PaqueteInit( MapaBajoNivel& m ) : Paquete( ID ), mapa( m )
+PaqueteInit::PaqueteInit( Tipo_Jugador j, MapaBajoNivel& m ) : Paquete( ID ), mapa( m )
 {
+	esPacman = ( j->get_personaje()->get_tipo() == Personaje::pacman );
 }
 
 void PaqueteInit::deserialize( InputBitStream& bs )
