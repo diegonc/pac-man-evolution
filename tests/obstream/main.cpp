@@ -3,6 +3,7 @@
 
 void test_1()
 {
+	std::cout << "Corriendo test_1().\n";
 	OutputBitStream obs;
 	obs.append( 8, 56 );
 	const unsigned char* raw = obs.get_data();
@@ -14,6 +15,7 @@ void test_1()
 
 void test_2()
 {
+	std::cout << "Corriendo test_2().\n";
 	OutputBitStream obs;
 	obs.append( 2, 0 );
 	obs.append( 3, 0 );
@@ -27,6 +29,7 @@ void test_2()
 
 void test_3()
 {
+	std::cout << "Corriendo test_3().\n";
 	OutputBitStream obs;
 	obs.append( 2, 0 );
 	obs.append( 3, 0 );
@@ -46,12 +49,38 @@ void test_3()
 	}
 }
 
+void test_4()
+{
+	std::cout << "Corriendo test_4().\n";
+
+	OutputBitStream obs;
+	obs.append( 2, 0 );
+	obs.append( 3, 0 );
+	obs.append( 3, 1 );
+	obs.append( 8, 3 );
+	obs.append( 3, 4 );
+	obs.append( 4, 24 );
+	obs.append( 1, 1 );
+	const unsigned char* raw = obs.get_data();
+	if( obs.get_size() != 3 )
+		std::cout << "ERROR: tamano " << obs.get_size() << " (esperado: 2 )\n";
+	else {
+		int outs[3] = { 0x01, 0x03, 0x99 };
+		for( int i = 0; i < 3; i++ ) {
+		       	if( raw[i] != outs[i] ) {
+				std::cout << "ERROR: byte " << i << " es ";
+				std::cout << (int)raw[i] << " (esperado: " << outs[i] << ")\n";
+			}
+		}
+	}
+}
 
 int main()
 {
 	test_1();
 	test_2();
 	test_3();
+	test_4();
 	return 0;
 }
 
