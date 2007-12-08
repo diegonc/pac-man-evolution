@@ -3,6 +3,8 @@
 #include "InputBitStream.h"
 #include "SocketReader.h"
 
+Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket){}
+
 void Cliente::run()
 {
 
