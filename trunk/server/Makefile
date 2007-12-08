@@ -11,7 +11,6 @@
 # Extensión de los archivos a compilar (c para C, cpp o cc o cxx para C++).
 extension = cpp
 
-
 # CONFIGURACION "AVANZADA"
 ###########################
 
@@ -60,7 +59,7 @@ fuentes_common ?= $(wildcard ../common/*.$(extension))
 
 .PHONY: all clean
 
-all: subproyecto
+all: server
 #o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
 #o_map_editor = $(patsubst %.$(extension),%.o,$(fuentes_map_editor)) #$(o_common_files) $(o_server_files) $(o_tinyxml_files)
 o_map_editor_files ?= $(wildcard ../map_editor/*.$(extension_o))
@@ -68,7 +67,7 @@ o_tinyxml_files ?= $(wildcard ../common/tinyxml/*.$(extension_o))
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
 o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_map_editor_files) $(o_tinyxml_files)
 
-subproyecto: $(o_files)
+server: $(o_files)
 	@if [ -z "$(o_files)" ]; \
 	then \
 		echo "No hay archivos de entrada para el cliente (archivos client*.$(extension))."; \
@@ -76,8 +75,8 @@ subproyecto: $(o_files)
 	fi >&2
 	$(enlazador) $(LDFLAGS) $(o_files) $(LOADLIBES) $(LDLIBS) -o miEjecutable $(LDADD)
 
-clean:
-	@$(RM) -fv *.o subproyecto \
+clean_server:
+	@$(RM) -fv *.o server \
    rm ../common/*.o \
    rm miEjecutable
 
