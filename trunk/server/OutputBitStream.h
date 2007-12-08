@@ -79,7 +79,7 @@ class OutputBitStream
 		static unsigned int bits_needed(unsigned int num);
 		
 		
-		void skip(); /* TODO ;*/
+		void skip();
 };
 
 #endif /* __OUTPUTBITSTREAM_H__ */

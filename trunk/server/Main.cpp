@@ -11,9 +11,9 @@ int main(int argc, char *argv[]){
 int main(int argc, char *argv[]){
 	OutputBitStream o;
 	
-	o.append(8,'A',true);
+	o.append(2,2,true);
 	//o.append(2,2,true);
-	
+	o.skip();
 	const unsigned char * data = o.get_data();
 	std::bitset<8> bits(data[0]);
 	std::cout << bits << "\n";
@@ -22,4 +22,5 @@ int main(int argc, char *argv[]){
 	
 	
 		
-}*/
+}
+*/

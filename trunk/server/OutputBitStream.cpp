@@ -44,7 +44,10 @@ void OutputBitStream::append( const unsigned int n, int val, bool grow ){
 	
 }
 
-void OutputBitStream::skip(){}
+void OutputBitStream::skip(){
+	shift_left(buffer_size * 8 - bit_index - 1);
+		
+}
 
 void OutputBitStream::grow( unsigned int n ){
 	unsigned int bsize = buffer_size * 8 + n; 
