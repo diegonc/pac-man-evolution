@@ -25,29 +25,34 @@ S_ptr<App> App::get_instancia(int argc, char *argv[]){
 int App::ejecutar(){
 	////////TODO....ACA SE HACE LA CARGA; AGREGAR UN PARSER DE LINEA DE COMANDOS
 	//creo el mundo de alto nivel y lo cargo del xml
-	Mundo mundo_alto_nivel;
-	if( mundo_alto_nivel.fromXml(argv[1])	){
-		//lo traduzo a un mundo de bajo nivel y lo meto en un smart Pointer
-		Traductor traductor;
-		S_ptr<MundoBajoNivel> mundo_bajo_nivel(traductor.traducir(&mundo_alto_nivel));
-		//crea el modelo	
-		S_ptr<ModeloServidor> modelo(new ModeloServidor());
-		//lo meto en el modelo
-		modelo->set_mundo(mundo_bajo_nivel);
-		//crea el servidor
-		S_ptr<Servidor> servidor(new Servidor(6000, modelo) );//TODO USAR EL ARG
-		//inicia el hilo del modelo
-		modelo->start();
-		//inicia el hilo del servidor
-		servidor->start();
-		
-		//se une a los hilos
-		modelo->join();
-		servidor->join();
-		
+	try{
+		Mundo mundo_alto_nivel;
+		if( mundo_alto_nivel.fromXml(argv[1])	){
+			//lo traduzo a un mundo de bajo nivel y lo meto en un smart Pointer
+			Traductor traductor;
+			S_ptr<MundoBajoNivel> mundo_bajo_nivel(traductor.traducir(&mundo_alto_nivel));
+			//crea el modelo	
+			S_ptr<ModeloServidor> modelo(new ModeloServidor());
+			//lo meto en el modelo
+			modelo->set_mundo(mundo_bajo_nivel);
+			//crea el servidor
+			S_ptr<Servidor> servidor(new Servidor(6000, modelo) );//TODO USAR EL ARG
+			//inicia el hilo del modelo
+			modelo->start();
+			//inicia el hilo del servidor
+			servidor->start();
+			
+			//se une a los hilos
+			modelo->join();
+			servidor->join();
+			
+		}
+		else
+			//TODO PROVISORIO
+			std::cerr << "Hubo un error con la carga del xml\n";
 	}
-	else
-		//TODO PROVISORIO
-		std::cerr << "Hubo un error con la carga del xml\n";
+	catch(std::runtime_error &e){
+		std::cerr << e.what()<<"\n";	
+	}
 	return 0;
 }

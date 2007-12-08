@@ -54,11 +54,13 @@ Servidor::~Servidor()
 }
 void Servidor::run(){
  	parar = false;  
+	std::cout << "Hay "<<this->modelo->get_mundo().cantidad_niveles() << " niveles, buena tarto, anda toda la cacona que hiciste\n";
 	try {
 		socket->escuchar();
 		while( !parar ) {
 			Socket_Cliente* client = socket->aceptar();
 			pool.lanzar_cliente( client );
+			std::cout << "Se conecto un chabon (obviamente por netcat porque no hicieron la otra parte)\n";
 			// TODO: si no hay lugar, no escuchar mas.
         }
     } catch( std::runtime_error e ) {
