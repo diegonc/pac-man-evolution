@@ -24,7 +24,7 @@ FileChooser::FileChooser(char* titulo, GtkWidget* window, GtkFileChooserAction a
 	this->filtro_mundo = gtk_file_filter_new ();
 	string pattern ("*");
 	pattern += EXT_MUNDO;
-	gtk_file_filter_add_pattern(filtro_xml, pattern.c_str());
+	gtk_file_filter_add_pattern(filtro_mundo, pattern.c_str());
 	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), filtro_mundo);
 }
 
