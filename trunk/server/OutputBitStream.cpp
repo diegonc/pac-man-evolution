@@ -26,19 +26,11 @@ void OutputBitStream::append( const unsigned int n, int val, bool grow ){
 		shift_left(n);
 				
 		unsigned int index = 0;
-		
-		//convierto el numero a binario y lo voy almacenando si es 1, 
-		//ya tiene 0 por defecto
-		while( val >= 2 && index < n){
-			if( val % 2 != 0)
-				// desplazo el 1 y hago un OR para guardar un 1
-				(*( buffer + index / 8 )) |= (1 << (index % 8)) ; 
-			val /=2;
+		while( /*val >= 2 &&*/ index < n){
+			if( val  & (1 << index) ) //si hay 1
+				(*( buffer + index / 8 )) |= (1 << index); //guardo 1
 			index++;
 		}
-		if( val == 1 && index != n)
-			(*( buffer + index / 8 )) |= (1 << (index % 8));
-		
 		bit_index += n ;
 	}
 	
