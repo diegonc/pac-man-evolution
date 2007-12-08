@@ -36,7 +36,7 @@ unsigned char* datos_de_prueba()
 {
 	#define DATOS_PRUEBA_S 5
 	static unsigned char raw[DATOS_PRUEBA_S] = {
-	       	0 /* fantasma */, 2, 2, 46, 0 };
+	       	4 /* fantasma */, 2, 2, 46, 0 };
 	return raw;
 }
 
@@ -67,4 +67,5 @@ int main()
 			std::cout << "Serializacion correcta.\n";
 	}
 	delete map;
+	return 0;
 }
