@@ -1,7 +1,7 @@
 #include "App.h"
 #include <string>
 #include "ModeloServidor.h"
-#include <pthread.h>
+#include "Servidor.h"
 
 //para realizar las conversiones
 #include "../map_editor/mundo.h"
@@ -23,8 +23,6 @@ S_ptr<App> App::get_instancia(int argc, char *argv[]){
 	return instancia;
 }
 int App::ejecutar(){
-	//crea el modelo	
-	S_ptr<ModeloServidor> modelo(new ModeloServidor());
 	////////TODO....ACA SE HACE LA CARGA; AGREGAR UN PARSER DE LINEA DE COMANDOS
 	//creo el mundo de alto nivel y lo cargo del xml
 	Mundo mundo_alto_nivel;
@@ -32,13 +30,21 @@ int App::ejecutar(){
 		//lo traduzo a un mundo de bajo nivel y lo meto en un smart Pointer
 		Traductor traductor;
 		S_ptr<MundoBajoNivel> mundo_bajo_nivel(traductor.traducir(&mundo_alto_nivel));
+		//crea el modelo	
+		S_ptr<ModeloServidor> modelo(new ModeloServidor());
 		//lo meto en el modelo
 		modelo->set_mundo(mundo_bajo_nivel);
+		//crea el servidor
+		S_ptr<Servidor> servidor(new Servidor(6000, modelo) );//TODO USAR EL ARG
 		//inicia el hilo del modelo
 		modelo->start();
-		//se une al hilo
+		//inicia el hilo del servidor
+		servidor->start();
+		
+		//se une a los hilos
 		modelo->join();
-		//pthread_join(modelo->get_hilo(), NULL);
+		servidor->join();
+		
 	}
 	else
 		//TODO PROVISORIO

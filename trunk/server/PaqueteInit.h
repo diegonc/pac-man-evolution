@@ -6,6 +6,8 @@
 
 class PaqueteInit : public Paquete
 {
+	typedef S_ptr<Jugador> Tipo_Jugador;
+	
 	private:
 		/** @brief Determina si el cliente que recibe el paquete es el pacman o no.
 		 */
@@ -27,7 +29,9 @@ class PaqueteInit : public Paquete
 		char* grafo_aristas;
 
 	public:
-		PaqueteInit( MapaBajoNivel& m );
+		
+	
+		PaqueteInit( Tipo_Jugador j, MapaBajoNivel& m );
 
 		void serialize( OutputBitStream& bs );
 

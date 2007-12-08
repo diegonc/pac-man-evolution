@@ -75,7 +75,7 @@ server: $(o_files)
 	fi >&2
 	$(enlazador) $(LDFLAGS) $(o_files) $(LOADLIBES) $(LDLIBS) -o miEjecutable $(LDADD)
 
-clean_server:
+clean:
 	@$(RM) -fv *.o server \
    rm ../common/*.o \
    rm miEjecutable

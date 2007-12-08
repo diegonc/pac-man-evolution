@@ -6,14 +6,24 @@
 #include "../common/server_socket.h"
 #include "../common/thread.h"
 #include "ModeloServidor.h"
+#include "../common/smart_pointer.h"
 #include <map>
 #include <string>
+#include <errno.h>
+#include <signal.h>
 
 class Servidor : public Thread{
+	
 	typedef unsigned int Tipo_Id_Cliente;
 	
+	struct sigaction accion_signal;
+	
 	private:
-		///clientes conectados
+		static void manejador_signal(int num_signal);
+	
+		static const int SENIAL_CANCELAR;
+	
+	    ///clientes conectados
 		ClientPool pool;
 		/* se fue al pool.
 		std::map<Tipo_Id_Cliente, Cliente>  clientes;
@@ -23,10 +33,11 @@ class Servidor : public Thread{
 		///socket que permite la conexion
 		Socket_Server * socket;
 
+		bool parar;	
+	
 		/** Modelo al que se asocia el servidor.
-		 *  TODO: ver si conviene referencia.
-		 */
-		ModeloServidor& modelo;
+		  */
+		S_ptr<ModeloServidor> modelo;
 	
 	public:
 		/** @brief Constructor de la clase.
@@ -34,14 +45,14 @@ class Servidor : public Thread{
 		 *  @param direccion Direccion ip de la cual va a escuchar
 		 *  @param puerto    Puerto del que va a escuchar
 		 */
-		Servidor(std::string &direccion, unsigned short int puerto, ModeloServidor& mod);
+		Servidor(std::string &direccion, unsigned short int puerto, S_ptr<ModeloServidor> mod);
 		
 		/** @brief Constructor de la clase. En este caso escucha todas
 	     *         las ip
 		 *
 		 *  @param puerto Puerto a traves del cual se va a comunicar
 		 */
-		Servidor(unsigned short int puerto, ModeloServidor& mod);
+		Servidor(unsigned short int puerto, S_ptr<ModeloServidor> mod);
 	
 		/** @brief Destructor de la clase.
 		 */
@@ -51,5 +62,7 @@ class Servidor : public Thread{
 		 *
 		 */
 		void run();
+		
+		
 };
 #endif /*__SERVIDOR_H__*/
