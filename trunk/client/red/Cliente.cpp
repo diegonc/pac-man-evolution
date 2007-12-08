@@ -1,6 +1,5 @@
-#include "client_Cliente.h"
+#include "Cliente.h"
 #include <iostream>
-#include "common_Errores.h"
 
 Cliente::Cliente( const std::string& ip, short port )
 {
@@ -8,7 +7,7 @@ Cliente::Cliente( const std::string& ip, short port )
 	this->port = port;
 }
 
-void* Cliente::run()
+void Cliente::run()
 {
     try {
 	Socket_Cliente sock;

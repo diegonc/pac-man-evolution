@@ -2,6 +2,7 @@
 #define __CLIENTE_H__
 
 #include "../../common/client_socket.h"
+#include "../../common/thread.h"
 #include <string>
 
 class Cliente : public Thread
