@@ -142,8 +142,6 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
 void ModeloServidor::preparar_partida(){
 	this->parar = false;
 	
-	//TODO: no funciona bien, hay que probarla de nuevo
-		
 	//para la casa del fantasma y la salida del pacman
 	S_ptr<EstructuralUnitario> salida_pacman;
 	std::list< S_ptr<EstructuralUnitario> > casa_fantasma;
@@ -156,10 +154,10 @@ void ModeloServidor::preparar_partida(){
 		it_estucturales != lista_estructurales.end();
 		++it_estucturales){
 		aux = *it_estucturales;
-		if( /*aux->es_casa_fantasma()*/aux->get_tipo() == EstructuralUnitario::Casa_Fantasma )
+		if( aux->get_tipo() == EstructuralUnitario::Casa_Fantasma )
 			casa_fantasma.push_back(*it_estucturales);
 		else{
-			if( /*aux->es_salida_pacman()*/ EstructuralUnitario::Salida_Pacman )
+			if( aux->get_tipo() == EstructuralUnitario::Salida_Pacman )
 				salida_pacman = *it_estucturales;
 		}
 	}		
