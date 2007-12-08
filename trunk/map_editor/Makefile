@@ -28,7 +28,7 @@ LDFLAGS=-lm -lpthread
 CC=gcc 
 CXX=g++ 
 
-gtk = si 
+gtk= si 
 
 CXXFLAGS = $(CFLAGS)
 
@@ -55,18 +55,20 @@ fuentes_common ?= $(wildcard ../common/*.$(extension))
 fuentes_server ?= $(wildcard ../server/*.$(extension))
 fuentes_tiny_xml ?= $(wildcard ../common/tinyxml/*.$(extension))
 
+fuentes_server_2 = $(subst ../server/Main.cpp, ,$(fuentes_server))
+
 # REGLAS
 #########
 
 .PHONY: all clean
 
-all: subproyecto
+all: map_editor
 o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
-o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server))
+o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server_2))
 o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_server_files) $(o_tinyxml_files)
 
-subproyecto: $(o_files)
+map_editor: $(o_files)
 	@if [ -z "$(o_files)" ]; \
 	then \
 		echo "No hay archivos de entrada para el cliente (archivos client*.$(extension))."; \
