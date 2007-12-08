@@ -2,7 +2,8 @@
 
 int main(int argc, char *argv[]){
 	return (App::get_instancia(argc, argv))->ejecutar();
-}/*
+}
+/*
 #include "OutputBitStream.h"
 #include <iostream>
 #include <bitset>
@@ -11,9 +12,9 @@ int main(int argc, char *argv[]){
 int main(int argc, char *argv[]){
 	OutputBitStream o;
 	
-	o.append(2,2,true);
-	//o.append(2,2,true);
-	o.skip();
+	o.append(8,2,true);
+	o.append(2,3,true);
+	//o.skip();
 	const unsigned char * data = o.get_data();
 	std::bitset<8> bits(data[0]);
 	std::cout << bits << "\n";
@@ -22,5 +23,4 @@ int main(int argc, char *argv[]){
 	
 	
 		
-}
-*/
+}*/
