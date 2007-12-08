@@ -8,15 +8,16 @@ AppEditor* AppEditor::instancia = NULL; //Inicializo la instancia en null
 		
 /* Constructor Privado: */
 AppEditor::AppEditor(int argc, char* argv[]){
+	//Creo el modelo y la interfaz grafica
 	this->modelo = Modelo::get_instance();
 	this->gui = GUI::get_instance(argc, argv);
 }
 
 /* Destructor Privado: */
 AppEditor::~AppEditor(){
-	/* Temporalmente esto no va
+	//Destruyo el modelo y la interfaz grafica
 	GUI::destroy();
-	Modelo::destroy();*/
+	Modelo::destroy();
 }
 
 /* Get Instance: */
@@ -32,12 +33,7 @@ void AppEditor::ejecutar(){
   //Hago arrancar la interfaz grafica
   gui->start();
   //Uno la interfaz grafica con el hilo principal, cuando termina
-  gui->join(/*gui*/);
-	
-  /*****TEMPORAL*****/
-  GUI::destroy();
-  Modelo::destroy();
-  /******************/
+  gui->join();
 }
 
 /* Destroy: */

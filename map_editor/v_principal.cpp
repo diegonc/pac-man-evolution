@@ -152,16 +152,6 @@ gboolean VPrincipal::delete_event_handler(GtkWidget* widget, GdkEvent* event, gp
 /* Destroy Handler: */
 
 gboolean VPrincipal::destroy_handler(GtkWidget* widget, gpointer data){
-	
-	/**************************************************/
-	
-	Mundo* mundo_alto_nivel = Modelo::get_instance()->get_mundo();
-	Traductor traductor;
-	MundoBajoNivel* mundo_bajo_nivel = traductor.traducir(mundo_alto_nivel);
-	S_ptr<MundoBajoNivel> mundo_ptr(mundo_bajo_nivel);
-	AplicacionGrafica::modelo.set_mundo(mundo_ptr);
-	
-	/**************************************************/
-	
+	//Devuelvo true y destruyo la ventana
 	return TRUE;
 }
