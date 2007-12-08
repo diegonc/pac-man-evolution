@@ -3,10 +3,13 @@
 void Thread::start(){
 	pthread_create(& (this->get_hilo()), NULL, & (Thread::funcion_auxiliar_run), this);
 }
-void Thread::join(Thread *t){
+/*void Thread::join(Thread *t){
 	pthread_join(t->get_hilo(), NULL);
 }
 void Thread::join(pthread_t hilo){
+	pthread_join(this->get_hilo(), NULL);
+}*/
+void Thread::join(){
 	pthread_join(this->get_hilo(), NULL);
 }
 int Thread::thread_kill(int signal){

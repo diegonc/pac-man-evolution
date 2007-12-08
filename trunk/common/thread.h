@@ -13,9 +13,11 @@ class Thread{
 			
 		void start();
 	
-		void join(Thread *t);
+		/*void join(Thread *t);
 	
-		void join(pthread_t hilo);
+		void join(pthread_t hilo);*/
+
+      void join();
 	
 		int thread_kill(int signal);
 	
