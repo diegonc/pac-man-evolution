@@ -5,6 +5,7 @@
 #include "ClientPool.h"
 #include "../common/server_socket.h"
 #include "../common/thread.h"
+#include "ModeloServidor.h"
 #include <map>
 #include <string>
 
@@ -12,15 +13,20 @@ class Servidor : public Thread{
 	typedef unsigned int Tipo_Id_Cliente;
 	
 	private:
-		//clientes conectados
+		///clientes conectados
 		ClientPool pool;
 		/* se fue al pool.
 		std::map<Tipo_Id_Cliente, Cliente>  clientes;
 		//TODO forma de asignar los ids....por el momento, a manopla
 		unsigned int ultimo_id;
 		*/
-		//socket que permite la conexion
+		///socket que permite la conexion
 		Socket_Server * socket;
+
+		/** Modelo al que se asocia el servidor.
+		 *  TODO: ver si conviene referencia.
+		 */
+		ModeloServidor& modelo;
 	
 	public:
 		/** @brief Constructor de la clase.
@@ -28,14 +34,14 @@ class Servidor : public Thread{
 		 *  @param direccion Direccion ip de la cual va a escuchar
 		 *  @param puerto    Puerto del que va a escuchar
 		 */
-		Servidor(std::string &direccion, unsigned short int puerto);
+		Servidor(std::string &direccion, unsigned short int puerto, ModeloServidor& mod);
 		
 		/** @brief Constructor de la clase. En este caso escucha todas
 	     *         las ip
 		 *
 		 *  @param puerto Puerto a traves del cual se va a comunicar
 		 */
-		Servidor(unsigned short int puerto);
+		Servidor(unsigned short int puerto, ModeloServidor& mod);
 	
 		/** @brief Destructor de la clase.
 		 */
