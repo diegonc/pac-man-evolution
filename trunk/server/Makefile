@@ -31,11 +31,12 @@ CXX=g++
 CXXFLAGS = $(CFLAGS)
 # VARIABLES CALCULADAS A PARTIR DE LA CONFIGURACION
 ####################################################
+gtk = uso
 
 # Agrego flags y libs de GTK+ de ser necesario.
 ifdef gtk
-CFLAGS += $(shell pkg-config --cflags gtk+-2.0)
-CXXFLAGS += $(shell pkg-config --cflags gtk+-2.0)
+#CFLAGS += $(shell pkg-config --cflags gtk+-2.0)
+#CXXFLAGS += $(shell pkg-config --cflags gtk+-2.0)
 LDFLAGS += $(shell pkg-config --libs gtk+-2.0)
 endif
 
@@ -46,10 +47,13 @@ else
 enlazador = $(CXX) 
 endif
 
+extension_o = o
+
 # Si no especifica archivos, tomo todos.
 fuentes ?= $(wildcard *.$(extension))
 fuentes_common ?= $(wildcard ../common/*.$(extension))
-
+#fuentes_map_editor ?= $(wildcard ../map_editor/*.$(extension_o))
+#fuetnes_tiny_xml ?= $(wildcard ../common/tinyxml/*.$(extension_o))
 
 # REGLAS
 #########
@@ -57,9 +61,12 @@ fuentes_common ?= $(wildcard ../common/*.$(extension))
 .PHONY: all clean
 
 all: subproyecto
-
+#o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
+#o_map_editor = $(patsubst %.$(extension),%.o,$(fuentes_map_editor)) #$(o_common_files) $(o_server_files) $(o_tinyxml_files)
+o_map_editor_files ?= $(wildcard ../map_editor/*.$(extension_o))
+o_tinyxml_files ?= $(wildcard ../common/tinyxml/*.$(extension_o))
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
-o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files)
+o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_map_editor_files) $(o_tinyxml_files)
 
 subproyecto: $(o_files)
 	@if [ -z "$(o_files)" ]; \
