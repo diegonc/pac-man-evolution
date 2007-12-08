@@ -51,6 +51,9 @@ class VPrincipal : public Observador {
       	
     //Actualizar: Actualiza el panel de niveles cuando cambia el mundo.
 	void actualizar(Observable * observable, void * param);
+   
+    /* Mostrar Msg: Muestra el mensaje pasado por parametro por una ventana de dialogo */
+  	void mostrar_msg(char* msg);
 
    private:
 	   

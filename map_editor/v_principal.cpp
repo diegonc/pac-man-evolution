@@ -64,12 +64,30 @@ void VPrincipal::mostrar(){
 //Actualizar:
 
 void VPrincipal::actualizar(Observable * observable, void * param){
+	//Obtengo el nuevo mundo y le agrego al panel de mundos como observador
 	Mundo* mundo = Modelo::get_instance()->get_mundo();
 	mundo->agregar_observador(this->panel_mundo);
+	//Aviso a los observadores del mundo que se actualizo
 	mundo->set_cambio();
 	mundo->avisar_observadores(NULL);
+	//Aviso a los observadores del panel de niveles que se actualizo
 	panel_mundo->set_cambio();
 	panel_mundo->avisar_observadores(NULL);
+}
+
+/* Mostrar Msg: */
+
+void VPrincipal::mostrar_msg(char* msg){
+	//Creo un dialogo de error con el mensaje recibido por param
+	GtkWidget* dialog = gtk_message_dialog_new (GTK_WINDOW(this->get_widget()),
+						  GTK_DIALOG_DESTROY_WITH_PARENT,
+						  GTK_MESSAGE_ERROR,
+						  GTK_BUTTONS_CLOSE,
+						  msg);
+	//Corro el dialogo
+	gtk_dialog_run (GTK_DIALOG (dialog));
+	//Lo destruyo
+	gtk_widget_destroy (dialog);
 }
 
 //Construir:

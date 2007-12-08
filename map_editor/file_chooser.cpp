@@ -39,6 +39,8 @@ FileChooser::~FileChooser(){
 
 void FileChooser::ejecutar(){
 	Mundo* mundo = Modelo::get_instance()->get_mundo();
+	//Referencia a la ventana principal del programa
+	VPrincipal* vprincipal = GUI::get_instance(0,0)->get_ventana_principal();
 	//Corro el dialogo del file chooser, y si la respuesta del usuario es aceptar...
 	if (gtk_dialog_run (GTK_DIALOG (this->file_chooser)) == GTK_RESPONSE_ACCEPT) {
 		char* filename = this->get_filename();
@@ -46,7 +48,7 @@ void FileChooser::ejecutar(){
 		if (this->accion == GTK_FILE_CHOOSER_ACTION_SAVE){
 			if (!mundo->toXml(filename))
 				//Si se produjo un error guardando el archivo notifico por pantalla
-				this->mostrar_msg("Error guardando archivo.");
+				vprincipal->mostrar_msg("Error guardando archivo.");
 		} else {
 			//Si la accion es abrir, creo un nuevo mundo y lo cargo desde el archivo con nombre filename
 			Mundo* mundo_nuevo = new Mundo();
@@ -55,7 +57,7 @@ void FileChooser::ejecutar(){
 				Modelo::get_instance()->set_mundo(mundo_nuevo);
 			} else {
 				//Sino muestro error y borro el nuevo mundo
-				this->mostrar_msg("Error abriendo archivo.");
+				vprincipal->mostrar_msg("Error abriendo archivo.");
 				delete (mundo_nuevo);
 			}
 		}
@@ -74,19 +76,4 @@ GtkWidget* FileChooser::get_widget(){
 
 char* FileChooser::get_filename(){
 	return gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (this->file_chooser));
-}
-
-/* Mostrar Msg: */
-
-void FileChooser::mostrar_msg(char* msg){
-	//Creo un dialogo de error con el mensaje recibido por param
-	GtkWidget* dialog = gtk_message_dialog_new (GTK_WINDOW(GUI::get_instance(0,0)->get_ventana_principal()->get_widget()),
-						  GTK_DIALOG_DESTROY_WITH_PARENT,
-						  GTK_MESSAGE_ERROR,
-						  GTK_BUTTONS_CLOSE,
-						  msg);
-	//Corro el dialogo
-	gtk_dialog_run (GTK_DIALOG (dialog));
-	//Lo destruyo
-	gtk_widget_destroy (dialog);
 }

@@ -51,11 +51,6 @@ class VIngDatos {
   	/* Get Ancho: Devuelve el ancho del nivel ingresado por el usuario. */
   	int get_ancho();
   
-  private:
-  
-  	/* Mostrar Msg: Muestra el mensaje pasado por parametro por una ventana de dialogo */
-  	void mostrar_msg(char* msg);
-  
 };
 
 #endif
