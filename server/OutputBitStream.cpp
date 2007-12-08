@@ -51,7 +51,7 @@ void OutputBitStream::grow( unsigned int n ){
 		unsigned int new_buffer_size = ( bsize % 8==0 ) ? bsize/8 : ( bsize/8 + 1);
 		unsigned char * new_buffer = new unsigned char [ new_buffer_size ];
 		//los copio
-		memcpy(new_buffer, buffer, new_buffer_size - buffer_size);
+		memcpy(new_buffer, buffer, buffer_size);
 		//borro el viejo
 		delete[] this->buffer;
 		//setteo los tamaños
@@ -87,7 +87,7 @@ void OutputBitStream::shift_left(const unsigned int n_bits){
 	for(int index = bit_index - 1 ; index >= 0; index--){
 		aux = (index + n_bits) / 8 ;
 		if(aux <= buffer_size ){
-			if(	*buffer &  (1 << index % 8) ) //era 1
+			if(	*( buffer + index / 8 ) &  (1 << index % 8) ) //era 1
 				(*( buffer + aux )) |= (  1 << (index + n_bits) % 8) ;
 			else
 				(*( buffer + aux )) &= ~( 1 << (index + n_bits) % 8) ;
