@@ -86,7 +86,7 @@ bool Nivel::toXml(){
 	//Creo el documento xml para guardar el nivel
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((this->get_nombre()).c_str());
 	//Si se pudo crear el documento
-	if (documento != NULL){
+	if (!documento.es_nulo()){
 			//Creo un nodo raiz denominado "nivel"
 			S_ptr<TiXmlElement> nodo_raiz = new TiXmlElement("Nivel");
 			//Almaceno los atributos del nivel: Nombre, Ancho y Alto
@@ -111,7 +111,7 @@ bool Nivel::fromXml(){
 	//Creo el documento xml para cargar el nivel
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((this->get_nombre()).c_str());
 	//Si se pudo crear el documento y se pudo cargar
-	if ((documento != NULL) && (documento->LoadFile())){
+	if ((!documento.es_nulo()) && (documento->LoadFile())){
 		//Obtengo el nodo raiz del documento (nodo "nivel")
 		TiXmlNode* nodo_raiz = documento->RootElement();		
 		if (nodo_raiz != NULL) {

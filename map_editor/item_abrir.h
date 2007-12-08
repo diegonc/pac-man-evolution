@@ -4,6 +4,8 @@
 #define ITEM_ABRIR_H_
 
 #include "item.h"
+#include "gui.h"
+#include "file_chooser.h"
 
 /* CLASE ITEM ABRIR: Clase que representa el item "abrir" para un menu.
    Hereda de item, implementa el ejecutar para realizar la accion correspondiente cuando se lo clikea. */

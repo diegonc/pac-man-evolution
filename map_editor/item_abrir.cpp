@@ -12,5 +12,8 @@ ItemAbrir::ItemAbrir() : Item(N_ABRIR){}
 //Ejecutar:
 
 void ItemAbrir::ejecutar(GtkWidget* widget, gpointer data){
-	g_print("[Apretaste menu archivo->abrir]\n");
+	S_ptr<FileChooser> file_chooser (new FileChooser("Abrir Mundo", 
+													 GUI::get_instance(0,0)->get_ventana_principal()->get_widget(),
+													 GTK_FILE_CHOOSER_ACTION_OPEN));
+	file_chooser->ejecutar();
 }

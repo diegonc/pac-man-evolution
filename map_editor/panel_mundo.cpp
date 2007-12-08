@@ -31,16 +31,33 @@ GtkWidget* PanelMundo::get_widget() const{
 	return this->frame;
 }
 
-//Agregar Nivel:
+//Actualizar:
 
-void PanelMundo::agregar_nivel(S_ptr<Nivel> nivel){
+void PanelMundo::actualizar(Observable * observable, void * param){
+	Mundo* mundo = (Mundo*) observable;
+	this->niveles.clear();
+	for (unsigned int cont = 1; cont <= mundo->get_cant_niveles(); cont++)
+		this->niveles.push_back(mundo->get_nivel(cont));
+	this->redibujar();
+	if (niveles.empty()){
+		this->set_cambio();
+		this->avisar_observadores(NULL);
+	}
+}
+
+//Redibujar:
+
+void PanelMundo::redibujar(){
 	GtkTreeIter    iter;
-	
-	gtk_list_store_append (this->lista_mapas, &iter);
-	gtk_list_store_set (this->lista_mapas, &iter, 0, this->niveles.size()+1, 1, (nivel->get_nombre()).c_str(), -1);
-	
-	this->niveles.push_back(nivel);
-	
+	int posicion = 1;
+	gtk_list_store_clear(this->lista_mapas);
+	vector<S_ptr<Nivel> >::iterator it;
+	for (it = this->niveles.begin(); it != niveles.end(); ++it){
+		S_ptr<Nivel> nivel = (*it);
+		gtk_list_store_append (this->lista_mapas, &iter);
+		gtk_list_store_set (this->lista_mapas, &iter, 0, posicion, 1, (nivel->get_nombre()).c_str(), -1);
+		posicion++;
+	}
 }
 
 //Item seleccionado:

@@ -12,5 +12,8 @@ ItemGuardar::ItemGuardar() : Item(N_GUARDAR){}
 //Ejecutar:
 
 void ItemGuardar::ejecutar(GtkWidget* widget, gpointer data){
-	g_print("[Apretaste menu archivo->guardar]\n");
+	S_ptr<FileChooser> file_chooser (new FileChooser("Guardar Mundo", 
+													 GUI::get_instance(0,0)->get_ventana_principal()->get_widget(),
+													 GTK_FILE_CHOOSER_ACTION_SAVE));
+	file_chooser->ejecutar();
 }

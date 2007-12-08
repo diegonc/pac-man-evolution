@@ -50,6 +50,15 @@ void VPrincipal::mostrar(){
 	gtk_widget_show_all (this->window);
 }
 
+//Actualizar:
+
+void VPrincipal::actualizar(Observable * observable, void * param){
+	Mundo* mundo = Modelo::get_instance()->get_mundo();
+	mundo->agregar_observador(this->panel_mundo);
+	mundo->set_cambio();
+	mundo->avisar_observadores(NULL);
+}
+
 //Construir:
 
 void VPrincipal::construir(){
@@ -96,19 +105,13 @@ void VPrincipal::construir(){
 	GtkWidget* p_modif = this->panel_modif->get_widget();
 	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_modif, FALSE, TRUE, 0);
 	
-	//Creo un modelo
- 	modeloTemporal = new Modelo();
-  	//Obtengo su mundo
-    Mundo* mundo = modeloTemporal->get_mundo();
-	if (!mundo->fromXml("mundo.xml"))
-		std::cout << "error cargando mundo" << std::endl << std::flush;
-    //Agrego un nivel de 50 x 50
-    //mundo->agregar_nivel("nivel 50 x 50", 50, 50);
-	//Agrego uno de 10 x 10
-	//mundo->agregar_nivel("nivel 10 x 10", 10,10);
-	this->panel_mundo->agregar_nivel(mundo->get_nivel(1));
-	this->panel_mundo->agregar_nivel(mundo->get_nivel(2));
+	Modelo::get_instance()->agregar_observador(this);
 	
+  	//Obtengo el mundo del modelo
+    Mundo* mundo = Modelo::get_instance()->get_mundo();
+	mundo->agregar_observador(this->panel_mundo);
+	mundo->fromXml("mundo.xml");
+		
   	this->vista_mapa = new VistaMapa(mundo->get_nivel(1));
 	
 	this->panel_mundo->agregar_observador(this->vista_mapa);
@@ -134,15 +137,12 @@ gboolean VPrincipal::destroy_handler(GtkWidget* widget, gpointer data){
 	
 	/**************************************************/
 	
-	VPrincipal* v_princ = (VPrincipal*) data;
-	Mundo* mundo_alto_nivel = v_princ->modeloTemporal->get_mundo();
-	if (!mundo_alto_nivel->toXml("mundo.xml"))
-		std::cout << "error guardando mundo" << std::endl << std::flush;
+	Mundo* mundo_alto_nivel = Modelo::get_instance()->get_mundo();
 	Traductor traductor;
 	MundoBajoNivel* mundo_bajo_nivel = traductor.traducir(mundo_alto_nivel);
 	S_ptr<MundoBajoNivel> mundo_ptr(mundo_bajo_nivel);
 	AplicacionGrafica::modelo.set_mundo(mundo_ptr);
-	delete(v_princ->modeloTemporal);
+	
 	/**************************************************/
 	
 	return TRUE;

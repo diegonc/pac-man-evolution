@@ -12,5 +12,6 @@ ItemNuevo::ItemNuevo() : Item(N_NUEVO){}
 //Ejecutar:
 
 void ItemNuevo::ejecutar(GtkWidget* widget, gpointer data){
-	g_print("[Apretaste menu archivo->nuevo]\n");
+	Mundo* mundo_nuevo = new Mundo();
+	Modelo::get_instance()->set_mundo(mundo_nuevo);
 }

@@ -47,7 +47,9 @@ GtkWidget* VistaMapa::get_widget() const{
 //Actualizar:
 
 void VistaMapa::actualizar(Observable * observable, void * param){
-	S_ptr<Nivel> nivel = *((S_ptr<Nivel>*) param);
+	S_ptr<Nivel> nivel;
+	if (param != NULL)
+		nivel = *((S_ptr<Nivel>*) param);
 	this->redibujar(nivel);
 }
 
@@ -80,11 +82,16 @@ void VistaMapa::liberar_matriz(GtkWidget*** &matriz){
 
 void VistaMapa::redibujar(S_ptr<Nivel> nivel){
 	this->nivel = nivel;
-	gtk_widget_destroy(this->tabla);
-	this->tabla = gtk_table_new(nivel->get_mapa()->get_alto(),nivel->get_mapa()->get_ancho(),FALSE);
-	gtk_box_pack_start (GTK_BOX (hbox), this->tabla, FALSE, FALSE, 0);
-	gtk_widget_show(this->tabla);
-	this->dibujar();
+	if (this->tabla != NULL){
+		gtk_widget_destroy(this->tabla);
+		this->tabla = NULL;
+	}
+	if (!nivel.es_nulo()){
+		this->tabla = gtk_table_new(nivel->get_mapa()->get_alto(),nivel->get_mapa()->get_ancho(),FALSE);
+		gtk_box_pack_start (GTK_BOX (hbox), this->tabla, FALSE, FALSE, 0);
+		gtk_widget_show(this->tabla);
+		this->dibujar();
+	}
 }
 
 //Dibujar:
@@ -247,10 +254,12 @@ gboolean VistaMapa::click_handler (GtkWidget      *widget,
 	
 	VistaMapa* vista_mapa = (VistaMapa*) data;
 	
-	if (event->button == 1)
-		vista_mapa->agregar_elemento(event->y, event->x);
-	else
-		vista_mapa->quitar_elemento(event->y, event->x);
+	if (!(vista_mapa->nivel).es_nulo()) {
+		if (event->button == 1)
+			vista_mapa->agregar_elemento(event->y, event->x);
+		else
+			vista_mapa->quitar_elemento(event->y, event->x);
+	}
 	
 	return TRUE;
 }

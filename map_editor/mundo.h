@@ -7,13 +7,14 @@
 #include "definiciones.h"
 #include <list>
 #include "../common/smart_pointer.h"
+#include "../common/observable.h"
 
 using namespace std;
 
 /* CLASE MUNDO: Esta clase representa el mundo, compuesto por niveles. El mismo permite insertar o quitar nuevos
    niveles, reordenarlos, e insertar o quitar elementos estructurales y modificadores en un mapa determinado. */
 
-class Mundo {
+class Mundo : public Observable {
 
 	//Atributos
 	private:
