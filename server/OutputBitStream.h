@@ -13,6 +13,7 @@ class OutputBitStream
 {
 	private:
 		unsigned char * buffer;
+		unsigned char * _return; //TODO!! CORREGIR
 		unsigned int bit_index;
 		unsigned int buffer_size;
 	
