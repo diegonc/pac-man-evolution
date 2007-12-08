@@ -80,11 +80,16 @@ string Nivel::get_nombre(){
 
 /* ToXML: */
 
-bool Nivel::toXml(){
-	//Armo el nombre de archivo segun el nombre del nivel + .xml
-	string filename = this->get_nombre() + ".xml";
+bool Nivel::toXml(char* filename_mundo){
+	//Paso el filename del mundo a un string y busco su extension. Si esta la remuevo.
+	string f_mundo (filename_mundo);
+	int pos_ext = f_mundo.find(EXT_MUNDO);
+	if ( pos_ext != string::npos)
+		f_mundo.erase(pos_ext, pos_ext + 4);
+	//Armo el filename del nivel, con el formato especificado
+	string filename = f_mundo + "_" + this->get_nombre() + EXT_NIVEL;
 	//Creo el documento xml para guardar el nivel
-	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((this->get_nombre()).c_str());
+	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((filename).c_str());
 	//Si se pudo crear el documento
 	if (!documento.es_nulo()){
 			//Creo un nodo raiz denominado "nivel"
@@ -105,11 +110,16 @@ bool Nivel::toXml(){
 	
 /* FromXML: */
 
-bool Nivel::fromXml(){
-	//Armo el nombre de archivo segun el nombre del nivel + .xml
-	string filename = this->get_nombre() + ".xml";
+bool Nivel::fromXml(char* filename_mundo){
+	//Paso el filename del mundo a un string y busco su extension. Si esta la remuevo.
+	string f_mundo (filename_mundo);
+	int pos_ext = f_mundo.find(EXT_MUNDO);
+	if ( pos_ext != string::npos)
+		f_mundo.erase(pos_ext, pos_ext + 4);
+	//Armo el filename del nivel, con el formato especificado
+	string filename = f_mundo + "_" + this->get_nombre() + EXT_NIVEL;
 	//Creo el documento xml para cargar el nivel
-	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((this->get_nombre()).c_str());
+	S_ptr<TiXmlDocument> documento = new TiXmlDocument ((filename).c_str());
 	//Si se pudo crear el documento y se pudo cargar
 	if ((!documento.es_nulo()) && (documento->LoadFile())){
 		//Obtengo el nodo raiz del documento (nodo "nivel")

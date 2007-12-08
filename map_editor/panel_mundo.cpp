@@ -17,6 +17,8 @@ PanelMundo::PanelMundo(){
 	
 	this->crear_panel_botones();
 	
+	this->avisar_observadores(NULL);
+	
 }
     
 //Destructor: Libera los recursos consumidos por el panel.

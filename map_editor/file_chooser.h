@@ -7,7 +7,7 @@
 #include "gui.h"
 #include <gtk/gtk.h>
 
-/* CLASE FILE CHOOSER: Permite guardar y cargar archivos de mundos, con extension xml. */
+/* CLASE FILE CHOOSER: Permite guardar y cargar archivos xml de mundos. */
 
 class FileChooser {
 

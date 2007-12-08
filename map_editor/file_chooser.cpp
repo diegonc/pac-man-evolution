@@ -18,7 +18,9 @@ FileChooser::FileChooser(char* titulo, GtkWidget* window, GtkFileChooserAction a
 				      NULL);
 	gtk_file_chooser_set_do_overwrite_confirmation(GTK_FILE_CHOOSER(file_chooser), true);
 	this->filtro_xml = gtk_file_filter_new ();
-	gtk_file_filter_add_pattern(filtro_xml, "*.xml");
+	string pattern ("*");
+	pattern += EXT_MUNDO;
+	gtk_file_filter_add_pattern(filtro_xml, pattern.c_str());
 	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), filtro_xml);
 }
 
@@ -34,22 +36,18 @@ void FileChooser::ejecutar(){
 	Mundo* mundo = Modelo::get_instance()->get_mundo();
 	if (gtk_dialog_run (GTK_DIALOG (this->file_chooser)) == GTK_RESPONSE_ACCEPT) {
 		char* filename = this->get_filename();
-		//if (this->cumple_filtro())
-			if (this->accion == GTK_FILE_CHOOSER_ACTION_SAVE){
-				if (!mundo->toXml(filename))
-					this->mostrar_msg("Error guardando archivo.");
+		if (this->accion == GTK_FILE_CHOOSER_ACTION_SAVE){
+			if (!mundo->toXml(filename))
+				this->mostrar_msg("Error guardando archivo.");
+		} else {
+			Mundo* mundo_nuevo = new Mundo();
+			if (mundo_nuevo->fromXml(filename)){
+				Modelo::get_instance()->set_mundo(mundo_nuevo);
 			} else {
-				Mundo* mundo_nuevo = new Mundo();
-				if (mundo_nuevo->fromXml(filename)){
-					Modelo::get_instance()->set_mundo(mundo_nuevo);
-				} else {
-					this->mostrar_msg("Error abriendo archivo.");
-					delete (mundo_nuevo);
-				}
+				this->mostrar_msg("Error abriendo archivo.");
+				delete (mundo_nuevo);
 			}
-		//else {
-			//this->mostrar_msg("Error: Nombre de archivo incorrecto. Debe ser de extension .xml");
-		//}	
+		}
 		g_free (filename);
 	}
 }

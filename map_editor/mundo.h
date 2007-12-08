@@ -65,12 +65,12 @@ class Mundo : public Observable {
 	/* Get Cant Niveles: Devuelve la cantidad de niveles del mundo. */
 	unsigned int get_cant_niveles();
 	
-	/* ToXML: Guarda el mundo y todos sus niveles en archivos xml. Se debe pasar por parametro el nombre del archivo
-	   que contiene la info del mundo.
+	/* ToXML: Guarda el mundo y todos sus niveles en archivos de la extension adecuada. Se debe pasar por parametro el nombre del archivo
+	   donde guardar la info del mundo.
 	   Devuelve true si se pudo guardar, false en caso contrario. */
 	bool toXml(char* nombre);
 	
-	/* fromXML: Carga el mundo con todos sus niveles desde el archivo xml cuyo nombre se pasa por parametro.
+	/* fromXML: Carga el mundo con todos sus niveles desde el un archivo cuyo nombre se pasa por parametro.
 	   Devuelve true si pudo cargar, false en caso contrario. */
 	bool fromXml(char* nombre);
 

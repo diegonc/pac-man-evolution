@@ -114,8 +114,13 @@ unsigned int Mundo::get_cant_niveles(){
 
 bool Mundo::toXml(char* nombre){
 	bool no_error = true; //controla que no haya errores
-	//Intento crear un doc con el nombre pasado por parametro
-	S_ptr<TiXmlDocument> documento = new TiXmlDocument (nombre);
+	//Pongo el nombre en un string y busco su extension. Si no la tiene la agrego.
+	string filename (nombre);
+	if (filename.find(EXT_MUNDO) == string::npos)
+		filename += EXT_MUNDO;
+	cout << filename << endl << flush;
+	//Intento crear un doc con el filename recien creado
+	S_ptr<TiXmlDocument> documento = new TiXmlDocument (filename.c_str());
 	//Si se pudo crear el documento
 	if (!documento.es_nulo()){
 			//Creo un nodo raiz denominado "mundo"
@@ -137,7 +142,7 @@ bool Mundo::toXml(char* nombre){
 				//Inserto el "nivel" en el nodo raiz, o sea "mundo"
 				nodo_raiz->InsertEndChild(*nodo_nivel);
 				//Paso el nivel a un archivo xml
-				no_error = (*it)->toXml();
+				no_error = (*it)->toXml(nombre);
 				it++;
 				num_nivel++;
 			}
@@ -155,8 +160,13 @@ bool Mundo::toXml(char* nombre){
 	
 bool Mundo::fromXml(char* nombre){
 	bool no_error = true; //controla que no haya errores
+	//Pongo el nombre en un string y busco su extension. Si no la tiene la agrego.
+	string filename (nombre);
+	if (filename.find(EXT_MUNDO) == string::npos)
+		filename += EXT_MUNDO;
+	cout << filename << endl << flush;
 	//Intento abrir un doc con el nombre pasado por parametro
-	S_ptr<TiXmlDocument> documento = new TiXmlDocument (nombre);
+	S_ptr<TiXmlDocument> documento = new TiXmlDocument (filename.c_str());
 	//Si se pudo crear el documento y se pudo cargar
 	if ((!documento.es_nulo()) && (documento->LoadFile())){
 			//Obtengo el nodo raiz
@@ -176,7 +186,7 @@ bool Mundo::fromXml(char* nombre){
 						//Agrego el nivel al mundo
 						this->agregar_nivel(nombre_nivel, alto_nivel, ancho_nivel);
 						//Cargo el mapa del nivel desde un xml
-						no_error = this->niveles.back()->fromXml();
+						no_error = this->niveles.back()->fromXml(nombre);
 						//Obtengo el siguiente nivel
 						nodo_nivel = nodo_nivel->NextSibling();
 				}

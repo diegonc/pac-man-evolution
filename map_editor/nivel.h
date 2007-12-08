@@ -52,13 +52,15 @@ class Nivel {
 	/* Get Nombre: Devuelve el nombre del nivel. */
 	string get_nombre();
 	
-	/* ToXML: Guarda el nivel en un archivo xml, que lleva como nombre el del nivel.
+	/* ToXML: Guarda el nivel en un archivo xml con extension EXT_NIVEL, que lleva el formato: nombreArchivoMundo_nombreNivel + EXT_NIVEL.
+	   Se pasa por parametro el nombre del archivo donde se guardo el mundo.
 	   Devuelve true si se pudo guardar, false en caso contrario. */
-	bool toXml();
+	bool toXml(char* filename_mundo);
 	
-	/* FromXML: Carga el nivel desde un archivo xml, que lleva como nombre el del nivel.
+	/* FromXML: Carga el nivel desde un archivo xml con extension EXT_NIVEL, que lleva el formato: nombreArchivoMundo_nombreNivel + EXT_NIVEL.
+	   Se pasa por parametro el nombre del archivo donde se guardo el mundo.
 	   Devuelve true si se pudo cargar, false en caso contrario. */
-	bool fromXml();
+	bool fromXml(char* filename_mundo);
 
 };
 
