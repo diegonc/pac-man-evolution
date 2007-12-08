@@ -36,11 +36,6 @@ class FileChooser {
   	/* Get FileName: Devuelve el nombre del archivo seleccionado */
   	char* get_filename();
   
-  private:
-  
-  	/* Mostrar Msg: Muestra el mensaje pasado por parametro por una ventana de dialogo */
-  	void mostrar_msg(char* msg);
-  
 };
 
 #endif
