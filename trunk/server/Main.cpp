@@ -12,11 +12,13 @@ int main(int argc, char *argv[]){
 int main(int argc, char *argv[]){
 	OutputBitStream o;
 	
-	o.append( 2, 0 ); // version
-    o.append( 3, 7 ); // tipo
-    o.append( 3, 2);  // aux
-	o.append(8,2,true);
-	//o.append(2,3,true);
+	//o.append( 2, 0 ); // version
+    //o.append( 3, 7 ); // tipo
+    //o.append( 3, 2);  // aux
+	//o.append(8,2,true);
+	o.append( 3, 4 );
+    o.append( 4, 24 );
+    o.append( 1, 1 );
 	//o.skip();
 	const unsigned char * data = o.get_data();
 	{
@@ -26,8 +28,13 @@ int main(int argc, char *argv[]){
 	}	
 	{
 	std::bitset<8> bits(data[1]);
-	std::cout << bits << "\n";
+	std::cout << bits << " ";
 	//std::cout << data[0];
+	}
+	{
+	std::bitset<8> bits(data[2]);
+	std::cout << bits << "\n";
+	
 	}
 	
 		
