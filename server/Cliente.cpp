@@ -3,13 +3,23 @@
 #include "InputBitStream.h"
 #include "SocketReader.h"
 
-Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket){}
+Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket)
+{
+	this->id = id;
+	this->socket = socket;
+	// modelo->agregar_jugador( Tipo_Jugador( new Jugador(id) ) );
+}
 
 void Cliente::run()
 {
 
 }
-Cliente::~Cliente(){}
+
+Cliente::~Cliente()
+{
+	if( socket )
+		delete socket;
+}
 
 S_ptr<Paquete> Cliente::recibir_mensaje()
 {
