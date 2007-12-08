@@ -23,6 +23,8 @@ Paquete* Paquete::crear( int tipo ){
 
 void Paquete::serialize( OutputBitStream& bs )
 {
-	// TODO: Version
-	// TODO: Tipo
+	// Version
+	bs.append( 2, 0 /* TODO: hardcoded?!*/	);
+	// Tipo
+	bs.append( 3, tipo );
 }
