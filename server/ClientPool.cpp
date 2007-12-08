@@ -22,6 +22,6 @@ void ClientPool::lanzar_cliente( Socket_Cliente* sock )
 void ClientPool::join_all()
 {
     std::list<Cliente*>::iterator it = clientes.begin();
-    /*while( it != clientes.end() )
-        (*it)->join( (*it++) );*/
+    while( it != clientes.end() )
+        (*it)->join( /*(*it++)*/ );
 }
