@@ -39,6 +39,8 @@ class Servidor : public Thread{
 		  */
 		S_ptr<ModeloServidor> modelo;
 	
+		void set_propiedades_signal(const int id_signal);
+	
 	public:
 		/** @brief Constructor de la clase.
 		 *
