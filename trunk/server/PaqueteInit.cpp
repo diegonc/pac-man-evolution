@@ -4,9 +4,9 @@ namespace {
 	const char ID = 0;
 }
 
-PaqueteInit::PaqueteInit( Tipo_Jugador j, MapaBajoNivel& m ) : Paquete( ID ), mapa( m )
+PaqueteInit::PaqueteInit( bool pac, MapaBajoNivel& m ) : Paquete( ID ), mapa( m )
 {
-	esPacman = ( j->get_personaje()->get_tipo() == Personaje::pacman );
+	esPacman = pac;
 }
 
 void PaqueteInit::deserialize( InputBitStream& bs )
@@ -53,4 +53,5 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 	bs.skip();
 	
 	// TODO: Escribir elementos del mapa.
+	bs.append( 8, 0 );
 }
