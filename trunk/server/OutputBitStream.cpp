@@ -26,7 +26,7 @@ void OutputBitStream::append( const unsigned int n, int val, bool grow ){
 		shift_left(n);
 				
 		unsigned int index = 0;
-		while( /*val >= 2 &&*/ index < n){
+		while( index < n){
 			if( val  & (1 << index) ) //si hay 1
 				(*( buffer + index / 8 )) |= (1 << index); //guardo 1
 			index++;
@@ -38,7 +38,7 @@ void OutputBitStream::append( const unsigned int n, int val, bool grow ){
 
 void OutputBitStream::skip(){
 	shift_left(buffer_size * 8 - bit_index - 1);
-		
+	bit_index = buffer_size * 8;
 }
 
 void OutputBitStream::grow( unsigned int n ){
