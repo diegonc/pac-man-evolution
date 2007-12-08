@@ -4,7 +4,7 @@ LDFLAGS=-lpthread
 
 CXXFLAGS=-ggdb
 
-TARGET=test-pinit
+TARGET=test-obs
 
 OBJS=main.o \
      ../../server/EstructuralPasillo.o \
@@ -35,4 +35,4 @@ test: $(TARGET)
 	./$^
 
 clean:
-	@rm -vf $(OBJS) $(TARGET)
+	rm -vf $(OBJS) $(TARGET)
