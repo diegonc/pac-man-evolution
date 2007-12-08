@@ -23,5 +23,5 @@ void ClientPool::join_all()
 {
     std::list<Cliente*>::iterator it = clientes.begin();
     while( it != clientes.end() )
-        (*it)->join( /*(*it++)*/ );
+        (*it)->join();
 }

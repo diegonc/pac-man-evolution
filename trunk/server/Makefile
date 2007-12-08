@@ -63,9 +63,12 @@ all: server
 #o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
 #o_map_editor = $(patsubst %.$(extension),%.o,$(fuentes_map_editor)) #$(o_common_files) $(o_server_files) $(o_tinyxml_files)
 o_map_editor_files ?= $(wildcard ../map_editor/*.$(extension_o))
+
+o_map_editor_files_2 = $(subst ../map_editor/editor_mapas.o, ,$(o_map_editor_files))
+
 o_tinyxml_files ?= $(wildcard ../common/tinyxml/*.$(extension_o))
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
-o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_map_editor_files) $(o_tinyxml_files)
+o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_map_editor_files_2) $(o_tinyxml_files)
 
 server: $(o_files)
 	@if [ -z "$(o_files)" ]; \

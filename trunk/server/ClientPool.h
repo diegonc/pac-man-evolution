@@ -17,6 +17,7 @@ class ClientPool
         void lanzar_cliente( Socket_Cliente* sock );
 
         void join_all();
+	
 };
 
 #endif /* __CLIENTPOOL_H__ */
