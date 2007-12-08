@@ -53,6 +53,7 @@ endif
 fuentes ?= $(wildcard *.$(extension))
 fuentes_common ?= $(wildcard ../common/*.$(extension))
 fuentes_server ?= $(wildcard ../server/*.$(extension))
+fuentes_tiny_xml ?= $(wildcard ../common/tinyxml/*.$(extension))
 
 # REGLAS
 #########
@@ -60,10 +61,10 @@ fuentes_server ?= $(wildcard ../server/*.$(extension))
 .PHONY: all clean
 
 all: subproyecto
-
+o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
 o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server))
-o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_server_files)
+o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_server_files) $(o_tinyxml_files)
 
 subproyecto: $(o_files)
 	@if [ -z "$(o_files)" ]; \
@@ -76,6 +77,7 @@ subproyecto: $(o_files)
 clean:
 	@$(RM) -fv *.o subproyecto \
    rm ../common/*.o \
+   rm ../common/tinyxml/*.o \
    rm ../server/*.o \
    rm miEjecutable
 
