@@ -26,14 +26,18 @@ Servidor::Servidor(unsigned short int puerto, ModeloServidor& mod) : modelo(mod)
 		throw e;	
 	}
 }
-Servidor::~Servidor(){
-
+Servidor::~Servidor()
+{
+	if( socket )
+		delete socket;
 }
 void Servidor::run(){
     try {
+	socket->escuchar();
 	while( true ) {
 		Socket_Cliente* client = socket->aceptar();
 		pool.lanzar_cliente( client );
+		// TODO: si no hay lugar, no escuchar mas.
         }
     } catch( std::runtime_error e ) {
 	    // Si es interrumpido.
