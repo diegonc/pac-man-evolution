@@ -1,16 +1,18 @@
 #include "OutputBitStream.h"
+#include <string>
 
-#include <iostream>
-#include <bitset>
 OutputBitStream::OutputBitStream(){
 	this->buffer = new unsigned char[_DEFAULT_SIZE];
 	this->buffer[0] = 0;
 	this->bit_index = 0;
 	this->buffer_size = _DEFAULT_SIZE;
+	this->_return = 0;//TODO SACAR!!!
 	
 }
 OutputBitStream::~OutputBitStream(){
 	delete[] this->buffer;
+	if(_return != 0)
+		delete[] _return;
 }
 void OutputBitStream::append( const unsigned int n, int val, bool grow ){
 	
@@ -60,8 +62,24 @@ void OutputBitStream::grow( unsigned int n ){
 			
 	}
 }
+#include <iostream>
 const unsigned char* OutputBitStream::get_data(){
-	return this->buffer;
+	//TODO: CAMBIARLO COMO LO QUIERE ÑETO
+	
+	
+	int d_index = 0;
+	if(_return != 0)
+		delete[] _return;
+	
+	_return = new unsigned char[buffer_size];
+	//skip();
+	for(int o_index = buffer_size - 1 ; o_index >= 0; o_index--){
+		_return[d_index] = buffer[o_index];
+		d_index++;
+	}
+	
+	return _return;
+	
 }
 void OutputBitStream::shift_left(const unsigned int n_bits){
 	
