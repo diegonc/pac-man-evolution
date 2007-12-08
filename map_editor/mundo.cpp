@@ -92,16 +92,53 @@ S_ptr<Nivel> Mundo::get_nivel(unsigned int nOrden){
 	return nivel;
 }
 
+/* Get Nivel Por Nombre: */
+
+S_ptr<Nivel> Mundo::get_nivel_por_nombre(string nombre){
+	S_ptr<Nivel> nivel;
+	list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
+	while ((it != this->niveles.end()) && (nivel.es_nulo())){
+			if (nombre.compare((*it)->get_nombre()) == 0)
+				nivel = (*it);
+			it++;
+	}
+	return nivel;
+}
+
 /* Promover: */
 
 void Mundo::promover(unsigned int nOrden){
-
+	S_ptr<Nivel> nivel = get_nivel(nOrden);
+	if ((nOrden > 1) && (!nivel.es_nulo())){
+		this->niveles.remove(nivel);
+		unsigned int cont = 1;
+		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
+		while (cont < nOrden - 1){
+			it++;
+			cont++;
+		}
+		this->niveles.insert(it, nivel);		
+	}
+	this->set_cambio();
+	this->avisar_observadores(NULL);
 }
 
 /* Degradar: */
 
 void Mundo::degradar(unsigned int nOrden){
-
+	S_ptr<Nivel> nivel = get_nivel(nOrden);
+	if ((nOrden < this->niveles.size()) && (!nivel.es_nulo())){
+		this->niveles.remove(nivel);
+		unsigned int cont = 1;
+		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
+		while (cont < nOrden + 1){
+			it++;
+			cont++;
+		}
+		this->niveles.insert(it, nivel);		
+	}
+	this->set_cambio();
+	this->avisar_observadores(NULL);
 }
 
 /* Get Cant Niveles: */
@@ -118,7 +155,6 @@ bool Mundo::toXml(char* nombre){
 	string filename (nombre);
 	if (filename.find(EXT_MUNDO) == string::npos)
 		filename += EXT_MUNDO;
-	cout << filename << endl << flush;
 	//Intento crear un doc con el filename recien creado
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument (filename.c_str());
 	//Si se pudo crear el documento
@@ -164,7 +200,6 @@ bool Mundo::fromXml(char* nombre){
 	string filename (nombre);
 	if (filename.find(EXT_MUNDO) == string::npos)
 		filename += EXT_MUNDO;
-	cout << filename << endl << flush;
 	//Intento abrir un doc con el nombre pasado por parametro
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument (filename.c_str());
 	//Si se pudo crear el documento y se pudo cargar

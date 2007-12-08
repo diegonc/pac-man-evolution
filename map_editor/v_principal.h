@@ -15,6 +15,8 @@
 #include "../common/smart_pointer.h"
 #include "../common/observador.h"
 
+class PanelMundo;
+
 /* CLASE VPRINCIPAL: Representa la ventana principal del editor de mapas. 
    Se encarga de observar al modelo y mirar cuando cambia el mundo para
    actualizar a sus componentes. */

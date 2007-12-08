@@ -53,6 +53,10 @@ class Mundo : public Observable {
 	
 	/* Get Nivel: Devuelve el nivel cuyo numero de orden es nOrden. Si el orden es incorrecto devuelve un nivel nulo. */
 	S_ptr<Nivel> get_nivel(unsigned int nOrden);
+	
+	/* Get Nivel Por Nombre: Devuelve el nivel cuyo nombre coincide con el pasado por parametro. Si no lo encuentra
+	   devuelve un nivel nulo. */
+	S_ptr<Nivel> get_nivel_por_nombre(string nombre);
 
 	/* Promover: Disminuye en 1 el orden del nivel cuyo numero actual de orden es nOrden, colocandolo mas cerca
 	   del principio de la lista. Si es el primero no hace nada */
