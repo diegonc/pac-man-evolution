@@ -43,7 +43,9 @@ class Socket{
 
 		std::string recibir(int cant_caracteres);
 
+		/* estas dos son para que no se corten los datos en los \0. */
 		void recibir( char* buf, int cant );
+		void escribir( const unsigned char* buf, int cant );
 
 		void escribir(Socket * destino, std::string& cadena_a_enviar);
 		
