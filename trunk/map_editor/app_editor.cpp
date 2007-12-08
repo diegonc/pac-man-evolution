@@ -32,7 +32,7 @@ void AppEditor::ejecutar(){
   //Hago arrancar la interfaz grafica
   gui->start();
   //Uno la interfaz grafica con el hilo principal, cuando termina
-  gui->join(gui);
+  gui->join(/*gui*/);
 	
   /*****TEMPORAL*****/
   GUI::destroy();
