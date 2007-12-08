@@ -34,6 +34,11 @@ void Socket::cerrar(){
 	
 }
 
+void Socket::escribir( const unsigned char* buf, int cant )
+{
+    //TODO: copiar recibir y cambiar a send.
+}
+
 void Socket::recibir( char* buf, int cant ){
 	int cant_recibidos =0;
 	int retorno=0;
