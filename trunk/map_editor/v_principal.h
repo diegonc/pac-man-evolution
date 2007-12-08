@@ -63,6 +63,9 @@ class VPrincipal : public Observador {
 	   
     //Construir: Se encarga de armar la ventana con todos los paneles internos
     void construir();
+   
+   	//Llenar Paneles: Se encarga de llenar los paneles de herramientas con los items indicados.
+    void llenar_paneles();
 	
 	//METODOS MANEJADORES DE EVENTOS
 
