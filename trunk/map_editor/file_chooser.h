@@ -13,7 +13,7 @@ class FileChooser {
 
   private:
 	  GtkWidget* file_chooser; //Widget que representa al file chooser
-	  GtkFileFilter* filtro_xml; //Contiene el filtro para extension xml.
+	  GtkFileFilter* filtro_mundo; //Contiene el filtro para la extension del mundo.
   	  GtkFileChooserAction accion; //Accion a realizar por el file chooser: guardar o cargar.
   
   public:
@@ -37,10 +37,6 @@ class FileChooser {
   	char* get_filename();
   
   private:
-	  
-  	/* Cumple Filtro: Devuelve true si el filename del file chooser cumple con el filtro xml, false
-  	   en caso contrario. */
-  	bool cumple_filtro();
   
   	/* Mostrar Msg: Muestra el mensaje pasado por parametro por una ventana de dialogo */
   	void mostrar_msg(char* msg);
