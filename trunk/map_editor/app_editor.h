@@ -4,6 +4,9 @@
 
 //Incluyo las librerias necesarias
 #include "gui.h"
+#include "modelo.h"
+
+class GUI;
 
 using namespace std;
 

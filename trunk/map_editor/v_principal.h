@@ -13,19 +13,22 @@
 #include "panel_elems.h"
 #include "control_seleccion.h"
 #include "../common/smart_pointer.h"
+#include "../common/observador.h"
 
-/******************************/
+/**************TEMPORAL********************/
 
 #include "traductor.h"
 #include "../server/MundoBajoNivel.h"
 #include "../server/ModeloServidor.h"
 #include "../client/OGL/AplicacionGrafica.h"
 
-/******************************/
+/******************************************/
 
-/* CLASE VPRINCIPAL: Representa la ventana principal del editor de mapas. */
+/* CLASE VPRINCIPAL: Representa la ventana principal del editor de mapas. 
+   Se encarga de observar al modelo y mirar cuando cambia el mundo para
+   actualizar a sus componentes. */
 
-class VPrincipal {
+class VPrincipal : public Observador {
    
    private:
 
@@ -38,10 +41,6 @@ class VPrincipal {
     PanelElems* panel_estruc; //Panel que contiene a los elementos estructurales
     PanelElems* panel_modif; //Panel que contiene a los elementos modificadores
     S_ptr<Menu> menubar; //Referencia a la barra de menus
-   
-   	/******************************************/
-   	Modelo* modeloTemporal;
-   	/******************************************/
    
    public:
 
@@ -56,6 +55,9 @@ class VPrincipal {
 
 	//Mostrar: Muestra la ventana y todos los widgets que posee
 	void mostrar();
+      	
+    //Actualizar: Actualiza el panel de niveles cuando cambia el mundo.
+	void actualizar(Observable * observable, void * param);
 
    private:
 	   

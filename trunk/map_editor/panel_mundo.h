@@ -5,15 +5,16 @@
 
 #include <gtk/gtk.h>
 #include "definiciones.h"
-#include "nivel.h"
+#include "mundo.h"
 #include "../common/smart_pointer.h"
 #include "../common/observable.h"
+#include "../common/observador.h"
 #include <vector>
 
 /* CLASE PANEL_MUNDO: Clase que contiene una lista con todos los mapas pertenecientes
    al mundo, y botones para la administracion del mismo. */
 
-class PanelMundo : public Observable {
+class PanelMundo : public Observable, public Observador {
    
    private:
 
@@ -36,11 +37,15 @@ class PanelMundo : public Observable {
 	//Get Widget: Obtiene la representacion del panel como widget.
 	GtkWidget* get_widget() const;
    
-    //Agregar Nivel: Agrega el nivel pasado por parametro al panel.
-    void agregar_nivel(S_ptr<Nivel> nivel);
+   	//Actualizar: Redibuja la lista con los niveles contenidos en el mundo actual.
+	void actualizar(Observable * observable, void * param);
 
    private:
-	
+   
+   	/* Redibujar: Redibuja la list view con los niveles contenidos en el vector 
+       de niveles del panel. */
+    void redibujar();
+   
 	/* Crear lista mapas: Se encarga de crear la estructura de datos y la vista
    	   de la lista de mapas */
     void crear_lista_mapas();

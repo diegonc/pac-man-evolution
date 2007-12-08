@@ -19,6 +19,8 @@ Mundo::~Mundo(){
 int Mundo::agregar_nivel(string nombre, int tam_X, int tam_Y){
 	S_ptr<Nivel> nivel (new Nivel(nombre, tam_X, tam_Y));
 	this->niveles.push_back(nivel);
+	this->set_cambio();
+	this->avisar_observadores(NULL);
 	return this->niveles.size();
 }
 
@@ -34,6 +36,8 @@ void Mundo::quitar_nivel(unsigned int nOrden){
 		}
 		this->niveles.erase(it); 
 	}
+	this->set_cambio();
+	this->avisar_observadores(NULL);
 }
 
 /* Agregar Elemento: */
@@ -113,7 +117,7 @@ bool Mundo::toXml(char* nombre){
 	//Intento crear un doc con el nombre pasado por parametro
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument (nombre);
 	//Si se pudo crear el documento
-	if (documento != NULL){
+	if (!documento.es_nulo()){
 			//Creo un nodo raiz denominado "mundo"
 			S_ptr<TiXmlElement> nodo_raiz = new TiXmlElement("Mundo");
 			//Le asigno la cantidad de niveles
@@ -154,7 +158,7 @@ bool Mundo::fromXml(char* nombre){
 	//Intento abrir un doc con el nombre pasado por parametro
 	S_ptr<TiXmlDocument> documento = new TiXmlDocument (nombre);
 	//Si se pudo crear el documento y se pudo cargar
-	if ((documento != NULL) && (documento->LoadFile())){
+	if ((!documento.es_nulo()) && (documento->LoadFile())){
 			//Obtengo el nodo raiz
 			TiXmlNode* nodo_raiz = documento->RootElement();
 			if (nodo_raiz != NULL) {
