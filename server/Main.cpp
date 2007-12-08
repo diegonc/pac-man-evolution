@@ -17,9 +17,9 @@ int main(int argc, char *argv[]){
     //o.append( 3, 2);  // aux
 	//o.append(8,2,true);
 	o.append( 3, 4 );
-    o.append( 4, 24 );
-    o.append( 1, 1 );
-	//o.skip();
+    //o.append( 4, 24 );
+    //o.append( 1, 1 );
+	o.skip();
 	const unsigned char * data = o.get_data();
 	{
 	std::bitset<8> bits(data[0]);

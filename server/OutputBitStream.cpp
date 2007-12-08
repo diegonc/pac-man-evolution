@@ -39,7 +39,7 @@ void OutputBitStream::append( const unsigned int n, int val, bool grow ){
 }
 
 void OutputBitStream::skip(){
-	shift_left(buffer_size * 8 - bit_index - 1);
+	shift_left(buffer_size * 8 - bit_index);
 	bit_index = buffer_size * 8;
 }
 
