@@ -106,13 +106,8 @@ void VPrincipal::construir(){
 	gtk_box_pack_start (GTK_BOX (this->vbox_tools), p_modif, FALSE, TRUE, 0);
 	
 	Modelo::get_instance()->agregar_observador(this);
-	
-  	//Obtengo el mundo del modelo
-    Mundo* mundo = Modelo::get_instance()->get_mundo();
-	mundo->agregar_observador(this->panel_mundo);
-	mundo->fromXml("mundo.xml");
-		
-  	this->vista_mapa = new VistaMapa(mundo->get_nivel(1));
+			
+  	this->vista_mapa = new VistaMapa();
 	
 	this->panel_mundo->agregar_observador(this->vista_mapa);
 	

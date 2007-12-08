@@ -57,4 +57,9 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define RUTA_CASA_OESTE "./imagenes/casa_oeste.jpg"
 #define RUTA_VACIO "./imagenes/vacio.jpg"
 
+//Defino las extensiones de los archivos del editor
+
+#define EXT_MUNDO ".mdo"
+#define EXT_NIVEL ".nvl"
+
 #endif
