@@ -45,3 +45,6 @@ void PaqueteMensaje::serialize( OutputBitStream& bs )
 	//bs.append( Mensaje.length(), Mensaje);
 
 }
+Operacion * PaqueteMensaje::get_operacion(){
+	//TODO
+}

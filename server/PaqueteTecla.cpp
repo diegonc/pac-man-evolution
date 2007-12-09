@@ -69,3 +69,6 @@ void PaqueteTecla::serialize( OutputBitStream& bs )
 
 	bs.append( 3, al_protocolo( OperacionTecla->get_flecha() ) );
 }
+Operacion * PaqueteTecla::get_operacion(){
+	return OperacionTecla;
+}

@@ -20,6 +20,8 @@ class PaqueteMensaje: public Paquete
 		void serialize( OutputBitStream& bs );
 
 		void deserialize( InputBitStream& bs );
+	
+		Operacion * get_operacion();
 };
 
 #endif /* __PAQUETEMENSAJE_H__ */

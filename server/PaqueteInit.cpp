@@ -58,3 +58,7 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 	// TODO: Escribir elementos del mapa.
 	bs.append( 8, 0 );
 }
+
+Operacion * PaqueteInit::get_operacion(){
+	//TODO
+}
