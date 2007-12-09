@@ -37,6 +37,32 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	}
 	bs.skip();
 	unsigned int num_elems = bs.read( 16 );
+	bs.grow( num_elems*24 );
+	for( int i=0; i < num_elems; i++ ) {
+		int tipo = bs.read( 6 );
+		int orient = bs.read( 2 );
+		int pos = bs.read( 16 );
+		Posicion p( pos % ancho, pos / ancho);
+
+		switch( tipo ) {
+			case 0:
+				S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
+				if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
+					EstructuralPasillo* ep = &(*e);
+					ep->set_salida_pacman();
+				}
+				break;
+			case 1:
+				S_ptr<EstructuralCasaFantasma> c( new EstructuralCasaFantasma( p ) );
+				mapa->reemplazar_estructural( c ); 
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			default:
+		}
+	}
 }
 
 void PaqueteInit::agregar_arista( int x, int y, bool norte )
