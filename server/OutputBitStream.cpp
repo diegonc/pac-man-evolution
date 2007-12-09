@@ -45,7 +45,8 @@ void OutputBitStream::append( OutputBitStream& o, bool grow )
 	unsigned int new_buffer_size = buffer_size + o.buffer_size;
 	unsigned char * new_buffer = new unsigned char [ new_buffer_size ];
 	//los copio
-	memcpy(new_buffer, buffer, buffer_size);
+	memcpy(new_buffer + o.buffer_size, buffer, buffer_size);
+	memcpy(new_buffer , o.buffer, o.buffer_size);
 	//borro el viejo
 	delete[] this->buffer;
 	//setteo los tamaños

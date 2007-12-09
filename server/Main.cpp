@@ -11,19 +11,22 @@ int main(int argc, char *argv[]){
 
 int main(int argc, char *argv[]){
 	OutputBitStream obs;
-	
+	OutputBitStream obs2;
 	//o.append( 2, 0 ); // version
     //o.append( 3, 7 ); // tipo
     //o.append( 3, 2);  // aux
 	//o.append(8,2,true);
-	obs.append( 2, 0 );
+	//obs.append( 2, 0 );
 	obs.append( 3, 0 );
 	obs.append( 3, 1 );
-	obs.append( 8, 3 );
-	obs.append( 3, 4 );
-	obs.append( 4, 12 );
-	obs.append( 1, 1 );
+	obs2.append( 3, 3 );
+	
+	//obs.append( 4, 12 );
+	//obs.append( 1, 1 );
 	//o.skip();
+	obs.append(obs2);
+	obs.append( 3, 4 );
+	
 	const unsigned char * data = obs.get_data();
 	{
 	std::bitset<8> bits(data[0]);
@@ -32,14 +35,13 @@ int main(int argc, char *argv[]){
 	}	
 	{
 	std::bitset<8> bits(data[1]);
-	std::cout << bits << " ";
+	std::cout << bits << "\n";
 	//std::cout << data[0];
 	}
-	{
-	std::bitset<8> bits(data[2]);
-	std::cout << bits << "\n";
-	
-	}
+	//{
+	//std::bitset<8> bits(data[2]);
+	//std::cout << bits << "\n";
+	//}
 	
 		
 }*/
