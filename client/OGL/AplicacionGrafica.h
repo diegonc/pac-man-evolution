@@ -21,19 +21,13 @@
 #include <math.h>
 #include <map>
 #include <list>
-#include "../../server/ModeloServidor.h"
-#include "../../server/KeyOp.h"
-#include "../../common/observador.h" //<--------------para Observar al modelo, cambiar cualquier cosa
 
-class AplicacionGrafica : public Observador{
+#include "../../server/KeyOp.h"
+
+class AplicacionGrafica{
         //estadp de la aplicaccion
         EstadoAplicacion AppEstado;
-
-        //modelo local al cliente
-        
-	public:	// <<------ESTA LINEA COMENTADA PARA UNIR TODO, sacarla cuando se separen los binarios
-		static ModeloServidor modelo;
-    
+           
 	private: 
 		Escenario escenario;
 
@@ -43,9 +37,7 @@ class AplicacionGrafica : public Observador{
     public:
 
         AplicacionGrafica(){
-            escenario.setModelo(&modelo);
-            modelo.agregar_observador(this);//<---para dibujar el mapa
-   			CamaraPrimeraPersona=true;
+            CamaraPrimeraPersona=true;
         }
 		
 		void CambiarCamara();
@@ -66,7 +58,7 @@ class AplicacionGrafica : public Observador{
         // dibujo el modelo visual
         void Draw(SDL_Surface *Screen);
       
-        void actualizar(Observable * observable, void * param);
+		
 
     private:
         //dibujo el modelo 3D

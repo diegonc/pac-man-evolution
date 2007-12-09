@@ -27,8 +27,6 @@ class Escenario{
 
         void ModelarEscenario();
 
-        void setModelo(ModeloServidor* Mod);
-
         Escenario();
 
         void Procesar();
