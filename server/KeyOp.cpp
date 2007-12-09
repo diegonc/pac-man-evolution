@@ -4,10 +4,10 @@
 #include "Direccion.h"
 #include "Jugador.h"
 
-const int arriba 	= 	0;
-const int abajo  	= 	1;
-const int derecha	= 	3;
-const int izquierda	= 	2;  
+const int KeyOp::arriba 	= 	0;
+const int KeyOp::abajo  	= 	1;
+const int KeyOp::derecha	= 	3;
+const int KeyOp::izquierda	= 	2;  
 
 void KeyOp::ejecutar(ModeloServidor &modelo)
 {

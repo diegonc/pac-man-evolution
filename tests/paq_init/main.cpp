@@ -54,17 +54,13 @@ int main()
 	        std::cout << obs.get_size() << "bytes ";
 		std::cout << "( esperados: " << DATOS_PRUEBA_S << "bytes )\n";
 	} else {
-		bool err = false;
 		const unsigned char* s = obs.get_data();
 		for( int i=0; i < DATOS_PRUEBA_S; i++ ) {
 			if( raw[i] != s[i] ) {
 				std::cout << "ERROR: byte " << i << " es "  << (int) s[i];
 				std::cout << " ( esperado: " << (int)raw[i] << ")\n";
-				err = true;
 			}
 		}
-		if( !err )
-			std::cout << "Serializacion correcta.\n";
 	}
 	delete map;
 	return 0;
