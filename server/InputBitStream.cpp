@@ -87,7 +87,7 @@ void InputBitStream::skip()
 	}
 }
 
-char* InputBitStream::read_block( unsigned int n )
+char* InputBitStream::read_block( unsigned int	n, unsigned int& m )
 {
 	grow( n );
 
@@ -95,9 +95,9 @@ char* InputBitStream::read_block( unsigned int n )
 		/*
 		 * Buenisimo =P, los datos comienzan al principio de un byte.
 		 */
-		unsigned int nbytes = ( n % 8 ) ? ( n / 8 + 1 ) : ( n / 8 );
-		char* block = new char[nbytes];
-		memcpy( block, buffer+index, nbytes );
+		m = ( n % 8 ) ? ( n / 8 + 1 ) : ( n / 8 );
+		char* block = new char[m];
+		memcpy( block, buffer+index, m );
 		index += n / 8;
 		bindex -= n % 8;
 		return block;

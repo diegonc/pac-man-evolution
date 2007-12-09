@@ -73,10 +73,12 @@ class InputBitStream
 		 *      - el valor de retorno es un arreglo de char y debe ser
 		 *      liberado con delete[].
 		 *
-		 *  @param n Numero de bits leidos.
+		 *  @param n Numero de bits extraidos.
+		 *  @param m Numero de bytes del bloque.
 		 *  @return Bloque que contiene los bits.
 		 */
-		char* read_block( unsigned int n );
+		char* read_block( unsigned int n, unsigned int& m );
+
 
 		/** @brief Rellena el buffer.
 		 *
