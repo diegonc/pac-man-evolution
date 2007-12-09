@@ -109,6 +109,44 @@ void test_5()
 
 }
 
+void test_6()
+{
+	std::cout << "Corriendo test_6().\n";
+
+	OutputBitStream obs;
+	OutputBitStream obs2;
+
+	obs.append( 2, 0 );
+	obs.append( 3, 0 );
+	obs.append( 1, 1 );
+//	obs.skip();
+	obs2.append( 8, 2 );
+	obs2.append( 8, 2 );
+	obs2.append( 1, 0 );
+	obs2.append( 1, 0 );
+	obs2.append( 1, 1 );
+	obs.append( obs2 );
+	obs.append( 1, 0 );
+	obs.append( 1, 1 );
+	obs.append( 1, 1 );
+	obs.append( 1, 1 );
+	obs.append( 1, 0 );
+	const unsigned char* raw = obs.get_data();
+	if( obs.get_size() != 4 )
+		std::cout << "ERROR: tamano " << obs.get_size() << " (esperado: 3 )\n";
+	else {
+		int outs[4] = { 0x04, 0x02, 0x02, 0x2E };
+		for( int i = 0; i < 4; i++ ) {
+		       	if( raw[i] != outs[i] ) {
+				std::cout << "ERROR: byte " << i << " es ";
+				std::cout << (int)raw[i] << " (esperado: " << outs[i] << ")\n";
+			}
+		}
+	}
+
+
+}
+
 int main()
 {
 	test_1();
@@ -116,6 +154,7 @@ int main()
 	test_3();
 	test_4();
 	test_5();
+	test_6();
 	return 0;
 }
 

@@ -41,7 +41,7 @@ void OutputBitStream::append( const unsigned int n, int val, bool grow ){
 void OutputBitStream::append( OutputBitStream& o, bool grow )
 {
 	skip();
-	
+/*	
 	unsigned int new_buffer_size = buffer_size + o.buffer_size;
 	unsigned char * new_buffer = new unsigned char [ new_buffer_size ];
 	//los copio
@@ -54,11 +54,26 @@ void OutputBitStream::append( OutputBitStream& o, bool grow )
 	//setteo el nuevo buffer
 	this->buffer = new_buffer;
 	this->bit_index += o.bit_index;
+*/
+	/* implementacion trucha :P */
+	//obtengo el la cantidad de bits disponibles
+	unsigned int bavail = (buffer_size * 8 - bit_index );
+	//si la cantidad es mayor o puede crecer
+	if(  bavail >= o.bit_index || grow ) {
+		int index = o.buffer_size - 1;
+		int bits_r = o.bit_index;
+		while( bits_r > 8 ) {
+			append( 8, o.buffer[index--] );
+			bits_r -= 8;
+		}
+		if( bits_r > 0 ) append( bits_r, o.buffer[index] );
+	}
 }
 
 void OutputBitStream::skip(){
-	//shift_left(buffer_size * 8 - bit_index);
-	bit_index = buffer_size * 8;
+	int bits_hasta_prox_byte = (8 - bit_index % 8) % 8;
+	if( bits_hasta_prox_byte > 0 )
+		append( bits_hasta_prox_byte, 0 );
 }
 
 void OutputBitStream::grow( unsigned int n ){
