@@ -16,6 +16,8 @@ class PaqueteInit : public Paquete
 		 */
 		S_ptr<MapaBajoNivel> mapa;
 
+		void agregar_arista( int x, int y, bool norte );
+
 	public:
 		/** Crea un paquete apto para deserializar. */
 		PaqueteInit();

@@ -1,4 +1,6 @@
 #include "PaqueteInit.h"
+#include "MapImpSet.h"
+#include "EstructuralPasillo.h"
 
 namespace {
 	const char ID = 0;
@@ -22,10 +24,53 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 
 	int ancho = bs.read( 8 );
 	int alto = bs.read( 8 );
+	mapa = S_ptr<MapaBajoNivel>( new MapaImpSet( ancho, alto ) );
 	int long_aristas = ancho * alto * 2;
-	char* conexiones = bs.read_block( long_aristas );
+	bs.grow( long_aristas );
+	for( int y=0; y < alto; y++ ) {
+		for( int x=0; x < ancho; x++ )
+			if( bs.read(1) != 0 )
+				agregar_arista( x, y, true );
+		for( int x=0; x < ancho; x++ )
+			if( bs.read(1) != 0 )
+				agregar_arista( x, y, false );
+	}
 	bs.skip();
-//	generar_mapa( 
+	unsigned int num_elems = bs.read( 16 );
+}
+
+void PaqueteInit::agregar_arista( int x, int y, bool norte )
+{
+	Posicion origen( x, y );
+	Posicion destino;
+	S_ptr<EstructuralUnitario> esO = mapa->get_estructural( origen );
+
+	if( esO.es_nulo() ) {
+		esO = new EstructuralPasillo( Comestible::quesito, origen );
+		mapa->agregar_estructural( esO );
+	}
+
+	if( norte ) {
+		int alto = mapa->get_alto();
+		destino.set_y( ( y - 1 + alto ) % alto );
+	}else {
+		int ancho = mapa->get_ancho();
+		destino.set_x( ( x + 1 + ancho ) % ancho ); 
+	}
+
+	S_ptr<EstructuralUnitario> esD = mapa->get_estructural( destino );
+	if( esD.es_nulo() ) {
+		esD = new EstructuralPasillo( Comestible::quesito, destino );
+		mapa->agregar_estructural( esD );
+	}
+
+	if( norte ) {
+		esO->set_arriba( esD );
+		esD->set_abajo( esO );
+	} else {
+		esO->set_derecha( esD );
+		esD->set_izquierda( esO );
+	}
 }
 
 void PaqueteInit::serialize( OutputBitStream& bs )
