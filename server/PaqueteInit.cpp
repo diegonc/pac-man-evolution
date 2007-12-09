@@ -1,7 +1,7 @@
 #include "PaqueteInit.h"
 #include "MapImpSet.h"
 #include "EstructuralPasillo.h"
-
+#include "EstructuralCasaFantasma.h"
 namespace {
 	const char ID = 0;
 }
@@ -19,7 +19,7 @@ PaqueteInit::PaqueteInit( bool pac, S_ptr<MapaBajoNivel> m )
 
 void PaqueteInit::deserialize( InputBitStream& bs )
 {
-	esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
+	/*esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
 	bs.skip(); // Saltea el resto del campo auxiliar.
 
 	int ancho = bs.read( 8 );
@@ -38,7 +38,7 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	bs.skip();
 	unsigned int num_elems = bs.read( 16 );
 	bs.grow( num_elems*24 );
-	for( int i=0; i < num_elems; i++ ) {
+	for(unsigned int i=0; i < num_elems; i++ ) {
 		int tipo = bs.read( 6 );
 		int orient = bs.read( 2 );
 		int pos = bs.read( 16 );
@@ -48,13 +48,13 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 			case 0:
 				S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
 				if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
-					EstructuralPasillo* ep = &(*e);
+					EstructuralPasillo* ep = (EstructuralPasillo *) &(*e);
 					ep->set_salida_pacman();
 				}
 				break;
 			case 1:
 				S_ptr<EstructuralCasaFantasma> c( new EstructuralCasaFantasma( p ) );
-				mapa->reemplazar_estructural( c ); 
+				mapa->set_estructural( c , p); 
 				break;
 			case 2:
 				break;
@@ -62,7 +62,7 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 				break;
 			default:
 		}
-	}
+	}*/
 }
 
 void PaqueteInit::agregar_arista( int x, int y, bool norte )
@@ -111,16 +111,21 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 
 	bs.grow( mapa->get_ancho()*mapa->get_alto()*2 );
 
+	S_ptr<EstructuralUnitario> e;
 	for( unsigned int y=0; y < mapa->get_alto(); y++ ) {
 		// Aristas verticales
 		for( unsigned int x=0; x < mapa->get_ancho(); x++ ){
 			Posicion p( x, y );
-			bs.append( 1, !( mapa->get_estructural( p )->get_arriba().es_nulo() ) );
+			e = mapa->get_estructural( p );
+			if(!e.es_nulo() )
+				bs.append( 1, !( e->get_arriba().es_nulo() ) );
 		}
 		// Aristas horizontales
 		for( unsigned int x=0; x < mapa->get_ancho(); x++ ) {
 			Posicion p( x, y );
-			bs.append( 1, !( mapa->get_estructural( p )->get_derecha().es_nulo() ) );
+			e = mapa->get_estructural( p );
+			if(!e.es_nulo() )
+				bs.append( 1, !( e->get_derecha().es_nulo() ) );
 		}
 	}
 	

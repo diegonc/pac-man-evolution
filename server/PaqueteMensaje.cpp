@@ -25,8 +25,9 @@ void PaqueteMensaje::deserialize( InputBitStream& bs )
 	bs.skip();
 
     char* buffer=new char[TamanioCotaSup];
-
-    buffer = bs.read_block( TamanioCotaSup);
+	unsigned int tamanio_buffer; //el read block devuelve cuantos bloques ocupan los bits
+    
+	buffer = bs.read_block( TamanioCotaSup, tamanio_buffer);
     bs.skip();
     std::string variableTemp(buffer);
     Mensaje=variableTemp; //como el igual esta sobrecargado se copia todo el string;
