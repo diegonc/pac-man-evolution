@@ -32,7 +32,7 @@ $(TARGET): $(OBJS)
 	g++ -o $@ $(CXXFLAGS) $(LDFLAGS) $^
 
 test: $(TARGET)
-	./$^
+	@./$^
 
 clean:
 	rm -vf $(OBJS) $(TARGET)

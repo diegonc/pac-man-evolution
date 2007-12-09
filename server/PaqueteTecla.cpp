@@ -2,6 +2,31 @@
 
 namespace {
 	const char ID = 5;
+
+	int flecha_map[4] = { KeyOp::arriba,    /* arriba ( formato red: 0 ) */
+			      KeyOp::abajo,     /* abajo ( formato red: 1 ) */
+			      KeyOp::izquierda, /* izquierda ( formato red: 2 ) */
+			      KeyOp::derecha    /* derecha ( formato red: 3 ) */
+	};
+
+	int al_protocolo( int flecha )
+	{
+		for( int i=0; i<4; i++ )
+			if( flecha == flecha_map[i] )
+				return i;
+
+		/* No esta! y ahora ??! */
+		return -1;
+	}
+
+	int desde_protocolo( int flecha )
+	{
+		if( (flecha >=0) && (flecha<4) )
+			return flecha_map[flecha];
+
+		/* No esta! y ahora ??! */
+		return -1;
+	}
 }
 
 PaqueteTecla::PaqueteTecla() : Paquete( ID )
@@ -29,7 +54,7 @@ void PaqueteTecla::deserialize( InputBitStream& bs )
     bs.skip();
 
 
-    OperacionTecla=new KeyOp(KeyOp::get_teclaFormatoOperacion(Flecha));
+    OperacionTecla=new KeyOp( desde_protocolo(Flecha) );
 
 }
 
@@ -42,5 +67,5 @@ void PaqueteTecla::serialize( OutputBitStream& bs )
 
 	Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
 
-	bs.append( 3, KeyOp::get_teclaFormatoPaquete(OperacionTecla));
+	bs.append( 3, al_protocolo( OperacionTecla->get_flecha() ) );
 }
