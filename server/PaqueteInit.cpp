@@ -74,7 +74,27 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 
 void PaqueteInit::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
 {
-
+	Posicion p( e->get_posicion() );
+	S_ptr<EstructuralUnitario> actual = mapa->get_estructural( p );
+	mapa->agregar_estructural( e );
+	if( !actual.es_nulo() ) {
+		if( ! actual->get_arriba().es_nulo() ) {
+			e->set_arriba( actual->get_arriba() );
+			actual->get_arriba()->set_abajo( e );
+		}
+		if( ! actual->get_derecha().es_nulo() ) {
+			e->set_derecha( actual->get_derecha() );
+			actual->get_derecha()->set_izquierda( e );
+		}
+		if( ! actual->get_abajo().es_nulo() ) {
+			e->set_abajo( actual->get_abajo() );
+			actual->get_abajo()->set_arriba( e );
+		}
+		if( ! actual->get_izquierda().es_nulo() ) {
+			e->set_izquierda( actual->get_izquierda() );
+			actual->get_izquierda()->set_derecha( e );
+		}
+	}
 }
 
 void PaqueteInit::agregar_arista( int x, int y, bool norte )
