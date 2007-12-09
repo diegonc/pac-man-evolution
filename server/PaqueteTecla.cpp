@@ -3,10 +3,11 @@
 namespace {
 	const char ID = 5;
 
-	int flecha_map[4] = { KeyOp::arriba,    /* arriba ( formato red: 0 ) */
-			      KeyOp::abajo,     /* abajo ( formato red: 1 ) */
-			      KeyOp::izquierda, /* izquierda ( formato red: 2 ) */
-			      KeyOp::derecha    /* derecha ( formato red: 3 ) */
+	int flecha_map[4] = { 
+				KeyOp::arriba,    /* arriba ( formato red: 0 ) */
+			    KeyOp::abajo,     /* abajo ( formato red: 1 ) */
+			    KeyOp::izquierda, /* izquierda ( formato red: 2 ) */
+			    KeyOp::derecha    /* derecha ( formato red: 3 ) */
 	};
 
 	int al_protocolo( int flecha )
@@ -32,10 +33,6 @@ namespace {
 PaqueteTecla::PaqueteTecla() : Paquete( ID )
 {
 
-}
-
-KeyOp* PaqueteTecla::get_KeyOp(){
-    return OperacionTecla;
 }
 
 void PaqueteTecla::set_KeyOp(KeyOp* OperTecla){
