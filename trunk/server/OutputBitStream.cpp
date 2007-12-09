@@ -53,7 +53,7 @@ void OutputBitStream::append( OutputBitStream& o, bool grow )
 	buffer_size = new_buffer_size;
 	//setteo el nuevo buffer
 	this->buffer = new_buffer;
-	this->bit_index += o.bit_index;
+	this->bit_index += o.bit_index + bit_index;
 }
 
 void OutputBitStream::skip(){
