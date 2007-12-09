@@ -3,16 +3,7 @@
 #include "ComestibleFactory.h"
 
 EstructuralPasillo::EstructuralPasillo(Comestible::Enum_Comestible &tipo, Posicion &p):EstructuralUnitario(p){
-	//creo la fabrica para agregarle el comestible
-	ComestibleFactory fabrica;
-	//al comestible le seteo el medio de la posicion de mi casillero
-	Posicion pos = p;
-	pos.set_x(p.get_x() + 0.5);
-	pos.set_y(p.get_y() + 0.5);
-	//creo el comestible y lo meto en un smart pointer
-	S_ptr<Comestible> comida_a_asignar(fabrica.construir(tipo,pos) );
-	//lo asigno
-	this->comida = comida_a_asignar;
+	set_comida( tipo );
 	//por defecto, pongo que no es salida
 	this->salida = false;
 	
@@ -23,6 +14,21 @@ EstructuralPasillo::EstructuralPasillo(Posicion &p):EstructuralUnitario(p){
 EstructuralPasillo::~EstructuralPasillo(){
 
 }
+
+void EstructuralPasillo::set_comida( Comestible::Enum_Comestible& tipo )
+{
+	//creo la fabrica para agregarle el comestible
+	ComestibleFactory fabrica;
+	//al comestible le seteo el medio de la posicion de mi casillero
+	Posicion pos( get_posicion() );
+	pos.set_x(pos.get_x() + 0.5);
+	pos.set_y(pos.get_y() + 0.5);
+	//creo el comestible y lo meto en un smart pointer
+	S_ptr<Comestible> comida_a_asignar(fabrica.construir(tipo,pos) );
+	//lo asigno
+	this->comida = comida_a_asignar;
+}
+
 S_ptr<Comestible> EstructuralPasillo::get_comida(){
 	return this->comida; //devuelvo la comida
 }

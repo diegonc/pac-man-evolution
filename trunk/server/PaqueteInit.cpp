@@ -19,7 +19,7 @@ PaqueteInit::PaqueteInit( bool pac, S_ptr<MapaBajoNivel> m )
 
 void PaqueteInit::deserialize( InputBitStream& bs )
 {
-	/*esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
+	esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
 	bs.skip(); // Saltea el resto del campo auxiliar.
 
 	int ancho = bs.read( 8 );
@@ -43,26 +43,38 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 		int orient = bs.read( 2 );
 		int pos = bs.read( 16 );
 		Posicion p( pos % ancho, pos / ancho);
-
+		S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
 		switch( tipo ) {
 			case 0:
-				S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
 				if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 					EstructuralPasillo* ep = (EstructuralPasillo *) &(*e);
 					ep->set_salida_pacman();
 				}
 				break;
-			case 1:
-				S_ptr<EstructuralCasaFantasma> c( new EstructuralCasaFantasma( p ) );
-				mapa->set_estructural( c , p); 
+			case 1: {
+				S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
+				reemplazar_estructural( c ); 
+				}
 				break;
 			case 2:
+				if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
+					EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
+					ep->set_comida( Comestible::power_up );
+				}
 				break;
 			case 3:
+				if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
+					EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
+					ep->set_comida( Comestible::frutita );
+				}
 				break;
-			default:
 		}
-	}*/
+	}
+}
+
+void PaqueteInit::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
+{
+
 }
 
 void PaqueteInit::agregar_arista( int x, int y, bool norte )
