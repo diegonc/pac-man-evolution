@@ -38,12 +38,12 @@ int App::ejecutar(){
 			//crea el servidor
 			S_ptr<Servidor> servidor(new Servidor(6000, modelo) );//TODO USAR EL ARG
 			//inicia el hilo del modelo
-			modelo->start();
+			//modelo->start();
 			//inicia el hilo del servidor
 			servidor->start();
 			
 			//se une a los hilos
-			modelo->join();
+			//modelo->join();
 			servidor->join();
 			
 		}

@@ -16,6 +16,7 @@ void PaqueteStatus::deserialize( InputBitStream& bs )
 
 void PaqueteStatus::serialize( OutputBitStream& bs )
 {
+		//COMENTADO POR ALAN PARA PODER COMPILAR
     /*
     ____________________________________________________________________________________________
     |        Cabecera            |                       Cuerpo                                 |
@@ -47,6 +48,8 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
     --------------------------------------------------------------------------------------------
 
     */
+	/*
+	
 //ComienzoCabecera
     //version y tipo
         Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
@@ -118,7 +121,7 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
 
             //puede haber dado inferior a la ultima fila
             Arista=Arista % (AnchoMapa*AltoMapa*2);
-
+	*/
             /* de esta forma
 
                 a
@@ -134,7 +137,7 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
             de esta forma las aristas q me sobran de arriba las uso para la mitad inferior de la ultima fila
             y las aristas q me sobran a la derecha las uso para la primer mitad de la primer columna
             */
-            switch (Jug->get_direccion().get_dir()){
+     /*       switch (Jug->get_direccion().get_dir()){
                     case Direccion::Norte:
                     case Direccion::Este:
                         EsteONorte=1;
@@ -191,5 +194,5 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
             bs.append( 16,  Posicion);
 
 
-        }
+        }*/
 }

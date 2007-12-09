@@ -13,6 +13,8 @@
 #include "Jugador.h"
 #include "../common/smart_pointer.h"
 
+class EscritorCliente;
+class EscuchadorCliente;
 
 class Cliente : public Thread{
 	typedef unsigned int Tipo_Id;
@@ -20,8 +22,12 @@ class Cliente : public Thread{
 	
 	private:
 		Socket_Cliente * socket;
+		EscuchadorCliente * escuchador;
+		EscritorCliente * escritor;	
+	
 		Tipo_Id id;
 		Tipo_Jugador jugador;
+		
 	
 	public:
 		
@@ -53,6 +59,10 @@ class Cliente : public Thread{
 		 *
 		 */
 		void run();
+		
+		EscritorCliente& get_escritor();
+		
+		S_ptr<Jugador> get_jugador();
 		
 		
 

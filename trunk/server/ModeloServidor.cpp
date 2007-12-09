@@ -4,10 +4,8 @@
 #include "PacMan.h"
 #include "Fantasma.h"
 
-ModeloServidor::ModeloServidor(/*int min_jugadores, int max_jugadores*/){
+ModeloServidor::ModeloServidor(){
 	cargar_modelo(); // provisorio
-	//this->cant_min_jugadores = min_jugadores;
-	//this->cant_max_jugadores = max_jugadores;
 }
 
 void ModeloServidor::cargar_modelo(){

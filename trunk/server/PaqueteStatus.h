@@ -3,9 +3,9 @@
 
 #include "Paquete.h"
 #include <list>
-#include "../../server/ModeloServidor.h"
-#include "../../server/Jugador.h"
-#include "../../common/smart_pointer.h"
+#include "ModeloServidor.h"
+#include "Jugador.h"
+#include "../common/smart_pointer.h"
 
 //#include "MapaBajoNivel.h"
 

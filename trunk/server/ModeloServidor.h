@@ -42,12 +42,8 @@ class ModeloServidor : public Thread , public Observador, public Observable{
 		/**
 		*	@brief 	Constructor de la clase
 		*
-		*	@param	min_jugadores Cantidad minima de jugadores necesarios para
-		*						  poder jugar
-		*	@param  max_jugadores Cantidad maxima de jugadores que puede tener
-		*						  simultaneamente el juego
 		*/
-		ModeloServidor(/*int min_jugadores, int max_jugadores*/); //TODO: DESCOMENTAR Y USAR
+		ModeloServidor();
 		
 		/**
 		*	@brief 	Destructor de la clase
