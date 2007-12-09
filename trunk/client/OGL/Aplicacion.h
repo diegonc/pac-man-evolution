@@ -10,16 +10,6 @@
 #include <stdio.h>
 #include "AplicacionGrafica.h"
 
-/******************************/
-
-#include "../../map_editor/app_editor.h"
-#include "../../map_editor/app_cleaner_editor.h"
-
-/*******************************/
-
-
-
-
 #define APP_NAME	"Pacman-Evolution"
 #define APP_VERSION	"0.5"
 

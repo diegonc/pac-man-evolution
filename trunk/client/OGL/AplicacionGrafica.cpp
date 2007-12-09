@@ -1,7 +1,5 @@
 #include "AplicacionGrafica.h"
 
-ModeloServidor AplicacionGrafica::modelo;//<----para unir los binarios, luego sacar
-
 EstadoAplicacion* AplicacionGrafica::getEstadoAplicacion(){
       return &AppEstado;
 }
@@ -10,9 +8,6 @@ void AplicacionGrafica::CambiarCamara(){
 	CamaraPrimeraPersona=!CamaraPrimeraPersona;
 }
 
-ModeloServidor* AplicacionGrafica::getModelo(){
-    return &modelo; // <<---para unir todo, luego sacarlo
-}
 
 //inicializacion de OpenGL
 bool AplicacionGrafica::InitGL(SDL_Surface *S)
@@ -35,8 +30,6 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
     glEnable( GL_TEXTURE_2D );
     //parametros para la mejor visualizacion de la perspectiva
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-    //lanzo el hilo del modelo
-    modelo.start();
     //escenario.Procesar(); <----LO COMENTE YOOOOO!!!!
     ModeladorOBJ.hidratar();
 	return true;
@@ -129,7 +122,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
     std::list< S_ptr<Jugador> >::const_iterator jugadores;
     S_ptr<Jugador> jp;
     //obtengo los jugadores
-    for(jugadores = modelo.get_jugadores().begin();jugadores != modelo.get_jugadores().end(); ++jugadores){
+    for(jugadores = ModeloServidor::get_instancia()->get_jugadores().begin();jugadores != ModeloServidor::get_instancia()->get_jugadores().end(); ++jugadores){
        jp = *jugadores;
        //si el id es 1(deberia ser jugador cliente)
        if(jp->get_id() == 1){
@@ -148,7 +141,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
             ModeladorOBJ.DibujarObjetoPosicion(&Pos,jp->get_personaje()->get_tipo());
         }
     }
-    std::list< S_ptr<Comestible> > lista_comestibles = modelo.get_mundo().get_mapa_activo()->get_comestibles();
+    std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
     std::list< S_ptr<Comestible> >::iterator comestibles;
     S_ptr<Comestible> comestible;
 
@@ -164,14 +157,6 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
     //llamo a la lista precompilada del Escenario
     escenario.ModelarEscenario();
 }
-
-void AplicacionGrafica::actualizar(Observable * observable, void * param){//<<----Observador del modelo para lo del escenario
-   ModeloServidor * modelo = (ModeloServidor*) observable; //Solo mira al modelo
-
-   if(! modelo->esta_terminado() ) //si el modelo no termino, dibuja el escenario actual
-      this->escenario.Procesar();
-}
-
 //dibuja en 2D
 void AplicacionGrafica::Draw2D(SDL_Surface *S)
 {

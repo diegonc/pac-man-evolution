@@ -4,11 +4,6 @@
 void Escenario::ModelarEscenario(){
     glCallList(ListaEscenario);
 }
-
-void Escenario::setModelo(ModeloServidor* Mod){
-    Modelo=Mod;
-}
-
 Escenario::Escenario(){}
 
 void Escenario::Procesar(){
@@ -89,7 +84,7 @@ void Escenario::addPiso(double xIn,double xFin,double yIn,double yFin){
 void Escenario::DrawEscenario(){
     typedef std::list<S_ptr<EstructuralUnitario> > listaEstruc;
     //obtengo los estructurales
-    listaEstruc Estructurales=Modelo->get_mundo().get_mapa_activo()->get_estructurales();
+    listaEstruc Estructurales= ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_estructurales();
     S_ptr<EstructuralUnitario> est;
     S_ptr<EstructuralUnitario> vecino;
     Posicion PosEst;

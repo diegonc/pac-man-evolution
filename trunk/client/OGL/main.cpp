@@ -5,10 +5,6 @@
 int main(int argc, char **argv)
 {
 	
-  //Conecto con el editor
-  AppCleanerEditor cleaner_editor;
-  AppEditor::get_instance(argc, argv)->ejecutar();
-	
     Aplicacion APP;
     //evento
 	SDL_Event	E;
