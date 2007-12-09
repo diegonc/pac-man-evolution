@@ -83,16 +83,18 @@ const unsigned char* OutputBitStream::get_data(){
 }
 void OutputBitStream::shift_left(const unsigned int n_bits){
 	
-	unsigned int aux;
-	for(int index = bit_index - 1 ; index >= 0; index--){
-		aux = (index + n_bits) / 8 ;
-		if(aux <= buffer_size ){
-			if(	*( buffer + index / 8 ) &  (1 << index % 8) ) //era 1
-				(*( buffer + aux )) |= (  1 << (index + n_bits) % 8) ;
-			else
-				(*( buffer + aux )) &= ~( 1 << (index + n_bits) % 8) ;
-			
-			(*( buffer + index / 8 )) &= ~( 1 << (index) % 8) ;
+	if(n_bits > 0){
+		unsigned int aux;
+		for(int index = bit_index - 1 ; index >= 0; index--){
+			aux = (index + n_bits) / 8 ;
+			if(aux <= buffer_size ){
+				if(	*( buffer + index / 8 ) &  (1 << index % 8) ) //era 1
+					(*( buffer + aux )) |= (  1 << (index + n_bits) % 8) ;
+				else
+					(*( buffer + aux )) &= ~( 1 << (index + n_bits) % 8) ;
+				
+				(*( buffer + index / 8 )) &= ~( 1 << (index) % 8) ;
+			}
 		}
 	}
 }
