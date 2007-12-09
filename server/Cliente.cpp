@@ -3,23 +3,31 @@
 #include "InputBitStream.h"
 #include "SocketReader.h"
 #include "EscuchadorCliente.h"
+#include "EscritorCliente.h"
+
+#include <iostream> //<-----------------SACARRRRRRRRRRRRR
+
 
 #define _VERSION_ACEPTADA	0
 
 Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket)
 {
+	
 	this->id = id;
 	this->socket = socket;
-	// modelo->agregar_jugador( Tipo_Jugador( new Jugador(id) ) );
+	this->escuchador = new EscuchadorCliente(this);
+	this->escritor = new EscritorCliente(this);
+	this->jugador = Tipo_Jugador(new Jugador(id));
+	
 }
 
 void Cliente::run()
 {
-	EscuchadorCliente escuchador(this);
+	escuchador->start();
+	escritor->start();
 	
-	escuchador.start();
-	escuchador.join();
-	
+	escuchador->join();
+	escritor->join();
 	/* TODO: esto evita que se reutilice en el cliente del juego.
 	 *       tal vez utilizando el patron state y determinando el estado
 	 *       inicial en el constructor se puede generalizar.
@@ -57,6 +65,8 @@ Cliente::~Cliente()
 {
 	if( socket )
 		delete socket;
+	delete escritor;
+	delete escuchador;
 }
 
 void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
@@ -88,4 +98,10 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 		}
 	}
 	return sptr_paquete;
+}
+EscritorCliente& Cliente::get_escritor(){
+	return *escritor;
+}
+S_ptr<Jugador> Cliente::get_jugador(){
+	return this->jugador;
 }

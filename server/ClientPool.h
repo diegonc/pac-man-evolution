@@ -14,10 +14,15 @@ class ClientPool
 
         ~ClientPool();
 
-        void lanzar_cliente( Socket_Cliente* sock );
+        Cliente * lanzar_cliente( Socket_Cliente* sock );
 
         void join_all();
 	
+		void mandar_mensaje( unsigned int id, S_ptr<Paquete> mensaje );
+	
+		void mandar_mensaje_todos(S_ptr<Paquete> mensaje);
+	
+		unsigned int get_cantidad_clientes();
 };
 
 #endif /* __CLIENTPOOL_H__ */

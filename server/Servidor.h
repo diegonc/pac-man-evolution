@@ -20,17 +20,13 @@ class Servidor : public Thread{
 	
 	private:
 		static void manejador_signal(int num_signal);
-	
 		static const int SENIAL_CANCELAR;
 	
-	    ///clientes conectados
-		ClientPool pool;
-		/* se fue al pool.
-		std::map<Tipo_Id_Cliente, Cliente>  clientes;
-		//TODO forma de asignar los ids....por el momento, a manopla
-		unsigned int ultimo_id;
-		*/
-		///socket que permite la conexion
+	    ClientPool pool;
+		
+		unsigned int cant_min_clientes;
+		unsigned int cant_max_clientes;
+	
 		Socket_Server * socket;
 
 		bool parar;	
@@ -64,6 +60,10 @@ class Servidor : public Thread{
 		 *
 		 */
 		void run();
+		
+		void set_cant_min_clientes(unsigned int cant);
+		
+		void set_cant_max_clientes(unsigned int cant);
 		
 		
 };
