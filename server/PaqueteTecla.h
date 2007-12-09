@@ -2,6 +2,7 @@
 #define __PAQUETETECLA_H__
 
 #include "Paquete.h"
+#include "KeyOp.h"
 //#include "MapaBajoNivel.h"
 
 class PaqueteTecla : public Paquete
