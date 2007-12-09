@@ -81,7 +81,7 @@ void Servidor::run(){
 			cliente_nuevo->get_escritor().encolar_paquete(paquete_init);
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
-			S_ptr<Paquete> paquete_start(new PaqueteStart(0)); //TODO: <<---CAMBIARRRARRR
+			S_ptr<Paquete> paquete_start(new PaqueteStart(40)); //TODO: <<---CAMBIARRRARRR
 			if( pool.get_cantidad_clientes() == cant_min_clientes && !ya_mando_start ){
 				sleep(5);
 				pool.mandar_mensaje_todos(paquete_start);

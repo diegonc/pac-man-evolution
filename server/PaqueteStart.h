@@ -12,7 +12,7 @@
 class PaqueteStart: public Paquete
 {
     private:
-        int id_cliente;
+        int id_cliente; //TODO: REVISEN ESTO QUE HICE PORQUE NO ME SIRVE PARA UN BROADCAST
 	
     public:
 		PaqueteStart(int id_cliente); //TODO: REVISEN ESTO QUE HICE PORQUE NO ME SIRVE PARA UN BROADCAST
