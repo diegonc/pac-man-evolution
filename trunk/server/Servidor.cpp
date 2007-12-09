@@ -24,7 +24,7 @@ void Servidor::set_propiedades_signal(const int id_signal){
 		sigaction(id_signal,&this->accion_signal, NULL);
 	
 }
-Servidor::Servidor(std::string &direccion, unsigned short int puerto, S_ptr<ModeloServidor> mod) : modelo( mod )
+Servidor::Servidor(std::string &direccion, unsigned short int puerto)
 {
 	try{
 		//creo el socket del servidor
@@ -43,7 +43,7 @@ Servidor::Servidor(std::string &direccion, unsigned short int puerto, S_ptr<Mode
 		throw e;	
 	}
 }
-Servidor::Servidor(unsigned short int puerto, S_ptr<ModeloServidor> mod) : modelo(mod)
+Servidor::Servidor(unsigned short int puerto)
 {
 	try{
 		this->socket = new Socket_Server();
@@ -74,10 +74,10 @@ void Servidor::run(){
 			//lo agrega a la pileta de clietnes
 			Cliente * cliente_nuevo = pool.lanzar_cliente( client );
 			//agrega si jugador al modelo
-			this->modelo->agregar_jugador(cliente_nuevo->get_jugador());
+			ModeloServidor::get_instancia()->agregar_jugador(cliente_nuevo->get_jugador());
 			//le manda el paquete init
 			bool es_pacman = cliente_nuevo->get_jugador()->get_personaje()->get_tipo() == Personaje::pacman;
-			S_ptr<Paquete> paquete_init(new PaqueteInit(es_pacman,modelo->get_mundo().get_mapa_activo()));
+			S_ptr<Paquete> paquete_init(new PaqueteInit(es_pacman,ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()));
 			cliente_nuevo->get_escritor().encolar_paquete(paquete_init);
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
@@ -86,7 +86,9 @@ void Servidor::run(){
 				sleep(5);
 				pool.mandar_mensaje_todos(paquete_start);
 				ya_mando_start = true;
-				//TODO ARRANCAR CON EL FUCKIN' MODELO
+				//////////////////////////////////////////////////////////
+				//TODO <-----------------ARRANCAR CON EL FUCKIN' MODELO //
+				//////////////////////////////////////////////////////////
 			}
 			else{
 				if( pool.get_cantidad_clientes() > cant_min_clientes &&

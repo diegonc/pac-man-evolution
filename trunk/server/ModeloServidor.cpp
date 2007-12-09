@@ -8,6 +8,14 @@ ModeloServidor::ModeloServidor(){
 	cargar_modelo(); // provisorio
 }
 
+S_ptr<ModeloServidor> ModeloServidor::instancia;
+
+S_ptr<ModeloServidor> ModeloServidor::get_instancia(){
+	if( instancia.es_nulo())
+		instancia = S_ptr<ModeloServidor>(new ModeloServidor());
+	return instancia;
+}
+
 void ModeloServidor::cargar_modelo(){
 	this->parar = false;
 	

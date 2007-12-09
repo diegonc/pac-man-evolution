@@ -32,11 +32,12 @@ int App::ejecutar(){
 			Traductor traductor;
 			S_ptr<MundoBajoNivel> mundo_bajo_nivel(traductor.traducir(&mundo_alto_nivel));
 			//crea el modelo	
-			S_ptr<ModeloServidor> modelo(new ModeloServidor());
+			//S_ptr<ModeloServidor> modelo(new ModeloServidor());
 			//lo meto en el modelo
-			modelo->set_mundo(mundo_bajo_nivel);
+			ModeloServidor::get_instancia()->set_mundo(mundo_bajo_nivel);
+			//modelo->set_mundo(mundo_bajo_nivel);
 			//crea el servidor
-			S_ptr<Servidor> servidor(new Servidor(6000, modelo) );//TODO USAR EL ARG
+			S_ptr<Servidor> servidor(new Servidor(6000) );//TODO USAR EL ARG
 			//inicia el hilo del modelo
 			//modelo->start();
 			//inicia el hilo del servidor

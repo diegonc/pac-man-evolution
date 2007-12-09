@@ -28,7 +28,7 @@ class App{
 		 *
 		 *  @return Un smart pointer que contiene el la instancia de App
 		 */	
-	
+
 		static S_ptr<App> get_instancia(int argc, char *argv[]);
 	
 		/** @brief Ejecuta la aplicacion

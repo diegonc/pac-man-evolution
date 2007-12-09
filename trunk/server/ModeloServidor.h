@@ -37,14 +37,17 @@ class ModeloServidor : public Thread , public Observador, public Observable{
 					
 		void revisar_colisiones(S_ptr<Jugador>& j);	
 	
-	public:
-		
 		/**
 		*	@brief 	Constructor de la clase
 		*
 		*/
 		ModeloServidor();
-		
+	
+		static S_ptr<ModeloServidor> instancia;
+	public:
+				
+		static S_ptr<ModeloServidor> get_instancia();
+	
 		/**
 		*	@brief 	Destructor de la clase
 		*/

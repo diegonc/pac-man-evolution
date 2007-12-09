@@ -1,6 +1,7 @@
 #include "EscuchadorCliente.h"
 
-#include <iostream> ///TODO SACARRRR!!
+#include "ModeloServidor.h"
+
 
 
 EscuchadorCliente::EscuchadorCliente(Cliente * c){
@@ -14,10 +15,11 @@ EscuchadorCliente::~EscuchadorCliente(){
 void EscuchadorCliente::run(){
 	try{
 		S_ptr<Paquete> paquete;
+		Operacion * op;
 		while(true){
 			paquete = cliente->recibir_mensaje();
-			//TODO HACER ALGO CON EL PAQUETE
-			std::cout << "Leyo un paquete!\n";
+			op = paquete->get_operacion();
+			op->ejecutar(*(ModeloServidor::get_instancia()));
 		}
 	}
 	catch(std::runtime_error &e){/*salgo del while*/}
