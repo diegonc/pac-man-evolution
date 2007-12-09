@@ -2,6 +2,9 @@
 #include "MapImpSet.h"
 #include "EstructuralPasillo.h"
 #include "EstructuralCasaFantasma.h"
+#include "Direccion.h"
+#include "Posicion.h"
+
 namespace {
 	const char ID = 0;
 }
@@ -72,6 +75,30 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	}
 }
 
+void PaqueteInit::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBitStream& bs )
+{
+	if( e.es_nulo() ) return;
+
+	bs.append( 6, (int)e->get_tipo() );
+	bs.append( 2, Direccion::Norte );
+	Posicion& p = e->get_posicion();
+	int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
+	bs.append( 16, pos );
+}
+
+bool PaqueteInit::escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs )
+{
+	if( c.es_nulo() ) return false;
+	if( c->get_tipo() == Comestible::quesito ) return false;
+
+	bs.append( 6, (int)c->get_tipo() );
+	bs.append( 2, Direccion::Norte );
+	Posicion& p = c->get_posicion();
+	int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
+	bs.append( 16, pos );
+	return true;
+}
+
 void PaqueteInit::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
 {
 	Posicion p( e->get_posicion() );
@@ -133,6 +160,9 @@ void PaqueteInit::agregar_arista( int x, int y, bool norte )
 
 void PaqueteInit::serialize( OutputBitStream& bs )
 {
+	/* TODO: supone casa fantasma y salida unica. */
+	S_ptr<EstructuralUnitario> casa;
+	S_ptr<EstructuralUnitario> salida;
 	Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
 
 	bs.append( 1, esPacman ? 0 : 1 ); // Escribe campo auxiliar.
@@ -149,8 +179,11 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 		for( unsigned int x=0; x < mapa->get_ancho(); x++ ){
 			Posicion p( x, y );
 			e = mapa->get_estructural( p );
-			if(!e.es_nulo() )
+			if(!e.es_nulo() ) {
+				if( e->get_tipo() == EstructuralUnitario::Casa_Fantasma ) casa = e;
+				if( e->get_tipo() == EstructuralUnitario::Salida_Pacman ) salida = e;
 				bs.append( 1, !( e->get_arriba().es_nulo() ) );
+			}
 		}
 		// Aristas horizontales
 		for( unsigned int x=0; x < mapa->get_ancho(); x++ ) {
@@ -164,8 +197,20 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 	bs.skip();
 	
 	// TODO: Escribir elementos del mapa.
-	bs.append( 8, 0 );
+	OutputBitStream elems;
+	int elem_count = 2;
 	
+	escribir_estructural( casa, elems );
+	escribir_estructural( salida, elems );
+	
+	std::list< S_ptr<Comestible> > comestibles = mapa->get_comestibles();
+	std::list<S_ptr<Comestible> >::iterator it = comestibles.begin();
+	for( ; it != comestibles.end(); ++it )
+		if( escribir_comestible( *it, elems ) )
+			elem_count++;
+
+	bs.append( 16, elem_count );
+	bs.append( elems );
 }
 
 Operacion * PaqueteInit::get_operacion(){

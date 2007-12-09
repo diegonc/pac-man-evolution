@@ -47,6 +47,18 @@ class OutputBitStream
 		void append( const unsigned int n, int val, bool grow = true );/* TODO ;*/
 
 		/**
+		*	@brief 	Agrega el contenido del OutputBitStream o al final del stream actual, alineado al proximo byte.
+		*			Si no hay espacio suficiente para la cantidad de bits deseados
+		*			se puede aumentar o no realizar operacion alguna.
+		*
+		*	@param	o Stream origen
+		*
+		*	@param	grow Si el lugar no era suficiente, agrega mas
+		*/
+		void append( OutputBitStream& o, bool grow = true );
+
+
+		/**
 		*
 		*	@brief	Genera espacio en la parte mas baja del numero, desplazando
 		*			todo hacia la izquierda

@@ -20,6 +20,9 @@ class PaqueteInit : public Paquete
 
 		void reemplazar_estructural( S_ptr<EstructuralUnitario>& e );
 
+		void escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBitStream& bs );
+		bool escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs );
+
 	public:
 		/** Crea un paquete apto para deserializar. */
 		PaqueteInit();
