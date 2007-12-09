@@ -18,6 +18,8 @@ class PaqueteInit : public Paquete
 
 		void agregar_arista( int x, int y, bool norte );
 
+		void reemplazar_estructural( S_ptr<EstructuralUnitario>& e );
+
 	public:
 		/** Crea un paquete apto para deserializar. */
 		PaqueteInit();

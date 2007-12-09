@@ -53,6 +53,13 @@ class EstructuralPasillo : public EstructuralUnitario{
 		EstructuralUnitario::Enum_Estructural get_tipo();
 		
 		/**
+		 *  @brief Asigna la comida.
+		 *
+		 *  @param tipo Tipo de comida a asignar.
+		 */
+		void set_comida( Comestible::Enum_Comestible &tipo );
+
+		/**
 		*	@brief Permite obtener la comida
 		*
 		*	@return Un smart pointer con la comida que contiene, en caso de
