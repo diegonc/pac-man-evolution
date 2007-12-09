@@ -3,17 +3,19 @@
 
 #include "Paquete.h"
 //#include "MapaBajoNivel.h"
+#include <string>
 
 class PaqueteMensaje: public Paquete
 {
     private:
-        string Mensaje;
+        std::string Mensaje;
+	
 	public:
 		PaqueteMensaje();
 
-        string get_mensaje();
+        std::string get_mensaje();
 
-        void set_mensaje(string msg);
+        void set_mensaje(std::string msg);
 
 		void serialize( OutputBitStream& bs );
 

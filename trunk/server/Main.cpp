@@ -1,9 +1,9 @@
-/*#include "App.h"
+#include "App.h"
 
 int main(int argc, char *argv[]){
 	return (App::get_instancia(argc, argv))->ejecutar();
 }
-*/
+/*
 #include "OutputBitStream.h"
 #include <iostream>
 #include <bitset>
@@ -42,4 +42,4 @@ int main(int argc, char *argv[]){
 	}
 	
 		
-}
+}*/
