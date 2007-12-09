@@ -48,7 +48,7 @@ class Paquete
 
 		//algo similar a esto, que pase a bits
 	
-		/*Tipo*/void serialize( OutputBitStream& bs );
+		virtual /*Tipo*/void serialize( OutputBitStream& bs );
 
 		/** @brief Carga el estado del objeto desde un BitStream.
 		 *

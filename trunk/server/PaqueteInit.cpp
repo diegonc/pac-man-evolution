@@ -123,11 +123,12 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 			bs.append( 1, !( mapa->get_estructural( p )->get_derecha().es_nulo() ) );
 		}
 	}
-
+	
 	bs.skip();
 	
 	// TODO: Escribir elementos del mapa.
 	bs.append( 8, 0 );
+	
 }
 
 Operacion * PaqueteInit::get_operacion(){
