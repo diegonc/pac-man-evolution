@@ -36,6 +36,61 @@ void AppEditor::ejecutar(){
   gui->join();
 }
 
+
+/* Imprimir Error: */
+
+void AppEditor::imprimir_error(char codigo, int nroNivel){
+	//Obtengo la ventana principal del gui para poder mandar mensajes de dialogo
+	VPrincipal* ventana = this->gui->get_ventana_principal();
+	//Stream de entrada para cadenas, para realizar conversiones de int a string
+	std::stringstream ss; 
+	//Aux para tener el nro de nivel como string y poder imprimir
+	string sNroNivel;
+	ss << nroNivel << '\n';
+	ss >> sNroNivel;
+	
+	string msg; //Msg a imprimir
+	
+	//Segun el codigo de error, imprimo el error correcto por pantalla.
+	switch (codigo) {
+		case E_NO_SALIDA_COD:{
+			msg = E_NO_SALIDA_TXT 
+			msg += sNroNivel;
+			ventana->mostrar_msg(msg);
+			break; }
+		case E_NO_CASA_COD: {
+			msg = E_NO_CASA_TXT;
+			msg += sNroNivel;
+			ventana->mostrar_msg(msg);
+			break; }
+		case E_NO_CONGR_COD: {
+			msg = E_NO_CONGR_TXT;
+			msg += sNroNivel;
+			ventana->mostrar_msg(msg);
+			break; }
+		case E_GUARDAR_INC_COD: {
+			msg = E_GUARDAR_INC_TXT;
+			ventana->mostrar_msg(msg);
+			break; }
+		case E_CARGAR_INC_COD: {
+			msg = E_CARGAR_INC_TXT;
+			ventana->mostrar_msg(msg);
+			break; }
+		case E_MISMO_NOMBRE_COD: {
+			msg = E_MISMO_NOMBRE_TXT;
+			ventana->mostrar_msg(msg);
+			break; }
+		case E_ALTO_INC_COD: {
+			msg = E_ALTO_INC_TXT;
+			ventana->mostrar_msg(msg);
+			break; }
+		case E_ANCHO_INC_COD: {
+			msg = E_ANCHO_INC_TXT;
+			ventana->mostrar_msg(msg);
+			break; }
+	}		
+}
+
 /* Destroy: */
 void AppEditor::destroy(){
 	delete(instancia);

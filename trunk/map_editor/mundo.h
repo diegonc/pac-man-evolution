@@ -28,10 +28,10 @@ class Mundo : public Observable {
 	/* Destructor: Libera los recursos consumidos por el mundo. */
 	~Mundo();
 
-	/* Agregar Nivel: Crea un nuevo nivel vacio con tamaño tam_X, tam_Y, y nombre pasados por parametros, 
+	/* Agregar Nivel: Crea un nuevo nivel vacio con el ancho, alto y nombre pasados por parametros, 
 	   y lo agrega al final de la lista de niveles (como ultimo nivel).
 	   Devuelve el numero de orden dentro de la lista de niveles o -1 si hubo error. */
-	int agregar_nivel(string nombre, int tam_X, int tam_Y);
+	int agregar_nivel(string nombre, int ancho, int alto);
 
 	/* Quitar Nivel: Quita el nivel que tiene como numero de orden el pasado por parametro. Si no lo encuentra
 	   no hace nada */
@@ -68,6 +68,14 @@ class Mundo : public Observable {
 	
 	/* Get Cant Niveles: Devuelve la cantidad de niveles del mundo. */
 	unsigned int get_cant_niveles();
+	
+	/* Chequear mundo: Chequea nivel por nivel hasta que uno sea incorrecto y carga un numero del nivel con error
+					   y devuelve el codigo de error : - 0 si el mundo es correcto
+								  			  		   - 1 si el error es que el nivel no tiene salida de pacman
+								  			  		   - 2 si el error es que el nivel no tiene casa de fantasmas
+								  			  		   - 3 si el nivel no tiene una unica componente conexa.
+		Devuelve -1 como numero de nivel incorrecto, si todos son correctos. */
+	char chequear_mundo(int &N_Nivel_incorrecto);
 	
 	/* ToXML: Guarda el mundo y todos sus niveles en archivos de la extension adecuada. Se debe pasar por parametro el nombre del archivo
 	   donde guardar la info del mundo.

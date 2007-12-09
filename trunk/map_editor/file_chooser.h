@@ -3,8 +3,7 @@
 #ifndef FILE_CHOOSER_H_
 #define FILE_CHOOSER_H_
 
-#include "modelo.h"
-#include "gui.h"
+#include "app_editor.h"
 #include <gtk/gtk.h>
 
 /* CLASE FILE CHOOSER: Permite guardar y cargar archivos xml de mundos. */

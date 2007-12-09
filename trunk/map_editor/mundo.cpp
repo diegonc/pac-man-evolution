@@ -16,8 +16,8 @@ Mundo::~Mundo(){
 
 /* Agregar Nivel: */
 
-int Mundo::agregar_nivel(string nombre, int tam_X, int tam_Y){
-	S_ptr<Nivel> nivel (new Nivel(nombre, tam_X, tam_Y));
+int Mundo::agregar_nivel(string nombre, int ancho, int alto){
+	S_ptr<Nivel> nivel (new Nivel(nombre, ancho, alto));
 	this->niveles.push_back(nivel);
 	this->set_cambio();
 	this->avisar_observadores(NULL);
@@ -145,6 +145,27 @@ void Mundo::degradar(unsigned int nOrden){
 
 unsigned int Mundo::get_cant_niveles(){
 	return this->niveles.size();
+}
+
+/* Chequear mundo: */
+
+char Mundo::chequear_mundo(int &N_Nivel_incorrecto){
+	char error = 0;
+	int cont = 1;
+	N_Nivel_incorrecto = -1;
+	list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
+	while ((it != this->niveles.end()) && (!error)){
+		S_ptr<Nivel> nivel = (*it);
+		if (!nivel->get_mapa()->tiene_salida())	error = 1;
+		if (!error)
+			if (!nivel->get_mapa()->tiene_casa_fantasmas()) error = 2;
+		if (!error)
+			if (!nivel->es_congruente()) error = 3;
+		if (error) N_Nivel_incorrecto = cont;
+		it++;
+		cont++;
+	}
+	return error;
 }
 
 /* ToXML: */

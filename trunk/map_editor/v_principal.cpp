@@ -77,13 +77,13 @@ void VPrincipal::actualizar(Observable * observable, void * param){
 
 /* Mostrar Msg: */
 
-void VPrincipal::mostrar_msg(char* msg){
+void VPrincipal::mostrar_msg(string msg){
 	//Creo un dialogo de error con el mensaje recibido por param
 	GtkWidget* dialog = gtk_message_dialog_new (GTK_WINDOW(this->get_widget()),
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_MESSAGE_ERROR,
 						  GTK_BUTTONS_CLOSE,
-						  msg);
+						  msg.c_str());
 	//Corro el dialogo
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	//Lo destruyo
@@ -175,6 +175,7 @@ gboolean VPrincipal::delete_event_handler(GtkWidget* widget, GdkEvent* event, gp
 /* Destroy Handler: */
 
 gboolean VPrincipal::destroy_handler(GtkWidget* widget, gpointer data){
+	
 	//Devuelvo true y destruyo la ventana
 	return TRUE;
 }

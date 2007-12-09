@@ -62,7 +62,7 @@ bool VIngDatos::ejecutar(){
 		this->nombre = dato;
 		//Si hay otro nivel con el mismo nombre mando un mensaje al usuario
 		if (!(Modelo::get_instance()->get_mundo()->get_nivel_por_nombre(this->nombre)).es_nulo()){
-			vprincipal->mostrar_msg("Ya existe un nivel con ese nombre");
+			AppEditor::get_instance(0,0)->imprimir_error(E_MISMO_NOMBRE_COD, 0);
 			error = true;
 		}
 		if (!error) {
@@ -71,7 +71,7 @@ bool VIngDatos::ejecutar(){
 			this->alto = atoi(dato); //La convierto a int
 			//Si no se puede convertir o vale 0 arrojo error por pantalla
 			if (this->alto <= 0){
-				vprincipal->mostrar_msg("El alto ingresado es incorrecto");
+				AppEditor::get_instance(0,0)->imprimir_error(E_ALTO_INC_COD, 0);
 				error = true;
 			}
 			//Obtengo el ancho del nivel
@@ -79,7 +79,7 @@ bool VIngDatos::ejecutar(){
 			this->ancho = atoi(dato); //Lo convierto a int
 			//Si no se puede convertir o vale 0 arrojo error por pantalla
 			if (this->ancho <= 0){
-				vprincipal->mostrar_msg("El ancho ingresado es incorrecto");
+				AppEditor::get_instance(0,0)->imprimir_error(E_ANCHO_INC_COD, 0);
 				error = true;
 			}
 		}

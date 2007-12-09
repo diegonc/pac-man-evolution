@@ -27,7 +27,9 @@ Mapa::Mapa(int ancho, int alto){
 		this->alto = 0;
 	}
 	//Creo el grafo de conexiones
-	this->conexiones = new Grafo<S_ptr<Elemento>, Obj_Nulo>();
+	this->conexiones = new Grafo<Wrapper<DatoVertice>, Obj_Nulo>();
+	//Creo el recorredor de grafos
+	this->recorredor = new RecorredorGrafo<Wrapper<DatoVertice>, Obj_Nulo>();
 }
 
 /* Destructor: */
@@ -40,6 +42,8 @@ Mapa::~Mapa(){
 	delete[](this->mapa);
 	//Elimino el grafo de conexiones
 	delete(this->conexiones);
+	//Elimino el recorredor de grafos
+	delete(this->recorredor);
 	this->elementos.clear(); //Vacio la lista de elementos
 }
 
@@ -77,8 +81,10 @@ void Mapa::insertar_elemento(S_ptr<Elemento> elemento){
 		casillero = this->get_casillero(pos_x + cont1, pos_y + cont2);
 	}
 	//Si el elemento es un estructural, lo agrego al grafo de conexiones
-	if (elemento->es_estructural())
-		this->conexiones->agregar_vertice(elemento);
+	if (elemento->es_estructural()){
+		Wrapper<DatoVertice> dato (new DatoVertice(elemento));
+		this->conexiones->agregar_vertice(dato);
+	}
 	//Agrego el elemento en la lista de elems
 	this->elementos.push_back(elemento);
 }
@@ -108,8 +114,10 @@ void Mapa::quitar_elemento(S_ptr<Elemento> elemento){
 		casillero = this->get_casillero(pos_x + cont1, pos_y + cont2);
 	}
 	//Si el elemento es un estructural, lo quito del grafo de conexiones
-	if (elemento->es_estructural())
-		this->conexiones->eliminar_vertice(elemento);
+	if (elemento->es_estructural()){
+		Wrapper<DatoVertice> dato_a_eliminar (new DatoVertice(elemento));
+		this->conexiones->eliminar_vertice(dato_a_eliminar);
+	}
 	//Quito el elemento de la listas de elementos
 	this->elementos.remove(elemento);
 }
@@ -117,7 +125,32 @@ void Mapa::quitar_elemento(S_ptr<Elemento> elemento){
 /* Es Congruente: */
 
 bool Mapa::es_congruente(){
-	return true;
+	this->get_desconectados();
+	return (this->desconectados.empty());
+}
+
+/* Get Desconectados: */
+
+list<S_ptr<Elemento> >& Mapa::get_desconectados(){
+	//Cada vez que pido los desconectados, los recalculo
+	//Vacio la lista de desconectados
+	this->desconectados.clear();
+	//Obtengo todos los vertices del grafo
+	list<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > > vertices = this->conexiones->get_vertices();
+	if (!vertices.empty()){
+		list<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > >::iterator it = vertices.begin();
+		//Recorro el grafo marcando a los desconectados desde el vertice mas antiguo
+		this->recorredor->recorrer_grafo(this->conexiones, (*it));
+		//Los recorro y por cada vertice desconectado, agrego su elemento a la lista de desconectados
+		while (it != vertices.end()){
+			S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > vertice_actual =  (*it);
+			if (!vertice_actual->get_info()->esta_marcado())
+				this->desconectados.push_back(vertice_actual->get_info()->get_elemento());
+			it++;
+		}
+	}
+	//Devuelvo la lista de elementos desconectados
+	return this->desconectados;
 }
 
 /* Get Casillero: */
@@ -136,13 +169,9 @@ S_ptr<Casillero> Mapa::get_casillero(int pos_x, int pos_y){
 
 void Mapa::conectar(S_ptr<Elemento> elem1, S_ptr<Elemento> elem2){
 	Obj_Nulo nulo;
-	this->conexiones->agregar_arco_no_dirigido(elem1, elem2, nulo, 0);
-}
-
-/* Marcar Conectados: */
-
-void Mapa::marcar_conectados(){
-
+	Wrapper<DatoVertice> dato1 (new DatoVertice(elem1));
+	Wrapper<DatoVertice> dato2 (new DatoVertice(elem2));
+	this->conexiones->agregar_arco_no_dirigido(dato1, dato2, nulo, 0);
 }
 
 /* Validar Coordenadas: */
@@ -195,7 +224,7 @@ void Mapa::set_casa_fantasmas(bool estado){
 
 /* Tiene Casa Fantasmas: */
 
-bool Mapa::tiene_casa_fantamas(){
+bool Mapa::tiene_casa_fantasmas(){
 	return this->casa;
 }
 

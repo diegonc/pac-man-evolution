@@ -62,4 +62,23 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define EXT_MUNDO ".mdo"
 #define EXT_NIVEL ".nvl"
 
+//Defino los codigos y textos de los errores
+#define E_NO_SALIDA_COD 1
+#define E_NO_CASA_COD 2
+#define E_NO_CONGR_COD 3
+#define E_GUARDAR_INC_COD 4
+#define E_CARGAR_INC_COD 5
+#define E_MISMO_NOMBRE_COD 6
+#define E_ALTO_INC_COD 7
+#define E_ANCHO_INC_COD 8
+
+#define E_NO_SALIDA_TXT "Error - No hay salida de pacman en el nivel: ";
+#define E_NO_CASA_TXT "Error - No hay casa de fantasmas en el nivel: ";
+#define E_NO_CONGR_TXT "Error - Hay elementos desconectados en el nivel: ";
+#define E_GUARDAR_INC_TXT "Error - Se produjo un error guardando el mundo";
+#define E_CARGAR_INC_TXT "Error - Se produjo un error cargando el mundo";
+#define E_MISMO_NOMBRE_TXT "Error - Nombre Incorrecto: Ya existe otro nivel con ese nombre";
+#define E_ALTO_INC_TXT "Error - Alto incorrecto, debe ser un numero entero mayor a 0 de 2 dígitos";
+#define E_ANCHO_INC_TXT "Error - Ancho incorrecto, debe ser un numero entero mayor a 0 de 2 dígitos";
+
 #endif

@@ -5,6 +5,7 @@
 //Incluyo las librerias necesarias
 #include "gui.h"
 #include "modelo.h"
+#include <sstream>
 
 class GUI;
 
@@ -41,6 +42,11 @@ class AppEditor {
 	
 		/* Ejecutar: Ejecuta la aplicacion. */
 		void ejecutar();
+	
+		/* Imprimir Error: Dado un codigo de error imprime el mismo por pantalla, a traves de un cuadro
+		   de dialogo.
+		   nroNivel -> Nro de nivel necesario para algunos mensajes de error. */
+		void imprimir_error(char codigo, int nroNivel);
 	
 		/* Destroy: Se encarga de liberar los recursos consumidos por la aplicacion */
 		static void destroy();

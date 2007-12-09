@@ -5,16 +5,20 @@
 //Incluyo las librerias necesarias
 #include "casillero.h"
 #include "elemento.h"
+#include "dato_vertice.h"
+#include "recorredor_grafo.h"
 #include "../common/tinyxml/tinyxml.h"
 #include "../common/smart_pointer.h"
 #include "../common/grafo.h"
 #include "../common/vertice.h"
 #include "../common/arco.h"
+#include "../common/wrapper.h"
 #include "obj_nulo.h"
 #include <list>
 
 class Elemento;
 class Casillero;
+class DatoVertice;
 
 using namespace std;
 
@@ -28,8 +32,10 @@ class Mapa {
 		int ancho; //Cantidad de cols
 		int alto; //Cantidad de filas
 		S_ptr<Casillero>** mapa; //Matriz de casilleros que conforman al mapa
-		Grafo<S_ptr<Elemento>, Obj_Nulo>* conexiones; //Grafo que contiene las conexiones entre los elementos estructurales
+		Grafo<Wrapper<DatoVertice>, Obj_Nulo>* conexiones; //Grafo que contiene las conexiones entre los elementos estructurales
+		RecorredorGrafo<Wrapper<DatoVertice>, Obj_Nulo>* recorredor; //Objeto que se encarga de recorrer el grafo de conexiones para encontrar los vertices desconectados
 		list<S_ptr<Elemento> > elementos; //Lista que contiene los elementos del mapa
+		list<S_ptr<Elemento> > desconectados; //Lista que contiene los elementos desconectados
 		bool salida; //Booleano que controla si el mapa tiene o no salida de pacman
 		bool casa; //Booleano que controla si el mapa tiene o no casa de fantasmas
 	
@@ -66,8 +72,9 @@ class Mapa {
 	/* Conectar: Busca los 2 elementos pasados por parametro en el mapa y si los encuentra los conecta */
 	void conectar(S_ptr<Elemento> elem1, S_ptr<Elemento> elem2);
 
-	/* Marcar Conectados: Metodo que se encarga de marcar todos los elementos estructurales que se   	            encuentran conectados al camino principal (el de mas arriba a la izq) */
-	void marcar_conectados();
+	/* Get Desconectados: Metodo que se encarga de encontrar todos los elementos desconectados de la componente
+	   conexa a la cual pertenece el elemento mas antiguo del mapa.	*/
+	list<S_ptr<Elemento> >& get_desconectados();
 
 	/* Validar Coordenadas: Recibe coordenadas (x, y), y devuelve true si estan dentro del mapa, false en caso
 	   contrario */
@@ -87,7 +94,7 @@ class Mapa {
 	void set_casa_fantasmas(bool estado);
 	
 	/* Tiene Casa Fantasmas: Devuelve true si el mapa tiene casa de fantasmas, false en caso contrario */
-	bool tiene_casa_fantamas();
+	bool tiene_casa_fantasmas();
 
 	/* ToXML: Devuelve un elemento xml que contiene la representacion del mapa y todos sus casilleros.
 	   Si hubo un error devuelve NULL. */
