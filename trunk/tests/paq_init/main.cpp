@@ -34,9 +34,9 @@ MapaBajoNivel* mapa_de_prueba()
 
 unsigned char* datos_de_prueba()
 {
-	#define DATOS_PRUEBA_S 5
+	#define DATOS_PRUEBA_S 6
 	static unsigned char raw[DATOS_PRUEBA_S] = {
-	       	4 /* fantasma */, 2, 2, 46, 0 };
+	       	4 /* fantasma */, 2, 2, 46, 0, 0 };
 	return raw;
 }
 

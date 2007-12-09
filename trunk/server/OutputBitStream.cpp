@@ -38,6 +38,23 @@ void OutputBitStream::append( const unsigned int n, int val, bool grow ){
 	
 }
 
+void OutputBitStream::append( OutputBitStream& o, bool grow )
+{
+	skip();
+	
+	unsigned int new_buffer_size = buffer_size + o.buffer_size;
+	unsigned char * new_buffer = new unsigned char [ new_buffer_size ];
+	//los copio
+	memcpy(new_buffer, buffer, buffer_size);
+	//borro el viejo
+	delete[] this->buffer;
+	//setteo los tamaños
+	buffer_size = new_buffer_size;
+	//setteo el nuevo buffer
+	this->buffer = new_buffer;
+	this->bit_index += o.bit_index;
+}
+
 void OutputBitStream::skip(){
 	shift_left(buffer_size * 8 - bit_index);
 	bit_index = buffer_size * 8;
