@@ -3,6 +3,7 @@
 
 #include "InputBitStream.h"
 #include "OutputBitStream.h"
+#include "Operacion.h"
 
 class Paquete
 {
@@ -54,6 +55,12 @@ class Paquete
 		 *  @param bs Fuente de datos.
 		 */
 		virtual void deserialize( InputBitStream& bs ) = 0;
+		
+		/** @brief Devuelve la operacion correspondiente al paquete
+		 *
+		 *  @return Operacion del paquete
+		 */
+		virtual Operacion * get_operacion() = 0;
 };
 
 #endif /* __PAQUETE_H__ */

@@ -13,7 +13,7 @@ class PaqueteTecla : public Paquete
 	public:
 		PaqueteTecla();
 
-        KeyOp* get_KeyOp();
+        Operacion * get_operacion();
 
         void set_KeyOp(KeyOp* OperTecla);
 
