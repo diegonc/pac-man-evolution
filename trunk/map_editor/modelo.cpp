@@ -46,12 +46,6 @@ void Modelo::set_mundo(Mundo* nuevo_mundo){
 	this->avisar_observadores(NULL);	
 }
 
-/* Ejecutar: */
-
-void Modelo::ejecutar(){
-
-}
-
 /* Destroy: */
 
 void Modelo::destroy(){

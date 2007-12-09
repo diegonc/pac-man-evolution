@@ -60,6 +60,9 @@ class Mapa {
 	/* Quitar Elemento: Quita el elemento pasado por parametro del mapa (lo saca de todos los casilleros que
 	   este ocupe). No realiza ningun tipo de validacion. */
 	void quitar_elemento(S_ptr<Elemento> elemento);
+	
+	/* Get Elementos: Devuelve una lista con los elementos contenidos en el mapa. */
+	list<S_ptr<Elemento> >& get_elementos();
 
 	/* Es Congruente: Devuelve true si el mapa es congruente (tiene una sola componente conexa), false en caso
 	   contrario. */
