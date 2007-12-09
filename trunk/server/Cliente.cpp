@@ -2,6 +2,9 @@
 
 #include "InputBitStream.h"
 #include "SocketReader.h"
+#include "EscuchadorCliente.h"
+
+#define _VERSION_ACEPTADA	0
 
 Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket)
 {
@@ -12,6 +15,11 @@ Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket)
 
 void Cliente::run()
 {
+	EscuchadorCliente escuchador(this);
+	
+	escuchador.start();
+	escuchador.join();
+	
 	/* TODO: esto evita que se reutilice en el cliente del juego.
 	 *       tal vez utilizando el patron state y determinando el estado
 	 *       inicial en el constructor se puede generalizar.
@@ -66,15 +74,18 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 {
 	SocketReader sr( *socket );
 	InputBitStream bs( sr );
-	Paquete* p = 0;
+	S_ptr<Paquete> sptr_paquete;
 
 	// Lectura de encabezado
 	int version = bs.read( 2 );
-	if( version == 0 ) {
+	if( version == _VERSION_ACEPTADA ) {
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
-		p = Paquete::crear( tipo );
-		p->deserialize( bs );
+		S_ptr<Paquete> p(Paquete::crear( tipo ));
+		if(p != 0){
+			p->deserialize( bs );
+			sptr_paquete = p;
+		}
 	}
-	return S_ptr<Paquete>( p );
+	return sptr_paquete;
 }

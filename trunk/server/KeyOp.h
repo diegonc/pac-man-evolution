@@ -33,7 +33,7 @@ class KeyOp : public Operacion
 		*/
 		//KeyOp( int id, int flecha ) : id( id ), flecha( flecha ) {}
 
-		KeyOp(int flecha ): flecha( flecha ),id(-1) {}
+		KeyOp(int flecha );
 		
 		/** 
 		*	@brief Implementa los efectos de la operacion. 

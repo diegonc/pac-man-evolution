@@ -9,6 +9,11 @@ const int KeyOp::abajo  	= 	1;
 const int KeyOp::derecha	= 	3;
 const int KeyOp::izquierda	= 	2;  
 
+KeyOp::KeyOp(int flecha ){
+	this->flecha = flecha;
+	this->id = -1;
+}
+
 void KeyOp::ejecutar(ModeloServidor &modelo)
 {
 	if (id==-1){

@@ -9,6 +9,7 @@ class PaqueteTecla : public Paquete
 {
     private:
         KeyOp* OperacionTecla;
+	
 	public:
 		PaqueteTecla();
 
