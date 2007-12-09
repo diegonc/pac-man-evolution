@@ -72,13 +72,17 @@ Cliente::~Cliente()
 void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
 {
 	OutputBitStream obs;
-
 	paquete->serialize( obs );
-		
+	
 	const unsigned char* raw = obs.get_data();
 	
+	for(int i = 0; i < obs.get_size(); i++)
+		std::cout << std::hex << (int)raw[i] << " ";
+	std::cout << "\n";
+	
 	socket->escribir( raw, obs.get_size() );
-		
+	
+	
 }
 
 S_ptr<Paquete> Cliente::recibir_mensaje()
