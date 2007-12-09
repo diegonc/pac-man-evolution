@@ -81,23 +81,9 @@ class Elemento {
 	
 	/* Get Ruta Imagen: Devuelve una cadena con la ruta donde se encuentra la imagen que representa al elemento */
 	virtual char* get_ruta_imagen() = 0;
-
+	
 	//operadores de comparacion
-
-	friend bool operator==(Elemento &elem1, Elemento &elem2){
-		if ((elem1.get_pos_x() == elem2.get_pos_x()) && (elem1.get_pos_y() == elem2.get_pos_y()))
-			return true;
-		else
-			return false;
-	}
-
-	friend bool operator!=(Elemento &elem1, Elemento &elem2){
-		if ((elem1.get_pos_x() != elem2.get_pos_x()) || (elem1.get_pos_y() != elem2.get_pos_y()))
-			return true;
-		else
-			return false;
-	}
-
+	
 	friend bool operator<(Elemento &elem1, Elemento &elem2){
 		if (elem1.get_pos_x() < elem2.get_pos_x())
 			return true;

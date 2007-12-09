@@ -23,7 +23,7 @@ Nivel::~Nivel(){
 bool Nivel::agregar_elemento(TipoElem tipo, int posX, int posY, Orientacion orientacion){
 	bool result = true;
 	//Si las posiciones recibidas estan dentro de los margenes del mapa agrego el elemento
-	if ((posX >= 0) && (posY >= 0) && (posX < this->mapa->get_ancho()) && (posY < this->mapa->get_alto())){
+	if ((posX >= 0) && (posY >= 0) && (posY < this->mapa->get_ancho()) && (posX < this->mapa->get_alto())){
 		S_ptr<Fab_Elementos> fabrica (new Fab_Elementos());
 		S_ptr<Elemento> elemento = fabrica->construir(tipo, posX, posY, orientacion);
 		if (!elemento.es_nulo())
@@ -40,7 +40,7 @@ bool Nivel::agregar_elemento(TipoElem tipo, int posX, int posY, Orientacion orie
 bool Nivel::quitar_elemento(int posX, int posY){
 	bool result = true;
 	//Si las posiciones recibidas estan dentro de los margenes del mapa quito el elemento
-	if ((posX >= 0) && (posY >= 0) && (posX < this->mapa->get_ancho()) && (posY < this->mapa->get_alto())){
+	if ((posX >= 0) && (posY >= 0) && (posY < this->mapa->get_ancho()) && (posX < this->mapa->get_alto())){
 		S_ptr<Casillero> casillero = this->mapa->get_casillero(posX, posY);
 		S_ptr<Elemento> elemento;
 		if (casillero->tiene_modificador())

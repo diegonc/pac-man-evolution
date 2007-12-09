@@ -164,7 +164,7 @@ void PanelMundo::agregar_click_handler(GtkWidget *widget, gpointer user_data){
 		string nombre = ing_datos->get_nombre();
 		int ancho = ing_datos->get_ancho();
 		int alto = ing_datos->get_alto();
-		mundo->agregar_nivel(nombre, alto, ancho);
+		mundo->agregar_nivel(nombre, ancho, alto);
 		panel->seleccionado = mundo->get_cant_niveles() - 1;
 		S_ptr<Nivel> nivel = Modelo::get_instance()->get_mundo()->get_nivel(panel->seleccionado + 1);
 		panel->set_cambio();

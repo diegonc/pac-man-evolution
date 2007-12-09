@@ -53,7 +53,7 @@ class VPrincipal : public Observador {
 	void actualizar(Observable * observable, void * param);
    
     /* Mostrar Msg: Muestra el mensaje pasado por parametro por una ventana de dialogo */
-  	void mostrar_msg(char* msg);
+  	void mostrar_msg(string msg);
 
    private:
 	   

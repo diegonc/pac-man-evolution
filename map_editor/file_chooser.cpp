@@ -39,16 +39,21 @@ FileChooser::~FileChooser(){
 
 void FileChooser::ejecutar(){
 	Mundo* mundo = Modelo::get_instance()->get_mundo();
-	//Referencia a la ventana principal del programa
-	VPrincipal* vprincipal = GUI::get_instance(0,0)->get_ventana_principal();
 	//Corro el dialogo del file chooser, y si la respuesta del usuario es aceptar...
 	if (gtk_dialog_run (GTK_DIALOG (this->file_chooser)) == GTK_RESPONSE_ACCEPT) {
 		char* filename = this->get_filename();
 		//Si la accion es guardar, guardo el mundo segun el filename
 		if (this->accion == GTK_FILE_CHOOSER_ACTION_SAVE){
-			if (!mundo->toXml(filename))
-				//Si se produjo un error guardando el archivo notifico por pantalla
-				vprincipal->mostrar_msg("Error guardando archivo.");
+			int NroNivel = 0;
+			//Chequeo que el mundo sea correcto antes de guardar
+			char error = mundo->chequear_mundo(NroNivel);
+			//Si hubo algun error en el chequeo imprimo el error, sino intento guardar
+			if (error)
+				AppEditor::get_instance(0,0)->imprimir_error(error, NroNivel);
+			else
+				if (!mundo->toXml(filename))
+					//Si se produjo un error guardando el archivo notifico por pantalla
+					AppEditor::get_instance(0,0)->imprimir_error(E_GUARDAR_INC_COD, 0);
 		} else {
 			//Si la accion es abrir, creo un nuevo mundo y lo cargo desde el archivo con nombre filename
 			Mundo* mundo_nuevo = new Mundo();
@@ -57,7 +62,7 @@ void FileChooser::ejecutar(){
 				Modelo::get_instance()->set_mundo(mundo_nuevo);
 			} else {
 				//Sino muestro error y borro el nuevo mundo
-				vprincipal->mostrar_msg("Error abriendo archivo.");
+				AppEditor::get_instance(0,0)->imprimir_error(E_CARGAR_INC_COD, 0);
 				delete (mundo_nuevo);
 			}
 		}

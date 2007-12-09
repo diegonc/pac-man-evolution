@@ -13,7 +13,7 @@ CasaFantasmas::CasaFantasmas(int pos_x, int pos_y, Orientacion orientacion) : Es
 
 bool CasaFantasmas::agregate(S_ptr<Elemento> instancia, Mapa* mapa){
 	bool resultado;
-	if (!mapa->tiene_casa_fantamas()){
+	if (!mapa->tiene_casa_fantasmas()){
 		resultado = Estructural::agregate(instancia, mapa);
 		if (resultado)
 			mapa->set_casa_fantasmas(true);

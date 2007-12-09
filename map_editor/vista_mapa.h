@@ -40,6 +40,12 @@ class VistaMapa : public Observador {
    	//Actualizar: Redibuja el mapa cuando la seleccion de nivel cambia.
 	virtual void actualizar(Observable * observable, void * param);
    
+    /* Agregar Elemento: Agrega un nuevo elemento en las posiciones x,y */
+	void agregar_elemento(double posX, double posY);
+   
+   	/* Quitar Elemento: Quita el elemento que se encuentra en las posiciones x,y */
+	void quitar_elemento(double posX, double posY);
+   
    private:
 	   
   	//Inicializar Matriz: Crea e inicializa la matriz de widgets pasada por parametro con NULL.
@@ -65,12 +71,6 @@ class VistaMapa : public Observador {
    
    /* Borrar Casillero Vacio: Quita la imagen del casillero en blanco en las pos x, y*/
 	void borrar_casillero_vacio(int pos_x, int pos_y);
-   
-   /* Agregar Elemento: Agrega un nuevo elemento en las posiciones x,y */
-	void agregar_elemento(double posX, double posY);
-   
-   /* Quitar Elemento: Quita el elemento que se encuentra en las posiciones x,y */
-	void quitar_elemento(double posX, double posY);
 
    	/* Click Handler: Se encarga de realizar una accion cuando se clickea al mapa
    	   en una posicion determinada */
