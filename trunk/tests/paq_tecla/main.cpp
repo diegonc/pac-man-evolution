@@ -14,7 +14,7 @@ void test_arriba()
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x28 };
 
-	KeyOp* ko = new KeyOp( 2, KeyOp::arriba );
+	KeyOp* ko = new KeyOp( KeyOp::arriba );
 	p.set_KeyOp( ko );
 	p.serialize( obs );
 	
@@ -23,29 +23,25 @@ void test_arriba()
 	        std::cout << obs.get_size() << "bytes ";
 		std::cout << "( esperados: " << DATOS_PRUEBA_S << "bytes )\n";
 	} else {
-		bool err = false;
 		const unsigned char* s = obs.get_data();
 		for( int i=0; i < DATOS_PRUEBA_S; i++ ) {
 			if( raw[i] != s[i] ) {
 				std::cout << "ERROR: byte " << i << " es "  << (int) s[i];
 				std::cout << " ( esperado: " << (int)raw[i] << ")\n";
-				err = true;
 			}
 		}
-		if( !err )
-			std::cout << "Serializacion correcta.\n";
 	}
 	delete ko;
 }
 
 void test_abajo()
 {
-	std::cout << "Corriebdi test_abajo().\n";
+	std::cout << "Corriendo test_abajo().\n";
 	PaqueteTecla p;
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x29 };
 
-	KeyOp* ko = new KeyOp( 2, KeyOp::abajo );
+	KeyOp* ko = new KeyOp( KeyOp::abajo );
 	p.set_KeyOp( ko );
 	p.serialize( obs );
 	
@@ -54,17 +50,13 @@ void test_abajo()
 	        std::cout << obs.get_size() << "bytes ";
 		std::cout << "( esperados: " << DATOS_PRUEBA_S << "bytes )\n";
 	} else {
-		bool err = false;
 		const unsigned char* s = obs.get_data();
 		for( int i=0; i < DATOS_PRUEBA_S; i++ ) {
 			if( raw[i] != s[i] ) {
 				std::cout << "ERROR: byte " << i << " es "  << (int) s[i];
 				std::cout << " ( esperado: " << (int)raw[i] << ")\n";
-				err = true;
 			}
 		}
-		if( !err )
-			std::cout << "Serializacion correcta.\n";
 	}
 	delete ko;
 }
@@ -76,7 +68,7 @@ void test_derecha()
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x2B };
 
-	KeyOp* ko = new KeyOp( 2, KeyOp::derecha );
+	KeyOp* ko = new KeyOp( KeyOp::derecha );
 	p.set_KeyOp( ko );
 	p.serialize( obs );
 	
@@ -85,17 +77,13 @@ void test_derecha()
 	        std::cout << obs.get_size() << "bytes ";
 		std::cout << "( esperados: " << DATOS_PRUEBA_S << "bytes )\n";
 	} else {
-		bool err = false;
 		const unsigned char* s = obs.get_data();
 		for( int i=0; i < DATOS_PRUEBA_S; i++ ) {
 			if( raw[i] != s[i] ) {
 				std::cout << "ERROR: byte " << i << " es "  << (int) s[i];
 				std::cout << " ( esperado: " << (int)raw[i] << ")\n";
-				err = true;
 			}
 		}
-		if( !err )
-			std::cout << "Serializacion correcta.\n";
 	}
 	delete ko;
 }
@@ -107,7 +95,7 @@ void test_izquierda()
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x2A };
 
-	KeyOp* ko = new KeyOp( 2, KeyOp::izquierda );
+	KeyOp* ko = new KeyOp( KeyOp::izquierda );
 	p.set_KeyOp( ko );
 	p.serialize( obs );
 	
@@ -116,17 +104,13 @@ void test_izquierda()
 	        std::cout << obs.get_size() << "bytes ";
 		std::cout << "( esperados: " << DATOS_PRUEBA_S << "bytes )\n";
 	} else {
-		bool err = false;
 		const unsigned char* s = obs.get_data();
 		for( int i=0; i < DATOS_PRUEBA_S; i++ ) {
 			if( raw[i] != s[i] ) {
 				std::cout << "ERROR: byte " << i << " es "  << (int) s[i];
 				std::cout << " ( esperado: " << (int)raw[i] << ")\n";
-				err = true;
 			}
 		}
-		if( !err )
-			std::cout << "Serializacion correcta.\n";
 	}
 	delete ko;
 }

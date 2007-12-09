@@ -11,11 +11,6 @@ class KeyOp : public Operacion
 	private:
 		/** @brief Id de cliente que presiona la tecla. */
 		int id;
-	
-		static const int arriba;
-		static const int abajo;
-		static const int derecha;
-		static const int izquierda;
 
 		/** @brief Tecla presionada
 		 *
@@ -28,6 +23,11 @@ class KeyOp : public Operacion
 		int flecha;
 	
 	public:
+		static const int arriba;
+		static const int abajo;
+		static const int derecha;
+		static const int izquierda;
+
 		/**
 		*	@brief Constructor de la clase
 		*/
