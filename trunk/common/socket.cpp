@@ -15,6 +15,9 @@ Socket::Socket(){
 		mensaje_error += strerror(errno);
 		throw std::runtime_error(mensaje_error.c_str());
 	}
+	//para reusar la dir
+	int si = 1;
+	setsockopt( this->descriptor, SOL_SOCKET, SO_REUSEADDR, &si, sizeof(int) );
 }
 Socket::Socket(int descriptor){
 		if(descriptor != -1)
@@ -34,12 +37,27 @@ void Socket::cerrar(){
 	
 }
 
-void Socket::escribir( const unsigned char* buf, int cant )
+void Socket::escribir( const unsigned char* buf, int cant ) throw(std::runtime_error)
 {
-    //TODO: copiar recibir y cambiar a send.
+    int cant_recibidos =0;
+	int retorno=0;
+	int cantidad_intentos = 0;
+
+	while( cant_recibidos < cant && cantidad_intentos < 3 ){
+		//leo los datos	
+		retorno = send(this->get_descriptor(), buf + cant_recibidos, cant - cant_recibidos, MSG_NOSIGNAL);
+		//si devolvio -1 lanzo la excepcion
+		if(retorno == -1 ){
+			std::string mensaje_error = "Error - "; 
+			mensaje_error += strerror(errno);
+			throw std::runtime_error(mensaje_error.c_str());
+		}
+		cant_recibidos += retorno;
+		cantidad_intentos++;
+	}
 }
 
-void Socket::recibir( char* buf, int cant ){
+void Socket::recibir( char* buf, int cant ) throw(std::runtime_error) {
 	int cant_recibidos =0;
 	int retorno=0;
 	int cantidad_intentos = 0;
@@ -57,7 +75,7 @@ void Socket::recibir( char* buf, int cant ){
 		cantidad_intentos++;
 	}
 }
-
+/*
 std::string Socket::recibir(int cant_caracteres){
 	
 	std::string mensaje_retorno;
@@ -90,7 +108,8 @@ std::string Socket::recibir(int cant_caracteres){
 		delete[] mensaje_recibido;
 	}
 	return mensaje_retorno;
-}
+}*/
+/*
 void Socket::escribir(Socket * destino, std::string& cadena_a_enviar){
 	
 	if(this->esta_descriptor_abierto()){
@@ -114,7 +133,7 @@ void Socket::escribir(Socket * destino, std::string& cadena_a_enviar){
 	}
 	else
 		throw std::runtime_error("Error - No se puede enviar ya que no esta creado el socket");
-}
+}*/
 int Socket::get_descriptor(){
 	return this->descriptor;
 }

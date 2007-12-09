@@ -41,13 +41,14 @@ class Socket{
 
 		void cerrar();
 
-		std::string recibir(int cant_caracteres);
+		//std::string recibir(int cant_caracteres) throw(std::runtime_error);
 
 		/* estas dos son para que no se corten los datos en los \0. */
-		void recibir( char* buf, int cant );
-		void escribir( const unsigned char* buf, int cant );
+		void recibir( char* buf, int cant ) throw(std::runtime_error);
+	
+		void escribir( const unsigned char* buf, int cant ) throw(std::runtime_error);
 
-		void escribir(Socket * destino, std::string& cadena_a_enviar);
+		//void escribir(Socket * destino, std::string& cadena_a_enviar) throw(std::runtime_error);
 		
 		int get_descriptor();
 	
