@@ -82,7 +82,8 @@ void test_5()
 	OutputBitStream obs;
 	obs.append( 2, 0 );
 	obs.append( 3, 0 );
-	obs.append( 3, 0 );
+	obs.append( 1, 1 );
+	obs.skip();
 	obs.append( 8, 2 );
 	obs.append( 8, 2 );
 	obs.append( 1, 0 );
@@ -97,7 +98,7 @@ void test_5()
 	if( obs.get_size() != 4 )
 		std::cout << "ERROR: tamano " << obs.get_size() << " (esperado: 3 )\n";
 	else {
-		int outs[4] = { 0x00, 0x02, 0x02, 0x2E };
+		int outs[4] = { 0x04, 0x02, 0x02, 0x2E };
 		for( int i = 0; i < 4; i++ ) {
 		       	if( raw[i] != outs[i] ) {
 				std::cout << "ERROR: byte " << i << " es ";
