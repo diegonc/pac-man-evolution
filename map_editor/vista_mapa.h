@@ -8,12 +8,17 @@
 #include "nivel.h"
 #include "definiciones.h"
 #include "control_seleccion.h"
+#include "act_marcas.h"
 #include "../common/smart_pointer.h"
+#include "../common/observable.h"
+#include "../common/observador.h"
+
+class ActualizadorMarcas;
 
 /* CLASE VISTA_MAPA: Clase que representa la interfaz grafica del mapa en el editor. 
    Observa al panel de niveles para saber cuando cambiar de nivel. */
 
-class VistaMapa : public Observador {
+class VistaMapa : public Observador, public Observable {
    
    private:
 
@@ -22,9 +27,12 @@ class VistaMapa : public Observador {
 	GtkWidget* tabla; //Tabla que contiene los casilleros del mapa
     GtkWidget*** imagenes; //Matriz de imagenes contenidas en la tabla (conjunto estruct + modif)
    	GtkWidget*** imag_modif; //Matriz de imagenes de modificadores contenidos en la tabla
+   	GtkWidget*** marcas; //Matriz que contiene las referencias a las imagenes con las marcas de los casilleros desconectados
    	GtkWidget* vbox; //Widget de uso interno
    	GtkWidget* hbox; //Widget de uso interno
     S_ptr<Nivel> nivel; //Nivel que contiene el mapa a representar
+   
+    ActualizadorMarcas* actualizador; //Referencia al actualizador de marcas, que se encarga de dibujar las marcas en los elems desc
    
    public:
 
@@ -40,11 +48,21 @@ class VistaMapa : public Observador {
    	//Actualizar: Redibuja el mapa cuando la seleccion de nivel cambia.
 	virtual void actualizar(Observable * observable, void * param);
    
-    /* Agregar Elemento: Agrega un nuevo elemento en las posiciones x,y */
-	void agregar_elemento(double posX, double posY);
+    /* Agregar Elemento: Agrega un nuevo elemento en el casillero que se encuentra en
+	   pos_x, pos_y. El elemento que se agrega es el que actualmente se encuentra seleccionado
+   	   en los paneles de elementos.*/
+	void agregar_elemento(int pos_x, int pos_y);
    
-   	/* Quitar Elemento: Quita el elemento que se encuentra en las posiciones x,y */
-	void quitar_elemento(double posX, double posY);
+   	/* Quitar Elemento: Quita el elemento que se encuentra en el casillero pos_x, pos_y */
+	void quitar_elemento(int pos_x, int pos_y);
+   
+   	/* Marcar Elemento: Agrega al elemento que se encuentra en el casillero pos_x, pos_y una
+	   marca con una cruz. */
+	void marcar_elemento(int pos_x, int pos_y);
+	
+	/* Desmarcar Elemento: Quita la marca del elemento que se encuentra en el casillero pos_x, pos_y,
+	   si este se encontraba marcado. */
+	void desmarcar_elemento(int pos_x, int pos_y);
    
    private:
 	   

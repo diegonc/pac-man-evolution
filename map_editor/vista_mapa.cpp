@@ -24,6 +24,9 @@ VistaMapa::VistaMapa(){
 	//Conecto la señal de click sobre el mapa a la scrolled window
 	g_signal_connect(G_OBJECT(this->swindow), "button_press_event", G_CALLBACK(click_handler), this);
 	
+	//Creo un actualizador de marcas y lo hago correr
+	this->actualizador = new ActualizadorMarcas(this);
+	this->actualizador->start();
 }
 
 //Destructor:
@@ -33,7 +36,13 @@ VistaMapa::~VistaMapa(){
 	if (!this->nivel.es_nulo()){
 		this->liberar_matriz(this->imagenes);
 		this->liberar_matriz(this->imag_modif);
+		this->liberar_matriz(this->marcas);
 	}
+	//Freo la ejecucion del actualizador y le hago join
+	this->actualizador->frenar_ejecucion();
+	this->actualizador->join();
+	//Borro el actualizador de marcas
+	delete (this->actualizador);
 }
 
 //Get Widget:
@@ -87,6 +96,7 @@ void VistaMapa::redibujar(S_ptr<Nivel> nivel){
 		this->tabla = NULL;
 		this->liberar_matriz(this->imagenes);
 		this->liberar_matriz(this->imag_modif);
+		this->liberar_matriz(this->marcas);
 	}
 	//Asigno el nuevo nivel
 	this->nivel = nivel;
@@ -95,6 +105,7 @@ void VistaMapa::redibujar(S_ptr<Nivel> nivel){
 		//Inicializo las matrices
 		this->inicializar_matriz(this->imagenes);
 		this->inicializar_matriz(this->imag_modif);
+		this->inicializar_matriz(this->marcas);
 		//Creo una nueva tabla y la meto en la hbox
 		this->tabla = gtk_table_new(nivel->get_mapa()->get_alto(),nivel->get_mapa()->get_ancho(),FALSE);
 		gtk_box_pack_start (GTK_BOX (hbox), this->tabla, FALSE, FALSE, 0);
@@ -167,6 +178,12 @@ void VistaMapa::dibujar_elemento(S_ptr<Elemento> elem){
 			gtk_fixed_put(GTK_FIXED(fixed), imagenModif, (pos_y - estruct->get_pos_y()) * 25, (pos_x - estruct->get_pos_x()) * 25);			
 			//Agrego en la matriz de imagenes de modificadores al nuevo modif
 			this->imag_modif[pos_x][pos_y] = imagenModif;
+			//Si el modificador se agrega en la primera pos del estructural y habia una cruz, renuevo esta
+			//ultima para que quede por sobre todo lo demas
+			if ((pos_x == estruct->get_pos_x()) && (pos_y == estruct->get_pos_y()) && (this->marcas[estruct->get_pos_x()][estruct->get_pos_y()] != NULL)) {
+					this->desmarcar_elemento(pos_x, pos_y);
+					this->marcar_elemento(pos_x, pos_y);
+			}
 		}
 		//Muestro los elementos agregados
 		gtk_widget_show_all(fixed);
@@ -228,13 +245,8 @@ void VistaMapa::borrar_casillero_vacio(int pos_x, int pos_y){
 
 /* Agregar Elemento: */
 
-void VistaMapa::agregar_elemento(double posX, double posY){
-	//Obtengo el corrimiento de los scrolls
-	GtkAdjustment* adjh = gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(this->swindow));
-	GtkAdjustment* adjv = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(this->swindow));
-	//Obtengo las posiciones x e y arregladas segun las pasadas por parametro, el tam del casillero y los corrimientos
-	int pos_y = (int) ((posY + gtk_adjustment_get_value(adjh)) / 25);
-	int pos_x = (int) ((posX + gtk_adjustment_get_value(adjv)) / 25);
+void VistaMapa::agregar_elemento(int pos_x, int pos_y){
+	
 	//Me fijo en el control de seleccion el tipo y orientacion de la ficha seleccionada
 	TipoElem tipo = ControlSeleccion::get_instance()->get_tipo_selec();
 	Orientacion orientacion = ControlSeleccion::get_instance()->get_orientacion_selec();
@@ -251,18 +263,16 @@ void VistaMapa::agregar_elemento(double posX, double posY){
 					this->borrar_casillero_vacio(i, j);
 		}
 		this->dibujar_elemento(elem);
+		//Aviso que hay un elemento nuevo y mando el nivel
+		this->set_cambio();
+		this->avisar_observadores(&this->nivel);
 	}
 }
 
 /* Quitar Elemento: */
 
-void VistaMapa::quitar_elemento(double posX, double posY){
-	//Obtengo el corrimiento de los scrolls
-	GtkAdjustment* adjh = gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(this->swindow));
-	GtkAdjustment* adjv = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(this->swindow));
-	//Obtengo las posiciones x e y arregladas segun las pasadas por parametro, el tam del casillero y los corrimientos
-	int pos_y = (int) ((posY + gtk_adjustment_get_value(adjh)) / 25);
-	int pos_x = (int) ((posX + gtk_adjustment_get_value(adjv)) / 25);
+void VistaMapa::quitar_elemento(int pos_x, int pos_y){
+	
 	//Me fijo si donde se hizo click hay algun casillero
 	S_ptr<Casillero> casillero = this->nivel->get_mapa()->get_casillero(pos_x, pos_y);
 	if (!casillero.es_nulo()){
@@ -280,7 +290,41 @@ void VistaMapa::quitar_elemento(double posX, double posY){
 				for (int i = elem->get_pos_x(); i < elem->get_pos_x() + elem->get_alto(); i++)
 					for (int j = elem->get_pos_y(); j < elem->get_pos_y() + elem->get_ancho(); j++)
 						this->dibujar_casillero_vacio(i,j);
+			//Aviso que se quito un elemento y mando el nivel
+			this->set_cambio();
+			this->avisar_observadores(&this->nivel);
 		}
+	}
+}
+
+/* Marcar Elemento: */
+
+void VistaMapa::marcar_elemento(int pos_x, int pos_y){
+	//Si hay un elemento y no estaba marcado
+	if ((this->imagenes[pos_x][pos_y] != NULL) && (this->marcas[pos_x][pos_y] == NULL)){
+		//Creo una imagen con la ruta de la marca
+		GtkWidget* imagen;
+		imagen = gtk_image_new();
+		gtk_image_set_from_file(GTK_IMAGE(imagen), RUTA_MARCA);
+		this->marcas[pos_x][pos_y] = imagen;
+		GtkWidget* fixed = this->imagenes[pos_x][pos_y];
+		//Pongo la imagen de la marca en el fixed, en el (0,0)
+		gtk_fixed_put(GTK_FIXED(fixed), imagen, 0, 0);				
+		gtk_widget_show_all(fixed); //Muestro la el fixed otra vez
+	}
+}
+	
+/* Desmarcar Elemento: */
+
+void VistaMapa::desmarcar_elemento(int pos_x, int pos_y){
+	//Si hay un elemento y estaba marcado
+	if ((this->imagenes[pos_x][pos_y] != NULL) && (this->marcas[pos_x][pos_y] != NULL)){
+		//Obtengo la imagen del elemento y la marca y saco la marca del elemento
+		GtkWidget* imagen = this->marcas[pos_x][pos_y];
+		GtkWidget* fixed = this->imagenes[pos_x][pos_y];
+		gtk_container_remove(GTK_CONTAINER(fixed), imagen);
+		this->marcas[pos_x][pos_y] = NULL;
+		gtk_widget_show_all(fixed); //Muestro la el fixed otra vez
 	}
 }
 
@@ -294,11 +338,20 @@ gboolean VistaMapa::click_handler (GtkWidget      *widget,
 	VistaMapa* vista_mapa = (VistaMapa*) data;
 	//Si el nivel actual no es nulo
 	if (!(vista_mapa->nivel).es_nulo()) {
+		
+		//Obtengo el corrimiento de los scrolls
+		GtkAdjustment* adjh = gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(vista_mapa->swindow));
+		GtkAdjustment* adjv = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(vista_mapa->swindow));
+	
+		//Obtengo las posiciones x e y arregladas segun las pasadas por parametro, el tam del casillero y los corrimientos
+		int pos_y = (int) ((event->x + gtk_adjustment_get_value(adjh)) / 25);
+		int pos_x = (int) ((event->y + gtk_adjustment_get_value(adjv)) / 25);
+	
 		//Si se apreta click izq llamo al agregar, sino al quitar ficha
 		if (event->button == 1)
-			vista_mapa->agregar_elemento(event->y, event->x);
+			vista_mapa->agregar_elemento(pos_x, pos_y);
 		else
-			vista_mapa->quitar_elemento(event->y, event->x);
+			vista_mapa->quitar_elemento(pos_x, pos_y);
 	}
 	
 	return TRUE;

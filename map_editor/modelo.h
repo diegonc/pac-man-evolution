@@ -38,11 +38,6 @@ class Modelo : public Observable {
 	/* Set Mundo: Elimina el mundo contenido actualemente en el modelo y coloca al pasado como
 	   parametro como nuevo mundo. El modelo se encarga de eliminarlo. */
 	void set_mundo(Mundo* nuevo_mundo);
-
-	/* Ejecutar: Se encarga de ejecutar el modelo. El mismo revisa periodicamente si algun mapa
-	   cambia, y si esto sucede se encarga de controlar que el mapa que se actualizo tenga una
-	   sola componente conexa. */
-	void ejecutar();
 	
 	/* Destroy: Se encarga de liberar los recursos consumidos por el modelo */
 	static void destroy();

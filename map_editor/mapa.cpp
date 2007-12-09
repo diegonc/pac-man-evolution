@@ -121,6 +121,12 @@ void Mapa::quitar_elemento(S_ptr<Elemento> elemento){
 	//Quito el elemento de la listas de elementos
 	this->elementos.remove(elemento);
 }
+	
+/* Get Elementos: */
+
+list<S_ptr<Elemento> >& Mapa::get_elementos(){
+	return this->elementos;
+}
 
 /* Es Congruente: */
 
