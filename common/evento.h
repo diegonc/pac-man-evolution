@@ -20,7 +20,8 @@ class Evento{
 		
 		Mutex *llave;
 		Condicion *condicion;
-		
+		bool esperando;		
+
 	public:
 		Evento();
 	
@@ -29,6 +30,8 @@ class Evento{
 		void lanzar_evento();
 	
 		void esperar_activacion();
+
+		bool esta_esperando();
 			
 };
 
