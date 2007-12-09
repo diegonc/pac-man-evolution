@@ -132,7 +132,7 @@ template <class ContenidoVertice, class ContenidoArco> class Grafo{
 		}
 		//devuelve los vertices vecinos de uno pasado por parametro. En forma de 
 		//lista constante
-		const list<S_ptr<Clase_Vertice> > get_vertices_vecinos(ContenidoVertice& vertice){
+		list<S_ptr<Clase_Vertice> > get_vertices_vecinos(ContenidoVertice& vertice){
 			//creo una lista de vertices
 			list<S_ptr<Clase_Vertice> > vecinos;
 			
@@ -152,7 +152,7 @@ template <class ContenidoVertice, class ContenidoArco> class Grafo{
 			
 		}
 		//devuelve una lista constante de vertices
-		const list<S_ptr<Clase_Vertice> >& get_vertices(){
+		list<S_ptr<Clase_Vertice> >& get_vertices(){
 			return *(this->vertices);
 		}
 		void eliminar_vertice(ContenidoVertice &vertice, Comparador *c=0){

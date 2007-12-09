@@ -58,7 +58,7 @@ template <class ContenidoVertice, class ContenidoArco> class Vertice{
 			return this->info;		
 		}
 		//devuelve la lista de arcos del vertice
-		const list<S_ptr<Clase_Arco> >& get_arcos(){
+		list<S_ptr<Clase_Arco> >& get_arcos(){
 			return *(this->arcos_salientes);	
 		}
 		//elimina el arco del vertice
