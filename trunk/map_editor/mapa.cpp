@@ -76,8 +76,9 @@ void Mapa::insertar_elemento(S_ptr<Elemento> elemento){
 		cont1++;
 		casillero = this->get_casillero(pos_x + cont1, pos_y + cont2);
 	}
-	//Agrego el elemento al grafo de conexiones
-	this->conexiones->agregar_vertice(elemento);
+	//Si el elemento es un estructural, lo agrego al grafo de conexiones
+	if (elemento->es_estructural())
+		this->conexiones->agregar_vertice(elemento);
 	//Agrego el elemento en la lista de elems
 	this->elementos.push_back(elemento);
 }
@@ -106,8 +107,9 @@ void Mapa::quitar_elemento(S_ptr<Elemento> elemento){
 		cont1++;
 		casillero = this->get_casillero(pos_x + cont1, pos_y + cont2);
 	}
-	//Quito el elemento del grafo de conexiones
-	this->conexiones->eliminar_vertice(elemento);
+	//Si el elemento es un estructural, lo quito del grafo de conexiones
+	if (elemento->es_estructural())
+		this->conexiones->eliminar_vertice(elemento);
 	//Quito el elemento de la listas de elementos
 	this->elementos.remove(elemento);
 }

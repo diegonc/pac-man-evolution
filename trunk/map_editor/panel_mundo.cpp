@@ -191,9 +191,9 @@ void PanelMundo::subir_click_handler(GtkWidget *widget, gpointer user_data){
 	if (panel->seleccionado != -1){
 		Modelo::get_instance()->get_mundo()->promover(panel->seleccionado + 1);
 		panel->seleccionado--;
-		S_ptr<Nivel> nivel = Modelo::get_instance()->get_mundo()->get_nivel(panel->seleccionado + 1);
-		panel->set_cambio();
-		panel->avisar_observadores(&nivel);
+		//S_ptr<Nivel> nivel = Modelo::get_instance()->get_mundo()->get_nivel(panel->seleccionado + 1);
+		//panel->set_cambio();
+		//panel->avisar_observadores(&nivel);
 	}
 }
 
@@ -204,8 +204,8 @@ void PanelMundo::bajar_click_handler(GtkWidget *widget, gpointer user_data){
 	if (panel->seleccionado != -1) {
 		Modelo::get_instance()->get_mundo()->degradar(panel->seleccionado + 1);
 		panel->seleccionado++;
-		S_ptr<Nivel> nivel = Modelo::get_instance()->get_mundo()->get_nivel(panel->seleccionado + 1);
-		panel->set_cambio();
-		panel->avisar_observadores(&nivel);
+		//S_ptr<Nivel> nivel = Modelo::get_instance()->get_mundo()->get_nivel(panel->seleccionado + 1);
+		//panel->set_cambio();
+		//panel->avisar_observadores(&nivel);
 	}
 }
