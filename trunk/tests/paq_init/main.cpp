@@ -13,9 +13,9 @@ MapaBajoNivel* mapa_de_prueba()
 	MapaBajoNivel* m = new MapaImpSet( 2, 2 );
 	Posicion p = Posicion(0,0);
 	S_ptr<EstructuralUnitario> p0( new EstructuralPasillo( Comestible::quesito, p ));
-	p = Posicion(0,1);
-	S_ptr<EstructuralUnitario> p1( new EstructuralPasillo( Comestible::quesito, p ));
 	p = Posicion(1,0);
+	S_ptr<EstructuralUnitario> p1( new EstructuralPasillo( Comestible::quesito, p ));
+	p = Posicion(0,1);
 	S_ptr<EstructuralUnitario> p2( new EstructuralPasillo( Comestible::quesito, p ));
 	p = Posicion(1,1);
 	S_ptr<EstructuralUnitario> p3( new EstructuralPasillo( Comestible::quesito, p ));
@@ -42,8 +42,8 @@ unsigned char* datos_de_prueba()
 
 int main()
 {
-	MapaBajoNivel* map = mapa_de_prueba();
-	PaqueteInit p( false, *map );
+	S_ptr<MapaBajoNivel> map( mapa_de_prueba() );
+	PaqueteInit p( false, map );
 	OutputBitStream obs;
 	unsigned char* raw = datos_de_prueba();
 
@@ -62,6 +62,5 @@ int main()
 			}
 		}
 	}
-	delete map;
 	return 0;
 }

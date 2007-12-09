@@ -21,7 +21,7 @@ class PaqueteInit : public Paquete
 		PaqueteInit();
 
 		/** Crea un paquete apto para serializar. */
-		PaqueteInit( bool pacman, MapaBajoNivel& m );
+		PaqueteInit( bool pacman, S_ptr<MapaBajoNivel> m );
 
 		void serialize( OutputBitStream& bs );
 

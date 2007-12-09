@@ -9,8 +9,8 @@ PaqueteInit::PaqueteInit() : Paquete( ID )
 
 }	
 
-PaqueteInit::PaqueteInit( bool pac, MapaBajoNivel& m )
-	: Paquete( ID ), mapa( S_ptr<MapaBajoNivel>( &m ) )
+PaqueteInit::PaqueteInit( bool pac, S_ptr<MapaBajoNivel> m )
+	: Paquete( ID ), mapa( m )
 {
 	esPacman = pac;
 }
