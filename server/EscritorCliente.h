@@ -3,6 +3,7 @@
 
 #include "../common/thread.h"
 #include "../common/bloqueo.h"
+#include "../common/evento.h"
 #include "Cliente.h"
 #include "Paquete.h"
 #include <queue>
@@ -13,6 +14,8 @@ class EscritorCliente : public Thread{
 		Cliente	* cliente;
 		bool debe_terminar;
 		Mutex llave;		
+		Evento e;
+		
 	
 		std::queue< S_ptr<Paquete> > buffer;
 	

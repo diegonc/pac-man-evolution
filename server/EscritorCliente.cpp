@@ -16,9 +16,19 @@ EscritorCliente::~EscritorCliente(){
 
 void EscritorCliente::run(){
 	try{
-		S_ptr<Paquete> paquete;
+		//		S_ptr<Paquete> paquete;
 		while(!debe_terminar){
-			
+			std::cout << "Hay " << buffer.size() <<"\n";
+			if(! buffer.empty() ){
+				std::cout << "Manda mensaje\n";
+				cliente->enviar_mensaje(buffer.front());
+				Bloqueo b(&llave);
+				buffer.pop();
+			}
+			else{
+				std::cout << "Bloquea\n";
+				this->e.esperar_activacion();
+			}
 		}
 	}
 	catch(std::runtime_error &e){
@@ -31,6 +41,9 @@ void EscritorCliente::terminar(){
 }	
 
 void EscritorCliente::encolar_paquete(S_ptr<Paquete> paquete){
-	Bloqueo bloqueo(&llave);//bloqueo por si acceden de desde diferentes threads
-	buffer.push(paquete);
+	{
+		Bloqueo bloqueo(&llave);//bloqueo por si acceden de desde diferentes threads
+		buffer.push(paquete);
+	}
+	this->e.lanzar_evento();
 }
