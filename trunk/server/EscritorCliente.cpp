@@ -18,15 +18,15 @@ void EscritorCliente::run(){
 	try{
 		//		S_ptr<Paquete> paquete;
 		while(!debe_terminar){
-			//std::cout << "Hay " << buffer.size() <<"\n";
+			std::cout << "Hay " << buffer.size() <<"\n";
 			if(! buffer.empty() ){
-				//std::cout << "Manda mensaje\n";
+				std::cout << "Manda mensaje\n";
 				cliente->enviar_mensaje(buffer.front());
 				Bloqueo b(&llave);
 				buffer.pop();
 			}
 			else{
-				//std::cout << "Bloquea\n";
+				std::cout << "Bloquea\n";
 				this->e.esperar_activacion();
 			}
 		}
