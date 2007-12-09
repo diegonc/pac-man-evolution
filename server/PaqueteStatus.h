@@ -2,6 +2,7 @@
 #define __PAQUETESTATUS_H__
 
 #include "Paquete.h"
+#include "math.h"
 #include <list>
 #include "ModeloServidor.h"
 #include "Jugador.h"
