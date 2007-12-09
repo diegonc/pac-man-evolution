@@ -42,9 +42,7 @@ class KeyOp : public Operacion
 
 		void set_id(int identifJugador);
 
-		static int get_teclaFormatoPaquete(KeyOp* Key);
-		static int get_teclaFormatoOperacion(int flecha);
-
+		int get_flecha(){ return flecha; }
 };
 
 #endif /* __KEYOP_H__ */

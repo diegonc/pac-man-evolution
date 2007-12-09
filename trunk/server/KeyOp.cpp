@@ -25,33 +25,3 @@ void KeyOp::set_id(int identifJugador)
 {
 	id=identifJugador;
 }
-
-int KeyOp::get_teclaFormatoPaquete(KeyOp* Key){
-	switch (Key->flecha){
-		case 0: //arriba
-			return 0;
-		case 2: //abajo
-			return 1;
-		case 3: //izquierda
-			return 2;
-		case 1: //derecha
-			return 3;
-		default:
-			return -1;
-	}
-}
-
-int KeyOp::get_teclaFormatoOperacion(int flecha){
-	switch (flecha){
-		case 0: //arriba
-			return 0;
-		case 1: //abajo
-			return 2;
-		case 2: //izquierda
-			return 3;
-		case 3: //derecha
-			return 1;
-		default:
-			return -1;
-	}
-}
