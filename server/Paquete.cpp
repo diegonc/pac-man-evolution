@@ -1,5 +1,6 @@
 #include "Paquete.h"
 
+#include "PaqueteTecla.h"
 Paquete::Paquete()
 {
 }
@@ -16,9 +17,17 @@ char Paquete::get_tipo()
 {
 	return tipo;
 }
-
 Paquete* Paquete::crear( int tipo ){
-      return 0;
+    //TODO: HACERLO BIEN ESTOOOOO!!!!!
+	Paquete * p;
+	switch(tipo){
+		case 5:	
+			p = new PaqueteTecla();
+			break;
+		default:
+			p = 0;
+	}
+	return p;
 }
 
 void Paquete::serialize( OutputBitStream& bs )
