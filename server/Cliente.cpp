@@ -76,7 +76,7 @@ void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
 	paquete->serialize( obs );
 		
 	const unsigned char* raw = obs.get_data();
-
+	
 	socket->escribir( raw, obs.get_size() );
 		
 }
