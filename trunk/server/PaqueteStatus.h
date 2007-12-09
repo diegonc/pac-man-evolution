@@ -5,6 +5,7 @@
 #include "math.h"
 #include <list>
 #include "ModeloServidor.h"
+#include "OperacionStatus.h"
 #include "Jugador.h"
 #include "../common/smart_pointer.h"
 
@@ -14,6 +15,7 @@ class PaqueteStatus: public Paquete
 {
     private:
         ModeloServidor* Model;
+        OperacionStatus* Oper;
     public:
 		PaqueteStatus();
 
