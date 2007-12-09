@@ -6,8 +6,8 @@
 #include "Posicion.h"
 
 //definiciones
-#define _POWER_UP	0
-#define	_QUESITO	1
+#define _POWER_UP	1
+#define	_QUESITO	0
 #define _FRUTITA	2
 
 /** @brief Define una interfaz para todos los elementos del mapa que pueden ser
