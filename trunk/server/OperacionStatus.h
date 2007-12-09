@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <list>
+#include "Operacion.h"
 
-class OperacionStatus{
+class OperacionStatus:public Operacion{
     public:
 
     struct PosicionJugador{
@@ -45,6 +46,8 @@ class OperacionStatus{
     std::list<PosicionElemento>* get_elementos(){
         return &Elementos;
     }
+
+    virtual void ejecutar(ModeloServidor &modelo){}
 
 };
 
