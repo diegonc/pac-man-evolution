@@ -41,14 +41,14 @@ void PaqueteMensaje::serialize( OutputBitStream& bs )
 {
     Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
 
-    int TamanioCotaSup=Mensaje.length()/10;
-    ++TamanioCotaSup;
+    int slen = Mensaje.length() + 1; // slen cuenta el '\0'
+    if( slen > 70 ) slen = 70;
+    int TamanioCotaSup= slen/10 + ( slen%10 != 0 ? 1 : 0 );
     bs.append( 3, TamanioCotaSup); // Escribe campo auxiliar.
     bs.skip();
-    
-    //bs.append_string( Mensaje.c_str(), TamanioCotaSup*10 );
-
+    bs.append_string( Mensaje.c_str(), slen );
 }
+
 Operacion * PaqueteMensaje::get_operacion(){
 	//TODO
 }
