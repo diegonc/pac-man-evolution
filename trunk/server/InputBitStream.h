@@ -65,6 +65,17 @@ class InputBitStream
 		 */
 		void skip();
 
+		/** @brief Lee una cadena desde el stream.
+		 *
+		 *  Extrae bytes del stream y los coloca en el bloque de
+		 *  memoria s, hasta que se encuentre un caracter nulo o
+		 *  se alcance el limite n. El caracter nulo se coloca en s.
+		 *
+		 *  @param s Ubicacion destino.
+		 *  @param n Numero maximo de caracteres.
+		 */
+		void read_string( char* s, unsigned int n );
+
 		/** @brief Obtiene bloque de bytes.
 		 *
 		 *  Obtiene el bloque de bytes mas pequeno que contiene los
