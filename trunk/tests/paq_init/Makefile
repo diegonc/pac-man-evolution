@@ -14,6 +14,11 @@ OBJS=main.o \
      ../../server/MapImpSet.o \
      ../../server/PaqueteInit.o \
      ../../server/PaqueteTecla.o \
+     ../../server/PaqueteStatus.o \
+     ../../server/PaqueteMensaje.o \
+     ../../server/PaqueteStart.o \
+     ../../server/PaqueteStop.o \
+     ../../server/PaqueteQuit.o \
      ../../server/Paquete.o \
      ../../server/Comestible.o \
      ../../server/KeyOp.o \
