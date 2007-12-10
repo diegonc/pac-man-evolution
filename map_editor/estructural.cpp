@@ -139,3 +139,16 @@ bool Estructural::conectar(S_ptr<Elemento> instancia, Mapa* mapa) {
 	}
 	return result;
 }
+
+/* Quitate: */
+
+void Estructural::quitate(S_ptr<Elemento> instancia, Mapa* mapa){
+	for (int cont1 = 0; cont1 < this->get_alto(); cont1++)
+		for (int cont2 = 0; cont2 < this->get_ancho(); cont2++){
+			S_ptr<Elemento> modif = mapa->get_casillero(this->get_pos_x() + cont1 , this->get_pos_y() + cont2)->get_modificador();
+			if (!modif.es_nulo()){
+					modif->quitate(modif, mapa);
+			}
+		}
+	mapa->quitar_elemento(instancia);
+}
