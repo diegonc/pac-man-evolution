@@ -6,7 +6,7 @@ CXXFLAGS=-ggdb -I../..
 
 TARGET=test-pmsg
 
-OBJS=main.o \
+OBJS=main.o test_pmsg.o \
      ../../server/EstructuralPasillo.o \
      ../../server/EstructuralUnitario.o \
      ../../server/EstructuralCasaFantasma.o \
@@ -14,6 +14,7 @@ OBJS=main.o \
      ../../server/MapImpSet.o \
      ../../server/PaqueteInit.o \
      ../../server/PaqueteTecla.o \
+     ../../server/PaqueteMensaje.o \
      ../../server/Paquete.o \
      ../../server/Comestible.o \
      ../../server/KeyOp.o \

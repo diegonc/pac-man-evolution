@@ -19,7 +19,7 @@ class TestRunner : public TestRunnerBase
 		Test t;
 
 	public:
-		TestRunner( Test& t ) : t( t ) { }
+		TestRunner( Test t ) : t( t ) { }
 
 		bool run();
 };
