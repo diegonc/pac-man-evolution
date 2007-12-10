@@ -6,6 +6,9 @@
 
 ModeloServidor::ModeloServidor(){
 	//cargar_modelo(); // provisorio
+	MundoBasicImp * m = new MundoBasicImp();
+	S_ptr<MundoBajoNivel> mundo_default(m);
+	this->set_mundo(mundo_default);
 	this->parar = false;
 }
 

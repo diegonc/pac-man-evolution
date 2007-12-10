@@ -19,13 +19,9 @@ void EscuchadorCliente::run(){
 		while(true){
 			paquete = cliente->recibir_mensaje();
 			op = paquete->get_operacion();
-			std::cout << "Entro al escuchador\n";
 			op->ejecutar(*(ModeloServidor::get_instancia()));
-			std::cout << "Ejecuto la operacion\n";
 			delete op;
 		}
 	}
-	catch(std::runtime_error &e){/*salgo del while*/
-		std::cout << "Bardeao el run del escuchador\n";	
-	}
+	catch(std::runtime_error &e){/*salgo del while*/}
 }
