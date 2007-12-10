@@ -5,6 +5,9 @@ int Socket::UDP = SOCK_STREAM;
 int Socket::IPv4 = AF_INET;
 int Socket::ESCUCHAR_TODOS = INADDR_ANY;
 
+#define _CANT_INTENTOS  15
+
+
 Socket::Socket(){
 
 	//creo un descriptor, si hubo problemas, lanza una excepcion
@@ -43,7 +46,7 @@ void Socket::escribir( const unsigned char* buf, int cant ) throw(std::runtime_e
 	int retorno=0;
 	int cantidad_intentos = 0;
 
-	while( cant_recibidos < cant && cantidad_intentos < 3 ){
+	while( cant_recibidos < cant && cantidad_intentos < _CANT_INTENTOS ){
 		//leo los datos	
 		retorno = send(this->get_descriptor(), buf + cant_recibidos, cant - cant_recibidos, MSG_NOSIGNAL);
 		//si devolvio -1 lanzo la excepcion
@@ -61,8 +64,9 @@ void Socket::recibir( char* buf, int cant ) throw(std::runtime_error) {
 	int cant_recibidos =0;
 	int retorno=0;
 	int cantidad_intentos = 0;
+      std::cout << "Tengo que recibir " << cant << std::flush << "\n";
 
-	while( cant_recibidos < cant && cantidad_intentos < 3 ){
+	while( cant_recibidos < cant && cantidad_intentos < _CANT_INTENTOS ){
 		//leo los datos	
 		retorno = recv(this->get_descriptor(), buf + cant_recibidos, cant - cant_recibidos, MSG_NOSIGNAL);
 		//si devolvio -1 lanzo la excepcion
@@ -73,7 +77,7 @@ void Socket::recibir( char* buf, int cant ) throw(std::runtime_error) {
 		}
 		cant_recibidos += retorno;
 		cantidad_intentos++;
-	}
+   }
 }
 /*
 std::string Socket::recibir(int cant_caracteres){
