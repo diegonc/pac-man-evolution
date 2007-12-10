@@ -24,6 +24,7 @@ void ActualizadorMarcas::actualizar(Observable * observable, void * param){
 	this->set_nivel_activo(nuevo_nivel_activo);
 	if (this->llave->esta_esperando())
 		this->llave->lanzar_evento();
+	usleep(100);
 }
 
 /* Run: */
@@ -43,18 +44,18 @@ void ActualizadorMarcas::run(){
 /* Get Nivel Activo: */
 
 S_ptr<Nivel> ActualizadorMarcas::get_nivel_activo(){
-	//this->mutex->lock();
+	this->mutex->lock();
 		S_ptr<Nivel> nivel = this->nivel_activo;
-	//this->mutex->unlock();
+	this->mutex->unlock();
 	return nivel;
 }
 
 /* Set Nivel Activo: */
 
 void ActualizadorMarcas::set_nivel_activo(S_ptr<Nivel> nivel){
-	//this->mutex->lock();
+	this->mutex->lock();
 		this->nivel_activo = nivel;
-	//this->mutex->unlock();
+	this->mutex->unlock();
 }
 
 /* Frenar Ejecucion: */
