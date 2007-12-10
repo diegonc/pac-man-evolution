@@ -76,25 +76,25 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 		S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
 		if (!e.es_nulo()){
 			switch( tipo ) {
-				case 0:
+				case 0 /* Salida Pacman */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						EstructuralPasillo* ep = (EstructuralPasillo *) &(*e);
 						ep->set_salida_pacman();
 					}
 					break;
-				case 1: {
+				case 1 /* Casa Fantasma */: {
 					S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
 					reemplazar_estructural( c ); 
 					}
 					break;
-				case 2:
+				case 2 /* Power up */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
 						ep->set_comida( Comestible::power_up );
 						std::cout << "seteando power up en: " << p << std::endl << std::flush;
 					}
 					break;
-				case 3:
+				case 3 /* Bonus */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
 						ep->set_comida( Comestible::frutita );
@@ -114,16 +114,20 @@ bool PaqueteInit::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBit
 	bs.append( 6, (int)e->get_tipo() );
 	bs.append( 2, Direccion::Norte);	
 	Posicion& p = e->get_posicion();
-	int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
+	unsigned int pos = (unsigned int)p.get_y() * mapa->get_ancho() + (unsigned int)p.get_x();
 	bs.append( 16, pos );
 	return true;
 }
 
 bool PaqueteInit::escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs )
 {
+	/* 
+	 * Ojo que el tipo que se manda NO es el mismo que el tipo del
+	 * comestible. coinciden solo en el paquete status.
+	 */
 	if( c.es_nulo() ) return false;
 	if( c->get_tipo() == Comestible::frutita )
-		bs.append( 6, 3);
+		bs.append( 6, 3 );
 	else if( c->get_tipo() == Comestible::power_up )
 		bs.append( 6, 2 );
 	else return false;
@@ -157,7 +161,6 @@ void PaqueteInit::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
 		}
 		if( ! actual->get_izquierda().es_nulo() ) {
 			e->set_izquierda( actual->get_izquierda() );
-			actual->get_izquierda()->set_derecha( e );
 		}
 	}
 }
@@ -198,7 +201,6 @@ void PaqueteInit::agregar_arista( int x, int y, bool norte )
 
 void PaqueteInit::serialize( OutputBitStream& bs )
 {
-	/* TODO: supone casa fantasma y salida unica. */
 	S_ptr<EstructuralUnitario> casa;
 	S_ptr<EstructuralUnitario> salida;
 	Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
@@ -237,7 +239,6 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 	
 	bs.skip();
 	
-	// TODO: Escribir elementos del mapa.
 	OutputBitStream elems;
 	int elem_count = 0;
 	//version del protocolo (mejorada cuak)

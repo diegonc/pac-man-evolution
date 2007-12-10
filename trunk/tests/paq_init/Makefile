@@ -19,6 +19,7 @@ OBJS=main.o \
      ../../server/PaqueteStart.o \
      ../../server/PaqueteStop.o \
      ../../server/PaqueteQuit.o \
+     ../../server/MundoBasicImp.o \
      ../../server/Paquete.o \
      ../../server/Comestible.o \
      ../../server/KeyOp.o \
