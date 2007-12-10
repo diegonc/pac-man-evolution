@@ -24,6 +24,12 @@ VistaMapa::VistaMapa(){
 	//Conecto la señal de click sobre el mapa a la scrolled window
 	g_signal_connect(G_OBJECT(this->swindow), "button_press_event", G_CALLBACK(click_handler), this);
 	
+	GError       *error = NULL;
+
+	//Cargo los pixbuf
+	this->pixbuf_vacio = gdk_pixbuf_new_from_file(RUTA_VACIO, &error);
+	this->pixbuf_marca = gdk_pixbuf_new_from_file(RUTA_MARCA, &error);
+	
 	//Creo un actualizador de marcas y lo hago correr
 	this->actualizador = new ActualizadorMarcas(this);
 	this->actualizador->start();
@@ -60,6 +66,9 @@ void VistaMapa::actualizar(Observable * observable, void * param){
 		nivel = *((S_ptr<Nivel>*) param);
 	//Redibujo el nivel
 	this->redibujar(nivel);
+	//Aviso que hay un nuevo nivel
+	this->set_cambio();
+	this->avisar_observadores(&this->nivel);
 }
 
 //Inicializar Matriz:
@@ -195,7 +204,7 @@ void VistaMapa::dibujar_casillero_vacio(int pos_x, int pos_y){
 		//Creo una imagen con la ruta del casillero vacio
 		GtkWidget* imagen;
 		imagen = gtk_image_new();
-		gtk_image_set_from_file(GTK_IMAGE(imagen), RUTA_VACIO);
+		gtk_image_set_from_pixbuf(GTK_IMAGE(imagen), this->pixbuf_vacio);
 		//Agrego a la tabla en las pos pasadas por parametro y lo agrego tmb a la matriz de referencias a imagenes
 		gtk_table_attach_defaults (GTK_TABLE (this->tabla), imagen, pos_y, pos_y + 1, pos_x, pos_x + 1);
 		this->imagenes[pos_x][pos_y] = imagen;
@@ -305,7 +314,7 @@ void VistaMapa::marcar_elemento(int pos_x, int pos_y){
 		//Creo una imagen con la ruta de la marca
 		GtkWidget* imagen;
 		imagen = gtk_image_new();
-		gtk_image_set_from_file(GTK_IMAGE(imagen), RUTA_MARCA);
+		gtk_image_set_from_pixbuf(GTK_IMAGE(imagen), this->pixbuf_marca);
 		this->marcas[pos_x][pos_y] = imagen;
 		GtkWidget* fixed = this->imagenes[pos_x][pos_y];
 		//Pongo la imagen de la marca en el fixed, en el (0,0)
@@ -324,7 +333,7 @@ void VistaMapa::desmarcar_elemento(int pos_x, int pos_y){
 		GtkWidget* fixed = this->imagenes[pos_x][pos_y];
 		gtk_container_remove(GTK_CONTAINER(fixed), imagen);
 		this->marcas[pos_x][pos_y] = NULL;
-		gtk_widget_show_all(fixed); //Muestro la el fixed otra vez
+		gtk_widget_show_all(fixed); //Muestro el fixed otra vez
 	}
 }
 

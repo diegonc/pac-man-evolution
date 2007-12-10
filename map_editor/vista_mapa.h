@@ -32,6 +32,8 @@ class VistaMapa : public Observador, public Observable {
    	GtkWidget* hbox; //Widget de uso interno
     S_ptr<Nivel> nivel; //Nivel que contiene el mapa a representar
    
+    GdkPixbuf* pixbuf_vacio; //Pixbuf donde almaceno la imagen de un casillero vacio para tenerlo cargado una sola vez
+    GdkPixbuf* pixbuf_marca;   //Pixbuf donde almaceno la imagen de la marca, para tenerla cargada una sola vez
     ActualizadorMarcas* actualizador; //Referencia al actualizador de marcas, que se encarga de dibujar las marcas en los elems desc
    
    public:

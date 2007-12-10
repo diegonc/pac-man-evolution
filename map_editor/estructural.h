@@ -51,6 +51,9 @@ class Estructural : public Elemento {
 	   la posicion con la que fue creado. Si puede, se agrega y se conecta con todos los vecinos (si es estruct).
 	   Devuelve true si se pudo agregar, false en caso contrario. */
 	virtual bool agregate(S_ptr<Elemento> instancia, Mapa* mapa);
+		
+	/* Quitate: Dado el mapa pasado por parametro, el elemento se encarga de removerse del mismo. */
+	virtual void quitate(S_ptr<Elemento> instancia, Mapa* mapa);
 
 	protected:
 
