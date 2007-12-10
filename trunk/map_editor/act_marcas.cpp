@@ -10,11 +10,11 @@
 ActualizadorMarcas::ActualizadorMarcas(VistaMapa* vista_mapa){
 	this->vista_mapa = vista_mapa;
 	this->vista_mapa->agregar_observador(this);
-	S_ptr<Evento> nuevo_evento (new Evento());
-	S_ptr<Mutex> nuevo_mutex (new Mutex());
-	this->llave = nuevo_evento;
-	this->mutex = nuevo_mutex;
-	this->ejecutando = false;
+	//S_ptr<Evento> nuevo_evento (new Evento());
+	//S_ptr<Mutex> nuevo_mutex (new Mutex());
+	//this->llave = nuevo_evento;
+	//this->mutex = nuevo_mutex;
+	//this->ejecutando = false;
 }
 	
 /* Actualizar: */
@@ -22,9 +22,15 @@ ActualizadorMarcas::ActualizadorMarcas(VistaMapa* vista_mapa){
 void ActualizadorMarcas::actualizar(Observable * observable, void * param){
 	S_ptr<Nivel> nuevo_nivel_activo = *((S_ptr<Nivel>*)param);
 	this->set_nivel_activo(nuevo_nivel_activo);
-	if (this->llave->esta_esperando())
-		this->llave->lanzar_evento();
-	usleep(100);
+	//if (this->llave->esta_esperando())
+	//	this->llave->lanzar_evento();
+	//usleep(100);
+	/*******************/
+	if(!this->get_nivel_activo().es_nulo()){
+		this->desmarcar_todos(this->get_nivel_activo());
+		this->marcar_desconectados(this->get_nivel_activo());
+	}
+	/******************/
 }
 
 /* Run: */
@@ -44,18 +50,18 @@ void ActualizadorMarcas::run(){
 /* Get Nivel Activo: */
 
 S_ptr<Nivel> ActualizadorMarcas::get_nivel_activo(){
-	this->mutex->lock();
+	//this->mutex->lock();
 		S_ptr<Nivel> nivel = this->nivel_activo;
-	this->mutex->unlock();
+	//this->mutex->unlock();
 	return nivel;
 }
 
 /* Set Nivel Activo: */
 
 void ActualizadorMarcas::set_nivel_activo(S_ptr<Nivel> nivel){
-	this->mutex->lock();
+	//this->mutex->lock();
 		this->nivel_activo = nivel;
-	this->mutex->unlock();
+	//this->mutex->unlock();
 }
 
 /* Frenar Ejecucion: */
@@ -79,12 +85,12 @@ bool ActualizadorMarcas::desmarcar_todos(S_ptr<Nivel> nivel){
 	list<S_ptr<Elemento> >::iterator it = elementos.begin();
 	bool no_error = true;
 	while ((it != elementos.end()) && (no_error)){
-		if (nivel == get_nivel_activo()){
+		//if (nivel == get_nivel_activo()){
 			S_ptr<Elemento> elem = (*it);
 			if (elem->es_estructural())
 				this->vista_mapa->desmarcar_elemento(elem->get_pos_x(), elem->get_pos_y());
-		} else
-			no_error = false;
+		//} else
+		//	no_error = false;
 		it++;
 	}
 	return no_error;
@@ -97,12 +103,12 @@ void ActualizadorMarcas::marcar_desconectados(S_ptr<Nivel> nivel){
 	list<S_ptr<Elemento> >::iterator it = desconectados.begin();
 	bool no_error = true;
 	while ((it != desconectados.end()) && (no_error)){
-		if (nivel == get_nivel_activo()){
+		//if (nivel == get_nivel_activo()){
 			S_ptr<Elemento> elem = (*it);
 			if (elem->es_estructural())
 				this->vista_mapa->marcar_elemento(elem->get_pos_x(), elem->get_pos_y());
-		} else
-			no_error = false;
+		//} else
+		//	no_error = false;
 		it++;
 	}
 }
