@@ -4,9 +4,27 @@
 #include "EstructuralCasaFantasma.h"
 #include "Direccion.h"
 #include "Posicion.h"
+#include "Operacion.h"
+#include "MundoBajoNivel.h"
 
 namespace {
 	const char ID = 0;
+
+	class OperacionInit : public Operacion
+	{
+		private:
+			S_ptr<MapaBajoNivel> m;
+			bool esPac;
+		public:
+			OperacionInit( S_ptr<MapaBajoNivel> m, bool esPac ) :
+				m( m ), esPac( esPac ) { }
+
+			void ejecutar(ModeloServidor &modelo) {
+				MundoBajoNivel& mundo = modelo.get_mundo();
+				mundo.agregar_mapa( m );
+				// esPacman ?? que ID recibio el paquete ??	
+			}
+	};
 }
 
 PaqueteInit::PaqueteInit() : Paquete( ID )
@@ -43,7 +61,7 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	bs.grow( num_elems*24 );
 	for(unsigned int i=0; i < num_elems; i++ ) {
 		int tipo = bs.read( 6 );
-		int orient = bs.read( 2 );
+		/* int orient =*/ bs.read( 2 );
 		int pos = bs.read( 16 );
 		Posicion p( pos % ancho, pos / ancho);
 		S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
@@ -216,6 +234,6 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 	bs.append( elems );
 }
 
-Operacion * PaqueteInit::get_operacion(){
-	//TODO
+Operacion* PaqueteInit::get_operacion(){
+	return new OperacionInit( mapa, esPacman );
 }

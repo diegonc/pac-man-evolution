@@ -82,8 +82,10 @@ int InputBitStream::read( unsigned int n )
 void InputBitStream::skip()
 {
 	if( index < size ) {
-		index++;
-		bindex = 8;
+		if( bindex != 8 ) {
+			index++;
+			bindex = 8;
+		}
 	}
 }
 
