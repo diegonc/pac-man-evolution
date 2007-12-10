@@ -7,6 +7,7 @@ EstructuralPasillo::EstructuralPasillo(Comestible::Enum_Comestible &tipo, Posici
 	//por defecto, pongo que no es salida
 	this->salida = false;
 	
+	
 }
 EstructuralPasillo::EstructuralPasillo(Posicion &p):EstructuralUnitario(p){
 	this->salida = false;

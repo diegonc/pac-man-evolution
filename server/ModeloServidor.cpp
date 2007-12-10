@@ -5,7 +5,8 @@
 #include "Fantasma.h"
 
 ModeloServidor::ModeloServidor(){
-	cargar_modelo(); // provisorio
+	//cargar_modelo(); // provisorio
+	this->parar = false;
 }
 
 S_ptr<ModeloServidor> ModeloServidor::instancia;
@@ -17,7 +18,7 @@ S_ptr<ModeloServidor> ModeloServidor::get_instancia(){
 }
 
 void ModeloServidor::cargar_modelo(){
-	this->parar = false;
+	
 	
 	/************parte provisoria cuando esta todo conectado*******************/
 	//this->mundo = new MundoBasicImp();
@@ -197,4 +198,8 @@ void ModeloServidor::preparar_partida(){
 }
 bool ModeloServidor::esta_terminado(){
 	return this->termino;
+}
+void ModeloServidor::set_cargado(){
+	this->set_cambio();
+	this->avisar_observadores(NULL);
 }

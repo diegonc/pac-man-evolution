@@ -76,6 +76,7 @@ void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
 	paquete->serialize( obs );
 	const unsigned char* raw = obs.get_data();
 	
+	std::cout << obs.get_size() << "<<----TIENE QUE MANDAR en bytes\n"<<std::flush;
 	socket->escribir( raw, obs.get_size() );
 	
 	
@@ -92,11 +93,16 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 	if( version == _VERSION_ACEPTADA ) {
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
+		std::cout << "LLEGO EL PAQUETE "<<  tipo << "\n"<<std::flush;
 		S_ptr<Paquete> p(Paquete::crear( tipo ));
 		if(! p.es_nulo() ){
+			std::cout << "<begin------------------------------\n"<<std::flush;
 			p->deserialize( bs );
+			std::cout << "<end------------------------------\n"<<std::flush;
 			sptr_paquete = p;
 		}
+		
+		
 	}
 	return sptr_paquete;
 }
