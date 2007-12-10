@@ -16,12 +16,13 @@
 #include <iostream>
 #include <string>
 #include "../../server/ModeloServidor.h"
+#include "../../common/observador.h"
 
-class Escenario{
+class Escenario : public Observador{
         GLuint ListaEscenario;
-        ModeloServidor* Modelo;
         GLuint texturaPared;
         GLuint texturaPiso;
+		bool Cargado;
 
         public:
 
@@ -30,6 +31,8 @@ class Escenario{
         Escenario();
 
         void Procesar();
+		
+		bool loaded();
 
         private:
 
@@ -41,7 +44,7 @@ class Escenario{
       
         void DrawEscenario();
 
-
+		void actualizar(Observable * observable, void * param);
 
 
 

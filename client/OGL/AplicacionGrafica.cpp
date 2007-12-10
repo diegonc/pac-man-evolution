@@ -30,8 +30,9 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
     glEnable( GL_TEXTURE_2D );
     //parametros para la mejor visualizacion de la perspectiva
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-    //escenario.Procesar(); <----LO COMENTE YOOOOO!!!!
-    ModeladorOBJ.hidratar();
+    //escenario.Procesar(); //<----LO COMENTE YOOOOO!!!!
+	
+	ModeladorOBJ.hidratar();
 	return true;
 
 }
@@ -79,7 +80,7 @@ int AplicacionGrafica::getAnguloDireccion(Direccion &dir){
 // dibujo el modelo visual
 void AplicacionGrafica::Draw(SDL_Surface *Screen)
 {
-    //valido q la pantala sea valida
+	//valido q la pantala sea valida
 	assert(Screen);
 
     //dibujo el modelo 3D
@@ -117,45 +118,52 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		glLightfv( GL_LIGHT0, GL_POSITION, pos );	
 		glTranslatef(0,0 , -20);
 	}
-
-    Posicion_Graf Pos;
-    std::list< S_ptr<Jugador> >::const_iterator jugadores;
-    S_ptr<Jugador> jp;
-    //obtengo los jugadores
-    for(jugadores = ModeloServidor::get_instancia()->get_jugadores().begin();jugadores != ModeloServidor::get_instancia()->get_jugadores().end(); ++jugadores){
-       jp = *jugadores;
-       //si el id es 1(deberia ser jugador cliente)
-       if(jp->get_id() == 1){
-            //obtengo la posicion y la parseo
-            Posicion p=jp->get_posicion();
-            Pos.x=p.get_x()*4;
-            Pos.y=-p.get_y()*4;
-            Pos.setAnguloActual(getAnguloDireccion(jp->get_direccion()));
-            //dibujo al objeto observador
-            ModeladorOBJ.DibujarObjetoObservadorPosicion(&Pos,jp->get_personaje()->get_tipo());
-       }
-       else{ //son los otros jugadores
-            Posicion p2=jp->get_posicion();
-            Pos.x= p2.get_x()*4;
-            Pos.y= -p2.get_y()*4;
-            ModeladorOBJ.DibujarObjetoPosicion(&Pos,jp->get_personaje()->get_tipo());
-        }
-    }
-    std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
-    std::list< S_ptr<Comestible> >::iterator comestibles;
-    S_ptr<Comestible> comestible;
-
-    //itero sobre los comestibles
-    for(comestibles = lista_comestibles.begin(); comestibles != lista_comestibles.end(); ++comestibles){
-        comestible = *comestibles;
-        Posicion p=comestible->get_posicion();
-        Pos.x= p.get_x()*4;
-        Pos.y= -p.get_y()*4;
-        ModeladorOBJ.DibujarObjetoPosicion(&Pos,comestible->get_tipo());
-    }
-
-    //llamo a la lista precompilada del Escenario
-    escenario.ModelarEscenario();
+	
+	if (escenario.loaded()){
+		std::cout << "draw - escenario cargado\n" << std::flush;
+	
+		Posicion_Graf Pos;
+		std::list< S_ptr<Jugador> >::const_iterator jugadores;
+		S_ptr<Jugador> jp;
+		//obtengo los jugadores
+		for(jugadores = ModeloServidor::get_instancia()->get_jugadores().begin();jugadores != ModeloServidor::get_instancia()->get_jugadores().end(); ++jugadores){
+		   jp = *jugadores;
+		   //si el id es 1(deberia ser jugador cliente)
+		   if(jp->get_id() == 1){
+				//obtengo la posicion y la parseo
+				Posicion p=jp->get_posicion();
+				Pos.x=p.get_x()*4;
+				Pos.y=-p.get_y()*4;
+				Pos.setAnguloActual(getAnguloDireccion(jp->get_direccion()));
+				//dibujo al objeto observador
+				ModeladorOBJ.DibujarObjetoObservadorPosicion(&Pos,jp->get_personaje()->get_tipo());
+		   }
+		   else{ //son los otros jugadores
+				Posicion p2=jp->get_posicion();
+				Pos.x= p2.get_x()*4;
+				Pos.y= -p2.get_y()*4;
+				ModeladorOBJ.DibujarObjetoPosicion(&Pos,jp->get_personaje()->get_tipo());
+			}
+		}
+		std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
+		std::list< S_ptr<Comestible> >::iterator comestibles;
+		S_ptr<Comestible> comestible;
+	
+		//itero sobre los comestibles
+		for(comestibles = lista_comestibles.begin(); comestibles != lista_comestibles.end(); ++comestibles){
+			comestible = *comestibles;
+			Posicion p=comestible->get_posicion();
+			Pos.x= p.get_x()*4;
+			Pos.y= -p.get_y()*4;
+			ModeladorOBJ.DibujarObjetoPosicion(&Pos,comestible->get_tipo());
+		}
+	
+		//llamo a la lista precompilada del Escenario
+		escenario.ModelarEscenario();
+	}
+	else
+		usleep(1000);
+	
 }
 //dibuja en 2D
 void AplicacionGrafica::Draw2D(SDL_Surface *S)
