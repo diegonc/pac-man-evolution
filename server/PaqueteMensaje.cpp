@@ -44,9 +44,9 @@ void PaqueteMensaje::serialize( OutputBitStream& bs )
     int TamanioCotaSup=Mensaje.length()/10;
     ++TamanioCotaSup;
     bs.append( 3, TamanioCotaSup); // Escribe campo auxiliar.
-	bs.skip();
+    bs.skip();
     
-	//bs.append( Mensaje.length(), Mensaje);
+    //bs.append_string( Mensaje.c_str(), TamanioCotaSup*10 );
 
 }
 Operacion * PaqueteMensaje::get_operacion(){
