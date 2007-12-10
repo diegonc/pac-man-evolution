@@ -4,8 +4,8 @@
 
 void Escenario::ModelarEscenario(){
     glCallList(ListaEscenario);
-	
 }
+
 Escenario::Escenario(){
 	Cargado = false;
 	ModeloServidor::get_instancia()->agregar_observador(this);
@@ -18,7 +18,6 @@ bool Escenario::loaded(){
 }
 
 void Escenario::Procesar(){
-	std::cout << "LlamadoAProc/n/n" << std::flush;
 	Cargado=true;    
     ListaEscenario = glGenLists (1);
     glNewList(ListaEscenario, GL_COMPILE);
@@ -95,9 +94,7 @@ void Escenario::addPiso(double xIn,double xFin,double yIn,double yFin){
 void Escenario::DrawEscenario(){
     typedef std::list<S_ptr<EstructuralUnitario> > listaEstruc;
     //obtengo los estructurales
-	std::cout << "alan gayIn\n";
     listaEstruc Estructurales= ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_estructurales();
-	std::cout << "alan gayOut\n";
     S_ptr<EstructuralUnitario> est;
     S_ptr<EstructuralUnitario> vecino;
     Posicion PosEst;
@@ -156,6 +153,7 @@ void Escenario::DrawEscenario(){
     }
 }
 void Escenario::actualizar(Observable * observable, void * param){
-	std::cout << "EscenarioAct/n/n" << std::flush;
+	//ModeloServidor* modelo = (ModeloServidor*) observable;
+	//std::cout << "cant de estruct " << modelo->get_mundo().get_mapa_activo()->get_estructurales().size() << std::endl << std::flush;
 	Procesar();
 }

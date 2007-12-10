@@ -120,8 +120,6 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 	}
 	
 	if (escenario.loaded()){
-		std::cout << "draw - escenario cargado\n" << std::flush;
-	
 		Posicion_Graf Pos;
 		std::list< S_ptr<Jugador> >::const_iterator jugadores;
 		S_ptr<Jugador> jp;
