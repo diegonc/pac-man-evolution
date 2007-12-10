@@ -57,6 +57,19 @@ class OutputBitStream
 		*/
 		void append( OutputBitStream& o, bool grow = true );
 
+		/** @brief Agrega una cadena al stream.
+		 *
+		 *  Agrega al stream los bytes del bloque de memoria s, hasta
+		 *  que se encuentre un caracter nulo o se alcance el limite n.
+		 *  El caracter nulo, de encontrarse, se coloca en el stream.
+		 *  La cadena se coloca alineada al byte.
+		 *
+		 *  @param s Cadena a agregar, terminada en caracter nulo.
+		 *  @param n Numero maximo de caracteres.
+		 *  @param grow Define si es posible crecer.
+		 */
+		void append_string( const char* s, unsigned int n, bool grow=true );
+
 
 		/**
 		*

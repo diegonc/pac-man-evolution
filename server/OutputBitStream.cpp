@@ -72,6 +72,20 @@ void OutputBitStream::append( OutputBitStream& o, bool grow )
 	}
 }
 
+void OutputBitStream::append_string( const char* s, unsigned int n, bool grow )
+{
+	/* TODO: implementacion sin optimizar. */
+	skip();
+	unsigned int longitud = 0;
+	while( (longitud < n) ) {
+		append( 8, *s );
+		if( *s == 0 ) break;
+		longitud++;
+		s++;
+	}
+}
+
+
 void OutputBitStream::skip(){
 	int bits_hasta_prox_byte = (8 - bit_index % 8) % 8;
 	if( bits_hasta_prox_byte > 0 )
