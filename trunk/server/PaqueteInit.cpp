@@ -49,8 +49,10 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	int j=0;
 	int ancho = bs.read( 8 );
 	int alto = bs.read( 8 );
+	std::cout << "ancho: " << ancho << " alto: " << alto << std::endl << std::flush;
 	mapa = S_ptr<MapaBajoNivel>( new MapaImpSet( ancho, alto ) );
 	int long_aristas = ancho * alto * 2;
+	std::cout << "long aristas: " << long_aristas << std::endl << std::flush;
 	bs.grow( long_aristas );
 	for( int y=0; y < alto; y++ ) {
 		for( int x=0; x < ancho; x++ )
@@ -62,11 +64,14 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	}
 	bs.skip();
 	unsigned int num_elems = bs.read( 16 );
+	std::cout << "num elems: " << num_elems << std::endl << std::flush;
 	bs.grow( num_elems*24 );
 	for(unsigned int i=0; i < num_elems; i++ ) {
 		int tipo = bs.read( 6 );
+		std::cout << "tipo recibido: " << tipo << std::endl << std::flush;
 		/* int orient =bs.append( 2, 1); //ESTADO*/ bs.read( 2 );
 		int pos = bs.read( 16 );
+		std::cout << "pos recibida: " << pos << std::endl << std::flush;
 		Posicion p( pos % ancho, pos / ancho);
 		S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
 		if (!e.es_nulo()){
@@ -86,12 +91,14 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
 						ep->set_comida( Comestible::power_up );
+						std::cout << "seteando power up en: " << p << std::endl << std::flush;
 					}
 					break;
 				case 3:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
 						ep->set_comida( Comestible::frutita );
+						std::cout << "seteando frutita en: " << p << std::endl << std::flush;
 					}
 					break;
 			}
@@ -115,16 +122,15 @@ bool PaqueteInit::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBit
 bool PaqueteInit::escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs )
 {
 	if( c.es_nulo() ) return false;
-	//if( c->get_tipo() == Comestible::frutita )
-	if( c->get_tipo() == Comestible::quesito ) return false;
-	bs.append( 6, (int) c->get_tipo());
-	//else if( c->get_tipo() == Comestible::power_up )
-		//bs.append( 6, 2 );
-	//else return false;
+	if( c->get_tipo() == Comestible::frutita )
+		bs.append( 6, 3);
+	else if( c->get_tipo() == Comestible::power_up )
+		bs.append( 6, 2 );
+	else return false;
 	bs.append( 2, Direccion::Norte );	
 	Posicion& p = c->get_posicion();
 	
-	unsigned int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
+	unsigned int pos = (unsigned int)p.get_y() * mapa->get_ancho() + (unsigned int)p.get_x();
 	//std::cout << p << " => " << pos << " : es " << c->get_tipo() << std::endl;
 	bs.append( 16, pos );
 	
