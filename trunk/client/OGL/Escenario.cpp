@@ -3,11 +3,15 @@
 
 
 void Escenario::ModelarEscenario(){
-    glCallList(ListaEscenario);
+   if (proceso)    
+	glCallList(ListaEscenario);
+   else
+        Procesar();
 }
 
 Escenario::Escenario(){
 	Cargado = false;
+	proceso = false;
 	ModeloServidor::get_instancia()->agregar_observador(this);
 	CargadorDeTexturas::CargarTextura(&texturaPared,"pared.bmp");
     CargadorDeTexturas::CargarTextura(&texturaPiso,"piso.bmp");
@@ -18,11 +22,11 @@ bool Escenario::loaded(){
 }
 
 void Escenario::Procesar(){
-	Cargado=true;    
     ListaEscenario = glGenLists (1);
     glNewList(ListaEscenario, GL_COMPILE);
     DrawEscenario();
     glEndList();
+    proceso = true;
 }
 
 //agregar Pared desde las coordenadas especificadas
@@ -155,5 +159,6 @@ void Escenario::DrawEscenario(){
 void Escenario::actualizar(Observable * observable, void * param){
 	//ModeloServidor* modelo = (ModeloServidor*) observable;
 	//std::cout << "cant de estruct " << modelo->get_mundo().get_mapa_activo()->get_estructurales().size() << std::endl << std::flush;
-	Procesar();
+	Cargado=true; 	
+	//Procesar();
 }

@@ -86,8 +86,7 @@ subproyecto: $(o_files)
 clean:
 	@$(RM) -fv *.o subproyecto \
    rm ../../common/*.o \
-   rm ../../server/*.o \
    rm miEjecutable
-
+   #rm ../../server/*.o \
 
 
