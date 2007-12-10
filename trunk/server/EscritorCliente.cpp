@@ -38,6 +38,7 @@ void EscritorCliente::run(){
 
 void EscritorCliente::terminar(){
 	this->debe_terminar = true;
+	this->e.lanzar_evento();
 }	
 
 void EscritorCliente::encolar_paquete(S_ptr<Paquete> paquete){
