@@ -32,7 +32,7 @@ VistaMapa::VistaMapa(){
 	
 	//Creo un actualizador de marcas y lo hago correr
 	this->actualizador = new ActualizadorMarcas(this);
-	this->actualizador->start();
+	//this->actualizador->start();
 }
 
 //Destructor:
@@ -45,8 +45,8 @@ VistaMapa::~VistaMapa(){
 		this->liberar_matriz(this->marcas);
 	}
 	//Freo la ejecucion del actualizador y le hago join
-	this->actualizador->frenar_ejecucion();
-	this->actualizador->join();
+	//this->actualizador->frenar_ejecucion();
+	//this->actualizador->join();
 	//Borro el actualizador de marcas
 	delete (this->actualizador);
 }
