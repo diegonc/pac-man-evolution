@@ -14,9 +14,9 @@ MapaBajoNivel* mapa_de_prueba()
 	Posicion p = Posicion(0,0);
 	S_ptr<EstructuralUnitario> p0( new EstructuralPasillo( Comestible::quesito, p ));
 	p = Posicion(1,0);
-	S_ptr<EstructuralUnitario> p1( new EstructuralPasillo( Comestible::quesito, p ));
+	S_ptr<EstructuralUnitario> p1( new EstructuralPasillo( Comestible::frutita, p ));
 	p = Posicion(0,1);
-	S_ptr<EstructuralUnitario> p2( new EstructuralPasillo( Comestible::quesito, p ));
+	S_ptr<EstructuralUnitario> p2( new EstructuralPasillo( Comestible::power_up, p ));
 	p = Posicion(1,1);
 	S_ptr<EstructuralUnitario> p3( new EstructuralPasillo( Comestible::quesito, p ));
 	
@@ -34,9 +34,9 @@ MapaBajoNivel* mapa_de_prueba()
 
 unsigned char* datos_de_prueba()
 {
-	#define DATOS_PRUEBA_S 6
+	#define DATOS_PRUEBA_S 12
 	static unsigned char raw[DATOS_PRUEBA_S] = {
-	       	4 /* fantasma */, 2, 2, 46, 0, 0 };
+	       	4 /* fantasma */, 2, 2, 46, 0, 2, 12, 0, 1, 8, 0, 2 };
 	return raw;
 }
 
