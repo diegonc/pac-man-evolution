@@ -22,8 +22,8 @@ namespace {
 			void ejecutar(ModeloServidor &modelo) {
 				
 				MundoBajoNivel& mundo = modelo.get_mundo();
-				std::cout << "El mapa tiene " << mapa.get_comestibles().size() << "comestibles y "
-					  <<   mapa.get_estructurales().size() << " estructurales.\n";			
+				std::cout << "El mapa tiene " << m->get_comestibles().size() << "comestibles y "
+					  <<   m->get_estructurales().size() << " estructurales.\n";			
 				mundo.agregar_mapa( m );
 				// esPacman ?? que ID recibio el paquete ??	
 				
@@ -48,7 +48,6 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	
 	esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
 	bs.skip(); // Saltea el resto del campo auxiliar.
-	int j=0;
 	int ancho = bs.read( 8 );
 	int alto = bs.read( 8 );
 	std::cout << "ancho: " << ancho << " alto: " << alto << std::endl << std::flush;
