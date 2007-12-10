@@ -75,23 +75,26 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	}
 }
 
-void PaqueteInit::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBitStream& bs )
+bool PaqueteInit::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBitStream& bs )
 {
-	if( e.es_nulo() ) return;
+	if( e.es_nulo() ) return false;
 
 	bs.append( 6, (int)e->get_tipo() );
 	bs.append( 2, Direccion::Norte );
 	Posicion& p = e->get_posicion();
 	int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
 	bs.append( 16, pos );
+	return true;
 }
 
 bool PaqueteInit::escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs )
 {
 	if( c.es_nulo() ) return false;
-	if( c->get_tipo() == Comestible::quesito ) return false;
-
-	bs.append( 6, (int)c->get_tipo() );
+	if( c->get_tipo() == Comestible::frutita )
+		bs.append( 6, 3 );
+	else if( c->get_tipo() == Comestible::power_up )
+		bs.append( 6, 2 );
+	else return false;
 	bs.append( 2, Direccion::Norte );
 	Posicion& p = c->get_posicion();
 	int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
@@ -198,10 +201,10 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 	
 	// TODO: Escribir elementos del mapa.
 	OutputBitStream elems;
-	int elem_count = 2;
+	int elem_count = 0;
 	
-	escribir_estructural( casa, elems );
-	escribir_estructural( salida, elems );
+	if( escribir_estructural( casa, elems ) ) elem_count++;
+	if( escribir_estructural( salida, elems ) ) elem_count++;
 	
 	std::list< S_ptr<Comestible> > comestibles = mapa->get_comestibles();
 	std::list<S_ptr<Comestible> >::iterator it = comestibles.begin();
