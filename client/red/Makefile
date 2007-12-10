@@ -23,6 +23,7 @@ SERVER_O=Paquete.o \
 	 ModeloServidor.o \
 	 MapImpSet.o \
 	 Direccion.o \
+	 MundoBasicImp.o \
 	 Posicion.o \
 	 reloj.o \
 	 EstructuralUnitario.o \

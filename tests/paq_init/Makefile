@@ -2,11 +2,11 @@
 
 LDFLAGS=-lpthread
 
-CXXFLAGS=-ggdb
+CXXFLAGS=-ggdb -I../..
 
 TARGET=test-pinit
 
-OBJS=main.o \
+OBJS=main.o test-2x2.o test-3x3.o\
      ../../server/EstructuralPasillo.o \
      ../../server/EstructuralUnitario.o \
      ../../server/EstructuralCasaFantasma.o \
