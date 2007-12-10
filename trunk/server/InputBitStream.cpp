@@ -79,7 +79,7 @@ int InputBitStream::read( unsigned int n )
 	return r;
 }
 
-void read_string( char* s, unsigned int n )
+void InputBitStream::read_string( char* s, unsigned int n )
 {
 	while( n > 0 ) {
 		*s = (char) read( 8 );
