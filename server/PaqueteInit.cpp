@@ -20,10 +20,11 @@ namespace {
 				m( m ), esPac( esPac ) { }
 
 			void ejecutar(ModeloServidor &modelo) {
+				
 				MundoBajoNivel& mundo = modelo.get_mundo();
 				mundo.agregar_mapa( m );
 				// esPacman ?? que ID recibio el paquete ??	
-				std::cout << "Ejecuto operacion init\n";
+				
 				modelo.set_cargado();
 			}
 	};
@@ -46,11 +47,9 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
 	bs.skip(); // Saltea el resto del campo auxiliar.
 	int j=0;
-	std::cout << "Lugar "<< ++j <<"\n";
 	int ancho = bs.read( 8 );
 	int alto = bs.read( 8 );
 	mapa = S_ptr<MapaBajoNivel>( new MapaImpSet( ancho, alto ) );
-	std::cout << "Lugar "<< ++j <<"\n";
 	int long_aristas = ancho * alto * 2;
 	bs.grow( long_aristas );
 	for( int y=0; y < alto; y++ ) {
@@ -62,14 +61,9 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 				agregar_arista( x, y, false );
 	}
 	bs.skip();
-	std::cout << "Lugar "<< ++j <<"\n";
 	unsigned int num_elems = bs.read( 16 );
-	std::cout << "Lugar "<< ++j <<"\n";
-	std::cout << "Espero leer "<< num_elems <<"\n";
 	bs.grow( num_elems*24 );
-	std::cout << "Lugar "<< ++j <<"\n" << std::flush;
 	for(unsigned int i=0; i < num_elems; i++ ) {
-		std::cout << "Lugar "<< ++j <<"\n";
 		int tipo = bs.read( 6 );
 		/* int orient =bs.append( 2, 1); //ESTADO*/ bs.read( 2 );
 		int pos = bs.read( 16 );
@@ -103,7 +97,7 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 			}
 		}
 	}
-		std::cout << "Lugar "<< ++j <<"\n";
+		
 }
 
 bool PaqueteInit::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBitStream& bs )
@@ -131,7 +125,7 @@ bool PaqueteInit::escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs
 	Posicion& p = c->get_posicion();
 	
 	unsigned int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
-	std::cout << p << " => " << pos << " : es " << c->get_tipo() << std::endl;
+	//std::cout << p << " => " << pos << " : es " << c->get_tipo() << std::endl;
 	bs.append( 16, pos );
 	
 	return true;
@@ -246,15 +240,12 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 	
 	std::list< S_ptr<Comestible> > comestibles = mapa->get_comestibles();
 	std::list<S_ptr<Comestible> >::iterator it = comestibles.begin();
-	std::cout << "hay "<< comestibles.size() <<" elementos\n";
 	for( ; it != comestibles.end(); ++it )		
 		if( escribir_comestible( *it, elems ) )
 			elem_count++;
 
 	bs.append( 16, elem_count );
-	std::cout << "escribo "<< elem_count <<" elementos\n";
 	bs.append( elems );		
-	std::cout << "tamanio escritura "<< bs.get_size() <<"\n";
 	
 }
 
