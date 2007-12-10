@@ -79,6 +79,16 @@ int InputBitStream::read( unsigned int n )
 	return r;
 }
 
+void read_string( char* s, unsigned int n )
+{
+	while( n > 0 ) {
+		*s = (char) read( 8 );
+		if( *s == 0 ) break;
+		n--;
+		s++;
+	}
+}
+
 void InputBitStream::skip()
 {
 	if( index < size ) {
@@ -88,7 +98,7 @@ void InputBitStream::skip()
 		}
 	}
 }
-
+#if 0
 char* InputBitStream::read_block( unsigned int	n, unsigned int& m )
 {
 	grow( n );
@@ -110,3 +120,4 @@ char* InputBitStream::read_block( unsigned int	n, unsigned int& m )
 		throw std::runtime_error( "Implementar read_block desalineado." );
 	}
 }
+#endif

@@ -22,16 +22,19 @@ void PaqueteMensaje::set_mensaje(std::string msg)
 void PaqueteMensaje::deserialize( InputBitStream& bs )
 {
     int TamanioCotaSup= bs.read( 3 )*10;
-	bs.skip();
+    bs.skip();
 
-    char* buffer=new char[TamanioCotaSup];
-	unsigned int tamanio_buffer; //el read block devuelve cuantos bloques ocupan los bits
-    
-	buffer = bs.read_block( TamanioCotaSup, tamanio_buffer);
+    char* buffer;
+    if( TamanioCotaSup == 70 ) {
+	    // En este caso el caracter nulo puede no venir en el stream.
+	    buffer = new char[TamanioCotaSup+1];
+	    buffer[TamanioCotaSup] = 0;
+    }else buffer = new char[TamanioCotaSup];
+    bs.read_string( buffer, TamanioCotaSup );
     bs.skip();
     std::string variableTemp(buffer);
     Mensaje=variableTemp; //como el igual esta sobrecargado se copia todo el string;
-    delete buffer;
+    delete[] buffer;
 }
 
 void PaqueteMensaje::serialize( OutputBitStream& bs )
