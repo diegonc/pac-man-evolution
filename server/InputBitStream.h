@@ -60,6 +60,8 @@ class InputBitStream
 		 *
 		 *  Descarta los bits restantes del byte actual, dejando el
 		 *  puntero al comienzo del siguiente byte.
+		 *  Si el puntero ya se encuentra al comienzo de un byte, no
+		 *  realiza ninguna operacion.
 		 */
 		void skip();
 
@@ -77,7 +79,7 @@ class InputBitStream
 		 *  @param m Numero de bytes del bloque.
 		 *  @return Bloque que contiene los bits.
 		 */
-		char* read_block( unsigned int n, unsigned int& m );
+		/* deprecated */char* read_block( unsigned int n, unsigned int& m );
 
 
 		/** @brief Rellena el buffer.
