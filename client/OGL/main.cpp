@@ -190,7 +190,6 @@ int main(int argc, char **argv)
 			
 		//finalizo, libero recursos
 		APP.getAplicacionGrafica()->Deinitialize();
-		std::cout << "termino la aplicacion\n"<< std::flush;
 		///////////////////////////////////////////////////////////////////////
 		//cliente_del_modelo.join();
 		//////////////////////////////////////////////////////////////////////
