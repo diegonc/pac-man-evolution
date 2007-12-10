@@ -1,14 +1,25 @@
 #include "Escenario.h"
+#include <iostream>
 
 
 void Escenario::ModelarEscenario(){
     glCallList(ListaEscenario);
+	
 }
-Escenario::Escenario(){}
+Escenario::Escenario(){
+	Cargado = false;
+	ModeloServidor::get_instancia()->agregar_observador(this);
+	CargadorDeTexturas::CargarTextura(&texturaPared,"pared.bmp");
+    CargadorDeTexturas::CargarTextura(&texturaPiso,"piso.bmp");
+}
+	
+bool Escenario::loaded(){
+	return Cargado;	
+}
 
 void Escenario::Procesar(){
-    CargadorDeTexturas::CargarTextura(&texturaPared,"pared.bmp");
-    CargadorDeTexturas::CargarTextura(&texturaPiso,"piso.bmp");
+	std::cout << "LlamadoAProc/n/n" << std::flush;
+	Cargado=true;    
     ListaEscenario = glGenLists (1);
     glNewList(ListaEscenario, GL_COMPILE);
     DrawEscenario();
@@ -84,7 +95,9 @@ void Escenario::addPiso(double xIn,double xFin,double yIn,double yFin){
 void Escenario::DrawEscenario(){
     typedef std::list<S_ptr<EstructuralUnitario> > listaEstruc;
     //obtengo los estructurales
+	std::cout << "alan gayIn\n";
     listaEstruc Estructurales= ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_estructurales();
+	std::cout << "alan gayOut\n";
     S_ptr<EstructuralUnitario> est;
     S_ptr<EstructuralUnitario> vecino;
     Posicion PosEst;
@@ -141,4 +154,8 @@ void Escenario::DrawEscenario(){
         //agrego el piso de ese estructural
         addPiso(xIn,xFin,yIn,yFin);
     }
+}
+void Escenario::actualizar(Observable * observable, void * param){
+	std::cout << "EscenarioAct/n/n" << std::flush;
+	Procesar();
 }
