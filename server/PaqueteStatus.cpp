@@ -212,3 +212,8 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
 
         }
 }
+
+Operacion* PaqueteStatus::get_operacion()
+{
+	throw "PaqueteStatus::get_operacion: implementacion pendiente.";
+}

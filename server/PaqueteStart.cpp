@@ -1,6 +1,14 @@
 #include "PaqueteStart.h"
 
-PaqueteStart::PaqueteStart(int id_cliente):Paquete(1){
+namespace {
+	const int ID = 1;
+}
+
+PaqueteStart::PaqueteStart() : Paquete( ID )
+{
+}
+
+PaqueteStart::PaqueteStart(int id_cliente):Paquete( ID ){
 	this->id_cliente = id_cliente;
 }
 
