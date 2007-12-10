@@ -23,6 +23,8 @@ namespace {
 				MundoBajoNivel& mundo = modelo.get_mundo();
 				mundo.agregar_mapa( m );
 				// esPacman ?? que ID recibio el paquete ??	
+				std::cout << "Ejecuto operacion init\n";
+				modelo.set_cargado();
 			}
 	};
 }
@@ -40,12 +42,15 @@ PaqueteInit::PaqueteInit( bool pac, S_ptr<MapaBajoNivel> m )
 
 void PaqueteInit::deserialize( InputBitStream& bs )
 {
+	
 	esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
 	bs.skip(); // Saltea el resto del campo auxiliar.
-
+	int j=0;
+	std::cout << "Lugar "<< ++j <<"\n";
 	int ancho = bs.read( 8 );
 	int alto = bs.read( 8 );
 	mapa = S_ptr<MapaBajoNivel>( new MapaImpSet( ancho, alto ) );
+	std::cout << "Lugar "<< ++j <<"\n";
 	int long_aristas = ancho * alto * 2;
 	bs.grow( long_aristas );
 	for( int y=0; y < alto; y++ ) {
@@ -57,40 +62,48 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 				agregar_arista( x, y, false );
 	}
 	bs.skip();
+	std::cout << "Lugar "<< ++j <<"\n";
 	unsigned int num_elems = bs.read( 16 );
+	std::cout << "Lugar "<< ++j <<"\n";
+	std::cout << "Espero leer "<< num_elems <<"\n";
 	bs.grow( num_elems*24 );
+	std::cout << "Lugar "<< ++j <<"\n" << std::flush;
 	for(unsigned int i=0; i < num_elems; i++ ) {
+		std::cout << "Lugar "<< ++j <<"\n";
 		int tipo = bs.read( 6 );
-		/* int orient =*/ bs.read( 2 );
+		/* int orient =bs.append( 2, 1); //ESTADO*/ bs.read( 2 );
 		int pos = bs.read( 16 );
 		Posicion p( pos % ancho, pos / ancho);
 		S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
-		switch( tipo ) {
-			case 0:
-				if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
-					EstructuralPasillo* ep = (EstructuralPasillo *) &(*e);
-					ep->set_salida_pacman();
-				}
-				break;
-			case 1: {
-				S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
-				reemplazar_estructural( c ); 
-				}
-				break;
-			case 2:
-				if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
-					EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
-					ep->set_comida( Comestible::power_up );
-				}
-				break;
-			case 3:
-				if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
-					EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
-					ep->set_comida( Comestible::frutita );
-				}
-				break;
+		if (!e.es_nulo()){
+			switch( tipo ) {
+				case 0:
+					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
+						EstructuralPasillo* ep = (EstructuralPasillo *) &(*e);
+						ep->set_salida_pacman();
+					}
+					break;
+				case 1: {
+					S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
+					reemplazar_estructural( c ); 
+					}
+					break;
+				case 2:
+					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
+						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
+						ep->set_comida( Comestible::power_up );
+					}
+					break;
+				case 3:
+					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
+						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
+						ep->set_comida( Comestible::frutita );
+					}
+					break;
+			}
 		}
 	}
+		std::cout << "Lugar "<< ++j <<"\n";
 }
 
 bool PaqueteInit::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBitStream& bs )
@@ -98,7 +111,7 @@ bool PaqueteInit::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBit
 	if( e.es_nulo() ) return false;
 
 	bs.append( 6, (int)e->get_tipo() );
-	bs.append( 2, Direccion::Norte );
+	bs.append( 2, Direccion::Norte);	
 	Posicion& p = e->get_posicion();
 	int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
 	bs.append( 16, pos );
@@ -108,15 +121,19 @@ bool PaqueteInit::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBit
 bool PaqueteInit::escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs )
 {
 	if( c.es_nulo() ) return false;
-	if( c->get_tipo() == Comestible::frutita )
-		bs.append( 6, 3 );
-	else if( c->get_tipo() == Comestible::power_up )
-		bs.append( 6, 2 );
-	else return false;
-	bs.append( 2, Direccion::Norte );
+	//if( c->get_tipo() == Comestible::frutita )
+	if( c->get_tipo() == Comestible::quesito ) return false;
+	bs.append( 6, (int) c->get_tipo());
+	//else if( c->get_tipo() == Comestible::power_up )
+		//bs.append( 6, 2 );
+	//else return false;
+	bs.append( 2, Direccion::Norte );	
 	Posicion& p = c->get_posicion();
-	int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
+	
+	unsigned int pos = (int)p.get_y() * mapa->get_ancho() + (int)p.get_x();
+	std::cout << p << " => " << pos << " : es " << c->get_tipo() << std::endl;
 	bs.append( 16, pos );
+	
 	return true;
 }
 
@@ -204,14 +221,17 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 				if( e->get_tipo() == EstructuralUnitario::Casa_Fantasma ) casa = e;
 				if( e->get_tipo() == EstructuralUnitario::Salida_Pacman ) salida = e;
 				bs.append( 1, !( e->get_arriba().es_nulo() ) );
-			}
+			}else
+				bs.append( 1, 0);
 		}
 		// Aristas horizontales
 		for( unsigned int x=0; x < mapa->get_ancho(); x++ ) {
 			Posicion p( x, y );
 			e = mapa->get_estructural( p );
-			if(!e.es_nulo() )
+			if(!e.es_nulo()){
 				bs.append( 1, !( e->get_derecha().es_nulo() ) );
+			}else
+				bs.append( 1, 0);
 		}
 	}
 	
@@ -220,18 +240,22 @@ void PaqueteInit::serialize( OutputBitStream& bs )
 	// TODO: Escribir elementos del mapa.
 	OutputBitStream elems;
 	int elem_count = 0;
-	
-	if( escribir_estructural( casa, elems ) ) elem_count++;
+	//version del protocolo (mejorada cuak)
+	//if( escribir_estructural( casa, elems ) ) elem_count++;
 	if( escribir_estructural( salida, elems ) ) elem_count++;
 	
 	std::list< S_ptr<Comestible> > comestibles = mapa->get_comestibles();
 	std::list<S_ptr<Comestible> >::iterator it = comestibles.begin();
-	for( ; it != comestibles.end(); ++it )
+	std::cout << "hay "<< comestibles.size() <<" elementos\n";
+	for( ; it != comestibles.end(); ++it )		
 		if( escribir_comestible( *it, elems ) )
 			elem_count++;
 
 	bs.append( 16, elem_count );
-	bs.append( elems );
+	std::cout << "escribo "<< elem_count <<" elementos\n";
+	bs.append( elems );		
+	std::cout << "tamanio escritura "<< bs.get_size() <<"\n";
+	
 }
 
 Operacion* PaqueteInit::get_operacion(){

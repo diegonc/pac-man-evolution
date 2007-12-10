@@ -7,6 +7,8 @@
 #include "PaqueteTecla.h"
 #include "PaqueteMensaje.h"
 
+#include "PaqueteInit.h"
+
 Paquete::Paquete()
 {
 }
@@ -27,6 +29,12 @@ Paquete* Paquete::crear( int tipo ){
     //TODO: HACERLO BIEN ESTOOOOO!!!!!
 	Paquete * p;
 	switch(tipo){
+<<<<<<< .mine
+		case 0:
+			p = new PaqueteInit();
+			break;
+		
+=======
 		case 0:
 			p = new PaqueteInit();
 			break;
@@ -41,6 +49,7 @@ Paquete* Paquete::crear( int tipo ){
 			break;*/
 		case 4:
 			p = new PaqueteQuit();
+>>>>>>> .r417
 		case 5:	
 			p = new PaqueteTecla();
 			break;

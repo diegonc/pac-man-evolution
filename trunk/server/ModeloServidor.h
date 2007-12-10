@@ -110,6 +110,8 @@ class ModeloServidor : public Thread , public Observador, public Observable{
 		*
 		*/
 		bool esta_terminado();
+
+		void set_cargado();
 };
 
 
