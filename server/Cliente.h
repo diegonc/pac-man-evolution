@@ -64,7 +64,7 @@ class Cliente : public Thread{
 		
 		S_ptr<Jugador> get_jugador();
 		
-		
+		void terminar();
 
 };
 

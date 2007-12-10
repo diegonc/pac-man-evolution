@@ -93,7 +93,7 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
 		S_ptr<Paquete> p(Paquete::crear( tipo ));
-		if(p != 0){
+		if(! p.es_nulo() ){
 			p->deserialize( bs );
 			sptr_paquete = p;
 		}
@@ -105,4 +105,8 @@ EscritorCliente& Cliente::get_escritor(){
 }
 S_ptr<Jugador> Cliente::get_jugador(){
 	return this->jugador;
+}
+void Cliente::terminar(){
+	this->escritor->terminar();
+	this->socket->cerrar();
 }
