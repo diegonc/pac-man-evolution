@@ -23,6 +23,7 @@ class Escenario : public Observador{
         GLuint texturaPared;
         GLuint texturaPiso;
 		bool Cargado;
+		bool proceso;
 
         public:
 
