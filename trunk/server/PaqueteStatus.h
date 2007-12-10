@@ -30,6 +30,8 @@ class PaqueteStatus: public Paquete
 		void serialize( OutputBitStream& bs );
 
 		void deserialize( InputBitStream& bs );
+
+		Operacion* get_operacion();
 };
 
 #endif /* __PAQUETESTATUS_H__ */

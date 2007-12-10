@@ -12,6 +12,8 @@ class PaqueteQuit: public Paquete
 		void serialize( OutputBitStream& bs );
 
 		void deserialize( InputBitStream& bs );
+
+		Operacion* get_operacion();
 };
 
 #endif /* __PAQUETEQUIT_H__ */

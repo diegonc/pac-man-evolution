@@ -21,3 +21,8 @@ void PaqueteQuit::serialize( OutputBitStream& bs )
 	bs.skip();
 
 }
+
+Operacion* PaqueteQuit::get_operacion()
+{
+	throw "PaqueteQuit::get_operacion: implementacion pendiente.";
+}
