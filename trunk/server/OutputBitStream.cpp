@@ -99,6 +99,7 @@ void OutputBitStream::grow( unsigned int n ){
 		//creo el nuevo buffer
 		unsigned int new_buffer_size = ( bsize % 8==0 ) ? bsize/8 : ( bsize/8 + 1);
 		unsigned char * new_buffer = new unsigned char [ new_buffer_size ];
+		memset( new_buffer, 0, new_buffer_size );
 		//los copio
 		memcpy(new_buffer, buffer, buffer_size);
 		//borro el viejo
