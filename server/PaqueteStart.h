@@ -15,6 +15,10 @@ class PaqueteStart: public Paquete
         int id_cliente; //TODO: REVISEN ESTO QUE HICE PORQUE NO ME SIRVE PARA UN BROADCAST
 	
     public:
+		/** Crea un paquete apto para deserializar. */
+		PaqueteStart();
+
+		/** Crea un paquete apto para serializar. */
 		PaqueteStart(int id_cliente); //TODO: REVISEN ESTO QUE HICE PORQUE NO ME SIRVE PARA UN BROADCAST
 
 		void serialize( OutputBitStream& bs );
