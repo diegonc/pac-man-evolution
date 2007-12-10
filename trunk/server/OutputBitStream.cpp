@@ -58,15 +58,17 @@ void OutputBitStream::append( OutputBitStream& o, bool grow )
 	/* implementacion trucha :P */
 	//obtengo el la cantidad de bits disponibles
 	unsigned int bavail = (buffer_size * 8 - bit_index );
+	unsigned int bits_agregados = o.bit_index;
+	o.skip(); // alinea para que se arreglen los valores.
 	//si la cantidad es mayor o puede crecer
-	if(  bavail >= o.bit_index || grow ) {
+	if(  bavail >= bits_agregados || grow ) {
 		int index = o.buffer_size - 1;
-		int bits_r = o.bit_index;
+		int bits_r = bits_agregados;
 		while( bits_r > 8 ) {
 			append( 8, o.buffer[index--] );
 			bits_r -= 8;
 		}
-		if( bits_r > 0 ) append( bits_r, o.buffer[index] );
+		if( bits_r > 0 ) append( bits_r, o.buffer[index]>>((8-bits_agregados%8)%8) );
 	}
 }
 
