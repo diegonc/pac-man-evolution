@@ -22,6 +22,8 @@ namespace {
 			void ejecutar(ModeloServidor &modelo) {
 				
 				MundoBajoNivel& mundo = modelo.get_mundo();
+				std::cout << "El mapa tiene " << mapa.get_comestibles().size() << "comestibles y "
+					  <<   mapa.get_estructurales().size() << " estructurales.\n";			
 				mundo.agregar_mapa( m );
 				// esPacman ?? que ID recibio el paquete ??	
 				
