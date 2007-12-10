@@ -1,66 +1,32 @@
-#include "../../server/PaqueteInit.h"
-#include "../../server/OutputBitStream.h"
-#include "../../server/InputBitStream.h"
-#include "../../server/MemoryReader.h"
-#include "../../server/MapaBajoNivel.h"
-#include "../../server/MapImpSet.h"
-#include "../../server/EstructuralPasillo.h"
-#include "../../server/Posicion.h"
-#include <iostream>
+#include "test_runner.h"
+#include "common/smart_pointer.h"
+#include <list>
 
-MapaBajoNivel* mapa_de_prueba()
+#include "test-2x2.h"
+#include "test-3x3.h"
+
+typedef std::list<S_ptr<TestRunnerBase> > TestRunnerList;
+
+TestRunnerList inicializar_pruebas()
 {
-	MapaBajoNivel* m = new MapaImpSet( 2, 2 );
-	Posicion p = Posicion(0,0);
-	S_ptr<EstructuralUnitario> p0( new EstructuralPasillo( Comestible::quesito, p ));
-	p = Posicion(1,0);
-	S_ptr<EstructuralUnitario> p1( new EstructuralPasillo( Comestible::frutita, p ));
-	p = Posicion(0,1);
-	S_ptr<EstructuralUnitario> p2( new EstructuralPasillo( Comestible::power_up, p ));
-	p = Posicion(1,1);
-	S_ptr<EstructuralUnitario> p3( new EstructuralPasillo( Comestible::quesito, p ));
-	
-	p0->set_derecha( p1 );
-	p2->set_arriba( p0 );
-	p2->set_derecha( p3 );
-	p3->set_arriba( p1 );
+	TestRunnerList list;
+	#define ADD_TEST(X)	list.push_back( S_ptr<TestRunnerBase>( new TestRunner<X>(X()) ))
 
-	m->agregar_estructural( p0 );
-	m->agregar_estructural( p1 );
-	m->agregar_estructural( p2 );
-	m->agregar_estructural( p3 );
-	return m;
-}
-
-unsigned char* datos_de_prueba()
-{
-	#define DATOS_PRUEBA_S 12
-	static unsigned char raw[DATOS_PRUEBA_S] = {
-	       	4 /* fantasma */, 2, 2, 46, 0, 2, 12, 0, 1, 8, 0, 2 };
-	return raw;
+	/* Agregue aqui sus pruebas. =P */
+	ADD_TEST(TestPaqInitPruebaCircular);
+	ADD_TEST(TestPaqInitPruebaBad);
+	/********************************/
+	#undef ADD_TEST
+	return list;
 }
 
 int main()
 {
-	S_ptr<MapaBajoNivel> map( mapa_de_prueba() );
-	PaqueteInit p( false, map );
-	OutputBitStream obs;
-	unsigned char* raw = datos_de_prueba();
+	TestRunnerList trl = inicializar_pruebas();
+	TestRunnerList::iterator it = trl.begin();
 
-	p.serialize( obs );
+	while( it != trl.end() )
+		(*it++)->run();
 	
-	if( DATOS_PRUEBA_S != obs.get_size() ) {
-		std::cout << "ERROR: Paquete se serializo en:\n\t\t";
-	        std::cout << obs.get_size() << "bytes ";
-		std::cout << "( esperados: " << DATOS_PRUEBA_S << "bytes )\n";
-	} else {
-		const unsigned char* s = obs.get_data();
-		for( int i=0; i < DATOS_PRUEBA_S; i++ ) {
-			if( raw[i] != s[i] ) {
-				std::cout << "ERROR: byte " << i << " es "  << (int) s[i];
-				std::cout << " ( esperado: " << (int)raw[i] << ")\n";
-			}
-		}
-	}
 	return 0;
 }
