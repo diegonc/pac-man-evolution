@@ -48,7 +48,7 @@ ModeloServidor::~ModeloServidor(){
 
 void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 	
-#infdef PROGRAMA_CLIENTE
+#ifndef PROGRAMA_CLIENTE
 	S_ptr<Personaje> personaje;
 	Jugador * j = &(*jugador);
 	//si es el primer jugador, le asigno el personaje de pacman, si no
