@@ -66,7 +66,6 @@ void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 void ModeloServidor::run(){
 	//si hay mundo
 	if(! mundo.es_nulo()){
-		std::cout << "ARRANCO EL FUCKIN' MODELO\n";
 		this->termino = false;
 		double intervalo_tiempo = 0;
 		double hora_actual;
