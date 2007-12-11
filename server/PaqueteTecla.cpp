@@ -30,14 +30,17 @@ namespace {
 	}
 }
 
+PaqueteTecla::PaqueteTecla(int id_cliente,int Flecha) : Paquete( ID )
+{
+	this->id_cliente = id_cliente;
+	this->FlechaProt=al_protocolo(Flecha);
+}
+
 PaqueteTecla::PaqueteTecla(int id_cliente) : Paquete( ID )
 {
 	this->id_cliente = id_cliente;
 }
 
-void PaqueteTecla::set_KeyOp(KeyOp* OperTecla){
-    OperacionTecla=OperTecla;
-}
 
 
 void PaqueteTecla::deserialize( InputBitStream& bs )
@@ -47,25 +50,16 @@ void PaqueteTecla::deserialize( InputBitStream& bs )
     int Flecha=bs.read(8);
     ?????
     */
-    int Flecha=bs.read(3);
+    FlechaProt=bs.read(3);
     bs.skip();
-
-
-    OperacionTecla=new KeyOp( desde_protocolo(Flecha) , id_cliente );
-
 }
 
 void PaqueteTecla::serialize( OutputBitStream& bs )
 {
-    if (!OperacionTecla){
-        std::cerr << "No se seteo la operacion";
-        return;
-    }
-
 	Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
 
-	bs.append( 3, al_protocolo( OperacionTecla->get_flecha() ) );
+	bs.append( 3, FlechaProt );
 }
 Operacion * PaqueteTecla::get_operacion(){
-	return OperacionTecla;
+	return new KeyOp( desde_protocolo(FlechaProt) , id_cliente );
 }
