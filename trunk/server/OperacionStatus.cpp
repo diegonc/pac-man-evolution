@@ -16,10 +16,12 @@ std::list<OperacionStatus::PosicionElemento>* OperacionStatus::get_elementos(){
     return &Elementos;
 }
 
-void OperacionStatus::ModificarJugador(S_ptr<Jugador> Jug,OperacionStatus::PosicionJugador& PosJ,int AnchoMapa,int AltoMapa){
-    int UltimaFila=AltoMapa-1;
-    int UltimaColum=AnchoMapa-1;
+
+void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatus::PosicionJugador& PosJ,int AnchoMapa,int AltoMapa){
     Posicion& PosModelo=Jug->get_posicion();
+	int UltimaFila=AltoMapa-1;
+    int UltimaColum=AnchoMapa-1;
+    
     int Col=PosJ.Arista % AnchoMapa; //ver lo de la 1ra col y ultima
     int temp=(int)floor(PosJ.Arista / AnchoMapa); //par en verticales, impar en horizontales
     int Fila=(int)floor(PosJ.Arista / (AnchoMapa * 2)); // ver 1ra fil y la ultima
@@ -100,8 +102,16 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
     for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
         OperacionStatus::PosicionJugador& PosJ=*it;
         //significa q no esta en el modelo lo tengo q agregar
+		int AnchoMapa=modelo.get_mundo().get_mapa_activo()->get_ancho();
+    	int AltoMapa=modelo.get_mundo().get_mapa_activo()->get_alto();
         if (!PosJ.marcado){
             PosJ.marcado=true;
+			S_ptr<Jugador> Jug(new Jugador(PosJ.ID));
+			//y el tipoooooo???
+			
+			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
+			ModeloServidor::get_instancia()->agregar_jugador(Jug);
+			
             //agregar jugador
         }
     }

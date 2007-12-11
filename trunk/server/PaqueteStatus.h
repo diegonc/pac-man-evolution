@@ -14,18 +14,10 @@
 class PaqueteStatus: public Paquete
 {
     private:
-        ModeloServidor* Model;
         OperacionStatus* Oper;
+	
     public:
 		PaqueteStatus();
-
-		ModeloServidor* get_modelo(){
-                return Model;
-        }
-
-        void set_modelo(ModeloServidor* modelo){
-                Model=modelo;
-        }
 
 		void serialize( OutputBitStream& bs );
 

@@ -14,7 +14,7 @@ S_ptr<JugadorLocal> JugadorLocal::get_instancia(){
 }
 void JugadorLocal::set_id(int id_jugador){
 	this->id = id_jugador;
-	std::cout << "Me settearon el id " << id_jugador << "\n";
+	
 }
 int JugadorLocal::get_id(){
 	return this->id;

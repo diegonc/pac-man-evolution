@@ -18,10 +18,15 @@ void EscuchadorCliente::run(){
 		Operacion * op;
 		while(true){
 			paquete = cliente->recibir_mensaje();
+			std::cout << "Recibi un paquete " << (int) paquete->get_tipo();
 			op = paquete->get_operacion();
 			op->ejecutar(*(ModeloServidor::get_instancia()));
+			std::cout << " y la ejecuto piola\n";
 			delete op;
 		}
 	}
-	catch(std::runtime_error &e){/*salgo del while*/}
+	catch(std::runtime_error &e){
+		std::cerr << e.what() << "\n";
+		throw e;
+		/*salgo del while*/}
 }

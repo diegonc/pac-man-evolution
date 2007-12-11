@@ -119,7 +119,7 @@ void test_6()
 	obs.append( 2, 0 );
 	obs.append( 3, 0 );
 	obs.append( 1, 1 );
-//	obs.skip();
+	//obs.skip();
 	obs2.append( 8, 2 );
 	obs2.append( 8, 2 );
 	obs2.append( 1, 0 );

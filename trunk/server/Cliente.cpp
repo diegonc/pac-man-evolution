@@ -23,6 +23,8 @@ Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket)
 
 void Cliente::run()
 {
+	
+	
 	escuchador->start();
 	escritor->start();
 	
@@ -78,9 +80,7 @@ void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
 	const unsigned char* raw = obs.get_data();
 	
 	socket->escribir( raw, obs.get_size() );
-	
-	std::cout << "Mande un " << (int)paquete->get_tipo() << "\n";
-	
+
 }
 
 S_ptr<Paquete> Cliente::recibir_mensaje()
