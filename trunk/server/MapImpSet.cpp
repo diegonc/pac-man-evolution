@@ -12,7 +12,6 @@ MapaImpSet::MapaImpSet(const Tipo_Dimensiones ancho, const Tipo_Dimensiones alto
 	this->ancho = ancho;
 	this->alto = alto;
 }
-
 MapaImpSet::~MapaImpSet(){
 	//limpia los comestibles
 	this->comestibles.clear();
@@ -65,7 +64,6 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 	}
 	
 }
-
 bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta, Posicion &pnueva){
 	S_ptr<EstructuralUnitario> e_critico;
 		
@@ -170,3 +168,35 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 		}
 	}
 }
+/*
+void MapaImpSet::refresh(std::list< S_ptr<Comestible> >& comestibles_totales){
+	//limpia los comestibles
+	this->comestibles.clear();
+	
+	//recorro los estructurales y les saco el comestible
+	std::set<Tipo_Estructural,CompSptrEstructuralPosicion>::iterator it;
+	S_ptr<Comestible> comestible_nulo;
+
+	it = this->estructurales.begin();
+	while( it != it != this->estructurales.end() )
+		it->estruct_aux->set_comestible(comestible_nulo);
+		++it;
+	}
+	
+	std::list< S_ptr<Comestible> >::iterator it_comestibles;
+
+	it_comestibles = comestibles_totales.begin();
+	S_ptr<EstructuralUnitario> e_aux; 
+	while(it_comestibles != comestibles_totales.end() ){
+			e_aux = get_estructural(it_comestibles->get_posicion());
+		    if(! e_aux.es_nulo() ){
+				a_aux->set_comestible(*it);	
+				
+			}
+	}
+
+
+	
+}
+*/
+MapaImpSet::agregar_comestible(Posicion &p)
