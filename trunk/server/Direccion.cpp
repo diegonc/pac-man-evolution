@@ -19,3 +19,7 @@ void Direccion::combinar( int i )
 const int Direccion::get_dir(){
 	return this->dir;
 }
+
+void Direccion::set_dir(const int n_dir){
+	this->dir=n_dir;
+}

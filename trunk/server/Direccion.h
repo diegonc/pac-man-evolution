@@ -70,6 +70,13 @@ class Direccion
 		*	@return La direccion
 		*/
 		const int get_dir();
+
+		/**
+		*	@brief Devuelve la direccion contenida
+         	*	@param n_dir nueva direccion.
+		*	@return La direccion
+		*/
+		void set_dir(const int n_dir);
 				
 };
 
