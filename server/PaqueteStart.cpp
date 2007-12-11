@@ -33,6 +33,7 @@ namespace {
 					p = new Fantasma( j );
 				j->set_personaje( S_ptr<Personaje>( p ) );
 				modelo.agregar_jugador( S_ptr<Jugador>( j ) );
+				
 #endif
 			}
 	};

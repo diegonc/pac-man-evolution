@@ -28,6 +28,11 @@ void ClientPool::join_all()
     while( it != clientes.end() )
         (*it)->join();
 }
+
+const std::list<Cliente*>& ClientPool::get_clientes(){
+	return this->clientes;	
+}
+
 void ClientPool::mandar_mensaje_todos(S_ptr<Paquete> mensaje){
 	Cliente * cliente;
 	
@@ -35,6 +40,7 @@ void ClientPool::mandar_mensaje_todos(S_ptr<Paquete> mensaje){
     while( it != clientes.end() ){
 		cliente = *it;
 		cliente->get_escritor().encolar_paquete(mensaje);
+		++it;
 	}
 }
 
