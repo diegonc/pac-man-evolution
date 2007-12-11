@@ -36,12 +36,17 @@ class Aplicacion{
 
     Cliente* cliente;
 
+    std::string MensajeAEnviar;
+
+    bool EnviandoMensaje;
+
     public:
 
     Aplicacion(Cliente* Cli){
         Screen = NULL;
         BucleActivo=true;
         this->cliente=Cli;
+        EnviandoMensaje=false;
     }
 
     AplicacionGrafica* getAplicacionGrafica(){
