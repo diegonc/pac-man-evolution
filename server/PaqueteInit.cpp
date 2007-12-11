@@ -177,7 +177,7 @@ void PaqueteInit::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
 void PaqueteInit::agregar_arista( int x, int y, bool norte )
 {
 	Posicion origen( x, y );
-	Posicion destino;
+	Posicion destino( x, y );
 	S_ptr<EstructuralUnitario> esO = mapa->get_estructural( origen );
 
 	if( esO.es_nulo() ) {
