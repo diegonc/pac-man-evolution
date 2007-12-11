@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include "Operacion.h"
+#include <math.h>
 
 class OperacionStatus:public Operacion{
     public:
@@ -13,6 +14,7 @@ class OperacionStatus:public Operacion{
         unsigned int Arista;
         unsigned int Posic;
         unsigned int direcc;
+        bool marcado;
     };
 
     struct PosicionElemento{
@@ -31,23 +33,19 @@ class OperacionStatus:public Operacion{
 
     public:
 
-    unsigned int get_puntuacion(){
-        return Puntuacion;
-    }
+    unsigned int get_puntuacion();
 
-    void set_puntuacion(unsigned int punt){
-        Puntuacion=punt;
-    }
+    void set_puntuacion(unsigned int punt);
 
-    std::list<PosicionJugador>* get_jugadores(){
-        return &Jugadores;
-    }
+    std::list<PosicionJugador>* get_jugadores();
 
-    std::list<PosicionElemento>* get_elementos(){
-        return &Elementos;
-    }
+    std::list<PosicionElemento>* get_elementos();
 
-    virtual void ejecutar(ModeloServidor &modelo){}
+    virtual void ejecutar(ModeloServidor &modelo);
+
+    private:
+
+    void ModificarJugador(S_ptr<Jugador> Jug,PosicionJugador& PosJ,int AnchoMapa,int AltoMapa);
 
 };
 
