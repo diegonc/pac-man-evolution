@@ -9,6 +9,28 @@ bool Aplicacion::InitTimers(Uint32 *C)
 	return true;
 }
 
+void Aplicacion::VerificarAbecedarioMensaje(Uint8 *Keys){
+    //si recibo Teclas
+    char a='a';
+    if(Keys)
+	{
+	    for (int i=SDLK_a;i<=SDLK_z;++i){
+            	if(Keys[i]){
+                    char letra=(char)(i-(int)SDLK_a+(int)a);
+                    MensajeAEnviar.append(1,letra);
+                    Keys[i]=0;
+                }
+	    }
+
+	    if(Keys[SDLK_RETURN]){
+                MensajeAEnviar.erase(MensajeAEnviar.lenght()-1);
+                Keys[SDLK_RETURN]=0;
+	    }
+        //si la tecla escape fue presionada
+
+	}
+}
+
 //actualiza el modelo visual segun los eventos de teclado recibidos
 void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 {
@@ -29,12 +51,28 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 			ToggleFullscreen();
 		}
 
-		if(Keys[SDLK_c]){
-			getAplicacionGrafica()->CambiarCamara();
-			Keys[SDLK_c]=0;
-		}
+		if (!EscribiendoMensaje){
 
-        //si se apreto arriba
+		    if(Keys[SDLK_c]){
+		        getAplicacionGrafica()->CambiarCamara();
+		        Keys[SDLK_c]=0;
+		    }
+
+		    if(Keys[SDLK_y]){
+		        EscribiendoMensaje=true;
+		        MensajeAEnviar="";
+		        Keys[SDLK_y]=0;
+		    }
+		}else{
+	            VerificarAbcedarioMensaje(Keys);
+        	    if(Keys[SDLK_PERIOD]){
+        	        EscribiendoMensaje=false;
+        	        //enviar mensaje
+        	        Keys[SDLK_PERIOD]=0;
+        	    }			
+	        }
+
+		//si se apreto arriba
 		if(Keys[SDLK_UP]){
 		    //creo una instancia de Key correspondiente a ARRIBA
             S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),0));
