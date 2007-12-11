@@ -17,12 +17,13 @@ void AvisadorNovedades::run(){
 	
 	while (! _parar ){
 		S_ptr<Paquete> paquete_status(new PaqueteStatus());
-		for( it = clientes->get_clientes().begin();
-			 it != clientes->get_clientes().end(); ++it ){
-				(*it)->get_escritor().encolar_paquete(paquete_status); 
-				 
+		
+		it = clientes->get_clientes().begin();
+		while( it != clientes->get_clientes().end() ){
+			(*it)->get_escritor().encolar_paquete(paquete_status); 
+			 ++it;
 		}
-		usleep(500000);
+		usleep(50000);
 	}	
 }
 void AvisadorNovedades::parar(){
