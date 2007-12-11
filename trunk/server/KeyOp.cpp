@@ -20,9 +20,12 @@ void KeyOp::ejecutar(ModeloServidor &modelo)
 	//obtiene el jugador
 	S_ptr<Jugador> jugador = modelo.get_jugador(this->id);
 	//combina la direccion
+	std::cout << jugador->get_direccion() << "---->";
 	jugador->get_direccion().combinar(flecha);
+	std::cout << jugador->get_direccion() << "\n";
 	std::cout << "key op fin" << std::endl << std::flush;
 }
+
 
 void KeyOp::set_id(int identifJugador)
 {

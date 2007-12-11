@@ -95,7 +95,6 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 	if( version == _VERSION_ACEPTADA ) {
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
-		std::cout << "Recibio un " << tipo << "por mensaje\n";
 		S_ptr<Paquete> p(Paquete::crear( tipo, get_id() ));
 		if(! p.es_nulo() ){
 			p->deserialize( bs );
