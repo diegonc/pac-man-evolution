@@ -38,7 +38,7 @@ class Aplicacion{
 
     std::string MensajeAEnviar;
 
-    bool EnviandoMensaje;
+    bool EscribiendoMensaje;
 
     public:
 
@@ -46,7 +46,7 @@ class Aplicacion{
         Screen = NULL;
         BucleActivo=true;
         this->cliente=Cli;
-        EnviandoMensaje=false;
+        EscribiendoMensaje=false;
     }
 
     AplicacionGrafica* getAplicacionGrafica(){
@@ -65,6 +65,7 @@ class Aplicacion{
         BucleActivo=false;
     }
 
+   void VerificarAbecedarioMensaje(Uint8 *Keys);
 
     //InicializacionTimers
     bool InitTimers(Uint32 *);
