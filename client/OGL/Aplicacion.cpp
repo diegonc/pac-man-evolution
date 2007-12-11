@@ -37,9 +37,8 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
         //si se apreto arriba
 		if(Keys[SDLK_UP]){
 		    //creo una instancia de Key correspondiente a ARRIBA
-            KeyOp kop(1,0);
-		    //y se la aplico al modelo(se deberia enviar por red)
-		    kop.ejecutar(*ModeloServidor::get_instancia());
+            S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),0));
+            cliente->get_escritor().encolar_paquete(PaqTec);
 		    //kop.ejecutar(*(getAplicacionGrafica()->getModelo()));
 
             //bajo el flag
@@ -49,9 +48,8 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
         //si se apreto abajo
         if(Keys[SDLK_DOWN]){
             //creo una instancia de Key correspondiente a ABAJO
-            KeyOp kop(1,2);
-            //y se la aplico al modelo(se deberia enviar por red)
-		    kop.ejecutar(*ModeloServidor::get_instancia());
+            S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),2));
+            cliente->get_escritor().encolar_paquete(PaqTec);
 		    //kop.ejecutar(*(getAplicacionGrafica()->getModelo()));
             //bajo el flag
             Keys[SDLK_DOWN]=0;
@@ -70,8 +68,8 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 
         //lo mismo si derecha
         if(Keys[SDLK_RIGHT]){
-            KeyOp kop(1,1);
-		    kop.ejecutar(*ModeloServidor::get_instancia());
+            S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),1));
+            cliente->get_escritor().encolar_paquete(PaqTec);
             Keys[SDLK_RIGHT]=0;
         }
 	}
