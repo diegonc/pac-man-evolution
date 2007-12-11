@@ -92,7 +92,7 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 	if( version == _VERSION_ACEPTADA ) {
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
-		S_ptr<Paquete> p(Paquete::crear( tipo ));
+		S_ptr<Paquete> p(Paquete::crear( tipo, get_id() ));
 		if(! p.es_nulo() ){
 			p->deserialize( bs );
 			sptr_paquete = p;
@@ -102,6 +102,12 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 	}
 	return sptr_paquete;
 }
+
+Cliente::Tipo_Id Cliente::get_id(){
+	return id;
+}
+
+
 EscritorCliente& Cliente::get_escritor(){
 	return *escritor;
 }

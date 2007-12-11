@@ -9,9 +9,10 @@ class PaqueteTecla : public Paquete
 {
     private:
         KeyOp* OperacionTecla;
+	int id_cliente;
 	
 	public:
-		PaqueteTecla();
+		PaqueteTecla(int id_cliente);
 
         Operacion * get_operacion();
 

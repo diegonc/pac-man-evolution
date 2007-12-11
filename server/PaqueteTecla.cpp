@@ -30,9 +30,9 @@ namespace {
 	}
 }
 
-PaqueteTecla::PaqueteTecla() : Paquete( ID )
+PaqueteTecla::PaqueteTecla(int id_cliente) : Paquete( ID )
 {
-
+	this->id_cliente = id_cliente;
 }
 
 void PaqueteTecla::set_KeyOp(KeyOp* OperTecla){
@@ -51,7 +51,7 @@ void PaqueteTecla::deserialize( InputBitStream& bs )
     bs.skip();
 
 
-    OperacionTecla=new KeyOp( desde_protocolo(Flecha) );
+    OperacionTecla=new KeyOp( desde_protocolo(Flecha) , id_cliente );
 
 }
 
