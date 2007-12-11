@@ -17,7 +17,7 @@ extension = cpp
 # Opciones para el compilador C.
 CFLAGS = -Wall -ansi -pedantic-errors
 #agrega el directorio padre a las rutas de busqueda de .h's
-#esto permite includes del tipo include "common/mutex.h"
+#esto permite includes del tipo #include "common/mutex.h"
 CFLAGS += -I..
 
 # Para valgrind o debug
@@ -60,7 +60,7 @@ fuentes_common ?= $(wildcard ../common/*.$(extension))
 # REGLAS
 #########
 
-.PHONY: all clean
+.PHONY: all clean recompilar
 
 all: server
 #o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
@@ -73,7 +73,11 @@ o_tinyxml_files ?= $(wildcard ../common/tinyxml/*.$(extension_o))
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
 o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_map_editor_files_2) $(o_tinyxml_files)
 
-server: $(o_files)
+recompilar:
+	@$(RM) PaqueteInit.o
+	@$(RM) PaqueteStart.o
+
+server: recompilar $(o_files)
 	@if [ -z "$(o_files)" ]; \
 	then \
 		echo "No hay archivos de entrada para el cliente (archivos client*.$(extension))."; \
