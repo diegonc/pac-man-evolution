@@ -64,7 +64,6 @@ void Socket::recibir( char* buf, int cant ) throw(std::runtime_error) {
 	int cant_recibidos =0;
 	int retorno=0;
 	int cantidad_intentos = 0;
-      std::cout << "Tengo que recibir " << cant << std::flush << "\n";
 
 	while( cant_recibidos < cant && cantidad_intentos < _CANT_INTENTOS ){
 		//leo los datos	
