@@ -19,6 +19,7 @@ SERVER_O= ../../server/EstructuralPasillo.o \
 	  ../../server/PaqueteStart.o \
 	  ../../server/PaqueteStop.o \
 	  ../../server/PaqueteQuit.o \
+	  ../../server/OperacionStatus.o \
 	  ../../server/MundoBasicImp.o \
 	  ../../server/Paquete.o \
 	  ../../server/Comestible.o \
