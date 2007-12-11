@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BLACKLIST=OGL
+BLACKLIST="OGL test_map_editor"
 
 TESTS=`ls`
 CWD=`pwd`
