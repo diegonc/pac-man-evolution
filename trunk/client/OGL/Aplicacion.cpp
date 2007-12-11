@@ -59,9 +59,13 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 
         //lo mismo si izq
         if(Keys[SDLK_LEFT]){
-            KeyOp kop(1,3);
-		    kop.ejecutar(*ModeloServidor::get_instancia());
+            //KeyOp kop(JugadorLocal::get_id(),3);
+		    //kop.ejecutar(*ModeloServidor::get_instancia());
+
+            S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),3));
+            cliente->get_escritor().encolar_paquete(PaqTec);
             Keys[SDLK_LEFT]=0;
+
         }
 
         //lo mismo si derecha
