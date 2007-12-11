@@ -44,7 +44,7 @@ void PaqueteStatus::deserialize( InputBitStream& bs )
 
 void PaqueteStatus::serialize( OutputBitStream& bs )
 {
-		//COMENTADO POR ALAN PARA PODER COMPILAR
+	S_ptr<ModeloServidor> Model = ModeloServidor::get_instancia();
     /*
     ____________________________________________________________________________________________
     |        Cabecera            |                       Cuerpo                                 |
@@ -218,4 +218,3 @@ Operacion* PaqueteStatus::get_operacion()
 {
 	return Oper;
 }
-

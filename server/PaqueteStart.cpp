@@ -28,7 +28,7 @@ namespace {
 				Jugador* j = new Jugador( id );
 				Personaje* p;
 				if( pac )
-				       p = new PacMan( j );
+				    p = new PacMan( j );
 				else
 					p = new Fantasma( j );
 				j->set_personaje( S_ptr<Personaje>( p ) );

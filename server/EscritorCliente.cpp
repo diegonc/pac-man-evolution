@@ -16,13 +16,12 @@ EscritorCliente::~EscritorCliente(){
 
 void EscritorCliente::run(){
 	try{
-		//		S_ptr<Paquete> paquete;
 		while(!debe_terminar){
 			//std::cout << "Hay " << buffer.size() <<"\n";
 			if(! buffer.empty() ){
 				//std::cout << "Manda mensaje\n";
-				cliente->enviar_mensaje(buffer.front());
 				Bloqueo b(&llave);
+				cliente->enviar_mensaje(buffer.front());
 				buffer.pop();
 			}
 			else{

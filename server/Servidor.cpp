@@ -3,6 +3,7 @@
 #include "PaqueteInit.h"
 #include "PaqueteStart.h"
 #include "EscritorCliente.h"
+#include "AvisadorNovedades.h"
 
 #define _DEFAULT_CANT_MIN	2
 #define _DEFAULT_CANT_MAX	10
@@ -64,12 +65,15 @@ Servidor::~Servidor()
 		delete socket;
 }
 void Servidor::run(){
- 	parar = false;  
+ 	///SACAAARRRR////
+	AvisadorNovedades avisador(&this->pool);
+	///////////////
+	parar = false;  
+	bool ya_mando_start = false;
+	
 	try {
 		//para saber si ya mando el start
-		bool ya_mando_start = false;
 		while( !parar ) {
-			
 			//empeiza a escuchar clientes
 			socket->escuchar();
 			//acepta un cliente
@@ -82,13 +86,15 @@ void Servidor::run(){
 			bool es_pacman = cliente_nuevo->get_jugador()->get_personaje()->get_tipo() == Personaje::pacman;
 			S_ptr<Paquete> paquete_init(new PaqueteInit(es_pacman,ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()));
 			cliente_nuevo->get_escritor().encolar_paquete(paquete_init);
+			std::cout << "MANDO UN FUCKIN' INIT!!!<-------------------------\n";
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
 			//S_ptr<Paquete> paquete_start(new PaqueteStart(40)); //TODO: <<---CAMBIARRRARRR
 			if( (pool.get_cantidad_clientes() == cant_min_clientes) && (!ya_mando_start) ){
 				sleep(5);
 				ModeloServidor::get_instancia()->start(); 
-				//pool.mandar_mensaje_todos(paquete_start);
+				avisador.start();
+				
 				for (std::list<Cliente*>::const_iterator it=pool.get_clientes().begin();it!=pool.get_clientes().end();++it){
 					Cliente* Client=*it;
 					S_ptr<Paquete> paquete_start(new PaqueteStart(Client->get_id()));
@@ -112,6 +118,9 @@ void Servidor::run(){
     } catch( std::runtime_error e ) {
 	    // Si es interrumpido.
     }
+	avisador.parar();
+	avisador.join();
+	ModeloServidor::get_instancia()->join();
     pool.join_all();
 }
 

@@ -26,8 +26,6 @@ namespace {
 			void ejecutar(ModeloServidor &modelo) {
 #ifdef PROGRAMA_CLIENTE
 				MundoBajoNivel& mundo = modelo.get_mundo();
-				std::cout << "El mapa tiene " << m->get_comestibles().size() << "comestibles y "
-					  <<   m->get_estructurales().size() << " estructurales.\n";			
 				mundo.agregar_mapa( m );
 				modelo.set_cargado();
 
@@ -144,7 +142,6 @@ bool PaqueteInit::escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs
 	Posicion& p = c->get_posicion();
 	
 	unsigned int pos = (unsigned int)p.get_y() * mapa->get_ancho() + (unsigned int)p.get_x();
-	//std::cout << p << " => " << pos << " : es " << c->get_tipo() << std::endl;
 	bs.append( 16, pos );
 	
 	return true;
@@ -192,9 +189,7 @@ void PaqueteInit::agregar_arista( int x, int y, bool norte )
 		int ancho = mapa->get_ancho();
 		destino.set_x( ( x + 1 + ancho ) % ancho ); 
 	}
-	
-	std::cout << "origen: " << origen << std::endl << std::flush;
-	std::cout << "destino: " << destino << std::endl << std::flush;
+
 	
 	S_ptr<EstructuralUnitario> esD = mapa->get_estructural( destino );
 	if( esD.es_nulo() ) {
