@@ -65,7 +65,7 @@ fuentes_map = $(subst ../../map_editor/editor_mapas.cpp, ,$(fuentes_map_2))
 # REGLAS
 #########
 
-.PHONY: all clean
+.PHONY: all clean recompilar
 
 all: subproyecto
 
@@ -75,7 +75,11 @@ o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server))
 o_map_files = $(patsubst %.$(extension),%.o,$(fuentes_map)) $(o_server_files) $(o_common_files) $(o_tinyxml_files)
 o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_map_files)
 
-subproyecto: $(o_files)
+recompilar:
+	@$(RM) ../../server/PaqueteInit.o
+	@$(RM) ../../server/PaqueteStart.o
+
+subproyecto: recompilar $(o_files)
 	@if [ -z "$(o_files)" ]; \
 	then \
 		echo "No hay archivos de entrada para el cliente (archivos client*.$(extension))."; \
