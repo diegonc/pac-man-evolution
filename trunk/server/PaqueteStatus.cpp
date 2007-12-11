@@ -131,7 +131,7 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
                     }else{ //es primerfila
                         Arista=AristaSup+(2*AnchoMapa)-1; //elijo de la misma fila la ultima
                     }
-                    PosCuantizada=31+(64*(InicioCasillero+0.5-P.get_x()));
+                    PosCuantizada=31+(64*(P.get_x() - InicioCasillero));
                 }
 
             }else{ //vertical
@@ -144,7 +144,7 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
 	            Arista=Arista % (AnchoMapa*AltoMapa*2);
                 }else{//antes de la mitad
                     Arista=AristaSup;
-                    PosCuantizada=31+(64*(InicioCasillero+0.5-P.get_y()));
+                    PosCuantizada=31+(64*(P.get_y() - InicioCasillero));
                 }
 
             }
