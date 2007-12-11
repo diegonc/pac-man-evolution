@@ -41,6 +41,7 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 		    //y se la aplico al modelo(se deberia enviar por red)
 		    kop.ejecutar(*ModeloServidor::get_instancia());
 		    //kop.ejecutar(*(getAplicacionGrafica()->getModelo()));
+
             //bajo el flag
             Keys[SDLK_UP]=0;
         }
