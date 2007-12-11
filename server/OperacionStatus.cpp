@@ -78,7 +78,7 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
             if (Jug->get_id()==PosJ.ID){
                 Encontrado=true;
                 PosJ.marcado=true;
-                ModificarJugador(Jug,PosJ,AnchoMapa,AltoMapa);
+                ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
             }
         }
 
