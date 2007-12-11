@@ -1,11 +1,14 @@
 #include "Jugador.h"
 
+#if 0
 Jugador::Jugador(int id, Tipo_Personaje personaje){
 	this->id = id;
 	this->set_personaje(personaje);
 	this->dir = new Direccion(Direccion::Este); /* Arrancan para el este. */
 	this->puntos = 0;
 }
+#endif
+
 Jugador::Jugador(int id){
 	this->id = id;
 	this->dir = new Direccion(Direccion::Este); /* Arrancan para el este. */
