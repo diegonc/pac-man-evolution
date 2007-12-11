@@ -65,7 +65,8 @@ void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 			
 void ModeloServidor::run(){
 	//si hay mundo
-	if(! mundo.es_nulo() /*&& this->jugadores.size() > this->cant_min_jugadores*/){
+	if(! mundo.es_nulo()){
+		std::cout << "ARRANCO EL FUCKIN' MODELO\n";
 		this->termino = false;
 		double intervalo_tiempo = 0;
 		double hora_actual;
@@ -73,7 +74,6 @@ void ModeloServidor::run(){
 		std::list<Tipo_Jugador>::iterator it;
 		
 		Tipo_Jugador j;
-		
 		//itero por todos los niveles
 		for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
 			this->set_cambio();//TODO provisorio, no se si va aca o no

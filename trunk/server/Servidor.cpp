@@ -34,8 +34,8 @@ Servidor::Servidor(std::string &direccion, unsigned short int puerto)
 		//setteo las propieaddes de la senial para cortar el accept
 		set_propiedades_signal(Servidor::SENIAL_CANCELAR);
 		//asigno por defecto las cantidades minimas y maximas de jugadores
-		this->cant_max_clientes = _DEFAULT_CANT_MIN;
-		this->cant_min_clientes = _DEFAULT_CANT_MAX;
+		this->cant_max_clientes = _DEFAULT_CANT_MAX;
+		this->cant_min_clientes = _DEFAULT_CANT_MIN;
 	}
 	catch (std::runtime_error &e){
 		//si hubo error borro el socket que seguro se creo
@@ -48,8 +48,10 @@ Servidor::Servidor(unsigned short int puerto)
 	try{
 		this->socket = new Socket_Server();
 		this->socket->bind_socket(puerto);
-		
 		set_propiedades_signal(Servidor::SENIAL_CANCELAR);
+		
+		this->cant_max_clientes = _DEFAULT_CANT_MAX;
+		this->cant_min_clientes = _DEFAULT_CANT_MIN;
 	}
 	catch (std::runtime_error &e){
 		delete this->socket;
@@ -64,9 +66,10 @@ Servidor::~Servidor()
 void Servidor::run(){
  	parar = false;  
 	try {
+		//para saber si ya mando el start
+		bool ya_mando_start = false;
 		while( !parar ) {
-			//para saber si ya mando el start
-			bool ya_mando_start = false;
+			
 			//empeiza a escuchar clientes
 			socket->escuchar();
 			//acepta un cliente
@@ -82,12 +85,17 @@ void Servidor::run(){
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
 			S_ptr<Paquete> paquete_start(new PaqueteStart(40)); //TODO: <<---CAMBIARRRARRR
+			std::cout << "Hay " << pool.get_cantidad_clientes() << " cant clientes acept \n";
 			if( pool.get_cantidad_clientes() == cant_min_clientes && !ya_mando_start ){
 				sleep(5);
+				std::cout << "entro aca chabon\n";
 				pool.mandar_mensaje_todos(paquete_start);
 				ya_mando_start = true;
+				
 				//////////////////////////////////////////////////////////
 				//TODO <-----------------ARRANCAR CON EL FUCKIN' MODELO //
+				ModeloServidor::get_instancia()->start(); //por AHORA
+				
 				//////////////////////////////////////////////////////////
 			}
 			else{
