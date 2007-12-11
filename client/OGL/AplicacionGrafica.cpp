@@ -1,4 +1,5 @@
 #include "AplicacionGrafica.h"
+#include "JugadorLocal.h"
 
 EstadoAplicacion* AplicacionGrafica::getEstadoAplicacion(){
       return &AppEstado;
@@ -127,7 +128,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		for(jugadores = ModeloServidor::get_instancia()->get_jugadores().begin();jugadores != ModeloServidor::get_instancia()->get_jugadores().end(); ++jugadores){
 		   jp = *jugadores;
 		   //si el id es 1(deberia ser jugador cliente)
-		   if(jp->get_id() == 1){
+		   if(jp->get_id() == JugadorLocal::get_instancia()->get_id()){
 				//obtengo la posicion y la parseo
 				Posicion p=jp->get_posicion();
 				Pos.x=p.get_x()*4;
