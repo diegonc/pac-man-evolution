@@ -85,22 +85,19 @@ void Servidor::run(){
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
 			S_ptr<Paquete> paquete_start(new PaqueteStart(40)); //TODO: <<---CAMBIARRRARRR
-			std::cout << "Hay " << pool.get_cantidad_clientes() << " cant clientes acept \n";
-			if( pool.get_cantidad_clientes() == cant_min_clientes && !ya_mando_start ){
+			if( (pool.get_cantidad_clientes() == cant_min_clientes) && (!ya_mando_start) ){
 				sleep(5);
-				std::cout << "entro aca chabon\n";
 				pool.mandar_mensaje_todos(paquete_start);
 				ya_mando_start = true;
 				
-				//////////////////////////////////////////////////////////
-				//TODO <-----------------ARRANCAR CON EL FUCKIN' MODELO //
-				ModeloServidor::get_instancia()->start(); //por AHORA
-				
-				//////////////////////////////////////////////////////////
+				ModeloServidor::get_instancia()->start(); 
+				////////////////////////////////////////
+				////TODO HACER JOIN////////////////////
+				///////////////////////////////////////
 			}
 			else{
-				if( pool.get_cantidad_clientes() > cant_min_clientes &&
-					pool.get_cantidad_clientes() < cant_max_clientes)
+				if( ( pool.get_cantidad_clientes() > cant_min_clientes) &&
+					(pool.get_cantidad_clientes() < cant_max_clientes) )
 						cliente_nuevo->get_escritor().encolar_paquete(paquete_start);
 			}
 			if(pool.get_cantidad_clientes() == cant_max_clientes)
