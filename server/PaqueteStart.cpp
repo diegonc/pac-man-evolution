@@ -57,6 +57,7 @@ void PaqueteStart::serialize( OutputBitStream& bs ){
 void PaqueteStart::deserialize( InputBitStream& bs ) {
 	bs.skip(); // Campo auxiliar no utilizado.
 	id_cliente = bs.read( 16 );
+	std::cout << id_cliente << std::endl << std::flush;
 }
 
 Operacion * PaqueteStart::get_operacion(){

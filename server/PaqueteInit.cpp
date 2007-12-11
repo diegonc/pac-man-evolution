@@ -58,10 +58,10 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	bs.skip(); // Saltea el resto del campo auxiliar.
 	int ancho = bs.read( 8 );
 	int alto = bs.read( 8 );
-	std::cout << "ancho: " << ancho << " alto: " << alto << std::endl << std::flush;
+//	std::cout << "ancho: " << ancho << " alto: " << alto << std::endl << std::flush;
 	mapa = S_ptr<MapaBajoNivel>( new MapaImpSet( ancho, alto ) );
 	int long_aristas = ancho * alto * 2;
-	std::cout << "long aristas: " << long_aristas << std::endl << std::flush;
+//	std::cout << "long aristas: " << long_aristas << std::endl << std::flush;
 	bs.grow( long_aristas );
 	for( int y=0; y < alto; y++ ) {
 		for( int x=0; x < ancho; x++ )
@@ -73,14 +73,14 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 	}
 	bs.skip();
 	unsigned int num_elems = bs.read( 16 );
-	std::cout << "num elems: " << num_elems << std::endl << std::flush;
+//	std::cout << "num elems: " << num_elems << std::endl << std::flush;
 	bs.grow( num_elems*24 );
 	for(unsigned int i=0; i < num_elems; i++ ) {
 		int tipo = bs.read( 6 );
-		std::cout << "tipo recibido: " << tipo << std::endl << std::flush;
+//		std::cout << "tipo recibido: " << tipo << std::endl << std::flush;
 		/* int orient =bs.append( 2, 1); //ESTADO*/ bs.read( 2 );
 		int pos = bs.read( 16 );
-		std::cout << "pos recibida: " << pos << std::endl << std::flush;
+//		std::cout << "pos recibida: " << pos << std::endl << std::flush;
 		Posicion p( pos % ancho, pos / ancho);
 		S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
 		if (!e.es_nulo()){
@@ -100,14 +100,14 @@ void PaqueteInit::deserialize( InputBitStream& bs )
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
 						ep->set_comida( Comestible::power_up );
-						std::cout << "seteando power up en: " << p << std::endl << std::flush;
+//						std::cout << "seteando power up en: " << p << std::endl << std::flush;
 					}
 					break;
 				case 3 /* Bonus */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
 						ep->set_comida( Comestible::frutita );
-						std::cout << "seteando frutita en: " << p << std::endl << std::flush;
+//						std::cout << "seteando frutita en: " << p << std::endl << std::flush;
 					}
 					break;
 			}
