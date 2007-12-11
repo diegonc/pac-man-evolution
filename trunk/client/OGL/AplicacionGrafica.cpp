@@ -4,7 +4,7 @@
 EstadoAplicacion* AplicacionGrafica::getEstadoAplicacion(){
       return &AppEstado;
 }
-		
+
 void AplicacionGrafica::CambiarCamara(){
 	CamaraPrimeraPersona=!CamaraPrimeraPersona;
 }
@@ -32,7 +32,7 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
     //parametros para la mejor visualizacion de la perspectiva
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     //escenario.Procesar(); //<----LO COMENTE YOOOOO!!!!
-	
+
 	ModeladorOBJ.hidratar();
 	return true;
 
@@ -105,7 +105,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
     glLoadIdentity();
 
 
-    //seleccion de camara   
+    //seleccion de camara
     if (CamaraPrimeraPersona){
 		glRotatef(-65, 1, 0.0, 0.0);
 		//seteo la pos de la luz sobre el eje y
@@ -116,10 +116,10 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 	}else{
 		static GLfloat pos[4] = {0, 0, 1, 0 };
 		//agrego la luz (estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
-		glLightfv( GL_LIGHT0, GL_POSITION, pos );	
+		glLightfv( GL_LIGHT0, GL_POSITION, pos );
 		glTranslatef(0,0 , -20);
 	}
-	
+
 	if (escenario.loaded()){
 		Posicion_Graf Pos;
 		std::list< S_ptr<Jugador> >::const_iterator jugadores;
@@ -147,7 +147,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
 		std::list< S_ptr<Comestible> >::iterator comestibles;
 		S_ptr<Comestible> comestible;
-	
+
 		//itero sobre los comestibles
 		for(comestibles = lista_comestibles.begin(); comestibles != lista_comestibles.end(); ++comestibles){
 			comestible = *comestibles;
@@ -156,13 +156,12 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 			Pos.y= -p.get_y()*4;
 			ModeladorOBJ.DibujarObjetoPosicion(&Pos,comestible->get_tipo());
 		}
-	
+
 		//llamo a la lista precompilada del Escenario
 		escenario.ModelarEscenario();
-	}
-	else
-		usleep(1000);
-	
+	}else
+        usleep(1000);
+
 }
 //dibuja en 2D
 void AplicacionGrafica::Draw2D(SDL_Surface *S)

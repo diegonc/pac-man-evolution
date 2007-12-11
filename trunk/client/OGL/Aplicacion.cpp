@@ -28,17 +28,18 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 		    //cambio ModoVentana
 			ToggleFullscreen();
 		}
-		
+
 		if(Keys[SDLK_c]){
-			getAplicacionGrafica()->CambiarCamara();			
+			getAplicacionGrafica()->CambiarCamara();
 			Keys[SDLK_c]=0;
 		}
 
         //si se apreto arriba
 		if(Keys[SDLK_UP]){
 		    //creo una instancia de Key correspondiente a ARRIBA
-		    //KeyOp kop(1,0);
+            KeyOp kop(1,0);
 		    //y se la aplico al modelo(se deberia enviar por red)
+		    kop.ejecutar(*ModeloServidor::get_instancia());
 		    //kop.ejecutar(*(getAplicacionGrafica()->getModelo()));
             //bajo el flag
             Keys[SDLK_UP]=0;
@@ -47,8 +48,9 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
         //si se apreto abajo
         if(Keys[SDLK_DOWN]){
             //creo una instancia de Key correspondiente a ABAJO
-            //KeyOp kop(1,2);
+            KeyOp kop(1,2);
             //y se la aplico al modelo(se deberia enviar por red)
+		    kop.ejecutar(*ModeloServidor::get_instancia());
 		    //kop.ejecutar(*(getAplicacionGrafica()->getModelo()));
             //bajo el flag
             Keys[SDLK_DOWN]=0;
@@ -56,15 +58,15 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 
         //lo mismo si izq
         if(Keys[SDLK_LEFT]){
-            //KeyOp kop(1,3);
-		    //kop.ejecutar(*(getAplicacionGrafica()->getModelo()));
+            KeyOp kop(1,3);
+		    kop.ejecutar(*ModeloServidor::get_instancia());
             Keys[SDLK_LEFT]=0;
         }
 
         //lo mismo si derecha
         if(Keys[SDLK_RIGHT]){
-            //KeyOp kop(1,1);
-		    //kop.ejecutar(*(getAplicacionGrafica()->getModelo()));
+            KeyOp kop(1,1);
+		    kop.ejecutar(*ModeloServidor::get_instancia());
             Keys[SDLK_RIGHT]=0;
         }
 	}
