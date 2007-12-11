@@ -7,7 +7,7 @@
 #include "Jugador.h"
 
 #ifdef PROGRAMA_CLIENTE
-#include "client/OGL/JugadorLocal.h"
+#include "../client/OGL/JugadorLocal.h"
 #endif
 
 namespace {
