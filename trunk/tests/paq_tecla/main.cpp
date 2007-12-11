@@ -10,7 +10,7 @@
 void test_arriba()
 {
 	std::cout << "Corriendo test_arriba()\n";
-	PaqueteTecla p;
+	PaqueteTecla p( 1 );
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x28 };
 
@@ -37,7 +37,7 @@ void test_arriba()
 void test_abajo()
 {
 	std::cout << "Corriendo test_abajo().\n";
-	PaqueteTecla p;
+	PaqueteTecla p( 1 );
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x29 };
 
@@ -64,7 +64,7 @@ void test_abajo()
 void test_derecha()
 {
 	std::cout << "Corriendo test_derecha()\n";
-	PaqueteTecla p;
+	PaqueteTecla p( 1 );
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x2B };
 
@@ -91,7 +91,7 @@ void test_derecha()
 void test_izquierda()
 {
 	std::cout << "Corriendo test_izquierda()\n";
-	PaqueteTecla p;
+	PaqueteTecla p( 1 );
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x2A };
 
