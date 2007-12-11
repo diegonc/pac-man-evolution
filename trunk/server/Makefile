@@ -16,6 +16,9 @@ extension = cpp
 
 # Opciones para el compilador C.
 CFLAGS = -Wall -ansi -pedantic-errors
+#agrega el directorio padre a las rutas de busqueda de .h's
+#esto permite includes del tipo include "common/mutex.h"
+CFLAGS += -I..
 
 # Para valgrind o debug
 CFLAGS += -DDEBUG -ggdb -fno-inline

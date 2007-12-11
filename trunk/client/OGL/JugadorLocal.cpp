@@ -18,3 +18,13 @@ void JugadorLocal::set_id(int id_jugador){
 int JugadorLocal::get_id(){
 	return this->id;
 }
+
+void JugadorLocal::set_pacman( bool p )
+{
+	esPacman = p;
+}
+
+bool JugadorLocal::get_pacman()
+{
+	return esPacman;
+}
