@@ -24,6 +24,7 @@ class Escenario : public Observador{
         GLuint texturaPiso;
 		bool Cargado;
 		bool proceso;
+		bool primeraVez;
 
         public:
 
@@ -32,7 +33,7 @@ class Escenario : public Observador{
         Escenario();
 
         void Procesar();
-		
+
 		bool loaded();
 
         private:
@@ -42,7 +43,7 @@ class Escenario : public Observador{
 
         //agrega el piso en un rectangulo, con su textura correspondiente
         void addPiso(double xIn,double xFin,double yIn,double yFin);
-      
+
         void DrawEscenario();
 
 		void actualizar(Observable * observable, void * param);
