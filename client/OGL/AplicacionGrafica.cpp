@@ -125,7 +125,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		std::list< S_ptr<Jugador> >::const_iterator jugadores;
 		S_ptr<Jugador> jp;
 		//obtengo los jugadores
-		std::cout << "HERE 1 -<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";		  
+		//std::cout << "HERE 1 -<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";		  
 		for(jugadores = ModeloServidor::get_instancia()->get_jugadores().begin();jugadores != ModeloServidor::get_instancia()->get_jugadores().end(); ++jugadores){
 			jp = *jugadores;
 		   //si el id es 1(deberia ser jugador cliente)

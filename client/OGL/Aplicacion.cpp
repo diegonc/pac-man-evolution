@@ -23,7 +23,7 @@ void Aplicacion::VerificarAbecedarioMensaje(Uint8 *Keys){
 	    }
 
 	    if(Keys[SDLK_RETURN]){
-                MensajeAEnviar.erase(MensajeAEnviar.lenght()-1);
+                MensajeAEnviar.erase(MensajeAEnviar.length()-1);
                 Keys[SDLK_RETURN]=0;
 	    }
         //si la tecla escape fue presionada
@@ -64,7 +64,7 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 		        Keys[SDLK_y]=0;
 		    }
 		}else{
-	            VerificarAbcedarioMensaje(Keys);
+	          VerificarAbecedarioMensaje(Keys);
         	    if(Keys[SDLK_PERIOD]){
         	        EscribiendoMensaje=false;
         	        //enviar mensaje
