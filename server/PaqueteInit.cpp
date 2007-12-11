@@ -192,7 +192,10 @@ void PaqueteInit::agregar_arista( int x, int y, bool norte )
 		int ancho = mapa->get_ancho();
 		destino.set_x( ( x + 1 + ancho ) % ancho ); 
 	}
-
+	
+	std::cout << "origen: " << origen << std::endl << std::flush;
+	std::cout << "destino: " << destino << std::endl << std::flush;
+	
 	S_ptr<EstructuralUnitario> esD = mapa->get_estructural( destino );
 	if( esD.es_nulo() ) {
 		esD = new EstructuralPasillo( Comestible::quesito, destino );

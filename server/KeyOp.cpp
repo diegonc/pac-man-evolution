@@ -16,10 +16,12 @@ KeyOp::KeyOp(int flecha,int id ){
 
 void KeyOp::ejecutar(ModeloServidor &modelo)
 {
+	std::cout << "key op init" << std::endl << std::flush;
 	//obtiene el jugador
 	S_ptr<Jugador> jugador = modelo.get_jugador(this->id);
 	//combina la direccion
 	jugador->get_direccion().combinar(flecha);
+	std::cout << "key op fin" << std::endl << std::flush;
 }
 
 void KeyOp::set_id(int identifJugador)
