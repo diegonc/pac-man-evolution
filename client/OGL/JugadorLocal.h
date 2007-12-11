@@ -12,15 +12,20 @@ class JugadorLocal{
 		static S_ptr<JugadorLocal> instancia;
 		
 		int id;
+
+		bool esPacman;
 	
 	public:
 		
 		static S_ptr<JugadorLocal> get_instancia();
 	
 		void set_id(int id_jugador);
+
+		void set_pacman( bool p );
+
+		bool get_pacman();
 	
 		int get_id();
-	
 		
 };
 

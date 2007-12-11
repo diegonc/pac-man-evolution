@@ -7,6 +7,10 @@
 #include "Operacion.h"
 #include "MundoBajoNivel.h"
 
+#ifdef PROGRAMA_CLIENTE
+#include "client/OGL/JugadorLocal.h"
+#endif
+
 namespace {
 	const char ID = 0;
 
@@ -20,14 +24,18 @@ namespace {
 				m( m ), esPac( esPac ) { }
 
 			void ejecutar(ModeloServidor &modelo) {
-				
+#ifdef PROGRAMA_CLIENTE
 				MundoBajoNivel& mundo = modelo.get_mundo();
 				std::cout << "El mapa tiene " << m->get_comestibles().size() << "comestibles y "
 					  <<   m->get_estructurales().size() << " estructurales.\n";			
 				mundo.agregar_mapa( m );
-				// esPacman ?? que ID recibio el paquete ??	
-				
 				modelo.set_cargado();
+
+				JugadorLocal::get_instancia()->set_pacman( esPac );
+				/* Agrega un jugador temporario hasta el start. para que puede reconocer el nivel. 
+				JugadorLocal::get_instancia()->set_id( 2<<16 );
+				modelo. */
+#endif
 			}
 	};
 }
