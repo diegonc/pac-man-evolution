@@ -11,6 +11,7 @@
 #include "../common/thread.h"
 #include "Paquete.h"
 #include "Jugador.h"
+#include "../common/bloqueo.h"
 #include "../common/smart_pointer.h"
 
 class EscritorCliente;
@@ -24,6 +25,8 @@ class Cliente : public Thread{
 		Socket_Cliente * socket;
 		EscuchadorCliente * escuchador;
 		EscritorCliente * escritor;	
+		Mutex llave_lectura;
+		Mutex llave_escritura;
 	
 		Tipo_Id id;
 		Tipo_Jugador jugador;

@@ -18,7 +18,7 @@ class ClientPool
 
         void join_all();
 	
-		void mandar_mensaje( unsigned int id, S_ptr<Paquete> mensaje );
+		const std::list<Cliente*>& get_clientes();
 	
 		void mandar_mensaje_todos(S_ptr<Paquete> mensaje);
 	

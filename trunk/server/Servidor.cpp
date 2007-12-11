@@ -84,21 +84,27 @@ void Servidor::run(){
 			cliente_nuevo->get_escritor().encolar_paquete(paquete_init);
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
-			S_ptr<Paquete> paquete_start(new PaqueteStart(40)); //TODO: <<---CAMBIARRRARRR
+			//S_ptr<Paquete> paquete_start(new PaqueteStart(40)); //TODO: <<---CAMBIARRRARRR
 			if( (pool.get_cantidad_clientes() == cant_min_clientes) && (!ya_mando_start) ){
 				sleep(5);
-				pool.mandar_mensaje_todos(paquete_start);
-				ya_mando_start = true;
-				
 				ModeloServidor::get_instancia()->start(); 
+				//pool.mandar_mensaje_todos(paquete_start);
+				for (std::list<Cliente*>::const_iterator it=pool.get_clientes().begin();it!=pool.get_clientes().end();++it){
+					Cliente* Client=*it;
+					S_ptr<Paquete> paquete_start(new PaqueteStart(Client->get_id()));
+					Client->get_escritor().encolar_paquete(paquete_start);
+				}
+				ya_mando_start = true;
 				////////////////////////////////////////
 				////TODO HACER JOIN////////////////////
 				///////////////////////////////////////
 			}
 			else{
 				if( ( pool.get_cantidad_clientes() > cant_min_clientes) &&
-					(pool.get_cantidad_clientes() < cant_max_clientes) )
+					(pool.get_cantidad_clientes() < cant_max_clientes) ){
+						S_ptr<Paquete> paquete_start(new PaqueteStart(cliente_nuevo->get_id()));
 						cliente_nuevo->get_escritor().encolar_paquete(paquete_start);
+					}
 			}
 			if(pool.get_cantidad_clientes() == cant_max_clientes)
 				parar = true;

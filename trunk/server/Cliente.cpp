@@ -71,6 +71,7 @@ Cliente::~Cliente()
 
 void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
 {
+	Bloqueo b(&llave_escritura);
 	OutputBitStream obs;
 	
 	paquete->serialize( obs );
@@ -78,11 +79,13 @@ void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
 	
 	socket->escribir( raw, obs.get_size() );
 	
+	std::cout << "Mande un " << (int)paquete->get_tipo() << "\n";
 	
 }
 
 S_ptr<Paquete> Cliente::recibir_mensaje()
 {
+	Bloqueo b(&llave_lectura);
 	SocketReader sr( *socket );
 	InputBitStream bs( sr );
 	S_ptr<Paquete> sptr_paquete;
