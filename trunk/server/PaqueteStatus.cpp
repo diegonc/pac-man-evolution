@@ -109,7 +109,7 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
         unsigned int AltoMapa=Model->get_mundo().get_mapa_activo()->get_alto();
         //itero sobre los jugadores
         jugadores=Model->get_jugadores().begin();
-        for(jugadores = Model->get_jugadores().begin();((jugadores != Model->get_jugadores().end()) && (!Salir)); ++jugadores){
+        for(jugadores = Model->get_jugadores().begin();((jugadores != Model->get_jugadores().end()) ); ++jugadores){
             Jug= *jugadores;
 
             Posicion P=Jug->get_posicion();
