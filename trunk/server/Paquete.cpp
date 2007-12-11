@@ -23,7 +23,7 @@ char Paquete::get_tipo()
 {
 	return tipo;
 }
-Paquete* Paquete::crear( int tipo ){
+Paquete* Paquete::crear( int tipo , int id_cliente ){
     //TODO: HACERLO BIEN ESTOOOOO!!!!!
 	Paquete * p;
 	switch(tipo){
@@ -43,7 +43,7 @@ Paquete* Paquete::crear( int tipo ){
 			p = new PaqueteQuit();
 			break;
 		case 5:	
-			p = new PaqueteTecla();
+			p = new PaqueteTecla(id_cliente);
 			break;
 		case 6:
 			p = new PaqueteMensaje();

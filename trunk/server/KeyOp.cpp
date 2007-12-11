@@ -9,17 +9,13 @@ const int KeyOp::abajo  	= 	1;
 const int KeyOp::derecha	= 	3;
 const int KeyOp::izquierda	= 	2;  
 
-KeyOp::KeyOp(int flecha ){
+KeyOp::KeyOp(int flecha,int id ){
 	this->flecha = flecha;
-	this->id = -1;
+	this->id = id;
 }
 
 void KeyOp::ejecutar(ModeloServidor &modelo)
 {
-	if (id==-1){
-		std::cerr<< "falta obtener el id de quien envia el paquete \n\n";
-		throw "error";
-	}
 	//obtiene el jugador
 	S_ptr<Jugador> jugador = modelo.get_jugador(this->id);
 	//combina la direccion
