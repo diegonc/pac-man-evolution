@@ -8,15 +8,15 @@
 class PaqueteTecla : public Paquete
 {
     private:
-        KeyOp* OperacionTecla;
 	int id_cliente;
+	int FlechaProt;
 	
 	public:
 		PaqueteTecla(int id_cliente);
 
-        Operacion * get_operacion();
+		PaqueteTecla(int id_cliente,int flecha);
 
-        void set_KeyOp(KeyOp* OperTecla);
+	        Operacion * get_operacion();
 
 		void serialize( OutputBitStream& bs );
 
