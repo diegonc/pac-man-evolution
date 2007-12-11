@@ -199,4 +199,3 @@ void MapaImpSet::refresh(std::list< S_ptr<Comestible> >& comestibles_totales){
 	
 }
 */
-MapaImpSet::agregar_comestible(Posicion &p)
