@@ -1,0 +1,9 @@
+<Nivel Nombre="test" Ancho="10" Alto="10">
+    <Mapa>
+        <Elemento Tipo="1" Orientacion="2" PosX="4" PosY="6" />
+        <Elemento Tipo="0" Orientacion="1" PosX="5" PosY="3" />
+        <Elemento Tipo="1" Orientacion="3" PosX="4" PosY="1" />
+        <Elemento Tipo="4" Orientacion="4" PosX="1" PosY="6" />
+        <Elemento Tipo="6" Orientacion="0" PosX="5" PosY="5" />
+    </Mapa>
+</Nivel>
