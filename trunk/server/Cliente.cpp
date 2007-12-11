@@ -89,12 +89,13 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 	SocketReader sr( *socket );
 	InputBitStream bs( sr );
 	S_ptr<Paquete> sptr_paquete;
-
+	
 	// Lectura de encabezado
 	int version = bs.read( 2 );
 	if( version == _VERSION_ACEPTADA ) {
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
+		std::cout << "Recibio un " << tipo << "por mensaje\n";
 		S_ptr<Paquete> p(Paquete::crear( tipo, get_id() ));
 		if(! p.es_nulo() ){
 			p->deserialize( bs );
