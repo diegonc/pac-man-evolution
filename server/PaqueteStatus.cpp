@@ -1,4 +1,4 @@
-#include "PaqueteStatus.h"
+ #include "PaqueteStatus.h"
 
 namespace {
 	const char ID = 2;
@@ -25,6 +25,7 @@ void PaqueteStatus::deserialize( InputBitStream& bs )
         PosJugad.Arista=bs.read(17);
         PosJugad.Posic=bs.read(6);
         PosJugad.direcc=bs.read(1);
+        PosJugad.marcado=false;
         Oper->get_jugadores()->push_back(PosJugad);
     }
 
@@ -82,8 +83,7 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
         Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
 
     //escribo la cantidad de jugadores
-        bs.append( 3,  Model->get_jugadores().size() ); // Escribe campo auxiliar.
-        bs.skip();
+        bs.append( 3,  Model->get_jugadores().size() ); // Escribe campo auxiliar.        
 //fin cabecera
 
 //ComienzoCuerpo
@@ -93,7 +93,6 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
     std::list< S_ptr<Jugador> >::const_iterator jugadores;
     bool Salir=false;
     unsigned int PuntajePacman=0;
-    jugadores=Model->get_jugadores().begin();
     for(jugadores = Model->get_jugadores().begin();((jugadores != Model->get_jugadores().end()) && (!Salir)); ++jugadores){
         Jug= *jugadores;
         if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
@@ -104,7 +103,6 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
 
     //Puntuacion
         bs.append( 32,  PuntajePacman );
-        bs.skip();
     //Posiciones Jugadores
 
         unsigned int AnchoMapa=Model->get_mundo().get_mapa_activo()->get_ancho();
@@ -117,7 +115,7 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
             Posicion P=Jug->get_posicion();
             int Fila=(int)floor(P.get_y());
             int Col=(int)floor(P.get_x());
-            int AristaSup=Col+(Fila*AnchoMapa);
+            int AristaSup=Col+(Fila*(2*AnchoMapa));
             unsigned int Arista;
             unsigned int PosCuantizada;
             unsigned char EsteONorte;
@@ -126,29 +124,32 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
                 InicioCasillero=(int)floor(P.get_x());
                 if (P.get_x()>=(InicioCasillero+0.5)){ //pasando la mitad
                     Arista=AristaSup+AnchoMapa;
-                    PosCuantizada=(32*(P.get_x()-(InicioCasillero+0.5)));
+                    PosCuantizada=(64*(P.get_x()-(InicioCasillero+0.5)));
                 }else{
-                    if (!Col){ //es primer fila
+                    if (!Col){ //no es primer fila
                         Arista=AristaSup+AnchoMapa-1;
-                    }else{ //es otra
+                    }else{ //es primerfila
                         Arista=AristaSup+(2*AnchoMapa)-1; //elijo de la misma fila la ultima
                     }
-                    PosCuantizada=32+(32*(InicioCasillero+0.5-P.get_x()));
+                    PosCuantizada=31+(64*(InicioCasillero+0.5-P.get_x()));
                 }
 
             }else{ //vertical
                 InicioCasillero=(int)floor(P.get_y());
                 if (P.get_y()>=(InicioCasillero+0.5)){ //despues de la mitad
                     Arista=AristaSup+(2*AnchoMapa);
-                    PosCuantizada=(32*(P.get_y()-(InicioCasillero+0.5)));
+                    PosCuantizada=(64*(P.get_y()-(InicioCasillero+0.5)));
+		    
+			//puede haber dado inferior a la ultima fila
+	            Arista=Arista % (AnchoMapa*AltoMapa*2);
                 }else{//antes de la mitad
                     Arista=AristaSup;
-                    PosCuantizada=32+(32*(InicioCasillero+0.5-P.get_y()));
+                    PosCuantizada=31+(64*(InicioCasillero+0.5-P.get_y()));
                 }
+
             }
 
-            //puede haber dado inferior a la ultima fila
-            Arista=Arista % (AnchoMapa*AltoMapa*2);
+            
 
             /* de esta forma
 
@@ -182,14 +183,14 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
 
     //cantidad elementos
         std::list< S_ptr<Comestible> > lista_comestibles = Model->get_mundo().get_mapa_activo()->get_comestibles();
-        bs.append( 8,  lista_comestibles.size());
+        bs.append( 8,  (unsigned int) lista_comestibles.size());
 
     //Posiciones elementos
         std::list< S_ptr<Comestible> >::iterator itcomestibles;
         S_ptr<Comestible> comestible;
 
 
-        //itero sobre los jugadores
+        //itero sobre los comestibles
         for(itcomestibles = lista_comestibles.begin(); itcomestibles != lista_comestibles.end(); ++itcomestibles){
             comestible = *itcomestibles;
             unsigned int tipoCom=comestible->get_tipo();
@@ -215,5 +216,6 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
 
 Operacion* PaqueteStatus::get_operacion()
 {
-	throw "PaqueteStatus::get_operacion: implementacion pendiente.";
+	return Oper;
 }
+
