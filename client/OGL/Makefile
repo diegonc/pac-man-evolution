@@ -20,7 +20,7 @@ extension = cpp
 ###########################
 
 # Opciones para el compilador C.
-CFLAGS = -Wall -ansi -pedantic-errors -DLINUX `sdl-config --cflags` -PROGRAMA_CLIENTE
+CFLAGS = -I../.. -Wall -ansi -pedantic-errors -DLINUX `sdl-config --cflags` -DPROGRAMA_CLIENTE
 
 # Para valgrind o debug
 CFLAGS += -DDEBUG -ggdb -fno-inline
