@@ -7,10 +7,10 @@ ConfValue::ConfValue( int valor )
 	numero = valor;
 }
 
-ConfValue::ConfValue( char* valor )
+ConfValue::ConfValue( std::string valor )
 {
 	tipo = ConfValue::TEXTO;
-	cadena = valor;
+	cadena = new std::string( valor );
 }
 
 ConfValue::ConfValue( bool valor )
@@ -19,16 +19,22 @@ ConfValue::ConfValue( bool valor )
 	booleano = valor;
 }
 
+ConfValue::~ConfValue()
+{
+	if( tipo == ConfValue::TEXTO )
+		delete cadena;
+}
+
 int ConfValue::get_numero()
 {
 	assert( tipo == ConfValue::NUMERO );
 	return numero;
 }
 
-char* ConfValue::get_texto()
+std::string ConfValue::get_texto()
 {
 	assert( tipo == ConfValue::TEXTO );
-	return cadena;
+	return *cadena;
 }
 
 bool ConfValue::get_booleano()
