@@ -58,6 +58,8 @@ class EstructuralPasillo : public EstructuralUnitario{
 		 *  @param tipo Tipo de comida a asignar.
 		 */
 		void set_comida( Comestible::Enum_Comestible &tipo );
+		
+		void set_comida( S_ptr<Comestible> comida_nueva);		
 
 		/**
 		*	@brief Permite obtener la comida

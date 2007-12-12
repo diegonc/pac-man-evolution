@@ -60,3 +60,9 @@ bool EstructuralPasillo::es_salida_pacman(){
 void EstructuralPasillo::set_salida_pacman(){
 	this->salida = true;
 }
+
+void EstructuralPasillo::set_comida( S_ptr<Comestible> comida_nueva){
+	comida_nueva->get_posicion().set_x(comida_nueva->get_posicion().get_x() + 0.5);
+	comida_nueva->get_posicion().set_y(comida_nueva->get_posicion().get_y() + 0.5);
+	this->comida = comida_nueva;
+}
