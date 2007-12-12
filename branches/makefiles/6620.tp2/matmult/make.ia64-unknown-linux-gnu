@@ -1,0 +1,13 @@
+CC = /usr/mill/bin/ecc
+F77 = /usr/mill/bin/efc
+OPTFLAGS = -tpp2 -IPF_FMA
+CFLAGS = -std=c99 -Dg77Fortran $(OPTFLAGS)
+BLASLIB = -lblas2 /usr/lib/libg2c.so.0
+
+# Alternate: using gcc compiler
+# CC = gcc
+# F77 = g77
+# OPTFLAGS = -O3
+# CFLAGS = -std=gnu9x $(OPTFLAGS)
+# BLASLIB = -lblas2
+

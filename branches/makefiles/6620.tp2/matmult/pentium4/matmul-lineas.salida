@@ -1,0 +1,31 @@
+Compilador:	gcc \\
+Opciones:	-O3 -mcpu=pentium3 \\
+Plataforma:	i686-pc-linux-gnu \\
+Descripcion:	Multiplicacion por columnas de A. \\
+ \\
+Tam: 31	mflop/s: 694.814 \\
+Tam: 32	mflop/s: 707.835 \\
+Tam: 96	mflop/s: 754.095 \\
+Tam: 97	mflop/s: 768.065 \\
+Tam: 127	mflop/s: 771.848 \\
+Tam: 128	mflop/s: 742.912 \\
+Tam: 129	mflop/s: 772.473 \\
+Tam: 191	mflop/s: 716.61 \\
+Tam: 192	mflop/s: 715.037 \\
+Tam: 229	mflop/s: 548.209 \\
+Tam: 255	mflop/s: 503.168 \\
+Tam: 256	mflop/s: 484.476 \\
+Tam: 257	mflop/s: 510.656 \\
+Tam: 319	mflop/s: 389.803 \\
+Tam: 320	mflop/s: 385.953 \\
+Tam: 321	mflop/s: 383.627 \\
+Tam: 417	mflop/s: 378.702 \\
+Tam: 479	mflop/s: 375.121 \\
+Tam: 480	mflop/s: 372.035 \\
+Tam: 511	mflop/s: 370.83 \\
+Tam: 512	mflop/s: 365.332 \\
+Tam: 639	mflop/s: 377.173 \\
+Tam: 640	mflop/s: 373.133 \\
+Tam: 767	mflop/s: 376.663 \\
+Tam: 768	mflop/s: 370.854 \\
+Tam: 769	mflop/s: 377.592 \\

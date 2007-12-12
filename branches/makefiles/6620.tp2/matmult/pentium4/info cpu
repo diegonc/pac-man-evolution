@@ -1,0 +1,10 @@
+max_cpuid_func: 2
+vendor_id: GenuineIntel
+Cache Info:
+        2nd-level cache: 512 KB, 8-way set associative, sectored cache, 64-byte line size
+        Trace cache: 12 K-uops, 8-way set associative
+        No 2nd-level cache or, if processor contains a valid 2nd-level cache, no 3rd-level cache
+        1st-level data cache: 8 KB, 4-way set associative, sectored cache, 64-byte line size
+        Data TLB: 4 KB or 4 MB pages, fully associative, 64 entries
+        Instruction TLB: 4 KB, 2 MB or 4 MB pages, fully associative, 128 entries
+
