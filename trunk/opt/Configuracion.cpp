@@ -162,3 +162,17 @@ void Configuracion::load_conf( std::string ruta )
 	#undef E_REG_BOOL
 }
 
+bool Configuracion::operator==( const Configuracion& otro )
+{
+	if( confs.size() == otro.confs.size() ) {
+		Mapa::iterator it = confs.begin();
+		Mapa::iterator oit = confs.begin();
+
+		while( it != confs.end() )
+			/* if( (*it).second != (*oit).second ) // cuack */
+			if( !( (*it).second == (*oit).second ) )
+				return false;
+		return true;
+	}
+	return false;
+}
