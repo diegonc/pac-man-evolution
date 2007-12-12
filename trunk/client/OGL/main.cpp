@@ -18,8 +18,8 @@ int main(int argc, char **argv)
 	try{
 
 		//////////POR AHORA HARDCODED////////////////////
-		std::string ip("127.0.0.1");
-		unsigned int short puerto = 6000;
+		std::string ip("24.232.20.179");
+		unsigned int short puerto = 7777;
 		socket->conectar(ip, puerto);
 		Cliente cliente_del_modelo(1, socket); //WHAT ?????
 		cliente_del_modelo.start();
