@@ -2,6 +2,7 @@
 #define __CONFVALUE_H__
 
 #include <string>
+#include <iostream>
 
 /** @brief Valor de configuracion.
  *
@@ -45,24 +46,30 @@ class ConfValue
 		/** @brief Crea un valor de configuracion de tipo BOOL. */
 		ConfValue( bool valor );
 
+		ConfValue( const ConfValue& cv );
+
 		~ConfValue();
+
+		ConfValue& operator=( const ConfValue& cv );
 
 		/** @brief Obtiene el valor de la configuracion de tipo
 		 *  NUMERO.
 		 */
-		int get_numero();
+		int get_numero() const;
 
 		/** @brief Obtiene el valor de la configuracion de tipo
 		 *  TEXTO.
 		 */
-		std::string get_texto();
+		std::string get_texto() const;
 
 		/** @brief Obtiene el valor de la configuracion de tipo
 		 *  BOOL.
 		 */
-		bool get_booleano();
+		bool get_booleano() const;
 
-		bool operator==( const ConfValue& otro );
+		bool operator==( const ConfValue& otro ) const;
+
+		void dump( std::ostream& out ) const;
 };
 
 #endif
