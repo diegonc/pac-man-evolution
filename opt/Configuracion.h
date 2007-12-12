@@ -18,6 +18,8 @@ class Configuracion
 		ConfValue get_conf( std::string nom );
 
 		void load_conf( std::string ruta );
+
+		bool operator==( const Configuracion& otro );
 };
 
 #endif

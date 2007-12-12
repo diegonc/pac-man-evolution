@@ -62,6 +62,7 @@ class ConfValue
 		 */
 		bool get_booleano();
 
+		bool operator==( const ConfValue& otro );
 };
 
 #endif

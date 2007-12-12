@@ -42,3 +42,20 @@ bool ConfValue::get_booleano()
 	assert( tipo == ConfValue::BOOL );
 	return booleano;
 }
+
+bool ConfValue::operator==( const ConfValue& otro )
+{
+	if( tipo == otro.tipo ) {
+		switch( tipo ) {
+			case ConfValue::TEXTO:
+				return *cadena == *otro.cadena;
+			case ConfValue::NUMERO:
+				return numero == otro.numero;
+			case ConfValue::BOOL:
+				return booleano == otro.booleano;
+			default:
+				return true;
+		}
+	}
+	return false;
+}
