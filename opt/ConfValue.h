@@ -1,12 +1,14 @@
 #ifndef __CONFVALUE_H__
 #define __CONFVALUE_H__
 
+#include <string>
+
 /** @brief Valor de configuracion.
  *
  *  Representa un valor de configuracion. El tipo del valor puede ser
  *    - Entero
  *    - Boleano
- *    - Cadena de texto ( estilo C )
+ *    - Cadena de texto 
  */
 class ConfValue
 {
@@ -25,9 +27,9 @@ class ConfValue
 		ConfValue::Tipo tipo;
 
 		union {
-			char*	cadena;
-			int	numero;
-			bool	booleano;
+			std::string*	cadena;
+			int		numero;
+			bool		booleano;
 		};
 
 	public:
@@ -38,10 +40,12 @@ class ConfValue
 		ConfValue( int valor );
 
 		/** @brief Crea un valor de configuracion de tipo TEXTO. */
-		ConfValue( char* valor );
+		ConfValue( std::string valor );
 
 		/** @brief Crea un valor de configuracion de tipo BOOL. */
 		ConfValue( bool valor );
+
+		~ConfValue();
 
 		/** @brief Obtiene el valor de la configuracion de tipo
 		 *  NUMERO.
@@ -51,7 +55,7 @@ class ConfValue
 		/** @brief Obtiene el valor de la configuracion de tipo
 		 *  TEXTO.
 		 */
-		char* get_texto();
+		std::string get_texto();
 
 		/** @brief Obtiene el valor de la configuracion de tipo
 		 *  BOOL.
