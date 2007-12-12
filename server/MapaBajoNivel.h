@@ -73,6 +73,8 @@ class MapaBajoNivel : public Observable
 		*	@return Lista con los comestibles
 		*/		
 		virtual std::list<S_ptr<Comestible> > get_comestibles()=0;
+
+		virtual void refresh( std::list< S_ptr<Comestible> >& comestibles_totales ) = 0;
 };
 
 #endif /* __MAPA_H__ */

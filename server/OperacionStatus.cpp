@@ -1,5 +1,7 @@
 #include "OperacionStatus.h"
 
+#include "ComestibleFactory.h"
+
 unsigned int OperacionStatus::get_puntuacion(){
     return Puntuacion;
 }
@@ -139,17 +141,23 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
     //los jugadores ya fueron seteados
 
     //itero sobre los comestibles
-
+    std::list<S_ptr<Comestible> > comestibles;
+    ComestibleFactory fab;
     for (std::list<OperacionStatus::PosicionElemento>::iterator it=get_elementos()->begin();((it!=get_elementos()->end())&&(!Encontrado));++it){
         OperacionStatus::PosicionElemento& PosE=*it;
 
         int Col=PosE.Posic % AnchoMapa;
         int Fila=floor(PosE.Posic / AnchoMapa);
-
-        if (PosE.Estado){
-            //agregar Elemento posicion(Col,Fila)
+	
+	
+	if (PosE.Estado){
+		Posicion p(0,0);
+		S_ptr<Comestible> c_nuevo(fab.construir(PosE.Tipo,p));
+		comestibles.push_back(c_nuevo);            
+		//agregar Elemento posicion(Col,Fila)
         }else{
             //eliminar Elemento posicion(Col,Fila)
         }
+	modelo.get_mundo().get_mapa_activo()->refresh(comestibles);
     }
 }

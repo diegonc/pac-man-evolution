@@ -143,5 +143,6 @@ class EstructuralUnitario{
 		*/
 		bool tiene_conexion(S_ptr<EstructuralUnitario> e);
 	
+		void set_comida(S_ptr<Comestible> comestible);
 };
 #endif /*__ESTRUCTURAL_H__*/
