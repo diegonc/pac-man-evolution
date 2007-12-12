@@ -104,8 +104,16 @@ void Mapa::quitar_elemento(S_ptr<Elemento> elemento){
 		while ((!casillero.es_nulo()) && (cont2 < e_ancho)){
 			if (!elemento->es_estructural())
 				casillero->remover_modificador();
-			else
+			else {
+				/* Si el elemento es un estructural, quita
+				 * tambien los modificadores que haya sobre el.
+				 */
+				if( casillero->tiene_modificador() ) {
+					S_ptr<Elemento> m = casillero->get_modificador();
+					m->quitate( m, this );
+				}
 				casillero->remover_estructural();
+			}
 			cont2++;
 			casillero = this->get_casillero(pos_x + cont1, pos_y + cont2);
 		}
