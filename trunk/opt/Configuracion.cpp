@@ -21,7 +21,6 @@ void Configuracion::load_conf( std::string ruta )
 	std::ifstream file( ruta.c_str() );
 	std::string identificador;
 	std::string tmpbuf;
-	ConfValue valor;
 	char c;
 
 	#define E_LEYENDO	0 /* Esperando token. */

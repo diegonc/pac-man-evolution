@@ -37,12 +37,7 @@ ConfValue::~ConfValue()
 {
 	
 	if( tipo == ConfValue::TEXTO ) {
-		assert( cadena != 0 );
-		//delete cadena;
-		std::cerr << "Borra puntero: " << std::hex << (int)cadena;
-		std::cerr << " de Configuracion: " << std::hex;
-		std::cerr << (int) this;
-		std::cerr << std::endl;
+		delete cadena;
 	}
 }
 
