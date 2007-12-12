@@ -5,7 +5,7 @@
 #include "EscritorCliente.h"
 #include "AvisadorNovedades.h"
 
-#define _DEFAULT_CANT_MIN	2
+#define _DEFAULT_CANT_MIN	1
 #define _DEFAULT_CANT_MAX	10
 
 const int Servidor::SENIAL_CANCELAR = SIGUSR1;	
@@ -84,9 +84,10 @@ void Servidor::run(){
 			ModeloServidor::get_instancia()->agregar_jugador(cliente_nuevo->get_jugador());
 			//le manda el paquete init
 			bool es_pacman = cliente_nuevo->get_jugador()->get_personaje()->get_tipo() == Personaje::pacman;
+			std::cout << "es: " << (es_pacman?"Pacman":"Fantasma") << std::endl;
 			S_ptr<Paquete> paquete_init(new PaqueteInit(es_pacman,ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()));
 			cliente_nuevo->get_escritor().encolar_paquete(paquete_init);
-			std::cout << "MANDO UN FUCKIN' INIT!!!<-------------------------\n";
+	
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
 			//S_ptr<Paquete> paquete_start(new PaqueteStart(40)); //TODO: <<---CAMBIARRRARRR

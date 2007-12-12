@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	try{
 
 		//////////POR AHORA HARDCODED////////////////////
-		std::string ip("24.232.20.179");
+		std::string ip("127.0.0.1");
 		unsigned int short puerto = 6000;
 		socket->conectar(ip, puerto);
 		Cliente cliente_del_modelo(1, socket); //WHAT ?????
@@ -75,9 +75,19 @@ int main(int argc, char **argv)
 		//mientras este levantado el flag
 		while(APP.isProgramLooping())
 		{
+						//std::cout << " evento1"<< E.type <<  std::endl;
 			//trato de chachear algun evento si es q se produjo
+			if(!SDL_PollEvent(&E))
+			{
+				usleep(10000);	
+			}
+
+
+//trato de chachear algun evento si es q se produjo
 			if(SDL_PollEvent(&E))
 			{
+
+						std::cout << " evento"<< E.type <<  std::endl;
 				//dependiendo del tipo
 				switch(E.type)
 				{
@@ -159,7 +169,11 @@ int main(int argc, char **argv)
 							Keys = SDL_GetKeyState(NULL);
 							break;
 						}
-
+					default:
+					{
+						std::cout << "no capt'o el evento"<< std::endl;
+usleep(1000);					
+}
 				}
 			}
 			else //no se captaron eventos
@@ -185,6 +199,7 @@ int main(int argc, char **argv)
 					SDL_GL_SwapBuffers();
 				}
 			}
+			usleep(1000);
 		}
 		//el programa esta finalizando
 

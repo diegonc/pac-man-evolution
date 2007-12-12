@@ -4,6 +4,8 @@
 #include <iostream>
 #include <list>
 #include "Operacion.h"
+#include "PacMan.h"
+#include "Fantasma.h"
 #include <math.h>
 
 class OperacionStatus:public Operacion{

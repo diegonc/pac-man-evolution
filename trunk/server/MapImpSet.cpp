@@ -168,7 +168,7 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 		}
 	}
 }
-/*
+
 void MapaImpSet::refresh(std::list< S_ptr<Comestible> >& comestibles_totales){
 	//limpia los comestibles
 	this->comestibles.clear();
@@ -176,26 +176,28 @@ void MapaImpSet::refresh(std::list< S_ptr<Comestible> >& comestibles_totales){
 	//recorro los estructurales y les saco el comestible
 	std::set<Tipo_Estructural,CompSptrEstructuralPosicion>::iterator it;
 	S_ptr<Comestible> comestible_nulo;
-
+	S_ptr<Estructural> e_aux;
 	it = this->estructurales.begin();
-	while( it != it != this->estructurales.end() )
-		it->estruct_aux->set_comestible(comestible_nulo);
+	while( it != this->estructurales.end() ){
+		e_aux = *it;		
+		e_aux->set_comestible(comestible_nulo);
 		++it;
 	}
 	
 	std::list< S_ptr<Comestible> >::iterator it_comestibles;
 
 	it_comestibles = comestibles_totales.begin();
-	S_ptr<EstructuralUnitario> e_aux; 
+	//S_ptr<EstructuralUnitario> e_aux; 
 	while(it_comestibles != comestibles_totales.end() ){
-			e_aux = get_estructural(it_comestibles->get_posicion());
-		    if(! e_aux.es_nulo() ){
-				a_aux->set_comestible(*it);	
-				
-			}
+		e_aux = get_estructural((*it_comestibles)->get_posicion());
+		if(! e_aux.es_nulo() ){
+			a_aux->set_comestible(*it);	
+			comestibles.push_back(*it);		
+		}
+		++it_comestibles;
 	}
 
 
 	
 }
-*/
+

@@ -13,7 +13,7 @@
 class PacMan : public Personaje{
 	private:
 		bool power_up_activado;
-		int velocidad;
+		double velocidad;
 	
 	public:
 		/**
