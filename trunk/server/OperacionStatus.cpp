@@ -147,7 +147,7 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
         OperacionStatus::PosicionElemento& PosE=*it;
 
         int Col=PosE.Posic % AnchoMapa;
-        int Fila=floor(PosE.Posic / AnchoMapa);
+        int Fila=(int)floor(PosE.Posic / AnchoMapa);
 	
 	
 	if (PosE.Estado){
