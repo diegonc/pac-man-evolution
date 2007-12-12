@@ -143,6 +143,7 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
     //itero sobre los comestibles
     std::list<S_ptr<Comestible> > comestibles;
     ComestibleFactory fab;
+std::cout << "recibio "<< get_elementos().size()<< " elementos"<<std::endl;
     for (std::list<OperacionStatus::PosicionElemento>::iterator it=get_elementos()->begin();((it!=get_elementos()->end())&&(!Encontrado));++it){
         OperacionStatus::PosicionElemento& PosE=*it;
 
