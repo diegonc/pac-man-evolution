@@ -8,9 +8,9 @@ void Configuracion::set_conf( std::string nom, ConfValue v )
 	confs[ nom ] = v;	
 }
 
-ConfValue Configuracion::get_conf( std::string nom )
+ConfValue Configuracion::get_conf( std::string nom ) const
 {
-	Mapa::iterator it = confs.find( nom );
+	Mapa::const_iterator it = confs.find( nom );
 	if( it != confs.end() )
 		return (*it).second;
 	throw "TODO: nombre de opcion no disponible.";
@@ -49,8 +49,8 @@ void Configuracion::load_conf( std::string ruta )
 				}
 				break;
 			case E_COMENTARIO:
-				while( file.ignore().good() );
-				estado = E_LEYENDO;
+				/* ignora todo, salvo EOL */
+				if( c == '\n' )	estado = E_LEYENDO;
 				break;
 			case E_IDENTIFICADOR:
 				if( c == '=' || c == ':' )
@@ -162,17 +162,34 @@ void Configuracion::load_conf( std::string ruta )
 	#undef E_REG_BOOL
 }
 
-bool Configuracion::operator==( const Configuracion& otro )
+bool Configuracion::operator==( const Configuracion& otro ) const
 {
 	if( confs.size() == otro.confs.size() ) {
-		Mapa::iterator it = confs.begin();
-		Mapa::iterator oit = confs.begin();
+		Mapa::const_iterator it = confs.begin();
+		Mapa::const_iterator oit = confs.begin();
 
-		while( it != confs.end() )
+		while( it != confs.end() ) {
 			/* if( (*it).second != (*oit).second ) // cuack */
 			if( !( (*it).second == (*oit).second ) )
 				return false;
+			++it; ++oit;
+		}
 		return true;
 	}
 	return false;
+}
+
+void Configuracion::dump( std::ostream& out ) const
+{
+	Mapa::const_iterator it = confs.begin();
+
+	out << "Opciones registradas:";
+	while( it != confs.end() ) {
+		ConfValue cv( (*it).second );
+
+		out << "\t ID: " << (*it).first << '\n' << '\t';
+		cv.dump( out );
+		out << '\n' << '\n';
+		++it;
+	}
 }
