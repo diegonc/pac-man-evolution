@@ -23,7 +23,7 @@ void AvisadorNovedades::run(){
 			(*it)->get_escritor().encolar_paquete(paquete_status); 
 			 ++it;
 		}
-		usleep(33000);
+		usleep(10000);
 	}	
 }
 void AvisadorNovedades::parar(){

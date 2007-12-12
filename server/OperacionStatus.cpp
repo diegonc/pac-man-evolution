@@ -24,13 +24,14 @@ void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatu
     int UltimaColum=AnchoMapa-1;
 //    std::cout << "la direccion es: " << ((PosJ.direcc)?"Norte/Este":"Sur/Oeste") << std::endl;
 //    std::cout << "nroArista es: " << PosJ.Arista << std::endl;
-    int Col=PosJ.Arista % AnchoMapa; //ver lo de la 1ra col y ultima
+    float Col=PosJ.Arista % AnchoMapa; //ver lo de la 1ra col y ultima
     int temp=(int)floor(PosJ.Arista / AnchoMapa); //par en verticales, impar en horizontales
-    int Fila=(int)floor(PosJ.Arista / (AnchoMapa * 2)); // ver 1ra fil y la ultima
+    float Fila=floor(PosJ.Arista / (AnchoMapa * 2)); // ver 1ra fil y la ultima
     bool Vertical=!(temp%2); //corresponde a una arista vertical
  //   std::cout << "la arista es: " << (Vertical?"Vertical":"Horizontal") << std::endl;
 
-    double Valor;
+
+	double temporal;
     if (Vertical){
         if (PosJ.Posic<32){
             Fila=(Fila>0)?Fila-1:UltimaFila;
@@ -38,9 +39,10 @@ void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatu
         }else{
             PosJ.Posic-=32;
         }
-        Valor=Fila+(PosJ.Posic/64);
-//Valor-=0.5;
-        PosModelo.set_y(Valor);
+	temporal=PosJ.Posic;
+	temporal/=64;
+	temporal+=Fila;
+        PosModelo.set_y(temporal);
         if (PosJ.direcc){
             Jug->get_direccion().set_dir(Direccion::Norte);
         }else{
@@ -53,9 +55,10 @@ void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatu
         }else{
             PosJ.Posic+=32;
         }
-        Valor=Col+(PosJ.Posic/64);
-        PosModelo.set_x(Valor);
-//Valor-=0.5;
+	temporal=PosJ.Posic;
+	temporal/=64;
+	temporal+=Col;
+        PosModelo.set_x(temporal);
         if (PosJ.direcc){
             Jug->get_direccion().set_dir(Direccion::Este);
         }else{

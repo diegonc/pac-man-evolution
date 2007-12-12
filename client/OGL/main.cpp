@@ -77,17 +77,13 @@ int main(int argc, char **argv)
 		{
 						//std::cout << " evento1"<< E.type <<  std::endl;
 			//trato de chachear algun evento si es q se produjo
-			if(!SDL_PollEvent(&E))
-			{
-				usleep(10000);	
-			}
 
 
 //trato de chachear algun evento si es q se produjo
 			if(SDL_PollEvent(&E))
 			{
 
-						std::cout << " evento"<< E.type <<  std::endl;
+//						std::cout << " evento"<< E.type <<  std::endl;
 				//dependiendo del tipo
 				switch(E.type)
 				{
@@ -169,11 +165,6 @@ int main(int argc, char **argv)
 							Keys = SDL_GetKeyState(NULL);
 							break;
 						}
-					default:
-					{
-						std::cout << "no capt'o el evento"<< std::endl;
-usleep(1000);					
-}
 				}
 			}
 			else //no se captaron eventos
@@ -199,7 +190,7 @@ usleep(1000);
 					SDL_GL_SwapBuffers();
 				}
 			}
-			usleep(1000);
+			usleep(10000);
 		}
 		//el programa esta finalizando
 

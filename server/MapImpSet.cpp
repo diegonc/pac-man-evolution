@@ -170,7 +170,7 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 }
 
 void MapaImpSet::refresh(std::list< S_ptr<Comestible> >& comestibles_totales){
-	//limpia los comestibles
+	/*//limpia los comestibles
 	this->comestibles.clear();
 	
 	//recorro los estructurales y les saco el comestible
@@ -198,6 +198,6 @@ void MapaImpSet::refresh(std::list< S_ptr<Comestible> >& comestibles_totales){
 	}
 
 
-	
+	*/
 }
 

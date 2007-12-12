@@ -1,7 +1,7 @@
 #include "PacMan.h"
 #include <math.h>
 
-#define VELOCIDAD_PACMAN_NORMAL		0.5	/*3 u/s */
+#define VELOCIDAD_PACMAN_NORMAL		3	/*3 u/s */
 #define VELOCIDAD_PACMAN_PW		5
 #define RADIO_PACMAN			0.5
 

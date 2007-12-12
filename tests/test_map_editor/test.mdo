@@ -1,3 +1,4 @@
-<Mundo Cant_Niveles="1">
+<Mundo Cant_Niveles="2">
     <Nivel Numero="1" Nombre="JP" Ancho="10" Alto="10" />
+    <Nivel Numero="2" Nombre="salvador" Ancho="15" Alto="15" />
 </Mundo>
