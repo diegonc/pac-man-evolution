@@ -172,6 +172,8 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 }
 
 void MapaImpSet::refresh( std::list< S_ptr<Comestible> >& comestibles_totales ){
+	std::cout << "Voy a agregar " << comestibles_totales.size() << "comestibles\n";
+
 	//limpia los comestibles
 	this->comestibles.clear();
 	
