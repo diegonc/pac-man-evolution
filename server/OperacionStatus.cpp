@@ -141,17 +141,19 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
     //los jugadores ya fueron seteados
 
     //itero sobre los comestibles
+Encontrado=false;
     std::list<S_ptr<Comestible> > comestibles;
     ComestibleFactory fab;
-std::cout << "recibio "<< get_elementos()->size()<< " elementos"<<std::endl;
+//std::cout << "recibio "<< get_elementos()->size()<< " elementos"<<std::endl;
     for (std::list<OperacionStatus::PosicionElemento>::iterator it=get_elementos()->begin();((it!=get_elementos()->end())&&(!Encontrado));++it){
         OperacionStatus::PosicionElemento& PosE=*it;
 
         int Col=PosE.Posic % AnchoMapa;
         int Fila=(int)floor(PosE.Posic / AnchoMapa);
 	
-	
+		//std::cout << "Estado Comest:" <<PosE.Estado << "\n";
 	if (PosE.Estado){
+		//std::cout << "'supuestamente' agregando comestibles\n";
 		Posicion p(0,0);
 		S_ptr<Comestible> c_nuevo(fab.construir(PosE.Tipo,p));
 		comestibles.push_back(c_nuevo);            
