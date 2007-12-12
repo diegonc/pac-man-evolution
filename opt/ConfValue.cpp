@@ -3,36 +3,36 @@
 
 ConfValue::ConfValue( int valor )
 {
-	tipo = Tipo::NUMERO;
-	valor.numero = valor;
+	tipo = ConfValue::NUMERO;
+	numero = valor;
 }
 
 ConfValue::ConfValue( char* valor )
 {
-	tipo = Tipo::TEXTO;
-	valor.cadena = valor;
+	tipo = ConfValue::TEXTO;
+	cadena = valor;
 }
 
 ConfValue::ConfValue( bool valor )
 {
-	tipo = Tipo::BOOL;
-	valor.boleano = valor;
+	tipo = ConfValue::BOOL;
+	booleano = valor;
 }
 
 int ConfValue::get_numero()
 {
-	assert( tipo == Tipo::NUMERO );
-	return valor.numero;
+	assert( tipo == ConfValue::NUMERO );
+	return numero;
 }
 
 char* ConfValue::get_texto()
 {
-	assert( tipo == Tipo::TEXTO );
-	return valor.cadena;
+	assert( tipo == ConfValue::TEXTO );
+	return cadena;
 }
 
 bool ConfValue::get_booleano()
 {
-	assert( tipo == Tipo::BOOL );
-	return valor.booleano;
+	assert( tipo == ConfValue::BOOL );
+	return booleano;
 }

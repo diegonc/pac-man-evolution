@@ -10,12 +10,10 @@
 void test_arriba()
 {
 	std::cout << "Corriendo test_arriba()\n";
-	PaqueteTecla p( 1 );
+	PaqueteTecla p( 1, KeyOp::arriba );
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x28 };
 
-	KeyOp* ko = new KeyOp( KeyOp::arriba );
-	p.set_KeyOp( ko );
 	p.serialize( obs );
 	
 	if( DATOS_PRUEBA_S != obs.get_size() ) {
@@ -31,18 +29,15 @@ void test_arriba()
 			}
 		}
 	}
-	delete ko;
 }
 
 void test_abajo()
 {
 	std::cout << "Corriendo test_abajo().\n";
-	PaqueteTecla p( 1 );
+	PaqueteTecla p( 1, KeyOp::abajo );
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x29 };
 
-	KeyOp* ko = new KeyOp( KeyOp::abajo );
-	p.set_KeyOp( ko );
 	p.serialize( obs );
 	
 	if( DATOS_PRUEBA_S != obs.get_size() ) {
@@ -58,18 +53,15 @@ void test_abajo()
 			}
 		}
 	}
-	delete ko;
 }
 
 void test_derecha()
 {
 	std::cout << "Corriendo test_derecha()\n";
-	PaqueteTecla p( 1 );
+	PaqueteTecla p( 1, KeyOp::derecha );
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x2B };
 
-	KeyOp* ko = new KeyOp( KeyOp::derecha );
-	p.set_KeyOp( ko );
 	p.serialize( obs );
 	
 	if( DATOS_PRUEBA_S != obs.get_size() ) {
@@ -85,18 +77,15 @@ void test_derecha()
 			}
 		}
 	}
-	delete ko;
 }
 
 void test_izquierda()
 {
 	std::cout << "Corriendo test_izquierda()\n";
-	PaqueteTecla p( 1 );
+	PaqueteTecla p( 1, KeyOp::izquierda );
 	OutputBitStream obs;
 	unsigned char raw[1] = { 0x2A };
 
-	KeyOp* ko = new KeyOp( KeyOp::izquierda );
-	p.set_KeyOp( ko );
 	p.serialize( obs );
 	
 	if( DATOS_PRUEBA_S != obs.get_size() ) {
@@ -112,7 +101,6 @@ void test_izquierda()
 			}
 		}
 	}
-	delete ko;
 }
 
 int main()

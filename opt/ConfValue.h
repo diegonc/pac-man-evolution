@@ -10,24 +10,29 @@
  */
 class ConfValue
 {
+	public:
+		/** Enumera los tipos soportados. */
+		enum Tipo
+		{
+			NULO,
+			TEXTO,
+			NUMERO,
+			BOOL
+		};
+
 	private:
 		/** Tipo de dato del valor. */
-		Tipo tipo;
+		ConfValue::Tipo tipo;
 
 		union {
 			char*	cadena;
 			int	numero;
 			bool	booleano;
-		} valor;
+		};
 
 	public:
-		/** Enumera los tipos soportados. */
-		enum Tipo
-		{
-			TEXTO,
-			NUMERO,
-			BOOL
-		};
+		/** @brief Constructor por defecto.(requerido por std::map) */
+		ConfValue( ) : tipo( NULO ){ }
 
 		/** @brief Crea un valor de configuracion de tipo NUMERO. */
 		ConfValue( int valor );
