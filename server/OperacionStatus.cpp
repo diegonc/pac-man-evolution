@@ -17,15 +17,19 @@ std::list<OperacionStatus::PosicionElemento>* OperacionStatus::get_elementos(){
 }
 
 
+
 void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatus::PosicionJugador& PosJ,int AnchoMapa,int AltoMapa){
     Posicion& PosModelo=Jug->get_posicion();
 	int UltimaFila=AltoMapa-1;
     int UltimaColum=AnchoMapa-1;
-    
+//    std::cout << "la direccion es: " << ((PosJ.direcc)?"Norte/Este":"Sur/Oeste") << std::endl;
+//    std::cout << "nroArista es: " << PosJ.Arista << std::endl;
     int Col=PosJ.Arista % AnchoMapa; //ver lo de la 1ra col y ultima
     int temp=(int)floor(PosJ.Arista / AnchoMapa); //par en verticales, impar en horizontales
     int Fila=(int)floor(PosJ.Arista / (AnchoMapa * 2)); // ver 1ra fil y la ultima
     bool Vertical=!(temp%2); //corresponde a una arista vertical
+ //   std::cout << "la arista es: " << (Vertical?"Vertical":"Horizontal") << std::endl;
+
     double Valor;
     if (Vertical){
         if (PosJ.Posic<32){
@@ -35,6 +39,7 @@ void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatu
             PosJ.Posic-=32;
         }
         Valor=Fila+(PosJ.Posic/64);
+//Valor-=0.5;
         PosModelo.set_y(Valor);
         if (PosJ.direcc){
             Jug->get_direccion().set_dir(Direccion::Norte);
@@ -50,14 +55,14 @@ void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatu
         }
         Valor=Col+(PosJ.Posic/64);
         PosModelo.set_x(Valor);
-
+//Valor-=0.5;
         if (PosJ.direcc){
             Jug->get_direccion().set_dir(Direccion::Este);
         }else{
             Jug->get_direccion().set_dir(Direccion::Oeste);
         }
     }
-
+	//std::cout<< PosJ.Posic<<std::endl;
 
 }
 
@@ -106,11 +111,12 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
     	int AltoMapa=modelo.get_mundo().get_mapa_activo()->get_alto();
         if (!PosJ.marcado){
             PosJ.marcado=true;
-			S_ptr<Jugador> Jug(new Jugador(PosJ.ID));
-			//y el tipoooooo???
-			
-			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
-			ModeloServidor::get_instancia()->agregar_jugador(Jug);
+		S_ptr<Jugador> Jug(new Jugador(PosJ.ID));
+		//tipoo?? protocolo???
+		S_ptr<Personaje> personaje(new Fantasma(&(*Jug)));
+		Jug->set_personaje(personaje);			
+		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
+		ModeloServidor::get_instancia()->agregar_jugador(Jug);
 			
             //agregar jugador
         }

@@ -126,7 +126,7 @@ void PaqueteStatus::serialize( OutputBitStream& bs )
                     Arista=AristaSup+AnchoMapa;
                     PosCuantizada=(64*(P.get_x()-(InicioCasillero+0.5)));
                 }else{
-                    if (!Col){ //no es primer fila
+                    if (Col){ //no es primer fila
                         Arista=AristaSup+AnchoMapa-1;
                     }else{ //es primerfila
                         Arista=AristaSup+(2*AnchoMapa)-1; //elijo de la misma fila la ultima

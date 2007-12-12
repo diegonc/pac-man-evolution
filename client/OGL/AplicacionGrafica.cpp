@@ -160,6 +160,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 
 		//llamo a la lista precompilada del Escenario
 		escenario.ModelarEscenario();
+//		std::cout << "<---------------------------------------------->" <<std::endl;
 	}else
         usleep(1000);
 

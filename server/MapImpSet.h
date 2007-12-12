@@ -136,6 +136,8 @@ class MapaImpSet : public MapaBajoNivel{
 		*	@return el alto del mapa
 		*/
 		Tipo_Dimensiones get_alto();
+
+		void refresh(std::list< S_ptr<Comestible> >& comestibles_totales);
 };
 
 #endif /* __MAPAIMPMSET_H__ */
