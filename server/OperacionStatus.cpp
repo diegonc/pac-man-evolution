@@ -158,6 +158,6 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
         }else{
             //eliminar Elemento posicion(Col,Fila)
         }
-	modelo.get_mundo().get_mapa_activo()->refresh(comestibles);
     }
+    modelo.get_mundo().get_mapa_activo()->refresh(comestibles);
 }
