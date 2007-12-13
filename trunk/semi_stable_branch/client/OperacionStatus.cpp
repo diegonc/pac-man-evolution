@@ -162,13 +162,12 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
 
     //itero sobre los personajes y al pacman le seteo el puntaje
     bool salir=false;
-    for(itjugadores = modelo.get_jugadores().begin();itjugadores != modelo.get_jugadores().end(); ++itjugadores){
+    for(itjugadores = modelo.get_jugadores().begin();((itjugadores != modelo.get_jugadores().end()) && (!salir)); ++itjugadores){
         Jug= *itjugadores;
         //Actualizo puntaje del pacman
         if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
             salir=true;
-//TODO por hacer
-//            Jug->set_puntos(get_puntuacion());
+            Jug->set_puntos(get_puntuacion());
         }
     }
     //los jugadores ya fueron seteados
