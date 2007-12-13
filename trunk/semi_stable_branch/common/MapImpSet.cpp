@@ -194,7 +194,6 @@ void MapaImpSet::refresh( std::list< S_ptr<Comestible> >& comestibles_totales ){
 	}*/
 	
 	std::list< S_ptr<Comestible> >::iterator it_comestibles;
-	std::cout << comestibles_totales.size() << "\n";
 	it_comestibles = comestibles_totales.begin();
 	S_ptr<Comestible> c_aux; 
 	while(it_comestibles != comestibles_totales.end() ){
