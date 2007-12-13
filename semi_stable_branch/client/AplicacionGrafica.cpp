@@ -126,6 +126,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		S_ptr<Jugador> jp;
 		//obtengo los jugadores
 		//std::cout << "HERE 1 -<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";		  
+		std::cout << "Personajes:"<< ModeloServidor::get_instancia()->get_jugadores().size() << std::endl;
 		for(jugadores = ModeloServidor::get_instancia()->get_jugadores().begin();jugadores != ModeloServidor::get_instancia()->get_jugadores().end(); ++jugadores){
 			jp = *jugadores;
 		   //si el id es 1(deberia ser jugador cliente)
@@ -143,6 +144,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 				Pos.x= p2.get_x()*4;
 				Pos.y= -p2.get_y()*4;
 				ModeladorOBJ.DibujarObjetoPosicion(&Pos,jp->get_personaje()->get_tipo());
+				std::cout << "Dibujando otro personaje " << std::endl;
 			}
 		}
 		std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
