@@ -27,8 +27,3 @@ TipoElem EsqEste::get_tipo(){
 char* EsqEste::get_ruta_imagen(){
 		return RUTA_ESQ_ESTE;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-char* EsqEste::toString(){
-	return "ESQ ESTE";
-}

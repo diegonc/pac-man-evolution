@@ -27,8 +27,3 @@ TipoElem EsqSur::get_tipo(){
 char* EsqSur::get_ruta_imagen(){
 		return RUTA_ESQ_SUR;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-char* EsqSur::toString(){
-	return "ESQ SUR";
-}

@@ -18,9 +18,3 @@ TipoElem Bonus::get_tipo(){
 char* Bonus::get_ruta_imagen(){
 		return RUTA_BONUS;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-
-char* Bonus::toString(){
-	return "BONUS";
-}

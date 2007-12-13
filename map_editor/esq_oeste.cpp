@@ -27,8 +27,3 @@ TipoElem EsqOeste::get_tipo(){
 char* EsqOeste::get_ruta_imagen(){
 		return RUTA_ESQ_OESTE;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-char* EsqOeste::toString(){
-	return "ESQ OESTE";
-}

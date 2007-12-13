@@ -27,8 +27,3 @@ TipoElem PasilloHoriz::get_tipo(){
 char* PasilloHoriz::get_ruta_imagen(){
 		return RUTA_PAS_HORIZ;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-char* PasilloHoriz::toString(){
-	return "PASILLO HORIZONTAL";
-}

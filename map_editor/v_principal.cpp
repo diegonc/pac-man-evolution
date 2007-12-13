@@ -156,6 +156,11 @@ void VPrincipal::llenar_paneles(){
 	this->panel_estruc->agregar_elemento(CASA, SUR, RUTA_CASA_SUR);
 	this->panel_estruc->agregar_elemento(CASA, OESTE, RUTA_CASA_OESTE);
 	this->panel_estruc->agregar_elemento(CASA, NORTE, RUTA_CASA_NORTE);
+	this->panel_estruc->agregar_elemento(BIFUR, ESTE, RUTA_BIF_ESTE);
+	this->panel_estruc->agregar_elemento(BIFUR, SUR, RUTA_BIF_SUR);
+	this->panel_estruc->agregar_elemento(BIFUR, OESTE, RUTA_BIF_OESTE);
+	this->panel_estruc->agregar_elemento(BIFUR, NORTE, RUTA_BIF_NORTE);
+	this->panel_estruc->agregar_elemento(CRUCE, NULA, RUTA_CRUCE);
 	this->panel_modif->agregar_elemento(PWUP, NULA, RUTA_POWER_UP);
 	this->panel_modif->agregar_elemento(BONUS, NULA, RUTA_BONUS);
 	this->panel_modif->agregar_elemento(SALIDA, NULA, RUTA_SALIDA);

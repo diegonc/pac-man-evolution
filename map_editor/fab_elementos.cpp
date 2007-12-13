@@ -18,6 +18,14 @@ S_ptr<Elemento> Fab_Elementos::construir (TipoElem tipo, int pos_x, int pos_y, O
 		case CASA:
 			elemento = construir_casa(pos_x, pos_y, orientacion);
 			break;
+		case BIFUR:
+			elemento = construir_bifurc(pos_x, pos_y, orientacion);
+			break;
+		case CRUCE: {
+			S_ptr<Elemento> cruce (new Cruce(pos_x, pos_y));
+			elemento = cruce;
+			break;
+		}
 		case PWUP: {
 			S_ptr<Elemento> power_up (new Power_Up(pos_x, pos_y));
 			elemento = power_up;
@@ -54,6 +62,7 @@ S_ptr<Elemento> Fab_Elementos::construir_pasillo (int pos_x, int pos_y, Orientac
 			elemento = pas_vert;
 			break;
 			}
+		case NULA:;
 	}
 	return elemento;
 }
@@ -83,6 +92,7 @@ S_ptr<Elemento> Fab_Elementos::construir_esquina (int pos_x, int pos_y, Orientac
 			elemento = esq_sur;
 			break;
 		}
+		case NULA:;
 	}
 	return elemento;
 }
@@ -112,6 +122,37 @@ S_ptr<Elemento> Fab_Elementos::construir_casa (int pos_x, int pos_y, Orientacion
 			elemento = casa_sur;
 			break;
 		}
+		case NULA:;
+	}
+	return elemento;
+}
+
+/* Construir Bifur: */
+
+S_ptr<Elemento> Fab_Elementos::construir_bifurc (int pos_x, int pos_y, Orientacion orientacion){
+	S_ptr<Elemento> elemento;
+	switch (orientacion) {
+		case ESTE: {
+			S_ptr<Elemento> bif_este (new BifEste(pos_x, pos_y));
+			elemento = bif_este;
+			break;
+		}
+		case OESTE: {
+			S_ptr<Elemento> bif_oeste (new BifOeste(pos_x, pos_y));
+			elemento = bif_oeste;
+			break;
+		}
+		case NORTE: {
+			S_ptr<Elemento> bif_norte (new BifNorte(pos_x, pos_y));
+			elemento = bif_norte;
+			break;
+		}
+		case SUR: {
+			S_ptr<Elemento> bif_sur (new BifSur(pos_x, pos_y));
+			elemento = bif_sur;
+			break;
+		}
+		case NULA:;
 	}
 	return elemento;
 }

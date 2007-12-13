@@ -2,10 +2,9 @@
 #include "elemento.h"
 
 /* CLASE ELEMENTO: Esta clase abstracta representa un elemento, ya sea estructural o modificador. El elemento
-   contiene una coordenada de su vertice superior izq, un ancho y un alto, y proporciona metodos para
-   agregarse a un mapa de un nivel determinado, realizando las validaciones pertinentes.
+   contiene una coordenada de su vertice superior izq, un ancho y un alto, y una orientacion, y permite
+   agregarse y quitarse a un mapa de un nivel determinado, realizando las validaciones pertinentes.
    Tambien contiene una orientacion. */
-
 
 /* Constructor: */
 
@@ -50,5 +49,6 @@ Orientacion Elemento::get_orientacion(){
 /* Quitate: */
 
 void Elemento::quitate(S_ptr<Elemento> instancia, Mapa* mapa){
+	//Por defecto, el quitar lo unico que hace es sacar al elemento del mapa
 	mapa->quitar_elemento(instancia);
 }

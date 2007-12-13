@@ -36,10 +36,16 @@ bool Modificador::es_habitable(int x, int y){
 
 bool Modificador::agregate(S_ptr<Elemento> instancia, Mapa* mapa){
 	bool result = true;
+	//Obtengo el casillero en las posiciones del elemento
 	S_ptr<Casillero> casillero = mapa->get_casillero(this->get_pos_x(), this->get_pos_y());
 	if (!casillero.es_nulo()){
+		//Obtengo el estructural en ese casillero
 		S_ptr<Elemento> estructural = casillero->get_estructural();
-		if ((!casillero->tiene_modificador()) && (!estructural.es_nulo()) && (estructural->es_habitable(this->get_pos_x(), this->get_pos_y()))){
+		//Si hay un estructural (que no es casa fantasma), no hay otro modif y el lugar es habitable lo agrego en el mapa
+		if ((!casillero->tiene_modificador()) 
+			&& (!estructural.es_nulo())
+			&& (!(estructural->get_tipo() == CASA))
+			&& (estructural->es_habitable(this->get_pos_x(), this->get_pos_y()))){
 			mapa->insertar_elemento(instancia);
 		} else
 			result = false;	

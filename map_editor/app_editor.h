@@ -29,6 +29,9 @@ class AppEditor {
                    argv->Vector de parametros de invocacion	 */
 		AppEditor(int argc, char* argv[]);
 	
+		/* Pongo al constructor de copia como privado para que no se pueda copiar al singleton */
+		AppEditor(const AppEditor &app){}
+	
 		/* Destructor Privado: Libera la memoria reservada por la aplicacion */
 		~AppEditor();
 		

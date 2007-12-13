@@ -38,9 +38,3 @@ void Salida::quitate(S_ptr<Elemento> instancia, Mapa* mapa){
 	Elemento::quitate(instancia, mapa);
 	mapa->set_salida(false);
 }
-
-/* ///////////////TEMPORAL/////////////// */
-
-char* Salida::toString(){
-	return "SALIDA";
-}

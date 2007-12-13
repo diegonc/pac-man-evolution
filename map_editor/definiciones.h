@@ -39,23 +39,34 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define ESQ_ALTO 2
 #define CASA_ALTO 3
 #define CASA_ANCHO 3
+#define BIF_VERT_ALTO 3
+#define BIF_VERT_ANCHO 2
+#define BIF_HORIZ_ALTO 2
+#define BIF_HORIZ_ANCHO 3
+#define CRUCE_ALTO 3
+#define CRUCE_ANCHO 3
 
 //Defino rutas de imagenes
 
-#define RUTA_ESQ_ESTE "./imagenes/esq_este.jpg"
-#define RUTA_ESQ_OESTE "./imagenes/esq_oeste.jpg"
-#define RUTA_ESQ_NORTE "./imagenes/esq_norte.jpg"
-#define RUTA_ESQ_SUR "./imagenes/esq_sur.jpg"
-#define RUTA_PAS_HORIZ "./imagenes/pas_horiz.jpg"
-#define RUTA_PAS_VERT "./imagenes/pas_vert.jpg"
+#define RUTA_ESQ_ESTE "./imagenes/esq_este.png"
+#define RUTA_ESQ_OESTE "./imagenes/esq_oeste.png"
+#define RUTA_ESQ_NORTE "./imagenes/esq_norte.png"
+#define RUTA_ESQ_SUR "./imagenes/esq_sur.png"
+#define RUTA_PAS_HORIZ "./imagenes/pas_horiz.png"
+#define RUTA_PAS_VERT "./imagenes/pas_vert.png"
 #define RUTA_POWER_UP "./imagenes/power_up.png"
 #define RUTA_BONUS "./imagenes/frutita.png"
 #define RUTA_SALIDA "./imagenes/salida.png"
-#define RUTA_CASA_SUR "./imagenes/casa_sur.jpg"
-#define RUTA_CASA_NORTE "./imagenes/casa_norte.jpg"
-#define RUTA_CASA_ESTE "./imagenes/casa_este.jpg"
-#define RUTA_CASA_OESTE "./imagenes/casa_oeste.jpg"
-#define RUTA_VACIO "./imagenes/vacio.jpg"
+#define RUTA_CASA_SUR "./imagenes/casa_sur.png"
+#define RUTA_CASA_NORTE "./imagenes/casa_norte.png"
+#define RUTA_CASA_ESTE "./imagenes/casa_este.png"
+#define RUTA_CASA_OESTE "./imagenes/casa_oeste.png"
+#define RUTA_BIF_SUR "./imagenes/bif_sur.png"
+#define RUTA_BIF_NORTE "./imagenes/bif_norte.png"
+#define RUTA_BIF_ESTE "./imagenes/bif_este.png"
+#define RUTA_BIF_OESTE "./imagenes/bif_oeste.png"
+#define RUTA_CRUCE "./imagenes/cruce.png"
+#define RUTA_VACIO "./imagenes/vacio.png"
 #define RUTA_MARCA "./imagenes/cruz.png"
 
 //Defino las extensiones de los archivos del editor

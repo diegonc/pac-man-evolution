@@ -26,6 +26,9 @@ class GUI : public Thread {
 	//Constructor: Generea la interfaz grafica del editor. Recibe como parametros los parametros de invocacion del programa.
 
 	GUI(int &argc, char** &argv);
+   
+   	/* Pongo al constructor de copia como privado para que no se pueda copiar al singleton */
+	GUI(const GUI &gui){}
 
 	//Destructor: Libera los recursos consumidos por la interfaz grafica
 	~GUI();
@@ -38,7 +41,8 @@ class GUI : public Thread {
 		   argv->Vector de parametros de invocacion		   */
 	static GUI* get_instance(int argc, char* argv[]);
 
-	/* Run: El hilo de GUI se queda esperando eventos, hasta que recibe uno del tipo delete_event y corta la ejecucion, liberando la memoria consumida. */
+	/* Run: El hilo de GUI se queda esperando eventos, hasta que que se recibe uno del tipo delete_event 
+   	   y corta la ejecucion, liberando la memoria consumida. */
 	virtual void run();
    
 	/* Destroy: Se encarga de liberar los recursos consumidos por el GUI */

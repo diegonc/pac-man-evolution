@@ -8,6 +8,7 @@
 /* Constructor: */
 
 Nivel::Nivel(string nombre, int ancho, int alto){
+	//Creo nu nuevo mapa con el ancho y alto pasados por parametro
 	this->mapa = new Mapa(ancho, alto);
 	this->nombre = nombre;
 }
@@ -23,9 +24,11 @@ Nivel::~Nivel(){
 bool Nivel::agregar_elemento(TipoElem tipo, int posX, int posY, Orientacion orientacion){
 	bool result = true;
 	//Si las posiciones recibidas estan dentro de los margenes del mapa agrego el elemento
-	if ((posX >= 0) && (posY >= 0) && (posY < this->mapa->get_ancho()) && (posX < this->mapa->get_alto())){
+	if (this->get_mapa()->validar_coordenadas(posX, posY)){
+		//Creo una fabrica de elementos, y construyo uno nuevo segun el tipo, posiciones y orientacion
 		S_ptr<Fab_Elementos> fabrica (new Fab_Elementos());
 		S_ptr<Elemento> elemento = fabrica->construir(tipo, posX, posY, orientacion);
+		//Si se pudo crear el elemento, le digo que se agregue al mapa, sino devuelvo false porque no se pudo agregar
 		if (!elemento.es_nulo())
 			result = elemento->agregate(elemento, this->mapa);
 		else
@@ -40,13 +43,16 @@ bool Nivel::agregar_elemento(TipoElem tipo, int posX, int posY, Orientacion orie
 bool Nivel::quitar_elemento(int posX, int posY){
 	bool result = true;
 	//Si las posiciones recibidas estan dentro de los margenes del mapa quito el elemento
-	if ((posX >= 0) && (posY >= 0) && (posY < this->mapa->get_ancho()) && (posX < this->mapa->get_alto())){
+	if (this->get_mapa()->validar_coordenadas(posX, posY)){
+		//Obtengo el elemento en el casillero con las coords pasadas por parametro
 		S_ptr<Casillero> casillero = this->mapa->get_casillero(posX, posY);
 		S_ptr<Elemento> elemento;
+		//Priorizo el modificador
 		if (casillero->tiene_modificador())
 			elemento = casillero->get_modificador();
 		else
 			elemento = casillero->get_estructural();
+		//Si obtuve un elemento le digo que se quite
 		if (!elemento.es_nulo())
 			elemento->quitate(elemento, this->mapa);
 	} else
@@ -57,6 +63,7 @@ bool Nivel::quitar_elemento(int posX, int posY){
 /* Es Congruente: */
 
 bool Nivel::es_congruente(){
+	//Devuelvo si el mapa es congruente
 	return this->mapa->es_congruente();
 }
 

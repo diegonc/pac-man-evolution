@@ -17,25 +17,32 @@ Mundo::~Mundo(){
 /* Agregar Nivel: */
 
 int Mundo::agregar_nivel(string nombre, int ancho, int alto){
+	//Creo un nuevo nivel con los datos pasados por parametro
 	S_ptr<Nivel> nivel (new Nivel(nombre, ancho, alto));
+	//Lo agrego al final de la lista y aviso a los observadores que el mundo cambio
 	this->niveles.push_back(nivel);
 	this->set_cambio();
 	this->avisar_observadores(NULL);
+	//Devuelvo el orden del nuevo nivel
 	return this->niveles.size();
 }
 
 /* Quitar Nivel: */
 
 void Mundo::quitar_nivel(unsigned int nOrden){
+	//Si el numero de orden es valido
 	if ((nOrden > 0) && (nOrden <= this->niveles.size())) {
+		//Recorro la lista con un iterador hasta el numero de orden recibido
 		unsigned int cont = 1;
 		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 		while (cont < nOrden){
 			it++;
 			cont++;
 		}
+		//Borro el elemento en esa posicion
 		this->niveles.erase(it); 
 	}
+	//Aviso a los observadores que el mundo cambio
 	this->set_cambio();
 	this->avisar_observadores(NULL);
 }
@@ -43,15 +50,12 @@ void Mundo::quitar_nivel(unsigned int nOrden){
 /* Agregar Elemento: */
 
 bool Mundo::agregar_elemento(TipoElem tipo, unsigned int nOrden, int posX, int posY, Orientacion orientacion){
-	bool result = true;
+	bool result = true; //Vble aux
+	//Si el numero de orden es valido
 	if ((nOrden > 0) && (nOrden <= this->niveles.size())){
-		unsigned int cont = 1;
-		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
-		while (cont < nOrden){
-			it++;
-			cont++;
-		}
-		S_ptr<Nivel> nivel = *it;
+		//Obtengo el nivel en ese orden
+		S_ptr<Nivel> nivel = this->get_nivel(nOrden);
+		//Agrego el elemento al nivel obtenido
 		result = nivel->agregar_elemento(tipo, posX, posY, orientacion);
 	} else
 		result = false;
@@ -61,15 +65,12 @@ bool Mundo::agregar_elemento(TipoElem tipo, unsigned int nOrden, int posX, int p
 /* Quitar Elemento: */
 
 bool Mundo::quitar_elemento(unsigned int nOrden, int posX, int posY){
-	bool result = true;
+	bool result = true; //Vble aux
+	//Si el numero de orden es valido
 	if ((nOrden > 0) && (nOrden <= this->niveles.size())){
-		unsigned int cont = 1;
-		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
-		while (cont < nOrden){
-			it++;
-			cont++;
-		}
-		S_ptr<Nivel> nivel = *it;
+		//Obtengo el nivel en ese orden
+		S_ptr<Nivel> nivel = this->get_nivel(nOrden);
+		//Quito el elemento del nivel obtenido
 		result = nivel->quitar_elemento(posX, posY);
 	} else
 		result = false;
@@ -79,66 +80,84 @@ bool Mundo::quitar_elemento(unsigned int nOrden, int posX, int posY){
 /* Get Nivel: */
 
 S_ptr<Nivel> Mundo::get_nivel(unsigned int nOrden){
+	//Creo un s_ptr nulo
 	S_ptr<Nivel> nivel;
+	//Si el numero de orden es valido
 	if ((nOrden > 0) && (nOrden <= this->niveles.size())){
+		//Recorro la lista con un iterador hasta el numero de orden recibido
 		unsigned int cont = 1;
 		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 		while (cont < nOrden){
 			it++;
 			cont++;
 		}
+		//Obtengo el nivel en ese orden
 		nivel = *it;
 	}
-	return nivel;
+	return nivel; //Devuelvo el nivel si se pudo obtener, o el nivel nulo si el nOrden era incorrecto
 }
 
 /* Get Nivel Por Nombre: */
 
 S_ptr<Nivel> Mundo::get_nivel_por_nombre(string nombre){
+	//Creo un s_ptr nulo
 	S_ptr<Nivel> nivel;
+	//Creo un iterador de la lista de niveles y la recorro hasta encontrar el nivel con el nombre recibido
 	list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 	while ((it != this->niveles.end()) && (nivel.es_nulo())){
 			if (nombre.compare((*it)->get_nombre()) == 0)
 				nivel = (*it);
 			it++;
 	}
-	return nivel;
+	return nivel; //Devuelvo el nivel si se pudo obtener, o el nivel nulo si no se encontro
 }
 
 /* Promover: */
 
 void Mundo::promover(unsigned int nOrden){
+	//Obtengo el nivel a promover
 	S_ptr<Nivel> nivel = get_nivel(nOrden);
+	//Si no es el primer nivel y existe
 	if ((nOrden > 1) && (!nivel.es_nulo())){
+		//Lo remuevo de la lista de niveles
 		this->niveles.remove(nivel);
+		//Calculo la posicion anterior a la que estaba antes
 		unsigned int cont = 1;
 		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 		while (cont < nOrden - 1){
 			it++;
 			cont++;
 		}
-		this->niveles.insert(it, nivel);		
+		//Lo inserto en esta nueva posicion
+		this->niveles.insert(it, nivel);	
+		//Aviso a los observadores que el mundo cambio
+		this->set_cambio();
+		this->avisar_observadores(NULL);		
 	}
-	this->set_cambio();
-	this->avisar_observadores(NULL);
 }
 
 /* Degradar: */
 
 void Mundo::degradar(unsigned int nOrden){
+	//Obtengo el nivel a degradar
 	S_ptr<Nivel> nivel = get_nivel(nOrden);
+	//Si no es el ultimo nivel y existe
 	if ((nOrden < this->niveles.size()) && (!nivel.es_nulo())){
+		//Lo remuevo de la lista de niveles
 		this->niveles.remove(nivel);
+		//Calculo la posicion posterior a la que estaba antes
 		unsigned int cont = 1;
 		list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 		while (cont < nOrden + 1){
 			it++;
 			cont++;
 		}
-		this->niveles.insert(it, nivel);		
+		//Lo inserto en esta nueva posicion
+		this->niveles.insert(it, nivel);
+		//Aviso a los observadores que el mundo cambio
+		this->set_cambio();
+		this->avisar_observadores(NULL);		
 	}
-	this->set_cambio();
-	this->avisar_observadores(NULL);
 }
 
 /* Get Cant Niveles: */
@@ -150,22 +169,25 @@ unsigned int Mundo::get_cant_niveles(){
 /* Chequear mundo: */
 
 char Mundo::chequear_mundo(int &N_Nivel_incorrecto){
-	char error = 0;
+	char error = 0; //Vble que determina el tipo de error encontrado el chequear un nivel deter
 	int cont = 1;
-	N_Nivel_incorrecto = -1;
+	N_Nivel_incorrecto = -1; //Si todos los niveles son correctos esta vble queda en -1
+	//Monto un iterador de niveles y recorro los mismo hasta encontrar uno incorrecto o recorrerlos todos
 	list<S_ptr<Nivel> >::iterator it = this->niveles.begin();
 	while ((it != this->niveles.end()) && (!error)){
+		//Obtengo cada nivel
 		S_ptr<Nivel> nivel = (*it);
-		if (!nivel->get_mapa()->tiene_salida())	error = 1;
+		//Pregunto si tiene salida, si tiene casa de fantasmas y si es congruente
+		if (!nivel->get_mapa()->tiene_salida())	error = E_NO_SALIDA_COD;
 		if (!error)
-			if (!nivel->get_mapa()->tiene_casa_fantasmas()) error = 2;
+			if (!nivel->get_mapa()->tiene_casa_fantasmas()) error = E_NO_CASA_COD;
 		if (!error)
-			if (!nivel->es_congruente()) error = 3;
-		if (error) N_Nivel_incorrecto = cont;
+			if (!nivel->es_congruente()) error = E_NO_CONGR_COD;
+		if (error) N_Nivel_incorrecto = cont; //Si hubo error almaceno el nro de nivel incorrecto
 		it++;
 		cont++;
 	}
-	return error;
+	return error; //Devuelvo el cod de error correspondiente
 }
 
 /* ToXML: */
@@ -240,7 +262,7 @@ bool Mundo::fromXml(char* nombre){
 						xml_elem->QueryIntAttribute("Ancho", &ancho_nivel);
 						xml_elem->QueryIntAttribute("Alto", &alto_nivel);
 						//Agrego el nivel al mundo
-						this->agregar_nivel(nombre_nivel, alto_nivel, ancho_nivel);
+						this->agregar_nivel(nombre_nivel, ancho_nivel, alto_nivel);
 						//Cargo el mapa del nivel desde un xml
 						no_error = this->niveles.back()->fromXml(nombre);
 						//Obtengo el siguiente nivel

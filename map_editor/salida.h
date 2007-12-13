@@ -29,9 +29,6 @@ class Salida : public Modificador {
 	/* Quitate: Dado el mapa pasado por parametro, el elemento se encarga de removerse del mismo. */
 	virtual void quitate(S_ptr<Elemento> instancia, Mapa* mapa);
 
-	/* ///////////////TEMPORAL/////////////// */
-	virtual char* toString();
-
 };
 
 #endif

@@ -22,8 +22,3 @@ CasaSur::CasaSur (int pos_x, int pos_y) : CasaFantasmas(pos_x, pos_y, SUR ){
 char* CasaSur::get_ruta_imagen(){
 		return RUTA_CASA_SUR;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-char* CasaSur::toString(){
-	return "CASA SUR";
-}

@@ -27,8 +27,3 @@ TipoElem EsqNorte::get_tipo(){
 char* EsqNorte::get_ruta_imagen(){
 		return RUTA_ESQ_NORTE;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-char* EsqNorte::toString(){
-	return "ESQ NORTE";
-}
