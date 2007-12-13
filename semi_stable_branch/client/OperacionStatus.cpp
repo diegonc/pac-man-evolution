@@ -111,6 +111,31 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
     bool Encontrado;
     int AnchoMapa=modelo.get_mundo().get_mapa_activo()->get_ancho();
     int AltoMapa=modelo.get_mundo().get_mapa_activo()->get_alto();
+for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
+    OperacionStatus::PosicionJugador& PosJ=*it;
+    Jug=ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
+if (!Jug.es_nulo()){
+	ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
+}else{
+		std::cout << "Agregando nuevo jugador\n";
+		Jug=S_ptr<Jugador>(new Jugador(PosJ.ID));
+		if (PosJ.esPacman){
+		     S_ptr<Personaje> personaje(new PacMan(&(*Jug)));
+		     Jug->set_personaje(personaje);			
+		}else{
+     		     S_ptr<Personaje> personaje(new Fantasma(&(*Jug)));
+		     Jug->set_personaje(personaje);			
+		}
+
+		if (!PosJ.estaVivo){
+		     Jug->get_personaje()->matar();
+		}
+		ModeloServidor::get_instancia()->agregar_jugador(Jug);			
+		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);	
+}
+
+    /*
+    
     for(itjugadores = modelo.get_jugadores().begin();itjugadores != modelo.get_jugadores().end(); ++itjugadores){
         Jug= *itjugadores;
 
@@ -118,6 +143,7 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
         Encontrado=false;
         for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
             OperacionStatus::PosicionJugador& PosJ=*it;
+	    std::cout << "Comparando " << Jug->get_id() << PosJ.ID
             if (Jug->get_id()==PosJ.ID){
                 Encontrado=true;
                 PosJ.marcado=true;
@@ -160,7 +186,7 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
 			
         }
     }
-
+*/
     //itero sobre los personajes y al pacman le seteo el puntaje
     bool salir=false;
     for(itjugadores = modelo.get_jugadores().begin();((itjugadores != modelo.get_jugadores().end()) && (!salir)); ++itjugadores){
