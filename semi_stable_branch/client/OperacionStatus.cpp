@@ -133,7 +133,7 @@ if (!Jug.es_nulo()){
 		ModeloServidor::get_instancia()->agregar_jugador(Jug);			
 		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);	
 }
-
+}
     /*
     
     for(itjugadores = modelo.get_jugadores().begin();itjugadores != modelo.get_jugadores().end(); ++itjugadores){
