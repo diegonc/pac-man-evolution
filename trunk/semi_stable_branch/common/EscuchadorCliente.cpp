@@ -30,7 +30,6 @@ void EscuchadorCliente::run(){
 		}
 	}
 	catch(std::runtime_error &e){
-		std::cerr << e.what() << "\n";
 		throw e;
 		/*salgo del while*/}
 }

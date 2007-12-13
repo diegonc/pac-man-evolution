@@ -29,7 +29,7 @@ void ClientPool::join_all()
         (*it)->join();
 }
 
-const std::list<Cliente*>& ClientPool::get_clientes(){
+const std::list<Cliente*> ClientPool::get_clientes(){
 	return this->clientes;	
 }
 
@@ -46,4 +46,19 @@ void ClientPool::mandar_mensaje_todos(S_ptr<Paquete> mensaje){
 
 unsigned int ClientPool::get_cantidad_clientes(){
 	return this->clientes.size();
+}
+
+void ClientPool::quitar_cliente(unsigned int id_cliente){
+	std::list<Cliente*>::iterator it = clientes.begin();
+    bool elimino = false;
+	
+	while( it != clientes.end() && !elimino ){
+		if( (*it)->get_id() == id_cliente ){
+			clientes.erase(it);
+			elimino = true;
+		}
+		else
+			it++;
+	}
+	
 }

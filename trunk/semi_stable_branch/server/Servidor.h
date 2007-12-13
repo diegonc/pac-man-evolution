@@ -7,12 +7,13 @@
 #include "../common/thread.h"
 #include "ModeloServidor.h"
 #include "../common/smart_pointer.h"
+#include "../common/observador.h"
 #include <map>
 #include <string>
 #include <errno.h>
 #include <signal.h>
 
-class Servidor : public Thread{
+class Servidor : public Thread, public Observador{
 	
 	typedef unsigned int Tipo_Id_Cliente;
 	
@@ -65,7 +66,7 @@ class Servidor : public Thread{
 		
 		void set_cant_max_clientes(unsigned int cant);
 		
-		
+		void actualizar(Observable * observable, void * param);
 		
 };
 #endif /*__SERVIDOR_H__*/
