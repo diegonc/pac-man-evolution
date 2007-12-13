@@ -9,7 +9,6 @@ AM_INIT_AUTOMAKE([1.9.6 -Wall -Werror dist-bzip2])
 
 AC_PROG_CXX
 AC_PROG_CC
-AC_PROG_RANLIB
 # Compiling sources with per-target flags requires AM_PROG_CC_C_O
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
