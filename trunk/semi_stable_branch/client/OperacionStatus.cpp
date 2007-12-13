@@ -140,6 +140,7 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
 		int AnchoMapa=modelo.get_mundo().get_mapa_activo()->get_ancho();
     	int AltoMapa=modelo.get_mundo().get_mapa_activo()->get_alto();
         if (!PosJ.marcado){
+		std::cout << "Agregando nuevo jugador\n";
             PosJ.marcado=true;
 		S_ptr<Jugador> Jug(new Jugador(PosJ.ID));
 		if (PosJ.esPacman){
