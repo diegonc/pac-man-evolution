@@ -131,14 +131,6 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
             //itjugadores=modelo.get_jugadores().erase(itjugadores);
             //con esto alcanza?
         }
-
-
-
-        //seteo el personaje
-        //
-        //seteo si esta vivo o no
-        //
-
     }
 
     //agrego jugadores q aparecieron nuevos en el status
@@ -150,13 +142,21 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
         if (!PosJ.marcado){
             PosJ.marcado=true;
 		S_ptr<Jugador> Jug(new Jugador(PosJ.ID));
-		//tipoo?? protocolo???
-		S_ptr<Personaje> personaje(new Fantasma(&(*Jug)));
-		Jug->set_personaje(personaje);			
+		if (PosJ.esPacman){
+		     S_ptr<Personaje> personaje(new PacMan(&(*Jug)));
+		     Jug->set_personaje(personaje);			
+		}else{
+     		     S_ptr<Personaje> personaje(new Fantasma(&(*Jug)));
+		     Jug->set_personaje(personaje);			
+		}
+
+		if (!PosJ.estaVivo){
+		     Jug->get_personaje()->matar();
+		}
+		
 		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
 		ModeloServidor::get_instancia()->agregar_jugador(Jug);
 			
-            //agregar jugador
         }
     }
 
