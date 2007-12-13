@@ -25,7 +25,7 @@ bool CasaFantasmas::agregate(S_ptr<Elemento> instancia, Mapa* mapa){
 /* Quitate: */
 
 void CasaFantasmas::quitate(S_ptr<Elemento> instancia, Mapa* mapa){
-	Elemento::quitate(instancia, mapa);
+	Estructural::quitate(instancia, mapa);
 	mapa->set_casa_fantasmas(false);
 }
 
