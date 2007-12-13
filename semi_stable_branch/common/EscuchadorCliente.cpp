@@ -17,10 +17,13 @@ EscuchadorCliente::~EscuchadorCliente(){
 }
 
 void EscuchadorCliente::run(){
-	try{
-		S_ptr<Paquete> paquete;
-		Operacion * op;
-		while(true){
+	
+	bool correr = true;
+	
+	S_ptr<Paquete> paquete;
+	Operacion * op;
+	while(correr){
+		try{
 			paquete = cliente->recibir_mensaje();
 			//std::cout << "Recibi un paquete " << (int) paquete->get_tipo();
 			op = paquete->get_operacion();
@@ -28,8 +31,9 @@ void EscuchadorCliente::run(){
 			//std::cout << " y la ejecuto piola\n";
 			delete op;
 		}
+		catch(std::runtime_error &e){
+			correr = false;
+		}	
 	}
-	catch(std::runtime_error &e){
-		throw e;
-		/*salgo del while*/}
+	
 }

@@ -31,13 +31,12 @@ void EscritorCliente::run(){
 		}
 	}
 	catch(std::runtime_error &e){
-		throw e;		
-	}
+		this->cliente->terminar();
+		/*no hago nada ya que sale*/}
 }
 
 void EscritorCliente::terminar(){
 	this->debe_terminar = true;
-	this->e.lanzar_evento();
 }	
 
 void EscritorCliente::encolar_paquete(S_ptr<Paquete> paquete){

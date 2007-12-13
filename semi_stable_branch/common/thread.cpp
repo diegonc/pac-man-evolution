@@ -1,11 +1,13 @@
 #include "thread.h"
 
 void Thread::start(){
+	this->set_corriendo(true);
 	pthread_create(& (this->get_hilo()), NULL, & (Thread::funcion_auxiliar_run), this);
 }
 
 void Thread::join(){
-	pthread_join(this->get_hilo(), NULL);
+	if(esta_corriendo)
+		pthread_join(this->get_hilo(), NULL);
 }
 int Thread::thread_kill(int signal){
 	return pthread_kill(hilo, signal);	
@@ -25,5 +27,9 @@ Thread& Thread::operator=(Thread& t){
 	
 void * Thread::funcion_auxiliar_run(void * param){
 	((Thread*)param)->run();
+	((Thread*)param)->set_corriendo(false);
 	return NULL;
+}
+void Thread::set_corriendo(bool corriendo){
+	esta_corriendo = corriendo;
 }

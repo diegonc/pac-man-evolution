@@ -24,6 +24,7 @@ class Thread{
 		Thread();	
 	
 	private:
+	
 		pthread_t hilo;
 		
 		Thread(Thread &t);
@@ -34,6 +35,9 @@ class Thread{
 		
 		static void * funcion_auxiliar_run(void * param);
 		
+		bool esta_corriendo;
+	
+		void set_corriendo(bool corriendo);
 };
 
 #endif

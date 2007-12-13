@@ -42,7 +42,7 @@ void Socket::cerrar(){
 
 void Socket::escribir( const unsigned char* buf, int cant ) throw(std::runtime_error)
 {
-    int cant_recibidos =0;
+	int cant_recibidos =0;
 	int retorno=0;
 	int cantidad_intentos = 0;
 
@@ -58,9 +58,11 @@ void Socket::escribir( const unsigned char* buf, int cant ) throw(std::runtime_e
 		cant_recibidos += retorno;
 		cantidad_intentos++;
 	}
+
 }
 
 void Socket::recibir( char* buf, int cant ) throw(std::runtime_error) {
+
 	int cant_recibidos =0;
 	int retorno=0;
 	int cantidad_intentos = 0;
@@ -77,6 +79,7 @@ void Socket::recibir( char* buf, int cant ) throw(std::runtime_error) {
 		cant_recibidos += retorno;
 		cantidad_intentos++;
    }
+   
 }
 /*
 std::string Socket::recibir(int cant_caracteres){
@@ -141,5 +144,9 @@ int Socket::get_descriptor(){
 	return this->descriptor;
 }
 bool Socket::esta_descriptor_abierto(){
-	return descriptor >= 0;
+	if(this->descriptor >= 0)
+		return true;
+	else
+		return false;
+	
 }
