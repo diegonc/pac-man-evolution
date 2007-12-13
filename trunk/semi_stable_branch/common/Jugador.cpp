@@ -51,3 +51,6 @@ void Jugador::set_direccion(Direccion  *dir){
 Jugador::~Jugador(){
 	delete this->dir;
 }
+void Jugador::set_puntos(int puntos){
+	this->puntos = puntos;
+}

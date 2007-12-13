@@ -116,6 +116,8 @@ class Jugador{
 		*	@return La cantidad de puntos que posee el jugador
 		*/
 		int get_puntos();
+		
+		void set_puntos(int puntos);
 };
 
 #endif /*__JUGADOR_H__*/
