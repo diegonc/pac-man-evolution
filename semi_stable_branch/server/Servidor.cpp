@@ -5,7 +5,7 @@
 #include "../common/EscritorCliente.h"
 #include "AvisadorNovedades.h"
 
-#define _DEFAULT_CANT_MIN	1
+#define _DEFAULT_CANT_MIN	2
 #define _DEFAULT_CANT_MAX	10
 
 const int Servidor::SENIAL_CANCELAR = SIGUSR1;	
@@ -97,13 +97,10 @@ void Servidor::run(){
 				//le mando a todos los clientes el mensje de start
 				std::list<Cliente*> lista_clientes = pool.get_clientes();
 				std::list<Cliente*>::const_iterator it = lista_clientes.begin();
-				std::cout << "hay " << pool.get_cantidad_clientes() << " clientes \n";
 				while (it != lista_clientes.end()){
 					Cliente* Client= *it;
-					std::cout << "1----------\n";
 					S_ptr<Paquete> paquete_start(new PaqueteStart(Client->get_id()));
 					Client->get_escritor().encolar_paquete(paquete_start);
-					std::cout << "2------------\n";
 					++it;
 				}
 				//setteo el flag para que no lo mande de nuevo
