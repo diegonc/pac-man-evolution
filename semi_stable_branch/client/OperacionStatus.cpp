@@ -117,7 +117,7 @@ for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->b
 if (!Jug.es_nulo()){
 	ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
 }else{
-		std::cout << "Agregando nuevo jugador\n";
+
 		Jug=S_ptr<Jugador>(new Jugador(PosJ.ID));
 		if (PosJ.esPacman){
 		     S_ptr<Personaje> personaje(new PacMan(&(*Jug)));
