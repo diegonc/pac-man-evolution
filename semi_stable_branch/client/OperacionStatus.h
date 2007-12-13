@@ -8,6 +8,8 @@ class OperacionStatus:public Operacion{
     public:
 
     struct PosicionJugador{
+	bool estaVivo;
+	bool esPacman;
         unsigned int ID;
         unsigned int Arista;
         unsigned int Posic;

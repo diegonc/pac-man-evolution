@@ -30,10 +30,18 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
     |Posicion 0(40)          |... ... ... ... ... ... ... ... .|Posicion CantJug-1(40)          |
     --------------------------------------------------------------------------------------------
 
+
+................... Mod
     ____________________________________________________________________________________________
     |                                      Posicion(40)                                         |
     --------------------------------------------------------------------------------------------
     |ID(16)          |Arista(17)             |Posicion(6)             |Direccion(1)             |
+    --------------------------------------------------------------------------------------------
+................... Modificacion :P
+    ____________________________________________________________________________________________
+    |                                      Posicion(40)                                         |
+    --------------------------------------------------------------------------------------------
+    |Vivo(1)  |Rol(1)  |ID(14)     |Arista(17)       |Posicion(6)        |Direccion(1)          |
     --------------------------------------------------------------------------------------------
 
     ____________________________________________________________________________________________
@@ -145,8 +153,13 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
                 EsteONorte=0;
             }
 
+	    unsigned int estaVivo=(Jug->get_personaje()->esta_vivo())?1:0;
+	    unsigned int esPacman=(Jug->get_personaje()->get_tipo()==Personaje::pacman)?1:0;
+
             //escribo el id del jugador
-            bs.append( 16,  Jug->get_id());
+	    bs.append(1,estaVivo);
+	    bs.append(1,esPacman);
+            bs.append( 14,  Jug->get_id());
             bs.append( 17,  Arista);
             bs.append( 6,  PosCuantizada);
             bs.append( 1,  EsteONorte);
