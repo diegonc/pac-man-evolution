@@ -61,7 +61,7 @@ Paquete* Paquete::crear( int tipo , int id_cliente ){
 			p = new PaqueteMensaje();
 			break;
 		default:
-			p = 0;
+			p = NULL;
 	}
 	return p;
 }

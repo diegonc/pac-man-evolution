@@ -94,12 +94,14 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 	if( version == _VERSION_ACEPTADA ) {
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
-		S_ptr<Paquete> p(Paquete::crear( tipo, get_id() ));
-		if(! p.es_nulo() ){
-			p->deserialize( bs );
-			sptr_paquete = p;
+		Paquete * paquete = Paquete::crear( tipo, get_id() );
+      if( paquete != NULL){		
+         S_ptr<Paquete> p(paquete);
+   		if(! p.es_nulo() ){
+			   p->deserialize( bs );
+			   sptr_paquete = p;
+		   }
 		}
-		
 		
 	}
 	return sptr_paquete;
