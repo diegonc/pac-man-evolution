@@ -198,10 +198,10 @@ void MapaImpSet::refresh( std::list< S_ptr<Comestible> >& comestibles_totales ){
 	it_comestibles = comestibles_totales.begin();
 	S_ptr<Comestible> c_aux; 
 	while(it_comestibles != comestibles_totales.end() ){
-		/e_aux = get_estructural((*it_comestibles)->get_posicion());
+		e_aux = get_estructural((*it_comestibles)->get_posicion());
 		if(! e_aux.es_nulo() ){
-			pasillo = dynamic_cast<EstructuralPasillo *>(&(*e_aux));		
-			if(pasillo != NULL){
+			//pasillo = dynamic_cast<EstructuralPasillo *>(&(*e_aux));		
+			//if(pasillo != NULL){
 				c_aux = *it_comestibles;
 				//pasillo->set_comida(c_aux);	
 				
@@ -211,11 +211,11 @@ void MapaImpSet::refresh( std::list< S_ptr<Comestible> >& comestibles_totales ){
 				//std::cout << c_aux->get_posicion() << "\n";
 				//SETTEAR LA POSICION DEL COMESTIBLE
 				comestibles.push_back(c_aux);
-			}			
+			//}			
 		}
 		++it_comestibles;
 		
 	}
-	std::cout << "<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>\n";
+	
 	//std::cout << "Recarge " << comestibles_totales.size() << " comestibles\n";
 }
