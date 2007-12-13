@@ -1,6 +1,6 @@
-# configure.ac
+dnl configure.ac
 
-#  robado de http://live.gnome.org/Create_a_GTK_Project_using_autotools
+dnl  robado de http://live.gnome.org/Create_a_GTK_Project_using_autotools
 
 AC_PREREQ(2.60)
 AC_INIT([pac-man-evolution], [0.1], [name@domain.com])
