@@ -7,6 +7,7 @@
 /* Constructor: */
 
 Mapa::Mapa(int ancho, int alto){
+	//Si el ancho y alto son validos creo un nuevo mapa, sino lo pongo en estado invalido
 	if ((ancho > 0) && (alto > 0)){
 		this->ancho = ancho;
 		this->alto = alto;
@@ -35,16 +36,17 @@ Mapa::Mapa(int ancho, int alto){
 /* Destructor: */
 
 Mapa::~Mapa(){
-	//Por cada fila elimino las columnas
+	//Por cada fila elimino las columnas del mapa
 	for (int i = 0; i < alto; i++)
 		delete[](this->mapa[i]);
-	//Elimino las filas
+	//Elimino las filas del mapa
 	delete[](this->mapa);
 	//Elimino el grafo de conexiones
 	delete(this->conexiones);
 	//Elimino el recorredor de grafos
 	delete(this->recorredor);
 	this->elementos.clear(); //Vacio la lista de elementos
+	this->desconectados.clear(); //Vacio la lista de desconectados
 }
 
 /* Get Ancho: */
@@ -139,6 +141,7 @@ list<S_ptr<Elemento> >& Mapa::get_elementos(){
 /* Es Congruente: */
 
 bool Mapa::es_congruente(){
+	//Obtengo los desconectados, y si la lista es vacia devuelvo true, sino devuelvo false
 	this->get_desconectados();
 	return (this->desconectados.empty());
 }
@@ -183,8 +186,10 @@ S_ptr<Casillero> Mapa::get_casillero(int pos_x, int pos_y){
 
 void Mapa::conectar(S_ptr<Elemento> elem1, S_ptr<Elemento> elem2){
 	Obj_Nulo nulo;
+	//Creo 2 datos con los elementos pasados por param y hago una conexion entre los mismos
 	Wrapper<DatoVertice> dato1 (new DatoVertice(elem1));
 	Wrapper<DatoVertice> dato2 (new DatoVertice(elem2));
+	//Coloco un arco doble entre los datos (buscando en el grafo a los mismos)
 	this->conexiones->agregar_arco_no_dirigido(dato1, dato2, nulo, 0);
 }
 
@@ -206,6 +211,7 @@ bool Mapa::superficie_disponible(int x, int y, int alto, int ancho){
 	S_ptr<Casillero> casillero = this->get_casillero(x, y);
 	while ((result) && (cont1 < alto)){
 		while ((result) && (cont2 < ancho)){
+			//Si caigo afuera del mapa o el casillero esta ocupado ya corto y devuelvo falso
 			if ((casillero.es_nulo()) || (!casillero->get_estructural().es_nulo()))
 				result = false;
 			cont2++;

@@ -22,8 +22,3 @@ CasaOeste::CasaOeste (int pos_x, int pos_y) : CasaFantasmas(pos_x, pos_y, OESTE 
 char* CasaOeste::get_ruta_imagen(){
 		return RUTA_CASA_OESTE;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-char* CasaOeste::toString(){
-	return "CASA OESTE";
-}

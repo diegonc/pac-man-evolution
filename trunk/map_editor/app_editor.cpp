@@ -54,7 +54,7 @@ void AppEditor::imprimir_error(char codigo, int nroNivel){
 	//Segun el codigo de error, imprimo el error correcto por pantalla.
 	switch (codigo) {
 		case E_NO_SALIDA_COD:{
-			msg = E_NO_SALIDA_TXT 
+			msg = E_NO_SALIDA_TXT;
 			msg += sNroNivel;
 			ventana->mostrar_msg(msg);
 			break; }

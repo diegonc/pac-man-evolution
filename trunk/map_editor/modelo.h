@@ -23,6 +23,9 @@ class Modelo : public Observable {
 
 	/* Constructor: Inicializa el modelo, crea un nuevo mundo vacio. */
 	Modelo();
+	
+	/* Pongo al constructor de copia como privado para que no se pueda copiar al singleton */
+	Modelo(const Modelo &mod){}
 
 	/* Destructor: Libera los recursos consumidos por el modelo. */
 	~Modelo();

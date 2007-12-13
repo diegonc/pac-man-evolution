@@ -15,8 +15,8 @@ class Mapa;
 using namespace std;
 
 /* CLASE ELEMENTO: Esta clase abstracta representa un elemento, ya sea estructural o modificador. El elemento
-   contiene una coordenada de su vertice superior izq, un ancho y un alto, y proporciona metodos para
-   agregarse a un mapa de un nivel determinado, realizando las validaciones pertinentes.
+   contiene una coordenada de su vertice superior izq, un ancho y un alto, y una orientacion, y permite
+   agregarse y quitarse a un mapa de un nivel determinado, realizando las validaciones pertinentes.
    Tambien contiene una orientacion. */
 
 class Elemento {
@@ -84,6 +84,7 @@ class Elemento {
 	
 	//operadores de comparacion
 	
+	//Compara a dos elementos por su posicion
 	friend bool operator<(Elemento &elem1, Elemento &elem2){
 		if (elem1.get_pos_x() < elem2.get_pos_x())
 			return true;
@@ -93,9 +94,6 @@ class Elemento {
 			else
 				return false;
 	}
-
-	/* ///////////////TEMPORAL/////////////// */
-	virtual char* toString() = 0;
 	
 };
 

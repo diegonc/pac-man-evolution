@@ -56,9 +56,6 @@ class Casillero {
 	   primero remueve ese y luego el estructural.
 	   Si pudo eliminar devuelve true, sino devuelve false. */
 	bool remover_estructural();
-
-	/* //////////TEMPORAL////////// */
-	void imprimir();
 	
 };
 

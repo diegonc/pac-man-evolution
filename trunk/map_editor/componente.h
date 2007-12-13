@@ -17,7 +17,7 @@ class Componente {
 
 	public:
 
-	  /* Constructor: Inicializa a la componente como no habitable y sin posible conexion */
+	  /* Constructor: Inicializa a la componente como habitable y sin posible conexion */
 	  Componente();
 
 	  /* Set Habitable: Asigna el estado del componente (habitable o no) */

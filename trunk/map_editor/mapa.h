@@ -12,8 +12,12 @@
 #include "../common/grafo.h"
 #include "../common/vertice.h"
 #include "../common/arco.h"
+
+/* Se utiliza Wrapper para que en el grafo de conexiones se hagan las comparaciones
+   entre los datos y no entre las referencias a los mismos */
 #include "../common/wrapper.h"
-#include "obj_nulo.h"
+
+#include "obj_nulo.h" /* Representa una clase vacia, para poner como tipo de datos de aristas */
 #include <list>
 
 class Elemento;
@@ -35,7 +39,7 @@ class Mapa {
 		Grafo<Wrapper<DatoVertice>, Obj_Nulo>* conexiones; //Grafo que contiene las conexiones entre los elementos estructurales
 		RecorredorGrafo<Wrapper<DatoVertice>, Obj_Nulo>* recorredor; //Objeto que se encarga de recorrer el grafo de conexiones para encontrar los vertices desconectados
 		list<S_ptr<Elemento> > elementos; //Lista que contiene los elementos del mapa
-		list<S_ptr<Elemento> > desconectados; //Lista que contiene los elementos desconectados
+		list<S_ptr<Elemento> > desconectados; //Lista que contiene los elementos actualmente desconectados
 		bool salida; //Booleano que controla si el mapa tiene o no salida de pacman
 		bool casa; //Booleano que controla si el mapa tiene o no casa de fantasmas
 	
@@ -69,7 +73,7 @@ class Mapa {
 	bool es_congruente();
 
 	/* Get Casillero: Devuelve un puntero al casillero que se encuentra en las posiciones pasadas por parametro.
-	   Si las mimas son invalidas devuelve NULL. */
+	   Si las mismas son invalidas devuelve NULL. */
 	S_ptr<Casillero> get_casillero(int pos_x, int pos_y);
 
 	/* Conectar: Busca los 2 elementos pasados por parametro en el mapa y si los encuentra los conecta */

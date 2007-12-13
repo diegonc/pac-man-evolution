@@ -39,8 +39,10 @@ Mundo* Modelo::get_mundo(){
 /* Set Mundo: */
 
 void Modelo::set_mundo(Mundo* nuevo_mundo){
+	//Si el modelo tenia un mundo lo elimino
 	if (this->mundo != NULL)
 		delete(this->mundo);
+	//Asigno el nuevo mundo al modelo y aviso a los observadores que el mundo cambio
 	this->mundo = nuevo_mundo;
 	this->set_cambio();
 	this->avisar_observadores(NULL);	

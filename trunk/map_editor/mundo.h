@@ -71,9 +71,9 @@ class Mundo : public Observable {
 	
 	/* Chequear mundo: Chequea nivel por nivel hasta que uno sea incorrecto y carga un numero del nivel con error
 					   y devuelve el codigo de error : - 0 si el mundo es correcto
-								  			  		   - 1 si el error es que el nivel no tiene salida de pacman
-								  			  		   - 2 si el error es que el nivel no tiene casa de fantasmas
-								  			  		   - 3 si el nivel no tiene una unica componente conexa.
+								  			  		   - E_NO_SALIDA_COD si el error es que el nivel no tiene salida de pacman
+								  			  		   - E_NO_CASA_COD si el error es que el nivel no tiene casa de fantasmas
+								  			  		   - E_NO_CONGR_COD si el nivel no tiene una unica componente conexa.
 		Devuelve -1 como numero de nivel incorrecto, si todos son correctos. */
 	char chequear_mundo(int &N_Nivel_incorrecto);
 	

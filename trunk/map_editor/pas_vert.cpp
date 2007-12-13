@@ -27,8 +27,3 @@ TipoElem PasilloVert::get_tipo(){
 char* PasilloVert::get_ruta_imagen(){
 		return RUTA_PAS_VERT;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-char* PasilloVert::toString(){
-	return "PASILLO VERTICAL";
-}

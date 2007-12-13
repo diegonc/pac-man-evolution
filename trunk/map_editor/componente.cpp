@@ -7,7 +7,7 @@
 /* Constructor: */
 
 Componente::Componente(){
-	this->habitable = false;
+	this->habitable = true;
 	S_ptr<Punto> pto_nulo;
 	this->posib_conexion = pto_nulo;
 }

@@ -18,9 +18,3 @@ TipoElem Power_Up::get_tipo(){
 char* Power_Up::get_ruta_imagen(){
 		return RUTA_POWER_UP;
 }
-
-/* ///////////////TEMPORAL/////////////// */
-
-char* Power_Up::toString(){
-	return "POWER UP";
-}

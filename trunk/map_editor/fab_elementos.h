@@ -16,6 +16,11 @@
 #include "casa_este.h"
 #include "casa_oeste.h"
 #include "casa_norte.h"
+#include "bif_este.h"
+#include "bif_oeste.h"
+#include "bif_sur.h"
+#include "bif_norte.h"
+#include "cruce.h"
 #include "power_up.h"
 #include "bonus.h"
 #include "salida.h"
@@ -56,6 +61,11 @@ class Fab_Elementos {
 	   Si pudo construir devuelve el elemento, sino devuelve NULL. */
 
 	S_ptr<Elemento> construir_casa (int pos_x, int pos_y, Orientacion orientacion);
+	
+	/* Construir Bifur: Construye una bifurcacion segun la orientacion pasada por parametro, en las pos_x, pos_y.
+	   Si pudo construir devuelve el elemento, sino devuelve NULL. */
+
+	S_ptr<Elemento> construir_bifurc (int pos_x, int pos_y, Orientacion orientacion);
 
 };
 
