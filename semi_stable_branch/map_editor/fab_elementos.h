@@ -20,6 +20,10 @@
 #include "bif_oeste.h"
 #include "bif_sur.h"
 #include "bif_norte.h"
+#include "portal_este.h"
+#include "portal_oeste.h"
+#include "portal_sur.h"
+#include "portal_norte.h"
 #include "cruce.h"
 #include "power_up.h"
 #include "bonus.h"
@@ -66,6 +70,11 @@ class Fab_Elementos {
 	   Si pudo construir devuelve el elemento, sino devuelve NULL. */
 
 	S_ptr<Elemento> construir_bifurc (int pos_x, int pos_y, Orientacion orientacion);
+	
+	/* Construir Portal: Construye un portal segun la orientacion pasada por parametro, en las pos_x, pos_y.
+	   Si pudo construir devuelve el elemento, sino devuelve NULL. */
+
+	S_ptr<Elemento> construir_portal (int pos_x, int pos_y, Orientacion orientacion);
 
 };
 

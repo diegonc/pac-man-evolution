@@ -21,6 +21,9 @@ S_ptr<Elemento> Fab_Elementos::construir (TipoElem tipo, int pos_x, int pos_y, O
 		case BIFUR:
 			elemento = construir_bifurc(pos_x, pos_y, orientacion);
 			break;
+		case PORTAL:
+			elemento = construir_portal(pos_x, pos_y, orientacion);
+			break;
 		case CRUCE: {
 			S_ptr<Elemento> cruce (new Cruce(pos_x, pos_y));
 			elemento = cruce;
@@ -150,6 +153,36 @@ S_ptr<Elemento> Fab_Elementos::construir_bifurc (int pos_x, int pos_y, Orientaci
 		case SUR: {
 			S_ptr<Elemento> bif_sur (new BifSur(pos_x, pos_y));
 			elemento = bif_sur;
+			break;
+		}
+		case NULA:;
+	}
+	return elemento;
+}
+
+/* Construir Portal: */
+
+S_ptr<Elemento> Fab_Elementos::construir_portal (int pos_x, int pos_y, Orientacion orientacion){
+	S_ptr<Elemento> elemento;
+	switch (orientacion) {
+		case ESTE: {
+			S_ptr<Elemento> portal_este (new PortalEste(pos_x, pos_y));
+			elemento = portal_este;
+			break;
+		}
+		case OESTE: {
+			S_ptr<Elemento> portal_oeste (new PortalOeste(pos_x, pos_y));
+			elemento = portal_oeste;
+			break;
+		}
+		case NORTE: {
+			S_ptr<Elemento> portal_norte (new PortalNorte(pos_x, pos_y));
+			elemento = portal_norte;
+			break;
+		}
+		case SUR: {
+			S_ptr<Elemento> portal_sur (new PortalSur(pos_x, pos_y));
+			elemento = portal_sur;
 			break;
 		}
 		case NULA:;
