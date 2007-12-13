@@ -10,6 +10,8 @@ class PaqueteStatus: public PaqueteStatusCommon{
       ~PaqueteStatus();
 	
 		void deserialize( InputBitStream& bs );
+
+      Operacion * get_operacion();
 		
 };
 

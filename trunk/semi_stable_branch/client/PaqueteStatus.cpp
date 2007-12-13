@@ -42,3 +42,7 @@ void PaqueteStatus::deserialize( InputBitStream& bs ){
 	Oper = oper;
 	
 }
+Operacion * PaqueteStatus::get_operacion(){
+   return Oper;
+}
+
