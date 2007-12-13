@@ -34,6 +34,36 @@ void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatu
     float Fila=floor(PosJ.Arista / (AnchoMapa * 2)); // ver 1ra fil y la ultima
     bool Vertical=!(temp%2); //corresponde a una arista vertical
  //   std::cout << "la arista es: " << (Vertical?"Vertical":"Horizontal") << std::endl;
+//seteo el estado del Jugador;
+    if (PosJ.esPacman){ //si recibo q es pacman
+	//y en mi modelo es fantasma
+	if (Jug->get_personaje()->get_tipo()==Personaje::fantasma){
+		S_ptr<Personaje> personaje(new PacMan(&(*Jug)));
+		Jug->set_personaje(personaje);
+//		personaje->set_jugador(Jug);
+	}
+    }else{// si recibo q es fantasma
+	//y en mi modelo es pacman
+	if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
+		S_ptr<Personaje> personaje(new Fantasma(&(*Jug)));
+		Jug->set_personaje(personaje);
+//		personaje->set_jugador(Jug);
+	}
+    }
+
+    if (PosJ.estaVivo){//si me llego q estaba vivo
+	//si no esta vivo, lo revivo
+	if (!(Jug->get_personaje()->esta_vivo())){
+	      Jug->get_personaje()->revivir();
+	}
+    }else{ //si me llego q estaba muerto
+	//si esta vivo, lo mato
+	if (Jug->get_personaje()->esta_vivo()){
+	      Jug->get_personaje()->revivir();
+	}
+    }
+//END seteo el estado del jugador;
+
 
 
 	double temporal;

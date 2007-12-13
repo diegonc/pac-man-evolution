@@ -20,7 +20,9 @@ void PaqueteStatus::deserialize( InputBitStream& bs ){
     temp=bs.read(32);
     oper->set_puntuacion(temp);
     for(unsigned int NroJug=0;NroJug<CantidadJugadores;++NroJug){
-        PosJugad.ID=bs.read(16);
+	PosJugad.estaVivo=(bs.read(1))?true:false;
+	PosJugad.esPacman=(bs.read(1))?true:false;
+        PosJugad.ID=bs.read(14);
         PosJugad.Arista=bs.read(17);
         PosJugad.Posic=bs.read(6);
         PosJugad.direcc=bs.read(1);
