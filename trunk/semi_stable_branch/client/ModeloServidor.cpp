@@ -22,3 +22,17 @@ ModeloServidor::~ModeloServidor(){
 void ModeloServidor::run(){
 	
 }
+void ModeloServidor::quitar_jugador(unsigned int id){
+	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+	
+	S_ptr<Jugador> resultado_busqueda;
+	bool encontro = false;
+	
+	while( (it_jugadores != this->jugadores.end()) && (!encontro) ){
+		if( (*it_jugadores)->get_id() == id){
+			encontro = true;
+			jugadores.erase(it_jugadores);
+		}
+		it_jugadores++;
+	}
+}

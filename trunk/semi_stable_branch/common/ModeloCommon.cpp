@@ -28,15 +28,17 @@ const std::list<S_ptr<Jugador> >& ModeloCommon::get_jugadores(){
 }
 S_ptr<Jugador> ModeloCommon::get_jugador(int id){
 	
-	std::list< S_ptr<Jugador> >::iterator it_jugadores;
+	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
 	
 	S_ptr<Jugador> resultado_busqueda;
+	bool encontro = false;
 	
-	for(it_jugadores = this->jugadores.begin(); 
-		it_jugadores != this->jugadores.end(); it_jugadores++){
-		
-		if( (*it_jugadores)->get_id() == id)
+	while( (it_jugadores != this->jugadores.end()) && (!encontro) ){
+		if( (*it_jugadores)->get_id() == id){
+			encontro = true;
 			resultado_busqueda = *it_jugadores;
+		}
+		it_jugadores++;
 	}
 	return resultado_busqueda;
 }

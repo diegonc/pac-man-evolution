@@ -35,6 +35,8 @@ class ModeloServidor : public ModeloCommon {
 		*	@brief	Implementacion del metodo para el thread
 		*/
 		void run();
+   
+   		void quitar_jugador(unsigned int id);
 };
 
 
