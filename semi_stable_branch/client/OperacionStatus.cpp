@@ -156,14 +156,14 @@ Encontrado=false;
 	
 		//std::cout << "Estado Comest:" <<PosE.Estado << "\n";
 	if (PosE.Estado){
-		std::cout << "'supuestamente' agregando comestibles\n";
-		//Posicion p(0,0);
-		//S_ptr<Comestible> c_nuevo(fab.construir(PosE.Tipo,p));
-		//comestibles.push_back(c_nuevo);            
+		
+		Posicion p(Fila,Col);
+		S_ptr<Comestible> c_nuevo(fab.construir(PosE.Tipo,p));
+		comestibles.push_back(c_nuevo);            
 		//agregar Elemento posicion(Col,Fila)
         }else{
             //eliminar Elemento posicion(Col,Fila)
         }
     }
-   // modelo.get_mundo().get_mapa_activo()->refresh(comestibles);
+    modelo.get_mundo().get_mapa_activo()->refresh(comestibles);
 }

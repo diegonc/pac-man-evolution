@@ -12,12 +12,8 @@ class Thread{
 	public:
 			
 		void start();
-	
-		/*void join(Thread *t);
-	
-		void join(pthread_t hilo);*/
 
-      void join();
+      	void join();
 	
 		int thread_kill(int signal);
 	

@@ -31,7 +31,7 @@ void EscritorCliente::run(){
 		}
 	}
 	catch(std::runtime_error &e){
-		throw e;	
+		throw e;		
 	}
 }
 

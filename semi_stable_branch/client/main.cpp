@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	try{
 
 		//////////POR AHORA HARDCODED////////////////////
-		std::string ip("201.231.232.11");
+		std::string ip("201.231.232.12");
 		unsigned int short puerto = 7777;
 		socket->conectar(ip, puerto);
 		Cliente cliente_del_modelo(1, socket); //WHAT ?????

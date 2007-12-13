@@ -65,9 +65,9 @@ Servidor::~Servidor()
 		delete socket;
 }
 void Servidor::run(){
- 	///SACAAARRRR////
+ 	
 	AvisadorNovedades avisador(&this->pool);
-	///////////////
+	
 	parar = false;  
 	bool ya_mando_start = false;
 	
@@ -84,45 +84,52 @@ void Servidor::run(){
 			ModeloServidor::get_instancia()->agregar_jugador(cliente_nuevo->get_jugador());
 			//le manda el paquete init
 			bool es_pacman = cliente_nuevo->get_jugador()->get_personaje()->get_tipo() == Personaje::pacman;
-			std::cout << "es: " << (es_pacman?"Pacman":"Fantasma") << std::endl;
 			S_ptr<Paquete> paquete_init(new PaqueteInit(es_pacman,ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()));
 			cliente_nuevo->get_escritor().encolar_paquete(paquete_init);
-	
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
-			//S_ptr<Paquete> paquete_start(new PaqueteStart(40)); //TODO: <<---CAMBIARRRARRR
 			if( (pool.get_cantidad_clientes() == cant_min_clientes) && (!ya_mando_start) ){
+				//espero los 5 segundos que piden
 				sleep(5);
+				//comienzo el modelo y el hilo avisador
 				ModeloServidor::get_instancia()->start(); 
 				avisador.start();
-				
-				for (std::list<Cliente*>::const_iterator it=pool.get_clientes().begin();it!=pool.get_clientes().end();++it){
-					Cliente* Client=*it;
+				//le mando a todos los clientes el mensje de start
+				std::list<Cliente*> lista_clientes = pool.get_clientes();
+				std::list<Cliente*>::const_iterator it = lista_clientes.begin();
+				std::cout << "hay " << pool.get_cantidad_clientes() << " clientes \n";
+				while (it != lista_clientes.end()){
+					Cliente* Client= *it;
+					std::cout << "1----------\n";
 					S_ptr<Paquete> paquete_start(new PaqueteStart(Client->get_id()));
 					Client->get_escritor().encolar_paquete(paquete_start);
+					std::cout << "2------------\n";
+					++it;
 				}
+				//setteo el flag para que no lo mande de nuevo
 				ya_mando_start = true;
-				////////////////////////////////////////
-				////TODO HACER JOIN////////////////////
-				///////////////////////////////////////
 			}
 			else{
+				//si se agrega un nuevo cliente le mando el mensaje de start
 				if( ( pool.get_cantidad_clientes() > cant_min_clientes) &&
 					(pool.get_cantidad_clientes() < cant_max_clientes) ){
 						S_ptr<Paquete> paquete_start(new PaqueteStart(cliente_nuevo->get_id()));
 						cliente_nuevo->get_escritor().encolar_paquete(paquete_start);
 					}
 			}
+			//si la cantidad de maxima, termino de escuchar
 			if(pool.get_cantidad_clientes() == cant_max_clientes)
 				parar = true;
 		}
-    } catch( std::runtime_error e ) {
+	} 
+	catch( std::runtime_error e ) {
 	    // Si es interrumpido.
     }
 	avisador.parar();
 	avisador.join();
 	ModeloServidor::get_instancia()->join();
-    pool.join_all();
+	pool.join_all();
+	
 }
 
 void Servidor::set_cant_min_clientes(unsigned int cant){
@@ -133,4 +140,9 @@ void Servidor::set_cant_max_clientes(unsigned int cant){
 	if(cant > cant_min_clientes)
 		cant_max_clientes = cant;	
 	
+}
+
+void Servidor::actualizar(Observable * observable, void * param){
+	parar = true;
+	pthread_kill(this->get_hilo(),Servidor::SENIAL_CANCELAR );
 }

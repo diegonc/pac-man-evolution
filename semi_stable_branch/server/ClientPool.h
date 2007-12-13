@@ -18,11 +18,13 @@ class ClientPool
 
         void join_all();
 	
-		const std::list<Cliente*>& get_clientes();
+		const std::list<Cliente*> get_clientes();
 	
 		void mandar_mensaje_todos(S_ptr<Paquete> mensaje);
 	
 		unsigned int get_cantidad_clientes();
+	
+		void quitar_cliente(unsigned int id_cliente);
 };
 
 #endif /* __CLIENTPOOL_H__ */
