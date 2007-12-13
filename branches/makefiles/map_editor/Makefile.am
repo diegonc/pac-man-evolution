@@ -60,6 +60,8 @@ pme_editor_SOURCES = \
 
 pme_editor_CPPFLAGS = @GTK_CFLAGS@
 
-pme_editor_LDADD = @GTK_LIBS@
+pme_editor_LDADD = \
+	@GTK_LIBS@ \
+	$(top_builddir)/common/libpme-common.a
 
 CLEANFILES = *~
