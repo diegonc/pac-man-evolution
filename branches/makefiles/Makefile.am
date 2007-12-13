@@ -3,6 +3,6 @@
 
 #  robado de http://live.gnome.org/Create_a_GTK_Project_using_autotools
 
-SUBDIRS = map_editor
+SUBDIRS = common map_editor
 EXTRA_DIST = HACKING
 CLEANFILES = *~

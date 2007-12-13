@@ -18,6 +18,7 @@ AM_PATH_GTK_2_0([2.10.0],,AC_MSG_ERROR([Gtk+ 2.10.0 or higher required.]))
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
 	Makefile
+	common/Makefile
 	map_editor/Makefile
 ])
 AC_OUTPUT
