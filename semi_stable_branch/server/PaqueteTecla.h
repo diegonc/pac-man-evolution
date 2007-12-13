@@ -13,6 +13,7 @@ class PaqueteTecla : public PaqueteTeclaCommon
 
 	    Operacion * get_operacion();
 
+
 		
 };
 

@@ -8,6 +8,9 @@ class PaqueteStatus: public PaqueteStatusCommon{
 		PaqueteStatus();
 
       ~PaqueteStatus();
+
+      Operacion * get_operacion();
+      
 		
 };
 
