@@ -23,6 +23,7 @@ void AvisadorNovedades::run(){
 		while( it != lista_clientes.end() ){
 			try{
 				(*it)->get_escritor().encolar_paquete(paquete_status); 
+				//(*it)->enviar_mensaje(paquete_status);
 			 	++it;
 			}
 			catch(std::runtime_error &e){
