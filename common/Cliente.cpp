@@ -17,7 +17,8 @@ Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket)
 	this->socket = socket;
 	this->escuchador = new EscuchadorCliente(this);
 	this->escritor = new EscritorCliente(this);
-	this->jugador = Tipo_Jugador(new Jugador(id));
+	this->jugador = new Jugador(id);
+	//this->jugador = Tipo_Jugador(new Jugador(id));
 	
 }
 
@@ -68,6 +69,8 @@ Cliente::~Cliente()
 		delete socket;
 	delete escritor;
 	delete escuchador;
+	delete this->jugador;
+	this->jugador = NULL;
 }
 
 void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
@@ -94,10 +97,11 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 	if( version == _VERSION_ACEPTADA ) {
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
+		std::cout << "Me llego un " << tipo << ".\n";
 		Paquete * paquete = Paquete::crear( tipo, get_id() );
-      if( paquete != NULL){		
-         S_ptr<Paquete> p(paquete);
-   		if(! p.es_nulo() ){
+      	if( paquete != NULL){		
+        	S_ptr<Paquete> p(paquete);
+   			if(! p.es_nulo() ){
 			   p->deserialize( bs );
 			   sptr_paquete = p;
 		   }
@@ -115,7 +119,8 @@ Cliente::Tipo_Id Cliente::get_id(){
 EscritorCliente& Cliente::get_escritor(){
 	return *escritor;
 }
-S_ptr<Jugador> Cliente::get_jugador(){
+//S_ptr<Jugador> Cliente::get_jugador(){
+Jugador * Cliente::get_jugador(){
 	return this->jugador;
 }
 void Cliente::terminar(){

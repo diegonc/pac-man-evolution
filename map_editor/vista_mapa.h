@@ -91,8 +91,17 @@ class VistaMapa : public Observador, public Observable {
    
    /* Borrar Casillero Vacio: Quita la imagen del casillero en blanco en las pos x, y*/
 	void borrar_casillero_vacio(int pos_x, int pos_y);
+	
+	/* Liberar superficie: Elimina todos los casilleros vacios delimitados por el vertice superior
+	   izquierdo (pos_x, pos_y) y el tamaño pasado por parametro. */
+	void liberar_superficie (int pos_x, int pos_y, int ancho, int alto);	
 
-   	/* Click Handler: Se encarga de realizar una accion cuando se clickea al mapa
+	/* Rellenar superficie: Rellena el area delimitada por el vertice superior
+	   izquierdo (pos_x, pos_y) y el tamaño pasado por parametro
+	   con casilleros vacios.   */
+	void rellenar_superficie (int pos_x, int pos_y, int ancho, int alto);	
+
+	/* Click Handler: Se encarga de realizar una accion cuando se clickea al mapa
    	   en una posicion determinada */
    	static gboolean click_handler (GtkWidget *widget, GdkEventButton *event, gpointer data);
    

@@ -30,9 +30,8 @@ VistaMapa::VistaMapa(){
 	this->pixbuf_vacio = gdk_pixbuf_new_from_file(RUTA_VACIO, &error);
 	this->pixbuf_marca = gdk_pixbuf_new_from_file(RUTA_MARCA, &error);
 	
-	//Creo un actualizador de marcas y lo hago correr
+	//Creo un actualizador de marcas
 	this->actualizador = new ActualizadorMarcas(this);
-	//this->actualizador->start();
 }
 
 //Destructor:
@@ -44,9 +43,6 @@ VistaMapa::~VistaMapa(){
 		this->liberar_matriz(this->imag_modif);
 		this->liberar_matriz(this->marcas);
 	}
-	//Freo la ejecucion del actualizador y le hago join
-	//this->actualizador->frenar_ejecucion();
-	//this->actualizador->join();
 	//Borro el actualizador de marcas
 	delete (this->actualizador);
 }
@@ -165,6 +161,8 @@ void VistaMapa::dibujar_elemento(S_ptr<Elemento> elem){
 		int pos_y = elem->get_pos_y();
 		//Si es un estructural
 		if (elem->es_estructural()){
+			//Libero la superficie para el elemento
+			this->liberar_superficie(pos_x, pos_y, elem->get_ancho(), elem->get_alto());
 			//Creo un nuevo fixed, y la imagen del estructural traida desde el archivo.
 			fixed = gtk_fixed_new();
 			imagenEstruc = gtk_image_new();
@@ -232,6 +230,8 @@ void VistaMapa::borrar_elemento(S_ptr<Elemento> elem){
 						this->imagenes[i][j] = NULL;
 						this->imag_modif[i][j] = NULL;
 					}
+				//Relleno con casilleros vacios el hueco que quedo
+				this->rellenar_superficie(pos_x, pos_y, ancho, alto);
 			} else {
 				//Si es un modificador remuevo la imagen del mismo del fixed adecuado, y tmb de la matriz de referencias
 				//a imagenes de modificadores
@@ -255,23 +255,27 @@ void VistaMapa::borrar_casillero_vacio(int pos_x, int pos_y){
 /* Agregar Elemento: */
 
 void VistaMapa::agregar_elemento(int pos_x, int pos_y){
-	
 	//Me fijo en el control de seleccion el tipo y orientacion de la ficha seleccionada
 	TipoElem tipo = ControlSeleccion::get_instance()->get_tipo_selec();
 	Orientacion orientacion = ControlSeleccion::get_instance()->get_orientacion_selec();
 	//Intento agregar al nivel una ficha con esos datos
 	if (this->nivel->agregar_elemento(tipo, pos_x, pos_y, orientacion)){
-		//Si se pudo agregar, grafico el elemento agregado
+		//Obtengo el elemento
 		S_ptr<Casillero> casillero = this->nivel->get_mapa()->get_casillero(pos_x, pos_y);
-		S_ptr<Elemento> elem = casillero->get_modificador();
-		if (!casillero->tiene_modificador()){
-			//Si se agrega un estructural primero borro la superficie necesaria en la tabla
+		S_ptr<Elemento> elem;
+		//Si el casillero tiene modif es porq agregue un modificador
+		if (casillero->tiene_modificador())
+			elem = casillero->get_modificador();
+		else //Sino es porque agregue un estructural
 			elem = casillero->get_estructural();
-			for (int i = elem->get_pos_x(); i < elem->get_pos_x() + elem->get_alto(); i++)
-				for (int j = elem->get_pos_y(); j < elem->get_pos_y() + elem->get_ancho(); j++)
-					this->borrar_casillero_vacio(i, j);
-		}
+		//Si se pudo agregar, grafico el elemento agregado
 		this->dibujar_elemento(elem);
+		//Si se agrego un portal grafico el simetrico
+		if (elem->get_tipo() == PORTAL){
+			Portal* portal = dynamic_cast<Portal*> (&(*elem));
+			S_ptr<Elemento> elem_simetrico = portal->get_simetrico(this->nivel->get_mapa());
+			this->dibujar_elemento(elem_simetrico);			
+		}
 		//Aviso que hay un elemento nuevo y mando el nivel
 		this->set_cambio();
 		this->avisar_observadores(&this->nivel);
@@ -287,18 +291,21 @@ void VistaMapa::quitar_elemento(int pos_x, int pos_y){
 	if (!casillero.es_nulo()){
 		//Si lo hay obtengo su elemento, priorizando el modificador
 		S_ptr<Elemento> elem = casillero->get_estructural();
-		
 		if (casillero->tiene_modificador())
 			elem = casillero->get_modificador();
+		//Si se quita un portal obtengo el simetrico para despues borrarlo
+		S_ptr<Elemento> elem_simetrico;
+		if ((!elem.es_nulo()) && (elem->get_tipo() == PORTAL)){
+			Portal* portal = dynamic_cast<Portal*> (&(*elem));
+			elem_simetrico = portal->get_simetrico(this->nivel->get_mapa());		
+		}
 		//Intento quitar al elemento del mapa
 		if ((!elem.es_nulo()) && (this->nivel->quitar_elemento(pos_x, pos_y))){
-			//Si se pudo quitar, borro el elemento de la parte grafica y si es estructural relleno
-			//con casilleros vacios
+			//Si se pudo quitar, borro el elemento de la parte grafica
 			this->borrar_elemento(elem);
-			if (elem->es_estructural())
-				for (int i = elem->get_pos_x(); i < elem->get_pos_x() + elem->get_alto(); i++)
-					for (int j = elem->get_pos_y(); j < elem->get_pos_y() + elem->get_ancho(); j++)
-						this->dibujar_casillero_vacio(i,j);
+			//Si se quito un portal borro el simetrico
+			if (elem->get_tipo() == PORTAL)
+				this->borrar_elemento(elem_simetrico);
 			//Aviso que se quito un elemento y mando el nivel
 			this->set_cambio();
 			this->avisar_observadores(&this->nivel);
@@ -336,6 +343,22 @@ void VistaMapa::desmarcar_elemento(int pos_x, int pos_y){
 		gtk_widget_show_all(fixed); //Muestro el fixed otra vez
 	}
 }
+
+/* Liberar superficie: */
+
+void VistaMapa::liberar_superficie (int pos_x, int pos_y, int ancho, int alto){
+	for (int i = pos_x; i < pos_x + alto; i++)
+			for (int j = pos_y; j < pos_y + ancho; j++)
+				this->borrar_casillero_vacio(i, j);
+}
+
+/* Rellenar superficie: */
+
+void VistaMapa::rellenar_superficie (int pos_x, int pos_y, int ancho, int alto){
+	for (int i = pos_x; i < pos_x + alto; i++)
+		for (int j = pos_y; j < pos_y + ancho; j++)
+			this->dibujar_casillero_vacio(i,j);	
+}	
 
 /* Click Handler: */
 

@@ -21,6 +21,10 @@ class PortalEste : public Portal {
 	
 	private:
 	
+	/* Conectar con Simetrico: Establece un punto de conexion con el elemento simetrico en el mapa pasado
+	   por param. */
+	virtual void conectar_con_simetrico(S_ptr<Elemento> instancia, S_ptr<Elemento> simetrico, Mapa* mapa);
+	
 	/* Get Pos Simetrica: Devuelve la pos simetrica del elem actual, respecto del mapa pasado por param. 
 	   Si el elemento no se encuentra en el limite del mapa devuelve null. */
 	virtual S_ptr<Punto> get_pos_simetrica(Mapa* mapa);
