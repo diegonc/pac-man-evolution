@@ -113,10 +113,9 @@ template <class Tipo> class S_ptr{
 		Tipo& operator*(){
 			if(this->objeto != NULO)
 				return *(this->objeto);
-			else{
-				std::cout << __FILE__ << "\n";
+			else			
 				throw Runtime_Error("Acceso a un smart pointer null!!");
-			}
+			
 		}
 		bool es_nulo(){
 			return this->objeto == NULO;	
