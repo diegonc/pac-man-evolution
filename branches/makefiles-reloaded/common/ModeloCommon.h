@@ -66,7 +66,7 @@ class ModeloCommon : public Thread , public Observador, public Observable{
 		*	@return	Smart pointer con el jugador y si no existe un smart pointer
 		*			nulo
 		*/
-		Jugador * get_jugador(int id);
+		Jugador * get_jugador(unsigned int id);
 	
 		/**
 		*	@brief	Permite obtener una lista con todos los jugadores que tiene

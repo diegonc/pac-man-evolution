@@ -41,12 +41,14 @@ class Traductor {
 	   de alto nivel. */
 	void realizar_conexiones(Mapa* mapa, S_ptr<MapaBajoNivel> mapa_bajo_nivel);
 	
-	/* Conectar Casilleros: Conecta 2 estructurales de bajo nivel del mapa de bajo nivel, verificando si hay conexion entre los estructurales
-	   de alto nivel contenidos en los casilleros origen y destino. La orientacion determina si el estructural destino esta al norte, sur, este u oeste
-	   del origen.
+	/* Conectar Casilleros: Conecta 2 estructurales de bajo nivel del mapa de bajo nivel, verificando 
+	   si hay conexion entre los estructurales de alto nivel contenidos en los casilleros origen y destino 
+	   en el mapa de alto nivel. La orientacion determina 
+	   si el estructural destino esta al norte, sur, este u oeste del origen.
 	*/
 
-	void conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> destino, S_ptr<MapaBajoNivel> mapa_bajo_nivel, Orientacion orientacion);
+	void conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> destino, Mapa* mapa_alto_nivel,
+			         S_ptr<MapaBajoNivel> mapa_bajo_nivel, Orientacion orientacion);
 
 };
 

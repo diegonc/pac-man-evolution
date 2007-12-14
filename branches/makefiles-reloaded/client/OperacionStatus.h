@@ -48,7 +48,7 @@ class OperacionStatus:public Operacion{
 
     private:
 
-    	void ModificarPosicionJugador(S_ptr<Jugador> Jug,PosicionJugador& PosJ,int AnchoMapa,int AltoMapa);
+    	void ModificarPosicionJugador( Jugador * Jug,PosicionJugador& PosJ,int AnchoMapa,int AltoMapa);
 
 };
 

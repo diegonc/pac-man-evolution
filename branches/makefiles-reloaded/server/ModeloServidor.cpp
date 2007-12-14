@@ -25,16 +25,17 @@ ModeloServidor::~ModeloServidor(){
 
 void ModeloServidor::agregar_jugador(Jugador * jugador){
 	
-	S_ptr<Personaje> personaje;
+	Personaje * personaje;
 	Jugador * j = jugador;
 	//si es el primer jugador, le asigno el personaje de pacman, si no
 	//fantasma
 	if(jugadores.size() == 0)
-		personaje = S_ptr<Personaje>(new PacMan(j));
+		personaje = new PacMan(j);
 	else
-		personaje = S_ptr<Personaje>(new Fantasma(j));
+		personaje = new Fantasma(j);
+	
 	jugador->set_personaje(personaje);
-
+	
 	this->jugadores.push_back(jugador);
 	
 }
@@ -68,6 +69,7 @@ void ModeloServidor::run(){
 				for(it = lista_jugadores.begin(); it!= lista_jugadores.end(); it++){
 					j = *it;
 					//lo muevo
+					(this->mundo->get_mapa_activo());
 					(this->mundo->get_mapa_activo())->mover(*j, j->get_personaje()->get_velocidad() * intervalo_tiempo);
 					//reviso las colisiones
 					revisar_colisiones(j ,lista_jugadores);
@@ -128,7 +130,7 @@ void ModeloServidor::preparar_partida(){
 	std::list<Jugador *>::iterator it_jugadores;
 	
 	it_estucturales = casa_fantasma.begin();
-	S_ptr<Jugador> j;
+	Jugador * j;
 	Posicion p;
 	for(it_jugadores = lista_jugadores.begin(); it_jugadores != lista_jugadores.end() ; ++it_jugadores){
 		j = *it_jugadores;

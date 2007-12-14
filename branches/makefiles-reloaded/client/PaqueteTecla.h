@@ -6,9 +6,9 @@
 class PaqueteTecla : public PaqueteTeclaCommon
 {
    public:
-		PaqueteTecla(int id_cliente);
+		PaqueteTecla(unsigned int id_cliente);
 
-		PaqueteTecla(int id_cliente,int flecha);
+		PaqueteTecla(unsigned int id_cliente,int flecha);
 
 	   Operacion * get_operacion();
 

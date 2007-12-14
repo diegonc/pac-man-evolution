@@ -1,12 +1,13 @@
 #include "PacMan.h"
 #include <math.h>
 
-#define VELOCIDAD_PACMAN_NORMAL		3	/*3 u/s */
-#define VELOCIDAD_PACMAN_PW		5
-#define RADIO_PACMAN			0.5
+const double PacMan::VELOCIDAD_PACMAN_NORMAL 	= 3;
+const double PacMan::VELOCIDAD_PACMAN_PW 		= 5;
+const double PacMan::RADIO_PACMAN		 		= 0.5;
 
 PacMan::PacMan(Jugador *jugador):Personaje(jugador,RADIO_PACMAN){
 	this->set_power_up(false);
+	this->velocidad = VELOCIDAD_PACMAN_NORMAL;
 }
 
 bool PacMan::comer(Comestible& comestible){
@@ -40,8 +41,8 @@ void PacMan::colision(Jugador * jugador){
 				}
 				else{
 					//obtengo los personajes					
-					S_ptr<Personaje> p_this = this->get_jugador()->get_personaje();
-					S_ptr<Personaje> p_jug = jugador->get_personaje();
+					Personaje * p_this = this->get_jugador()->get_personaje();
+					Personaje * p_jug = jugador->get_personaje();
 					//cambio los personajes
 					jugador->set_personaje(p_this);
 					this->get_jugador()->set_personaje(p_jug);
