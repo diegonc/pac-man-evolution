@@ -46,7 +46,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 		//si no esta tocando alguna pared o esquina prohibida
 		if( !tocando( jugador,donde_estaba, posicion_jugador) ){
 			ComparadorPosicion comp;
-			//si cayeron distinto, me fijo si podia moverse para ese lado
+			//Si no estoy en el mismo estructural
 			if(! comp(posicion_jugador,jugador.get_posicion()) ){
 				//guardo la comida, ya que si la come la tengo que eliminar despues
 				S_ptr<Comestible> com = vecino->get_comida();
@@ -79,6 +79,16 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 	//Se puede modificar el paso como para que no recorra todos los puntos
 	while( phi < DOS_PI && !toca/*2Pi*/ ){
 		Posicion p(	(radio-0.2) * cos(phi) + x0, (radio-0.2) * sin(phi) + y0 );
+		if (p.get_x() < 0)
+			p.set_x(p.get_x() + this->ancho);
+		else
+			if (p.get_x() >= this->ancho)
+				p.set_x(p.get_x() - this->ancho);
+		if (p.get_y() < 0)
+			p.set_y(p.get_y() + this->alto);
+		else
+			if (p.get_y() >= this->alto)
+				p.set_y(p.get_y() - this->alto);
 		e_critico = get_estructural(p);
 		if( e_critico.es_nulo() ){
 			toca = true;
