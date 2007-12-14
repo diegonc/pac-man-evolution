@@ -71,10 +71,12 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
     //obtengo info
     S_ptr<Jugador> Jug;
 
-    std::list< S_ptr<Jugador> >::const_iterator jugadores;
+    std::list<Jugador *> lista_jugadores = Model->get_jugadores();
+	std::list<Jugador * >::const_iterator jugadores;
+	
     bool Salir=false;
     unsigned int PuntajePacman=0;
-    for(jugadores = Model->get_jugadores().begin();((jugadores != Model->get_jugadores().end()) && (!Salir)); ++jugadores){
+    for(jugadores = lista_jugadores.begin();((jugadores != lista_jugadores.end()) && (!Salir)); ++jugadores){
         Jug= *jugadores;
         if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
             Salir=true;
@@ -89,8 +91,8 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
         unsigned int AnchoMapa=Model->get_mundo().get_mapa_activo()->get_ancho();
         unsigned int AltoMapa=Model->get_mundo().get_mapa_activo()->get_alto();
         //itero sobre los jugadores
-        jugadores=Model->get_jugadores().begin();
-        for(jugadores = Model->get_jugadores().begin();((jugadores != Model->get_jugadores().end()) ); ++jugadores){
+        //jugadores=Model->get_jugadores().begin();
+        for(jugadores = lista_jugadores.begin();((jugadores != lista_jugadores.end()) ); ++jugadores){
             Jug= *jugadores;
 
             Posicion P=Jug->get_posicion();

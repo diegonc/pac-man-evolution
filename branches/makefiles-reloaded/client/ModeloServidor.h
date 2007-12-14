@@ -10,7 +10,7 @@
 
 class ModeloServidor : public ModeloCommon {
 
-	typedef S_ptr<Jugador> Tipo_Jugador;
+	//typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	private:
 		

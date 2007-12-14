@@ -12,7 +12,6 @@
 class Portal : public Estructural {
 
 	protected:
-		Mapa* mapa; //Referencia al mapa en el cual se encuentra el portal
 		bool estoy_agregado; //Atrib de uso interno para cortar el agregado de los simetricos
 							 //(asi un portal agrega al simetrico, y este ultimo no vuelve a agregar al primero)
 	public:
@@ -35,6 +34,10 @@ class Portal : public Estructural {
 	
 	/* Get Tipo: Devuelve el tipo del elemento */
 	virtual TipoElem get_tipo();
+		
+	/* Get Simetrico: Devuelve el elem simetrico al actual, respecto del mapa pasado por param.
+	   Si el elemento simetrico no existe devuelve NULL. */
+	S_ptr<Elemento> get_simetrico(Mapa* mapa);
 	
 	private:
 		
@@ -51,9 +54,6 @@ class Portal : public Estructural {
 	   Sino no hace nada. */
 	void quitar_simetrico(Mapa* mapa);
 	
-	/* Conectar Simetricos: Establece la conexion entre simetricos. */
-	void conectar_simetricos(Mapa* mapa);
-	
 	/* Get Pos Simetrica: Devuelve la pos simetrica del elem actual, respecto del mapa pasado por param. 
 	   Si el elemento no se encuentra en el limite del mapa devuelve null. */
 	virtual S_ptr<Punto> get_pos_simetrica(Mapa* mapa) = 0;
@@ -61,6 +61,12 @@ class Portal : public Estructural {
 	/* Estoy en frontera: Devuelve true si el portal esta en la frontera correcta del mapa, false en caso
 	   contrario. */
 	virtual bool estoy_en_frontera(Mapa* mapa) = 0;
+	
+	protected:
+		
+	/* Conectar con Simetrico: Establece un punto de conexion con el elemento simetrico en el mapa pasado
+	   por param, y luego lo conecta. */
+	virtual void conectar_con_simetrico(S_ptr<Elemento> instancia, S_ptr<Elemento> simetrico, Mapa* mapa);
 
 };
 

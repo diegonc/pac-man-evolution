@@ -6,14 +6,12 @@
 /* Constructor: */
 
 PortalSur::PortalSur (int pos_x, int pos_y) : Portal(pos_x, pos_y, PORTAL_HORIZ_ANCHO, PORTAL_HORIZ_ALTO, SUR){
+	//Realizo las conexiones con los elementos adyacentes
+	S_ptr<Punto> conec1 (new Punto(pos_x, pos_y - 1));
+	S_ptr<Punto> conec2 (new Punto(pos_x, pos_y + this->get_ancho()));
 	
-	S_ptr<Punto> conec1 (new Punto(0, pos_y + 1)); //Teleport
-	S_ptr<Punto> conec2 (new Punto(pos_x, pos_y - 1));
-	S_ptr<Punto> conec3 (new Punto(pos_x, pos_y + this->get_ancho()));
-	
-	this->set_posible_conexion(0,0, conec2);
-	this->set_posible_conexion(0,1, conec1);
-	this->set_posible_conexion(0,2, conec3);
+	this->set_posible_conexion(0,0, conec1);
+	this->set_posible_conexion(0,2, conec2);
 }
 
 /* Get Ruta Imagen: */
@@ -51,4 +49,12 @@ bool PortalSur::estoy_en_frontera(Mapa* mapa){
 		return true;
 	else
 		return false;
+}
+
+/* Conectar con Simetrico: */
+
+void PortalSur::conectar_con_simetrico(S_ptr<Elemento> instancia, S_ptr<Elemento> simetrico, Mapa* mapa){
+	S_ptr<Punto> conec (new Punto(0, this->get_pos_y() + 1)); //Teleport
+	this->set_posible_conexion(0,1, conec);
+	Portal::conectar_con_simetrico(instancia, simetrico, mapa);
 }

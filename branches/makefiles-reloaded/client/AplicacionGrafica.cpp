@@ -122,11 +122,12 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 
 	if (escenario.loaded()){
 		Posicion_Graf Pos;
-		std::list< S_ptr<Jugador> >::const_iterator jugadores;
-		S_ptr<Jugador> jp;
+		std::list< Jugador * > lista_jugadores = ModeloServidor::get_instancia()->get_jugadores();
+		std::list< Jugador * >::const_iterator jugadores;
+		Jugador * jp;
 		//obtengo los jugadores
 		//std::cout << "HERE 1 -<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";		  
-		for(jugadores = ModeloServidor::get_instancia()->get_jugadores().begin();jugadores != ModeloServidor::get_instancia()->get_jugadores().end(); ++jugadores){
+		for(jugadores = lista_jugadores.begin();jugadores != lista_jugadores.end(); ++jugadores){
 			jp = *jugadores;
 		   //si el id es 1(deberia ser jugador cliente)
 		   if(jp->get_id() == JugadorLocal::get_instancia()->get_id()){
