@@ -45,6 +45,10 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define BIF_HORIZ_ANCHO 3
 #define CRUCE_ALTO 3
 #define CRUCE_ANCHO 3
+#define PORTAL_VERT_ALTO 3
+#define PORTAL_VERT_ANCHO 1
+#define PORTAL_HORIZ_ALTO 1
+#define PORTAL_HORIZ_ANCHO 3
 
 //Defino rutas de imagenes
 
@@ -65,6 +69,10 @@ enum Orientacion { NULA, ESTE, OESTE, NORTE, SUR };
 #define RUTA_BIF_NORTE "./imagenes/bif_norte.png"
 #define RUTA_BIF_ESTE "./imagenes/bif_este.png"
 #define RUTA_BIF_OESTE "./imagenes/bif_oeste.png"
+#define RUTA_PORTAL_SUR "./imagenes/portal_sur.png"
+#define RUTA_PORTAL_NORTE "./imagenes/portal_norte.png"
+#define RUTA_PORTAL_ESTE "./imagenes/portal_este.png"
+#define RUTA_PORTAL_OESTE "./imagenes/portal_oeste.png"
 #define RUTA_CRUCE "./imagenes/cruce.png"
 #define RUTA_VACIO "./imagenes/vacio.png"
 #define RUTA_MARCA "./imagenes/cruz.png"

@@ -1,9 +1,5 @@
 #include "ModeloServidor.h"
 
-#include "reloj.h"
-#include "PacMan.h"
-#include "Fantasma.h"
-
 ModeloServidor::ModeloServidor(){
 	//cargar_modelo(); // provisorio
 	MundoBasicImp * m = new MundoBasicImp();
@@ -23,24 +19,20 @@ S_ptr<ModeloServidor> ModeloServidor::get_instancia(){
 ModeloServidor::~ModeloServidor(){
 }
 
-void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
-	
-	S_ptr<Personaje> personaje;
-	Jugador * j = &(*jugador);
-	//si es el primer jugador, le asigno el personaje de pacman, si no
-	//fantasma
-	if(jugadores.size() == 0)
-		personaje = S_ptr<Personaje>(new PacMan(j));
-	else
-		personaje = S_ptr<Personaje>(new Fantasma(j));
-	jugador->set_personaje(personaje);
-
-	this->jugadores.push_back(jugador);
-	
-}
-		
 void ModeloServidor::run(){
 	
 }
-
-
+void ModeloServidor::quitar_jugador(unsigned int id){
+	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+	
+	S_ptr<Jugador> resultado_busqueda;
+	bool encontro = false;
+	
+	while( (it_jugadores != this->jugadores.end()) && (!encontro) ){
+		if( (*it_jugadores)->get_id() == id){
+			encontro = true;
+			jugadores.erase(it_jugadores);
+		}
+		it_jugadores++;
+	}
+}

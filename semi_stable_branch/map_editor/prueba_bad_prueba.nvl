@@ -1,8 +1,0 @@
-<Nivel Nombre="prueba" Ancho="3" Alto="3">
-    <Mapa>
-        <Elemento Tipo="1" Orientacion="1" PosX="0" PosY="0" />
-        <Elemento Tipo="8" Orientacion="0" PosX="1" PosY="0" />
-        <Elemento Tipo="8" Orientacion="0" PosX="0" PosY="0" />
-        <Elemento Tipo="7" Orientacion="0" PosX="0" PosY="1" />
-    </Mapa>
-</Nivel>

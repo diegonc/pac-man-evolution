@@ -1,8 +1,8 @@
 #include "ModeloServidor.h"
 
 #include "reloj.h"
-#include "PacMan.h"
-#include "Fantasma.h"
+#include "../common/PacMan.h"
+#include "../common/Fantasma.h"
 
 ModeloServidor::ModeloServidor(){
 	//cargar_modelo(); // provisorio
@@ -20,35 +20,11 @@ S_ptr<ModeloServidor> ModeloServidor::get_instancia(){
 	return instancia;
 }
 
-void ModeloServidor::cargar_modelo(){
-	
-	
-	/************parte provisoria cuando esta todo conectado*******************/
-	//this->mundo = new MundoBasicImp();
-	Jugador *j1 = new Jugador(1);
-	Tipo_Jugador j_1(j1);
-	this->agregar_jugador(j_1);
-	
-	Jugador *j2 = new Jugador(2);
-	Tipo_Jugador j_2(j2);
-	this->agregar_jugador(j_2);
-	
-	Jugador *j3 = new Jugador(3);
-	Tipo_Jugador j_3(j3);
-	this->agregar_jugador(j_3);
-	/**************************************************************************/
-}
-void ModeloServidor::set_mundo(S_ptr<MundoBajoNivel> mundo){
-	this->mundo = mundo;
-	
-	//this->mundo->get_mapa_activo().agregar_observador(this);
-}
 ModeloServidor::~ModeloServidor(){
 }
 
 void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 	
-#ifndef PROGRAMA_CLIENTE
 	S_ptr<Personaje> personaje;
 	Jugador * j = &(*jugador);
 	//si es el primer jugador, le asigno el personaje de pacman, si no
@@ -58,12 +34,11 @@ void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
 	else
 		personaje = S_ptr<Personaje>(new Fantasma(j));
 	jugador->set_personaje(personaje);
-#endif
-	//lo agrego a los jugadores
+
 	this->jugadores.push_back(jugador);
 	
 }
-			
+		
 void ModeloServidor::run(){
 	//si hay mundo
 	if(! mundo.es_nulo()){
@@ -123,32 +98,6 @@ void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
 		j->colisiono(&(*j2));
 	}	
 }
-
-const std::list<S_ptr<Jugador> >& ModeloServidor::get_jugadores(){
-	return this->jugadores;
-}
-S_ptr<Jugador> ModeloServidor::get_jugador(int id){
-	
-	std::list< S_ptr<Jugador> >::iterator it_jugadores;
-	
-	S_ptr<Jugador> resultado_busqueda;
-	
-	for(it_jugadores = this->jugadores.begin(); 
-		it_jugadores != this->jugadores.end(); it_jugadores++){
-		
-		if( (*it_jugadores)->get_id() == id)
-			resultado_busqueda = *it_jugadores;
-	}
-	return resultado_busqueda;
-}
-	
-MundoBajoNivel& ModeloServidor::get_mundo(){
-	return *this->mundo;
-}
-void ModeloServidor::actualizar(Observable * observable, void * param){
-	this->parar = true;
-}
-
 void ModeloServidor::preparar_partida(){
 	this->parar = false;
 	
@@ -199,10 +148,4 @@ void ModeloServidor::preparar_partida(){
 		j->set_posicion(p);
 	}
 }
-bool ModeloServidor::esta_terminado(){
-	return this->termino;
-}
-void ModeloServidor::set_cargado(){
-	this->set_cambio();
-	this->avisar_observadores(NULL);
-}
+

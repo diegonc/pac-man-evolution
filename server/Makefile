@@ -54,8 +54,24 @@ extension_o = o
 # Si no especifica archivos, tomo todos.
 fuentes ?= $(wildcard *.$(extension))
 fuentes_common ?= $(wildcard ../common/*.$(extension))
-#fuentes_map_editor ?= $(wildcard ../map_editor/*.$(extension_o))
-#fuetnes_tiny_xml ?= $(wildcard ../common/tinyxml/*.$(extension_o))
+#fuentes_map_editor = ../map_editor/estructural.cpp \
+                     ../map_editor/modificador.cpp \
+                     ../map_editor/elemento.cpp \
+                     ../map_editor/mapa.cpp \
+                     ../map_editor/casillero.cpp \
+                     ../map_editor/dato_vertice.cpp \
+                     ../map_editor/punto.cpp \
+                     ../map_editor/componente.cpp \
+                     ../map_editor/nivel.cpp \
+                     ../map_editor/fab_elementos.cpp \
+                     ../map_editor/mundo.cpp
+
+
+fuentes_tinyxml ?= $(wildcard ../common/tinyxml/*.$(extension))
+fuentes_map_editor_2 ?= $(wildcard ../map_editor/*.$(extension_o))
+#fuentes_tiny_xml ?= $(wildcard ../common/tinyxml/*.$(extension_o))
+
+fuentes_map_editor = $(subst ../map_editor/editor_mapas.o, ,$(fuentes_map_editor_2))
 
 # REGLAS
 #########
@@ -65,13 +81,17 @@ fuentes_common ?= $(wildcard ../common/*.$(extension))
 all: server
 #o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
 #o_map_editor = $(patsubst %.$(extension),%.o,$(fuentes_map_editor)) #$(o_common_files) $(o_server_files) $(o_tinyxml_files)
-o_map_editor_files ?= $(wildcard ../map_editor/*.$(extension_o))
 
-o_map_editor_files_2 = $(subst ../map_editor/editor_mapas.o, ,$(o_map_editor_files))
-
-o_tinyxml_files ?= $(wildcard ../common/tinyxml/*.$(extension_o))
+#include 
+#include 
+#include 
+#include 
+#include 
+ 
+o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tinyxml))
+#o_map_editor_files = $(patsubst %.$(extension),%.o,$(fuentes_map_editor))
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
-o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_map_editor_files_2) $(o_tinyxml_files)
+o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(fuentes_map_editor) $(o_tinyxml_files)
 
 recompilar:
 	@$(RM) PaqueteInit.o
@@ -88,5 +108,6 @@ server: recompilar $(o_files)
 clean:
 	@$(RM) -fv *.o server \
    rm ../common/*.o \
+   rm o_map_editor_files \
    rm miEjecutable
 

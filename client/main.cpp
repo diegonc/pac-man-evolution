@@ -1,8 +1,8 @@
 #include "Aplicacion.h"
 
 ////////////////////////////////////////
-#include "../../common/client_socket.h"
-#include "../../server/Cliente.h"
+#include "../common/client_socket.h"
+#include "../common/Cliente.h"
 #include <stdexcept>
 #include <string>
 #include <iostream>
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	try{
 
 		//////////POR AHORA HARDCODED////////////////////
-		std::string ip("24.232.20.179");
+		std::string ip("201.231.232.12");
 		unsigned int short puerto = 7777;
 		socket->conectar(ip, puerto);
 		Cliente cliente_del_modelo(1, socket); //WHAT ?????

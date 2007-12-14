@@ -6,11 +6,11 @@
  *
  */
 
-#include "MapaBajoNivel.h"
-#include "Jugador.h"
-#include "Posicion.h"
+#include "../common/MapaBajoNivel.h"
+#include "../common/Jugador.h"
+#include "../common/Posicion.h"
 #include "ComparadorPosicion.h"
-#include "Comestible.h"
+#include "../common/Comestible.h"
 #include <set>
 
 typedef unsigned int Tipo_Dimensiones;

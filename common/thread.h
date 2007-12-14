@@ -12,12 +12,8 @@ class Thread{
 	public:
 			
 		void start();
-	
-		/*void join(Thread *t);
-	
-		void join(pthread_t hilo);*/
 
-      void join();
+      	void join();
 	
 		int thread_kill(int signal);
 	
@@ -28,6 +24,7 @@ class Thread{
 		Thread();	
 	
 	private:
+	
 		pthread_t hilo;
 		
 		Thread(Thread &t);
@@ -38,6 +35,9 @@ class Thread{
 		
 		static void * funcion_auxiliar_run(void * param);
 		
+		bool esta_corriendo;
+	
+		void set_corriendo(bool corriendo);
 };
 
 #endif

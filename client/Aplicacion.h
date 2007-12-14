@@ -9,12 +9,10 @@
 #include "EstadoAplicacion.h"
 #include <stdio.h>
 #include "AplicacionGrafica.h"
-#include "../../server/PaqueteTecla.h"
+#include "PaqueteTecla.h"
 #include "JugadorLocal.h"
-#include "../../common/smart_pointer.h"
-//#include "../../server/Cliente.h"
-#include "../../server/EscritorCliente.h"
-
+#include "../common/smart_pointer.h"
+#include "../common/EscritorCliente.h"
 
 #define APP_NAME	"Pacman-Evolution"
 #define APP_VERSION	"0.5"

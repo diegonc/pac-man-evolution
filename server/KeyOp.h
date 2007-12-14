@@ -1,7 +1,7 @@
 #ifndef __KEYOP_H__
 #define __KEYOP_H__
 
-#include "Operacion.h"
+#include "../common/Operacion.h"
 
 /** @brief Operacion para mover jugadores.
  *

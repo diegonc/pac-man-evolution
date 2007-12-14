@@ -1,29 +1,17 @@
 #ifndef __PAQUETESTATUS_H__
 #define __PAQUETESTATUS_H__
 
-#include "Paquete.h"
-#include "math.h"
-#include <list>
-#include "ModeloServidor.h"
-#include "OperacionStatus.h"
-#include "Jugador.h"
-#include "../common/smart_pointer.h"
+#include "../common/PaqueteStatusCommon.h"
 
-//#include "MapaBajoNivel.h"
-
-class PaqueteStatus: public Paquete
-{
-    private:
-        OperacionStatus* Oper;
-	
-    public:
+class PaqueteStatus: public PaqueteStatusCommon{
+	public:
 		PaqueteStatus();
 
-		void serialize( OutputBitStream& bs );
+      ~PaqueteStatus();
 
-		void deserialize( InputBitStream& bs );
-
-		Operacion* get_operacion();
+      Operacion * get_operacion();
+      
+		
 };
 
 #endif /* __PAQUETESTATUS_H__ */

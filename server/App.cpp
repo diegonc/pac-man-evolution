@@ -4,8 +4,9 @@
 #include "Servidor.h"
 
 //para realizar las conversiones
-#include "../map_editor/mundo.h"
-#include "../map_editor/traductor.h"
+#include "traductor.h"
+//#include "../map_editor/mundo.h"
+
 
 S_ptr<App> App::instancia;
 

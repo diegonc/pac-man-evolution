@@ -1,8 +1,9 @@
 #include "KeyOp.h"
+
 #include "ModeloServidor.h"
 #include "../common/smart_pointer.h"
-#include "Direccion.h"
-#include "Jugador.h"
+#include "../common/Direccion.h"
+#include "../common/Jugador.h"
 
 const int KeyOp::arriba 	= 	0;
 const int KeyOp::abajo  	= 	1;

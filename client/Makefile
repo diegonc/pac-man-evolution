@@ -54,14 +54,8 @@ endif
 
 # Si no especifica archivos, tomo todos.
 fuentes ?= $(wildcard *.$(extension))
-fuentes_common ?= $(wildcard ../../common/*.$(extension))
-fuentes_server_2 ?= $(wildcard ../../server/*.$(extension))
-fuentes_map_2 ?= $(wildcard ../../map_editor/*.$(extension))
-fuentes_tiny_xml ?= $(wildcard ../../common/tinyxml/*.$(extension))
-
-fuentes_server = $(subst ../../server/Main.cpp, ,$(fuentes_server_2))
-fuentes_map = $(subst ../../map_editor/editor_mapas.cpp, ,$(fuentes_map_2))
-
+fuentes_common ?= $(wildcard ../common/*.$(extension))
+fuentes_server = ../server/KeyOp.cpp
 # REGLAS
 #########
 
@@ -69,11 +63,11 @@ fuentes_map = $(subst ../../map_editor/editor_mapas.cpp, ,$(fuentes_map_2))
 
 all: subproyecto
 
+
+
 o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
-o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
 o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server))
-o_map_files = $(patsubst %.$(extension),%.o,$(fuentes_map)) $(o_server_files) $(o_common_files) $(o_tinyxml_files)
-o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_map_files)
+o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_server_files)
 
 recompilar:
 	@$(RM) ../../server/PaqueteInit.o

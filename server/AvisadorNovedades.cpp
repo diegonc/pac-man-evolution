@@ -1,7 +1,7 @@
 #include "AvisadorNovedades.h"
 
 #include "PaqueteStatus.h"
-#include "EscritorCliente.h"
+#include "../common/EscritorCliente.h"
 
 AvisadorNovedades::AvisadorNovedades(ClientPool * clientes){
 	this->clientes = clientes;
@@ -18,10 +18,17 @@ void AvisadorNovedades::run(){
 	while (! _parar ){
 		S_ptr<Paquete> paquete_status(new PaqueteStatus());
 		
-		it = clientes->get_clientes().begin();
-		while( it != clientes->get_clientes().end() ){
-			(*it)->get_escritor().encolar_paquete(paquete_status); 
-			 ++it;
+		std::list<Cliente*> lista_clientes = clientes->get_clientes();
+		it = lista_clientes.begin();
+		while( it != lista_clientes.end() ){
+			try{
+				(*it)->get_escritor().encolar_paquete(paquete_status); 
+			 	++it;
+			}
+			catch(std::runtime_error &e){
+				std::cout << "Entro aca (client pool)\n";
+				clientes->quitar_cliente( (*it)->get_id() );
+			}
 		}
 		usleep(10000);
 	}	
