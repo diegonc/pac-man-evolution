@@ -11,7 +11,7 @@ AvisadorNovedades::~AvisadorNovedades(){
 }
 
 void AvisadorNovedades::run(){
-	
+	_parar = false;	
 	
 	std::list<Cliente*>::const_iterator it;
 	
