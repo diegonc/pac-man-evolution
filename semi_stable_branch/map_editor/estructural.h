@@ -40,8 +40,16 @@ class Estructural : public Elemento {
 	  elemento o false en caso contrario */
 	virtual bool es_punto_conexion(int x, int y);
 	
-	/* Hay Conexion: Dadas (x1,y1) pertenecientes al elemento, y (x2,y2) devuelve true si hay conexion, false en caso contrario. */
-	virtual bool hay_conexion(int x1, int y1, int x2, int y2);
+	/* Get Posible Conexion: Devuelve un punto con la posible conexion del elemento. Si no es un pto de conexion
+	   del elemento devuelve un punto nulo. */
+	virtual S_ptr<Punto> get_posible_conexion(int x, int y);
+	
+	/* Hay Conexion: Dadas (x1,y1) pertenecientes al elemento, y (x2,y2) devuelve true si: 
+	   - Hay conexion en (x1,xy) con un casillero vacio en (x2,y2).
+	   - (x1,y1) y (x2,y2) pertencen al elementos.
+	   - Hay conexion mutua entre (x1,y1) pertenciente al elemento y (x2,y2) perteneciente a otro elem. 
+	   En cualquier otro caso devuelve false. */
+	virtual bool hay_conexion(int x1, int y1, int x2, int y2, Mapa* mapa);
 
 	/* Es Habitable: Dadas unas coordenadas x,y devuelve true si las mismas son habitables por un personaje o
 	   modificador y false en caso contrario */

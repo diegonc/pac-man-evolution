@@ -73,7 +73,8 @@ class Mapa {
 	bool es_congruente();
 
 	/* Get Casillero: Devuelve un puntero al casillero que se encuentra en las posiciones pasadas por parametro.
-	   Si las mismas son invalidas devuelve NULL. */
+	   Si las mismas son invalidas devuelve NULL. Si me paso de largo por 1 en una posicion me devuelve el casillero
+	   del otro lado. */
 	S_ptr<Casillero> get_casillero(int pos_x, int pos_y);
 
 	/* Conectar: Busca los 2 elementos pasados por parametro en el mapa y si los encuentra los conecta */

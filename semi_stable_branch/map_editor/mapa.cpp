@@ -176,10 +176,26 @@ S_ptr<Casillero> Mapa::get_casillero(int pos_x, int pos_y){
 	//Si las posiciones recibidas estan dentro de los margenes del mapa devuelvo el casillero
 	if (this->validar_coordenadas(pos_x, pos_y))
 		return this->mapa[pos_x][pos_y];
-	else { //Sino devuelvo un casillero nulo
-		S_ptr<Casillero> nulo;
-		return nulo;
-	}	
+	else { //Sino, reviso si me paso por 1
+		//Si la pos x es valida pero la y se pasa por 1 devuelvo el casillero simetrico en cada caso
+		if ((pos_x >= 0) && (pos_x < this->alto)){
+			if (pos_y == -1)
+				return this->mapa[pos_x][this->ancho - 1];
+			else
+				if (pos_y == this->ancho)
+					return this->mapa[pos_x][0];
+		} else { //Si la pos y es valida pero la x se pasa por 1 devuelvo el casillero simetrico en cada caso
+			if ((pos_y >= 0) && (pos_y < this->ancho))
+				if (pos_x == -1)
+					return this->mapa[this->alto - 1][pos_y];
+				else
+					if (pos_x == this->alto)
+						return this->mapa[0][pos_y];
+		}	
+	}
+	//Si las posiciones son invalidas devuelvo el casillero nulo
+	S_ptr<Casillero> nulo;
+	return nulo;
 }
 
 /* Conectar: */

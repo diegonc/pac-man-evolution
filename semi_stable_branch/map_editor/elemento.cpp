@@ -46,6 +46,17 @@ Orientacion Elemento::get_orientacion(){
 	return this->orientacion;
 }
 
+/* Contiene: */
+
+bool Elemento::contiene (int x, int y){
+	int x_rel = x - this->pos_x;
+	int y_rel = y - this->pos_y;
+	if ((x_rel >= 0) && (x_rel < this->get_alto()) && (y_rel >= 0) && (y_rel < this->get_ancho()))	
+		return true;
+	else
+		return false;
+}
+
 /* Quitate: */
 
 void Elemento::quitate(S_ptr<Elemento> instancia, Mapa* mapa){

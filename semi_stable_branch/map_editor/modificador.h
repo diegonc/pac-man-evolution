@@ -27,8 +27,11 @@ class Modificador : public Elemento {
 	/* Es Punto Conexion: Devuelve false, puesto que los modificadores no tienen puntos de conexion. */
 	virtual bool es_punto_conexion(int x, int y);
 		
+	/* Get Posible Conexion: Devuelve un punto nulo, puesto que los modificadores no tienen conexiones. */
+	virtual S_ptr<Punto> get_posible_conexion(int x, int y);
+		
 	/* Hay Conexion: Devuelve false porque los modificadores no puede conectarse. */
-	virtual bool hay_conexion(int x1, int y1, int x2, int y2);
+	virtual bool hay_conexion(int x1, int y1, int x2, int y2, Mapa* mapa);
 
 	/* Es Habitable: Devuelve false, puesto que los modificadores no son habitables. */
 	virtual bool es_habitable(int x, int y);
