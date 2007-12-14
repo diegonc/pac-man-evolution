@@ -5,7 +5,7 @@
 #include "../common/EscritorCliente.h"
 #include "AvisadorNovedades.h"
 
-#define _DEFAULT_CANT_MIN	1
+#define _DEFAULT_CANT_MIN	2
 #define _DEFAULT_CANT_MAX	10
 
 const int Servidor::SENIAL_CANCELAR = SIGUSR1;	

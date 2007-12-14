@@ -12,11 +12,11 @@ S_ptr<JugadorLocal> JugadorLocal::get_instancia(){
 		instancia = S_ptr<JugadorLocal>(new JugadorLocal());
 	return instancia;
 }
-void JugadorLocal::set_id(int id_jugador){
+void JugadorLocal::set_id(unsigned int id_jugador){
 	this->id = id_jugador;
 	
 }
-int JugadorLocal::get_id(){
+unsigned int JugadorLocal::get_id(){
 	return this->id;
 }
 

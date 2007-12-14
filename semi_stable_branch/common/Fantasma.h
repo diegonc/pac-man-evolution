@@ -8,6 +8,11 @@
 #include "Personaje.h"
 
 class Fantasma : public Personaje{
+	private:
+		static const double VELOCIDAD_FANTASMA_INICIAL;
+		static const double VELOCIDAD_FANTASMA_PW;
+		static const double RADIO_FANTASMA;
+	
 	public:
 		
 		/**

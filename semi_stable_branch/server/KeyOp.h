@@ -10,7 +10,7 @@ class KeyOp : public Operacion
 {
 	private:
 		/** @brief Id de cliente que presiona la tecla. */
-		int id;
+		unsigned int id;
 
 		/** @brief Tecla presionada
 		 *
@@ -31,16 +31,16 @@ class KeyOp : public Operacion
 		/**
 		*	@brief Constructor de la clase
 		*/
-		KeyOp( int id, int flecha );// : id( id ), flecha( flecha ) {}
+		KeyOp( unsigned int id, int flecha );// : id( id ), flecha( flecha ) {}
 
-		KeyOp( int flecha ):flecha(flecha){}
+		KeyOp( unsigned int flecha ):flecha(flecha){}
 		
 		/** 
 		*	@brief Implementa los efectos de la operacion. 
 		*/		
 		void ejecutar(ModeloServidor &modelo);
 
-		void set_id(int identifJugador);
+		void set_id(unsigned int identifJugador);
 
 		int get_flecha(){ return flecha; }
 };

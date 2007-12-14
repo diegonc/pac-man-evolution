@@ -15,6 +15,11 @@ class PacMan : public Personaje{
 		bool power_up_activado;
 		double velocidad;
 	
+	
+		static const double VELOCIDAD_PACMAN_NORMAL;
+		static const double VELOCIDAD_PACMAN_PW;
+		static const double RADIO_PACMAN;
+	
 	public:
 		/**
 		*	@brief	Constructor

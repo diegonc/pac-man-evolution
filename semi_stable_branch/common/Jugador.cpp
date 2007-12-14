@@ -11,6 +11,7 @@ Jugador::Jugador(unsigned int id, Tipo_Personaje personaje){
 
 Jugador::Jugador(unsigned int id){
 	this->id = id;
+	this->personaje = NULL;
 	this->dir = new Direccion(Direccion::Este); /* Arrancan para el este. */
 	this->puntos = 0;
 }
@@ -50,6 +51,7 @@ void Jugador::set_direccion(Direccion  *dir){
 }
 Jugador::~Jugador(){
 	delete this->dir;
+	delete this->personaje;
 }
 void Jugador::set_puntos(int puntos){
 	this->puntos = puntos;

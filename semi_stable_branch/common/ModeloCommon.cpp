@@ -26,7 +26,7 @@ void ModeloCommon::agregar_jugador(Jugador * jugador){
 const std::list<Jugador *> ModeloCommon::get_jugadores(){
 	return this->jugadores;
 }
-Jugador * ModeloCommon::get_jugador(int id){
+Jugador * ModeloCommon::get_jugador(unsigned int id){
 	
 	std::list< Jugador * > lista_jugadores = this->get_jugadores();
 	std::list< Jugador * >::iterator it_jugadores = lista_jugadores.begin();

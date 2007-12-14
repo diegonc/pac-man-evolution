@@ -23,7 +23,7 @@ std::list<OperacionStatus::PosicionElemento>* OperacionStatus::get_elementos(){
 
 
 
-void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatus::PosicionJugador& PosJ,int AnchoMapa,int AltoMapa){
+void OperacionStatus::ModificarPosicionJugador(Jugador * Jug,OperacionStatus::PosicionJugador& PosJ,int AnchoMapa,int AltoMapa){
     Posicion& PosModelo=Jug->get_posicion();
 	int UltimaFila=AltoMapa-1;
     int UltimaColum=AnchoMapa-1;
@@ -37,30 +37,30 @@ void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatu
 //seteo el estado del Jugador;
     if (PosJ.esPacman){ //si recibo q es pacman
 	//y en mi modelo es fantasma
-	if (Jug->get_personaje()->get_tipo()==Personaje::fantasma){
-		S_ptr<Personaje> personaje(new PacMan(&(*Jug)));
-		Jug->set_personaje(personaje);
-//		personaje->set_jugador(Jug);
-	}
+		if (Jug->get_personaje()->get_tipo()==Personaje::fantasma){
+			Personaje * personaje = new PacMan(&(*Jug));
+			Jug->set_personaje(personaje);
+	//		personaje->set_jugador(Jug);
+		}
     }else{// si recibo q es fantasma
 	//y en mi modelo es pacman
-	if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
-		S_ptr<Personaje> personaje(new Fantasma(&(*Jug)));
-		Jug->set_personaje(personaje);
-//		personaje->set_jugador(Jug);
-	}
+		if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
+			Personaje * personaje = new Fantasma(&(*Jug));
+			Jug->set_personaje(personaje);
+	//		personaje->set_jugador(Jug);
+		}
     }
 
     if (PosJ.estaVivo){//si me llego q estaba vivo
 	//si no esta vivo, lo revivo
-	if (!(Jug->get_personaje()->esta_vivo())){
-	      Jug->get_personaje()->revivir();
-	}
-    }else{ //si me llego q estaba muerto
-	//si esta vivo, lo mato
-	if (Jug->get_personaje()->esta_vivo()){
-	      Jug->get_personaje()->revivir();
-	}
+		if (!(Jug->get_personaje()->esta_vivo())){
+			  Jug->get_personaje()->revivir();
+		}
+		}else{ //si me llego q estaba muerto
+		//si esta vivo, lo mato
+		if (Jug->get_personaje()->esta_vivo()){
+			  Jug->get_personaje()->revivir();
+		}
     }
 //END seteo el estado del jugador;
 
@@ -105,88 +105,34 @@ void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatu
 }
 
 void OperacionStatus::ejecutar(ModeloServidor &modelo){
-    Jugador * Jug;
+    Jugador * Jug = NULL;
 
     std::list< Jugador * >::const_iterator itjugadores;
-    bool Encontrado;
-    int AnchoMapa=modelo.get_mundo().get_mapa_activo()->get_ancho();
-    int AltoMapa=modelo.get_mundo().get_mapa_activo()->get_alto();
-for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
-    OperacionStatus::PosicionJugador& PosJ=*it;
-    Jug=ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
-	if (Jug != NULL){
-		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
-	}else{
-
-		Jug=new Jugador(PosJ.ID);
-		if (PosJ.esPacman){
-		     S_ptr<Personaje> personaje(new PacMan(&(*Jug)));
-		     Jug->set_personaje(personaje);			
+    bool Encontrado = false;
+    int AnchoMapa = modelo.get_mundo().get_mapa_activo()->get_ancho();
+    int AltoMapa  = modelo.get_mundo().get_mapa_activo()->get_alto();
+	for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
+		OperacionStatus::PosicionJugador& PosJ=*it;
+		Jug= ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
+		if (Jug != NULL){
+			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
 		}else{
-     		     S_ptr<Personaje> personaje(new Fantasma(&(*Jug)));
-		     Jug->set_personaje(personaje);			
-		}
-
-		if (!PosJ.estaVivo){
-		     Jug->get_personaje()->matar();
-		}
-		ModeloServidor::get_instancia()->agregar_jugador(Jug);			
-		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);	
-}
-}
-    /*
-    
-    for(itjugadores = modelo.get_jugadores().begin();itjugadores != modelo.get_jugadores().end(); ++itjugadores){
-        Jug= *itjugadores;
-
-        //actualizo posiciones
-        Encontrado=false;
-        for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
-            OperacionStatus::PosicionJugador& PosJ=*it;
-	    std::cout << "Comparando " << Jug->get_id() << PosJ.ID
-            if (Jug->get_id()==PosJ.ID){
-                Encontrado=true;
-                PosJ.marcado=true;
-                ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
-            }
-        }
-
-        if (!Encontrado){
-            //el jugador se desconecto
-            //quitarlo
-            //itjugadores=modelo.get_jugadores().erase(itjugadores);
-            //con esto alcanza?
-        }
-    }
-
-    //agrego jugadores q aparecieron nuevos en el status
-    for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
-        OperacionStatus::PosicionJugador& PosJ=*it;
-        //significa q no esta en el modelo lo tengo q agregar
-		int AnchoMapa=modelo.get_mundo().get_mapa_activo()->get_ancho();
-    	int AltoMapa=modelo.get_mundo().get_mapa_activo()->get_alto();
-        if (!PosJ.marcado){
-		std::cout << "Agregando nuevo jugador\n";
-            PosJ.marcado=true;
-		S_ptr<Jugador> Jug(new Jugador(PosJ.ID));
-		if (PosJ.esPacman){
-		     S_ptr<Personaje> personaje(new PacMan(&(*Jug)));
-		     Jug->set_personaje(personaje);			
-		}else{
-     		     S_ptr<Personaje> personaje(new Fantasma(&(*Jug)));
-		     Jug->set_personaje(personaje);			
-		}
-
-		if (!PosJ.estaVivo){
-		     Jug->get_personaje()->matar();
-		}
-		
-		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
-		ModeloServidor::get_instancia()->agregar_jugador(Jug);
+	
+			Jug=new Jugador(PosJ.ID);
+			Personaje * personaje;
+			if (PosJ.esPacman)
+				personaje = new PacMan(Jug);
+			else
+				personaje = new Fantasma(Jug);
 			
-        }
-    }
-*/
+			Jug->set_personaje(personaje);			
+			if (!PosJ.estaVivo){
+				 Jug->get_personaje()->matar();
+			}
+			ModeloServidor::get_instancia()->agregar_jugador(Jug);			
+			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);	
+		}
+	}
     //itero sobre los personajes y al pacman le seteo el puntaje
     bool salir=false;
     for(itjugadores = modelo.get_jugadores().begin();((itjugadores != modelo.get_jugadores().end()) && (!salir)); ++itjugadores){

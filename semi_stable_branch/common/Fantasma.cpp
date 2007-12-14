@@ -2,13 +2,13 @@
 #include "PacMan.h"
 #include <math.h>
 
-#define VELOCIDAD_FANTASMA_INICIAL		3	
-#define VELOCIDAD_FANTASMA_PW			5
+const double Fantasma::VELOCIDAD_FANTASMA_INICIAL 	= 5;
+const double Fantasma::VELOCIDAD_FANTASMA_PW		= 3;
+const double Fantasma::RADIO_FANTASMA				= 0.5;
 
-#define RADIO_FANTASMA					0.5
-
-
-Fantasma::Fantasma(Jugador *jugador):Personaje(jugador, RADIO_FANTASMA){}
+Fantasma::Fantasma(Jugador *jugador):Personaje(jugador, RADIO_FANTASMA){
+	//this->velocidad = 	
+}
 	
 
 bool Fantasma::comer(Comestible& comestible){
@@ -42,8 +42,8 @@ void Fantasma::colision(Jugador * jugador){
 				if(distancia  <= ( this->get_radio() + pacman.get_radio() ) ){
 					if( !pacman.tiene_power_up() ){
 						//obtengo los personajes					
-						S_ptr<Personaje> p_this = this->get_jugador()->get_personaje();
-						S_ptr<Personaje> p_jug = jugador->get_personaje();
+						Personaje * p_this = this->get_jugador()->get_personaje();
+						Personaje * p_jug = jugador->get_personaje();
 						//cambio los personajes
 						jugador->set_personaje(p_this);
 						this->get_jugador()->set_personaje(p_jug);
