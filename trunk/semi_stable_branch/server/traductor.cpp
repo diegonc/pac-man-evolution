@@ -82,17 +82,17 @@ void Traductor::realizar_conexiones(Mapa* mapa, S_ptr<MapaBajoNivel> mapa_bajo_n
 					S_ptr<Casillero> c_izq = mapa->get_casillero(cont1, cont2 - 1);
 					S_ptr<Casillero> c_der = mapa->get_casillero(cont1, cont2 + 1);
 					//Realizo conexiones entre los estructurales de bajo nivel, cuando sea posible, en las 4 direcciones
-					this->conectar_casilleros(casillero, c_arriba, mapa_bajo_nivel, NORTE);
-					this->conectar_casilleros(casillero, c_abajo, mapa_bajo_nivel, SUR);
-					this->conectar_casilleros(casillero, c_izq, mapa_bajo_nivel, OESTE);
-					this->conectar_casilleros(casillero, c_der, mapa_bajo_nivel, ESTE);
+					this->conectar_casilleros(casillero, c_arriba, mapa, mapa_bajo_nivel, NORTE);
+					this->conectar_casilleros(casillero, c_abajo, mapa, mapa_bajo_nivel, SUR);
+					this->conectar_casilleros(casillero, c_izq, mapa, mapa_bajo_nivel, OESTE);
+					this->conectar_casilleros(casillero, c_der, mapa, mapa_bajo_nivel, ESTE);
 			}
 		}
 }
 
 /* Conectar Casilleros: */
 
-void Traductor::conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> destino, S_ptr<MapaBajoNivel> mapa_bajo_nivel, Orientacion orientacion){
+void Traductor::conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> destino, Mapa* mapa_alto_nivel, S_ptr<MapaBajoNivel> mapa_bajo_nivel, Orientacion orientacion){
 		//Si hay casillero de origen y destino
 		if ((!origen.es_nulo()) && (!destino.es_nulo())){
 			//Obtengo los estructurales de alto nivel origen y destino
@@ -105,10 +105,8 @@ void Traductor::conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> de
 				S_ptr<EstructuralUnitario>  est_bajo_nivel_origen = mapa_bajo_nivel->get_estructural(pos_origen);
 				Posicion pos_destino(destino->get_pos_y(), destino->get_pos_x());
 				S_ptr<EstructuralUnitario>  est_bajo_nivel_destino = mapa_bajo_nivel->get_estructural(pos_destino);
-				//std::cout << "Probando entre: (" << origen->get_pos_x() << "," << origen->get_pos_y() << ") y (" << destino->get_pos_x() << "," << destino->get_pos_y() << ") " << std::endl << std::flush;
 				//Si existe una conexion en el mapa de alto nivel entre los estructurales origen y destino:
-				if (estruct_origen->hay_conexion(origen->get_pos_x(), origen->get_pos_y(), destino->get_pos_x(), destino->get_pos_y())){
-					//std::cout << "Conexion entre: (" << origen->get_pos_x() << "," << origen->get_pos_y() << ") y (" << destino->get_pos_x() << "," << destino->get_pos_y() << ") " << std::endl << std::flush;
+				if (estruct_origen->hay_conexion(origen->get_pos_x(), origen->get_pos_y(), destino->get_pos_x(), destino->get_pos_y(), mapa_alto_nivel)){
 					//Segun la orientacion de conexion, realizo la misma en el mapa de bajo nivel
 					switch(orientacion){
 						case NORTE: {
