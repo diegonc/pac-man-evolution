@@ -51,11 +51,11 @@ endif
 
 # Si no especifica archivos, tomo todos.
 fuentes ?= $(wildcard *.$(extension))
-fuentes_common ?= $(wildcard ../common/*.$(extension))
-fuentes_server ?= $(wildcard ../server/*.$(extension))
+fuentes_common = ../common/observable.cpp \
+		 ../common/mutex.cpp \
+		 ../common/bloqueo.cpp \
+		 ../common/thread.cpp
 fuentes_tiny_xml ?= $(wildcard ../common/tinyxml/*.$(extension))
-
-fuentes_server_2 = $(subst ../server/Main.cpp, ,$(fuentes_server))
 
 # REGLAS
 #########
@@ -64,9 +64,8 @@ fuentes_server_2 = $(subst ../server/Main.cpp, ,$(fuentes_server))
 
 all: map_editor
 o_tinyxml_files = $(patsubst %.$(extension),%.o,$(fuentes_tiny_xml))
-o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
-o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server_2))
-o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_server_files) $(o_tinyxml_files)
+o_fuentes_common = $(patsubst %.$(extension),%.o,$(fuentes_common))
+o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_fuentes_common) $(o_tinyxml_files)
 
 map_editor: $(o_files)
 	@if [ -z "$(o_files)" ]; \
@@ -78,8 +77,7 @@ map_editor: $(o_files)
 
 clean:
 	@$(RM) -fv *.o subproyecto \
-   rm ../common/*.o \
    rm ../common/tinyxml/*.o \
-   rm ../server/*.o \
+   rm ../common/*.o \
    rm miEjecutable
 
