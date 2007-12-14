@@ -2,10 +2,7 @@
 
 #include "OperacionStatus.h"
 
-PaqueteStatus::PaqueteStatus(): PaqueteStatusCommon()
-{
 
-}
 PaqueteStatus::~PaqueteStatus(){}
 
 void PaqueteStatus::deserialize( InputBitStream& bs ){

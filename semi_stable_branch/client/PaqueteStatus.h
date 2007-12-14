@@ -5,13 +5,12 @@
 
 class PaqueteStatus: public PaqueteStatusCommon{
 	public:
-		PaqueteStatus();
 
-      ~PaqueteStatus();
+        ~PaqueteStatus();
 	
-		void deserialize( InputBitStream& bs );
+	void deserialize( InputBitStream& bs );
 
-      Operacion * get_operacion();
+        Operacion * get_operacion();
 		
 };
 

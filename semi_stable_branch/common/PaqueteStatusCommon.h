@@ -4,6 +4,7 @@
 #include "Paquete.h"
 #include "math.h"
 #include <list>
+#include "../common/NovedadComestible.h"
 #include "Jugador.h"
 #include "../common/smart_pointer.h"
 
@@ -12,9 +13,12 @@
 class PaqueteStatusCommon : public Paquete{
     protected:
         Operacion* Oper;
+	std::list<NovedadComestible> Novedades;
 	
     public:
 		PaqueteStatusCommon();
+
+		PaqueteStatusCommon(std::list<NovedadComestible>* Novedades);
 
 		virtual void serialize( OutputBitStream& bs );
 

@@ -1,7 +1,5 @@
 #include "AvisadorNovedades.h"
 
-#include "PaqueteStatus.h"
-#include "../common/EscritorCliente.h"
 
 AvisadorNovedades::AvisadorNovedades(ClientPool * clientes){
 	this->clientes = clientes;
@@ -16,7 +14,11 @@ void AvisadorNovedades::run(){
 	std::list<Cliente*>::const_iterator it;
 	
 	while (! _parar ){
-		S_ptr<Paquete> paquete_status(new PaqueteStatus());
+
+		llave.lock();
+		S_ptr<Paquete> paquete_status(new PaqueteStatus(&novedades_comestible));
+		novedades_comestible.clear();
+		llave.unlock();
 		
 		std::list<Cliente*> lista_clientes = clientes->get_clientes();
 		it = lista_clientes.begin();
@@ -31,9 +33,18 @@ void AvisadorNovedades::run(){
 				clientes->quitar_cliente( (*it)->get_id() );
 			}
 		}
+		
+		
 		usleep(10000);
 	}	
 }
 void AvisadorNovedades::parar(){
 	_parar = true;
+}
+
+void AvisadorNovedades::actualizar(Observable* Obs,void * Novedad){
+	NovedadComestible* novedadComest=(NovedadComestible*) Novedad;
+	llave.lock();
+	novedades_comestible.push_back(*novedadComest);
+	llave.unlock();
 }
