@@ -13,7 +13,7 @@
  *
  */
 
-typedef S_ptr<Personaje> Tipo_Personaje;
+typedef Personaje * Tipo_Personaje;
 
 class Jugador{
 	

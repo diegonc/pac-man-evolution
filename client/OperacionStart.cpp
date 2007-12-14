@@ -17,7 +17,7 @@ void OperacionStart::ejecutar(ModeloServidor &modelo) {
 		p = new PacMan( j );
 	else
 		p = new Fantasma( j );
-	j->set_personaje( S_ptr<Personaje>( p ) );
+	j->set_personaje( p );
 	modelo.agregar_jugador(  j );
 
 }

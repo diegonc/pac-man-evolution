@@ -20,9 +20,16 @@ bool Modificador::es_punto_conexion(int x, int y){
 	return false;
 }
 
+/* Get Posible Conexion: */
+
+S_ptr<Punto> Modificador::get_posible_conexion(int x, int y){
+	S_ptr<Punto> punto_nulo;
+	return punto_nulo;
+}
+
 /* Hay Conexion: */
 
-bool Modificador::hay_conexion(int x1, int y1, int x2, int y2){
+bool Modificador::hay_conexion(int x1, int y1, int x2, int y2, Mapa* mapa){
 	return false;	
 }
 

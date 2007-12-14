@@ -5,6 +5,7 @@
 //Incluyo las librerias necesarias
 #include "mapa.h"
 #include "definiciones.h"
+#include "punto.h"
 #include "../common/smart_pointer.h"
 #include "../common/grafo.h"
 #include "../common/vertice.h"
@@ -60,13 +61,21 @@ class Elemento {
 	/* Es Punto Conexion: Dadas unas coordenadas x,y devuelve true si las mismas son un punto de conexion del
 	  elemento o false en caso contrario */
 	virtual bool es_punto_conexion(int x, int y) = 0;
+	
+	/* Get Posible Conexion: Devuelve un punto con la posible conexion del elemento. Si no es un pto de conexion
+	   del elemento devuelve un punto nulo. */
+	virtual S_ptr<Punto> get_posible_conexion(int x, int y) = 0;
 		
 	/* Hay Conexion: Dadas (x1,y1) y (x2,y2) devuelve true si hay conexion, false en caso contrario. */
-	virtual bool hay_conexion(int x1, int y1, int x2, int y2) = 0;
+	virtual bool hay_conexion(int x1, int y1, int x2, int y2, Mapa* mapa) = 0;
 
 	/* Es Habitable: Dadas unas coordenadas x,y devuelve true si las mismas son habitables por un personaje o
 	   modificador y false en caso contrario */
 	virtual bool es_habitable(int x, int y) = 0;
+	
+	/* Contiene: Dadas unas coordenadas x,y devuelve true si las mismas caen dentro del elemento, false en
+	   caso contrario. */
+	bool contiene (int x, int y);
 
 	/* Agregate: Dado el mapa pasado por parametro, el elemento verifica si puede insertarse en mismo,en 
 	   la posicion con la que fue creado. Si puede, se agrega y se conecta con todos los vecinos (si es estruct).

@@ -69,7 +69,7 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
 
 //ComienzoCuerpo
     //obtengo info
-    S_ptr<Jugador> Jug;
+    Jugador * Jug;
 
     std::list<Jugador *> lista_jugadores = Model->get_jugadores();
 	std::list<Jugador * >::const_iterator jugadores;
@@ -95,7 +95,7 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
         for(jugadores = lista_jugadores.begin();((jugadores != lista_jugadores.end()) ); ++jugadores){
             Jug= *jugadores;
 
-            Posicion P=Jug->get_posicion();
+            Posicion P = Jug->get_posicion();
             int Fila=(int)floor(P.get_y());
             int Col=(int)floor(P.get_x());
             int AristaSup=Col+(Fila*(2*AnchoMapa));

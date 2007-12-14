@@ -40,7 +40,7 @@ class Paquete
 		 *  @param tipo Identificador numerico del tipo de paquete.
 		 *  @return Paquete creado.
 		 */
-		static Paquete* crear( int tipo , int id_cliente);
+		static Paquete* crear( int tipo ,unsigned int id_cliente);
 
 		virtual ~Paquete();
 

@@ -10,7 +10,7 @@ const int KeyOp::abajo  	= 	1;
 const int KeyOp::derecha	= 	3;
 const int KeyOp::izquierda	= 	2;  
 
-KeyOp::KeyOp(int flecha,int id ){
+KeyOp::KeyOp(unsigned int flecha,int id ){
 	this->flecha = flecha;
 	this->id = id;
 }
@@ -18,13 +18,13 @@ KeyOp::KeyOp(int flecha,int id ){
 void KeyOp::ejecutar(ModeloServidor &modelo)
 {
 	//obtiene el jugador
-	S_ptr<Jugador> jugador = modelo.get_jugador(this->id);
+	Jugador * jugador = modelo.get_jugador(this->id);
 	//combina la direccion
 	jugador->get_direccion().combinar(flecha);
 }
 
 
-void KeyOp::set_id(int identifJugador)
+void KeyOp::set_id(unsigned int identifJugador)
 {
 	id=identifJugador;
 }

@@ -5,7 +5,7 @@
 #include "../common/EscritorCliente.h"
 #include "AvisadorNovedades.h"
 
-#define _DEFAULT_CANT_MIN	1
+#define _DEFAULT_CANT_MIN	2
 #define _DEFAULT_CANT_MAX	10
 
 const int Servidor::SENIAL_CANCELAR = SIGUSR1;	
@@ -78,6 +78,7 @@ void Servidor::run(){
 			socket->escuchar();
 			//acepta un cliente
 			Socket_Cliente* client = socket->aceptar();
+			std::cout << "Paso por aca\n";
 			//lo agrega a la pileta de clietnes
 			Cliente * cliente_nuevo = pool.lanzar_cliente( client );
 			//agrega si jugador al modelo

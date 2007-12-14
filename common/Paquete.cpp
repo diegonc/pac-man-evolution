@@ -35,7 +35,7 @@ char Paquete::get_tipo()
 {
 	return tipo;
 }
-Paquete* Paquete::crear( int tipo , int id_cliente ){
+Paquete* Paquete::crear( int tipo ,unsigned int id_cliente ){
 
 	Paquete * p;
 	switch(tipo){
