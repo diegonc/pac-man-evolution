@@ -78,6 +78,7 @@ void Servidor::run(){
 			socket->escuchar();
 			//acepta un cliente
 			Socket_Cliente* client = socket->aceptar();
+			std::cout << "Paso por aca\n";
 			//lo agrega a la pileta de clietnes
 			Cliente * cliente_nuevo = pool.lanzar_cliente( client );
 			//agrega si jugador al modelo
