@@ -45,6 +45,7 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
 	Makefile
 	common/Makefile
+	server/Makefile
 	map_editor/Makefile
 ])
 AC_OUTPUT

@@ -3,9 +3,9 @@
 
 ##  robado del autobook - seccion 5.1
 
-noinst_LIBRARIES = libpme-common.a
+noinst_LTLIBRARIES = libpme-common.la
 
-libpme_common_a_SOURCES = \
+libpme_common_la_SOURCES = \
 	arco.h \
 	bloqueo.cpp \
 	bloqueo.h \
@@ -32,6 +32,8 @@ libpme_common_a_SOURCES = \
 	vertice.h \
 	wrapper.h 
 
-##libpme_common_a_LDFLAGS = -static
+libpme_common_la_LDFLAGS = -static
+
+libpme_common_la_LDADD = tinyxml/libtinyxml.la
 
 CLEANFILES = *~
