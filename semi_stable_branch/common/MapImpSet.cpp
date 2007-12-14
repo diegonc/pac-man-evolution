@@ -78,13 +78,13 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 	//y ver si tocan un lugar que no puede, digase pared, esquina.
 	//Se puede modificar el paso como para que no recorra todos los puntos
 	while( phi < DOS_PI && !toca/*2Pi*/ ){
-		Posicion p(	(radio-0.1) * cos(phi) + x0, (radio-0.1) * sin(phi) + y0 );
+		Posicion p(	(radio-0.2) * cos(phi) + x0, (radio-0.2) * sin(phi) + y0 );
 		e_critico = get_estructural(p);
 		if( e_critico.es_nulo() ){
 			toca = true;
 		}
 		else{
-			if(!donde_esta->tiene_conexion(e_critico) ){
+			if(!donde_esta->tiene_conexion(e_critico)){
 				toca = true;
 				//std::cout << "Toca uno critico donde no tiene conexion\n";	
 			}
