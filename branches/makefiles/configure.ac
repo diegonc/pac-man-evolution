@@ -44,6 +44,7 @@ AM_PATH_GTK_2_0([2.8.0],,AC_MSG_ERROR([Gtk+ 2.8.0 or higher required.]))
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
 	Makefile
+	common/tinyxml/Makefile
 	common/Makefile
 	server/Makefile
 	map_editor/Makefile

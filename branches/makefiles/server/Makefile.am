@@ -94,6 +94,11 @@ pme_server_SOURCES = \
 	Servidor.cpp \
 	Servidor.h
 
-llibpme_server_la_LDFLAGS = -static
+pme_server_LDADD = \
+	libpme-server.la \
+	$(top_builddir)/common/libpme-common.la \
+	$(top_builddir)/map_editor/libpme-editor.la
+
+libpme_server_la_LDFLAGS = -static
 
 CLEANFILES = *~

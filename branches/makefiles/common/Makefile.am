@@ -3,6 +3,8 @@
 
 ##  robado del autobook - seccion 5.1
 
+SUBDIRS = tinyxml
+
 noinst_LTLIBRARIES = libpme-common.la
 
 libpme_common_la_SOURCES = \
@@ -34,6 +36,6 @@ libpme_common_la_SOURCES = \
 
 libpme_common_la_LDFLAGS = -static
 
-libpme_common_la_LDADD = tinyxml/libtinyxml.la
+libpme_common_la_LIBADD = tinyxml/libtinyxml.la
 
 CLEANFILES = *~
