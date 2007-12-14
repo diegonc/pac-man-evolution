@@ -105,20 +105,20 @@ void OperacionStatus::ModificarPosicionJugador(S_ptr<Jugador> Jug,OperacionStatu
 }
 
 void OperacionStatus::ejecutar(ModeloServidor &modelo){
-    S_ptr<Jugador> Jug;
+    Jugador * Jug;
 
-    std::list< S_ptr<Jugador> >::const_iterator itjugadores;
+    std::list< Jugador * >::const_iterator itjugadores;
     bool Encontrado;
     int AnchoMapa=modelo.get_mundo().get_mapa_activo()->get_ancho();
     int AltoMapa=modelo.get_mundo().get_mapa_activo()->get_alto();
 for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
     OperacionStatus::PosicionJugador& PosJ=*it;
     Jug=ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
-if (!Jug.es_nulo()){
-	ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
-}else{
+	if (Jug != NULL){
+		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
+	}else{
 
-		Jug=S_ptr<Jugador>(new Jugador(PosJ.ID));
+		Jug=new Jugador(PosJ.ID);
 		if (PosJ.esPacman){
 		     S_ptr<Personaje> personaje(new PacMan(&(*Jug)));
 		     Jug->set_personaje(personaje);			

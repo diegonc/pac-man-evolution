@@ -16,24 +16,25 @@ void ModeloCommon::set_mundo(S_ptr<MundoBajoNivel> mundo){
 ModeloCommon::~ModeloCommon(){
 }
 
-void ModeloCommon::agregar_jugador(Tipo_Jugador jugador){
+void ModeloCommon::agregar_jugador(Jugador * jugador){
 	
 	//lo agrego a los jugadores
 	this->jugadores.push_back(jugador);
 	
 }
 
-const std::list<S_ptr<Jugador> >& ModeloCommon::get_jugadores(){
+const std::list<Jugador *> ModeloCommon::get_jugadores(){
 	return this->jugadores;
 }
-S_ptr<Jugador> ModeloCommon::get_jugador(int id){
+Jugador * ModeloCommon::get_jugador(int id){
 	
-	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+	std::list< Jugador * > lista_jugadores = this->get_jugadores();
+	std::list< Jugador * >::iterator it_jugadores = lista_jugadores.begin();
 	
-	S_ptr<Jugador> resultado_busqueda;
+	Jugador * resultado_busqueda = NULL;
 	bool encontro = false;
 	
-	while( (it_jugadores != this->jugadores.end()) && (!encontro) ){
+	while( (it_jugadores != lista_jugadores.end()) && (!encontro) ){
 		if( (*it_jugadores)->get_id() == id){
 			encontro = true;
 			resultado_busqueda = *it_jugadores;

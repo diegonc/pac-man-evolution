@@ -20,7 +20,7 @@ class ModeloCommon : public Thread , public Observador, public Observable{
 	protected:
 		S_ptr<MundoBajoNivel> mundo;
 	
-		std::list<Tipo_Jugador> jugadores;
+		std::list<Jugador*> jugadores;
 		
 		ModeloCommon(ModeloCommon &m);
 		
@@ -44,7 +44,7 @@ class ModeloCommon : public Thread , public Observador, public Observable{
 		*
 		*	@param	jugador Jugador a agregar
 		*/
-		virtual void agregar_jugador(Tipo_Jugador jugador);
+		virtual void agregar_jugador(Jugador * jugador);
 			
 		/**
 		*	@brief	Implementacion del metodo para el thread
@@ -66,7 +66,7 @@ class ModeloCommon : public Thread , public Observador, public Observable{
 		*	@return	Smart pointer con el jugador y si no existe un smart pointer
 		*			nulo
 		*/
-		S_ptr<Jugador> get_jugador(int id);
+		Jugador * get_jugador(int id);
 	
 		/**
 		*	@brief	Permite obtener una lista con todos los jugadores que tiene
@@ -74,7 +74,7 @@ class ModeloCommon : public Thread , public Observador, public Observable{
 		*
 		*	@return	Lista con los jugadores
 		*/
-		const std::list<S_ptr<Jugador> >& get_jugadores();
+		const std::list<Jugador *> get_jugadores();
 	
 		/**
 		*	@brief Implementacion del metodo actualizar de la clase observador
