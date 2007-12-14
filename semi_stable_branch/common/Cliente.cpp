@@ -75,19 +75,19 @@ Cliente::~Cliente()
 
 void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
 {
-	Bloqueo b(&llave_escritura);
+	//Bloqueo b(&llave_escritura);
 	OutputBitStream obs;
 	
 	paquete->serialize( obs );
 	const unsigned char* raw = obs.get_data();
-	
 	socket->escribir( raw, obs.get_size() );
+	std::cout << "Envio un " << (int)paquete->get_tipo() << ".\n" << std::flush;
 
 }
 
 S_ptr<Paquete> Cliente::recibir_mensaje()
 {
-	Bloqueo b(&llave_lectura);
+	//Bloqueo b(&llave_lectura);
 	SocketReader sr( *socket );
 	InputBitStream bs( sr );
 	S_ptr<Paquete> sptr_paquete;

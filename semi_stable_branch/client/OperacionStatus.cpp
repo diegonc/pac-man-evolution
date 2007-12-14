@@ -105,69 +105,70 @@ void OperacionStatus::ModificarPosicionJugador(Jugador * Jug,OperacionStatus::Po
 }
 
 void OperacionStatus::ejecutar(ModeloServidor &modelo){
-    std::cout << "BeginStatus" << std::endl;
-    Jugador * Jug = NULL;
+    int lalangay=0;
+	Jugador * Jug = NULL;
 
     std::list< Jugador * >::const_iterator itjugadores;
     bool Encontrado = false;
     int AnchoMapa = modelo.get_mundo().get_mapa_activo()->get_ancho();
     int AltoMapa  = modelo.get_mundo().get_mapa_activo()->get_alto();
+	std::cout << lalangay++ << std::endl;
+	lalangay=0;
     for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
-	OperacionStatus::PosicionJugador& PosJ=*it;
-	Jug= ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
-	if (Jug != NULL){
-		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
-	}else{	
-		Jug=new Jugador(PosJ.ID);
-		Personaje * personaje;
-		if (PosJ.esPacman)
-			personaje = new PacMan(Jug);
-		else
-			personaje = new Fantasma(Jug);
+		OperacionStatus::PosicionJugador& PosJ=*it;
+		Jug= ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
 		
-		Jug->set_personaje(personaje);			
+		if (Jug != NULL){
+			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
+		}else{	
+			Jug=new Jugador(PosJ.ID);
+			Personaje * personaje;
+			if (PosJ.esPacman)
+				personaje = new PacMan(Jug);
+			else
+				personaje = new Fantasma(Jug);
+		
+			Jug->set_personaje(personaje);			
 
-		if (!PosJ.estaVivo){
-			 Jug->get_personaje()->matar();
-		}
-		ModeloServidor::get_instancia()->agregar_jugador(Jug);			
-		ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);	
+			if (!PosJ.estaVivo){
+				 Jug->get_personaje()->matar();
+			}
+			ModeloServidor::get_instancia()->agregar_jugador(Jug);			
+			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);	
 		}
 	}
-    //itero sobre los personajes y al pacman le seteo el puntaje
+	//itero sobre los personajes y al pacman le seteo el puntaje
     bool salir=false;
-    for(itjugadores = modelo.get_jugadores().begin();((itjugadores != modelo.get_jugadores().end()) && (!salir)); ++itjugadores){
+    /*for(itjugadores = modelo.get_jugadores().begin();((itjugadores != modelo.get_jugadores().end()) && (!salir)); ++itjugadores){
         Jug= *itjugadores;
         //Actualizo puntaje del pacman
         if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
             salir=true;
-            Jug->set_puntos(get_puntuacion());
+            //Jug->set_puntos(get_puntuacion());
         }
-    }
-    //los jugadores ya fueron seteados
-
-    //itero sobre los comestibles
+    }*/
+    //los jugadores ya fueron seteados*/
+	
+	//itero sobre los comestibles
 Encontrado=false;
     std::list<S_ptr<Comestible> > comestibles;
     ComestibleFactory fab;
-//std::cout << "recibio "<< get_elementos()->size()<< " elementos"<<std::endl;
-    for (std::list<OperacionStatus::PosicionElemento>::iterator it=get_elementos()->begin();((it!=get_elementos()->end())&&(!Encontrado));++it){
+	for (std::list<OperacionStatus::PosicionElemento>::iterator it=get_elementos()->begin();((it!=get_elementos()->end())&&(!Encontrado));++it){
         OperacionStatus::PosicionElemento& PosE=*it;
 
         int Col=PosE.Posic % AnchoMapa;
         int Fila=(int)floor(PosE.Posic / AnchoMapa);
 	
 		//std::cout << "Estado Comest:" <<PosE.Estado << "\n";
-	if (PosE.Estado){
-		
-		Posicion p(Fila,Col);
-		S_ptr<Comestible> c_nuevo(fab.construir(PosE.Tipo,p));
-		comestibles.push_back(c_nuevo);            
-		//agregar Elemento posicion(Col,Fila)
+		if (PosE.Estado){
+			Posicion p(Fila,Col);
+			S_ptr<Comestible> c_nuevo(fab.construir(PosE.Tipo,p));
+			comestibles.push_back(c_nuevo);            
+			//agregar Elemento posicion(Col,Fila)
         }else{
             //eliminar Elemento posicion(Col,Fila)
         }
     }
-    modelo.get_mundo().get_mapa_activo()->refresh(comestibles);
-    std::cout << "EndStatus" << std::endl;
+	modelo.get_mundo().get_mapa_activo()->refresh(comestibles);
+	
 }
