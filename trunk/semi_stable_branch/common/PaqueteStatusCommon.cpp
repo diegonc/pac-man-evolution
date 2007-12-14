@@ -9,6 +9,11 @@ PaqueteStatusCommon::PaqueteStatusCommon(): Paquete(ID)
 
 }
 
+PaqueteStatusCommon::PaqueteStatusCommon(std::list<NovedadComestible>* Noved):Paquete(ID){
+	//se copia, todas cosas estaticas, excepto el smart pointer q redefine la asignacion
+	this->Novedades=*Noved;
+}
+
 void PaqueteStatusCommon::deserialize( InputBitStream& bs )
 {
  	Oper = NULL;
@@ -169,6 +174,8 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
 
         }
 
+//TODOS LOS COMESTIBLES
+/*
     //cantidad elementos
         std::list< S_ptr<Comestible> > lista_comestibles = Model->get_mundo().get_mapa_activo()->get_comestibles();
         bs.append( 8,  (unsigned int) lista_comestibles.size());
@@ -199,6 +206,35 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
             bs.append( 16,  PosCasillero);
 
 
+        }
+*/
+
+	//cantidad elementos
+        bs.append( 8,  (unsigned int) Novedades.size());
+
+    //Posiciones elementos
+        std::list< NovedadComestible >::iterator itNovcomestibles;
+        
+
+        //itero sobre los comestibles
+        for(itNovcomestibles = Novedades.begin(); itNovcomestibles != Novedades.end(); ++itNovcomestibles){
+            NovedadComestible& NC = *itNovcomestibles;
+            unsigned int tipoCom=NC.get_comestible()->get_tipo();
+
+            unsigned int Orient=0;
+
+            unsigned int Estado=(NC.aparece()?1:0);
+
+            Posicion P=NC.get_comestible()->get_posicion();
+            int Fila=(int)floor(P.get_x());
+            int Col=(int)floor(P.get_y());
+
+            unsigned int PosCasillero=Col+(Fila*AnchoMapa);
+
+            bs.append( 4,  tipoCom);
+            bs.append( 2,  Orient);
+            bs.append( 2,  Estado);
+            bs.append( 16,  PosCasillero);
         }
 }
 
