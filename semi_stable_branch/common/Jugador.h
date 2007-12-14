@@ -18,7 +18,7 @@ typedef S_ptr<Personaje> Tipo_Personaje;
 class Jugador{
 	
 	private:
-		int id;
+		unsigned int id;
 		Tipo_Personaje personaje;
 		Posicion posicion;
 		Direccion  * dir;	
@@ -36,7 +36,7 @@ class Jugador{
 		 *
 		 *  @param id  Identificador numerico del jugador.
 		 */
-		Jugador(int id);
+		Jugador(unsigned int id);
 		
 		/**
 		 *	@brief Destructor de la clase
@@ -54,7 +54,7 @@ class Jugador{
 		 *
 		 *	@return El id del jugador
 		 */
-		int get_id();
+		unsigned int get_id();
 			
 		/** @brief Asigna un personaje nuevo al jugador.
 		 *

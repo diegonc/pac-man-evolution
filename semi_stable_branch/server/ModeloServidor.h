@@ -10,13 +10,13 @@
 
 class ModeloServidor : public ModeloCommon {
 
-	typedef S_ptr<Jugador> Tipo_Jugador;
+	//typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	private:
 	
 		void preparar_partida();
 					
-		void revisar_colisiones(S_ptr<Jugador>& j);	
+		void revisar_colisiones(Jugador * j, std::list<Jugador *>& lista_jugadores);	
 	
 		/**
 		*	@brief 	Constructor de la clase
@@ -39,7 +39,7 @@ class ModeloServidor : public ModeloCommon {
 		*
 		*	@param	jugador Jugador a agregar
 		*/
-		void agregar_jugador(Tipo_Jugador jugador);
+		void agregar_jugador(Jugador * jugador);
 			
 		/**
 		*	@brief	Implementacion del metodo para el thread

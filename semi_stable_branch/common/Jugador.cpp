@@ -1,7 +1,7 @@
 #include "Jugador.h"
 
 #if 0
-Jugador::Jugador(int id, Tipo_Personaje personaje){
+Jugador::Jugador(unsigned int id, Tipo_Personaje personaje){
 	this->id = id;
 	this->set_personaje(personaje);
 	this->dir = new Direccion(Direccion::Este); /* Arrancan para el este. */
@@ -9,7 +9,7 @@ Jugador::Jugador(int id, Tipo_Personaje personaje){
 }
 #endif
 
-Jugador::Jugador(int id){
+Jugador::Jugador(unsigned int id){
 	this->id = id;
 	this->dir = new Direccion(Direccion::Este); /* Arrancan para el este. */
 	this->puntos = 0;
@@ -30,7 +30,7 @@ Posicion& Jugador::get_posicion(){
 Direccion& Jugador::get_direccion() { 
 	return *dir; 
 }
-int Jugador::get_id(){
+unsigned int Jugador::get_id(){
 	return this->id;
 }
 bool Jugador::comer(Comestible& comestible){

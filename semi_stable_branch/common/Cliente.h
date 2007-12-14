@@ -19,7 +19,7 @@ class EscuchadorCliente;
 
 class Cliente : public Thread{
 	typedef unsigned int Tipo_Id;
-	typedef S_ptr<Jugador> Tipo_Jugador;
+	//typedef Jugador * Tipo_Jugador;
 	
 	private:
 		Socket_Cliente * socket;
@@ -29,7 +29,8 @@ class Cliente : public Thread{
 		Mutex llave_escritura;
 	
 		Tipo_Id id;
-		Tipo_Jugador jugador;
+		//Tipo_Jugador jugador;
+		Jugador * jugador;
 		
 	
 	public:
@@ -65,7 +66,7 @@ class Cliente : public Thread{
 		
 		EscritorCliente& get_escritor();
 		
-		S_ptr<Jugador> get_jugador();
+		Jugador * get_jugador();
 		
 		void terminar();
 

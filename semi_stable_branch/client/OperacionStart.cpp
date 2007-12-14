@@ -18,6 +18,6 @@ void OperacionStart::ejecutar(ModeloServidor &modelo) {
 	else
 		p = new Fantasma( j );
 	j->set_personaje( S_ptr<Personaje>( p ) );
-	modelo.agregar_jugador( S_ptr<Jugador>( j ) );
+	modelo.agregar_jugador(  j );
 
 }

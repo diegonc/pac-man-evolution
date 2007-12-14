@@ -23,10 +23,10 @@ S_ptr<ModeloServidor> ModeloServidor::get_instancia(){
 ModeloServidor::~ModeloServidor(){
 }
 
-void ModeloServidor::agregar_jugador(Tipo_Jugador jugador){
+void ModeloServidor::agregar_jugador(Jugador * jugador){
 	
 	S_ptr<Personaje> personaje;
-	Jugador * j = &(*jugador);
+	Jugador * j = jugador;
 	//si es el primer jugador, le asigno el personaje de pacman, si no
 	//fantasma
 	if(jugadores.size() == 0)
@@ -46,9 +46,8 @@ void ModeloServidor::run(){
 		double intervalo_tiempo = 0;
 		double hora_actual;
 		
-		std::list<Tipo_Jugador>::iterator it;
 		
-		Tipo_Jugador j;
+		Jugador * j;
 		//itero por todos los niveles
 		for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
 			this->set_cambio();//TODO provisorio, no se si va aca o no
@@ -62,13 +61,16 @@ void ModeloServidor::run(){
 			while(!this->parar){
 				//obtengo la hora actual para evitar el error acumulativo
 				hora_actual = Reloj::get_instancia()->get_hora_actual_decimal();
+				//
+				std::list<Jugador *> lista_jugadores = get_jugadores();
+				std::list<Jugador *>::iterator it;
 				//recorro todos los jugadores
-				for(it = jugadores.begin(); it!= jugadores.end(); it++){
+				for(it = lista_jugadores.begin(); it!= lista_jugadores.end(); it++){
 					j = *it;
 					//lo muevo
 					(this->mundo->get_mapa_activo())->mover(*j, j->get_personaje()->get_velocidad() * intervalo_tiempo);
 					//reviso las colisiones
-					revisar_colisiones(j);
+					revisar_colisiones(j ,lista_jugadores);
 					
 				}
 				//std::cout << "- El jugador "<< j->get_id() << " tiene " << j->get_puntos() << " puntos y esta en ";
@@ -88,14 +90,14 @@ void ModeloServidor::run(){
 }
 
 
-void ModeloServidor::revisar_colisiones(S_ptr<Jugador>& j){
-	std::list<Tipo_Jugador>::iterator it;
+void ModeloServidor::revisar_colisiones(Jugador * j, std::list<Jugador *>& lista_jugadores){
+	std::list<Jugador *>::iterator it;
 	 
-	Tipo_Jugador j2;
+	Jugador * j2;
 	
-	for(it = jugadores.begin(); it!= jugadores.end(); it++){
+	for(it = lista_jugadores.begin(); it != lista_jugadores.end(); it++){
 		j2 = *it;
-		j->colisiono(&(*j2));
+		j->colisiono(j2);
 	}	
 }
 void ModeloServidor::preparar_partida(){
@@ -121,12 +123,14 @@ void ModeloServidor::preparar_partida(){
 		}
 	}		
 		
-	std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+	//std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+	std::list<Jugador *> lista_jugadores = get_jugadores();
+	std::list<Jugador *>::iterator it_jugadores;
 	
 	it_estucturales = casa_fantasma.begin();
 	S_ptr<Jugador> j;
 	Posicion p;
-	for(it_jugadores = this->jugadores.begin(); it_jugadores != this->jugadores.end() ; ++it_jugadores){
+	for(it_jugadores = lista_jugadores.begin(); it_jugadores != lista_jugadores.end() ; ++it_jugadores){
 		j = *it_jugadores;
 		if(j->get_personaje()->get_tipo() == Personaje::pacman){
 			p = salida_pacman->get_posicion();
@@ -148,4 +152,3 @@ void ModeloServidor::preparar_partida(){
 		j->set_posicion(p);
 	}
 }
-
