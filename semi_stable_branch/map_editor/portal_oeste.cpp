@@ -6,14 +6,12 @@
 /* Constructor: */
 
 PortalOeste::PortalOeste (int pos_x, int pos_y) : Portal(pos_x, pos_y, PORTAL_VERT_ANCHO, PORTAL_VERT_ALTO, OESTE){
+	//Realizo las conexiones con los elementos adyacentes
+	S_ptr<Punto> conec1 (new Punto(pos_x - 1, pos_y));
+	S_ptr<Punto> conec2 (new Punto(pos_x + this->get_alto(), pos_y));
 	
-	S_ptr<Punto> conec1 (new Punto(pos_x + 1, this->mapa->get_ancho() - 1)); //Teleport
-	S_ptr<Punto> conec2 (new Punto(pos_x - 1, pos_y));
-	S_ptr<Punto> conec3 (new Punto(pos_x + this->get_alto(), pos_y));
-	
-	this->set_posible_conexion(1,0,conec1);
-	this->set_posible_conexion(0,0, conec2);
-	this->set_posible_conexion(2,0, conec3);
+	this->set_posible_conexion(0,0, conec1);
+	this->set_posible_conexion(2,0, conec2);
 }
 
 /* Get Ruta Imagen: */
@@ -51,4 +49,12 @@ bool PortalOeste::estoy_en_frontera(Mapa* mapa){
 		return true;
 	else
 		return false;
+}
+
+/* Conectar con Simetrico: */
+
+void PortalOeste::conectar_con_simetrico(S_ptr<Elemento> instancia, S_ptr<Elemento> simetrico, Mapa* mapa){
+	S_ptr<Punto> conec (new Punto(this->get_pos_x() + 1, mapa->get_ancho() - 1)); //Teleport
+	this->set_posible_conexion(1,0,conec);
+	Portal::conectar_con_simetrico(instancia, simetrico, mapa);
 }
