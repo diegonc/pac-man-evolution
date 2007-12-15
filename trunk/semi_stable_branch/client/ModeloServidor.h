@@ -36,7 +36,6 @@ class ModeloServidor : public ModeloCommon {
 		*/
 		void run();
    
-   		void quitar_jugador(unsigned int id);
 };
 
 

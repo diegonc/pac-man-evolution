@@ -7,7 +7,6 @@
 #include <string>
 #include <list>
 #include "Jugador.h"
-#include "observador.h"
 #include "../common/bloqueo.h"
 
 /** @brief Esta clase define el modelo.
@@ -15,7 +14,7 @@
  *		   el tiempo la posicion de los jugadores.
  */
 
-class ModeloCommon : public Thread , public Observador, public Observable{
+class ModeloCommon : public Thread, public Observable{
 	typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	protected:
@@ -96,7 +95,7 @@ class ModeloCommon : public Thread , public Observador, public Observable{
 
 		void set_cargado();
 		
-		
+  		void quitar_jugador(unsigned int id);
 };
 
 

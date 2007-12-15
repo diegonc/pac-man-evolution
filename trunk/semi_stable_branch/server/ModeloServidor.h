@@ -2,13 +2,13 @@
 #define __MODELO_H__
 
 #include "../common/ModeloCommon.h"
-
+#include "../common/observador.h"
 /** @brief Esta clase define el modelo.
  *		   Hereda de thread, ya que se debe actualizar automaticamente todo
  *		   el tiempo la posicion de los jugadores.
  */
 
-class ModeloServidor : public ModeloCommon {
+class ModeloServidor : public ModeloCommon, public Observador {
 
 	//typedef S_ptr<Jugador> Tipo_Jugador;
 	
