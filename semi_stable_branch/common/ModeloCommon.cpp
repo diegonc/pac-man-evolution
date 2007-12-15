@@ -44,6 +44,20 @@ Jugador * ModeloCommon::get_jugador(unsigned int id){
 	}
 	return resultado_busqueda;
 }
+void ModeloCommon::quitar_jugador(unsigned int id){
+	std::list< Jugador *> lista_jugadores = get_jugadores();
+   std::list< Jugador * >::iterator it_jugadores = lista_jugadores.begin();
+	
+	bool encontro = false;
+	
+	while( (it_jugadores != lista_jugadores.end()) && (!encontro) ){
+		if( (*it_jugadores)->get_id() == id){
+			encontro = true;
+			jugadores.erase(it_jugadores);
+		}
+		it_jugadores++;
+	}
+}
 	
 MundoBajoNivel& ModeloCommon::get_mundo(){
 	return *this->mundo;

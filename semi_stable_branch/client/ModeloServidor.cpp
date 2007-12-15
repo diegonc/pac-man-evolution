@@ -1,11 +1,6 @@
 #include "ModeloServidor.h"
 
-ModeloServidor::ModeloServidor(){
-	//cargar_modelo(); // provisorio
-	MundoBasicImp * m = new MundoBasicImp();
-	S_ptr<MundoBajoNivel> mundo_default(m);
-	this->set_mundo(mundo_default);
-	this->parar = false;
+ModeloServidor::ModeloServidor() : ModeloCommon(){
 }
 
 S_ptr<ModeloServidor> ModeloServidor::instancia;
@@ -22,17 +17,4 @@ ModeloServidor::~ModeloServidor(){
 void ModeloServidor::run(){
 	
 }
-void ModeloServidor::quitar_jugador(unsigned int id){
-	std::list< Jugador * >::iterator it_jugadores = this->jugadores.begin();
-	
-	Jugador * resultado_busqueda;
-	bool encontro = false;
-	
-	while( (it_jugadores != this->jugadores.end()) && (!encontro) ){
-		if( (*it_jugadores)->get_id() == id){
-			encontro = true;
-			jugadores.erase(it_jugadores);
-		}
-		it_jugadores++;
-	}
-}
+
