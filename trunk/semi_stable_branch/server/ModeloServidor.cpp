@@ -3,6 +3,7 @@
 #include "reloj.h"
 #include "../common/PacMan.h"
 #include "../common/Fantasma.h"
+#include <cassert>
 
 ModeloServidor::ModeloServidor(){
 	//cargar_modelo(); // provisorio
@@ -68,6 +69,7 @@ void ModeloServidor::run(){
 				//recorro todos los jugadores
 				for(it = lista_jugadores.begin(); it!= lista_jugadores.end(); it++){
 					j = *it;
+					assert( j != 0 );
 					//lo muevo
 					(this->mundo->get_mapa_activo());
 					(this->mundo->get_mapa_activo())->mover(*j, j->get_personaje()->get_velocidad() * intervalo_tiempo);
