@@ -45,9 +45,12 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
 	Makefile
 	common/tinyxml/Makefile
+	common/editor/Makefile
+	common/common/Makefile
+	common/server/Makefile
 	common/Makefile
-	server/Makefile
+	pme-server/Makefile
 	map_editor/Makefile
-	client/Makefile
+	pme-client/Makefile
 ])
 AC_OUTPUT

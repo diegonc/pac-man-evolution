@@ -44,8 +44,13 @@ pme_client_SOURCES = \
 	main.cpp
 
 ##pme_client_CPPFLAGS = @GTK_CFLAGS@
+pme_client_CPPFLAGS = \
+	-I@top_srcdir@/common
 
 pme_client_LDADD = \
-	$(top_builddir)/common/libpme-common.la
+	$(top_builddir)/common/server/libpme-server.a \
+	$(top_builddir)/common/editor/libpme-editor.a \
+	$(top_builddir)/common/common/libpme-common.a \
+	$(top_builddir)/common/tinyxml/libtinyxml.a
 
 CLEANFILES = *~
