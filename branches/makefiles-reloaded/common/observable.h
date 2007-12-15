@@ -23,9 +23,9 @@ class Observable{
 	public:
 		Observable();
 	
-		~Observable();
+		virtual ~Observable();
 		
-		void set_cambio();
+		virtual void  set_cambio();
 	
 		void agregar_observador(Observador * observador);
 	
