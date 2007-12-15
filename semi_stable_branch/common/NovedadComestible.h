@@ -9,6 +9,7 @@ class NovedadComestible{
 		bool _aparece;
 		S_ptr<Comestible> comestible;
 	public:
+		NovedadComestible(const NovedadComestible& NC);
 		NovedadComestible(S_ptr<Comestible> comestible,bool aparece);
 
 		S_ptr<Comestible> get_comestible();
