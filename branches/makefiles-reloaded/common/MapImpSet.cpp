@@ -20,12 +20,12 @@ MapaImpSet::~MapaImpSet(){
 	
 	//recorro los estructurales y los desconecto para que no quede memoria
 	//colgada
-	std::set<Tipo_Estructural,CompSptrEstructuralPosicion>::iterator it;
+	std::map<unsigned int,Tipo_Estructural>::iterator it;
 	Tipo_Estructural estruct_nulo;
 	Tipo_Estructural estruct_aux;
 
 	for(it = this->estructurales.begin(); it != this->estructurales.end(); it++){
-		estruct_aux = *it;
+		estruct_aux = it->second;
 		estruct_aux->set_arriba(estruct_nulo);
 		estruct_aux->set_abajo(estruct_nulo);
 		estruct_aux->set_derecha(estruct_nulo);
@@ -110,35 +110,23 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 }
 
 void MapaImpSet::agregar_estructural(S_ptr<EstructuralUnitario> e){
-	S_ptr<EstructuralUnitario> e_aux = this->get_estructural(e->get_posicion());
-		
-	estructurales.insert(e);
+	unsigned int key = make_key(e->get_posicion() );
+
+	estructurales[key] = e;
 	S_ptr<Comestible> c = e->get_comida();
 	if(! c.es_nulo() )
-		this->comestibles.push_back(c);
+		comestibles[key] = c;
 }
-S_ptr<EstructuralUnitario> MapaImpSet::get_estructural(Posicion &p){
+Tipo_Estructural MapaImpSet::get_estructural(Posicion &p){
 
-	std::set<Tipo_Estructural, CompSptrEstructuralPosicion>::iterator busqueda;
-	busqueda = estructurales.begin();
+	Tipo_Estructural e_retorno;
+	unsigned int key = make_key(p);
+	std::map<unsigned int, Tipo_Estructural>::iterator busqueda = estructurales.find(key);
+	if( busqueda != estructurales.end() )
+		e_retorno = estructurales[key];
 
-	bool encontrado = false;
-	ComparadorPosicion comp;
-	Tipo_Estructural aux;
-
-	while( !encontrado && busqueda != estructurales.end() ){
-		aux = *busqueda;
-		if( comp(aux->get_posicion(), p) )
-			encontrado = true;
-		else
-			busqueda++;
-	}
-	if( encontrado)
-		return aux;
-	else{
-		S_ptr<EstructuralUnitario> nulo;
-		return nulo;
-	}
+	return e_retorno;
+		
 }
 
 Tipo_Dimensiones MapaImpSet::get_ancho(){
@@ -148,36 +136,39 @@ Tipo_Dimensiones MapaImpSet::get_ancho(){
 Tipo_Dimensiones MapaImpSet::get_alto(){
 	return this->alto;
 }
-std::list<S_ptr<EstructuralUnitario> > MapaImpSet::get_estructurales(){
-	std::set<Tipo_Estructural>::iterator it;
+std::list<Tipo_Estructural > MapaImpSet::get_estructurales(){
+	std::map<unsigned int, Tipo_Estructural>::iterator it;
 	std::list<Tipo_Estructural> lista;
 
-	for(it = this->estructurales.begin(); it != this->estructurales.end(); it++)
-		lista.push_back(*it);
+	it = this->estructurales.begin(); 
+	while(it != this->estructurales.end()){
+		lista.push_back((*it).second);
+		it++;
+	}
 	return lista;
 }
 
-std::list<S_ptr<Comestible> > MapaImpSet::get_comestibles(){
-	return this->comestibles;
+std::list<Tipo_Comestible > MapaImpSet::get_comestibles(){
+	std::map<unsigned int, Tipo_Comestible>::iterator it;
+	std::list<Tipo_Comestible> lista;
+
+	it = this->comestibles.begin(); 
+	while(it != this->comestibles.end()){
+		lista.push_back((*it).second);
+		it++;
+	}
+	return lista;
 }
 
-void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
+void MapaImpSet::quitar_comestible(Tipo_Comestible comestible){
 	
 	if( !comestible.es_nulo() ){
-		std::list<S_ptr<Comestible> >::iterator it = this->comestibles.begin();
-		bool encontrado = false;
-		S_ptr<Comestible> aux;
-		
-		while( !encontrado && it != this->comestibles.end() ){
-			aux = *it;
-			
-			if( comestible == *it ){
-				comestibles.erase(it);
-				encontrado = true;
-			}
-			else
-				it++;
-		}
+		std::map<unsigned int, Tipo_Comestible>::iterator it;
+		unsigned int key = make_key(comestible->get_posicion());
+		it = comestibles.find(key);		
+		if(it != comestibles.end() )
+			comestibles.erase(key);		
+
 		if(this->comestibles.size() == 0){
 			this->set_cambio();
 			this->avisar_observadores(NULL);
@@ -186,26 +177,14 @@ void MapaImpSet::quitar_comestible(S_ptr<Comestible> comestible){
 }
 
 void MapaImpSet::refresh( std::list< S_ptr<Comestible> >& comestibles_totales ){
-	
+	/*
 	
 	//limpia los comestibles
 	this->comestibles.clear();
 	//CREO QUE NO TIENE SENTIDO HACERLO
 	/*
-	//recorro los estructurales y les saco el comestible
-	std::set<Tipo_Estructural,CompSptrEstructuralPosicion>::iterator it;
-	S_ptr<Comestible> comestible_nulo;*/
 	Tipo_Estructural e_aux;
-	/*EstructuralPasillo *pasillo;
-	it = this->estructurales.begin();
-	while( it != this->estructurales.end() ){
-		e_aux = *it;
-		pasillo = dynamic_cast<EstructuralPasillo *>(&(*e_aux));		
-		if(pasillo != NULL)
-			pasillo->set_comida(comestible_nulo);
-		++it;
-		
-	}*/
+	
 	
 	std::list< S_ptr<Comestible> >::iterator it_comestibles;
 	it_comestibles = comestibles_totales.begin();
@@ -228,7 +207,12 @@ void MapaImpSet::refresh( std::list< S_ptr<Comestible> >& comestibles_totales ){
 		}
 		++it_comestibles;
 		
-	}
+	}*/
 	
 	//std::cout << "Recarge " << comestibles_totales.size() << " comestibles\n";
+}
+unsigned int MapaImpSet::make_key(Posicion &p){
+	unsigned int fila = (unsigned int) floor(p.get_y());
+	unsigned int col =  (unsigned int) floor(p.get_x());
+	return ( (fila * this->get_ancho()) + col);
 }
