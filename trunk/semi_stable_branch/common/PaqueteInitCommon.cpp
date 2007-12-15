@@ -223,7 +223,7 @@ void PaqueteInitCommon::serialize( OutputBitStream& bs )
 	OutputBitStream elems;
 	int elem_count = 0;
 	//version del protocolo (mejorada cuak)
-	//if( escribir_estructural( casa, elems ) ) elem_count++;
+	if( escribir_estructural( casa, elems ) ) elem_count++;
 	if( escribir_estructural( salida, elems ) ) elem_count++;
 	
 	std::list< S_ptr<Comestible> > comestibles = mapa->get_comestibles();

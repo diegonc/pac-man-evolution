@@ -146,7 +146,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 				ModeladorOBJ.DibujarObjetoPosicion(&Pos,jp->get_personaje()->get_tipo());
 			}
 		}
-/*		std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
+		std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
 		std::list< S_ptr<Comestible> >::iterator comestibles;
 		S_ptr<Comestible> comestible;
 
@@ -158,7 +158,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 			Pos.y= -p.get_y()*4;
 			ModeladorOBJ.DibujarObjetoPosicion(&Pos,comestible->get_tipo());
 		}
-*/
+
 		//llamo a la lista precompilada del Escenario
 		escenario.ModelarEscenario();
 //		std::cout << "<---------------------------------------------->" <<std::endl;
