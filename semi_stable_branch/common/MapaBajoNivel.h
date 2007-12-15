@@ -74,7 +74,9 @@ class MapaBajoNivel : public Observable
 		*/		
 		virtual std::list<S_ptr<Comestible> > get_comestibles()=0;
 
-		virtual void refresh( std::list< S_ptr<Comestible> >& comestibles_totales ) = 0;
+		virtual void refresh(unsigned int vertice) = 0;
+		
+		virtual void refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible) = 0;
 };
 
 #endif /* __MAPA_H__ */

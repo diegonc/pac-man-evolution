@@ -13,6 +13,8 @@
 #include "../common/Comestible.h"
 #include "../common/observable.h"
 #include "../common/NovedadComestible.h"
+#include "ComestibleFactory.h"
+
 #include <map>
 
 typedef unsigned int Tipo_Dimensiones;
@@ -46,6 +48,8 @@ class MapaImpSet : public MapaBajoNivel{
 		void quitar_comestible(Tipo_Comestible comestible);
 
 		unsigned int make_key(Posicion &p);
+		
+		Posicion unmake_key(unsigned int key);
 
 	public:
 		/**
@@ -113,8 +117,16 @@ class MapaImpSet : public MapaBajoNivel{
 		*	@return el alto del mapa
 		*/
 		Tipo_Dimensiones get_alto();
-
-		void refresh(std::list< S_ptr<Comestible> >& comestibles_totales);
+		/**
+		*	@brief	Permite sacar un comestible
+		*/
+		void refresh(unsigned int vertice);
+		
+		/*Para agregar*/
+		
+		void refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible);
+		
+		
 };
 
 #endif /* __MAPAIMPMSET_H__ */
