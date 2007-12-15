@@ -105,7 +105,6 @@ void OperacionStatus::ModificarPosicionJugador(Jugador * Jug,OperacionStatus::Po
 }
 
 void OperacionStatus::ejecutar(ModeloServidor &modelo){
-    std::cout << "comienzo ejecutar \n";
     Jugador * Jug = NULL;
 
     std::list< Jugador * >::const_iterator itjugadores;
@@ -168,6 +167,5 @@ Encontrado=false;
         }
     }
 //	modelo.get_mundo().get_mapa_activo()->refresh(comestibles);
-    std::cout << "end ejecutar \n";
 	
 }

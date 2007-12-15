@@ -35,8 +35,10 @@ const std::list<Jugador *> ModeloCommon::get_jugadores(){
 }
 
 Jugador * ModeloCommon::get_jugador(unsigned int id){   
-   if( jugadores.find(id) != jugadores.end() )
-      return jugadores[id];
+   Bloqueo b(&llave);
+    std::map<unsigned int, Jugador * >::iterator it = jugadores.find(id);
+   if( it != jugadores.end())
+      return (*it).second;
    else
    	return NULL;
 }
