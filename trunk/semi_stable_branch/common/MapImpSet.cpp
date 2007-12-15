@@ -57,9 +57,9 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 				//lo comio
 				if(jugador.get_puntos() != puntosJugador){
 					this->quitar_comestible(com);
-					this->set_cambio();
-					NovedadComestible NovComestible(com,false);
-					this->avisar_observadores(&NovComestible);
+					//this->set_cambio();
+					//NovedadComestible NovComestible(com,false);
+					//this->avisar_observadores(&NovComestible);
 				}
 				
 			}
