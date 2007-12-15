@@ -1,6 +1,5 @@
 #include "OperacionStatus.h"
 
-#include "../common/ComestibleFactory.h"
 #include <math.h>
 #include "../common/PacMan.h"
 #include "../common/Fantasma.h"
@@ -147,25 +146,14 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
     //los jugadores ya fueron seteados*/
 	
 	//itero sobre los comestibles
-Encontrado=false;
-    std::list<S_ptr<Comestible> > comestibles;
-    ComestibleFactory fab;
-	for (std::list<OperacionStatus::PosicionElemento>::iterator it=get_elementos()->begin();((it!=get_elementos()->end())&&(!Encontrado));++it){
+	Encontrado=false;
+    for (std::list<OperacionStatus::PosicionElemento>::iterator it=get_elementos()->begin();((it!=get_elementos()->end())&&(!Encontrado));++it){
         OperacionStatus::PosicionElemento& PosE=*it;
-
-        int Col=PosE.Posic % AnchoMapa;
-        int Fila=(int)floor(PosE.Posic / AnchoMapa);
 	
-		//std::cout << "Estado Comest:" <<PosE.Estado << "\n";
 		if (PosE.Estado){
-			Posicion p(Fila,Col);
-			S_ptr<Comestible> c_nuevo(fab.construir(PosE.Tipo,p));
-			comestibles.push_back(c_nuevo);            
-			//agregar Elemento posicion(Col,Fila)
-        }else{
-            //eliminar Elemento posicion(Col,Fila)
+			modelo.get_mundo().get_mapa_activo()->refresh(PosE.Posic,PosE.Tipo);
+		}else{
+			modelo.get_mundo().get_mapa_activo()->refresh(PosE.Posic);
         }
     }
-//	modelo.get_mundo().get_mapa_activo()->refresh(comestibles);
-	
 }
