@@ -95,9 +95,7 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
 
 	MundoBajoNivel& m=Model->get_mundo();
 	S_ptr<MapaBajoNivel> mapa(m.get_mapa_activo());
-	std::cout << "AlanGAY!"<< std::endl;
 	unsigned int pedo=mapa->get_ancho();
-	std::cout << "TartoAY!"<< std::endl;
 
         unsigned int AnchoMapa=Model->get_mundo().get_mapa_activo()->get_ancho();
 
@@ -215,14 +213,12 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
 
         }
 */
-	std::cout << "comienzo elementos\n\n";
 	//cantidad elementos
         bs.append( 8,  (unsigned int) Novedades.size());
 
     //Posiciones elementos
         std::list< NovedadComestible >::iterator itNovcomestibles;
         
-	std::cout << "comeinzo loop\n\n";
         //itero sobre los comestibles
         for(itNovcomestibles = Novedades.begin(); itNovcomestibles != Novedades.end(); ++itNovcomestibles){
             NovedadComestible& NC = *itNovcomestibles;
@@ -237,13 +233,11 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
             int Col=(int)floor(P.get_y());
 
             unsigned int PosCasillero=Col+(Fila*AnchoMapa);
-		std::cout << "in loop\n\n";
             bs.append( 4,  tipoCom);
             bs.append( 2,  Orient);
             bs.append( 2,  Estado);
             bs.append( 16,  PosCasillero);
         }
-	std::cout << "end loop\n\n";
 }
 
 Operacion* PaqueteStatusCommon::get_operacion()
