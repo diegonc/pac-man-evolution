@@ -99,7 +99,7 @@ void OperacionStatus::ModificarPosicionJugador(Jugador * Jug,OperacionStatus::Po
             Jug->get_direccion().set_dir(Direccion::Oeste);
         }
     }
-    std::cout<< "el " << ((PosJ.esPacman)?"Pacman":"Fantasma") << " esta en la posicion " << Jug->get_posicion() << "\n";
+//    std::cout<< "el " << ((PosJ.esPacman)?"Pacman":"Fantasma") << " esta en la posicion " << Jug->get_posicion() << "\n";
 
 }
 

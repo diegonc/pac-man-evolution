@@ -120,32 +120,52 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		glTranslatef(0,0 , -100);
 	}
 
+
 	if (escenario.loaded()){
 		Posicion_Graf Pos;
 		std::list< Jugador * > lista_jugadores = ModeloServidor::get_instancia()->get_jugadores();
 		std::list< Jugador * >::const_iterator jugadores;
 		Jugador * jp;
+		bool YaCargueObservador=false;		
 		//obtengo los jugadores
 		//std::cout << "HERE 1 -<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";		  
+		jp=ModeloServidor::get_instancia()->get_jugador(JugadorLocal::get_instancia()->get_id());
+	///
+		if (jp!=NULL){
+			Posicion pJ=jp->get_posicion();
+			Pos.x=pJ.get_x()*4;
+			Pos.y=-pJ.get_y()*4;
+			Pos.setAnguloActual(getAnguloDireccion(jp->get_direccion()));
+			//dibujo al objeto observador
+			ModeladorOBJ.DibujarObjetoObservadorPosicion(&Pos,jp->get_personaje()->get_tipo());
+		}
+		
 		for(jugadores = lista_jugadores.begin();jugadores != lista_jugadores.end(); ++jugadores){
 			jp = *jugadores;
 		   //si el id es 1(deberia ser jugador cliente)
 		   if(jp->get_id() == JugadorLocal::get_instancia()->get_id()){
-				//obtengo la posicion y la parseo
+/*				//obtengo la posicion y la parseo
 				Posicion p=jp->get_posicion();
 				Pos.x=p.get_x()*4;
 				Pos.y=-p.get_y()*4;
 				Pos.setAnguloActual(getAnguloDireccion(jp->get_direccion()));
 				//dibujo al objeto observador
-				ModeladorOBJ.DibujarObjetoObservadorPosicion(&Pos,jp->get_personaje()->get_tipo());
+				ModeladorOBJ.DibujarObjetoObservadorPosicion(&Pos,jp->get_personaje()->get_tipo());*/
+				YaCargueObservador=true;
 		   }
 		   else{ //son los otros jugadores
 				Posicion p2=jp->get_posicion();
+				std::cout << "8==D" <<p2 << "\n";
 				Pos.x= p2.get_x()*4;
 				Pos.y= -p2.get_y()*4;
 				ModeladorOBJ.DibujarObjetoPosicion(&Pos,jp->get_personaje()->get_tipo());
-			}
+          	   }
 		}
+/*		
+		if (YaCargueObservador){
+			
+		}*/
+///
 		std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
 		std::list< S_ptr<Comestible> >::iterator comestibles;
 		S_ptr<Comestible> comestible;
