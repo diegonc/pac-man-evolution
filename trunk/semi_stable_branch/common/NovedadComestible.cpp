@@ -1,7 +1,7 @@
 #include "NovedadComestible.h"
 
 NovedadComestible::NovedadComestible(const NovedadComestible& NC){
-	this->_aparece=NC.aparece;
+	this->_aparece=NC._aparece;
 	this->comestible=NC.comestible;
 }
 
