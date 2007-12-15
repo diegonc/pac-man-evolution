@@ -43,10 +43,10 @@ void AvisadorNovedades::parar(){
 }
 
 void AvisadorNovedades::actualizar(Observable* Obs,void * Novedad){
-   if( Novedad != NULL){
-   	NovedadComestible* novedadComest = (NovedadComestible*) Novedad;
-   	llave.lock();
-   	novedades_comestible.push_back(*novedadComest);
-   	llave.unlock();
-   }
+   	if (Novedad!=NULL){
+      	NovedadComestible* novedadComest = (NovedadComestible*) Novedad;
+	   	llave.lock();
+	   	novedades_comestible.push_back(*novedadComest);
+	   	llave.unlock();
+    }
 }
