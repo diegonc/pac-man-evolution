@@ -70,8 +70,8 @@ o_server_files = $(patsubst %.$(extension),%.o,$(fuentes_server))
 o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(o_server_files)
 
 recompilar:
-	@$(RM) ../../server/PaqueteInit.o
-	@$(RM) ../../server/PaqueteStart.o
+	@$(RM) ../common/EscuchadorCliente.o
+	@$(RM) ../common/Paquete.o
 
 subproyecto: recompilar $(o_files)
 	@if [ -z "$(o_files)" ]; \

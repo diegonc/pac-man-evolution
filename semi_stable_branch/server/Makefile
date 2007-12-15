@@ -94,8 +94,8 @@ o_common_files = $(patsubst %.$(extension),%.o,$(fuentes_common))
 o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_common_files) $(fuentes_map_editor) $(o_tinyxml_files)
 
 recompilar:
-	@$(RM) PaqueteInit.o
-	@$(RM) PaqueteStart.o
+	@$(RM) ../common/Paquete.o
+	@$(RM) ../common/EscuchadorCliente.o
 
 server: recompilar $(o_files)
 	@if [ -z "$(o_files)" ]; \
