@@ -192,7 +192,7 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
         //itero sobre los comestibles
         for(itcomestibles = lista_comestibles.begin(); itcomestibles != lista_comestibles.end(); ++itcomestibles){
             comestible = *itcomestibles;
-            unsigned int tipoCom=comestible->get_tipo();
+            unsigned int tipoCom = comestible->get_tipo();
 
             unsigned int Orient=0;
 
