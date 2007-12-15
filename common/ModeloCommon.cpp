@@ -5,7 +5,7 @@ ModeloCommon::ModeloCommon(){
 	MundoBasicImp * m = new MundoBasicImp();
 	S_ptr<MundoBajoNivel> mundo_default(m);
 	this->set_mundo(mundo_default);
-	this->parar = false;
+
 }
 
 void ModeloCommon::set_mundo(S_ptr<MundoBajoNivel> mundo){
@@ -17,14 +17,15 @@ ModeloCommon::~ModeloCommon(){
 }
 
 void ModeloCommon::agregar_jugador(Jugador * jugador){
-	
-	//lo agrego a los jugadores
+	Bloqueo b(&llave);	
+   //lo agrego a los jugadores
 	this->jugadores.push_back(jugador);
 	
 }
 
 const std::list<Jugador *> ModeloCommon::get_jugadores(){
-	return this->jugadores;
+  	Bloqueo b(&llave);
+   return this->jugadores;
 }
 Jugador * ModeloCommon::get_jugador(unsigned int id){
 	
@@ -43,12 +44,23 @@ Jugador * ModeloCommon::get_jugador(unsigned int id){
 	}
 	return resultado_busqueda;
 }
+void ModeloCommon::quitar_jugador(unsigned int id){
+	std::list< Jugador *> lista_jugadores = get_jugadores();
+   std::list< Jugador * >::iterator it_jugadores = lista_jugadores.begin();
+	
+	bool encontro = false;
+	
+	while( (it_jugadores != lista_jugadores.end()) && (!encontro) ){
+		if( (*it_jugadores)->get_id() == id){
+			encontro = true;
+			jugadores.erase(it_jugadores);
+		}
+		it_jugadores++;
+	}
+}
 	
 MundoBajoNivel& ModeloCommon::get_mundo(){
 	return *this->mundo;
-}
-void ModeloCommon::actualizar(Observable * observable, void * param){
-	this->parar = true;
 }
 bool ModeloCommon::esta_terminado(){
 	return this->termino;

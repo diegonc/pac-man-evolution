@@ -92,9 +92,12 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
     //Puntuacion
         bs.append( 32,  PuntajePacman );
     //Posiciones Jugadores
+
 	MundoBajoNivel& m=Model->get_mundo();
 	S_ptr<MapaBajoNivel> mapa(m.get_mapa_activo());
+	std::cout << "AlanGAY!"<< std::endl;
 	unsigned int pedo=mapa->get_ancho();
+	std::cout << "TartoAY!"<< std::endl;
 
         unsigned int AnchoMapa=Model->get_mundo().get_mapa_activo()->get_ancho();
 

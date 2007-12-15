@@ -3,12 +3,13 @@
 #include "reloj.h"
 #include "../common/PacMan.h"
 #include "../common/Fantasma.h"
+#include <cassert>
 
-ModeloServidor::ModeloServidor(){
-	//cargar_modelo(); // provisorio
+ModeloServidor::ModeloServidor() : ModeloCommon(){
+/*	//cargar_modelo(); // provisorio
 	MundoBasicImp * m = new MundoBasicImp();
 	S_ptr<MundoBajoNivel> mundo_default(m);
-	this->set_mundo(mundo_default);
+	this->set_mundo(mundo_default);*/
 	this->parar = false;
 }
 
@@ -36,7 +37,8 @@ void ModeloServidor::agregar_jugador(Jugador * jugador){
 	
 	jugador->set_personaje(personaje);
 	
-	this->jugadores.push_back(jugador);
+   ModeloCommon::agregar_jugador(jugador);
+	//this->jugadores.push_back(jugador);
 	
 }
 		
@@ -68,8 +70,8 @@ void ModeloServidor::run(){
 				//recorro todos los jugadores
 				for(it = lista_jugadores.begin(); it!= lista_jugadores.end(); it++){
 					j = *it;
+					assert( j != 0 );
 					//lo muevo
-					(this->mundo->get_mapa_activo());
 					(this->mundo->get_mapa_activo())->mover(*j, j->get_personaje()->get_velocidad() * intervalo_tiempo);
 					//reviso las colisiones
 					revisar_colisiones(j ,lista_jugadores);
@@ -85,7 +87,8 @@ void ModeloServidor::run(){
 		//}
 		//aca se termina, entonces lo avisa y con solo preguntar por esta_terminado()
 		//se puede obtener el estado
-		this->termino = true;
+      std::cout << "ACABA DE TERMIANR EL MODELO!!!!\n";		
+      this->termino = true;
 		this->set_cambio();
 		this->avisar_observadores(NULL);
 	}
@@ -153,4 +156,7 @@ void ModeloServidor::preparar_partida(){
 			
 		j->set_posicion(p);
 	}
+}
+void ModeloServidor::actualizar(Observable * observable, void * param){
+	//this->parar = true;
 }
