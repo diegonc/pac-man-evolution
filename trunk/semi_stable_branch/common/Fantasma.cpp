@@ -24,7 +24,7 @@ void Fantasma::colision(Jugador * jugador){
 			//si el jugador no es si mismo, ya que no tiene sentido
 			if(jugador->get_id() != get_jugador()->get_id() ){
 				//trata de castear a pacman, si da error, pasa al catch
-				PacMan pacman = dynamic_cast< PacMan& >(*jugador->get_personaje());
+				PacMan& pacman = dynamic_cast< PacMan& >(*jugador->get_personaje());
 				Tipo_Coordenada distancia;
 				
 				//calcula la distancia entre los dos personajes calculando el modulo
