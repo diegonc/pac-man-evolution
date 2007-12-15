@@ -12,13 +12,13 @@ for i in $COMMON_HEADERS; do
 	echo -n "Buscando $i en $j..."
 	if egrep -q "#include[ \t]+\"\.\.\/.*\/$i\"" $j; then
 	    SED_PAT="s/" # comando
-	    SED_PAT="$SED_PAT#include\([[:space:]]+\)\"\.\.\/.*\/$i\"/" # busca
+	    SED_PAT="$SED_PAT#include\([[:space:]]*\)\"\.\.\/.*\/$i\"/" # busca
 	    SED_PAT="$SED_PAT#include\1<common\/$i>/" # reemplaza
 	    sed -i -e $SED_PAT $j
 	    echo "reemplazado."
 	elif egrep -q "#include[ \t]+\"$i\"" $j; then
 	    SED_PAT="s/" # comando
-	    SED_PAT="$SED_PAT#include\([[:space:]]+\)\"$i\"/" # busca
+	    SED_PAT="$SED_PAT#include\([[:space:]]*\)\"$i\"/" # busca
 	    SED_PAT="$SED_PAT#include\1<common\/$i>/" # reemplaza
 	    sed -i -e $SED_PAT $j
 	    echo "reemplazado."
@@ -33,13 +33,13 @@ for i in $SERVER_HEADERS; do
 	echo -n "Buscando $i en $j..."
 	if egrep -q "#include[ \t]+\"\.\.\/.*\/$i\"" $j; then
 	    SED_PAT="s/" # comando
-	    SED_PAT="$SED_PAT#include\([[:space:]]+\)\"\.\.\/.*\/$i\"/" # busca
+	    SED_PAT="$SED_PAT#include\([[:space:]]*\)\"\.\.\/.*\/$i\"/" # busca
 	    SED_PAT="$SED_PAT#include\1<server\/$i>/" # reemplaza
 	    sed -i -e $SED_PAT $j
 	    echo "reemplazado."
 	elif egrep -q "#include[ \t]+\"$i\"" $j; then
 	    SED_PAT="s/" # comando
-	    SED_PAT="$SED_PAT#include\([[:space:]]+\)\"$i\"/" # busca
+	    SED_PAT="$SED_PAT#include\([[:space:]]*\)\"$i\"/" # busca
 	    SED_PAT="$SED_PAT#include\1<server\/$i>/" # reemplaza
 	    sed -i -e $SED_PAT $j
 	    echo "reemplazado."
@@ -54,13 +54,13 @@ for i in $EDITOR_HEADERS; do
 	echo -n "Buscando $i en $j..."
 	if egrep -q "#include[ \t]+\"\.\.\/.*\/$i\"" $j; then
 	    SED_PAT="s/" # comando
-	    SED_PAT="$SED_PAT#include\([[:space:]]+\)\"\.\.\/.*\/$i\"/" # busca
+	    SED_PAT="$SED_PAT#include\([[:space:]]*\)\"\.\.\/.*\/$i\"/" # busca
 	    SED_PAT="$SED_PAT#include\1<editor\/$i>/" # reemplaza
 	    sed -i -e $SED_PAT $j
 	    echo "reemplazado."
 	elif egrep -q "#include[ \t]+\"$i\"" $j; then
 	    SED_PAT="s/" # comando
-	    SED_PAT="$SED_PAT#include\([[:space:]]+\)\"$i\"/" # busca
+	    SED_PAT="$SED_PAT#include\([[:space:]]*\)\"$i\"/" # busca
 	    SED_PAT="$SED_PAT#include\1<editor\/$i>/" # reemplaza
 	    sed -i -e $SED_PAT $j
 	    echo "reemplazado."
