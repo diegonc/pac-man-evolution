@@ -1,28 +1,29 @@
-#include "mutex.h"
+#include "common_Mutex.h"
 
-Mutex::Mutex(Mutex &m){
-	this->llave = m.llave;
-}
-Mutex& Mutex::operator=(Mutex& m){
-	this->llave = m.llave;
-	return *this;
+Mutex::Mutex() throw( Error::SystemError )
+{
+    if( pthread_mutex_init( &mutex, NULL ) != 0 )
+        throw Error::SystemError();
 }
 
-Mutex::Mutex(){
-	pthread_mutex_init(& this->llave, NULL);
+Mutex::~Mutex()
+{
+    pthread_mutex_destroy( &mutex );
 }
-	
-void Mutex::lock(){
-	pthread_mutex_lock(& this->llave);
+
+void Mutex::lock()
+{
+	if( pthread_mutex_lock( &mutex ) != 0 )
+		throw Error::SystemError();
 }
-		
-void Mutex::unlock(){
-	pthread_mutex_unlock(& this->llave);
+
+bool Mutex::try_lock()
+{
+    return ( pthread_mutex_trylock( &mutex ) == 0 );
 }
-	
-Mutex::~Mutex(){
-	pthread_mutex_destroy(& this->llave);
-}
-pthread_mutex_t * Mutex::get_mutex(){
-	return &(this->llave);	
+
+void Mutex::unlock()
+{
+	if( pthread_mutex_unlock( &mutex ) != 0 )
+		throw Error::SystemError();
 }
