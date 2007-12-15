@@ -13,10 +13,11 @@
 #include "../common/Comestible.h"
 #include "../common/observable.h"
 #include "../common/NovedadComestible.h"
-#include <set>
+#include <map>
 
 typedef unsigned int Tipo_Dimensiones;
 typedef S_ptr<EstructuralUnitario> Tipo_Estructural;
+typedef S_ptr<Comestible> Tipo_Comestible;
 
 class MapaImpSet : public MapaBajoNivel{
 
@@ -24,8 +25,6 @@ class MapaImpSet : public MapaBajoNivel{
 
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
-
-		Tipo_Estructural estructural;
 
 		/**
 		*	@brief 	Este metodo verifica si el jugador, mediante su personaje,
@@ -36,41 +35,17 @@ class MapaImpSet : public MapaBajoNivel{
 		*	@param	pnueva	Posicion a donde va a ir el jugador
 		*/
 		bool tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta, Posicion &pnueva);
-		
-
-	public:
-		/**
-		*	@brief	Inner class que sirve para comparar el contenido del set.
-		*			Sirve para el ordenamiento del mismo
-		*/
-		class CompSptrEstructuralPosicion{
-			public:
-				bool operator()(const Tipo_Estructural &e1, const Tipo_Estructural &e2){
-					Tipo_Estructural v1 = e1;
-					Tipo_Estructural v2 = e2;
-
-					Posicion pos1 = v1->get_posicion();
-					Posicion pos2 = v2->get_posicion();
-	
-					if( (int)pos1.get_x() < (int)pos2.get_x() )
-						return true;
-					else
-						if((int)pos1.get_y() < (int)pos2.get_y())
-							return true;
-						else
-							return false;
-					}
-		};
-	private:
-		std::set<Tipo_Estructural,CompSptrEstructuralPosicion> estructurales;
-		std::list<S_ptr<Comestible> > comestibles;
-		
+			
+		std::map< unsigned int ,Tipo_Estructural> estructurales;
+		std::map< unsigned int ,Tipo_Comestible> comestibles;		
 		/**
 		*	@brief	Metodo para quitar un comestible de la lista propia
 		*	
 		*	@param	comestible Comestible que se quiere quitar
 		*/
-		void quitar_comestible(S_ptr<Comestible> comestible);
+		void quitar_comestible(Tipo_Comestible comestible);
+
+		unsigned int make_key(Posicion &p);
 
 	public:
 		/**
@@ -100,7 +75,7 @@ class MapaImpSet : public MapaBajoNivel{
 		*
 		*	@param 	e Estructural a agregar
 		*/
-		void agregar_estructural(S_ptr<EstructuralUnitario> e);
+		void agregar_estructural(Tipo_Estructural e);
 
 		/**
 		*	@brief	Implementacion del metodo de mapa
@@ -109,21 +84,21 @@ class MapaImpSet : public MapaBajoNivel{
 		*
 		*	@return Smart pointer con el estructural
 		*/
-		S_ptr<EstructuralUnitario> get_estructural(Posicion &p);
+		Tipo_Estructural get_estructural(Posicion &p);
 
 		/**
 		*	@brief	Implementacion del metodo de mapa
 		*
 		*	@return lista con los estructurales
 		*/
-		std::list<S_ptr<EstructuralUnitario> > get_estructurales();
+		std::list<Tipo_Estructural > get_estructurales();
 
 		/**
 		*	@brief	Implementacion del metodo de mapa
 		*
 		*	@param 	lista con los comestibles
 		*/
-		std::list<S_ptr<Comestible> > get_comestibles();
+		std::list<Tipo_Comestible > get_comestibles();
 	
 		/**
 		*	@brief	Devuelve el ancho del mapa
