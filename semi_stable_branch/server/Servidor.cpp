@@ -10,15 +10,17 @@
 
 const int Servidor::SENIAL_CANCELAR = SIGUSR1;	
 
+#include <unistd.h>
+
+
 void Servidor::manejador_signal(int num_signal){
 	std::cout << "Entro al manejador de seniales\n";	
 	switch(num_signal){
 		case Servidor::SENIAL_CANCELAR: break;
 
 		case SIGSEGV:
-			std::cout << "==>" <<pthread_self()<< std::endl << std::flush;			
-			break;
-			
+			std::cout << "==>" <<pthread_self()<< std::endl << std::flush;		
+      	std::cout << getppid() << " A ver si funca\n";
 		default: raise(num_signal);				
 	}
 }
@@ -27,6 +29,7 @@ void Servidor::set_propiedades_signal(const int id_signal){
 		this->accion_signal.sa_handler = manejador_signal;
 		sigemptyset(&this->accion_signal.sa_mask);
 		this->accion_signal.sa_flags = 0;//~SA_RESTART;
+      this->accion_signal.sa_flags = SA_RESETHAND;
 //		sigaction(id_signal,&this->accion_signal, NULL);
 		sigaction(SIGSEGV,&this->accion_signal, NULL);
 	
