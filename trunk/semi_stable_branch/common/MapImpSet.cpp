@@ -180,8 +180,13 @@ void MapaImpSet::refresh(unsigned int vertice){
 	std::map<unsigned int, Tipo_Comestible>::iterator it;
 	
 	it = comestibles.find(vertice);		
-	if(it != comestibles.end() )
+	std::cout << "Busca el comestible en : " << vertice << "\n";
+	if(it != comestibles.end() ){
+		std::cout << "La borro porque la encontro ;)\n";
 		comestibles.erase(vertice);		
+	}
+	else
+		std::cout << "No la encontro =(\n";
 }
 void MapaImpSet::refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible){
 	ComestibleFactory fab;
