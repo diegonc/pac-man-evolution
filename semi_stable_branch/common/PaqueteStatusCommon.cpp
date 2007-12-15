@@ -229,8 +229,8 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
             unsigned int Estado=(NC.aparece()?1:0);
 
             Posicion P=NC.get_comestible()->get_posicion();
-            int Fila=(int)floor(P.get_x());
-            int Col=(int)floor(P.get_y());
+            int Fila=(int)floor(P.get_y());
+            int Col=(int)floor(P.get_x());
 
             unsigned int PosCasillero=Col+(Fila*AnchoMapa);
             bs.append( 4,  tipoCom);
