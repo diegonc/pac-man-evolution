@@ -46,7 +46,7 @@ libpme_server_a_SOURCES = \
 	MundoBasicImp.cpp \
 	MundoBasicImp.h \
 	NovedadComestible.cpp \
-	NovedadComestible.h \ 
+	NovedadComestible.h \
 	Operacion.h \
 	OperacionNula.h \
 	OutputBitStream.cpp \
