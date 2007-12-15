@@ -3,6 +3,11 @@
 
 #include "../common/ModeloCommon.h"
 #include "../common/observador.h"
+#include "reloj.h"
+#include "../common/PacMan.h"
+#include "../common/Fantasma.h"
+#include <cassert>
+
 /** @brief Esta clase define el modelo.
  *		   Hereda de thread, ya que se debe actualizar automaticamente todo
  *		   el tiempo la posicion de los jugadores.

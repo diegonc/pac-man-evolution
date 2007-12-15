@@ -59,7 +59,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 					this->quitar_comestible(com);
 					this->set_cambio();
 					NovedadComestible NovComestible(com,false);
-					this->avisar_observadores(&NovComestible);
+					//this->avisar_observadores(&NovComestible);
 				}
 				
 			}
@@ -176,43 +176,35 @@ void MapaImpSet::quitar_comestible(Tipo_Comestible comestible){
 	}
 }
 
-void MapaImpSet::refresh( std::list< S_ptr<Comestible> >& comestibles_totales ){
-	/*
+void MapaImpSet::refresh(unsigned int vertice){
+	std::map<unsigned int, Tipo_Comestible>::iterator it;
 	
-	//limpia los comestibles
-	this->comestibles.clear();
-	//CREO QUE NO TIENE SENTIDO HACERLO
-	/*
-	Tipo_Estructural e_aux;
-	
-	
-	std::list< S_ptr<Comestible> >::iterator it_comestibles;
-	it_comestibles = comestibles_totales.begin();
-	S_ptr<Comestible> c_aux; 
-	while(it_comestibles != comestibles_totales.end() ){
-		e_aux = get_estructural((*it_comestibles)->get_posicion());
-		if(! e_aux.es_nulo() ){
-			//pasillo = dynamic_cast<EstructuralPasillo *>(&(*e_aux));		
-			//if(pasillo != NULL){
-				c_aux = *it_comestibles;
-				//pasillo->set_comida(c_aux);	
-				
-				//std::cout << c_aux->get_posicion() << "\n";
-				c_aux->get_posicion().set_x(e_aux->get_posicion().get_x() + 0.5);
-				c_aux->get_posicion().set_y(e_aux->get_posicion().get_y() + 0.5);
-				//std::cout << c_aux->get_posicion() << "\n";
-				//SETTEAR LA POSICION DEL COMESTIBLE
-				comestibles.push_back(c_aux);
-			//}			
-		}
-		++it_comestibles;
-		
-	}*/
-	
-	//std::cout << "Recarge " << comestibles_totales.size() << " comestibles\n";
+	it = comestibles.find(vertice);		
+	if(it != comestibles.end() )
+		comestibles.erase(vertice);		
 }
+void MapaImpSet::refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible){
+	ComestibleFactory fab;
+	
+	Posicion posicion = unmake_key(vertice);	
+	posicion.set_x(posicion.get_x() + 0.5);
+	posicion.set_y(posicion.get_y() + 0.5);
+	
+	Comestible * c = fab.construir(tipo_comestible, posicion);
+	
+	S_ptr<Comestible> comestible_nuevo(c);
+	
+	comestibles[vertice] = comestible_nuevo;
+}
+
 unsigned int MapaImpSet::make_key(Posicion &p){
 	unsigned int fila = (unsigned int) floor(p.get_y());
 	unsigned int col =  (unsigned int) floor(p.get_x());
 	return ( (fila * this->get_ancho()) + col);
+}
+Posicion MapaImpSet::unmake_key(unsigned int key){
+        int Col=key % this->get_ancho();
+        int Fila=(int) floor(key / this->get_ancho());
+	Posicion P(Col,Fila);
+	return P;
 }
