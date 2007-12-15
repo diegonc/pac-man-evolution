@@ -1,10 +1,5 @@
 #include "ModeloServidor.h"
 
-#include "reloj.h"
-#include "../common/PacMan.h"
-#include "../common/Fantasma.h"
-#include <cassert>
-
 ModeloServidor::ModeloServidor() : ModeloCommon(){
 /*	//cargar_modelo(); // provisorio
 	MundoBasicImp * m = new MundoBasicImp();
@@ -164,5 +159,10 @@ void ModeloServidor::preparar_partida(){
 	}
 }
 void ModeloServidor::actualizar(Observable * observable, void * param){
+	MapaBajoNivel * _mapa = dynamic_cast<MapaBajoNivel *>(observable);
+	if(_mapa != NULL){
+		if( _mapa->get_comestibles().size() == 0)
+			this->parar = true;	
+	}		
 	//this->parar = true;
 }
