@@ -89,6 +89,7 @@ void Servidor::run(){
 			cliente_nuevo->get_escritor().encolar_paquete(paquete_init);
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
+			ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->agregar_observador(&avisador);
 			if( (pool.get_cantidad_clientes() == cant_min_clientes) && (!ya_mando_start) ){
 				//espero los 5 segundos que piden
 				sleep(5);

@@ -5,7 +5,9 @@
 
 class PaqueteStatus: public PaqueteStatusCommon{
 	public:
-		PaqueteStatus();
+	PaqueteStatus(std::list<NovedadComestible>* Novedad);
+
+	PaqueteStatus();
 
       ~PaqueteStatus();
 
