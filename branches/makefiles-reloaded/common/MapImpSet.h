@@ -11,6 +11,8 @@
 #include "../common/Posicion.h"
 #include "ComparadorPosicion.h"
 #include "../common/Comestible.h"
+#include "../common/observable.h"
+#include "../common/NovedadComestible.h"
 #include <set>
 
 typedef unsigned int Tipo_Dimensiones;

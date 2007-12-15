@@ -2,8 +2,7 @@
 
 #include "OperacionStatus.h"
 
-PaqueteStatus::PaqueteStatus(): PaqueteStatusCommon()
-{
+PaqueteStatus::PaqueteStatus(): PaqueteStatusCommon(){
 
 }
 PaqueteStatus::~PaqueteStatus(){}
