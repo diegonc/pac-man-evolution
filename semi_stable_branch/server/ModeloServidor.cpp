@@ -69,10 +69,10 @@ void ModeloServidor::run(){
 					//lo muevo
 					S_ptr<MundoBajoNivel> mun = this->mundo;
 					S_ptr<MapaBajoNivel> map = mun->get_mapa_activo();
-					S_ptr<Personaje> pers = j->get_personaje();
+					Personaje* pers = j->get_personaje();
 					assert( mun.es_nulo() != true );
 					assert( map.es_nulo() != true );
-					assert( pers.es_nulo() != true );
+					assert( pers != NULL );
 					map->mover(*j, pers->get_velocidad() * intervalo_tiempo);
 					//reviso las colisiones
 					revisar_colisiones(j ,lista_jugadores);
