@@ -1,21 +1,21 @@
 #include "Posicion.h"
 
 Posicion::Posicion(Tipo_Coordenada x, Tipo_Coordenada y){
-	this->set_x(x);
-	this->set_y(y);	
+	this->x = x;
+	this->y = y;	
 }
 Posicion::Posicion(const Posicion &p){
 	this->x = p.x;
 	this->y = p.y;
 }
-Tipo_Coordenada Posicion::get_x() const{
+Tipo_Coordenada Posicion::get_x() const  {
 	return this->x;
 }
 void Posicion::set_x(Tipo_Coordenada x_nuevo){
 	//if(x_nuevo >= 0)
 		this->x = x_nuevo;
 }
-Tipo_Coordenada Posicion::get_y() const{
+Tipo_Coordenada Posicion::get_y() const {
 	return this->y;	
 }
 void Posicion::set_y(Tipo_Coordenada y_nuevo){

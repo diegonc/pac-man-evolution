@@ -50,9 +50,9 @@ void ModeloServidor::run(){
 		
 		Jugador * j;
 		//itero por todos los niveles
-		for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
-			this->set_cambio();//TODO provisorio, no se si va aca o no
-			this->avisar_observadores(NULL); //TODO provisorio, no se si va aca o no
+		//for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
+			//this->set_cambio();//TODO provisorio, no se si va aca o no
+			//this->avisar_observadores(NULL); //TODO provisorio, no se si va aca o no
 			//lo agrego como observador del mapa, ya que cuando no hay mas quesitos 
 			//me avisa
 			mundo->get_mapa_activo()->agregar_observador(this);
@@ -81,8 +81,8 @@ void ModeloServidor::run(){
 				usleep(2000);
 				intervalo_tiempo = (Reloj::get_instancia()->get_hora_actual_decimal() - hora_actual) / 1000;
 			}
-			this->mundo->pasar_de_nivel(); // TODO: provisorio, no se si va aca o no
-		}
+			//this->mundo->pasar_de_nivel(); // TODO: provisorio, no se si va aca o no
+		//}
 		//aca se termina, entonces lo avisa y con solo preguntar por esta_terminado()
 		//se puede obtener el estado
 		this->termino = true;
