@@ -59,7 +59,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 					this->quitar_comestible(com);
 					this->set_cambio();
 					NovedadComestible NovComestible(com,false);
-					//this->avisar_observadores(&NovComestible);
+					this->avisar_observadores(&NovComestible);
 				}
 				
 			}
@@ -210,6 +210,6 @@ unsigned int MapaImpSet::make_key(Posicion &p){
 Posicion MapaImpSet::unmake_key(unsigned int key){
         int Col=key % this->get_ancho();
         int Fila=(int) floor(key / this->get_ancho());
-	Posicion P(Col,Fila);
+	Posicion P(Fila,Col);
 	return P;
 }
