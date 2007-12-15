@@ -57,9 +57,9 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 				//lo comio
 				if(jugador.get_puntos() != puntosJugador){
 					this->quitar_comestible(com);
-					//this->set_cambio();
-					//NovedadComestible NovComestible(com,false);
-					//this->avisar_observadores(&NovComestible);
+					this->set_cambio();
+					NovedadComestible NovComestible(com,false);
+					this->avisar_observadores(&NovComestible);
 				}
 				
 			}
@@ -82,8 +82,8 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 	//y ver si tocan un lugar que no puede, digase pared, esquina.
 	//Se puede modificar el paso como para que no recorra todos los puntos
 	while( phi < DOS_PI && !toca/*2Pi*/ ){
-		Posicion p(	(radio-0.2) * cos(phi) + x0, (radio-0.2) * sin(phi) + y0 );
-		if (p.get_x() < 0)
+		Posicion p(	(radio-0.1) * cos(phi) + x0, (radio-0.1) * sin(phi) + y0 );
+		/*if (p.get_x() < 0)
 			p.set_x(p.get_x() + this->ancho);
 		else
 			if (p.get_x() >= this->ancho)
@@ -92,7 +92,7 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 			p.set_y(p.get_y() + this->alto);
 		else
 			if (p.get_y() >= this->alto)
-				p.set_y(p.get_y() - this->alto);
+				p.set_y(p.get_y() - this->alto);*/
 		e_critico = get_estructural(p);
 		if( e_critico.es_nulo() ){
 			toca = true;
