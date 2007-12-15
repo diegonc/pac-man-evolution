@@ -20,11 +20,11 @@ void Fantasma::colision(Jugador * jugador){
 	//verifica que el personaje con el que colisiono sea uno al cual le afecte,
 	//en este caso, pacman
 	if(this->esta_vivo() && jugador->get_personaje()->esta_vivo() ){
-		try{
-			//si el jugador no es si mismo, ya que no tiene sentido
-			if(jugador->get_id() != get_jugador()->get_id() ){
-				//trata de castear a pacman, si da error, pasa al catch
-				PacMan& pacman = dynamic_cast< PacMan& >(*jugador->get_personaje());
+		//si el jugador no es si mismo, ya que no tiene sentido
+		if(jugador->get_id() != get_jugador()->get_id() ){
+			//trata de castear a pacman, si da error, pasa al catch
+			PacMan * pacman = dynamic_cast< PacMan * >(jugador->get_personaje());
+			if(pacman != NULL){
 				Tipo_Coordenada distancia;
 				
 				//calcula la distancia entre los dos personajes calculando el modulo
@@ -39,8 +39,8 @@ void Fantasma::colision(Jugador * jugador){
 				
 				//si la distancia es menor o igual que la suma de los radios, 
 				//quiere decir que chocaron
-				if(distancia  <= ( this->get_radio() + pacman.get_radio() ) ){
-					if( !pacman.tiene_power_up() ){
+				if(distancia  <= ( this->get_radio() + pacman->get_radio() ) ){
+					if( !pacman->tiene_power_up() ){
 						//obtengo los personajes					
 						Personaje * p_this = this->get_jugador()->get_personaje();
 						Personaje * p_jug = jugador->get_personaje();
@@ -61,8 +61,7 @@ void Fantasma::colision(Jugador * jugador){
 				}
 			}
 		}
-		catch(std::bad_cast &e){/*No hago nada ya que no pasa anda cuando choca
-									con fantasmas*/}
+	
 	}
 	
 }
