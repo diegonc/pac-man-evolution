@@ -2,18 +2,19 @@
 #define __MODELO_H__
 
 #include "../common/ModeloCommon.h"
-
+#include "../common/observador.h"
 /** @brief Esta clase define el modelo.
  *		   Hereda de thread, ya que se debe actualizar automaticamente todo
  *		   el tiempo la posicion de los jugadores.
  */
 
-class ModeloServidor : public ModeloCommon {
+class ModeloServidor : public ModeloCommon, public Observador {
 
 	//typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	private:
-	
+  		bool parar;	
+   
 		void preparar_partida();
 					
 		void revisar_colisiones(Jugador * j, std::list<Jugador *>& lista_jugadores);	
@@ -45,6 +46,13 @@ class ModeloServidor : public ModeloCommon {
 		*	@brief	Implementacion del metodo para el thread
 		*/
 		void run();
+
+     	/**
+		*	@brief Implementacion del metodo actualizar de la clase observador
+		*/
+		virtual void actualizar(Observable * observable, void * param);
+
+
 };
 
 

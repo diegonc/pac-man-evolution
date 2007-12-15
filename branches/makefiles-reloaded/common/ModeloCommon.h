@@ -7,14 +7,14 @@
 #include <string>
 #include <list>
 #include "Jugador.h"
-#include "observador.h"
+#include "../common/bloqueo.h"
 
 /** @brief Esta clase define el modelo.
  *		   Hereda de thread, ya que se debe actualizar automaticamente todo
  *		   el tiempo la posicion de los jugadores.
  */
 
-class ModeloCommon : public Thread , public Observador, public Observable{
+class ModeloCommon : public Thread, public Observable{
 	typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	protected:
@@ -23,10 +23,11 @@ class ModeloCommon : public Thread , public Observador, public Observable{
 		std::list<Jugador*> jugadores;
 		
 		ModeloCommon(ModeloCommon &m);
-		
-		bool parar;
+
 		bool termino;
-		
+	   
+      Mutex llave;
+	
 	public:
    	/**
 		*	@brief 	Constructor de la clase
@@ -77,11 +78,6 @@ class ModeloCommon : public Thread , public Observador, public Observable{
 		const std::list<Jugador *> get_jugadores();
 	
 		/**
-		*	@brief Implementacion del metodo actualizar de la clase observador
-		*/
-		virtual void actualizar(Observable * observable, void * param);
-	
-		/**
 		*	@brief	Permite setearle el mundo
 		*
 		*	@param mundo Smart pointer cuyo contenido es el mundo
@@ -99,7 +95,7 @@ class ModeloCommon : public Thread , public Observador, public Observable{
 
 		void set_cargado();
 		
-		
+  		void quitar_jugador(unsigned int id);
 };
 
 
