@@ -5,6 +5,7 @@
 
 class PaqueteStatus: public PaqueteStatusCommon{
 	public:
+	PaqueteStatus();
 
         ~PaqueteStatus();
 	
