@@ -18,45 +18,29 @@ ModeloCommon::~ModeloCommon(){
 
 void ModeloCommon::agregar_jugador(Jugador * jugador){
 	Bloqueo b(&llave);	
-   //lo agrego a los jugadores
-	this->jugadores.push_back(jugador);
-	
+   jugadores[jugador->get_id()] = jugador;
 }
 
 const std::list<Jugador *> ModeloCommon::get_jugadores(){
   	Bloqueo b(&llave);
-   return this->jugadores;
+   std::list<Jugador * > lista_Jug;
+   std::map<unsigned int, Jugador * >::iterator it;
+   for (it=jugadores.begin();it!=jugadores.end();++it){
+      Jugador* jug=(*it).second;
+      lista_Jug.push_back(jug);
+   }
+   return lista_Jug;
 }
-Jugador * ModeloCommon::get_jugador(unsigned int id){
-	
-	std::list< Jugador * > lista_jugadores = this->get_jugadores();
-	std::list< Jugador * >::iterator it_jugadores = lista_jugadores.begin();
-	
-	Jugador * resultado_busqueda = NULL;
-	bool encontro = false;
-	
-	while( (it_jugadores != lista_jugadores.end()) && (!encontro) ){
-		if( (*it_jugadores)->get_id() == id){
-			encontro = true;
-			resultado_busqueda = *it_jugadores;
-		}
-		it_jugadores++;
-	}
-	return resultado_busqueda;
+
+Jugador * ModeloCommon::get_jugador(unsigned int id){   
+   if( jugadores.find(id) != jugadores.end() )
+      return jugadores[id];
+   else
+   	return NULL;
 }
 void ModeloCommon::quitar_jugador(unsigned int id){
-	std::list< Jugador *> lista_jugadores = get_jugadores();
-   std::list< Jugador * >::iterator it_jugadores = lista_jugadores.begin();
-	
-	bool encontro = false;
-	
-	while( (it_jugadores != lista_jugadores.end()) && (!encontro) ){
-		if( (*it_jugadores)->get_id() == id){
-			encontro = true;
-			jugadores.erase(it_jugadores);
-		}
-		it_jugadores++;
-	}
+  	Bloqueo b(&llave);
+   jugadores.erase (id);     
 }
 	
 MundoBajoNivel& ModeloCommon::get_mundo(){
