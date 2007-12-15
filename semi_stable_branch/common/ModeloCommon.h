@@ -5,7 +5,7 @@
 #include "smart_pointer.h"
 #include "MundoBasicImp.h"
 #include <string>
-#include <list>
+#include <map>
 #include "Jugador.h"
 #include "../common/bloqueo.h"
 
@@ -15,12 +15,11 @@
  */
 
 class ModeloCommon : public Thread, public Observable{
-	typedef S_ptr<Jugador> Tipo_Jugador;
-	
+		
 	protected:
 		S_ptr<MundoBajoNivel> mundo;
 	
-		std::list<Jugador*> jugadores;
+      std::map<unsigned int, Jugador *> jugadores;
 		
 		ModeloCommon(ModeloCommon &m);
 
