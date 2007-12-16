@@ -224,7 +224,7 @@ void PaqueteInitCommon::serialize( OutputBitStream& bs )
 	OutputBitStream elems;
 	int elem_count = 0;
 	for (std::list< S_ptr<EstructuralUnitario> >::iterator it=casa.begin();it!=casa.end();++it){
-		if( escribir_estructural( casa, elems ) ) elem_count++;
+		if( escribir_estructural( *it, elems ) ) elem_count++;
 	}
 	if( escribir_estructural( salida, elems ) ) elem_count++;
 	
