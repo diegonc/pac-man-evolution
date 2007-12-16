@@ -4,13 +4,16 @@
 #include "../common/thread.h"
 #include "../common/bloqueo.h"
 #include "../common/evento.h"
+#include "../common/observable.h"
 #include "Cliente.h"
 #include "Paquete.h"
 #include <queue>
 
 
-class EscritorCliente : public Thread{
+class EscritorCliente : public Thread, public Observable {
+
 	private:
+
 		Cliente	* cliente;
 		bool debe_terminar;
 		Mutex llave;		
