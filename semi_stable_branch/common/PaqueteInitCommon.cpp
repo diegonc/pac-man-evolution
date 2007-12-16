@@ -65,7 +65,7 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 					}
 					break;
 				case 1 /* Casa Fantasma */: {
-					S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
+						S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
 						reemplazar_estructural( c ); 
 					}
 					break;
@@ -128,6 +128,7 @@ void PaqueteInitCommon::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
 	S_ptr<EstructuralUnitario> actual = mapa->get_estructural( p );
 	mapa->agregar_estructural( e );
 	if( !actual.es_nulo() ) {
+		mapa->quitar_comestible(actual->get_comestible());
 		if( ! actual->get_arriba().es_nulo() ) {
 			e->set_arriba( actual->get_arriba() );
 			actual->get_arriba()->set_abajo( e );
