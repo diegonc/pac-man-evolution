@@ -96,8 +96,21 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 {
     // Apila la transformación geométrica actual
     glPushMatrix();
+	Jugador * jugador;
+	jugador=ModeloServidor::get_instancia()->get_jugador(JugadorLocal::get_instancia()->get_id());
+	static 	double j=0;
+	if (jugador!=NULL){
+	    if (jugador->get_personaje()->esta_vivo()){
+		    //color de borrado del la pantalla Negro
+		glClearColor(0.0f,0.0f,0.0f,0.5f);
+	    }else{
+		j+=0.0001;
+		glClearColor((sin(500*j)+1)/4,0.0f,0.0f,0.5f);
+	    }
+	}
+		
     //borro pantalla y buffer de profundidad
-	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		// Clear Screen And Depth Buffer
+    glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		// Clear Screen And Depth Buffer
     //cambio a la matriz de modelo
     glMatrixMode(GL_MODELVIEW);
 
@@ -126,7 +139,6 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		std::list< Jugador * > lista_jugadores = ModeloServidor::get_instancia()->get_jugadores();
 		std::list< Jugador * >::const_iterator jugadores;
 		Jugador * jp;
-		bool YaCargueObservador=false;		
 	
 		//dibujo al jugador
 		jp=ModeloServidor::get_instancia()->get_jugador(JugadorLocal::get_instancia()->get_id());

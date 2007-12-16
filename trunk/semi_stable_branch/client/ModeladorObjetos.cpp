@@ -108,11 +108,11 @@ void ModeladorObjetos::DibujarObjetoPosicion(Posicion_Graf* P,char Nombre){
     // lo llevo al origen
     glTranslatef(-P->x,-P->y, 0.0);
     //lo roto segun su posicion
-    glRotatef(P->getAnguloActual(), 0, 0, 1.0);
+    glRotatef(-P->getAnguloActual(), 0, 0, 1.0);
     //lo dibujo
     DibujarObjeto(ColeccionOBJ[Nombre]);
     //restauro la camara
-    glRotatef(-P->getAnguloActual(), 0, 0, 1.0);
+    glRotatef(P->getAnguloActual(), 0, 0, 1.0);
     //lo llevo a su posicion
     glTranslatef(P->x,P->y, 0.0);
 }

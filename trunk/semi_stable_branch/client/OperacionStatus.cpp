@@ -51,15 +51,15 @@ void OperacionStatus::ModificarPosicionJugador(Jugador * Jug,OperacionStatus::Po
     }
 
     if (PosJ.estaVivo){//si me llego q estaba vivo
-	//si no esta vivo, lo revivo
+		//si no esta vivo, lo revivo
 		if (!(Jug->get_personaje()->esta_vivo())){
 			  Jug->get_personaje()->revivir();
 		}
-		}else{ //si me llego q estaba muerto
-		//si esta vivo, lo mato
-		if (Jug->get_personaje()->esta_vivo()){
-			  Jug->get_personaje()->revivir();
-		}
+   }else{ //si me llego q estaba muerto
+	//si esta vivo, lo mato
+	if (Jug->get_personaje()->esta_vivo()){
+		Jug->get_personaje()->matar();
+	}
     }
 //END seteo el estado del jugador;
 
