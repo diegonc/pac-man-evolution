@@ -32,7 +32,7 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
     //parametros para la mejor visualizacion de la perspectiva
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     //escenario.Procesar(); //<----LO COMENTE YOOOOO!!!!
-
+	Mapa = SDL_LoadBMP("textura.bmp");
 	ModeladorOBJ.hidratar();
 	return true;
 
@@ -87,7 +87,7 @@ void AplicacionGrafica::Draw(SDL_Surface *Screen)
     //dibujo el modelo 3D
 	Draw3D(Screen);
 	//dibujo en 2 dimensiones
-	//Draw2D(Screen);
+	Draw2D(Screen);
 }
 
 
@@ -173,4 +173,22 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 //dibuja en 2D
 void AplicacionGrafica::Draw2D(SDL_Surface *S)
 {
+	static SDL_Rect src1={0,0,0,0};							// We're blitting 3 rectangles,
+	//src2={0,0,0,0},								// so we have to prepare them
+	//src3={0,0,0,0};
+
+	SDL_FillRect(S, &src1, SDL_MapRGBA(S->format,0,0,0,0));
+																// That's an issue many people is having!
+																// We set up our Alpha Channel first!
+
+	src1.x = (Sint16)(800-256);
+																// src1 is the first Logo
+	src1.y = (Sint16)(0);
+
+	src1.w = 256;										// Fill the rect structure
+	src1.h = 256;
+
+	SDL_BlitSurface(Mapa, NULL, S, &src1);			// And finally blit and update
+	SDL_UpdateRects(S, 1, &src1);
+
 }

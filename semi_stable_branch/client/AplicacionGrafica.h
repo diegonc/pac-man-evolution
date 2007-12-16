@@ -29,6 +29,7 @@ class AplicacionGrafica{
         //estadp de la aplicaccion
         EstadoAplicacion AppEstado;
 	SelectorCamara Camara;
+	SDL_Surface* Mapa;
            
 	private: 
 		Escenario escenario;
