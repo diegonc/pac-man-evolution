@@ -101,7 +101,8 @@ void ModeloServidor::revisar_colisiones(Jugador * j, std::list<Jugador *>& lista
 	Jugador * j2;
 	
 	for(it = lista_jugadores.begin(); it != lista_jugadores.end(); it++){
-		j2 = *it;
+   	std::cout << "ENTRO ACA\n";	
+      j2 = *it;
 		j->colisiono(j2);
 	}	
 }
