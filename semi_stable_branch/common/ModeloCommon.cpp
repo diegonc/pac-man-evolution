@@ -40,7 +40,7 @@ void ModeloCommon::agregar_jugador(Jugador * jugador){
 		++pos;	
    }
    jugador->set_posicion(p);
-   
+
    Bloqueo b(&llave);		
    jugadores[jugador->get_id()] = jugador;
 }
