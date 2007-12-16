@@ -1,9 +1,10 @@
-#include "common_Mutex.h"
+#include "mutex.h"
 
-Mutex::Mutex() throw( Error::SystemError )
+Mutex::Mutex() throw( Error::MutexError )
 {
-    if( pthread_mutex_init( &mutex, NULL ) != 0 )
-        throw Error::SystemError();
+    int err = pthread_mutex_init( &mutex, NULL );
+    if( err != 0 )
+        throw Error::MutexError(err);
 }
 
 Mutex::~Mutex()
@@ -13,8 +14,9 @@ Mutex::~Mutex()
 
 void Mutex::lock()
 {
-	if( pthread_mutex_lock( &mutex ) != 0 )
-		throw Error::SystemError();
+	int err = pthread_mutex_lock( &mutex );
+	if( err	!= 0 )
+		throw Error::MutexError(err);
 }
 
 bool Mutex::try_lock()
@@ -24,6 +26,12 @@ bool Mutex::try_lock()
 
 void Mutex::unlock()
 {
-	if( pthread_mutex_unlock( &mutex ) != 0 )
-		throw Error::SystemError();
+	int err = pthread_mutex_unlock( &mutex );
+	if( err != 0 )
+		throw Error::MutexError(err);
+}
+
+pthread_mutex_t* Mutex::get_mutex()
+{
+	return &mutex;
 }
