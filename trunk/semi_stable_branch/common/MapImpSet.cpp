@@ -126,6 +126,17 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 	}
 	return toca;
 }
+std::list<Tipo_Comestible > MapaImpSet::get_comestibles(){
+	std::map<unsigned int, Tipo_Comestible>::iterator it;
+	std::list<Tipo_Comestible> lista;
+
+	it = this->comestibles.begin(); 
+	while(it != this->comestibles.end()){
+		lista.push_back((*it).second);
+		it++;
+	}
+	return lista;
+}
 
 void MapaImpSet::agregar_estructural(S_ptr<EstructuralUnitario> e){
 	unsigned int key = make_key(e->get_posicion() );
