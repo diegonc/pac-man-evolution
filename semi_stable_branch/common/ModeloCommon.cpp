@@ -17,34 +17,41 @@ ModeloCommon::~ModeloCommon(){
 }
 
 void ModeloCommon::agregar_jugador(Jugador * jugador){
-   static int pos=0;
-   
-   Posicion p;
-   
-   	if (jugador->get_personaje()->get_tipo() == Personaje::pacman){
-		p=get_mundo().get_mapa_activo()->get_salida_pacman()->get_posicion();
-		p.set_x(p.get_x() + 0.5);
-		p.set_y(p.get_y() + 0.5);
-   	}
-   	else{
-		std::list< S_ptr<EstructuralUnitario> > lista_CasaFantasma=get_mundo().get_mapa_activo()->get_casa_fantasma();	
-		pos=pos % lista_CasaFantasma.size();
-		std::list< S_ptr<EstructuralUnitario> >::iterator it=lista_CasaFantasma.begin();
-		for (int i=0 ; i<pos ; ++i){
-			++it;
-		}
-		S_ptr<EstructuralUnitario> estructural_elegido(*it);
-		p=estructural_elegido->get_posicion();
-		p.set_x(p.get_x() + 0.5);
-		p.set_y(p.get_y() + 0.5);
-		++pos;	
-   }
-   jugador->set_posicion(p);
 
+   set_posicion_inicial(jugador);  
    Bloqueo b(&llave);		
    jugadores[jugador->get_id()] = jugador;
 }
 
+void ModeloCommon::set_posicion_inicial( Jugador * jugador ){
+      static int pos=0;   
+      
+      Posicion p;
+      //si es pacman
+   	if (jugador->get_personaje()->get_tipo() == Personaje::pacman){
+         //busco la salida de pacman y lo setteo en el medio   		
+         p=get_mundo().get_mapa_activo()->get_salida_pacman()->get_posicion();
+   		p.set_x(p.get_x() + 0.5);
+		   p.set_y(p.get_y() + 0.5);
+   	}
+   	else{
+         //si es fantasma, busco la casa fantasmas		   
+         std::list< S_ptr<EstructuralUnitario> > lista_CasaFantasma=get_mundo().get_mapa_activo()->get_casa_fantasma();	
+		   //selecciono una posicion
+         pos=pos % lista_CasaFantasma.size();
+         //busco el estructural
+		   std::list< S_ptr<EstructuralUnitario> >::iterator it = lista_CasaFantasma.begin();
+      	for (int i=0 ; i<pos ; ++i)
+			   ++it;
+		   //lo elijo y le asigno esa posicion		   
+         S_ptr<EstructuralUnitario> estructural_elegido(*it);
+		   p=estructural_elegido->get_posicion();
+		   p.set_x(p.get_x() + 0.5);
+		   p.set_y(p.get_y() + 0.5);
+		   ++pos;	
+   }
+   jugador->set_posicion(p);
+}
 const std::list<Jugador *> ModeloCommon::get_jugadores(){
    std::list<Jugador * > lista_Jug;
    try {

@@ -50,8 +50,6 @@ void Jugador::set_direccion(Direccion  *dir){
 	this->dir = dir;
 }
 Jugador::~Jugador(){
-   this->set_cambio();
-   this->avisar_observadores(NULL);	
    delete this->dir;
 	delete this->personaje;
    this->personaje = NULL;

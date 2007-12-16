@@ -25,21 +25,19 @@ void ModeloServidor::agregar_jugador(Jugador * jugador){
 	Jugador * j = jugador;
 	//si es el primer jugador, le asigno el personaje de pacman, si no
 	//fantasma
-	if(jugadores.size() == 0){
+	if(jugadores.size() == 0)
   		personaje = new PacMan(j);
-      j->agregar_observador(this);
-   }
 	else
 		personaje = new Fantasma(j);
 	
 	jugador->set_personaje(personaje);
 	
    ModeloCommon::agregar_jugador(jugador);
-	//this->jugadores.push_back(jugador);
 	
 }
 		
 void ModeloServidor::run(){
+   this->parar = false;
 	//si hay mundo
 	if(! mundo.es_nulo()){
 		this->termino = false;
@@ -106,8 +104,8 @@ void ModeloServidor::revisar_colisiones(Jugador * j, std::list<Jugador *>& lista
 	}	
 }
 void ModeloServidor::preparar_partida(){
-	this->parar = false;
-	
+	//this->parar = false;
+	/*
 	//para la casa del fantasma y la salida del pacman
 	S_ptr<EstructuralUnitario> salida_pacman;
 	std::list< S_ptr<EstructuralUnitario> > casa_fantasma;
@@ -127,17 +125,19 @@ void ModeloServidor::preparar_partida(){
 				salida_pacman = *it_estucturales;
 		}
 	}		
-		
+	*/	
 	//std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
 	std::list<Jugador *> lista_jugadores = get_jugadores();
 	std::list<Jugador *>::iterator it_jugadores;
 	
-	it_estucturales = casa_fantasma.begin();
-	Jugador * j;
+	//it_estucturales = casa_fantasma.begin();
+	//Jugador * j;
 	Posicion p;
 	for(it_jugadores = lista_jugadores.begin(); it_jugadores != lista_jugadores.end() ; ++it_jugadores){
-		j = *it_jugadores;
-		if(j->get_personaje()->get_tipo() == Personaje::pacman){
+      set_posicion_inicial(*it_jugadores);		
+      //j = *it_jugadores;
+      		
+      /*if(j->get_personaje()->get_tipo() == Personaje::pacman){
 			p = salida_pacman->get_posicion();
 			p.set_x(p.get_x() + 0.5);
 			p.set_y(p.get_y() + 0.5);
@@ -154,10 +154,34 @@ void ModeloServidor::preparar_partida(){
 					it_estucturales++;
 			}
 			
-		j->set_posicion(p);
+		j->set_posicion(p);*/
 	}
 
 }
+void ModeloServidor::reiniciar_partida(){
+  
+   bool hay_pacman = false;   
+   //obtengo el primer jugador de la lista
+   std::list<Jugador *>  lista_jugadores = get_jugadores();
+   std::list<Jugador *>::iterator it = lista_jugadores.begin();
+   
+   //me fijo que haya jugadores
+   if(lista_jugadores.size() != 0 ){
+      //busco si hay pacman si no despues se lo asigno a otro      
+      do{
+         if( (*it)->get_personaje()->get_tipo() == Personaje::pacman )
+            hay_pacman = true;
+      }while( (it != lista_jugadores.end() ) && (!hay_pacman) );
+      //si no habia pacman, se lo asigno al primer personaje de la lista      
+      if(!hay_pacman){
+           Personaje * p = new PacMan(*it);
+            (*it)->quitar_personaje();
+            (*it)->set_personaje(p);
+      }
+   }
+   preparar_partida();
+}
+
 void ModeloServidor::actualizar(Observable * observable, void * param){
    //primero me fijo si el mapa me avisa que ya se comieron todo
 	MapaBajoNivel * mapa = dynamic_cast<MapaBajoNivel *>(observable);
@@ -165,22 +189,5 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
 		if( mapa->get_comestibles().size() == 0)
 			this->parar = true;	
 	}
-   else{
-      //me fijo si me avisa el jugador pacman que se desconecto, entonces
-      Jugador * jugador = dynamic_cast<Jugador *>(observable); 
-      if(jugador != NULL){
-            std::cout << "Me llego un mensaje de un jugador =Z \n";            
-            //obtengo el primer jugador de la lista
-            std::list<Jugador *>  lista_jugadores = get_jugadores();
-            std::list<Jugador *>::iterator it = lista_jugadores.begin();
-            
-            if( it != lista_jugadores.end() ){
-                              
-               Personaje * p = new PacMan(*it);
-               (*it)->quitar_personaje();
-               (*it)->set_personaje(p);
-            }
-      }
-   }
-	
+
 }
