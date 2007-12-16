@@ -128,7 +128,11 @@ void PaqueteInitCommon::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
 	S_ptr<EstructuralUnitario> actual = mapa->get_estructural( p );
 	mapa->agregar_estructural( e );
 	if( !actual.es_nulo() ) {
-		mapa->quitar_comestible(actual->get_comestible());
+		unsigned int fila = (unsigned int) floor(p.get_y());
+		unsigned int col =  (unsigned int) floor(p.get_x());
+		unsigned int key=(fila * mapa->get_ancho()) + col;
+		mapa->refresh(key);
+//		mapa->quitar_comestible(actual->get_comida());
 		if( ! actual->get_arriba().es_nulo() ) {
 			e->set_arriba( actual->get_arriba() );
 			actual->get_arriba()->set_abajo( e );
