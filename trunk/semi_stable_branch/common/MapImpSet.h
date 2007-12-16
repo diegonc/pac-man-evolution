@@ -16,6 +16,7 @@
 #include "ComestibleFactory.h"
 
 #include <map>
+#include <list>
 
 typedef unsigned int Tipo_Dimensiones;
 typedef S_ptr<EstructuralUnitario> Tipo_Estructural;
@@ -132,7 +133,7 @@ class MapaImpSet : public MapaBajoNivel{
 		
 		Tipo_Estructural get_salida_pacman();
 		
-		std::list<Tipo_Estructural>& get_casa_fantasma();
+		std::list<Tipo_Estructural> get_casa_fantasma();
 		
 };
 
