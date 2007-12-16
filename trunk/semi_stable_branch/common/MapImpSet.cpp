@@ -236,24 +236,24 @@ Posicion MapaImpSet::unmake_key(unsigned int key){
 }
 Tipo_Estructural MapaImpSet::get_salida_pacman(){
 	
-	std::list< Tipo_Estructural >::iterator it_estucturales;
+	std::list< Tipo_Estructural >::iterator it_estructurales;
 	std::list< Tipo_Estructural > estructurales;
 	Tipo_Estructural salida_pacman;
 	bool encontro = false;
 	
 	estructurales = this->get_estructurales();
-	it_estucturales = estructurales.begin();
+	it_estructurales = estructurales.begin();
 	
-	while( (it_estucturales != estructurales.end()) && (!encontro) ){
+	while( (it_estructurales != estructurales.end()) && (!encontro) ){
 		if( (*it_estructurales)->get_tipo() == EstructuralUnitario::Salida_Pacman ){
-			salida_pacman = *it_estucturales;
+			salida_pacman = *it_estructurales;
 			encontro = true;
 		}
 	}
 	return salida_pacman;
 }
 std::list<Tipo_Estructural> MapaImpSet::get_casa_fantasma(){
-	std::list< S_ptr<EstructuralUnitario> >::iterator it_estucturales;
+	std::list< S_ptr<EstructuralUnitario> >::iterator it_estructurales;
 	std::list< S_ptr<EstructuralUnitario> > estructurales;
 	std::list< S_ptr<EstructuralUnitario> > casas_fantasma;
 	
@@ -261,8 +261,8 @@ std::list<Tipo_Estructural> MapaImpSet::get_casa_fantasma(){
 	it_estructurales = estructurales.begin();
 	
 	while(it_estructurales != estructurales.end() ){
-		if( (*it_estucturales)->get_tipo() == EstructuralUnitario::Casa_Fantasma )
-			casas_fantasma.push_back(*it_estucturales);
+		if( (*it_estructurales)->get_tipo() == EstructuralUnitario::Casa_Fantasma )
+			casas_fantasma.push_back(*it_estructurales);
 		++it_estructurales;
 	}
 	
