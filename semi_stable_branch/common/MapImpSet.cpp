@@ -166,17 +166,6 @@ std::list<Tipo_Estructural > MapaImpSet::get_estructurales(){
 	return lista;
 }
 
-std::list<Tipo_Comestible > MapaImpSet::get_comestibles(){
-	std::map<unsigned int, Tipo_Comestible>::iterator it;
-	std::list<Tipo_Comestible> lista;
-
-	it = this->comestibles.begin(); 
-	while(it != this->comestibles.end()){
-		lista.push_back((*it).second);
-		it++;
-	}
-	return lista;
-}
 
 void MapaImpSet::quitar_comestible(Tipo_Comestible comestible){
 	

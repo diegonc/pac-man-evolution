@@ -157,6 +157,7 @@ void ModeloServidor::preparar_partida(){
 			
 		j->set_posicion(p);
 	}
+
 }
 void ModeloServidor::actualizar(Observable * observable, void * param){
 	MapaBajoNivel * _mapa = dynamic_cast<MapaBajoNivel *>(observable);
