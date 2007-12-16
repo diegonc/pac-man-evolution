@@ -14,13 +14,10 @@ const int Servidor::SENIAL_CANCELAR = SIGUSR1;
 
 
 void Servidor::manejador_signal(int num_signal){
-	std::cout << "Entro al manejador de seniales\n";	
+
 	switch(num_signal){
 		case Servidor::SENIAL_CANCELAR: break;
-
-		case SIGSEGV:
-			std::cout << "==>" <<pthread_self()<< std::endl << std::flush;		
-      	std::cout << getppid() << " A ver si funca\n";
+		
 		default: raise(num_signal);				
 	}
 }
