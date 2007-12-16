@@ -172,6 +172,7 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
             //obtengo el primer jugador de la lista
             std::list<Jugador *>  lista_jugadores = get_jugadores();
             std::list<Jugador *>::iterator it = lista_jugadores.begin();
+            
             if( it != lista_jugadores.end() ){
                Personaje * p = new PacMan(*it);
                (*it)->set_personaje(p);
