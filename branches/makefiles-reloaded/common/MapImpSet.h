@@ -16,6 +16,7 @@
 #include "ComestibleFactory.h"
 
 #include <map>
+#include <list>
 
 typedef unsigned int Tipo_Dimensiones;
 typedef S_ptr<EstructuralUnitario> Tipo_Estructural;
@@ -27,7 +28,10 @@ class MapaImpSet : public MapaBajoNivel{
 
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
-
+	
+		Tipo_Estructural salida_pacman;
+	
+		std::list< Tipo_Estructural > casa_fantasma; 
 		/**
 		*	@brief 	Este metodo verifica si el jugador, mediante su personaje,
 		*			toca alguna pared o borde del mapa.
@@ -40,17 +44,13 @@ class MapaImpSet : public MapaBajoNivel{
 			
 		std::map< unsigned int ,Tipo_Estructural> estructurales;
 		std::map< unsigned int ,Tipo_Comestible> comestibles;		
-		/**
-		*	@brief	Metodo para quitar un comestible de la lista propia
-		*	
-		*	@param	comestible Comestible que se quiere quitar
-		*/
-		void quitar_comestible(Tipo_Comestible comestible);
+		
 
 		unsigned int make_key(Posicion &p);
 		
 		Posicion unmake_key(unsigned int key);
-
+		
+		
 	public:
 		/**
 		*	@brief Constructor
@@ -122,10 +122,20 @@ class MapaImpSet : public MapaBajoNivel{
 		*/
 		void refresh(unsigned int vertice);
 		
+      /**
+		*	@brief	Metodo para quitar un comestible de la lista propia
+		*	
+		*	@param	comestible Comestible que se quiere quitar
+		*/
+		void quitar_comestible(Tipo_Comestible comestible);
+
 		/*Para agregar*/
 		
 		void refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible);
 		
+		Tipo_Estructural get_salida_pacman();
+		
+		std::list<Tipo_Estructural> get_casa_fantasma();
 		
 };
 

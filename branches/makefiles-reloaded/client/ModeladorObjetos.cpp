@@ -16,7 +16,7 @@ void ModeladorObjetos::DibujarObjeto(ObjTextura* objTex){
     //textura del objeto
     GLuint* texture=&objTex->textura;
     //proporcion de escalado
-    float const proporcion=0.04;
+    float const proporcion=0.032;
     //referencia a figura
     obj_type* object;
     //seteo el uso de la textura
@@ -108,11 +108,11 @@ void ModeladorObjetos::DibujarObjetoPosicion(Posicion_Graf* P,char Nombre){
     // lo llevo al origen
     glTranslatef(-P->x,-P->y, 0.0);
     //lo roto segun su posicion
-    glRotatef(P->getAnguloActual(), 0, 0, 1.0);
+    glRotatef(-P->getAnguloActual(), 0, 0, 1.0);
     //lo dibujo
     DibujarObjeto(ColeccionOBJ[Nombre]);
     //restauro la camara
-    glRotatef(-P->getAnguloActual(), 0, 0, 1.0);
+    glRotatef(P->getAnguloActual(), 0, 0, 1.0);
     //lo llevo a su posicion
     glTranslatef(P->x,P->y, 0.0);
 }

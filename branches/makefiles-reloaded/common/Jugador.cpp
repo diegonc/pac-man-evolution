@@ -20,7 +20,8 @@ Tipo_Personaje Jugador::get_personaje(){
 	return this->personaje;
 }
 void Jugador::set_personaje(Tipo_Personaje personaje){
-	this->personaje = personaje;
+   delete this->personaje;	
+   this->personaje = personaje;
 }
 void Jugador::set_posicion(Posicion &pos_nueva){
 	this->posicion = pos_nueva;
@@ -50,8 +51,11 @@ void Jugador::set_direccion(Direccion  *dir){
 	this->dir = dir;
 }
 Jugador::~Jugador(){
-	delete this->dir;
+   this->set_cambio();
+   this->avisar_observadores(NULL);	
+   delete this->dir;
 	delete this->personaje;
+   this->personaje = NULL;
 }
 void Jugador::set_puntos(int puntos){
 	this->puntos = puntos;

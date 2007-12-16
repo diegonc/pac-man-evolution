@@ -19,13 +19,13 @@ class ModeloCommon : public Thread, public Observable{
 	protected:
 		S_ptr<MundoBajoNivel> mundo;
 	
-      std::map<unsigned int, Jugador*> jugadores;
+      	std::map<unsigned int, Jugador*> jugadores;
 		
 		ModeloCommon(ModeloCommon &m);
 
 		bool termino;
 	   
-      Mutex llave;
+      	Mutex llave;
 	
 	public:
    	/**

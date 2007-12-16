@@ -51,15 +51,15 @@ void OperacionStatus::ModificarPosicionJugador(Jugador * Jug,OperacionStatus::Po
     }
 
     if (PosJ.estaVivo){//si me llego q estaba vivo
-	//si no esta vivo, lo revivo
+		//si no esta vivo, lo revivo
 		if (!(Jug->get_personaje()->esta_vivo())){
 			  Jug->get_personaje()->revivir();
 		}
-		}else{ //si me llego q estaba muerto
-		//si esta vivo, lo mato
-		if (Jug->get_personaje()->esta_vivo()){
-			  Jug->get_personaje()->revivir();
-		}
+   }else{ //si me llego q estaba muerto
+	//si esta vivo, lo mato
+	if (Jug->get_personaje()->esta_vivo()){
+		Jug->get_personaje()->matar();
+	}
     }
 //END seteo el estado del jugador;
 
@@ -99,7 +99,7 @@ void OperacionStatus::ModificarPosicionJugador(Jugador * Jug,OperacionStatus::Po
             Jug->get_direccion().set_dir(Direccion::Oeste);
         }
     }
-	//std::cout<< PosJ.Posic<<std::endl;
+//    std::cout<< "el " << ((PosJ.esPacman)?"Pacman":"Fantasma") << " esta en la posicion " << Jug->get_posicion() << "\n";
 
 }
 
@@ -113,7 +113,6 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
     for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
 		OperacionStatus::PosicionJugador& PosJ=*it;
 		Jug= ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
-		
 		if (Jug != NULL){
 			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
 		}else{	
@@ -151,6 +150,7 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
         OperacionStatus::PosicionElemento& PosE=*it;
 	
 		if (PosE.Estado){
+			//esto solo se ejecuta para las cosas que aparecen durante el juego, digase power ups			
 			modelo.get_mundo().get_mapa_activo()->refresh(PosE.Posic,PosE.Tipo);
 		}else{
 			modelo.get_mundo().get_mapa_activo()->refresh(PosE.Posic);
