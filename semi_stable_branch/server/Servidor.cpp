@@ -73,7 +73,7 @@ Servidor::~Servidor()
    delete (this->llave_max_jugadores);
 }
 void Servidor::run(){
- 	
+
 	AvisadorNovedades avisador(&this->pool);
 	
 	this->ejecutando = true; //El servidor arranca a ejecutarse
