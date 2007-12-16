@@ -50,6 +50,7 @@ void ModeloCommon::set_posicion_inicial( Jugador * jugador ){
 		   p.set_y(p.get_y() + 0.5);
 		   ++pos;	
    }
+   std::cout << p << "posicion\n";
    jugador->set_posicion(p);
 }
 const std::list<Jugador *> ModeloCommon::get_jugadores(){
