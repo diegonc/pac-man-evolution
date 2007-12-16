@@ -192,7 +192,7 @@ char Mundo::chequear_mundo(int &N_Nivel_incorrecto){
 
 /* ToXML: */
 
-bool Mundo::toXml(char* nombre){
+bool Mundo::toXml(const char* nombre){
 	bool no_error = true; //controla que no haya errores
 	//Pongo el nombre en un string y busco su extension. Si no la tiene la agrego.
 	string filename (nombre);
@@ -237,7 +237,7 @@ bool Mundo::toXml(char* nombre){
 
 /* fromXML: */
 	
-bool Mundo::fromXml(char* nombre){
+bool Mundo::fromXml(const char* nombre){
 	bool no_error = true; //controla que no haya errores
 	//Pongo el nombre en un string y busco su extension. Si no la tiene la agrego.
 	string filename (nombre);
