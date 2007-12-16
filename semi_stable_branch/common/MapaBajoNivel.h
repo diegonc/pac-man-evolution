@@ -73,7 +73,11 @@ class MapaBajoNivel : public Observable
 		*	@return Lista con los comestibles
 		*/		
 		virtual std::list<S_ptr<Comestible> > get_comestibles()=0;
-
+		
+		virtual S_ptr<EstructuralUnitario> get_salida_pacman() = 0;
+		
+		virtual std::list<S_ptr<EstructuralUnitario> >& get_casa_fantasma() = 0;
+		
 		virtual void refresh(unsigned int vertice) = 0;
 		
 		virtual void refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible) = 0;
