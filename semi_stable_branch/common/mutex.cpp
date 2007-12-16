@@ -23,6 +23,8 @@ Mutex::Mutex(bool log) throw( Error::MutexError )
 
 Mutex::~Mutex()
 {
+    cerr << "Mutex: 0x" << hex << (int)this << " mutex_t: 0x" << hex <<(int)&mutex << " destruyendose." << endl;
+
     pthread_mutex_destroy( &mutex );
 }
 
