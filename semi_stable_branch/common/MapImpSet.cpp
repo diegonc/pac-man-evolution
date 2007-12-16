@@ -249,6 +249,7 @@ Tipo_Estructural MapaImpSet::get_salida_pacman(){
 			salida_pacman = *it_estructurales;
 			encontro = true;
 		}
+		++it_estructurales;
 	}
 	return salida_pacman;
 }

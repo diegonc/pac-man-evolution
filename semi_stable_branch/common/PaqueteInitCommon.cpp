@@ -25,6 +25,7 @@ PaqueteInitCommon::PaqueteInitCommon( bool pac, S_ptr<MapaBajoNivel> m )
 
 void PaqueteInitCommon::deserialize( InputBitStream& bs )
 {
+
 	
 	esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
 	bs.skip(); // Saltea el resto del campo auxiliar.
@@ -183,6 +184,7 @@ void PaqueteInitCommon::agregar_arista( int x, int y, bool norte )
 
 void PaqueteInitCommon::serialize( OutputBitStream& bs )
 {
+
 	std::list< S_ptr<EstructuralUnitario> > casa;
 	S_ptr<EstructuralUnitario> salida;
 	Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
@@ -194,7 +196,7 @@ void PaqueteInitCommon::serialize( OutputBitStream& bs )
 	bs.append( 8, mapa->get_alto() );
 
 	bs.grow( mapa->get_ancho()*mapa->get_alto()*2 );
-	std::cout << "CantidadEstructurales:" << mapa->get_estructurales().size() << "\n";
+
 	S_ptr<EstructuralUnitario> e;
 	for( unsigned int y=0; y < mapa->get_alto(); y++ ) {
 		// Aristas verticales
