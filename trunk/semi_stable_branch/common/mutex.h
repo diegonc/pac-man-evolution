@@ -20,17 +20,17 @@ class Mutex
         };
 
     public:
-        Mutex() throw( Error::SystemError );
+        Mutex() throw( Error::MutexError );
         ~Mutex();
 
         void lock();
         bool try_lock();
         void unlock();
 
-        operator pthread_mutex_t*()
+	pthread_mutex_t* get_mutex(); /*    operator pthread_mutex_t*()
         {
             return &mutex;
-        }
+        }*/
 };
 
 #endif

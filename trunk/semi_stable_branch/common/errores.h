@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <errno.h>
 #include <cstring> // para strerror
+#include <pthread.h>
 
 namespace Error
 {
@@ -29,6 +30,14 @@ namespace Error
             }
 
             bool interrumpido() { return interrupcion; }
+    };
+
+    class MutexError : public std::runtime_error
+    {
+	    static std::string to_string( int err );
+	    public:
+		    MutexError(int err):std::runtime_error(to_string(err))
+		    {}
     };
 }
 
