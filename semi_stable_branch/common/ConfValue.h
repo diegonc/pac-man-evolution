@@ -13,15 +13,9 @@
  */
 class ConfValue
 {
-	public:
+	//public:
 		/** Enumera los tipos soportados. */
-		enum Tipo
-		{
-			NULO,
-			TEXTO,
-			NUMERO,
-			BOOL
-		};
+		enum Tipo { CV_NULO, CV_TEXTO, CV_NUMERO, CV_BOOL };
 
 	private:
 		/** Tipo de dato del valor. */
@@ -35,7 +29,7 @@ class ConfValue
 
 	public:
 		/** @brief Constructor por defecto.(requerido por std::map) */
-		ConfValue( ) : tipo( NULO ){ }
+		ConfValue( ) : tipo( CV_NULO ){ }
 
 		/** @brief Crea un valor de configuracion de tipo NUMERO. */
 		ConfValue( int valor );
