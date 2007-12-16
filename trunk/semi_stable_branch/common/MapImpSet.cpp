@@ -94,16 +94,21 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 			if (p.get_y() >= this->alto)
 				p.set_y(p.get_y() - this->alto);*/
 		e_critico = get_estructural(p);
-		if( e_critico.es_nulo() ){
+		if( e_critico.es_nulo()){
 			toca = true;
 		}
 		else{
-			if(!donde_esta->tiene_conexion(e_critico)){
-				toca = true;
-				//std::cout << "Toca uno critico donde no tiene conexion\n";	
+			if(e_critico->get_tipo() != EstructuralUnitario::Casa_Fantasma){			
+				if(!donde_esta->tiene_conexion(e_critico) ){
+					toca = true;
+					//std::cout << "Toca uno critico donde no tiene conexion\n";	
+				}
+				else
+					phi += INCREMENTO_PHI;
 			}
 			else
 				phi += INCREMENTO_PHI;
+	
 		}
 	}
 	return toca;
