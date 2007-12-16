@@ -17,36 +17,27 @@ ModeloCommon::~ModeloCommon(){
 }
 
 void ModeloCommon::agregar_jugador(Jugador * jugador){
-   static pos=0;
-/*
-if(j->get_personaje()->get_tipo() == Personaje::pacman){
-	p = salida_pacman->get_posicion();
-	p.set_x(p.get_x() + 0.5);
-	p.set_y(p.get_y() + 0.5);
-}
-else
-	if(j->get_personaje()->get_tipo() == Personaje::fantasma){
-		aux = *it_estucturales;*/
-   
+   static int pos=0;
    
    Posicion p;
    
-   if (jugador->get_personaje()->get_tipo() == Personaje::pacman){
-	p=get_mundo().get_mapa_activo().get_salida_pacman()->get_posicion();
-	p.set_x(p.get_x() + 0.5);
-	p.set_y(p.get_y() + 0.5);
-   }else{
-	std::list< S_ptr<EstructuralUnitario> > lista_CasaFantasma=get_mundo().get_mapa_activo().get_casa_fantasma();	
-	pos=pos % lista_CasaFantasma.size();
-	std::list< S_ptr<EstructuralUnitario> >::iterator it=lista_CasaFantasma.begin();
-	for (int i=0;i<=pos;++i){
-		++it;
-	}
-	S_ptr<EstructuralUnitario> estructural_elegido(*it);
-	p=estructural_elegido->get_posicion();
-	p.set_x(p.get_x() + 0.5);
-	p.set_y(p.get_y() + 0.5);
-	++pos;	
+   	if (jugador->get_personaje()->get_tipo() == Personaje::pacman){
+		p=get_mundo().get_mapa_activo()->get_salida_pacman()->get_posicion();
+		p.set_x(p.get_x() + 0.5);
+		p.set_y(p.get_y() + 0.5);
+   	}
+   	else{
+		std::list< S_ptr<EstructuralUnitario> > lista_CasaFantasma=get_mundo().get_mapa_activo()->get_casa_fantasma();	
+		pos=pos % lista_CasaFantasma.size();
+		std::list< S_ptr<EstructuralUnitario> >::iterator it=lista_CasaFantasma.begin();
+		for (int i=0;i<=pos;++i){
+			++it;
+		}
+		S_ptr<EstructuralUnitario> estructural_elegido(*it);
+		p=estructural_elegido->get_posicion();
+		p.set_x(p.get_x() + 0.5);
+		p.set_y(p.get_y() + 0.5);
+		++pos;	
    }
    jugador->set_posicion(p);
    
