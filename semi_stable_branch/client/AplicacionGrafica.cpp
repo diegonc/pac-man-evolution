@@ -154,14 +154,14 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		std::list< S_ptr<Comestible> >::iterator comestibles;
 		S_ptr<Comestible> comestible;
 
-		//itero sobre los comestibles
+		/*//itero sobre los comestibles
 		for(comestibles = lista_comestibles.begin(); comestibles != lista_comestibles.end(); ++comestibles){
 			comestible = *comestibles;
 			Posicion p=comestible->get_posicion();
 			Pos.x= p.get_x()*4;
 			Pos.y= -p.get_y()*4;
 			ModeladorOBJ.DibujarObjetoPosicion(&Pos,comestible->get_tipo());
-		}
+		}*/
 
 		//llamo a la lista precompilada del Escenario
 		escenario.ModelarEscenario();
