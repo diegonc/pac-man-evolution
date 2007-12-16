@@ -64,6 +64,17 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 				
 			}
 			//si se movio correctamente, le modifico la posicion al jugador
+			if (posicion_jugador.get_x() < 0)			
+				posicion_jugador.set_x(posicion_jugador.get_x() + this->ancho);
+			else
+				if (posicion_jugador.get_x() >= this->ancho)
+					posicion_jugador.set_x(posicion_jugador.get_x() - this->ancho);
+			if (posicion_jugador.get_y() < 0)
+				posicion_jugador.set_y(posicion_jugador.get_y() + this->alto);
+			else
+				if (posicion_jugador.get_y() >= this->alto)
+					posicion_jugador.set_y(posicion_jugador.get_y() - this->alto);
+			
 			jugador.set_posicion(posicion_jugador);
 		}
 
@@ -82,8 +93,8 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 	//y ver si tocan un lugar que no puede, digase pared, esquina.
 	//Se puede modificar el paso como para que no recorra todos los puntos
 	while( phi < DOS_PI && !toca/*2Pi*/ ){
-		Posicion p(	(radio-0.1) * cos(phi) + x0, (radio-0.1) * sin(phi) + y0 );
-		/*if (p.get_x() < 0)
+		Posicion p(	(radio-0.15) * cos(phi) + x0, (radio-0.15) * sin(phi) + y0 );
+		if (p.get_x() < 0)			
 			p.set_x(p.get_x() + this->ancho);
 		else
 			if (p.get_x() >= this->ancho)
@@ -92,12 +103,14 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 			p.set_y(p.get_y() + this->alto);
 		else
 			if (p.get_y() >= this->alto)
-				p.set_y(p.get_y() - this->alto);*/
+				p.set_y(p.get_y() - this->alto);
+
+		
 		e_critico = get_estructural(p);
+
 		if( e_critico.es_nulo()){
 			toca = true;
-		}
-		else{
+		}else{
 			if(e_critico->get_tipo() != EstructuralUnitario::Casa_Fantasma){			
 				if(!donde_esta->tiene_conexion(e_critico) ){
 					toca = true;
