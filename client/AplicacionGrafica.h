@@ -16,6 +16,7 @@
 #include "Escenario.h"
 #include "CargadordeTexturas.h"
 #include "ModeladorObjetos.h"
+#include "SelectorCamara.h"
 #include <iostream>
 #include <string>
 #include <math.h>
@@ -27,6 +28,8 @@
 class AplicacionGrafica{
         //estadp de la aplicaccion
         EstadoAplicacion AppEstado;
+	SelectorCamara Camara;
+	SDL_Surface* Mapa;
            
 	private: 
 		Escenario escenario;
@@ -40,7 +43,7 @@ class AplicacionGrafica{
             CamaraPrimeraPersona=true;
         }
 		
-		void CambiarCamara();
+	void CambiarCamara();
 
         EstadoAplicacion* getEstadoAplicacion();
 

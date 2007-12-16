@@ -97,7 +97,7 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 	if( version == _VERSION_ACEPTADA ) {
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
-		//std::cout << "Me llego un " << tipo << ".\n";
+//		std::cout << "Me llego un " << tipo << ".\n";
 		Paquete * paquete = Paquete::crear( tipo, get_id() );
       	if( paquete != NULL){		
         	S_ptr<Paquete> p(paquete);
@@ -126,4 +126,5 @@ Jugador * Cliente::get_jugador(){
 void Cliente::terminar(){
 	this->escritor->terminar();
 	this->socket->cerrar();
+   std::cout << "LLego aca para el" << this->id << "\n";
 }

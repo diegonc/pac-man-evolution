@@ -41,6 +41,8 @@ pme_client_SOURCES = \
 	PaqueteTecla.cpp \
 	PaqueteTecla.h \
 	PosicionGraf.h \
+	SelectorCamara.cpp \
+	SelectorCamara.h \
 	main.cpp
 
 ##pme_client_CPPFLAGS = @GTK_CFLAGS@

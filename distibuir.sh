@@ -85,6 +85,8 @@ client_socket.cpp
 client_socket.h
 comparador.h
 contador.h
+errores.cpp
+errores.h
 evento.cpp
 evento.h
 grafo.h

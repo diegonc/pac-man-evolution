@@ -25,8 +25,10 @@ void ModeloServidor::agregar_jugador(Jugador * jugador){
 	Jugador * j = jugador;
 	//si es el primer jugador, le asigno el personaje de pacman, si no
 	//fantasma
-	if(jugadores.size() == 0)
-		personaje = new PacMan(j);
+	if(jugadores.size() == 0){
+  		personaje = new PacMan(j);
+      j->agregar_observador(this);
+   }
 	else
 		personaje = new Fantasma(j);
 	
@@ -43,7 +45,7 @@ void ModeloServidor::run(){
 		this->termino = false;
 		double intervalo_tiempo = 0;
 		double hora_actual;
-		
+		std::cout << "Soy: " << pthread_self() << "<-- MODELO " << std::endl << std::flush;
 		
 		Jugador * j;
 		//itero por todos los niveles
@@ -64,19 +66,16 @@ void ModeloServidor::run(){
 				std::list<Jugador *>::iterator it;
 				//recorro todos los jugadores
 				for(it = lista_jugadores.begin(); it!= lista_jugadores.end(); it++){
-					j = *it;
-					assert( j != 0 );
-					//lo muevo
-					S_ptr<MundoBajoNivel> mun = this->mundo;
-					S_ptr<MapaBajoNivel> map = mun->get_mapa_activo();
-					S_ptr<Personaje> pers = j->get_personaje();
-					assert( mun.es_nulo() != true );
-					assert( map.es_nulo() != true );
-					assert( pers.es_nulo() != true );
-					map->mover(*j, pers->get_velocidad() * intervalo_tiempo);
-					//reviso las colisiones
-					revisar_colisiones(j ,lista_jugadores);
-					
+	            j = *it;
+               if( j != NULL ){
+   					//lo muevo
+   					S_ptr<MundoBajoNivel> mun = this->mundo;
+   					S_ptr<MapaBajoNivel> map = mun->get_mapa_activo();
+   					Personaje* pers = j->get_personaje();
+   					map->mover(*j, pers->get_velocidad() * intervalo_tiempo);
+   					//reviso las colisiones
+   					revisar_colisiones(j ,lista_jugadores);
+					}
 				}
 				//std::cout << "- El jugador "<< j->get_id() << " tiene " << j->get_puntos() << " puntos y esta en ";
 				//std::cout << j->get_posicion() <<"\n";
@@ -157,12 +156,28 @@ void ModeloServidor::preparar_partida(){
 			
 		j->set_posicion(p);
 	}
+
 }
 void ModeloServidor::actualizar(Observable * observable, void * param){
-	MapaBajoNivel * _mapa = dynamic_cast<MapaBajoNivel *>(observable);
-	if(_mapa != NULL){
-		if( _mapa->get_comestibles().size() == 0)
+   //primero me fijo si el mapa me avisa que ya se comieron todo
+	MapaBajoNivel * mapa = dynamic_cast<MapaBajoNivel *>(observable);
+	if(mapa != NULL){
+		if( mapa->get_comestibles().size() == 0)
 			this->parar = true;	
-	}		
-	//this->parar = true;
+	}
+   else{
+      //me fijo si me avisa el jugador pacman que se desconecto, entonces
+      Jugador * jugador = dynamic_cast<Jugador *>(observable); 
+      if(jugador != NULL){
+            //obtengo el primer jugador de la lista
+            std::list<Jugador *>  lista_jugadores = get_jugadores();
+            std::list<Jugador *>::iterator it = lista_jugadores.begin();
+            
+            if( it != lista_jugadores.end() ){
+               Personaje * p = new PacMan(*it);
+               (*it)->set_personaje(p);
+            }
+      }
+   }
+	
 }

@@ -6,6 +6,8 @@
 #include "Posicion.h"
 #include "Direccion.h"
 #include "Comestible.h"
+#include "observable.h"
+
 
 /** @brief Clase que representa al jugador.
  *
@@ -15,7 +17,7 @@
 
 typedef Personaje * Tipo_Personaje;
 
-class Jugador{
+class Jugador : public Observable{
 	
 	private:
 		unsigned int id;

@@ -6,7 +6,7 @@ EstadoAplicacion* AplicacionGrafica::getEstadoAplicacion(){
 }
 
 void AplicacionGrafica::CambiarCamara(){
-	CamaraPrimeraPersona=!CamaraPrimeraPersona;
+	Camara.siguiente();
 }
 
 
@@ -14,16 +14,16 @@ void AplicacionGrafica::CambiarCamara(){
 bool AplicacionGrafica::InitGL(SDL_Surface *S)
 {
     //color de borrado del la pantalla Negro
-	glClearColor(0.0f,0.0f,0.0f,0.5f);
-	//seteo la profundidad de buffer
-	glClearDepth(1.0f);
-	//tipo de calculo de profundidad (Menor O IGUAL)
-	glDepthFunc(GL_LEQUAL);
-	//linea necesaria para que calculo q objeto se ve sobre q objeto, sino los dibuja en orden de aparicion
-	glEnable(GL_DEPTH_TEST);
-	//seteo el tipo de sombreado
-	glShadeModel(GL_SMOOTH);
-	//habilito el uso de luces
+    glClearColor(0.0f,0.0f,0.0f,0.5f);
+    //seteo la profundidad de buffer
+    glClearDepth(1.0f);
+    //tipo de calculo de profundidad (Menor O IGUAL)
+    glDepthFunc(GL_LEQUAL);
+    //linea necesaria para que calculo q objeto se ve sobre q objeto, sino los dibuja en orden de aparicion
+    glEnable(GL_DEPTH_TEST);
+    //seteo el tipo de sombreado
+    glShadeModel(GL_SMOOTH);
+    //habilito el uso de luces
     glEnable(GL_LIGHTING);
     //habilito la luz del jugador
     glEnable(GL_LIGHT0);
@@ -32,7 +32,7 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
     //parametros para la mejor visualizacion de la perspectiva
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     //escenario.Procesar(); //<----LO COMENTE YOOOOO!!!!
-
+	Mapa = SDL_LoadBMP("Mapa.bmp");
 	ModeladorOBJ.hidratar();
 	return true;
 
@@ -52,7 +52,7 @@ bool AplicacionGrafica::Initialize()
 //finalizar y liberar recursos
 void AplicacionGrafica::Deinitialize()
 {
-
+  	SDL_FreeSurface(Mapa); 
 }
 
 
@@ -87,7 +87,7 @@ void AplicacionGrafica::Draw(SDL_Surface *Screen)
     //dibujo el modelo 3D
 	Draw3D(Screen);
 	//dibujo en 2 dimensiones
-	//Draw2D(Screen);
+	Draw2D(Screen);
 }
 
 
@@ -96,8 +96,21 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 {
     // Apila la transformación geométrica actual
     glPushMatrix();
+	Jugador * jugador;
+	jugador=ModeloServidor::get_instancia()->get_jugador(JugadorLocal::get_instancia()->get_id());
+	static 	double j=0;
+	if (jugador!=NULL){
+	    if (jugador->get_personaje()->esta_vivo()){
+		    //color de borrado del la pantalla Negro
+		glClearColor(0.0f,0.0f,0.0f,0.5f);
+	    }else{
+		j+=0.0001;
+		glClearColor((sin(500*j)+1)/4,0.0f,0.0f,0.5f);
+	    }
+	}
+		
     //borro pantalla y buffer de profundidad
-	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		// Clear Screen And Depth Buffer
+    glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		// Clear Screen And Depth Buffer
     //cambio a la matriz de modelo
     glMatrixMode(GL_MODELVIEW);
 
@@ -105,48 +118,39 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
     glLoadIdentity();
 
 
-    //seleccion de camara
-    if (CamaraPrimeraPersona){
-		glRotatef(-65, 1, 0.0, 0.0);
-		//seteo la pos de la luz sobre el eje y
-		static GLfloat pos[4] = {0, 0, 1, 0 };
-		//agrego la luz (estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
-		glLightfv( GL_LIGHT0, GL_POSITION, pos );
-		glTranslatef(0.0,15 , -10);
-	}else{
-		static GLfloat pos[4] = {0, 0, 1, 0 };
-		//agrego la luz (estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
-		glLightfv( GL_LIGHT0, GL_POSITION, pos );
-		glTranslatef(0,0 , -100);
-	}
+    	Camara.ejecutar();
+
 
 	if (escenario.loaded()){
 		Posicion_Graf Pos;
 		std::list< Jugador * > lista_jugadores = ModeloServidor::get_instancia()->get_jugadores();
 		std::list< Jugador * >::const_iterator jugadores;
 		Jugador * jp;
-		//obtengo los jugadores
-		//std::cout << "HERE 1 -<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";		  
+	
+		//dibujo al jugador
+		jp=ModeloServidor::get_instancia()->get_jugador(JugadorLocal::get_instancia()->get_id());
+	
+		if (jp!=NULL){
+			Posicion pJ=jp->get_posicion();
+			Pos.x=pJ.get_x()*4;
+			Pos.y=-pJ.get_y()*4;
+			Pos.setAnguloActual(getAnguloDireccion(jp->get_direccion()));
+			//dibujo al objeto observador
+			ModeladorOBJ.DibujarObjetoObservadorPosicion(&Pos,jp->get_personaje()->get_tipo());
+		}
+		
+		//dibujo los demas
 		for(jugadores = lista_jugadores.begin();jugadores != lista_jugadores.end(); ++jugadores){
 			jp = *jugadores;
-		   //si el id es 1(deberia ser jugador cliente)
-		   if(jp->get_id() == JugadorLocal::get_instancia()->get_id()){
-				//obtengo la posicion y la parseo
-				Posicion p=jp->get_posicion();
-				Pos.x=p.get_x()*4;
-				Pos.y=-p.get_y()*4;
-				Pos.setAnguloActual(getAnguloDireccion(jp->get_direccion()));
-				//dibujo al objeto observador
-				ModeladorOBJ.DibujarObjetoObservadorPosicion(&Pos,jp->get_personaje()->get_tipo());
-		   }
-		   else{ //son los otros jugadores
+			if(jp->get_id() !=JugadorLocal::get_instancia()->get_id()){
 				Posicion p2=jp->get_posicion();
 				Pos.x= p2.get_x()*4;
 				Pos.y= -p2.get_y()*4;
 				ModeladorOBJ.DibujarObjetoPosicion(&Pos,jp->get_personaje()->get_tipo());
 			}
 		}
-/*		std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
+
+		std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
 		std::list< S_ptr<Comestible> >::iterator comestibles;
 		S_ptr<Comestible> comestible;
 
@@ -158,7 +162,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 			Pos.y= -p.get_y()*4;
 			ModeladorOBJ.DibujarObjetoPosicion(&Pos,comestible->get_tipo());
 		}
-*/
+
 		//llamo a la lista precompilada del Escenario
 		escenario.ModelarEscenario();
 //		std::cout << "<---------------------------------------------->" <<std::endl;
@@ -169,4 +173,22 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 //dibuja en 2D
 void AplicacionGrafica::Draw2D(SDL_Surface *S)
 {
+	static SDL_Rect src1={0,0,0,0};							// We're blitting 3 rectangles,
+
+	SDL_FillRect(S, &src1, SDL_MapRGBA(S->format,0,0,0,0));
+																// That's an issue many people is having!
+																// We set up our Alpha Channel first!
+
+	src1.x = (Sint16)(800-260);
+																// src1 is the first Logo
+	src1.y = (Sint16)(0);
+
+	src1.w = 260;										// Fill the rect structure
+	src1.h = 260;
+	SDL_SetColorKey(Mapa, SDL_SRCCOLORKEY, 
+	  SDL_MapRGB(Mapa->format, 0, 0, 255));
+
+	SDL_BlitSurface(Mapa, NULL, S, &src1);			// And finally blit and update
+	SDL_UpdateRects(S, 1, &src1);
+
 }

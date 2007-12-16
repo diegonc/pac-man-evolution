@@ -25,6 +25,7 @@ PaqueteInitCommon::PaqueteInitCommon( bool pac, S_ptr<MapaBajoNivel> m )
 
 void PaqueteInitCommon::deserialize( InputBitStream& bs )
 {
+
 	
 	esPacman = ( bs.read( 1 ) == 0 ); // Lectura del rol desde el campo auxiliar.
 	bs.skip(); // Saltea el resto del campo auxiliar.
@@ -50,7 +51,7 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 	for(unsigned int i=0; i < num_elems; i++ ) {
 		int tipo = bs.read( 6 );
 //		std::cout << "tipo recibido: " << tipo << std::endl << std::flush;
-		/* int orient =bs.append( 2, 1); //ESTADO*/ bs.read( 2 );
+		bs.read( 2 ); //orientacion ?
 		int pos = bs.read( 16 );
 //		std::cout << "pos recibida: " << pos << std::endl << std::flush;
 		Posicion p( pos % ancho, pos / ancho);
@@ -64,8 +65,8 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 					}
 					break;
 				case 1 /* Casa Fantasma */: {
-					S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
-					reemplazar_estructural( c ); 
+						S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
+						reemplazar_estructural( c ); 
 					}
 					break;
 				case 2 /* Power up */:
@@ -127,6 +128,11 @@ void PaqueteInitCommon::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
 	S_ptr<EstructuralUnitario> actual = mapa->get_estructural( p );
 	mapa->agregar_estructural( e );
 	if( !actual.es_nulo() ) {
+		unsigned int fila = (unsigned int) floor(p.get_y());
+		unsigned int col =  (unsigned int) floor(p.get_x());
+		unsigned int key=(fila * mapa->get_ancho()) + col;
+		mapa->refresh(key);
+//		mapa->quitar_comestible(actual->get_comida());
 		if( ! actual->get_arriba().es_nulo() ) {
 			e->set_arriba( actual->get_arriba() );
 			actual->get_arriba()->set_abajo( e );
@@ -141,6 +147,7 @@ void PaqueteInitCommon::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
 		}
 		if( ! actual->get_izquierda().es_nulo() ) {
 			e->set_izquierda( actual->get_izquierda() );
+			actual->get_izquierda()->set_derecha( e );
 		}
 	}
 }
@@ -182,7 +189,8 @@ void PaqueteInitCommon::agregar_arista( int x, int y, bool norte )
 
 void PaqueteInitCommon::serialize( OutputBitStream& bs )
 {
-	S_ptr<EstructuralUnitario> casa;
+
+	std::list< S_ptr<EstructuralUnitario> > casa;
 	S_ptr<EstructuralUnitario> salida;
 	Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
 
@@ -201,7 +209,7 @@ void PaqueteInitCommon::serialize( OutputBitStream& bs )
 			Posicion p( x, y );
 			e = mapa->get_estructural( p );
 			if(!e.es_nulo() ) {
-				if( e->get_tipo() == EstructuralUnitario::Casa_Fantasma ) casa = e;
+				if( e->get_tipo() == EstructuralUnitario::Casa_Fantasma ) casa.push_back(e);
 				if( e->get_tipo() == EstructuralUnitario::Salida_Pacman ) salida = e;
 				bs.append( 1, !( e->get_arriba().es_nulo() ) );
 			}else
@@ -222,8 +230,9 @@ void PaqueteInitCommon::serialize( OutputBitStream& bs )
 	
 	OutputBitStream elems;
 	int elem_count = 0;
-	//version del protocolo (mejorada cuak)
-	//if( escribir_estructural( casa, elems ) ) elem_count++;
+	for (std::list< S_ptr<EstructuralUnitario> >::iterator it=casa.begin();it!=casa.end();++it){
+		if( escribir_estructural( *it, elems ) ) elem_count++;
+	}
 	if( escribir_estructural( salida, elems ) ) elem_count++;
 	
 	std::list< S_ptr<Comestible> > comestibles = mapa->get_comestibles();

@@ -12,7 +12,7 @@ void AvisadorNovedades::run(){
 	_parar = false;	
 	
 	std::list<Cliente*>::const_iterator it;
-	
+	std::cout << "Soy: " << pthread_self() << "<--- AVISADOR " << std::endl << std::flush;
 	while (! _parar ){
 
 		llave.lock();
@@ -29,7 +29,7 @@ void AvisadorNovedades::run(){
 			 	++it;
 			}
 			catch(std::runtime_error &e){
-				std::cout << "Entro aca (client pool)\n";
+				std::cout << "QuitarCliente AvisadorNovedades (client pool)\n";
 				clientes->quitar_cliente( (*it)->get_id() );
 			}
 		}
@@ -43,8 +43,8 @@ void AvisadorNovedades::parar(){
 }
 
 void AvisadorNovedades::actualizar(Observable* Obs,void * Novedad){
-   	if (Novedad!=NULL){
-      	NovedadComestible* novedadComest = (NovedadComestible*) Novedad;
+    if (Novedad!=NULL){
+	      	NovedadComestible* novedadComest = (NovedadComestible*) Novedad;
 	   	llave.lock();
 	   	novedades_comestible.push_back(*novedadComest);
 	   	llave.unlock();
