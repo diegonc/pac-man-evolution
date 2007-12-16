@@ -55,7 +55,8 @@ const std::list<Jugador *> ModeloCommon::get_jugadores(){
       it=jugadores.begin();
       while(it!=jugadores.end()){
          Jugador* jug=(*it).second;
-         lista_Jug.push_back(jug);
+         if( jug != NULL )
+            lista_Jug.push_back(jug);
          ++it;
       }
       //std::cout << "Salio: " << pthread_self() << std::endl << std::flush;
