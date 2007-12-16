@@ -38,7 +38,7 @@ int App::ejecutar(){
 			ModeloServidor::get_instancia()->set_mundo(mundo_bajo_nivel);
 			//modelo->set_mundo(mundo_bajo_nivel);
 			//crea el servidor
-			S_ptr<Servidor> servidor(new Servidor(7776) );//TODO USAR EL ARG
+			S_ptr<Servidor> servidor(new Servidor(7777) );//TODO USAR EL ARG
 			//inicia el hilo del modelo
 			//modelo->start();
 			//inicia el hilo del servidor

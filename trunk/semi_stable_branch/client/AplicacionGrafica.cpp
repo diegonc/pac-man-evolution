@@ -179,12 +179,12 @@ void AplicacionGrafica::Draw2D(SDL_Surface *S)
 																// That's an issue many people is having!
 																// We set up our Alpha Channel first!
 
-	src1.x = (Sint16)(800-256);
+	src1.x = (Sint16)(800-260);
 																// src1 is the first Logo
 	src1.y = (Sint16)(0);
 
-	src1.w = 256;										// Fill the rect structure
-	src1.h = 256;
+	src1.w = 260;										// Fill the rect structure
+	src1.h = 260;
 	SDL_SetColorKey(Mapa, SDL_SRCCOLORKEY, 
 	  SDL_MapRGB(Mapa->format, 0, 0, 255));
 
