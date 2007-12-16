@@ -5,6 +5,7 @@
 #include "ClientPool.h"
 #include "../common/server_socket.h"
 #include "../common/thread.h"
+#include "../common/evento.h"
 #include "ModeloServidor.h"
 #include "../common/smart_pointer.h"
 #include "../common/observador.h"
@@ -23,18 +24,16 @@ class Servidor : public Thread, public Observador{
 		static void manejador_signal(int num_signal);
 		static const int SENIAL_CANCELAR;
 	
-	    ClientPool pool;
+	   ClientPool pool;
 		
 		unsigned int cant_min_clientes;
 		unsigned int cant_max_clientes;
 	
 		Socket_Server * socket;
 
-		bool parar;	
-	
-		/** Modelo al que se asocia el servidor.
-		  */
-		//S_ptr<ModeloServidor> modelo;
+		bool ejecutando; //Determina si el servidor se esta ejecutando o no	
+
+      Evento* llave_max_jugadores; //Evento que traba al servidor cuando se alcanza la cantidad maxima de jugadores
 	
 		void set_propiedades_signal(const int id_signal);
 	
@@ -65,8 +64,24 @@ class Servidor : public Thread, public Observador{
 		void set_cant_min_clientes(unsigned int cant);
 		
 		void set_cant_max_clientes(unsigned int cant);
+
+      void finalizar_servidor();
+
+      bool esta_ejecutando();
 		
 		void actualizar(Observable * observable, void * param);
+
+    private:
+
+      void inicializar();
+
+      Cliente* aceptar_nuevo_cliente();
+
+      void iniciar_partida();
+
+      void mandar_start(Cliente* cliente);
 		
 };
+
 #endif /*__SERVIDOR_H__*/
+

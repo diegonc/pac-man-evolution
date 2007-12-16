@@ -46,16 +46,23 @@ void ModeloCommon::agregar_jugador(Jugador * jugador){
 }
 
 const std::list<Jugador *> ModeloCommon::get_jugadores(){
-  	Bloqueo b(&llave);
    std::list<Jugador * > lista_Jug;
-   std::map<unsigned int, Jugador * >::iterator it;
-   it=jugadores.begin();
-   while(it!=jugadores.end()){
-      Jugador* jug=(*it).second;
-      lista_Jug.push_back(jug);
-      ++it;
+   try {
+      Bloqueo b(&llave);
+      //std::cout << "Entro: " << pthread_self() << std::endl << std::flush;
+      //usleep(100);
+      std::map<unsigned int, Jugador * >::iterator it;
+      it=jugadores.begin();
+      while(it!=jugadores.end()){
+         Jugador* jug=(*it).second;
+         lista_Jug.push_back(jug);
+         ++it;
+      }
+      //std::cout << "Salio: " << pthread_self() << std::endl << std::flush;
+   } catch (Error::MutexError& e){
+       std::cout << "Error en mutex: " << e.what()  << "de: " << pthread_self() << std::endl << std::flush;    
    }
-   return lista_Jug;
+   return lista_Jug;  
 }
 
 Jugador * ModeloCommon::get_jugador(unsigned int id){   

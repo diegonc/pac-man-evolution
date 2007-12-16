@@ -43,7 +43,7 @@ void ModeloServidor::run(){
 		this->termino = false;
 		double intervalo_tiempo = 0;
 		double hora_actual;
-		
+		std::cout << "Soy: " << pthread_self() << "<-- MODELO " << std::endl << std::flush;
 		
 		Jugador * j;
 		//itero por todos los niveles
