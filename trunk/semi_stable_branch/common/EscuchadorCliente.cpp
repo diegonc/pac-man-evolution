@@ -22,6 +22,9 @@ void EscuchadorCliente::run(){
 	
 	S_ptr<Paquete> paquete;
 	Operacion * op;
+
+   std::cout << "Soy: " << pthread_self() << " <--ESCUCHADOR " <<std::endl << std::flush;
+
 	while(correr){
 		try{
 			paquete = cliente->recibir_mensaje();

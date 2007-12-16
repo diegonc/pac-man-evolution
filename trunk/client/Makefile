@@ -54,13 +54,13 @@ endif
 
 # Si no especifica archivos, tomo todos.
 fuentes ?= $(wildcard *.$(extension))
-fuentes_common ?= $(wildcard ../../common/*.$(extension))
-fuentes_server_2 ?= $(wildcard ../../server/*.$(extension))
-fuentes_map_2 ?= $(wildcard ../../map_editor/*.$(extension))
-fuentes_tiny_xml ?= $(wildcard ../../common/tinyxml/*.$(extension))
+fuentes_common ?= $(wildcard ../common/*.$(extension))
+fuentes_server_2 ?= $(wildcard ../server/*.$(extension))
+fuentes_map_2 ?= $(wildcard ../map_editor/*.$(extension))
+fuentes_tiny_xml ?= $(wildcard ../common/tinyxml/*.$(extension))
 
-fuentes_server = $(subst ../../server/Main.cpp, ,$(fuentes_server_2))
-fuentes_map = $(subst ../../map_editor/editor_mapas.cpp, ,$(fuentes_map_2))
+fuentes_server = $(subst ../server/Main.cpp, ,$(fuentes_server_2))
+fuentes_map = $(subst ../map_editor/editor_mapas.cpp, ,$(fuentes_map_2))
 
 # REGLAS
 #########
@@ -76,8 +76,8 @@ o_map_files = $(patsubst %.$(extension),%.o,$(fuentes_map)) $(o_server_files) $(
 o_files = $(patsubst %.$(extension),%.o,$(fuentes)) $(o_map_files)
 
 recompilar:
-	@$(RM) ../../server/PaqueteInit.o
-	@$(RM) ../../server/PaqueteStart.o
+	@$(RM) ../server/PaqueteInit.o
+	@$(RM) ../server/PaqueteStart.o
 
 subproyecto: recompilar $(o_files)
 	@if [ -z "$(o_files)" ]; \
@@ -89,7 +89,7 @@ subproyecto: recompilar $(o_files)
 
 clean:
 	@$(RM) -fv *.o subproyecto \
-   rm ../../common/*.o \
+   rm ../common/*.o \
    rm miEjecutable
    #rm ../../server/*.o \
 

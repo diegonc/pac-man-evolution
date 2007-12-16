@@ -12,7 +12,7 @@ void AvisadorNovedades::run(){
 	_parar = false;	
 	
 	std::list<Cliente*>::const_iterator it;
-	
+	std::cout << "Soy: " << pthread_self() << "<--- AVISADOR " << std::endl << std::flush;
 	while (! _parar ){
 
 		llave.lock();

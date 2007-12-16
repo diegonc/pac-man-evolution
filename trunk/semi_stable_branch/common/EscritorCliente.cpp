@@ -16,6 +16,7 @@ EscritorCliente::~EscritorCliente(){
 
 void EscritorCliente::run(){
 	try{
+      std::cout << "Soy: " << pthread_self() << " <-- ESCRITOR " << std::endl << std::flush;
 		while(!debe_terminar){
 			//std::cout << "Hay " << buffer.size() <<"\n";
 			if(! buffer.empty() ){
