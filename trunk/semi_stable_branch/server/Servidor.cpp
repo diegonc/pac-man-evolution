@@ -207,24 +207,24 @@ void Servidor::actualizar(Observable * observable, void * param){
 	//Si se pudo castear, es porque el client pool me aviso que se desconecto un cliente
 	if (client_pool != NULL){
 		//Obtengo el parametro como cliente
-		Cliente* cliente = dynamic_cast<Cliente*> (param);
+		Cliente* cliente = (Cliente*) (param);
 		//Si la cantidad de clientes es menor a la minima, freno el modelo
-		if (client_pool.get_cantidad_clientes() < cant_min_clientes)
-			//PARAR MODELO
+		if (client_pool->get_cantidad_clientes() < cant_min_clientes)
+			;//PARAR MODELO
 		//Si el cliente que se desconecto es el pac-man, aviso a los demas clientes y reinicio el nivel
-		if (cliente->get_jugador()->get_personaje()->get_tipo() == Personaje::Pacman)
-			//AVISAR CLIENTES, REINICIAR NIVEL
+		if (cliente->get_jugador()->get_personaje()->get_tipo() == Personaje::pacman)
+			;//AVISAR CLIENTES, REINICIAR NIVEL
 	} else {
 		//Intento castear como modelo del servidor
 		ModeloServidor* modelo = dynamic_cast<ModeloServidor*>(observable);
 		//Si pudo castear, es porque el modelo me avisa que termino el nivel o el juego
 		if (modelo != NULL) {
 			//Le pregunto al modelo si termino el juego
-			if (modelo->termino_juego())
+			/*if (modelo->termino_juego())
 				//Si termino el juego, finalizo el servidor
 				this->finalizar_servidor();
 			else //Sino, es porque termino un nivel
-				//AVISAR CAMBIO NIVEL
+				//AVISAR CAMBIO NIVEL */
 		}
 	}
 }
