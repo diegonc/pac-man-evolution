@@ -169,6 +169,7 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
       //me fijo si me avisa el jugador pacman que se desconecto, entonces
       Jugador * jugador = dynamic_cast<Jugador *>(observable); 
       if(jugador != NULL){
+            std::cout << "Me llego un mensaje de un jugador =Z \n";            
             //obtengo el primer jugador de la lista
             std::list<Jugador *>  lista_jugadores = get_jugadores();
             std::list<Jugador *>::iterator it = lista_jugadores.begin();

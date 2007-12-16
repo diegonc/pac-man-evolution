@@ -30,7 +30,7 @@ void ModeloCommon::agregar_jugador(Jugador * jugador){
 		std::list< S_ptr<EstructuralUnitario> > lista_CasaFantasma=get_mundo().get_mapa_activo()->get_casa_fantasma();	
 		pos=pos % lista_CasaFantasma.size();
 		std::list< S_ptr<EstructuralUnitario> >::iterator it=lista_CasaFantasma.begin();
-		for (int i=0;i<=pos;++i){
+		for (int i=0 ; i<pos ; ++i){
 			++it;
 		}
 		S_ptr<EstructuralUnitario> estructural_elegido(*it);
