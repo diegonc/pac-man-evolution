@@ -16,7 +16,7 @@ void ModeladorObjetos::DibujarObjeto(ObjTextura* objTex){
     //textura del objeto
     GLuint* texture=&objTex->textura;
     //proporcion de escalado
-    float const proporcion=0.04;
+    float const proporcion=0.032;
     //referencia a figura
     obj_type* object;
     //seteo el uso de la textura
