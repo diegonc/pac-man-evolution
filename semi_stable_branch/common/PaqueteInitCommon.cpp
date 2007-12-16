@@ -193,7 +193,7 @@ void PaqueteInitCommon::serialize( OutputBitStream& bs )
 	bs.append( 8, mapa->get_alto() );
 
 	bs.grow( mapa->get_ancho()*mapa->get_alto()*2 );
-
+	std::cout << "CantidadEstructurales:" << mapa->get_estructurales().size() << "\n";
 	S_ptr<EstructuralUnitario> e;
 	for( unsigned int y=0; y < mapa->get_alto(); y++ ) {
 		// Aristas verticales

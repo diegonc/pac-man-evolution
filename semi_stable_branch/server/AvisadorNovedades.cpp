@@ -29,7 +29,7 @@ void AvisadorNovedades::run(){
 			 	++it;
 			}
 			catch(std::runtime_error &e){
-				std::cout << "Entro aca (client pool)\n";
+				std::cout << "QuitarCliente AvisadorNovedades (client pool)\n";
 				clientes->quitar_cliente( (*it)->get_id() );
 			}
 		}
@@ -43,9 +43,7 @@ void AvisadorNovedades::parar(){
 }
 
 void AvisadorNovedades::actualizar(Observable* Obs,void * Novedad){
-std::cout << "avisador fue avisado(ciak)\n";
     if (Novedad!=NULL){
-	
 	      	NovedadComestible* novedadComest = (NovedadComestible*) Novedad;
 	   	llave.lock();
 	   	novedades_comestible.push_back(*novedadComest);
