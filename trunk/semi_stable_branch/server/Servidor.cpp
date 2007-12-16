@@ -85,7 +85,6 @@ void Servidor::run(){
 			socket->escuchar();
 			//acepta un cliente
 			Socket_Cliente* client = socket->aceptar();
-			std::cout << "Paso por aca\n";
 			//lo agrega a la pileta de clietnes
 			Cliente * cliente_nuevo = pool.lanzar_cliente( client );
 			//agrega si jugador al modelo
@@ -96,7 +95,6 @@ void Servidor::run(){
 			cliente_nuevo->get_escritor().encolar_paquete(paquete_init);
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
-
 			if( (pool.get_cantidad_clientes() == cant_min_clientes) && (!ya_mando_start) ){
 				//espero los 5 segundos que piden
 				sleep(5);

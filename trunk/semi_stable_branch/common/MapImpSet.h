@@ -27,7 +27,10 @@ class MapaImpSet : public MapaBajoNivel{
 
 		Tipo_Dimensiones ancho;
 		Tipo_Dimensiones alto;
-
+	
+		Tipo_Estructural salida_pacman;
+	
+		std::list< Tipo_Estructural > casa_fantasma; 
 		/**
 		*	@brief 	Este metodo verifica si el jugador, mediante su personaje,
 		*			toca alguna pared o borde del mapa.
@@ -50,7 +53,8 @@ class MapaImpSet : public MapaBajoNivel{
 		unsigned int make_key(Posicion &p);
 		
 		Posicion unmake_key(unsigned int key);
-
+		
+		
 	public:
 		/**
 		*	@brief Constructor
@@ -126,6 +130,9 @@ class MapaImpSet : public MapaBajoNivel{
 		
 		void refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible);
 		
+		Tipo_Estructural get_salida_pacman();
+		
+		std::list<Tipo_Estructural>& get_casa_fantasma();
 		
 };
 

@@ -131,6 +131,12 @@ void MapaImpSet::agregar_estructural(S_ptr<EstructuralUnitario> e){
 	unsigned int key = make_key(e->get_posicion() );
 
 	estructurales[key] = e;
+	if( e->get_tipo() == EstructuralUnitario::Casa_Fantasma )
+		this->casa_fantasma.push_back(e);
+	else
+		if( e->get_tipo() == EstructuralUnitario::Salida_Pacman)
+			this->salida_pacman = e;
+	
 	S_ptr<Comestible> c = e->get_comida();
 	if(! c.es_nulo() )
 		comestibles[key] = c;
@@ -216,4 +222,10 @@ Posicion MapaImpSet::unmake_key(unsigned int key){
         int Fila=(int) floor(key / this->get_ancho());
 	Posicion P(Col,Fila);
 	return P;
+}
+Tipo_Estructural MapaImpSet::get_salida_pacman(){
+	return this->salida_pacman;
+}
+std::list<Tipo_Estructural>& MapaImpSet::get_casa_fantasma(){
+	return this->casa_fantasma;
 }
