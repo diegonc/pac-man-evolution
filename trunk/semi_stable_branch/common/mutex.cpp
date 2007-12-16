@@ -5,6 +5,8 @@ using namespace std;
 
 Mutex::Mutex() throw( Error::MutexError )
 {
+    //pthread_mutexattr_t attr;
+
     int err = pthread_mutex_init( &mutex, NULL );
     if( err != 0 )
         throw Error::MutexError(this, err);
@@ -23,7 +25,7 @@ Mutex::Mutex(bool log) throw( Error::MutexError )
 
 Mutex::~Mutex()
 {
-    cerr << "Mutex: 0x" << hex << (int)this << " mutex_t: 0x" << hex <<(int)&mutex << " destruyendose." << endl;
+    //cerr << "Mutex: 0x" << hex << (int)this << " mutex_t: 0x" << hex <<(int)&mutex << " destruyendose." << endl;
 
     pthread_mutex_destroy( &mutex );
 }

@@ -53,6 +53,7 @@ endif
 fuentes ?= $(wildcard *.$(extension))
 fuentes_common = ../common/observable.cpp \
 		 ../common/mutex.cpp \
+		 ../common/errores.cpp \
 		 ../common/bloqueo.cpp \
 		 ../common/thread.cpp
 fuentes_tiny_xml ?= $(wildcard ../common/tinyxml/*.$(extension))
