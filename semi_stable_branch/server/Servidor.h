@@ -80,8 +80,11 @@ class Servidor : public Thread, public Observador{
       void iniciar_partida();
 
       void mandar_start(Cliente* cliente);
-		
+	
+	  void mandar_stop(const char razon);
+	
+	  void mandar_quit();
+	
 };
 
 #endif /*__SERVIDOR_H__*/
-

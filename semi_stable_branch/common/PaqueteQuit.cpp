@@ -17,9 +17,7 @@ void PaqueteQuit::deserialize( InputBitStream& bs )
 void PaqueteQuit::serialize( OutputBitStream& bs )
 {
     Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
-    bs.grow(3);
-	bs.skip();
-
+    bs.skip();
 }
 
 Operacion* PaqueteQuit::get_operacion()

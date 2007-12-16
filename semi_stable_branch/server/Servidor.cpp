@@ -2,6 +2,8 @@
 
 #include "PaqueteInit.h"
 #include "PaqueteStart.h"
+#include "../common/PaqueteStop.h"
+#include "../common/PaqueteQuit.h"
 #include "../common/EscritorCliente.h"
 #include "AvisadorNovedades.h"
 
@@ -196,9 +198,34 @@ void Servidor::iniciar_partida(){
 }
 
 void Servidor::mandar_start(Cliente* cliente){
-      //Creo un paquete start y lo encolo en el escritor del cliente
+     //Creo un paquete start y lo encolo en el escritor del cliente
    	S_ptr<Paquete> paquete_start(new PaqueteStart(cliente->get_id()));
 	   cliente->get_escritor().encolar_paquete(paquete_start);
+}
+
+void Servidor::mandar_stop(const char razon){
+	//Busco al pacman entre todos los clientes
+	bool encontrado = false;
+	std::list<Cliente*> lista_clientes = pool.get_clientes();
+	std::list<Cliente*>::const_iterator it = lista_clientes.begin();
+	Cliente* cliente = NULL;
+	while ((it != lista_clientes.end()) && (!encontrado)){
+		cliente = *it;
+		if (cliente->get_jugador()->get_personaje()->get_tipo() == Personaje::pacman)
+			encontrado = true;
+		++it;
+	}
+	int puntaje = 0; //puntaje del pacman
+	if (encontrado) puntaje = cliente->get_jugador()->get_puntos();
+	//creo el paquete stop con el puntaje obtenido y se lo mando a todos los clientes
+	S_ptr<Paquete> paquete_stop(new PaqueteStop(razon, puntaje));
+	pool.mandar_mensaje_todos(paquete_stop);
+}
+
+void Servidor::mandar_quit(){
+	//creo el paquete quit y se lo mando a todos los clientes
+	S_ptr<Paquete> paquete_quit(new PaqueteQuit());
+	pool.mandar_mensaje_todos(paquete_quit);
 }
 
 void Servidor::actualizar(Observable * observable, void * param){
@@ -228,4 +255,3 @@ void Servidor::actualizar(Observable * observable, void * param){
 		}
 	}
 }
-

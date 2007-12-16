@@ -133,8 +133,12 @@ void ModeloServidor::preparar_partida(){
 	//it_estucturales = casa_fantasma.begin();
 	//Jugador * j;
 	Posicion p;
-	for(it_jugadores = lista_jugadores.begin(); it_jugadores != lista_jugadores.end() ; ++it_jugadores){
-      set_posicion_inicial(*it_jugadores);		
+	it_jugadores = lista_jugadores.begin();
+	while(it_jugadores != lista_jugadores.end() ){
+		set_posicion_inicial(*it_jugadores);		
+		std::cout << (*it_jugadores)->get_posicion() << "\n";
+  	        ++it_jugadores;
+	}
       //j = *it_jugadores;
       		
       /*if(j->get_personaje()->get_tipo() == Personaje::pacman){
@@ -155,8 +159,6 @@ void ModeloServidor::preparar_partida(){
 			}
 			
 		j->set_posicion(p);*/
-	}
-
 }
 void ModeloServidor::reiniciar_partida(){
   
