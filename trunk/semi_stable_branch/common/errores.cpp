@@ -1,4 +1,6 @@
 #include "errores.h"
+#include "mutex.h"
+#include <iostream>
 
 std::string Error::MutexError::to_string( int err )
     {
@@ -17,3 +19,11 @@ std::string Error::MutexError::to_string( int err )
 			    return std::string( "Unknowk error." );
 	    }
     }
+
+Error::MutexError::MutexError(Mutex* m, int err)
+	: std::runtime_error(to_string(err))
+{
+	std::cerr << "Creando MutexError para Mutex: " << std::hex;
+	std::cerr << (int)m << " mutex_t: " << std::hex << (int)m->get_mutex();
+	std::cerr << std::endl;
+}

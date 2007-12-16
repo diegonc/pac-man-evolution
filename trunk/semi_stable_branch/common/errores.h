@@ -6,6 +6,8 @@
 #include <cstring> // para strerror
 #include <pthread.h>
 
+class Mutex;
+
 namespace Error
 {
     enum Codes{
@@ -36,8 +38,7 @@ namespace Error
     {
 	    static std::string to_string( int err );
 	    public:
-		    MutexError(int err):std::runtime_error(to_string(err))
-		    {}
+		    MutexError(Mutex* m, int err);
     };
 }
 

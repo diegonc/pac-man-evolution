@@ -21,6 +21,7 @@ class Mutex
 
     public:
         Mutex() throw( Error::MutexError );
+	Mutex(bool log) throw( Error::MutexError );
         ~Mutex();
 
         void lock();
