@@ -3,9 +3,10 @@
 
 #include <list>
 #include "../common/Cliente.h"
+#include "../common/Observable.h"
 
-class ClientPool
-{
+class ClientPool : public Observable {
+
     std::list<Cliente*> clientes;
     unsigned int num_orden;
 
