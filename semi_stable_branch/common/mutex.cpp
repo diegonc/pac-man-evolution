@@ -19,8 +19,8 @@ Mutex::Mutex(bool log) throw( Error::MutexError )
     if( err != 0 )
         throw Error::MutexError(this, err);
 
-    if( log )
-    cerr << "Mutex: 0x" << hex << (int)this << " mutex_t: " << hex << (int)&mutex << " creado." << endl;
+ //   if( log )
+   // cerr << "Mutex: 0x" << hex << (int)this << " mutex_t: " << hex << (int)&mutex << " creado." << endl;
 }
 
 Mutex::~Mutex()
