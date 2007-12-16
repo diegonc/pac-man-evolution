@@ -126,4 +126,5 @@ Jugador * Cliente::get_jugador(){
 void Cliente::terminar(){
 	this->escritor->terminar();
 	this->socket->cerrar();
+   std::cout << "LLego aca para el" << this->id << "\n";
 }
