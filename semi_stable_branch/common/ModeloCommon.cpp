@@ -1,6 +1,6 @@
 #include "ModeloCommon.h"
 
-ModeloCommon::ModeloCommon(){
+ModeloCommon::ModeloCommon(): llave(true){
 	//cargar_modelo(); // provisorio
 	MundoBasicImp * m = new MundoBasicImp();
 	S_ptr<MundoBajoNivel> mundo_default(m);
