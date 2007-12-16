@@ -32,7 +32,7 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
     //parametros para la mejor visualizacion de la perspectiva
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     //escenario.Procesar(); //<----LO COMENTE YOOOOO!!!!
-	Mapa = SDL_LoadBMP("textura.bmp");
+	Mapa = SDL_LoadBMP("Mapa.bmp");
 	ModeladorOBJ.hidratar();
 	return true;
 
@@ -52,7 +52,7 @@ bool AplicacionGrafica::Initialize()
 //finalizar y liberar recursos
 void AplicacionGrafica::Deinitialize()
 {
-
+  	SDL_FreeSurface(Mapa); 
 }
 
 
@@ -154,14 +154,14 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		std::list< S_ptr<Comestible> >::iterator comestibles;
 		S_ptr<Comestible> comestible;
 
-		/*//itero sobre los comestibles
+		//itero sobre los comestibles
 		for(comestibles = lista_comestibles.begin(); comestibles != lista_comestibles.end(); ++comestibles){
 			comestible = *comestibles;
 			Posicion p=comestible->get_posicion();
 			Pos.x= p.get_x()*4;
 			Pos.y= -p.get_y()*4;
 			ModeladorOBJ.DibujarObjetoPosicion(&Pos,comestible->get_tipo());
-		}*/
+		}
 
 		//llamo a la lista precompilada del Escenario
 		escenario.ModelarEscenario();
@@ -174,8 +174,6 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 void AplicacionGrafica::Draw2D(SDL_Surface *S)
 {
 	static SDL_Rect src1={0,0,0,0};							// We're blitting 3 rectangles,
-	//src2={0,0,0,0},								// so we have to prepare them
-	//src3={0,0,0,0};
 
 	SDL_FillRect(S, &src1, SDL_MapRGBA(S->format,0,0,0,0));
 																// That's an issue many people is having!
@@ -187,6 +185,8 @@ void AplicacionGrafica::Draw2D(SDL_Surface *S)
 
 	src1.w = 256;										// Fill the rect structure
 	src1.h = 256;
+	SDL_SetColorKey(Mapa, SDL_SRCCOLORKEY, 
+	  SDL_MapRGB(Mapa->format, 0, 0, 255));
 
 	SDL_BlitSurface(Mapa, NULL, S, &src1);			// And finally blit and update
 	SDL_UpdateRects(S, 1, &src1);
