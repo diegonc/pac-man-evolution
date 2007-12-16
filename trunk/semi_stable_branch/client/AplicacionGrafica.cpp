@@ -6,7 +6,7 @@ EstadoAplicacion* AplicacionGrafica::getEstadoAplicacion(){
 }
 
 void AplicacionGrafica::CambiarCamara(){
-	CamaraPrimeraPersona=!CamaraPrimeraPersona;
+	Camara.siguiente();
 }
 
 
@@ -118,20 +118,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
     glLoadIdentity();
 
 
-    //seleccion de camara
-    if (CamaraPrimeraPersona){
-		glRotatef(-65, 1, 0.0, 0.0);
-		//seteo la pos de la luz sobre el eje y
-		static GLfloat pos[4] = {0, 0, 1, 0 };
-		//agrego la luz (estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
-		glLightfv( GL_LIGHT0, GL_POSITION, pos );
-		glTranslatef(0.0,15 , -10);
-	}else{
-		static GLfloat pos[4] = {0, 0, 1, 0 };
-		//agrego la luz (estaba habilitada (INITGL)) es una luz del tipo posicion con la pos antes mencionada
-		glLightfv( GL_LIGHT0, GL_POSITION, pos );
-		glTranslatef(0,0 , -100);
-	}
+    	Camara.ejecutar();
 
 
 	if (escenario.loaded()){
@@ -166,7 +153,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 		std::list< S_ptr<Comestible> > lista_comestibles = ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
 		std::list< S_ptr<Comestible> >::iterator comestibles;
 		S_ptr<Comestible> comestible;
-/*
+
 		//itero sobre los comestibles
 		for(comestibles = lista_comestibles.begin(); comestibles != lista_comestibles.end(); ++comestibles){
 			comestible = *comestibles;
@@ -174,7 +161,7 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 			Pos.x= p.get_x()*4;
 			Pos.y= -p.get_y()*4;
 			ModeladorOBJ.DibujarObjetoPosicion(&Pos,comestible->get_tipo());
-		}*/
+		}
 
 		//llamo a la lista precompilada del Escenario
 		escenario.ModelarEscenario();
