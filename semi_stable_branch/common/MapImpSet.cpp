@@ -229,14 +229,42 @@ unsigned int MapaImpSet::make_key(Posicion &p){
 	return ( (fila * this->get_ancho()) + col);
 }
 Posicion MapaImpSet::unmake_key(unsigned int key){
-        int Col=key % this->get_ancho();
-        int Fila=(int) floor(key / this->get_ancho());
+	int Col=key % this->get_ancho();
+	int Fila=(int) floor(key / this->get_ancho());
 	Posicion P(Col,Fila);
 	return P;
 }
 Tipo_Estructural MapaImpSet::get_salida_pacman(){
-	return this->salida_pacman;
+	
+	std::list< Tipo_Estructural >::iterator it_estucturales;
+	std::list< Tipo_Estructural > estructurales;
+	Tipo_Estructural salida_pacman;
+	bool encontro = false;
+	
+	estructurales = this->get_estructurales();
+	it_estucturales = estructurales.begin();
+	
+	while( (it_estucturales != estructurales.end()) && (!encontro) ){
+		if( (*it_estructurales)->get_tipo() == EstructuralUnitario::Salida_Pacman ){
+			salida_pacman = *it_estucturales;
+			encontro = true;
+		}
+	}
+	return salida_pacman;
 }
-std::list<Tipo_Estructural>& MapaImpSet::get_casa_fantasma(){
-	return this->casa_fantasma;
+std::list<Tipo_Estructural> MapaImpSet::get_casa_fantasma(){
+	std::list< S_ptr<EstructuralUnitario> >::iterator it_estucturales;
+	std::list< S_ptr<EstructuralUnitario> > estructurales;
+	std::list< S_ptr<EstructuralUnitario> > casas_fantasma;
+	
+	estructurales = this->get_estructurales();
+	it_estructurales = estructurales.begin();
+	
+	while(it_estructurales != estructurales.end() ){
+		if( (*it_estucturales)->get_tipo() == EstructuralUnitario::Casa_Fantasma )
+			casas_fantasma.push_back(*it_estucturales);
+		++it_estructurales;
+	}
+	
+	return casas_fantasma;
 }

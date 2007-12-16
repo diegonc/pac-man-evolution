@@ -76,7 +76,7 @@ class MapaBajoNivel : public Observable
 		
 		virtual S_ptr<EstructuralUnitario> get_salida_pacman() = 0;
 		
-		virtual std::list<S_ptr<EstructuralUnitario> >& get_casa_fantasma() = 0;
+		virtual std::list<S_ptr<EstructuralUnitario> > get_casa_fantasma() = 0;
 		
 		virtual void refresh(unsigned int vertice) = 0;
 		
