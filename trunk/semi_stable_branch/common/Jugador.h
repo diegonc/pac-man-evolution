@@ -120,6 +120,9 @@ class Jugador : public Observable{
 		int get_puntos();
 		
 		void set_puntos(int puntos);
+
+      void quitar_personaje();
+
 };
 
 #endif /*__JUGADOR_H__*/
