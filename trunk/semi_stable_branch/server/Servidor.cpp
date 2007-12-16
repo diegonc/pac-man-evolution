@@ -148,13 +148,15 @@ bool Servidor::esta_ejecutando(){
 }
 
 void Servidor::inicializar(){
-   //setteo las propieaddes de la senial para cortar el accept
+   	//setteo las propieaddes de la senial para cortar el accept
 	set_propiedades_signal(Servidor::SENIAL_CANCELAR);
 	//asigno por defecto las cantidades minimas y maximas de jugadores
 	this->cant_max_clientes = _DEFAULT_CANT_MAX;
 	this->cant_min_clientes = _DEFAULT_CANT_MIN;
-   //Pongo como que no se esta ejecutando
-   this->ejecutando = false;
+   	//Pongo como que no se esta ejecutando
+   	this->ejecutando = false;
+	//Agrego al servidor como observador del pool de clientes
+	this->pool.agregar_observador(this);
 }
 
 Cliente* Servidor::aceptar_nuevo_cliente(){
@@ -200,5 +202,30 @@ void Servidor::mandar_start(Cliente* cliente){
 }
 
 void Servidor::actualizar(Observable * observable, void * param){
-	this->finalizar_servidor();
+	//Intento castear como pool de clientes	
+	ClientPool* client_pool = dynamic_cast<ClientPool*> (observable);
+	//Si se pudo castear, es porque el client pool me aviso que se desconecto un cliente
+	if (client_pool != NULL){
+		//Obtengo el parametro como cliente
+		Cliente* cliente = dynamic_cast<Cliente*> (param);
+		//Si la cantidad de clientes es menor a la minima, freno el modelo
+		if (client_pool.get_cantidad_clientes() < cant_min_clientes)
+			//PARAR MODELO
+		//Si el cliente que se desconecto es el pac-man, aviso a los demas clientes y reinicio el nivel
+		if (cliente->get_jugador()->get_personaje()->get_tipo() == Personaje::Pacman)
+			//AVISAR CLIENTES, REINICIAR NIVEL
+	} else {
+		//Intento castear como modelo del servidor
+		ModeloServidor* modelo = dynamic_cast<ModeloServidor*>(observable);
+		//Si pudo castear, es porque el modelo me avisa que termino el nivel o el juego
+		if (modelo != NULL) {
+			//Le pregunto al modelo si termino el juego
+			if (modelo->termino_juego())
+				//Si termino el juego, finalizo el servidor
+				this->finalizar_servidor();
+			else //Sino, es porque termino un nivel
+				//AVISAR CAMBIO NIVEL
+		}
+	}
 }
+

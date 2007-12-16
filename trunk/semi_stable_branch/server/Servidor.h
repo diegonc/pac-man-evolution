@@ -24,7 +24,7 @@ class Servidor : public Thread, public Observador{
 		static void manejador_signal(int num_signal);
 		static const int SENIAL_CANCELAR;
 	
-	   ClientPool pool;
+	   	ClientPool pool;
 		
 		unsigned int cant_min_clientes;
 		unsigned int cant_max_clientes;
@@ -33,8 +33,8 @@ class Servidor : public Thread, public Observador{
 
 		bool ejecutando; //Determina si el servidor se esta ejecutando o no	
 
-      Evento* llave_max_jugadores; //Evento que traba al servidor cuando se alcanza la cantidad maxima de jugadores
-	
+      		Evento* llave_max_jugadores; //Evento que traba al servidor cuando se alcanza la cantidad maxima de jugadores
+
 		void set_propiedades_signal(const int id_signal);
 	
 	public:

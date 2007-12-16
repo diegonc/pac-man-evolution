@@ -17,7 +17,7 @@ ClientPool::~ClientPool()
 Cliente * ClientPool::lanzar_cliente( Socket_Cliente* sock )
 {
 	Cliente* c = new Cliente( ++num_orden, sock );
-    c->start();
+    	c->start();
 	clientes.push_back(c);
 	return c;
 }
@@ -50,15 +50,21 @@ unsigned int ClientPool::get_cantidad_clientes(){
 
 void ClientPool::quitar_cliente(unsigned int id_cliente){
 	std::list<Cliente*>::iterator it = clientes.begin();
-    bool elimino = false;
-	
+   	bool elimino = false;
+	Cliente* cliente = NULL;	
 	while( it != clientes.end() && !elimino ){
 		if( (*it)->get_id() == id_cliente ){
+			cliente = *it;
 			clientes.erase(it);
 			elimino = true;
+			//Aviso a los observadores que un cliente se desconecto
+			this->set_cambio();
+			this->avisar_observadores(cliente);
 		}
 		else
 			it++;
 	}
-	
+	//Elimino al cliente recien removido
+	delete(cliente);
 }
+
