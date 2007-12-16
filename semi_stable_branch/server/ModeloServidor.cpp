@@ -176,7 +176,9 @@ void ModeloServidor::actualizar(Observable * observable, void * param){
             std::list<Jugador *>::iterator it = lista_jugadores.begin();
             
             if( it != lista_jugadores.end() ){
+                              
                Personaje * p = new PacMan(*it);
+               (*it)->quitar_personaje();
                (*it)->set_personaje(p);
             }
       }

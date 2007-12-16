@@ -20,9 +20,6 @@ Tipo_Personaje Jugador::get_personaje(){
 	return this->personaje;
 }
 void Jugador::set_personaje(Tipo_Personaje personaje){
-   if(this->personaje != NULL)   
-      delete this->personaje;	
-
    this->personaje = personaje;
 }
 void Jugador::set_posicion(Posicion &pos_nueva){
@@ -61,4 +58,10 @@ Jugador::~Jugador(){
 }
 void Jugador::set_puntos(int puntos){
 	this->puntos = puntos;
+}
+void Jugador::quitar_personaje(){
+   if(this->personaje != NULL)   
+      delete this->personaje;	
+
+
 }
