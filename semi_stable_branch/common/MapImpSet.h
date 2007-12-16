@@ -44,12 +44,7 @@ class MapaImpSet : public MapaBajoNivel{
 			
 		std::map< unsigned int ,Tipo_Estructural> estructurales;
 		std::map< unsigned int ,Tipo_Comestible> comestibles;		
-		/**
-		*	@brief	Metodo para quitar un comestible de la lista propia
-		*	
-		*	@param	comestible Comestible que se quiere quitar
-		*/
-		void quitar_comestible(Tipo_Comestible comestible);
+		
 
 		unsigned int make_key(Posicion &p);
 		
@@ -127,6 +122,13 @@ class MapaImpSet : public MapaBajoNivel{
 		*/
 		void refresh(unsigned int vertice);
 		
+      /**
+		*	@brief	Metodo para quitar un comestible de la lista propia
+		*	
+		*	@param	comestible Comestible que se quiere quitar
+		*/
+		void quitar_comestible(Tipo_Comestible comestible);
+
 		/*Para agregar*/
 		
 		void refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible);

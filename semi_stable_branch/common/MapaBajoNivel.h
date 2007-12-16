@@ -81,6 +81,8 @@ class MapaBajoNivel : public Observable
 		virtual void refresh(unsigned int vertice) = 0;
 		
 		virtual void refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible) = 0;
+
+      virtual void quitar_comestible(Tipo_Comestible comestible) = 0;
 };
 
 #endif /* __MAPA_H__ */
