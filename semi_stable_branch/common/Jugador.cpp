@@ -20,7 +20,9 @@ Tipo_Personaje Jugador::get_personaje(){
 	return this->personaje;
 }
 void Jugador::set_personaje(Tipo_Personaje personaje){
-   delete this->personaje;	
+   if(this->personaje != NULL)   
+      delete this->personaje;	
+
    this->personaje = personaje;
 }
 void Jugador::set_posicion(Posicion &pos_nueva){
