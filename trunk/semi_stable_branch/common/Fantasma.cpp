@@ -55,7 +55,7 @@ void Fantasma::colision(Jugador * jugador){
 						
 					}
 					else{
-						if(jugador->get_personaje()->esta_vivo())
+						//if(jugador->get_personaje()->esta_vivo())
 							this->matar();
 					}
 				}
