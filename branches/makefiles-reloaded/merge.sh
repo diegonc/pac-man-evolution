@@ -1,4 +1,15 @@
 #!/bin/sh
+if [ "$1" = "undo" ]; then
+	svn revert -R .
+	svn status | egrep "^\?" | sed -e 's/^\?[[:space:]]*//' | xargs rm -rvf
+	exit
+elif [ -z "$1" -o "$2"  ]; then
+	cat << EOF
+Usage:
+	$0 undo
+	$0 rev_inicio rev_fin
+EOF
+fi
 
 EDITOR_FILES="
 bif_este.cpp
@@ -190,7 +201,7 @@ for i in $EDITOR_FILES; do
 done
 
 for i in $COMMON_FILES; do
-	svn mv comon/common/$i /common/$i
+	svn mv common/common/$i /common/$i
 done
 
 for i in $SERVER_FILES; do
@@ -204,11 +215,4 @@ SVN_URL=https://pac-man-evolution.googlecode.com/svn/trunk/semi_stable_branch
 SVN_USER=dnietoc
 SVN_PASS=g6d9x7c4
 
-if [ -z "$1" ]; then
-	cat << EOF
-Usage:
-	$0 rev_inicio rev_fin
-EOF
-else
-	svn merge --username $SVN_USER --password $SVN_PASS -r $1:$2 $SVN_URL
-fi
+svn merge --username $SVN_USER --password $SVN_PASS -r $1:$2 $SVN_URL
