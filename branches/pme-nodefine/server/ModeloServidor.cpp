@@ -110,7 +110,6 @@ void ModeloServidor::preparar_partida(){
 	it_jugadores = lista_jugadores.begin();
 	while(it_jugadores != lista_jugadores.end() ){
 		set_posicion_inicial(*it_jugadores);		
-		std::cout << (*it_jugadores)->get_posicion() << "\n";
   	        ++it_jugadores;
 	}
       //j = *it_jugadores;
@@ -155,7 +154,8 @@ void ModeloServidor::reiniciar_partida(){
       }while( (it != lista_jugadores.end() ) && (!hay_pacman) );
       //si no habia pacman, se lo asigno al primer personaje de la lista      
       if(!hay_pacman){
-             std::cout << "Asginando pacman\n;"<<std::flush;           
+            it = lista_jugadores.begin();            
+            std::cout << "Asginando pacman\n;"<<std::flush;           
             Personaje * p = new PacMan(*it);
             Jugador * j = *it;
             j->quitar_personaje();

@@ -21,7 +21,9 @@ class Thread{
 	
 		virtual ~Thread();
 	
-		Thread();	
+		Thread();
+
+		bool corriendo();	
 	
 	private:
 	
