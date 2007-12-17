@@ -7,11 +7,12 @@ MiniMapa::MiniMapa(){
 
 MiniMapa::~MiniMapa(){
 	SDL_FreeSurface(Mapa);
-	SDL_FreeSurface(Casillero);
-//	SDL_FreeSurface(ConectorV);
-//	SDL_FreeSurface(ConectorH);
+	SDL_FreeSurface(Casillero);	
 	SDL_FreeSurface(Pacman);
 	SDL_FreeSurface(Fantasma);
+	SDL_FreeSurface(PowerUP);
+	SDL_FreeSurface(Frutita);
+	SDL_FreeSurface(Quesito);
 }	
 
 void MiniMapa::ejecutar(SDL_Surface* Screen){
@@ -31,9 +32,9 @@ void MiniMapa::DibujarCasillero(SDL_Surface* Screen,int ImgXCurr,int ImgYCurr){
 
 	SDL_FillRect(Screen, &RectCasillero, SDL_MapRGBA(Screen->format,0,0,0,0));
 	
-	SDL_SetColorKey(Casillero, SDL_SRCCOLORKEY, 
+	/*SDL_SetColorKey(Casillero, SDL_SRCCOLORKEY, 
 	  SDL_MapRGB(Casillero->format, 0, 0, 255));
-	//escribo el Casillero en la pantalla				
+	*///escribo el Casillero en la pantalla				
 	SDL_BlitSurface(Casillero, NULL, Screen, &RectCasillero);
 //	SDL_UpdateRects(Screen, 1, &RectCasillero);
 	//S_ptr<EstructuralUnitario> Est=ModeloServidor::get_instancia()->get_mundo().get_mapa_activo().get_estructural(P)
@@ -47,19 +48,33 @@ void MiniMapa::DibujarJugador(SDL_Surface* Screen, Jugador* jug, int ImgXCurr, i
 	}else{
 		TextJugad=Pacman;				
 	}
+	DibujarObjeto(Screen,TextJugad,ImgXCurr,ImgYCurr);
+}
 
-	SDL_Rect RectJugador={0,0,0,0};
+void MiniMapa::DibujarComestible(SDL_Surface* Screen, S_ptr<Comestible> Comest, int ImgXCurr, int ImgYCurr){
+	SDL_Surface* TextComest;
+	if (Comest->get_tipo()==Comestible::frutita){
+		TextComest=Frutita;
+	}else if (Comest->get_tipo()==Comestible::power_up){
+		TextComest=PowerUP;
+	}else{
+		TextComest=Quesito;
+	}
+	DibujarObjeto(Screen,TextComest,ImgXCurr,ImgYCurr);
+}
+
+void MiniMapa::DibujarObjeto(SDL_Surface* Screen, SDL_Surface* TextObj, int ImgXCurr, int ImgYCurr){
+	SDL_Rect RectObjeto={0,0,0,0};
 	//seteo el tamanio y la posicion del minimapa sobre la pantalla
-	RectJugador.x=(Sint16)ImgXCurr;
-	RectJugador.y=(Sint16)ImgYCurr;
-	RectJugador.w=DimJugador;
-	RectJugador.h=DimJugador;	
+	RectObjeto.x=(Sint16)ImgXCurr;
+	RectObjeto.y=(Sint16)ImgYCurr;
+	RectObjeto.w=DimObjeto;
+	RectObjeto.h=DimObjeto;
 
-	SDL_SetColorKey(TextJugad, SDL_SRCCOLORKEY, 
-	  SDL_MapRGB(TextJugad->format, 0, 0, 255));
-	//escribo el Casillero en la pantalla				
-	SDL_BlitSurface(TextJugad, NULL, Screen, &RectJugador);					
-//	SDL_UpdateRects(Screen, 1, &RectJugador);
+/*	SDL_SetColorKey(TextObj, SDL_SRCCOLORKEY, 
+	  SDL_MapRGB(TextObj->format, 0, 0, 255));
+*/	//escribo el Casillero en la pantalla				
+	SDL_BlitSurface(TextObj, NULL, Screen, &RectObjeto);					
 }
 
 void MiniMapa::Dibujar(Jugador* jug, SDL_Surface* Screen){
@@ -68,6 +83,9 @@ void MiniMapa::Dibujar(Jugador* jug, SDL_Surface* Screen){
 	int ImgYCurr;		
 	int XCurr;
 	int YCurr;		
+
+	std::list<Jugador*> jugadores = ModeloServidor::get_instancia()->get_jugadores();
+	std::list< S_ptr<Comestible> > comestibles=ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()->get_comestibles();
 
 	Posicion& Centro=jug->get_posicion();
 	Posicion CentroFloor;
@@ -95,7 +113,7 @@ void MiniMapa::Dibujar(Jugador* jug, SDL_Surface* Screen){
 	  SDL_MapRGB(Mapa->format, 0, 0, 255));
 
 	//dibujo el mapa
-	SDL_BlitSurface(Mapa, NULL, Screen, &RectMapa);
+	SDL_BlitSurface(Mapa, NULL, Screen, &RectMapa);	
 
 	for(int i=0;i< (DimensionTablero * DimensionTablero);++i){
 		//obtengo la col del MiniMapa
@@ -114,11 +132,25 @@ void MiniMapa::Dibujar(Jugador* jug, SDL_Surface* Screen){
 			//begin dibujo casillero
 			DibujarCasillero(Screen,ImgXCurr,ImgYCurr);			
 			//end dibujo casillero
+		}
+
+		for (std::list< S_ptr<Comestible> >::iterator it=comestibles.begin();it!=comestibles.end();++it){
+			S_ptr<Comestible> comest=*it;
+			Posicion Pos=comest->get_posicion();
+			if ((PosPivot.get_x()==floor(Pos.get_x())) && (PosPivot.get_y()==floor(Pos.get_y()))) {
+				DibujarComestible(Screen,comest,ImgXCurr+4,ImgYCurr+4);				
+			}
+
 		}		
 
-		if (PosPivot==CentroFloor){
-			DibujarJugador(Screen,jug,ImgXCurr+4,ImgYCurr+4);
-		}		
+		for (std::list<Jugador*>::iterator it=jugadores.begin();it!=jugadores.end();++it){
+			Jugador * jugad=*it;
+			Posicion Pos=jugad->get_posicion();
+			if ((PosPivot.get_x()==floor(Pos.get_x())) && (PosPivot.get_y()==floor(Pos.get_y()))) {
+				DibujarJugador(Screen,jugad,ImgXCurr+4,ImgYCurr+4);
+			}				
+
+		}
 	}		
 		
 	SDL_UpdateRects(Screen, 1, &RectMapa);
@@ -148,16 +180,17 @@ bool MiniMapa::hayEstructural(Posicion& P){
 void MiniMapa::CargarTexturas(){
 	CargarSDLSurface(&Mapa,"./MiniMapa/Mapa.bmp");
 	CargarSDLSurface(&Casillero,"./MiniMapa/Casillero.bmp");
-//	CargarSDLSurface(&ConectorV,"./MiniMapa/ConectorV.bmp");
-//	CargarSDLSurface(&ConectorH,"./MiniMapa/ConectorH.bmp");
 	CargarSDLSurface(&Pacman,"./MiniMapa/Pacman.bmp");
 	CargarSDLSurface(&Fantasma,"./MiniMapa/Fantasma.bmp");
+	CargarSDLSurface(&PowerUP,"./MiniMapa/Powerup.bmp");
+	CargarSDLSurface(&Frutita,"./MiniMapa/Frutita.bmp");
+	CargarSDLSurface(&Quesito,"./MiniMapa/Quesito.bmp");
 }
 
 void MiniMapa::CargarSDLSurface(SDL_Surface** Textura,char* Nombre){
 	//cargo la textura del archivo
 	*Textura = SDL_LoadBMP(Nombre);		
 	//seteo el color transparente, se utilizo el azul
-	//SDL_SetColorKey(Textura, SDL_SRCCOLORKEY,SDL_MapRGB(Textura->format, 0, 0, 255));
+	SDL_SetColorKey(*Textura, SDL_SRCCOLORKEY,SDL_MapRGB((*Textura)->format, 0, 0, 255));
 }
 
