@@ -7,7 +7,8 @@ OperacionInit::OperacionInit( S_ptr<MapaBajoNivel> m, bool esPac ){
 }
 void OperacionInit::ejecutar(ModeloCommon &modelo){
 		MundoBajoNivel& mundo = modelo.get_mundo();
-		mundo.agregar_mapa( m );
+		mundo.pasar_de_nivel();
+		mundo.agregar_mapa( m );		
 		modelo.set_cargado();
 
 		JugadorLocal::get_instancia()->set_pacman( esPac );
