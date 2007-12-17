@@ -1,6 +1,7 @@
 #include "ClientPool.h"
 
 #include "../common/EscritorCliente.h"
+#include "ModeloServidor.h"
 
 ClientPool::ClientPool() : num_orden(0)
 {
@@ -16,7 +17,7 @@ ClientPool::~ClientPool()
 
 Cliente * ClientPool::lanzar_cliente( Socket_Cliente* sock )
 {
-	Cliente* c = new Cliente( ++num_orden, sock );
+	Cliente* c = new Cliente( ++num_orden, sock, ModeloServidor::get_instancia());
     	c->start();
 	clientes.push_back(c);
 	//Agrego al pool como observador del cliente
