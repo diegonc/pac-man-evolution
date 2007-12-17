@@ -12,7 +12,7 @@ pme_server_SOURCES = \
 	AvisadorNovedades.h \
 	ClientPool.cpp \
 	ClientPool.h \
-	CreadorPaquete \
+	CreadorPaquete.cpp \
 	DataStore.h \
 	KeyOp.cpp \
 	KeyOp.h \

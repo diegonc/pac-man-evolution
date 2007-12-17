@@ -1,6 +1,6 @@
 #include <server/PaqueteTeclaCommon.h>
 
-#include "../server/KeyOp.h"
+#include <../pme-server/KeyOp.h>
 
 namespace {
 	const char ID = 5;

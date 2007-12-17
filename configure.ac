@@ -41,6 +41,12 @@ AC_CHECK_FUNCS([bzero memmove socket strchr strerror])
 
 AM_PATH_GTK_2_0([2.8.0],,AC_MSG_ERROR([Gtk+ 2.8.0 or higher required.]))
 
+AM_PATH_SDL( [1.2.11],,AC_MSG_ERROR([SDL 1.2.11 or higher required.]))
+CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
+CFLAGS="$CFLAGS $SDL_CFLAGS"
+CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
+LIBS="$LIBS $SDL_LIBS"
+
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
 	Makefile
