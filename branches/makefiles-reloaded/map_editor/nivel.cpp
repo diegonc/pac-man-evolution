@@ -87,7 +87,7 @@ string Nivel::get_nombre(){
 
 /* ToXML: */
 
-bool Nivel::toXml(char* filename_mundo){
+bool Nivel::toXml(const char* filename_mundo){
 	//Paso el filename del mundo a un string y busco su extension. Si esta la remuevo.
 	string f_mundo (filename_mundo);
 	int pos_ext = f_mundo.find(EXT_MUNDO);
@@ -117,7 +117,7 @@ bool Nivel::toXml(char* filename_mundo){
 	
 /* FromXML: */
 
-bool Nivel::fromXml(char* filename_mundo){
+bool Nivel::fromXml(const char* filename_mundo){
 	//Paso el filename del mundo a un string y busco su extension. Si esta la remuevo.
 	string f_mundo (filename_mundo);
 	int pos_ext = f_mundo.find(EXT_MUNDO);

@@ -117,25 +117,48 @@ class MapaImpSet : public MapaBajoNivel{
 		*	@return el alto del mapa
 		*/
 		Tipo_Dimensiones get_alto();
+
 		/**
-		*	@brief	Permite sacar un comestible
+		*	@brief	Permite actualizar sacando un comestible
+      *
+      *  @param   vertice Vertice de donde sacarle el comestible
 		*/
 		void refresh(unsigned int vertice);
 		
+  		/**
+		*	@brief	Permite actualizar agregando un comestible
+      *
+      *  @param   vertice Vertice de donde sacarle el comestible
+      *
+      *  @param   tipo_comestible Comestible que se desea agregar
+		*/
+		void refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible);
+   
       /**
 		*	@brief	Metodo para quitar un comestible de la lista propia
 		*	
 		*	@param	comestible Comestible que se quiere quitar
 		*/
-		void quitar_comestible(Tipo_Comestible comestible);
-
-		/*Para agregar*/
-		
-		void refresh(unsigned int vertice, Comestible::Enum_Comestible tipo_comestible);
-		
+		void quitar_comestible(Tipo_Comestible comestible);		
+   
+      /**
+      *  @brief   Implementacion de la interfaz.
+      *
+      */
 		Tipo_Estructural get_salida_pacman();
-		
+      
+      /**
+      *  @brief   Implementacion de la interfaz.
+      *
+      */		
 		std::list<Tipo_Estructural> get_casa_fantasma();
+      
+      /**
+      *  @brief   Corrige la posicion pasada por parametro, es decir, se se pasa de los bordes
+      *           del mapa, da la vuelta y la pone donde iria para que caiga en este
+      *  
+      */
+      void corregir_posicion(Posicion &p);
 		
 };
 

@@ -13,15 +13,9 @@
  */
 class ConfValue
 {
-	public:
+	//public:
 		/** Enumera los tipos soportados. */
-		enum Tipo
-		{
-			NULO,
-			TEXTO,
-			NUMERO,
-			BOOL
-		};
+		enum Tipo { CV_NULO, CV_TEXTO, CV_NUMERO, CV_BOOL };
 
 	private:
 		/** Tipo de dato del valor. */
@@ -29,22 +23,23 @@ class ConfValue
 
 		union {
 			std::string*	cadena;
-			int		numero;
+			unsigned int	numero;
 			bool		booleano;
 		};
 
 	public:
 		/** @brief Constructor por defecto.(requerido por std::map) */
-		ConfValue( ) : tipo( NULO ){ }
+		ConfValue( ) : tipo( CV_NULO ){ }
 
 		/** @brief Crea un valor de configuracion de tipo NUMERO. */
-		ConfValue( int valor );
+		explicit ConfValue( unsigned int valor );
 
 		/** @brief Crea un valor de configuracion de tipo TEXTO. */
-		ConfValue( std::string valor );
+		explicit ConfValue( std::string valor );
+		explicit ConfValue( const char* valor );
 
 		/** @brief Crea un valor de configuracion de tipo BOOL. */
-		ConfValue( bool valor );
+		explicit ConfValue( bool valor );
 
 		ConfValue( const ConfValue& cv );
 
@@ -55,7 +50,7 @@ class ConfValue
 		/** @brief Obtiene el valor de la configuracion de tipo
 		 *  NUMERO.
 		 */
-		int get_numero() const;
+		unsigned int get_numero() const;
 
 		/** @brief Obtiene el valor de la configuracion de tipo
 		 *  TEXTO.

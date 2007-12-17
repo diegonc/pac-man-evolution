@@ -4,9 +4,15 @@ namespace{
 	const char ID = 3;
 }
 
+const char PaqueteStop::pacman_gano = 0;
+const char PaqueteStop::pacman_comido = 1;
+const char PaqueteStop::pacman_desconecto = 2;
+const char PaqueteStop::cant_insuficiente = 3;
+const char PaqueteStop::termino_juego = 4;
+
 PaqueteStop::PaqueteStop() : Paquete( ID ) { }
 
-PaqueteStop::PaqueteStop( int razon, int puntaje ) : Paquete( ID )
+PaqueteStop::PaqueteStop( const char razon, int puntaje ) : Paquete( ID )
 {
 	this->razon = razon;
 	this->puntuacion = puntaje;

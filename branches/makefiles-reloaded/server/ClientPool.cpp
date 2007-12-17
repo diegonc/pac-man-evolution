@@ -19,6 +19,8 @@ Cliente * ClientPool::lanzar_cliente( Socket_Cliente* sock )
 	Cliente* c = new Cliente( ++num_orden, sock );
     	c->start();
 	clientes.push_back(c);
+	//Agrego al pool como observador del cliente
+	c->get_escritor().agregar_observador(this);
 	return c;
 }
 
@@ -64,7 +66,15 @@ void ClientPool::quitar_cliente(unsigned int id_cliente){
 		else
 			it++;
 	}
+	std::cout << "Deleteo al cliente: " << cliente->get_id() << std::endl << std::flush;
 	//Elimino al cliente recien removido
 	delete(cliente);
+}
+
+void ClientPool::actualizar(Observable* obs, void* param){
+	//Casteo el parametro como cliente y lo quito de la pool
+	Cliente* cliente = (Cliente*) param;
+	std::cout << "Se desconecta el cliente: " << cliente->get_id() << std::endl << std::flush;
+	this->quitar_cliente(cliente->get_id());
 }
 

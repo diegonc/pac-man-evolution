@@ -64,17 +64,7 @@ void MapaImpSet::mover( Jugador& jugador, Tipo_Coordenada distancia ){
 				
 			}
 			//si se movio correctamente, le modifico la posicion al jugador
-			if (posicion_jugador.get_x() < 0)			
-				posicion_jugador.set_x(posicion_jugador.get_x() + this->ancho);
-			else
-				if (posicion_jugador.get_x() >= this->ancho)
-					posicion_jugador.set_x(posicion_jugador.get_x() - this->ancho);
-			if (posicion_jugador.get_y() < 0)
-				posicion_jugador.set_y(posicion_jugador.get_y() + this->alto);
-			else
-				if (posicion_jugador.get_y() >= this->alto)
-					posicion_jugador.set_y(posicion_jugador.get_y() - this->alto);
-			
+			corregir_posicion(posicion_jugador);			
 			jugador.set_posicion(posicion_jugador);
 		}
 
@@ -94,17 +84,8 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 	//Se puede modificar el paso como para que no recorra todos los puntos
 	while( phi < DOS_PI && !toca/*2Pi*/ ){
 		Posicion p(	(radio-0.15) * cos(phi) + x0, (radio-0.15) * sin(phi) + y0 );
-		if (p.get_x() < 0)			
-			p.set_x(p.get_x() + this->ancho);
-		else
-			if (p.get_x() >= this->ancho)
-				p.set_x(p.get_x() - this->ancho);
-		if (p.get_y() < 0)
-			p.set_y(p.get_y() + this->alto);
-		else
-			if (p.get_y() >= this->alto)
-				p.set_y(p.get_y() - this->alto);
-
+		
+      corregir_posicion(p);
 		
 		e_critico = get_estructural(p);
 
@@ -125,6 +106,19 @@ bool MapaImpSet::tocando(Jugador &jugador, S_ptr<EstructuralUnitario> donde_esta
 		}
 	}
 	return toca;
+}
+
+void MapaImpSet::corregir_posicion(Posicion &p){
+   if (p.get_x() < 0)
+		p.set_x(p.get_x() + this->ancho);
+	else
+		if (p.get_x() >= this->ancho)
+		   p.set_x(p.get_x() - this->ancho);
+	if (p.get_y() < 0)
+		p.set_y(p.get_y() + this->alto);
+	else
+		if (p.get_y() >= this->alto)
+			p.set_y(p.get_y() - this->alto);
 }
 std::list<Tipo_Comestible > MapaImpSet::get_comestibles(){
 	std::map<unsigned int, Tipo_Comestible>::iterator it;

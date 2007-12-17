@@ -57,7 +57,11 @@ class ModeloServidor : public ModeloCommon, public Observador {
 		*/
 		virtual void actualizar(Observable * observable, void * param);
 
-
+      /**
+      *  @brief Reinicia la partida reasignando las posiciones a los jugadores. Si
+      *         no existe un pacman, se lo settea a otro jugador
+      */
+      void reiniciar_partida();
 };
 
 

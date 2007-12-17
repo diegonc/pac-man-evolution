@@ -94,7 +94,19 @@ class ModeloCommon : public Thread, public Observable{
 
 		void set_cargado();
 		
+      /**
+      *  @brief   Permite quitar un jugador
+      * 
+      *  @param   id Id del jugador a quitar
+      */
   		void quitar_jugador(unsigned int id);
+
+      /**
+      *  @brief   Settea la posicion inicial del jugador dependiendo del personaje
+      *
+      *  @param   jugador Jugador al cual se le settea
+      */
+      void set_posicion_inicial( Jugador * jugador );
 };
 
 
