@@ -127,6 +127,9 @@ class Jugador{
 		*/
 		bool es_invalido();
 		
+		/**
+		*/
+		bool set_invalido();
 
 		/**
 		*	@brief	Permite quitarle el personaje al jugador liberando la memoria
