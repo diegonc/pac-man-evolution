@@ -30,6 +30,11 @@ void * Thread::funcion_auxiliar_run(void * param){
 	((Thread*)param)->set_corriendo(false);
 	return NULL;
 }
+
 void Thread::set_corriendo(bool corriendo){
 	esta_corriendo = corriendo;
+}
+
+bool Thread::corriendo(){
+	return this->esta_corriendo;
 }

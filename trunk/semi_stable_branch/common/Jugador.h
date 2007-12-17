@@ -128,6 +128,7 @@ class Jugador{
 		bool es_invalido();
 		
 		/**
+		*	@brief 	Settea como invalido a un jugador
 		*/
 		void set_invalido();
 
