@@ -1,7 +1,7 @@
 {\rtf1\ansi\ansicpg1252\deff0
 {\fonttbl
-{\f0\fnil\fcharset0\fprq0\fttruetype Times New Roman;}
-{\f1\fnil\fcharset0\fprq0\fttruetype Andale Mono;}
+{\f0\fnil\fcharset0\fprq0\fttruetype Andale Mono;}
+{\f1\fnil\fcharset0\fprq0\fttruetype Times New Roman;}
 {\f2\fnil\fcharset0\fprq0\fttruetype Symbol;}
 {\f3\fnil\fcharset0\fprq0\fttruetype Arial;}
 {\f4\fnil\fcharset0\fprq0\fttruetype Dingbats;}
@@ -10,71 +10,75 @@
 \red0\green0\blue0;
 \red255\green255\blue255;}
 {\stylesheet
-{\s1\fi-430\li720\sbasedon32\snext32Contents 1;}
-{\s2\fi-430\li1440\sbasedon32\snext32Contents 2;}
-{\s3\fi-430\li2160\sbasedon32\snext32Contents 3;}
-{\s8\fi-430\li720\sbasedon32Lower Roman List;}
+{\s1\fi-428\li720\sbasedon32\snext32Contents 1;}
+{\s2\fi-428\li1440\sbasedon32\snext32Contents 2;}
+{\s3\fi-428\li2160\sbasedon32\snext32Contents 3;}
+{\s8\fi-428\li720\sbasedon32Lower Roman List;}
 {\s5\tx431\sbasedon28\snext32Numbered Heading 1;}
 {\s6\tx431\sbasedon29\snext32Numbered Heading 2;}
-{\s7\fi-430\li720Square List;}
+{\s7\fi-428\li720Square List;}
 {\*\cs12\sbasedon32Endnote Text;}
 {\s9\fs20\lang0Normal Table;}
-{\s4\fi-430\li2880\sbasedon32\snext32Contents 4;}
-{\s10\fi-430\li720Diamond List;}
-{\s11\fi-430\li720Numbered List;}
+{\s4\fi-428\li2880\sbasedon32\snext32Contents 4;}
+{\s10\fi-428\li720Diamond List;}
+{\s11\fi-428\li720Numbered List;}
 {\*\cs13\fs20\superEndnote Reference;}
-{\s14\fi-430\li720Triangle List;}
+{\s14\fi-428\li720Triangle List;}
 {\*\cs15Default Paragraph Font;}
 {\s16\tx431\sbasedon30\snext32Numbered Heading 3;}
-{\s17\fi-430\li720Dashed List;}
-{\s18\fi-430\li720\sbasedon11Upper Roman List;}
+{\s17\fi-428\li720Dashed List;}
+{\s18\fi-428\li720\sbasedon11Upper Roman List;}
 {\s19\sb440\sa60\f3\fs24\b\sbasedon32\snext32Heading 4;}
-{\s20\fi-430\li720Heart List;}
-{\s33\fi-430\li720\sbasedon11Lower Case List;}
+{\s20\fi-428\li720Heart List;}
+{\s33\fi-428\li720\sbasedon11Lower Case List;}
 {\s22\qr\fs28\i\lang11274\sbasedon32\snext32heading 1;}
 {\*\cs23\fs20Reference;}
-{\s24\fi-430\li720\sbasedon11Upper Case List;}
-{\s25\fi-430\li720Bullet List;}
-{\s26\fi-430\li720Hand List;}
+{\s24\fi-428\li720\sbasedon11Upper Case List;}
+{\s25\fi-428\li720Bullet List;}
+{\s26\fi-428\li720Hand List;}
 {\*\cs27\fs20\sbasedon32Footnote Text;}
-{\s28\sb440\sa60\f1\fs32\i\b\ul\sbasedon32\snext32Heading 1;}
-{\s29\sb440\sa60\f1\fs28\b\ul\sbasedon32\snext32Heading 2;}
-{\s21\qc\sb240\sa119\f3\fs32\b\sbasedon32\snext32Contents Header;}
-{\s30\sb440\sa60\f3\fs24\i\sbasedon32\snext32Heading 3;}
-{\s38\fi-430\li720Box List;}
-{\s31\fi-430\li720Tick List;}
-{\s34\li1440\ri1440\sa119\sbasedon32Block Text;}
+{\s28\sb440\sa60\f0\fs32\i\b\ul\sbasedon32\snext32Heading 1;}
+{\s29\sb440\sa60\f0\fs28\b\sbasedon32\snext32Heading 2;}
+{\s21\qc\sb240\sa117\f3\fs32\b\sbasedon32\snext32Contents Header;}
+{\s30\sb440\sa60\f0\fs24\i\b\sbasedon32\snext32Heading 3;}
+{\s38\fi-428\li720Box List;}
+{\s31\fi-428\li720Tick List;}
+{\s34\li1440\ri1440\sa117\sbasedon32Block Text;}
 {\s40\f5\sbasedon32Plain Text;}
 {\s36\tx1584\sbasedon5\snext32Section Heading;}
-{\s37\fi-430\li720Implies List;}
-{\s32\qj\f1\fs20\lang1034Normal;}
-{\s39\fi-430\li720Star List;}
+{\s37\fi-428\li720Implies List;}
+{\s32\qj\f0\fs20\lang1034Normal;}
+{\s39\fi-428\li720Star List;}
 {\*\cs35\fs20\superFootnote Reference;}
 {\s41\tx1584\sbasedon5\snext32Chapter Heading;}}
 {\*\listtable
-{\list\listtemplateid1507\listsimple{\listlevel\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-430\li720{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2}\listid1004}
-{\list\listtemplateid1508\listsimple{\listlevel\levelnfc0\levelstartat1\levelspace0\levelfollow0\fi-430\li720{\leveltext\'02\'00.;}{\levelnumbers\'01;}}\listid1495}}
+{\list\listtemplateid1128\listsimple{\listlevel\levelnfc0\levelstartat1\levelspace0\levelfollow0\fi-428\li720{\leveltext\'02\'00.;}{\levelnumbers\'01;}}\listid1495}
+{\list\listtemplateid1129\listsimple{\listlevel\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-428\li429{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2}\listid1120}
+{\list\listtemplateid1130\listsimple{\listlevel\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-428\li429{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2}\listid1122}
+{\list\listtemplateid1131\listsimple{\listlevel\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-428\li429{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2}\listid1124}
+{\list\listtemplateid1132\listsimple{\listlevel\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-428\li429{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2}\listid1126}}
 {\*\listoverridetable
-{\listoverride\listoverridecount0\listid1004\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-430\li720{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2\ls1}
-{\listoverride\listoverridecount0\listid1495\levelnfc0\levelstartat1\levelspace0\levelfollow0\fi-430\li720{\leveltext\'02\'00.;}{\levelnumbers\'01;}\ls2}}
+{\listoverride\listoverridecount0\listid1495\levelnfc0\levelstartat1\levelspace0\levelfollow0\fi-428\li720{\leveltext\'02\'00.;}{\levelnumbers\'01;}\ls1}
+{\listoverride\listoverridecount0\listid1120\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-428\li429{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2\ls2}
+{\listoverride\listoverridecount0\listid1122\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-428\li429{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2\ls3}
+{\listoverride\listoverridecount0\listid1124\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-428\li429{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2\ls4}
+{\listoverride\listoverridecount0\listid1126\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-428\li429{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2\ls5}}
 
-\kerning0\cf0\ftnbj\fet2\ftnstart1\ftnnar\aftnnar\ftnstart1\aftnstart1\aenddoc\facingp\titlepg\revprop3{\info\uc1}\deftab0\viewkind1\paperw12240\paperh15840\margl1440\margr1440\widowctrl
+\kerning0\cf0\ftnbj\fet2\ftnstart1\ftnnar\aftnnar\ftnstart1\aftnstart1\aenddoc\facingp\titlepg\revprop3{\info\uc1}\deftab720\viewkind1\paperw12240\paperh15840\margl1440\margr1440\widowctrl
 {\headerl\pard\plain
-\pard\plain\ltrpar\qr\itap0{\f1\fs20\i\lang11274{\*\listtag0}\abinodiroverride\ltrch Trabajo final - PacMan Evolution\line 75.42 - Taller de Programaci\'f3n I}{\f1\fs20\i\lang11274{\*\listtag0}\par}
-\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f1\fs20\i\lang11274{\*\listtag0}\abinodiroverride\ltrch C\'e1tedra Veiga}}
+\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f0\fs20\i\lang11274{\*\listtag0}\abinodiroverride\ltrch Trabajo final - PacMan Evolution\line 75.42 - Taller de Programaci\'f3n I}{\f0\fs20\i\lang11274{\*\listtag0}\par}
+\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f0\fs20\i\lang11274{\*\listtag0}\abinodiroverride\ltrch C\'e1tedra Veiga}}
 {\headerr\pard\plain
-\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f1\fs20\i\lang11274{\*\listtag0}Trabajo final - PacMan Evolution\line 75.42 - Taller de Programaci\'f3n I}{\f1\fs20\i\lang11274{\*\listtag0}\par}
-\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f1\fs20\i\lang11274{\*\listtag0}\abinodiroverride\ltrch C\'e1tedra Veiga}{\f1\fs20\i\lang11274{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\itap0}
-{\headerf\pard\plain
-\pard\plain\ltrpar\qr\sl240\slmult1\itap0}
-\sectd\sbknone\colsx360\margtsxn1661\pgncont\ltrsect
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\*\shppict{\pict\pngblip\picw276\pich276\picwgoal5519\picscalex73\pichgoal5519\picscaley73
-\bliptag10012{\*\blipuid 0000000000000000000000000000271c}
+\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f0\fs20\i\lang11274{\*\listtag0}Trabajo final - PacMan Evolution\line 75.42 - Taller de Programaci\'f3n I}{\f0\fs20\i\lang11274{\*\listtag0}\par}
+\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f0\fs20\i\lang11274{\*\listtag0}\abinodiroverride\ltrch C\'e1tedra Veiga}}
+{\headerf\pard\plain}
+\sectd\sbknone\colsx360\margtsxn1660\pgncont\ltrsect
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs20\i\lang11274{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\*\shppict{\pict\pngblip\picw276\pich276\picwgoal5519\picscalex71\pichgoal5519\picscaley71
+\bliptag10007{\*\blipuid 00000000000000000000000000002717}
 89504e470d0a1a0a0000000d4948445200000114000001140803000000ddae39
 4b000000017352474200aece1ce900000300504c5445000000fdfdfdffffff00
 0000000000000000000000000000000000000000000000000000000000000000
@@ -346,82 +350,122 @@ a1c0af0dc2047f1fc96f94e25de48e8082907a28eee711a8a4fd82c84f32c53a
 607dbfdeb84dcb6fa150310a03ef94e2f3e56fd8462bc5afa1b82a2d63ab36c7
 ee7542f18b25493afc1f3a93da4b465709c7966af1a6bf31853fac3e49f74b30
 b337fe0e901fae53ea01cc00b8abfe1e8fb59cf8cbedade66e90f917fdfb3f39
-f56b852ff8ec1d0000000049454e44ae426082}}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch 75.42 - Taller de Programaci\'f3n I , C\'e1tedra Veiga}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Trabajo Pr\'e1ctico Final: Pac-Man Evolution}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch \tab \tab \tab }{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\*\abitableprops table-col-spacing:0.02in; table-column-leftpos:0.0000in; table-sdh:8b79c30}\par{\*\abicellprops left-attach:0; right-attach:1; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}{
+f56b852ff8ec1d0000000049454e44ae426082}}{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs36\b\lang1034{\*\listtag0}\abinodiroverride\ltrch Trabajo Pr\'e1ctico Final: Pac-Man Evolution}{\s32\f0\fs36\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs36\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs36\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs32\lang1034{\*\listtag0}\abinodiroverride\ltrch 75.42 - Taller de Programaci\'f3n I , C\'e1tedra Veiga}{\s32\f0\fs32\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch \tab \tab \tab }{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\*\abitableprops table-col-spacing:0.02in; table-column-leftpos:0.0000in; table-sdh:8b68030}\par{\*\abicellprops left-attach:0; right-attach:1; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006250in; left-style:solid; left-thickness:0.006250in; right-style:solid; right-thickness:0.006250in; top-style:solid; top-thickness:0.006250in}{
 \trowd \itap1\trgaph7\trql\trrh0\trleft0\trautofit1\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx4687\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx9360
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Integrantes:}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
-\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Belli, Juan Pablo}{\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Fondato, Rodrigo Carlos}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Nieto Cid, Diego Mart\'edn}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Verbner, Alan Mart\'edn}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f1\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Integrantes:}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006250in; left-style:solid; left-thickness:0.006250in; right-style:solid; right-thickness:0.006250in; top-style:solid; top-thickness:0.006250in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f1\fs24\lang1034{\*\listtag0}Belli, Juan Pablo}{\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f1\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Fondato, Rodrigo Carlos}{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f1\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Nieto Cid, Diego Mart\'edn}{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f1\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Verbner, Alan Mart\'edn}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006250in; left-style:solid; left-thickness:0.006250in; right-style:solid; right-thickness:0.006250in; top-style:solid; top-thickness:0.006250in}\row
 \trowd \itap1\trgaph7\trql\trrh0\trleft0\trautofit1\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx4687\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx9360
-\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Fecha de entrega}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
-\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}18/12/07}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\pard\plain\ltrpar\ql\intbl\itap1{\f1\fs24\lang1034{\*\listtag0}Fecha de entrega}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006250in; left-style:solid; left-thickness:0.006250in; right-style:solid; right-thickness:0.006250in; top-style:solid; top-thickness:0.006250in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f1\fs24\lang1034{\*\listtag0}18/12/07}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006250in; left-style:solid; left-thickness:0.006250in; right-style:solid; right-thickness:0.006250in; top-style:solid; top-thickness:0.006250in}\row
 \trowd \itap1\trgaph7\trql\trrh0\trleft0\trautofit1\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx4687\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx9360
-\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Corrector}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
-\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Gonzalo Merayo}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\pard\plain\ltrpar\ql\intbl\itap1{\f1\fs24\lang1034{\*\listtag0}Corrector}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006250in; left-style:solid; left-thickness:0.006250in; right-style:solid; right-thickness:0.006250in; top-style:solid; top-thickness:0.006250in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f1\fs24\lang1034{\*\listtag0}Gonzalo Merayo}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006250in; left-style:solid; left-thickness:0.006250in; right-style:solid; right-thickness:0.006250in; top-style:solid; top-thickness:0.006250in}\row
 \trowd \itap1\trgaph7\trql\trrh0\trleft0\trautofit1\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx4687\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx9360
-\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Nota}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f1\fs24\lang1034{\*\listtag0}Nota}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006250in; left-style:solid; left-thickness:0.006250in; right-style:solid; right-thickness:0.006250in; top-style:solid; top-thickness:0.006250in}
 \pard\plain\ltrpar\ql\intbl\itap1\cell{\*\abiendcell}\row}{\*\abiendtable}
-\pard\plain\ltrpar\ql\itap0{\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch \page }{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\itap0{\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\sl240\slmult1\itap0{\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\sl240\slmult1\itap0{\f1\fs24\lang1034{\*\listtag0}\par}
 \pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\field\fdledit{\*\fldinst {\ TOC }}}
-\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch \page }{\s32\f0\fs24\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\sb440\sa60\s28\itap0{\s28\f1\fs32\i\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch Manual del proyecto}{\s28\f1\fs32\i\b\ul\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch Divisi\'f3n de Tareas}{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Las tareas fueron divididas de la siguiente manera:}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-{\listtext\pard\qj\fi-430\li720\bullet 	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1004\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls1\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Belli,  Juan Pablo :\tab \tab \tab          OpenGL y aplicaci\'f3n cliente}{\s32\f1\fs20\lang1034{\*\listtag1005}\par}
-}{\listtext\pard\qj\fi-430\li720\bullet 	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1004\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls1\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Fondato, Rodrigo Carlos : \tab    Gtk y editor de mapas}{\s32\f1\fs20\lang1034{\*\listtag1006}\par}
-}{\listtext\pard\qj\fi-430\li720\bullet 	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1004\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls1\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Nieto Cid, Diego Mart\'edn : \tab    Protocolo y comunicaci\'f3n}{\s32\f1\fs20\lang1034{\*\listtag1007}\par}
-}{\listtext\pard\qj\fi-430\li720\bullet 	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1004\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls1\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Verbner, Alan Mart\'edn : \tab \tab       Aplicaci\'f3n del Modelo}{\s32\f1\fs20\lang1034{\*\listtag1008}\par}
-}\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag1011}\abinodiroverride\ltrch Es necesario}{\s32\f1\fs20\lang1034{\*\listtag0} destacar que si bien las tareas fueron realizadas mayormente de forma individual fue muy importante la colaboraci\'f3n entre los distintos integrantes del grupo en todas las \'e1reas de la aplicaci\'f3n desarrollada, pudiendo as\'ed resolver las secciones mas complejas de una forma mas eficiente.}{\s32\f1\fs20\lang1034{\*\listtag1011}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch Evoluci\'f3n del Proyecto}{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\itap0{\s32\f1\fs48\lang1034{\*\listtag0}\abinodiroverride\ltrch QUE CARAJO PONEMOS??????????????}{\s32\f1\fs48\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\ql\s32\itap0{\s32\f1\fs48\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch Inconvenientes encontrados}{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Durante la etapa de an\'e1lisis, se presentaron los siguientes problemas:}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\sb440\sa60\s30\itap0{\s30\f3\fs24\i\lang1034{\*\listtag0}\abinodiroverride\ltrch Tiempo}{\s30\f3\fs24\i\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Dispon\'edamos de muy poco tiempo para realizar todos los requerimientos m\'ednimos que ped\'eda el enunciado. Por lo tanto, nos organizamos de la siguiente manera, atacando los sectores cr\'edticos primero:}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-{\listtext\pard\qj\fi-430\li720 1.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Desarrollamos una primera versi\'f3n del modelo, la parte de GTK y OpenGL.}{\s32\f1\fs20\lang1034{\*\listtag1496}\par}
-}{\listtext\pard\qj\fi-430\li720 2.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Creamos un solo ejecutable incluyendo la interconexi\'f3n de todos los diferentes m\'f3dulos.}{\s32\f1\fs20\lang1034{\*\listtag1497}\par}
-}{\listtext\pard\qj\fi-430\li720 3.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Llevando a cabo pasos incrementales, separamos las partes antes mencionadas agreg\'e1ndoles funcionalidad a cada una.}{\s32\f1\fs20\lang1034{\*\listtag1500}\par}
-}{\listtext\pard\qj\fi-430\li720 4.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Implementamos el protocolo junto con la capa de comunicaci\'f3n.}{\s32\f1\fs20\lang1034{\*\listtag1499}\par}
-}{\listtext\pard\qj\fi-430\li720 5.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Agregamos funcionalidad al juego.}{\s32\f1\fs20\lang1034{\*\listtag1501}\par}
-}\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch De esta forma, pudimos evitar encontrarnos con problemas de incompatibilidades entre los diferentes m\'f3dulos, pudiendo as\'ed dedicar el tiempo final al testeo.}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\sb440\sa60\s30\itap0{\s30\f3\fs24\i\lang1034{\*\listtag0}\abinodiroverride\ltrch Gtk, OpenGL-SDL y parser de XML}{\s30\f3\fs24\i\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Estos temas eran totalmente nuevos y demandaban investigaci\'f3n previa.}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Para esto, buscamos en internet}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\sb440\sa60\s30\itap0{\s30\f3\fs24\i\lang1034{\*\listtag0}\abinodiroverride\ltrch Concurrencia}{\s30\f3\fs24\i\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Si bien ya hab\'edamos trabajado sobre el tema, el tama\'f1o de esta aplicaci\'f3n requer\'eda una gran cantidad de hilos. Por lo tanto, tuvimos que tenes sumo cuidado con la sincronizaci\'f3n de los datos.}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
-\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f1\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch \page }{\s32\f1\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s28\sl240\slmult1\itap0{\s28\f0\fs32\i\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch Manual del proyecto}{\s28\f0\fs32\i\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0{\s29\f0\fs28\b\lang1034{\*\listtag0}\abinodiroverride\ltrch Divisi\'f3n de Tareas}{\s29\f0\fs28\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Las tareas fueron divididas de la siguiente manera:}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch \tab }{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\*\abitableprops table-col-spacing:0.02in; table-column-leftpos:0.0000in; table-column-props:2.5043in/3.2307in/; table-sdh:8b6cf90}\par{\*\abicellprops left-attach:0; right-attach:1; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}{
+\trowd \itap1\trgaph7\trql\trrh0\trleft0\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx3620\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx8272
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\intbl\itap1{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Belli, Juan Pablo :}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs20\lang1034{\*\listtag0}OpenGL y Aplicacion cliente}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\trowd \itap1\trgaph7\trql\trrh0\trleft0\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx3620\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx8272
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs20\lang1034{\*\listtag0}Fondato, Rodrigo Carlos :}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs20\lang1034{\*\listtag0}Gtk y editor de mapas}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\trowd \itap1\trgaph7\trql\trrh0\trleft0\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx3620\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx8272
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs20\lang1034{\*\listtag0}Nieto Cid, Diego Martin :}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs20\lang1034{\*\listtag0}Protocolo y comunicaci\'f3n}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\trowd \itap1\trgaph7\trql\trrh0\trleft0\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx3620\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx8272
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs20\lang1034{\*\listtag0}Verbner, Alan Mart\'edn :}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs20\lang1034{\*\listtag0}Aplicaci\'f3n del Modelo}\cell{\*\abiendcell}\row}{\*\abiendtable}\par
+\pard\plain\ltrpar\ql\itap0{\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Es necesario destacar que si bien las tareas fueron realizadas mayormente de forma individual fue muy importante la colaboraci\'f3n entre los distintos integrantes del grupo en todas las \'e1reas de la aplicaci\'f3n desarrollada, pudiendo as\'ed resolver las secciones mas complejas de una forma mas eficiente.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0{\s29\f0\fs28\b\lang1034{\*\listtag0}\abinodiroverride\ltrch Evoluci\'f3n del Proyecto}{\s29\f0\fs28\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s29\sl240\slmult1\itap0{\s29\f0\fs28\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch \page }{\s29\f0\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0{\s29\f0\fs28\b\lang1034{\*\listtag0}\abinodiroverride\ltrch Inconvenientes encontrados}{\s29\f0\fs28\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Durante la etapa de an\'e1lisis, se presentaron los siguientes problemas:}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s30\itap0{\s30\f0\fs24\i\b\lang1034{\*\listtag0}\abinodiroverride\ltrch Tiempo}{\s30\f0\fs24\i\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f3\fs24\i\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Dispon\'edamos de muy poco tiempo para realizar todos los requerimientos m\'ednimos que ped\'eda el enunciado. Por lo tanto, nos organizamos de la siguiente manera, atacando los sectores cr\'edticos primero:}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+{\listtext\pard\qj\fi-428\li720 1.	}\pard\plain{\ltrpar\qj\fi-428\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-428\li720\ls1\ilvl0\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Desarrollamos una primera versi\'f3n del modelo, la parte de GTK y OpenGL.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+}{\listtext\pard\qj\fi-428\li720 2.	}\pard\plain{\ltrpar\qj\fi-428\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-428\li720\ls1\ilvl0\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Creamos un solo ejecutable incluyendo la interconexi\'f3n de todos los diferentes m\'f3dulos.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+}{\listtext\pard\qj\fi-428\li720 3.	}\pard\plain{\ltrpar\qj\fi-428\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-428\li720\ls1\ilvl0\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Llevando a cabo pasos incrementales, separamos las partes antes mencionadas agreg\'e1ndoles funcionalidad a cada una.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+}{\listtext\pard\qj\fi-428\li720 4.	}\pard\plain{\ltrpar\qj\fi-428\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-428\li720\ls1\ilvl0\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Implementamos el protocolo junto con la capa de comunicaci\'f3n.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+}{\listtext\pard\qj\fi-428\li720 5.	}\pard\plain{\ltrpar\qj\fi-428\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-428\li720\ls1\ilvl0\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Agregamos funcionalidad al juego.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+}\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch De esta forma, pudimos evitar encontrarnos con problemas de incompatibilidades entre los diferentes m\'f3dulos, pudiendo as\'ed dedicar el tiempo final al testeo.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Trabajo en grupo}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Resulto complicado poder coordinar el grupo y las tareas a realizar. Fue muy \'fatil el SVN}{\s32\f0\fs20\super\lang1034{\*\listtag0}\chftn}{\footnote
+\pard\plain\ltrpar\qj\s27\itap0{\cs27\f0\fs20\super\lang1034{\*\listtag0}\chftn}{\cs27\f0\fs20\lang1034{\*\listtag0} http://es.wikipedia.org/wiki/Subversion}}{\s32\f0\fs20\lang1034{\*\listtag0} }{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s30\itap0{\s30\f0\fs24\i\b\lang1034{\*\listtag0}\abinodiroverride\ltrch Gtk, OpenGL-SDL y parser de XML}{\s30\f0\fs24\i\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f3\fs24\i\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Estos temas eran totalmente nuevos y demandaban investigaci\'f3n previa.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Para esto, consultamos en internet y gracias a la siguientes referencias pudimos estudiar el tema:}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\*\abitableprops table-col-spacing:0.02in; table-column-leftpos:-0.2500in; table-column-props:4.4425in/2.8550in/; bot-color:ffffff; left-color:ffffff; right-color:ffffff; top-color:ffffff; bg-style:1; table-sdh:8b8d760}\par{\*\abicellprops left-attach:0; right-attach:1; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}{
+\trowd \itap1\trgaph7\trql\trrh0\trleft-360\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx6051\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx10162
+{\listtext\pard\qj\fi-428\li429\bullet 	}\pard\plain{\ltrpar\qj\fi-428\li429\s32{\*\abilist\abilistid1120\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls2\ilvl0\sl240\slmult1\intbl\itap1{\s32\f0\fs18\lang1034{\*\listtag0}\abinodiroverride\ltrch http://library.gnome.org/devel/gtk/2.12/ :}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+}\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs18\lang1034{\*\listtag0}Manual de referencia de GTK+ 2.0 }\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\trowd \itap1\trgaph7\trql\trrh0\trleft-360\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx6051\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx10162
+{\listtext\pard\fi-428\li429\bullet 	}\pard\plain{\ltrpar\ql\fi-428\li429{\*\abilist\abilistid1122\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls3\ilvl0\intbl\itap1{\f0\fs18\lang1034{\*\listtag0}http://www.gtk.org/tutorial/ :}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+}\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs18\lang1034{\*\listtag0}Tutorial hecho por GTK team}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\trowd \itap1\trgaph7\trql\trrh0\trleft-360\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx6051\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx10162
+{\listtext\pard\fi-428\li429\bullet 	}\pard\plain{\ltrpar\ql\fi-428\li429{\*\abilist\abilistid1124\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls4\ilvl0\intbl\itap1{\f0\fs18\lang1034{\*\listtag0}http://www.grinninglizard.com/tinyxmldocs/index.html:}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+}\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs18\lang1034{\*\listtag0}Sitio oficial de Tiny XML}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\trowd \itap1\trgaph7\trql\trrh0\trleft-360\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx6051\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx10162
+{\listtext\pard\fi-428\li429\bullet 	}\pard\plain{\ltrpar\ql\fi-428\li429{\*\abilist\abilistid1126\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls5\ilvl0\intbl\itap1{\f0\fs18\lang1034{\*\listtag0}http://nehe.gamedev.net/lesson.asp?index=01 :}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+}\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs18\lang1034{\*\listtag0}Tutorial de openGL de Nehe}\cell{\*\abiendcell}\row}{\*\abiendtable}\par
+\pard\plain\ltrpar\ql\itap0{\f0\fs18\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s30\itap0{\s30\f0\fs24\i\b\lang1034{\*\listtag0}\abinodiroverride\ltrch Concurrencia}{\s30\f0\fs24\i\b\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f3\fs24\i\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Si bien ya hab\'edamos trabajado sobre el tema, el tama\'f1o de esta aplicaci\'f3n requer\'eda una gran cantidad de hilos. Por lo tanto, tuvimos que tenes sumo cuidado con la sincronizaci\'f3n de los datos.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Para la implementaci\'f3n usamos la librer\'eda pthread.h del est\'e1ndar POSIX}{\s32\f0\fs20\super\lang1034{\*\listtag0}\chftn}{\footnote
+\pard\plain\ltrpar\ql\itap0{\f0\fs20\super\lang1034{\*\listtag0}\chftn}{\cs27\f0\fs20\lang1034{\*\listtag0} http://www.opengroup.org/}}{\s32\f0\fs20\lang1034{\*\listtag0}.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Como esta fue dise\'f1ada para C, fueron todas encapsuladas en clases.}{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s29\sl240\slmult1\itap0\par}
