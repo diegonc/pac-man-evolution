@@ -56,9 +56,9 @@ Paquete* Paquete::crear( int tipo ,unsigned int id_cliente ){
 		case 2:
 			p = new PaqueteStatus();
 			break;
-/*		case 3:
+		case 3:
 			p = new PaqueteStop();
-			break;*/
+			break;
 		case 4:
 			p = new PaqueteQuit();
 			break;
