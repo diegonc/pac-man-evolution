@@ -3,12 +3,13 @@ if [ "$1" = "undo" ]; then
 	svn revert -R .
 	svn status | egrep "^\?" | sed -e 's/^\?[[:space:]]*//' | xargs rm -rvf
 	exit
-elif [ -z "$1" -o "$2"  ]; then
+elif [ -z "$1" -o  -z "$2"  ]; then
 	cat << EOF
 Usage:
 	$0 undo
 	$0 rev_inicio rev_fin
 EOF
+exit
 fi
 
 EDITOR_FILES="
