@@ -14,6 +14,14 @@ void ModeloCommon::set_mundo(S_ptr<MundoBajoNivel> mundo){
 	//this->mundo->get_mapa_activo().agregar_observador(this);
 }
 ModeloCommon::~ModeloCommon(){
+	std::map<unsigned int, Jugador * >::iterator it;
+      	it=jugadores.begin();
+      	while(it!=jugadores.end()){
+		Jugador * jug=(*it).second;
+		delete jug;	
+        	++it;
+      }
+
 }
 
 void ModeloCommon::agregar_jugador(Jugador * jugador){
@@ -50,7 +58,6 @@ void ModeloCommon::set_posicion_inicial( Jugador * jugador ){
 		   p.set_y(p.get_y() + 0.5);
 		   ++pos;	
    }
-   std::cout << p << "posicion\n";
    jugador->set_posicion(p);
 }
 const std::list<Jugador *> ModeloCommon::get_jugadores(){
@@ -63,7 +70,7 @@ const std::list<Jugador *> ModeloCommon::get_jugadores(){
       it=jugadores.begin();
       while(it!=jugadores.end()){
          Jugador* jug=(*it).second;
-         if( jug != NULL )
+         if( !jug->es_invalido() )
             lista_Jug.push_back(jug);
          ++it;
       }
@@ -84,7 +91,8 @@ Jugador * ModeloCommon::get_jugador(unsigned int id){
 }
 void ModeloCommon::quitar_jugador(unsigned int id){
    Bloqueo b(&llave);
-   jugadores.erase (id);     
+   Jugador * j = get_jugador(id);
+   j->set_invalido();    
 }
 	
 MundoBajoNivel& ModeloCommon::get_mundo(){

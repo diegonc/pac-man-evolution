@@ -103,7 +103,7 @@ void OperacionStatus::ModificarPosicionJugador(Jugador * Jug,OperacionStatus::Po
 
 }
 
-void OperacionStatus::ejecutar(ModeloServidor &modelo){
+void OperacionStatus::ejecutar(ModeloCommon &modelo){
     Jugador * Jug = NULL;
 
     std::list< Jugador * >::const_iterator itjugadores;
@@ -112,7 +112,7 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
     int AltoMapa  = modelo.get_mundo().get_mapa_activo()->get_alto();
     for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
 		OperacionStatus::PosicionJugador& PosJ=*it;
-		Jug= ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
+		Jug= modelo.get_jugador(PosJ.ID);
 		if (Jug != NULL){
 			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
 		}else{	
@@ -128,24 +128,55 @@ void OperacionStatus::ejecutar(ModeloServidor &modelo){
 			if (!PosJ.estaVivo){
 				 Jug->get_personaje()->matar();
 			}
-			ModeloServidor::get_instancia()->agregar_jugador(Jug);			
+			modelo.agregar_jugador(Jug);			
 			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);	
 		}
 	}
 	//itero sobre los personajes y al pacman le seteo el puntaje
-    bool salir=false;
-    /*for(itjugadores = modelo.get_jugadores().begin();((itjugadores != modelo.get_jugadores().end()) && (!salir)); ++itjugadores){
-        Jug= *itjugadores;
-        //Actualizo puntaje del pacman
-        if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
-            salir=true;
-            //Jug->set_puntos(get_puntuacion());
-        }
-    }*/
+/*	Encontrado=false;
+    	for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
+		OperacionStatus::PosicionJugador& PosJ=*it;
+		Jug= ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
+		if (Jug != NULL){
+		        if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
+			    Encontrado=true;
+			    Jug->set_puntos(get_puntuacion());
+			}			
+		}
+	}
+	std::list<Jugador*> jugadModelo=ModeloServidor::get_instancia()->get_jugadores();
+	std::list<Jugador*>::iterator itJug=jugadModelo.begin();
+	while ()    */
+	Encontrado=false;
+	std::list<Jugador*> listajug = modelo.get_jugadores();
+	for(std::list<Jugador*>::iterator itjugadores = listajug.begin();((itjugadores != listajug.end()) && (!Encontrado)); ++itjugadores){
+		Jugador* Jug=*itjugadores;
+	        if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
+		    Encontrado=true;
+		    Jug->set_puntos(get_puntuacion());
+		}			
+	}
+
+	//verifico de eliminar los jugadores q no me llegaron en el status
+	for(std::list<Jugador*>::iterator itjugadores = listajug.begin();itjugadores != listajug.end(); ++itjugadores){
+		Jugador* Jug=*itjugadores;
+		Encontrado=false;
+	        for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));
+++it){
+			OperacionStatus::PosicionJugador& PosJ=*it;			
+			if (Jug->get_id()==PosJ.ID){
+				Encontrado=true;			
+			}
+		}
+		if (!Encontrado){
+			modelo.quitar_jugador(Jug->get_id());		
+		}
+	}
+
     //los jugadores ya fueron seteados*/
 	
-	//itero sobre los comestibles
-	Encontrado=false;
+    //itero sobre los comestibles
+    Encontrado=false;
     for (std::list<OperacionStatus::PosicionElemento>::iterator it=get_elementos()->begin();((it!=get_elementos()->end())&&(!Encontrado));++it){
         OperacionStatus::PosicionElemento& PosE=*it;
 	

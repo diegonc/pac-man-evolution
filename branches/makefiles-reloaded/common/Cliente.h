@@ -13,6 +13,7 @@
 #include "Jugador.h"
 #include "../common/bloqueo.h"
 #include "../common/smart_pointer.h"
+#include "../common/ModeloCommon.h"
 
 class EscritorCliente;
 class EscuchadorCliente;
@@ -31,7 +32,8 @@ class Cliente : public Thread{
 		Tipo_Id id;
 		//Tipo_Jugador jugador;
 		Jugador * jugador;
-		
+
+		S_ptr<ModeloCommon> modelo;
 	
 	public:
 		
@@ -39,8 +41,19 @@ class Cliente : public Thread{
 		 *
 		 *  @param id Id del cliente
 		 *  @param socket Socket por el cual establece la comunicacion
+		 *  @param m Modelo en el que vive el cliente.
 		 */
-		Cliente(Tipo_Id id, Socket_Cliente * socket);
+		Cliente(Tipo_Id id, Socket_Cliente * socket, S_ptr<ModeloCommon> m);
+
+		/** @brief Constructor de la clase
+		 *
+		 *  Construye un cliente sin id asignada.
+		 *
+		 *  @param socket Socket por el cual establece la comunicacion
+		 *  @param m Modelo en el que vive el cliente.
+		 */
+		Cliente( Socket_Cliente * socket, S_ptr<ModeloCommon> m);
+
 		
 		/** @brief Destructor de la clase
 		 *
@@ -52,7 +65,13 @@ class Cliente : public Thread{
 		 *  @return id Id del cliente
 		 */	
 		Tipo_Id get_id();
-	
+		
+		/** @brief Devuelve el modelo al que pertenece el cliente.
+		 *
+		 *  @return Modelo.
+		 */	
+		ModeloCommon& get_modelo();
+
 		/*TODO no se si el paquete y las operacones pegan aca*/
 		
 		void enviar_mensaje(S_ptr<Paquete> paquete);

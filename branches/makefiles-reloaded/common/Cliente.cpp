@@ -10,7 +10,8 @@
 
 #define _VERSION_ACEPTADA	0
 
-Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket)
+Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket, S_ptr<ModeloCommon> m)
+	: modelo( m )
 {
 	
 	this->id = id;
@@ -18,8 +19,19 @@ Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket)
 	this->escuchador = new EscuchadorCliente(this);
 	this->escritor = new EscritorCliente(this);
 	this->jugador = new Jugador(id);
-	//this->jugador = Tipo_Jugador(new Jugador(id));
 	
+}
+
+Cliente::Cliente(Socket_Cliente * socket, S_ptr<ModeloCommon> m)
+	: modelo( m )
+{
+	
+	//this->id = id;
+	this->socket = socket;
+	this->escuchador = new EscuchadorCliente(this);
+	this->escritor = new EscritorCliente(this);
+	this->jugador = 0; //new Jugador(id);
+	//this->jugador = Tipo_Jugador(new Jugador(id));
 }
 
 void Cliente::run()
@@ -30,37 +42,7 @@ void Cliente::run()
 	
 	escuchador->join();
 	escritor->join();
-	/* TODO: esto evita que se reutilice en el cliente del juego.
-	 *       tal vez utilizando el patron state y determinando el estado
-	 *       inicial en el constructor se puede generalizar.
-	 */
-	/* Estado: inicial ( servidor ) */
-	//Tipo_Jugador j = modelo->get_jugador( id );
-	//S_ptr<Paquete> p( new PaqueteInit( j, modelo->get_mapa() ) );
-	//enviar_mensaje( p );
-	
-	/* Estado: espera a inicio ( servidor  ) */
-	// espera con evento o algo asi. el esquema observador puede usar
-	// cola con espera pasiva pej. ( pareusar/tp4/server_SyncQueue.h )
-	// enviar_mensaje( S_ptr<Paquete>( new PaqueteStart( id ) ) );
-	
-	/* Estado: espera interacciones ( servidor ) */
-	// bucle de lectura de paquetes y su procesamiento
 
-	/* Estado: final ( sevidor ) */
-	// envia paquete quit
-	// sale de run.
-	
-	/* Transiciones: (servidor)
-	 *
-	 *                      siguiente mapa
-	 *    +-----------------------<-------------------------+
-	 *    |                                                 | no mapa
-	 * inicial---->espera a inicio---->espera interacciones----------->final
-	 *          |                   |                                    |
-	 *          +---------->--------+---------------->-------------------+
-	 *                                error en socket
-	 */
 }
 
 Cliente::~Cliente()
@@ -69,8 +51,7 @@ Cliente::~Cliente()
 		delete socket;
 	delete escritor;
 	delete escuchador;
-	delete this->jugador;
-	this->jugador = NULL;
+   this->jugador->set_invalido();
 }
 
 void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
@@ -97,7 +78,7 @@ S_ptr<Paquete> Cliente::recibir_mensaje()
 	if( version == _VERSION_ACEPTADA ) {
 		// Lectura de tipo de paquete.
 		int tipo = bs.read( 3 );
-//		std::cout << "Me llego un " << tipo << ".\n";
+		//std::cout << "Me llego un " << tipo << ".\n";
 		Paquete * paquete = Paquete::crear( tipo, get_id() );
       	if( paquete != NULL){		
         	S_ptr<Paquete> p(paquete);
@@ -115,6 +96,10 @@ Cliente::Tipo_Id Cliente::get_id(){
 	return id;
 }
 
+ModeloCommon& Cliente::get_modelo()
+{
+	return *modelo;
+}
 
 EscritorCliente& Cliente::get_escritor(){
 	return *escritor;
@@ -123,8 +108,10 @@ EscritorCliente& Cliente::get_escritor(){
 Jugador * Cliente::get_jugador(){
 	return this->jugador;
 }
+
 void Cliente::terminar(){
-	this->escritor->terminar();
+	//this->escritor->terminar();
+   this->jugador->set_invalido();
 	this->socket->cerrar();
    std::cout << "LLego aca para el" << this->id << "\n";
 }

@@ -15,6 +15,7 @@
 class AvisadorNovedades : public Thread,public Observador{
 	
 	private:
+		
 		Mutex llave;
 
 		ClientPool * clientes;
@@ -22,6 +23,7 @@ class AvisadorNovedades : public Thread,public Observador{
 		std::list< NovedadComestible > novedades_comestible;
 	
 		bool _parar;
+	
 	public:
 		
 		AvisadorNovedades(ClientPool * clientes);
