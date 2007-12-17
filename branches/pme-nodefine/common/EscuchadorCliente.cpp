@@ -29,5 +29,6 @@ void EscuchadorCliente::run(){
 			correr = false;
 		}	
 	}
+   std::cout << "Termina el escuchador\n";
 }
 
