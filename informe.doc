@@ -1,0 +1,427 @@
+{\rtf1\ansi\ansicpg1252\deff0
+{\fonttbl
+{\f0\fnil\fcharset0\fprq0\fttruetype Times New Roman;}
+{\f1\fnil\fcharset0\fprq0\fttruetype Andale Mono;}
+{\f2\fnil\fcharset0\fprq0\fttruetype Symbol;}
+{\f3\fnil\fcharset0\fprq0\fttruetype Arial;}
+{\f4\fnil\fcharset0\fprq0\fttruetype Dingbats;}
+{\f5\fnil\fcharset0\fprq0\fttruetype Courier New;}}
+{\colortbl
+\red0\green0\blue0;
+\red255\green255\blue255;}
+{\stylesheet
+{\s1\fi-430\li720\sbasedon32\snext32Contents 1;}
+{\s2\fi-430\li1440\sbasedon32\snext32Contents 2;}
+{\s3\fi-430\li2160\sbasedon32\snext32Contents 3;}
+{\s8\fi-430\li720\sbasedon32Lower Roman List;}
+{\s5\tx431\sbasedon28\snext32Numbered Heading 1;}
+{\s6\tx431\sbasedon29\snext32Numbered Heading 2;}
+{\s7\fi-430\li720Square List;}
+{\*\cs12\sbasedon32Endnote Text;}
+{\s9\fs20\lang0Normal Table;}
+{\s4\fi-430\li2880\sbasedon32\snext32Contents 4;}
+{\s10\fi-430\li720Diamond List;}
+{\s11\fi-430\li720Numbered List;}
+{\*\cs13\fs20\superEndnote Reference;}
+{\s14\fi-430\li720Triangle List;}
+{\*\cs15Default Paragraph Font;}
+{\s16\tx431\sbasedon30\snext32Numbered Heading 3;}
+{\s17\fi-430\li720Dashed List;}
+{\s18\fi-430\li720\sbasedon11Upper Roman List;}
+{\s19\sb440\sa60\f3\fs24\b\sbasedon32\snext32Heading 4;}
+{\s20\fi-430\li720Heart List;}
+{\s33\fi-430\li720\sbasedon11Lower Case List;}
+{\s22\qr\fs28\i\lang11274\sbasedon32\snext32heading 1;}
+{\*\cs23\fs20Reference;}
+{\s24\fi-430\li720\sbasedon11Upper Case List;}
+{\s25\fi-430\li720Bullet List;}
+{\s26\fi-430\li720Hand List;}
+{\*\cs27\fs20\sbasedon32Footnote Text;}
+{\s28\sb440\sa60\f1\fs32\i\b\ul\sbasedon32\snext32Heading 1;}
+{\s29\sb440\sa60\f1\fs28\b\ul\sbasedon32\snext32Heading 2;}
+{\s21\qc\sb240\sa119\f3\fs32\b\sbasedon32\snext32Contents Header;}
+{\s30\sb440\sa60\f3\fs24\i\sbasedon32\snext32Heading 3;}
+{\s38\fi-430\li720Box List;}
+{\s31\fi-430\li720Tick List;}
+{\s34\li1440\ri1440\sa119\sbasedon32Block Text;}
+{\s40\f5\sbasedon32Plain Text;}
+{\s36\tx1584\sbasedon5\snext32Section Heading;}
+{\s37\fi-430\li720Implies List;}
+{\s32\qj\f1\fs20\lang1034Normal;}
+{\s39\fi-430\li720Star List;}
+{\*\cs35\fs20\superFootnote Reference;}
+{\s41\tx1584\sbasedon5\snext32Chapter Heading;}}
+{\*\listtable
+{\list\listtemplateid1507\listsimple{\listlevel\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-430\li720{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2}\listid1004}
+{\list\listtemplateid1508\listsimple{\listlevel\levelnfc0\levelstartat1\levelspace0\levelfollow0\fi-430\li720{\leveltext\'02\'00.;}{\levelnumbers\'01;}}\listid1495}}
+{\*\listoverridetable
+{\listoverride\listoverridecount0\listid1004\levelnfc23\levelstartat0\levelspace0\levelfollow0\fi-430\li720{\leveltext\'01\'b7 ;}{\levelnumbers;}\f2\ls1}
+{\listoverride\listoverridecount0\listid1495\levelnfc0\levelstartat1\levelspace0\levelfollow0\fi-430\li720{\leveltext\'02\'00.;}{\levelnumbers\'01;}\ls2}}
+
+\kerning0\cf0\ftnbj\fet2\ftnstart1\ftnnar\aftnnar\ftnstart1\aftnstart1\aenddoc\facingp\titlepg\revprop3{\info\uc1}\deftab0\viewkind1\paperw12240\paperh15840\margl1440\margr1440\widowctrl
+{\headerl\pard\plain
+\pard\plain\ltrpar\qr\itap0{\f1\fs20\i\lang11274{\*\listtag0}\abinodiroverride\ltrch Trabajo final - PacMan Evolution\line 75.42 - Taller de Programaci\'f3n I}{\f1\fs20\i\lang11274{\*\listtag0}\par}
+\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f1\fs20\i\lang11274{\*\listtag0}\abinodiroverride\ltrch C\'e1tedra Veiga}}
+{\headerr\pard\plain
+\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f1\fs20\i\lang11274{\*\listtag0}Trabajo final - PacMan Evolution\line 75.42 - Taller de Programaci\'f3n I}{\f1\fs20\i\lang11274{\*\listtag0}\par}
+\pard\plain\ltrpar\qr\sl240\slmult1\itap0{\f1\fs20\i\lang11274{\*\listtag0}\abinodiroverride\ltrch C\'e1tedra Veiga}{\f1\fs20\i\lang11274{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\itap0}
+{\headerf\pard\plain
+\pard\plain\ltrpar\qr\sl240\slmult1\itap0}
+\sectd\sbknone\colsx360\margtsxn1661\pgncont\ltrsect
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\*\shppict{\pict\pngblip\picw276\pich276\picwgoal5519\picscalex73\pichgoal5519\picscaley73
+\bliptag10012{\*\blipuid 0000000000000000000000000000271c}
+89504e470d0a1a0a0000000d4948445200000114000001140803000000ddae39
+4b000000017352474200aece1ce900000300504c5445000000fdfdfdffffff00
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000c1e49d2000000027452
+4e53ff00e5b7304a00000001624b47440088051d4800001e8649444154785ecd
+9ddb82db388c4467f7ff3f7a639100aa702324cbc9e661266d4b2279585520e9
+eece7ffff38ffffc97fef9b79dfaef1f359fb388affe93eefd7d28531c78dd5f
+46f357a13ce1a1f7fc45307f0dca5740e4e6bf04e6af40c981fcefe9cf3fcbe0
+df43498676a241ef27f7ff5a303f86e247d4e158d71657f807fd94cb2fa1b881
+f8e1eeb7f565bb7c06e6775c7e0685898461c2dbf25e0505c5e338ff88cb8fa0
+50e7b389c70bf6fb9579bcabe8d93fc1f20b2847227f28080120d142e1b4f931
+97f7a1241a48a4a2040c85dec89717aec266de96cbdb5092acb85411aa8abc34
+8202d20262d0d6bb58de8572273e37a707508cf08fb0bc0925117a1d2fb9520a
+a3adc760994a0af97b6a790f4aea7d1d4c70504cda3c68a3f8fc7576c55b58de
+82d2c4e135a905145440fe88ebc65c28aa9db7b1bc0445bb952d5b532ab902d8
+2740d3dc938a4f9ff68a585e815222018594a23f2cf3370dbb5dffc64f7c13cb
+0b503c1288c4e59b5a29e7ed32086a076d0165f1bffe7cad96179eb0bb028b75
+5c95c818bc52e8721cba7390b759ca0478bd41e55b28d2e76002573f0393c821
+7b653d0539e550408e2f88e54b2881c96597ebd5b0f98dbbe119185e0ca3f2e4
+1d80f68a85be821291ec0c412a74d110c3c14eaec673375ec0f20d140e130b89
+a8f76b4a1f03c9076d62bcc463f3f03d95e7503299b8a1ef44a88824c5b83950
+d2512b5ccceacd1c33e879197a0c2595894109e1483ac9967898a6f07ed0970b
+5ea001456fdff5b0383f85424c7c0956b7241a4997267ef26b6894e1509afcd1
+c457541e4241263cc5521dfecc604052aed54e506222d9a38a7bbf4996475022
+12977ad9caac2402ecda6b5c54431b8b197042093db0d013282913e9142805e2
+e0305aa94ca7cb988bd25c0c30b7bfa3f2008a67e2fab6e7ec061188e73315e2
+c24d933e417fb7b5721f0a4608cb42a687136032ceb9525002bb7597bdae047c
+bebc4be5ee0d5c89ad3f8ae7a36253c91d22b1b0347753137467ccfddb586e42
+612678a0c651cb3debd180d14c79679a1e0b87bba6ccbeec9658ee41f14cf810
+69754b3b7b1e97f7c21d944e90b8379452b4b2ff01955b50924e8b72658eef22
+c97644439a994f5777966acdd1d7ab37b472eb5a8c10e9f96a7a77e036927c97
+38a7e274b93b885d32b1cca9dc80023a41ef0b0898b86e50ac36b819a47e030a
+dbd5e6263bd319539943714cfc2192f5ae1d92d3920fa9185a0340342d9badfb
+4c655d32a532bfd0bc43db746f9d73a559ddc690857b5848032214d61cf578f7
+2d2a5328aeb348e81aa1f3811fcde572d8a11094d8f9290cbd8e9a4fe57687ca
+104a9840a2a24c8ac1482f371aaf14baeb99546856720fdea0328392f434b8c9
+46ecd0688cc015a552e870ea96604c2c41d5e8aa49ae8ca0a4b367540ee9f879
+5b4a931572c882579462c58f3fb886ce8db53281624cf6f8803cf6259f58bd87
+848241fb161408b6fc03962995019482092fd86aa52b8bdf4389d906d6dd41ff
+e795a383ce57fc8ffa8474b2d3f2601d3c12c398a5cf395fa83ebe0cedaf43d7
+675a3943a1ec484aad471563d67ae8ff1691a6f11565587e67369fcc58df6446
+aee79fa472be801e2c72c499387de7b885abe9035e8b39558f18055119164173
+df2ddb0f544e504c27f17cb42d9fe66686b2167a0e8afbae816329c65e653212
+18658cf5540e5048cd905a705251d71c678ed543d9d893d6f0c9309012cec164
+fa36c518916fa9f4507ce3766ca3a5b861b2af59b12ffb9d37a0c4288a41b6a7
+207ec8b0f5dd51194009c3d6f6ca49552f9b8ee1e4277ebc7953292ed9927911
+6ce023e7d9c75072ebae863a05c77ca3e330fcd8cae1386ac0561bd6482656a4
+121e7abdd05069df4bdb3d337149baed03fab251e44caa7a1672a849e44005ae
+5defd554bab75428a81860d2e5a0abc3a22bafbd2750f6b372197bdef906fe40
+e504c5e46a6b0477c85464ce7a79e943cde646624ce4e2817ff63384f3a044c5
+854f2f951a0aeb640f4e475a2eb0343d54ebca44922873cf1c8ac23849258d3d
+4984964a098598f089673d473af37b8c2215799d8f93e347897c7fae0163f180
+0a13ad063f82728dcdec537686ddb0c475fd97a2238d5990e061ac0e4a1bca61
+facc9d5dac94b04067160af64171368b6076c89397a120b2a354828320b21a03
+15503850f0c395de3b18ae9748d602f6a8140d20355a959f04e20e153b395f12
+5e9d4aebf2098ab056c4ad77cc04149c05144015a0b45bef8193c32560e69d05
+77a1048d6eb45d31defcb50e8b403e5d20a5408dd6d71f42f1c15d9a5ab65e1b
+0d245826955429ac06344cad576042db1ce6d17d05d1850fa38186f6cf061270
+62639ff30995011448aba60b0e8a2f3973366daae450fa6d814caa26005b6b08
+250e7d3f1735e3954a937b7da1a32b80b8f59abfaaa96ff8d6542ae2e128bc48
+25534ad2cee7a57675cf8287cb332271bcc95543283762a598ec1114bd175579
+60621be34587a44223ae4a2d27caa29aa8b1d8c64cf6d525e54025518a74c8f7
+ab15aa5dac3c6c836a543a24e7b54ade83b98192d6af9b3d950845da08733584
+b2f649fa1ff9229ffb0292528c093015103f793df0311433cfe51857c0ca99c6
+36c92eb75412129446d20eec4d0345e9ece1adee902bcae38275a1df32329b81
+71aafc255f4df3779447bbe31e42f85a46770d52c8c8cd23b5a74279c444c3f7
+babbb16febecd5f41d035550402882a7120a41d0e6fdab432a709bdc61d2cd63
+a11b31b47a23551c144c14f9fba72ba759e2b178ad0c81b82d92b5799a96d3f9
+28686594b505141d162e39d2b1112ed1e8b338497da7d1d65be40b035db75255
+765f6da99a09169483507cd1483e761e88c598600ad436243b9791911b88da0a
+544a28a065575b687c4671c7d9ae437e846728e91d4e3cbee94164f84b92738c
+1e8a13c4eed129f725dcb7bcdc1aff4c23e8c2ddc279a56fbae918ef81dc89b1
+9eb082814829c125eb85ceaf9ff7a1e2e90d22b4ef99d8d3b91fbe5773032965
+5b7370aa0428619afa68172859e5d0f7ce640a3504ed038900a19bbbfd20bedd
+62c11908a1c82db462ee85024b5e2fcb411f6dcca3082272ea6df7907e02ac53
+6201d3b9f9c74359620d595aee2c500dd0e9a4cb5d6f474c9c8f6213030305a5
+ed817d5e4fa1a85058f6fd8cb750ceb671213bb9c1a37f50813005a1074a05f9
+ec013a0a4728f5467032469cffbbd787ae9d2d4bfe314b70a81894eef2bab74e
+b2348d37c738bd1ce6d943b861a06cea452a1914aac167a150fe61151a8ff2f3
+045b7f4c6eabe08fa592e2cca1487f0ad584ee7a7f5f83931727834b9f08f5a4
+78c6eedf6e092f9a52a179100b0728fc34fdaa6d24b9e78325e9eb10103db06e
+9a99dcdc03e9cddc274c15b58f43273d0a445dd8c3ac028feeae86cfa2899991
+5ebc2f0299deaa40ab117f3a3481b273a5138af47ff708fa78d67039d8eba1f6
+a8ec3a64921ca81d1b8f17c8f1842844ff1ff14bf7aaa945289e48779cdb3c6f
+75a265e224bcaff552698fb1990a3e70d34028b864108d393970e385468e73d5
+e9e4008564021dbe4305fb6750c13f0e0acff8687f9cee79ee2985be39a3130a
+cd2a4dc99d0aa45060b47fee372a22983d036e0ef357d745a6a1e89d7b4caed0
+938700e32028e9ceba96757a5f2a8ca4801245ddfac019cb9119d660c3ab50f4
+41fe11241368dd1c207710b4a427900dfe39d75205949243e9623168d6c8dc80
+b2663dc82d6342a9a7174406ed6c6ea7c443d6cf5d00a57848e71e3a49b9daa1
+71cda1f0b4553af132419d3e964a121617958d261d7ecf9bedf3d83d7b9a4163
+49b3fa1234134284bf73e434a149ec5d0f67289734895dfbdcfecced2814e993
+ccb2774fe8881e30475d649f891e0c940f8da09036ad3b4728706cb5aeadc49f
+c595646c6a9f90569426b1635b6fdcf7a606466678aabfe4b25be1311d60ef0f
+78f213eb8152fcd4a356bc350212bf628df2099852edad1769fc9229429efbd5
+0b85ea4520738292ca23d1990eadb5978c8b4fdcbbfedb84db836da5a24a0166
+fb8e13946cbd254d7c03e524135c37367e994885506fb45e2968f31b9fb80d16
+1959f13bd6709dcea4ef81fa4d03255215bdad929ca4ce5e75f413ae52f2da3e
+adf2e3f57f5ef16d55ce59219045b79776178ae00639c08950f2465a280d9376
+e79e092b58d5c4ef086e35273d0b7e690d042deee394b7a0a8df7cd29e68baeb
+c347b3b973544f89b014b58fa46282286a170f0d15b14feed16e6c863a29aed5
+8ddaf2757726022d9169c996e7a6068dca680c246f411f104a7e671074e2797a
+89475850b9e6238d1498d0834c3eebee3cb5ee180843657748fdf34729ca2c8c
+f16802bbc00fb4861204e2bca023e339348d6c8d4d522539c2d5dbd6acafc1f3
+347caa8f68423b6149d1db27b8371f86bf2ce449149c7988642ccfcf572a32d1
+c3259ce2d88de9a8ff032834d783550a2a381a22c709f382b7046cce62d65f55
+5551f56f1848fac23dfdbcfa0e9424241a28d13f2469cae23d4890c8bed6798e
+cc15a5925520d220f500ed83f321bbbdc63f365709937e22dd0d4bbfa8feec89
+62a9d5a5024a1222f9e0c322c0607f94e26eda5f4ad0d45408caf93411622209
+95d59c74a572a3f5adaa3fc9d14a7014aa2a0c6f5d4d5040a6d554a0d06cd2aa
+6104c316f4ec7e158cbec4d6903196fd0bcaa8a8a4120a500c493cd44d140387
+67d9d283ee90fd8587b7ac80b9ea97313992da3f73039da080b6a1fb4da080ad
+3f535665008c8814b0bf50a5c1fdd9729d9fafee2ffa1794514845a14499f232
+85e6e500652f2b33283e072132905f0245d861db0eb9456247253ec05f6d0985
+4eb54cc1695c8a3e46caba68fdc77391f7b41b49fbd080e314da7e04e5bc84bb
+03e5ead3080a02418583b75879f9e8c81c73a514fb1f4b0250466ea0a85f695d
+ec431d1e42911a0aa6549a24b5dd296ec33acd525933e837882871b55d65f02d
+02df82bb5ca05c28f0f06095649a5059319c22c56c66516b61425a4b3c16e671
+8f3a0d5aec1f8eb485725cd86efa6bd968ff11fce1e133fbecec10bfc9d0e344
+c21541c9c1534a271bb2db718da96406fa1b50408312d662023e5be2913828a7
+ef23645b956a9e1848a0c8f98cdb757da7145b7d512986c95929a19d00c3a64b
+9c30a262ecf89c242f780316b542508c4c659f69af6c0b622376e926a2297e07
+91d7897d3d88b4064a5cd8b650762fa5faa4e9f10e14dde02572d843b6d65146
+699f4e09939a125fccd32c5b67e6c3bf0d45c2d1cd9d3c87e7df2eda7fbb7282
+a90c74b2633ebd521b0c547cd5f3b7e39d2063ede0a463dbb71d147608ad962f
+283283dc8549e37e96e59ec2835e2ae9d41750e06063d033dd40fae2a3618250
+3670338f6d8ac1638766418e69aaa43251315af96a5cb29ecb3d9fdb87768571
+43cf2af1b893cf3baac97736004d048225137fda760bca74eb6391bd77410514
+9fb3342230dee7af0328d765f60c07a5b08e09c5addf4ba6f4c6ee5976d69bc9
+7ab5b1c2a1528adff2a97ba2799a6d1eb34407faf0246cc04f26c0ee5d5a15a7
+93e3bf87e29f1c234f669006e08fd946b6a52771a80c64e2379a224d6d3ae9a8
+1e90dc534a06c5e589cbdb4b5ee97af610b376cf92682693d8f92c681607ca54
+48d75429432a417ceb610d1111b7f8d45f7a8202c3e0043a252cab0a5646e062
+fa2b0dc596a2c70e46474ea06c6ec88e05706e57ae8f913193894cdcae11ee40
+65f323758fbc2da37731d50b05d66e4941bed1aeaef9303587094b416be94b46
+b255f6bac0d7f376da72fbf4ee319cbb41ba7ca09235cd78616d9dc33bb6a2de
+251483d6faa5c21af52e16348c943c5b7228c11093c9f0660df79c820614c0ab
+d86b1881fb8889dc2813c766cc1357d5abb3a46520d7bff544e591579dd8659c
+77ff6e6a561207dd71cfdb5b1a982df680682469097caa504e0b5a6181e6a987
+7108ef9b50aea74d95624b5ab3ba8453669f13946646b2ec19302946f27328ae
+34b7415bd8673d62df998ea36572274d2089524fe5f3725b29b05a161bd560ca
+a0b58c6ea198909fcb44f8a750e8731fbde21d282e679d0ce080894b44695d49
+712dc887543c8ca2b6cf0fa1f8da5342b13dd024c73e68161e6619cae76966d3
+f7af67fe0e8a79c1c72edb873686432abc1a2ee3a47d5a1d1c6f43e902b7500a
+55a83994efac5345caea4cad94614d2ed7f9de3d7e14b64e81481e420190cf64
+f263285b1b6250629417205f92e9a0e14c65674a51bbeb9c49eb4c8e3457cafd
+d59bd56429c9a49438b557566e5fdf920a927e2c93b622876f19d569bcb9a46d
+a0e89185df5f31142174d24a4750de3b3d438b402a9f9f4211858be0a9075040
+368e530985f9d27ae61e59782a65545764f88185f0fc09ee4b8660184b18738f
+2ae500e5b41b94dbab91df91497566b49e613fc511a1cfa81450e003515989e0
+f32c526c2cd76be73f6fc8a48312be379f66e3dcbfe5cda094dd6ded7d328c08
+6587eeb9d1f4c27b32a972f6327284227335347807c5641ea1144ca64ac9f371
+a8b47533a085fb104a44f104cada8fb8cf377c0fb44be9e720679d64c9735b26
+1bca6ecda0ac44811f97137c01e4a1a3661f81024f8037fdc756ef4179ca04a4
+607816145cbe993ec60e974cd19d2b17893019c65ec642ff3f4bc59b446f3fdf
+0a57b07bd029f613ec301280366bc6adec53288a0ef4c8302c81fa562b26b3be
+ea55ffcfa048775828f0f90b743c1929437926933e52c2ef3af8c23fabb7b6d4
+2003ea50b410edb74d20512a59d8e74c6eca8457293e67d7ef6482c68b31b58d
+76f6312fedd991b69c5ed21a1564a04429ca674b3e1e421e99d7abfb17556533
+021ffa9ea62187c20300af48aa88b29cbbfd3790b0cb5028f2cea97fd9fb3594
+f4f7a750148dda6ba070e82afc30d06ac9585ee87437ea675e7bf0d62514b34f
+f10d0c93d6108af3672c6a301a1ab119829a94a009331bac35e969567b3caa1e
+caf8a02985e2dd1335c32ae8a0e4352877c08c4d1b29f0cbefe2d3f2a8c9aedb
+3171a960bfcfcd461bf8576e41f94e26e5b79a6cf71ca14c76680b84e4e6fb50
+c2347c93b0d7c37aa1b4bf2671ea9f0c0abb873ec5081ae1f21323c543f99ac9
+0cca77a7d7004573d6cd45671f9c382fccc4c1df23a90e83c53de75fbd3af08f
+7e84792f52443ea5c5b7ce5928dfc649ed9e75c0e47e1f6d32fc59d40a149fb3
+982eaed45c0fdeafa563877b110a3e665667b2ab0e91224a69fc73948a24ec3a
+5db22aa2a7948977565c29950abe7f9d9ef4184ace64f50695f21d142d3eb120
+0720f8718640297ae9771ae69cf28611a806cafa8727fcefcd774f9df8c7dca3
+42b1baa58ad8b2c0e3363e7aab74aeaf0b93b2a48e88b48b14f77bf3bf900a42
+f18b94c439f6928c6ebd7282024c14f0104312d5f14e738f2aa5803259aaeca3
+6a4814ad792d1359f2d54ca07544f2a5548eee61283c5b5a690f510b5084bfcc
+bc83529ef3572da8801c936aa53151ce31662d53c2078572ef3155ae8e2b98ab
+5bdaee1a147a0330599d2ac7b2eff448b2a3cb090fee5c3455ff8f1eb925442b
+15a8c228946c3f442102f17380129974ebbd031d9b6cba1012c52b055719fbee
+32048d804c00d589ad98f53f7a8733a455e25661923ac76e556cd0012adb0d39
+2a25ff452ac7390185175052f7045155c52793c917499b32d91f6a56ffe41e7c
+e629617098138d0d2707558a63129d5c9b330410dcfc502a13a158f5b143fd4b
+d022dcd3a4244ca890423ab9c8ed520ff2a61afc3328c8c466ddb92787a24160
+9e6e2c1acefd2d266c7f232e73cf6913454f614a6b1d4235bead2857c3b45553
+f70428aa65b8a9991410544894f50258e0b8b5f4834802d62e792215b867f70b
+3a9943f1bf9ea91826769d1e0da2f7e62fe2f230d3edb81f4021c81e903121a5
+24bf2b1e4036e5218667022ee33780525ef2144a32d5d7a32a28d506a83bbf0b
+3bb9101368a03e4332fbd4dc6e53716eb4fb1d1356ca4da9e4968fe3f654c6d9
+d2237c06c51b5b620f84e2a0dc934adee7e4d540658ae5caf1a6f0ddfa683d42
+dc5df542c9a0c445f9a6392b80e9401e6269a14c8e3542e07f864215ccaf51f0
+e44d97fdab1f3c08796142a5907ca43251cb19cae4295c2da8837b778f290bc7
+9108e52b2a650e3c114b0fe5965434002909655b838982bbe4fd3af86c7709b4
+33904a338efb58de836228762fa83233139f29fcefda5c7d92a99f857d29944f
+276e53194019fa077a2fbd00579da06059fef4c94639a2d24249a8f4633a4099
+fb873c837baaeb0dc7242a25f9ede8b07c3fd6c041343abd7496ec11cfbf038d
+99a866b3354a567df609021dc149b70752398c22fae7acac6fa0353d5f0da742
+49948247d80ec399ca402849b6b40bb436dc4f52e26a4c76b3a587774f09c53e
+94c14e1da9cca0640ba17cecaf848a9a277751609242a1df1a4f9d0d4f754339
+9b81979366a7420f27259cdeb79a6713410bda98b2c9e26d7dc0bcdb8279da09
+7b90ca582820eb0da654cab13e1d8a32e9843e832a122559bc21151da329a4a7
+d242496f3d68e5a884e305f193395ab685725c541fd1ca4770d703a8e32d95db
+50ecd1c5ad5f870a0a05075395e303143cae058d37546eba272c71130b1d9570
+a046e6091fe0a48952d98756fb9030b6554c23e0a65044265906e20ae38ba2ec
+7c8fbf93e47a2b569e46297eb1a2c1a803c87a7a0f0a3069b07ce51f63429fc9
+ebb2ed09148d944d6077109b72ab987619467b04465253f9c63fdc5188802e50
+aa924c7519ab58bafac7341f43094c2a094ea0144519bc834b002b1eb979ea4c
+c9572be8f4b837ec94eee299678d8ba4037ba252be4f79420ba36acfa3276d15
+2dfe47c8bd023207cd13259309f49a1b3b41e1f598dd9b30d96a3c98a7554ab6
+b0bd9e67e59eba3f164a219302cb044ae21fae3bc8eac824dffb2407b6a4f09c
+caf0e3885a2616e734c81395f4fd8ac93950daa0cd3741960dc1412728ced6b7
+32b9be78cd7b6def8d0c2fb97a5ec7466f1f58c249ab98978ecac83d47991839
+4e878e4a6c39e8042f596f3e8752fc7396a0739b818950864cdc39e36dffc074
+ad59dc4c602bd731e93385cf26e3b7bf9156061f706e26ad17b0ea677fcf6e66
+a9702bf0d5baeca893937d92135b5589a5edf1538635d56399040b0da4e24bb1
+f5491d3f6672540a6e0da16ff2d7d1dcab844f83732ab0cb0f37c6c4c079da54
+e64ca650746d12161364a1dc1822919b4c20594e7762b289328c144874fdb50d
+946349b64d90b8d1ea3c1a9e4d9d4cf8485111294aff6852c90b9084af083326
+03a5606186d56c6de27ccd709aec227de3bc37314de815e886a5cc4e3a19042d
+aee1f860f26a05e2b69a4a50efa8eef045e6bdd3cdae1df2357c7fc999c94829
+ac153703e6a762a1f21d13f0c4e8d41e3a811db5b91b301942b1459ce32f61d2
+8c7c90c4430d74975107f0d8c7d97cc2640a85a9607e519625627981c9e0c77b
+9089a5176965547716b36379f23b66473ee4ad17f9c380cdd2ba548ae68eaf8d
+466558776e4209df4e4ad952e6ed4b4c26cea18f649c986f31992b65a76db27c
+d62a942de48fdfd072ca93e3fb499cc14cc0a2656c8a3b509656ca43042c4393
+85d671b4a30b827354b3a2951beb93c1196d0c6aa0c2f5ce7bd7d88d46f6f8a2
+244c7445e2d36e5477ee668aaee2dc3e6835fe2fb03012f81096cf63eee5c9ad
+eab319eae05d82ee0e92877e6a22251236838ed57d26b732a5d14aaae31f561e
+8fc4ced4fc56e40193db5076da7a0badf1bb18a6607e9c1bc98d018934acdd10
+41ef2b6fe4c903fb04b170a28061a0e3efda283c388bff2dd22732b9b3a205d8
+d68b7c932173fb032ef8483886ced66d0f4af1a3924c4b7ea70a50b965491cc3
+372ea2a7654836075ccd9e8fd9126bcd97797833d69a70c84f6f260379c6a578
+904c80d42009132dd037e3e4de86d03d1c4394ab8cf45ec7cec3791230cd132c
+5a411fb6137b82e4c62ed93f1ef46045871650ce50cface4785853240d9c163c
+0c7cc6e47e49d676d02514745c9bb3d4d591364e8a3460e4bee0f86de7bef921
+932fa0c8b6397cc412162c2d977cf0d9abc18fb61cd80be9af1376537c16b472
+33268bfb065058c0a4f69ac3b0ecf4db2cdc75998ebe94c9c3758aa992427513
+425bd99a1b8df29c872428d9ce1e6701fba8125b323cf51d8b45570dbc63de3f
+4bc2e58945de11f2635765101c9c19f9fb77a3faca3eaba8b387427fd3d9ed85
+93e5af80c5ff8705f53b4cbe0ada4c2c3499f4439936d25b4b1555d94e268242
+0255af7e2793af33a5c08203498ea42889aaaa0c0cf473c89cb8b3e3d748be58
+bc71db3c4e2f75f753a19c8ceea744dcc2744fff9f57c343e97bddf4992f3079
+c33e982cf6b35269b6684d15a95b51758597c476a9c6870946d9ab485e538a05
+aefb36445c4ac0222e2d1ffe3b18e55eab618e2106ed87cb1b2ab96ac75b0f4a
+b050b585ecd87151c4b0add02c422e95c86deee3a59755f236142dcffce19033
+86054c4c8984dc62b1470e5ac3f3943755f23e14c0421f9a51114e6b932747e8
+76ccaa5490cdc2f5a2de5fb6cfea1998262fb78fa058158a445e46f26ea6c874
+1db004d7e8f57e9d1b96f57c44b1ef7b5725bfb08f5bce05c5db82c30ca3d269
+a1c0af0dc2047f1fc96f94e25de48e8082907a28eee711a8a4fd82c84f32c53a
+5a94647bd92dd0099e912a3e4c7a3d49a0e33f821d6d9439c9d6248b54569293
+607dbfdeb84dcb6fa150310a03ef94e2f3e56fd8462bc5afa1b82a2d63ab36c7
+ee7542f18b25493afc1f3a93da4b465709c7966af1a6bf31853fac3e49f74b30
+b337fe0e901fae53ea01cc00b8abfe1e8fb59cf8cbedade66e90f917fdfb3f39
+f56b852ff8ec1d0000000049454e44ae426082}}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch 75.42 - Taller de Programaci\'f3n I , C\'e1tedra Veiga}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qc\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Trabajo Pr\'e1ctico Final: Pac-Man Evolution}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch \tab \tab \tab }{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\*\abitableprops table-col-spacing:0.02in; table-column-leftpos:0.0000in; table-sdh:8b79c30}\par{\*\abicellprops left-attach:0; right-attach:1; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}{
+\trowd \itap1\trgaph7\trql\trrh0\trleft0\trautofit1\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx4687\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx9360
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Integrantes:}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:0; bot-attach:1; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Belli, Juan Pablo}{\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Fondato, Rodrigo Carlos}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Nieto Cid, Diego Mart\'edn}{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\intbl\itap1{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch Verbner, Alan Mart\'edn}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\trowd \itap1\trgaph7\trql\trrh0\trleft0\trautofit1\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx4687\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx9360
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Fecha de entrega}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:1; bot-attach:2; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}18/12/07}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\trowd \itap1\trgaph7\trql\trrh0\trleft0\trautofit1\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx4687\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx9360
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Corrector}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:2; bot-attach:3; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Gonzalo Merayo}\cell{\*\abiendcell}{\*\abicellprops left-attach:0; right-attach:1; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}\row
+\trowd \itap1\trgaph7\trql\trrh0\trleft0\trautofit1\trbrdrt\brdrs\brdrw10 \trbrdrl\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx4687\clvertalt\cltxlrtb\clbrdrt\brdrs\brdrw9 \clbrdrl\brdrs\brdrw9 \clbrdrb\brdrs\brdrw9 \clbrdrr\brdrs\brdrw9 \cellx9360
+\pard\plain\ltrpar\ql\intbl\itap1{\f0\fs24\lang1034{\*\listtag0}Nota}\cell{\*\abiendcell}{\*\abicellprops left-attach:1; right-attach:2; top-attach:3; bot-attach:4; bot-style:solid; bot-thickness:0.006944in; left-style:solid; left-thickness:0.006944in; right-style:solid; right-thickness:0.006944in; top-style:solid; top-thickness:0.006944in}
+\pard\plain\ltrpar\ql\intbl\itap1\cell{\*\abiendcell}\row}{\*\abiendtable}
+\pard\plain\ltrpar\ql\itap0{\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch \page }{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\field\fdledit{\*\fldinst {\ TOC }}}
+\pard\plain\ltrpar\ql\s32\sl240\slmult1\itap0{\s32\f0\fs24\lang1034{\*\listtag0}\abinodiroverride\ltrch \page }{\s32\f0\fs24\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s28\itap0{\s28\f1\fs32\i\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch Manual del proyecto}{\s28\f1\fs32\i\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch Divisi\'f3n de Tareas}{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Las tareas fueron divididas de la siguiente manera:}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+{\listtext\pard\qj\fi-430\li720\bullet 	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1004\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls1\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Belli,  Juan Pablo :\tab \tab \tab          OpenGL y aplicaci\'f3n cliente}{\s32\f1\fs20\lang1034{\*\listtag1005}\par}
+}{\listtext\pard\qj\fi-430\li720\bullet 	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1004\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls1\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Fondato, Rodrigo Carlos : \tab    Gtk y editor de mapas}{\s32\f1\fs20\lang1034{\*\listtag1006}\par}
+}{\listtext\pard\qj\fi-430\li720\bullet 	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1004\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls1\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Nieto Cid, Diego Mart\'edn : \tab    Protocolo y comunicaci\'f3n}{\s32\f1\fs20\lang1034{\*\listtag1007}\par}
+}{\listtext\pard\qj\fi-430\li720\bullet 	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1004\abilistparentid0\abilistlevel1\abistartat0{\abifieldfont Symbol}{\abilistdecimal NULL}{\abilistdelim %L}{\abiliststyle Bullet List}}{\*\pn\pnql\pnstart0\pnlvlblt{\pntxtb\bullet}}\ls1\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Verbner, Alan Mart\'edn : \tab \tab       Aplicaci\'f3n del Modelo}{\s32\f1\fs20\lang1034{\*\listtag1008}\par}
+}\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag1011}\abinodiroverride\ltrch Es necesario}{\s32\f1\fs20\lang1034{\*\listtag0} destacar que si bien las tareas fueron realizadas mayormente de forma individual fue muy importante la colaboraci\'f3n entre los distintos integrantes del grupo en todas las \'e1reas de la aplicaci\'f3n desarrollada, pudiendo as\'ed resolver las secciones mas complejas de una forma mas eficiente.}{\s32\f1\fs20\lang1034{\*\listtag1011}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch Evoluci\'f3n del Proyecto}{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\itap0{\s32\f1\fs48\lang1034{\*\listtag0}\abinodiroverride\ltrch QUE CARAJO PONEMOS??????????????}{\s32\f1\fs48\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\ql\s32\itap0{\s32\f1\fs48\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\abinodiroverride\ltrch Inconvenientes encontrados}{\s29\f1\fs28\b\ul\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Durante la etapa de an\'e1lisis, se presentaron los siguientes problemas:}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s30\itap0{\s30\f3\fs24\i\lang1034{\*\listtag0}\abinodiroverride\ltrch Tiempo}{\s30\f3\fs24\i\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Dispon\'edamos de muy poco tiempo para realizar todos los requerimientos m\'ednimos que ped\'eda el enunciado. Por lo tanto, nos organizamos de la siguiente manera, atacando los sectores cr\'edticos primero:}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+{\listtext\pard\qj\fi-430\li720 1.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Desarrollamos una primera versi\'f3n del modelo, la parte de GTK y OpenGL.}{\s32\f1\fs20\lang1034{\*\listtag1496}\par}
+}{\listtext\pard\qj\fi-430\li720 2.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Creamos un solo ejecutable incluyendo la interconexi\'f3n de todos los diferentes m\'f3dulos.}{\s32\f1\fs20\lang1034{\*\listtag1497}\par}
+}{\listtext\pard\qj\fi-430\li720 3.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Llevando a cabo pasos incrementales, separamos las partes antes mencionadas agreg\'e1ndoles funcionalidad a cada una.}{\s32\f1\fs20\lang1034{\*\listtag1500}\par}
+}{\listtext\pard\qj\fi-430\li720 4.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Implementamos el protocolo junto con la capa de comunicaci\'f3n.}{\s32\f1\fs20\lang1034{\*\listtag1499}\par}
+}{\listtext\pard\qj\fi-430\li720 5.	}\pard\plain{\ltrpar\qj\fi-430\li720\s32{\*\abilist\abilistid1495\abilistparentid0\abilistlevel1\abistartat1{\abifieldfont NULL}{\abilistdecimal .}{\abilistdelim %L.}{\abiliststyle Numbered List}}{\*\pn\pnql\pnstart1\pnlvlbody\pndec{\pntxtb }{\pntxta .}}\fn-430\li720\ls2\ilvl0\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Agregamos funcionalidad al juego.}{\s32\f1\fs20\lang1034{\*\listtag1501}\par}
+}\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch De esta forma, pudimos evitar encontrarnos con problemas de incompatibilidades entre los diferentes m\'f3dulos, pudiendo as\'ed dedicar el tiempo final al testeo.}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s30\itap0{\s30\f3\fs24\i\lang1034{\*\listtag0}\abinodiroverride\ltrch Gtk, OpenGL-SDL y parser de XML}{\s30\f3\fs24\i\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Estos temas eran totalmente nuevos y demandaban investigaci\'f3n previa.}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Para esto, buscamos en internet}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s30\itap0{\s30\f3\fs24\i\lang1034{\*\listtag0}\abinodiroverride\ltrch Concurrencia}{\s30\f3\fs24\i\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\abinodiroverride\ltrch Si bien ya hab\'edamos trabajado sobre el tema, el tama\'f1o de esta aplicaci\'f3n requer\'eda una gran cantidad de hilos. Por lo tanto, tuvimos que tenes sumo cuidado con la sincronizaci\'f3n de los datos.}{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\s32\itap0{\s32\f1\fs20\lang1034{\*\listtag0}\par}
+\pard\plain\ltrpar\qj\sb440\sa60\s29\itap0\par}
