@@ -3,7 +3,6 @@
 
 #include <pthread.h>
 #include "errores.h"
-#include <list>
 
 class Mutex
 {
@@ -19,10 +18,6 @@ class Mutex
                 Locker( Mutex& k ) : k( k ) { k.lock(); }
                 ~Locker() { k.unlock(); }
         };
-
-	friend class Error::MutexError;
-	static Mutex _lock;
-	static std::list<Mutex*> inicializados;
 
     public:
         Mutex() throw( Error::MutexError );
