@@ -59,12 +59,7 @@ void Jugador::set_puntos(int puntos){
 }
 void Jugador::quitar_personaje(){
    if(this->personaje != NULL)   
-   	delete this->personaje;	
-}
-void Jugador::set_invalido(){
-	this->invalido = false;
-}
-bool Jugador::es_invalido(){
-	return this->invalido;
-}
+      delete this->personaje;	
 
+
+}
