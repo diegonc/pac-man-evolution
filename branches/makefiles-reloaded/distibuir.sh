@@ -105,6 +105,10 @@ thread.cpp
 thread.h
 vertice.h
 wrapper.h
+Configuracion.cpp
+Configuracion.h
+ConfValue.cpp
+ConfValue.h
 "
 SERVER_FILES="
 BufferReader.h
