@@ -2,8 +2,8 @@
 
 #include "PaqueteInit.h"
 #include "PaqueteStart.h"
-#include "../common/PaqueteStop.h"
-#include "../common/PaqueteQuit.h"
+#include "PaqueteStop.h"
+#include "PaqueteQuit.h"
 #include "../common/EscritorCliente.h"
 
 #define _DEFAULT_CANT_MIN	2

@@ -3,8 +3,8 @@
 #include "PaqueteInit.h"
 #include "PaqueteStart.h"
 #include "PaqueteStatus.h"
-//#include "PaqueteStop.h"
-#include "../common/PaqueteQuit.h"
+#include "PaqueteStop.h"
+#include "PaqueteQuit.h"
 #include "PaqueteTecla.h"
 #include "../common/PaqueteMensaje.h"
 
@@ -22,9 +22,9 @@ Paquete* Paquete::crear( int tipo ,unsigned int id_cliente ){
 		case 2:
 			p = new PaqueteStatus();
 			break;
-/*		case 3:
+		case 3:
 			p = new PaqueteStop();
-			break;*/
+			break;
 		case 4:
 			p = new PaqueteQuit();
 			break;
