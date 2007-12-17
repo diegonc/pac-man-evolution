@@ -158,8 +158,7 @@ void ModeloServidor::reiniciar_partida(){
             std::cout << "Asginando pacman\n;"<<std::flush;           
             Personaje * p = new PacMan(*it);
             Jugador * j = *it;
-            std::cout << j << "<-------------------------------------\n";            
-            j->quitar_personaje();
+            //j->quitar_personaje();
             j->set_personaje(p);
       }
    }
