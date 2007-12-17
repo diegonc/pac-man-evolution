@@ -31,7 +31,11 @@ class App{
 
 		std::string get_mundo_xml();
 
-		int get_puerto_servidor();
+		unsigned int get_puerto_servidor();
+
+		unsigned int get_cl_min();
+
+		unsigned int get_cl_max();
 
 	public:
 		~App();

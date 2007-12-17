@@ -126,7 +126,7 @@ void Configuracion::load_conf( std::string ruta )
 			case E_REG_NUMERO:
 				{
 				std::istringstream ss( tmpbuf );
-				int i;
+				unsigned int i;
 
 				ss >> i;
 				set_conf( identificador, ConfValue( i ) );
@@ -182,7 +182,7 @@ void Configuracion::dump( std::ostream& out ) const
 {
 	Mapa::const_iterator it = confs.begin();
 
-	out << "Opciones registradas:";
+	out << "Opciones registradas:\n";
 	while( it != confs.end() ) {
 		ConfValue cv( (*it).second );
 
