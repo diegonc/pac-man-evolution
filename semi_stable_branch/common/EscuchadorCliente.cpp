@@ -20,6 +20,7 @@ void EscuchadorCliente::run(){
 		try{
 			paquete = cliente->recibir_mensaje();
 			if(! paquete.es_nulo() ){
+            std::cout << "Recibiendo: " << (int) paquete->get_tipo() << std::endl << std::flush;
 				op = paquete->get_operacion();
 				op->ejecutar(cliente->get_modelo());
 				delete op;
