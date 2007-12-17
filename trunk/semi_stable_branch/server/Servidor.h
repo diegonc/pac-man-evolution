@@ -9,6 +9,7 @@
 #include "ModeloServidor.h"
 #include "../common/smart_pointer.h"
 #include "../common/observador.h"
+#include "AvisadorNovedades.h"
 #include <map>
 #include <string>
 #include <errno.h>
@@ -21,19 +22,26 @@ class Servidor : public Thread, public Observador{
 	struct sigaction accion_signal;
 	
 	private:
-		static void manejador_signal(int num_signal);
+		
+      static void manejador_signal(int num_signal);
 		static const int SENIAL_CANCELAR;
 	
-	   	ClientPool pool;
+	   ClientPool pool;
 		
-		unsigned int cant_min_clientes;
+      AvisadorNovedades* avisador;		
+
+      unsigned int cant_min_clientes;
 		unsigned int cant_max_clientes;
 	
 		Socket_Server * socket;
 
 		bool ejecutando; //Determina si el servidor se esta ejecutando o no	
 
-      		Evento* llave_max_jugadores; //Evento que traba al servidor cuando se alcanza la cantidad maxima de jugadores
+      Evento* llave_max_jugadores; //Evento que traba al servidor cuando se alcanza la cantidad maxima de jugadores
+
+      bool ya_mando_start; //Controla si se manda el primer start en cada nivel
+
+      bool debo_cambiar_nivel; //Controla si el server tiene que cambiar de nivel o no
 
 		void set_propiedades_signal(const int id_signal);
 	
@@ -73,13 +81,21 @@ class Servidor : public Thread, public Observador{
 
     private:
 
-      void inicializar();
+     void inicializar();
 
-      Cliente* aceptar_nuevo_cliente();
+     Cliente* aceptar_nuevo_cliente();
 
-      void iniciar_partida();
+     void iniciar_nivel();
 
-      void mandar_start(Cliente* cliente);
+     void procesar_nivel();
+
+     void finalizar_nivel();
+
+     void cambiar_nivel();
+
+     void mandar_init(Cliente* cliente);
+
+     void mandar_start(Cliente* cliente);
 	
 	  void mandar_stop(const char razon);
 	
