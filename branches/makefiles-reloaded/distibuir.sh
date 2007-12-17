@@ -208,3 +208,8 @@ for i in $DIRS; do
 	$START_DIR/translate-include.sh
 	cd $START_DIR
 done
+
+sed -e 's/"\.\.\/server\/KeyOp.h"/<pme-server/KeyOp.h>/' common/server/PaqueteTeclaCommon.cpp
+sed -e 's/"\.\.\/server\/KeyOp.h"/<pme-server/KeyOp.h>/' pme-client/AplicacionGrafica.h
+
+
