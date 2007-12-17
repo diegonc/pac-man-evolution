@@ -19,7 +19,6 @@ Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket, S_ptr<ModeloCommon> m)
 	this->escuchador = new EscuchadorCliente(this);
 	this->escritor = new EscritorCliente(this);
 	this->jugador = new Jugador(id);
-	//this->jugador = Tipo_Jugador(new Jugador(id));
 	
 }
 
@@ -82,8 +81,6 @@ Cliente::~Cliente()
 		delete socket;
 	delete escritor;
 	delete escuchador;
-	delete this->jugador;
-	this->jugador = NULL;
 }
 
 void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )

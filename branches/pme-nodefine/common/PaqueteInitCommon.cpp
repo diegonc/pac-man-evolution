@@ -71,15 +71,15 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 					break;
 				case 2 /* Power up */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
-						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
-						ep->set_comida( Comestible::power_up );
+						remplazar_comestible(e,Comestible::power_up);
+//						ep->set_comida( Comestible::power_up );
 //						std::cout << "seteando power up en: " << p << std::endl << std::flush;
 					}
 					break;
 				case 3 /* Bonus */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
-						EstructuralPasillo* ep = (EstructuralPasillo*) &(*e);
-						ep->set_comida( Comestible::frutita );
+						remplazar_comestible(e,Comestible::frutita);
+						//ep->set_comida( Comestible::frutita );
 //						std::cout << "seteando frutita en: " << p << std::endl << std::flush;
 					}
 					break;
@@ -88,6 +88,18 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 	}
 		
 }
+void PaqueteInitCommon::remplazar_comestible(S_ptr<EstructuralUnitario>& e ,Comestible::Enum_Comestible tipoCom )
+{
+	if( !e.es_nulo() ) {
+		Posicion p( e->get_posicion() );	
+		unsigned int fila = (unsigned int) floor(p.get_y());
+		unsigned int col =  (unsigned int) floor(p.get_x());
+		unsigned int key=(fila * mapa->get_ancho()) + col;
+		mapa->refresh(key,tipoCom);
+		
+	}		
+}
+
 
 bool PaqueteInitCommon::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBitStream& bs )
 {
