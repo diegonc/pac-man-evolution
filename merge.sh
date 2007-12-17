@@ -201,7 +201,7 @@ for i in $EDITOR_FILES; do
 done
 
 for i in $COMMON_FILES; do
-	svn mv common/common/$i /common/$i
+	svn mv common/common/$i common/$i
 done
 
 for i in $SERVER_FILES; do
