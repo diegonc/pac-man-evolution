@@ -20,12 +20,10 @@
 template <class Tipo> class S_ptr{
 	protected:
 		typedef typename std::runtime_error Runtime_Error;
-
-		template<class Y> friend class S_ptr;
 		
 		Tipo* objeto; //objeto que contiene el puntero
 		int *cantidad_referencias; //conteo de las referencias para liberar desp.
-		Mutex* llave; //esto lo uso para hacerlo thread safety
+		Mutex llave; //esto lo uso para hacerlo thread safety
 	
 		//devuelve la cantidad de referencias del puntero
 		int get_cantidad_referencias(){
@@ -47,20 +45,20 @@ template <class Tipo> class S_ptr{
 		void decrementar_cantidad_referencias(){
 			this->set_cantidad_referencias((this->get_cantidad_referencias())-1);	
 		}
-		//elimina el objeto, contador y llave - llave viene bloqueada, se desbloquea.
+		//elimina el objeto
       virtual void eliminar_objeto(){
 			if(objeto != NULO){
 				//elimina el objeto
 				delete this->objeto;
 				//setea el objeto como NULO
 				this->objeto = NULO;
-                                delete this->cantidad_referencias;
-                                this->cantidad_referencias = NULO;
-				this->llave->unlock();
-				delete this->llave;
+            
+            delete this->cantidad_referencias;
+            this->cantidad_referencias = NULO;
 			}
 			//pone la cantidad de referencias en 0
-			//this->set_cantidad_referencias(0);
+			this->set_cantidad_referencias(0);
+			
 		}
 	public:
 		/*contructor por defecto que lo pone como nulo, debe usarse para crear
@@ -68,59 +66,43 @@ template <class Tipo> class S_ptr{
 		S_ptr(){
 			this->objeto = NULO;
 			this->cantidad_referencias = NULO;
-			this->llave = NULO;
 		}
 		//constructor del objeto
-		template<class Y>
-		S_ptr(Y *_objeto){
-			Tipo* objeto = dynamic_cast<Tipo *>(_objeto);
+		S_ptr(Tipo *objeto){
+			//se crea el entero que contiene la cantidad de referencias
+			this->cantidad_referencias = new int;
 			//si no mando NULO como objeto, se lo asigno y le pongo en cant 1
 			if(objeto != NULO){
-				//se crea el entero que contiene la cantidad de referencias
-				// y la llave
-				this->cantidad_referencias = new int;
-				this->llave = new Mutex();
 				this->set_cantidad_referencias(1);
 				this->objeto = objeto;	
 			}
-			else {
-				this->cantidad_referencias = NULO;
-				this->llave = NULO;
-				this->objeto = NULO;
-			}
+			else
+				this->set_cantidad_referencias(0);
+			
 		}
-		template<class Y>
-		S_ptr(const S_ptr<Y> &p){
-			if( ! p.es_nulo() ) {
-				Bloqueo b(p.llave);
-				//asigno el puntero al nuevo objeto
-				this->objeto = dynamic_cast<Tipo *>(p.objeto);
-				// copio la llave
-				this->llave = p.llave;
-				//copio la variable de cantidad de referencias
-				this->cantidad_referencias = p.cantidad_referencias;
-				//incremento la cantidad de referencias
+		S_ptr(const S_ptr &p){
+			Bloqueo b(&this->llave);
+			//asigno el puntero al nuevo objeto
+			this->objeto = p.objeto;				
+			//copio la variable de cantidad de referencias
+			this->cantidad_referencias = p.cantidad_referencias;
+			//incremento la cantidad de referencias
+			if(this->cantidad_referencias != 0/*NULO*/)
 				this->incrementar_cantidad_referencias();
-			} else {
-				this->objeto = NULO;
-				this->llave = NULO;
-				this->cantidad_referencias = NULO;
-			}
 		}	
 		virtual ~S_ptr(){
+			//bloqueo el elemento para que no hay conflictos entre threads,
+			//por ejemplo, que dos decrementen y despues ninguno elimine porque
+			//la cantidad de referencias quedo en -1
+			Bloqueo b(&this->llave);
 			if(!this->es_nulo()){
-				//bloqueo el elemento para que no hay conflictos entre threads,
-				//por ejemplo, que dos decrementen y despues ninguno elimine porque
-				//la cantidad de referencias quedo en -1
-				this->llave->lock();
-
 				//decrementa la cantidad de referencias
 				this->decrementar_cantidad_referencias();
 				//si es 0, elimina el objeto y destruye el contador creado
 				if( this->get_cantidad_referencias() == 0){
 					this->eliminar_objeto();
-				}else
-					this->llave->unlock();
+					delete this->cantidad_referencias;
+				}
 			}
 		}
 		//redefine operadores para poder trabajar como un puntero comun, como
@@ -135,56 +117,46 @@ template <class Tipo> class S_ptr{
 				throw Runtime_Error("Acceso a un smart pointer null!!");
 			
 		}
-		bool es_nulo() const {
+		bool es_nulo(){
 			return this->objeto == NULO;	
 		}
 		//operador definido para igualar objetos
 		S_ptr<Tipo>& operator=(const S_ptr &p){
-			// ignora auto asignacion y asignacion a mismo objeto
-			if( (&p != this) && ( this->objeto != p.objeto ) ) {
-				// libero la referencia actual
-				if( ! es_nulo() ) {
-					//thread safety
-					this->llave->lock();
+			//thread safety
+			Bloqueo b(& this->llave);
+			if(this->objeto != p.objeto){
+				//si el objeto no es nulo
+				if(this->objeto != NULO){
+					//decremento la cantidad de referencias
 					this->decrementar_cantidad_referencias();
-					if( this->get_cantidad_referencias() == 0 )
+					//si quedo en 0, elimino el objeto
+					if(this->get_cantidad_referencias() == 0)
 						this->eliminar_objeto();
-					else
-						this->llave->unlock();
 				}
-				if( ! p.es_nulo() ) {
-					Bloqueo b( p.llave );
-					//asigno el puntero al nuevo objeto
-					this->objeto = p.objeto;		
-					// copio la llave
-					this->llave = p.llave;	
-					//copio la variable de cantidad de referencias
-					this->cantidad_referencias = p.cantidad_referencias;
-					//incremento la cantidad de referencias
-					this->incrementar_cantidad_referencias();
-				} else {
-					objeto = NULO;
-				       	llave = NULO;
-					cantidad_referencias = NULO;
-				}
+				//asigno el puntero al nuevo objeto
+				this->objeto = p.objeto;			
+      		//copio la variable de cantidad de referencias
+				this->cantidad_referencias = p.cantidad_referencias;
+				//incremento la cantidad de referencias
+				this->incrementar_cantidad_referencias();
 			}
 			//devuelvo lo copiado
 			return *this;
 		}
 		//operadores redefinidos
-		friend bool operator==(const S_ptr p1, const S_ptr p2) {
+		friend bool operator==(const S_ptr p1, const S_ptr p2){
 			if(p1.objeto == p2.objeto)
 				return true;
 			else
 				return false;
 		}
-		friend bool operator!=(const S_ptr p1, const S_ptr p2) {
+		friend bool operator!=(const S_ptr p1, const S_ptr p2){
 			if(p1.objeto != p2.objeto)
 				return true;
 			else
 				return false;
 		}
-		friend bool operator<(const S_ptr p1, const S_ptr p2) {
+		friend bool operator<(const S_ptr p1, const S_ptr p2){
 			if(p1.objeto < p2.objeto)
 				return true;
 			else
