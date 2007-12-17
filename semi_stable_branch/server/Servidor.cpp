@@ -106,7 +106,8 @@ void Servidor::run(){
 			}
 			else{
 				//Si se esta agregando un nuevo cliente y no se llego a la cantidad maxima, le envio un start
-				if (pool.get_cantidad_clientes() <= cant_max_clientes) 
+				if ((pool.get_cantidad_clientes() <= cant_max_clientes) 
+				    && (pool.get_cantidad_clientes() >= cant_min_clientes) ) 
 						this->mandar_start(cliente_nuevo);
 				//Cuando se llega a la cantidad maxima trabo al servidor para que rebote a los clientes q se intenten   
             //conectar
@@ -172,16 +173,19 @@ void Servidor::inicializar(){
 
 Cliente* Servidor::aceptar_nuevo_cliente(){
       try {
-         std::cout << "aceptando cliente" << std::endl << std::flush;         
-         //Acepta un cliente
+         	std::cout << "aceptando cliente" << std::endl << std::flush;         
+         	//Acepta un cliente
 			Socket_Cliente* client = socket->aceptar();
-         std::cout << "cliente aceptado" << std::endl << std::flush;    
+        	 std::cout << "cliente aceptado" << std::endl << std::flush;    
 			//lo agrega a la pileta de clientes
 			Cliente * cliente_nuevo = pool.lanzar_cliente( client );
 			//Agrega el jugador al modelo
 			ModeloServidor::get_instancia()->agregar_jugador(cliente_nuevo->get_jugador());
 			//Le manda el paquete init
-         this->mandar_init(cliente_nuevo);
+         	this->mandar_init(cliente_nuevo);
+		  	if ((!this->avisador->corriendo()) && (ya_mando_start)){
+				this->avisador->start();
+			}
          return cliente_nuevo; //Devuelvo el cliente creado
       } catch (std::runtime_error) {
           std::cout << "cliente falla" << std::endl << std::flush;          
@@ -230,8 +234,10 @@ void Servidor::procesar_nivel(){
 void Servidor::finalizar_nivel(){
    std::cout << "finalizando nivel" << std::endl << std::flush;
    //Cuando termina un nivel freno al avisador y le hago join
-	this->avisador->parar();
-	this->avisador->join();
+	if (this->avisador->corriendo()){
+		this->avisador->parar();
+		this->avisador->join();
+	}
    this->ya_mando_start = false;
 }
 
@@ -301,13 +307,19 @@ void Servidor::actualizar(Observable * observable, void * param){
          //Si la cantidad de clientes es mayor a la minima, y el modelo esta pausado, lo despauso
       	if ((client_pool->get_cantidad_clientes() >= cant_min_clientes) 
              && (ModeloServidor::get_instancia()->esta_pausado())){
-               ModeloServidor::get_instancia()->reiniciar_partida();               
+			   std::cout << "reiniciar partida antes" << std::endl << std::flush;
+               ModeloServidor::get_instancia()->reiniciar_partida(); 
+			   std::cout << "reiniciar partida desp" << std::endl << std::flush;				 
                ModeloServidor::get_instancia()->despausar();
          }
       } else {
          //Si la cantidad de clientes es menor a la minima, pauso el modelo y mando un stop indicando lo sucedido
       	if (client_pool->get_cantidad_clientes() < cant_min_clientes){
             ModeloServidor::get_instancia()->pausar();
+			if (this->avisador->corriendo()){
+				this->avisador->parar();
+				this->avisador->join();
+			}
             //this->mandar_stop(PaqueteStop::cant_insuficiente);
          }
       	//Si el cliente que se desconecto es el pac-man, aviso a los demas clientes y reinicio el nivel
