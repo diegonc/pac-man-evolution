@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <string>
 #include "gui.h"
-#include "modelo.h"
+#include <editor/modelo.h>
 
 using namespace std;
 

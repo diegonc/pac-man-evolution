@@ -3,9 +3,9 @@
 #define Control_Seleccion_h_
 
 //Incluyo las librerias necesarias
-#include "definiciones.h"
-#include "../common/observador.h"
-#include "../common/smart_pointer.h"
+#include <editor/definiciones.h>
+#include <common/observador.h>
+#include <common/smart_pointer.h>
 #include "item_elem.h"
 
 using namespace std;

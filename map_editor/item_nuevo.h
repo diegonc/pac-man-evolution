@@ -4,7 +4,7 @@
 #define ITEM_NUEVO_H_
 
 #include "item.h"
-#include "modelo.h"
+#include <editor/modelo.h>
 
 /* CLASE ITEM NUEVO: Clase que representa el item "nuevo" para un menu.
    Hereda de item, implementa el ejecutar para realizar la accion correspondiente cuando se lo clikea. */
