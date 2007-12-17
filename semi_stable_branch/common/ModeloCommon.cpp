@@ -91,7 +91,8 @@ Jugador * ModeloCommon::get_jugador(unsigned int id){
 }
 void ModeloCommon::quitar_jugador(unsigned int id){
    Bloqueo b(&llave);
-   jugadores.erase (id);     
+   Jugador * j = get_jugador(id);
+   j->set_invalido();    
 }
 	
 MundoBajoNivel& ModeloCommon::get_mundo(){
