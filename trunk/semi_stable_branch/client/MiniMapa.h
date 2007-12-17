@@ -13,11 +13,7 @@ class MiniMapa{
 	//Mapa: 294 x 294
 	SDL_Surface* Mapa;
 	//Casillero: 32 x 32
-	SDL_Surface* Casillero;
-	//ConectorV: 2 x 32
-	SDL_Surface* ConectorV;
-	//ConectorH: 32 x 2
-	SDL_Surface* ConectorH;
+	SDL_Surface* Casillero;	
 	//ConectorH: 24 x 24
 	SDL_Surface* Pacman;
 	//ConectorH: 24 x 24
