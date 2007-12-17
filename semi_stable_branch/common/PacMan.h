@@ -12,8 +12,11 @@
 
 class PacMan : public Personaje{
 	private:
+		class RemovedorPowerUp;
+
 		bool power_up_activado;
 		double velocidad;
+		S_ptr<RemovedorPowerUp> removedor;
 	
 	
 		static const double VELOCIDAD_PACMAN_NORMAL;
