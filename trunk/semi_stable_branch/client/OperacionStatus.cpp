@@ -103,7 +103,7 @@ void OperacionStatus::ModificarPosicionJugador(Jugador * Jug,OperacionStatus::Po
 
 }
 
-void OperacionStatus::ejecutar(ModeloCommon &modelo){
+void OperacionStatus::ejecutar(ModeloServidor &modelo){
     Jugador * Jug = NULL;
 
     std::list< Jugador * >::const_iterator itjugadores;
@@ -112,7 +112,7 @@ void OperacionStatus::ejecutar(ModeloCommon &modelo){
     int AltoMapa  = modelo.get_mundo().get_mapa_activo()->get_alto();
     for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
 		OperacionStatus::PosicionJugador& PosJ=*it;
-		Jug= modelo.get_jugador(PosJ.ID);
+		Jug= ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
 		if (Jug != NULL){
 			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);
 		}else{	
@@ -128,7 +128,7 @@ void OperacionStatus::ejecutar(ModeloCommon &modelo){
 			if (!PosJ.estaVivo){
 				 Jug->get_personaje()->matar();
 			}
-			modelo.agregar_jugador(Jug);			
+			ModeloServidor::get_instancia()->agregar_jugador(Jug);			
 			ModificarPosicionJugador(Jug,PosJ,AnchoMapa,AltoMapa);	
 		}
 	}

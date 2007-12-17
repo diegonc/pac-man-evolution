@@ -5,8 +5,7 @@
 
 class PaqueteStatus: public PaqueteStatusCommon{
 	public:
-	PaqueteStatus(std::list<NovedadComestible>* Novedad,
-			S_ptr<ModeloCommon> modelo);
+	PaqueteStatus(std::list<NovedadComestible>* Novedad);
 
 	PaqueteStatus();
 

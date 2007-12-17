@@ -11,7 +11,7 @@ class OperacionStart : public Operacion
 		public:
 			OperacionStart( int id );
 
-			void ejecutar(ModeloCommon &modelo);
+			void ejecutar(ModeloServidor &modelo);
 			
 	};
 	

@@ -38,7 +38,7 @@ class KeyOp : public Operacion
 		/** 
 		*	@brief Implementa los efectos de la operacion. 
 		*/		
-		void ejecutar(ModeloCommon &modelo);
+		void ejecutar(ModeloServidor &modelo);
 
 		void set_id(unsigned int identifJugador);
 

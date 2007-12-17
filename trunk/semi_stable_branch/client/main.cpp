@@ -3,7 +3,6 @@
 ////////////////////////////////////////
 #include "../common/client_socket.h"
 #include "../common/Cliente.h"
-#include "ModeloServidor.h"
 #include <stdexcept>
 #include <string>
 #include <iostream>
@@ -22,7 +21,7 @@ int main(int argc, char **argv)
 		std::string ip("201.231.232.12");
 		unsigned int short puerto = 7777;
 		socket->conectar(ip, puerto);
-		Cliente cliente_del_modelo(socket, ModeloServidor::get_instancia());
+		Cliente cliente_del_modelo(1, socket); //WHAT ?????
 		cliente_del_modelo.start();
 		/////////////////////////////////////////////////
 		Aplicacion APP(&cliente_del_modelo);

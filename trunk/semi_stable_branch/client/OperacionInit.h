@@ -11,6 +11,6 @@ class OperacionInit : public Operacion
 		public:
 			OperacionInit( S_ptr<MapaBajoNivel> m, bool esPac );
 
-			void ejecutar(ModeloCommon &modelo);
+			void ejecutar(ModeloServidor &modelo);
 	};
 #endif /*_OPERACION_INIT_COMMON_H*/

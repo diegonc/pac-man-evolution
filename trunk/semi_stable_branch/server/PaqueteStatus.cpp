@@ -2,7 +2,7 @@
 
 #include "../common/OperacionNula.h"
 
-PaqueteStatus::PaqueteStatus(std::list<NovedadComestible>* Novedad, S_ptr<ModeloCommon> modelo): PaqueteStatusCommon(Novedad,modelo){
+PaqueteStatus::PaqueteStatus(std::list<NovedadComestible>* Novedad): PaqueteStatusCommon(Novedad){
 
 }
 

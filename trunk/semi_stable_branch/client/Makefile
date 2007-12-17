@@ -20,7 +20,7 @@ extension = cpp
 ###########################
 
 # Opciones para el compilador C.
-CFLAGS = -I../.. -Wall -ansi -pedantic-errors -DLINUX `sdl-config --cflags`
+CFLAGS = -I../.. -Wall -ansi -pedantic-errors -DLINUX `sdl-config --cflags` -DPROGRAMA_CLIENTE
 
 # Para valgrind o debug
 CFLAGS += -DDEBUG -ggdb -fno-inline
@@ -73,7 +73,7 @@ recompilar:
 	@$(RM) ../common/EscuchadorCliente.o
 	@$(RM) ../common/Paquete.o
 
-subproyecto: $(o_files)
+subproyecto: recompilar $(o_files)
 	@if [ -z "$(o_files)" ]; \
 	then \
 		echo "No hay archivos de entrada para el cliente (archivos client*.$(extension))."; \

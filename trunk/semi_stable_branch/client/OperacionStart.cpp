@@ -7,7 +7,7 @@
 OperacionStart::OperacionStart( int id ){
 	this->id = id ;
 }
-void OperacionStart::ejecutar(ModeloCommon &modelo) {
+void OperacionStart::ejecutar(ModeloServidor &modelo) {
 
    bool pac = JugadorLocal::get_instancia()->get_pacman();
 	JugadorLocal::get_instancia()->set_id( id );

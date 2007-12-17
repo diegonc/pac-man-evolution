@@ -1,5 +1,12 @@
 #include "EscuchadorCliente.h"
-#include "ModeloCommon.h"
+
+#ifndef PROGRAMA_CLIENTE
+   #include "../server/ModeloServidor.h"
+#else
+   #include "../client/ModeloServidor.h"
+#endif
+
+
 
 EscuchadorCliente::EscuchadorCliente(Cliente * c){
 	this->cliente = c;
@@ -21,7 +28,7 @@ void EscuchadorCliente::run(){
 			paquete = cliente->recibir_mensaje();
 			if(! paquete.es_nulo() ){
 				op = paquete->get_operacion();
-				op->ejecutar(cliente->get_modelo());
+				op->ejecutar(*(ModeloServidor::get_instancia()));
 				delete op;
 			}
 		}
