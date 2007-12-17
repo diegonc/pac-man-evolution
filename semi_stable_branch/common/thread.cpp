@@ -6,7 +6,7 @@ void Thread::start(){
 }
 
 void Thread::join(){
-	if(esta_corriendo)
+	// if(esta_corriendo) - Pa evitar leaks
 		pthread_join(this->get_hilo(), NULL);
 }
 int Thread::thread_kill(int signal){
