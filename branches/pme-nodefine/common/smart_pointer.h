@@ -22,7 +22,7 @@ template <class Tipo> class S_ptr{
 		typedef typename std::runtime_error Runtime_Error;
 
 		template<class Y> friend class S_ptr;
-		
+
 		Tipo* objeto; //objeto que contiene el puntero
 		int *cantidad_referencias; //conteo de las referencias para liberar desp.
 		Mutex llave; //esto lo uso para hacerlo thread safety
@@ -69,6 +69,31 @@ template <class Tipo> class S_ptr{
 			this->objeto = NULO;
 			this->cantidad_referencias = NULO;
 		}
+
+		//constructor del objeto
+		S_ptr(Tipo *objeto){
+			//se crea el entero que contiene la cantidad de referencias
+			this->cantidad_referencias = new int;
+			//si no mando NULO como objeto, se lo asigno y le pongo en cant 1
+			if(objeto != NULO){
+				this->set_cantidad_referencias(1);
+				this->objeto = objeto;	
+			}
+			else
+				this->set_cantidad_referencias(0);
+			
+		}
+		S_ptr(const S_ptr &p){
+			Bloqueo b(&this->llave);
+			//asigno el puntero al nuevo objeto
+			this->objeto = p.objeto;	
+			//copio la variable de cantidad de referencias
+			this->cantidad_referencias = p.cantidad_referencias;
+			//incremento la cantidad de referencias
+			if(this->cantidad_referencias != 0/*NULO*/)
+				this->incrementar_cantidad_referencias();
+		}
+
 		//constructor del objeto
 		template<class Y>
 		S_ptr(Y *objeto){
@@ -80,7 +105,7 @@ template <class Tipo> class S_ptr{
 				if( _objeto == NULO )
 					throw std::runtime_error( "Tipo de puntero invalido." );
 				this->set_cantidad_referencias(1);
-				this->objeto = objeto;	
+				this->objeto = _objeto;	
 			}
 			else
 				this->set_cantidad_referencias(0);
