@@ -133,20 +133,6 @@ void OperacionStatus::ejecutar(ModeloCommon &modelo){
 		}
 	}
 	//itero sobre los personajes y al pacman le seteo el puntaje
-/*	Encontrado=false;
-    	for (std::list<OperacionStatus::PosicionJugador>::iterator it=get_jugadores()->begin();((it!=get_jugadores()->end())&&(!Encontrado));++it){
-		OperacionStatus::PosicionJugador& PosJ=*it;
-		Jug= ModeloServidor::get_instancia()->get_jugador(PosJ.ID);
-		if (Jug != NULL){
-		        if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
-			    Encontrado=true;
-			    Jug->set_puntos(get_puntuacion());
-			}			
-		}
-	}
-	std::list<Jugador*> jugadModelo=ModeloServidor::get_instancia()->get_jugadores();
-	std::list<Jugador*>::iterator itJug=jugadModelo.begin();
-	while ()    */
 	Encontrado=false;
 	std::list<Jugador*> listajug = modelo.get_jugadores();
 	for(std::list<Jugador*>::iterator itjugadores = listajug.begin();((itjugadores != listajug.end()) && (!Encontrado)); ++itjugadores){
@@ -169,7 +155,7 @@ void OperacionStatus::ejecutar(ModeloCommon &modelo){
 			}
 		}
 		if (!Encontrado){
-			modelo.quitar_jugador(Jug->get_id());		
+			modelo.quitar_jugador(Jug->get_id());
 		}
 	}
 
