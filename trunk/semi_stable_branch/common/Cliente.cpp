@@ -51,7 +51,8 @@ Cliente::~Cliente()
 		delete socket;
 	delete escritor;
 	delete escuchador;
-   this->jugador->set_invalido();
+   if (this->jugador != NULL)   
+      this->jugador->set_invalido();
 }
 
 void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
