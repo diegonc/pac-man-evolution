@@ -1,13 +1,19 @@
 #include "ConfValue.h"
 #include <cassert>
 
-ConfValue::ConfValue( int valor )
+ConfValue::ConfValue( unsigned int valor )
 {
 	tipo = ConfValue::CV_NUMERO;
 	numero = valor;
 }
 
 ConfValue::ConfValue( std::string valor )
+{
+	tipo = ConfValue::CV_TEXTO;
+	cadena = new std::string( valor );
+}
+
+ConfValue::ConfValue( const char* valor )
 {
 	tipo = ConfValue::CV_TEXTO;
 	cadena = new std::string( valor );
@@ -58,7 +64,7 @@ ConfValue& ConfValue::operator=( const ConfValue& c )
 	return *this;
 }
 
-int ConfValue::get_numero() const
+unsigned int ConfValue::get_numero() const
 {
 	assert( tipo == ConfValue::CV_NUMERO );
 	return numero;

@@ -50,11 +50,11 @@ void App::validar_linea_comando()
 void App::cargar_configuracion()
 {
 	// Inicializacion de valores por omision.
-	conf.set_conf( "direccion", ConfValue( "0.0.0.0" ) );
-	conf.set_conf( "min-jugadores", ConfValue( 2 ) );
-	conf.set_conf( "max-jugadores", ConfValue( 5 ) );
+	conf.set_conf( "direccion", ConfValue( std::string("0.0.0.0") ) );
+	conf.set_conf( "min-jugadores", ConfValue( 2U ) );
+	conf.set_conf( "max-jugadores", ConfValue( 5U ) );
 	conf.set_conf( "com-fantasmas", ConfValue( false ) );
-	conf.set_conf( "vidas", ConfValue( 1 ) );
+	conf.set_conf( "vidas", ConfValue( 1U ) );
 	// Se agregan las opciones del archivo de configuracion.
 	conf.load_conf( argv[1] );
 }
@@ -69,7 +69,29 @@ std::string App::get_mundo_xml()
 	}
 }
 
-int App::get_puerto_servidor()
+unsigned int App::get_cl_min()
+{
+	try {
+		ConfValue cv = conf.get_conf( "min-jugadores" );
+		return cv.get_numero();
+	}catch( ... ) { /* TODO: ajustar excepcion." */
+		/* Opcion con valor por omision faltante. */
+		assert( "Configuracion opcional no encontrada" == 0 );
+	}
+}
+
+unsigned int App::get_cl_max()
+{
+	try {
+		ConfValue cv = conf.get_conf( "max-jugadores" );
+		return cv.get_numero();
+	}catch( ... ) { /* TODO: ajustar excepcion." */
+		/* Opcion con valor por omision faltante. */
+		assert( "Configuracion opcional no encontrada" == 0 );
+	}
+}
+
+unsigned int App::get_puerto_servidor()
 {
 	try {
 		ConfValue cv = conf.get_conf( "puerto" );
@@ -83,6 +105,7 @@ int App::ejecutar(){
 	try{
 		validar_linea_comando();
 		cargar_configuracion();
+		conf.dump( std::cout ); // TODO: quitar linea.
 		//creo el mundo de alto nivel y lo cargo del xml
 		Mundo mundo_alto_nivel;
 		if( mundo_alto_nivel.fromXml( get_mundo_xml().c_str() ) ) {
@@ -97,6 +120,10 @@ int App::ejecutar(){
 			//crea el servidor
 			int puerto = get_puerto_servidor();
 			S_ptr<Servidor> servidor(new Servidor(puerto) );
+			// Configura numero de clientes.
+			servidor->set_cant_min_clientes( get_cl_min() );
+			servidor->set_cant_max_clientes( get_cl_max() ); 
+
 			//inicia el hilo del modelo
 			//modelo->start();
 			//inicia el hilo del servidor
