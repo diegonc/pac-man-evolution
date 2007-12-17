@@ -28,6 +28,7 @@ void EscritorCliente::run(){
 		/* Si hubo error de lectura es porque el cliente se desconecto, asi que lo hago terminar. */
 		this->terminar();
 	}
+   std::cout << "Termina el escritor\n";
 }
 
 void EscritorCliente::terminar(){
