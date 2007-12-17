@@ -23,6 +23,7 @@ class Jugador{
 		Posicion posicion;
 		Direccion  * dir;	
 		int puntos;
+		bool invalido;
 		
 	public:
 		/** @brief Constructor de la clase.
@@ -117,9 +118,30 @@ class Jugador{
 		*/
 		int get_puntos();
 		
+		/**
+		*	@brief  Permite settear la cantidad de puntos al jugador
+		*
+		*	@param	puntos Valor que se desea settear
+		*/	
 		void set_puntos(int puntos);
 
-      void quitar_personaje();
+		/**
+		*	@brief	Permite settear como no valido al jugador, inhabilitandolo
+		*
+		*/
+		void set_invalido();
+
+		/**
+		*	@brief	Permite saber si el jugador es invalido o no
+		*
+		*	@return true si es invalido, false en caso contrario
+		*/
+		bool es_invalido();
+		
+		/**
+		*	@brief	Permite quitarle el personaje al jugador liberando la memoria
+		*/
+      		void quitar_personaje();
 
 };
 
