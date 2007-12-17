@@ -23,18 +23,7 @@ std::string Error::MutexError::to_string( int err )
 Error::MutexError::MutexError(Mutex* m, int err)
 	: std::runtime_error(to_string(err))
 {
-	Mutex::Locker ml( Mutex::_lock ); 
-	std::list<Mutex*>::iterator it = Mutex::inicializados.begin( );
-	while( it != Mutex::inicializados.end() )
-		if( *it == m ){
-			Mutex::inicializados.erase(it);
-			break;
-		} else ++it;
-
 	std::cerr << "Creando MutexError para Mutex: " << std::hex;
 	std::cerr << (int)m << " mutex_t: " << std::hex << (int)m->get_mutex();
 	std::cerr << std::endl;
-	if( it == Mutex::inicializados.end() )
-		std::cerr << " no ";
-	std::cerr << "inicializado." << std::endl;
 }
