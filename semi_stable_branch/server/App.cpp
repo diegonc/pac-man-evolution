@@ -118,6 +118,8 @@ int App::ejecutar(){
 			ModeloServidor::get_instancia()->set_mundo(mundo_bajo_nivel);
 			//modelo->set_mundo(mundo_bajo_nivel);
 			//crea el servidor
+
+			S_ptr<Servidor> servidor(new Servidor(7776) );//TODO USAR EL ARG
 			int puerto = get_puerto_servidor();
 			S_ptr<Servidor> servidor(new Servidor(puerto) );
 			// Configura numero de clientes.

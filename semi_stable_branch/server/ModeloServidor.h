@@ -6,6 +6,7 @@
 #include "reloj.h"
 #include "../common/PacMan.h"
 #include "../common/Fantasma.h"
+#include "../common/evento.h"
 #include <cassert>
 
 /** @brief Esta clase define el modelo.
@@ -14,11 +15,14 @@
  */
 
 class ModeloServidor : public ModeloCommon, public Observador {
-
-	//typedef S_ptr<Jugador> Tipo_Jugador;
 	
 	private:
-  		bool parar;	
+
+  		bool nivel_terminado; //Determina si el nivel actual termino o no
+
+      bool pausado; //Determina si el modelo esta pausado en el nivel actual o no
+
+      Evento* evento_despausar; //Evento que controla el despausar
    
 		void preparar_partida();
 					
@@ -62,6 +66,22 @@ class ModeloServidor : public ModeloCommon, public Observador {
       *         no existe un pacman, se lo settea a otro jugador
       */
       void reiniciar_partida();
+
+      /**
+      *  @brief Pausa el modelo en el nivel actual si no estaba pausado.
+      */
+      void pausar();
+
+      /**
+      *  @brief Si el modelo estaba pausado, lo despausa, sino no hace nada.
+      */
+      void despausar();
+
+      /**
+      *  @return Devuelve si esta pausado o no el modelo.
+      */
+      bool esta_pausado();
+
 };
 
 

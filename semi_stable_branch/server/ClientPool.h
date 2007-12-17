@@ -28,7 +28,13 @@ class ClientPool : public Observable, public Observador {
 	
 	void quitar_cliente(unsigned int id_cliente);
 
+   Cliente* buscar_cliente(unsigned int id_cliente);
+
 	void actualizar(Observable* obs, void* param);
+
+   private:
+
+   std::list<Cliente*>::iterator buscar_interno(unsigned int id_cliente);
 
 };
 

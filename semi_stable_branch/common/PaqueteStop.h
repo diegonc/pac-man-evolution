@@ -12,13 +12,14 @@ class PaqueteStop : public Paquete
 		 * Estadisticas ?
 		 */
 
-		static const char pacman_gano;
+	public:
+      
+      static const char pacman_gano;
 		static const char pacman_comido;
 		static const char pacman_desconecto;
 		static const char cant_insuficiente;
 		static const char termino_juego;
-
-	public:
+      
 		/** Construye un paquete apto para deserializar. */
 		PaqueteStop();
 
