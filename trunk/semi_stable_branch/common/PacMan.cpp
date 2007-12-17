@@ -1,9 +1,51 @@
 #include "PacMan.h"
+#include <common/thread.h>
 #include <math.h>
+#include <cassert>
 
 const double PacMan::VELOCIDAD_PACMAN_NORMAL 	= 3;
 const double PacMan::VELOCIDAD_PACMAN_PW 		= 5;
 const double PacMan::RADIO_PACMAN		 		= 0.5;
+
+class PacMan::RemovedorPowerUp : public Thread
+{
+	PacMan& pacman;
+
+	void run( );
+
+	void cancel( );
+
+	public:
+		RemovedorPowerUp( PacMan& p );
+
+		~RemovedorPowerUp();
+};
+
+void PacMan::RemovedorPowerUp::run()
+{
+	/* TODO: mover a Thread ?*/
+	pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL );
+
+	sleep( 5 );
+	pacman.set_power_up( false );
+}
+
+void PacMan::RemovedorPowerUp::cancel()
+{
+	if( this->corriendo() ) {
+		/* TODO: mover a Thread */
+		pthread_cancel( this->get_hilo() );
+		pthread_detach( this->get_hilo() );
+	} else this->join();
+}
+
+PacMan::RemovedorPowerUp::RemovedorPowerUp( PacMan& p ) : pacman( p ) { }
+
+PacMan::RemovedorPowerUp::~RemovedorPowerUp( )
+{
+	this->cancel();
+}
 
 PacMan::PacMan(Jugador *jugador):Personaje(jugador,RADIO_PACMAN){
 	this->set_power_up(false);
@@ -59,9 +101,12 @@ void PacMan::colision(Jugador * jugador){
 }
 void PacMan::set_power_up(bool activado){
 	this->power_up_activado = activado;
-	if(activado)
+	if(activado) {
 		this->velocidad = VELOCIDAD_PACMAN_PW;
-	else
+		this->removedor = new RemovedorPowerUp( *this );
+		this->removedor->start();
+		assert( activado == true );
+	} else
 		this->velocidad = VELOCIDAD_PACMAN_NORMAL;
 }
 bool PacMan::tiene_power_up(){
