@@ -1,11 +1,9 @@
 #include "ModeloServidor.h"
 
 ModeloServidor::ModeloServidor() : ModeloCommon(){
-/*	//cargar_modelo(); // provisorio
-	MundoBasicImp * m = new MundoBasicImp();
-	S_ptr<MundoBajoNivel> mundo_default(m);
-	this->set_mundo(mundo_default);*/
-	this->parar = false;
+   this->nivel_terminado = false;
+   this->pausado = false;
+   this->evento_despausar = new Evento();
 }
 
 S_ptr<ModeloServidor> ModeloServidor::instancia;
@@ -17,6 +15,7 @@ S_ptr<ModeloServidor> ModeloServidor::get_instancia(){
 }
 
 ModeloServidor::~ModeloServidor(){
+   delete(this->evento_despausar);
 }
 
 void ModeloServidor::agregar_jugador(Jugador * jugador){
@@ -37,29 +36,28 @@ void ModeloServidor::agregar_jugador(Jugador * jugador){
 }
 		
 void ModeloServidor::run(){
-   this->parar = false;
 	//si hay mundo
 	if(! mundo.es_nulo()){
 		this->termino = false;
 		double intervalo_tiempo = 0;
 		double hora_actual;
-		std::cout << "Soy: " << pthread_self() << "<-- MODELO " << std::endl << std::flush;
 		
 		Jugador * j;
 		//itero por todos los niveles
-		//for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
-			//this->set_cambio();//TODO provisorio, no se si va aca o no
-			//this->avisar_observadores(NULL); //TODO provisorio, no se si va aca o no
+		for(int i = 0; i < this->mundo->cantidad_niveles(); i++ ){ 
 			//lo agrego como observador del mapa, ya que cuando no hay mas quesitos 
 			//me avisa
 			mundo->get_mapa_activo()->agregar_observador(this);
 			//preparo la partida
 			this->preparar_partida();
+         this->nivel_terminado = false;
 			//mientras este en juego
-			while(!this->parar){
-				//obtengo la hora actual para evitar el error acumulativo
+			while(!this->nivel_terminado){
+            //Me fijo si se efectuo una pausa, y en este caso realizo una espera pasiva
+            if (this->pausado)            
+               this->evento_despausar->esperar_activacion();				
+            //obtengo la hora actual para evitar el error acumulativo
 				hora_actual = Reloj::get_instancia()->get_hora_actual_decimal();
-				//
 				std::list<Jugador *> lista_jugadores = get_jugadores();
 				std::list<Jugador *>::iterator it;
 				//recorro todos los jugadores
@@ -75,17 +73,16 @@ void ModeloServidor::run(){
    					revisar_colisiones(j ,lista_jugadores);
 					}
 				}
-				//std::cout << "- El jugador "<< j->get_id() << " tiene " << j->get_puntos() << " puntos y esta en ";
-				//std::cout << j->get_posicion() <<"\n";
-				//j1->colisiono(*j2);
 				usleep(2000);
 				intervalo_tiempo = (Reloj::get_instancia()->get_hora_actual_decimal() - hora_actual) / 1000;
 			}
-			//this->mundo->pasar_de_nivel(); // TODO: provisorio, no se si va aca o no
-		//}
+			this->mundo->pasar_de_nivel();
+         //Aviso a los observadores del cambio de nivel
+         this->set_cambio();
+			this->avisar_observadores(NULL);
+		}
 		//aca se termina, entonces lo avisa y con solo preguntar por esta_terminado()
 		//se puede obtener el estado
-      std::cout << "ACABA DE TERMIANR EL MODELO!!!!\n";		
       this->termino = true;
 		this->set_cambio();
 		this->avisar_observadores(NULL);
@@ -104,39 +101,15 @@ void ModeloServidor::revisar_colisiones(Jugador * j, std::list<Jugador *>& lista
 	}	
 }
 void ModeloServidor::preparar_partida(){
-	//this->parar = false;
-	/*
-	//para la casa del fantasma y la salida del pacman
-	S_ptr<EstructuralUnitario> salida_pacman;
-	std::list< S_ptr<EstructuralUnitario> > casa_fantasma;
-	
-	std::list< S_ptr<EstructuralUnitario> >::iterator it_estucturales;
-	std::list< S_ptr<EstructuralUnitario> > lista_estructurales = this->get_mundo().get_mapa_activo()->get_estructurales();
-	
-	S_ptr<EstructuralUnitario> aux;
-	for(it_estucturales = lista_estructurales.begin();
-		it_estucturales != lista_estructurales.end();
-		++it_estucturales){
-		aux = *it_estucturales;
-		if( aux->get_tipo() == EstructuralUnitario::Casa_Fantasma )
-			casa_fantasma.push_back(*it_estucturales);
-		else{
-			if( aux->get_tipo() == EstructuralUnitario::Salida_Pacman )
-				salida_pacman = *it_estucturales;
-		}
-	}		
-	*/	
-	//std::list< S_ptr<Jugador> >::iterator it_jugadores = this->jugadores.begin();
+
 	std::list<Jugador *> lista_jugadores = get_jugadores();
 	std::list<Jugador *>::iterator it_jugadores;
 	
-	//it_estucturales = casa_fantasma.begin();
-	//Jugador * j;
 	Posicion p;
+
 	it_jugadores = lista_jugadores.begin();
 	while(it_jugadores != lista_jugadores.end() ){
 		set_posicion_inicial(*it_jugadores);		
-		std::cout << (*it_jugadores)->get_posicion() << "\n";
   	        ++it_jugadores;
 	}
       //j = *it_jugadores;
@@ -160,6 +133,7 @@ void ModeloServidor::preparar_partida(){
 			
 		j->set_posicion(p);*/
 }
+
 void ModeloServidor::reiniciar_partida(){
   
    bool hay_pacman = false;   
@@ -167,29 +141,53 @@ void ModeloServidor::reiniciar_partida(){
    std::list<Jugador *>  lista_jugadores = get_jugadores();
    std::list<Jugador *>::iterator it = lista_jugadores.begin();
    
+   std::cout << "Reinicia la partida\n"<<std::flush;
    //me fijo que haya jugadores
    if(lista_jugadores.size() != 0 ){
       //busco si hay pacman si no despues se lo asigno a otro      
       do{
-         if( (*it)->get_personaje()->get_tipo() == Personaje::pacman )
+         if( (*it)->get_personaje()->get_tipo() == Personaje::pacman ){
             hay_pacman = true;
+            std::cout << "Habia pacman y era el jugador " << (*it)->get_id() << "\n" << std::flush; 
+         }
+         ++it;
       }while( (it != lista_jugadores.end() ) && (!hay_pacman) );
       //si no habia pacman, se lo asigno al primer personaje de la lista      
       if(!hay_pacman){
-           Personaje * p = new PacMan(*it);
-            (*it)->quitar_personaje();
-            (*it)->set_personaje(p);
+            it = lista_jugadores.begin();            
+            std::cout << "Asginando pacman\n;"<<std::flush;           
+            Personaje * p = new PacMan(*it);
+            Jugador * j = *it;
+            j->quitar_personaje();
+            j->set_personaje(p);
       }
    }
    preparar_partida();
 }
 
 void ModeloServidor::actualizar(Observable * observable, void * param){
-   //primero me fijo si el mapa me avisa que ya se comieron todo
+   //Me fijo si el mapa me avisa que no quedan mas comestibles para terminar el desarrollo del nivel actual
 	MapaBajoNivel * mapa = dynamic_cast<MapaBajoNivel *>(observable);
 	if(mapa != NULL){
 		if( mapa->get_comestibles().size() == 0)
-			this->parar = true;	
+			this->nivel_terminado = true;	
 	}
-
 }
+
+void ModeloServidor::pausar(){
+   if (!this->esta_pausado())
+      this->pausado = true;
+}
+
+void ModeloServidor::despausar(){
+   if (this->esta_pausado()){
+      this->pausado = false;
+      this->evento_despausar->lanzar_evento();
+   }
+}
+
+bool ModeloServidor::esta_pausado(){
+   return this->pausado;
+}
+
+

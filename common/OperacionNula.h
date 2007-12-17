@@ -9,7 +9,7 @@ class OperacionNula : public Operacion {
 
       ~OperacionNula(){}
 
-      void ejecutar(ModeloServidor &modelo) {/*NO HAGO NADA; ES NULA*/}
+      void ejecutar(ModeloCommon &modelo) {/*NO HAGO NADA; ES NULA*/}
    
 };
 

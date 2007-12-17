@@ -1,6 +1,7 @@
 #include "ClientPool.h"
 
 #include "../common/EscritorCliente.h"
+#include "ModeloServidor.h"
 
 ClientPool::ClientPool() : num_orden(0)
 {
@@ -16,11 +17,14 @@ ClientPool::~ClientPool()
 
 Cliente * ClientPool::lanzar_cliente( Socket_Cliente* sock )
 {
-	Cliente* c = new Cliente( ++num_orden, sock );
-    	c->start();
+	Cliente* c = new Cliente( ++num_orden, sock, ModeloServidor::get_instancia());
+   c->start();
 	clientes.push_back(c);
 	//Agrego al pool como observador del cliente
 	c->get_escritor().agregar_observador(this);
+   //Aviso a los observadores que un cliente se conecto
+   this->set_cambio();
+	this->avisar_observadores(c);
 	return c;
 }
 
@@ -51,30 +55,45 @@ unsigned int ClientPool::get_cantidad_clientes(){
 }
 
 void ClientPool::quitar_cliente(unsigned int id_cliente){
-	std::list<Cliente*>::iterator it = clientes.begin();
-   	bool elimino = false;
-	Cliente* cliente = NULL;	
-	while( it != clientes.end() && !elimino ){
-		if( (*it)->get_id() == id_cliente ){
-			cliente = *it;
-			clientes.erase(it);
-			elimino = true;
-			//Aviso a los observadores que un cliente se desconecto
-			this->set_cambio();
-			this->avisar_observadores(cliente);
-		}
-		else
-			it++;
-	}
-	std::cout << "Deleteo al cliente: " << cliente->get_id() << std::endl << std::flush;
-	//Elimino al cliente recien removido
-	delete(cliente);
+   //Busco al cliente y si lo encuentro lo saco de la lista de clientes
+   std::list<Cliente*>::iterator it = this->buscar_interno(id_cliente);
+   if (it != clientes.end()) {	
+      Cliente* cliente = (*it);
+      this->clientes.erase(it);	   
+      //Aviso a los observadores que un cliente se desconecto
+	   this->set_cambio();
+	   this->avisar_observadores(cliente);
+      //Termino el cliente
+      cliente->terminar();	   
+      //Elimino al cliente recien removido
+      //delete(cliente);
+   }
+}
+
+Cliente* ClientPool::buscar_cliente(unsigned int id_cliente){
+   Cliente* cliente = NULL;
+   std::list<Cliente*>::iterator it = this->buscar_interno(id_cliente);
+   if (it != clientes.end())
+      cliente = (*it);
+   return cliente;
 }
 
 void ClientPool::actualizar(Observable* obs, void* param){
 	//Casteo el parametro como cliente y lo quito de la pool
 	Cliente* cliente = (Cliente*) param;
-	std::cout << "Se desconecta el cliente: " << cliente->get_id() << std::endl << std::flush;
-	this->quitar_cliente(cliente->get_id());
+   this->quitar_cliente(cliente->get_id());
 }
+
+std::list<Cliente*>::iterator ClientPool::buscar_interno(unsigned int id_cliente){
+   bool encontrado = false;
+   std::list<Cliente*>::iterator it = this->clientes.begin();  
+   while( (!encontrado) && (it != clientes.end()) ){
+		if( (*it)->get_id() == id_cliente )
+			encontrado = true;
+		else
+			it++;
+	}
+   return it;
+}
+
 

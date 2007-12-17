@@ -13,19 +13,17 @@ class MiniMapa{
 	//Mapa: 294 x 294
 	SDL_Surface* Mapa;
 	//Casillero: 32 x 32
-	SDL_Surface* Casillero;
-	//ConectorV: 2 x 32
-	SDL_Surface* ConectorV;
-	//ConectorH: 32 x 2
-	SDL_Surface* ConectorH;
-	//ConectorH: 24 x 24
+	SDL_Surface* Casillero;	
+	//Objetos: 24 x 24
 	SDL_Surface* Pacman;
-	//ConectorH: 24 x 24
 	SDL_Surface* Fantasma;
+	SDL_Surface* PowerUP;
+	SDL_Surface* Frutita;
+	SDL_Surface* Quesito;
 
 	const static int Marco=3;
 	const static int DimCasillero=32;
-	const static int DimJugador=24;
+	const static int DimObjeto=24;
 	const static int DimMiniMapa=294;
 	const static int ScreenResolutionX=800;
 	const static int InitXMiniMapa=ScreenResolutionX-DimMiniMapa;
@@ -43,9 +41,13 @@ class MiniMapa{
 
 	private:
 
-	void DibujarJugador(SDL_Surface* Screen, Jugador* jug, int ImgXCurr, int IngYCurr);
+	void DibujarJugador(SDL_Surface* Screen, Jugador* jug, int ImgXCurr, int ImgYCurr);
+
+	void DibujarComestible(SDL_Surface* Screen, S_ptr<Comestible> Comest, int ImgXCurr, int ImgYCurr);
 
 	void DibujarCasillero(SDL_Surface* Screen,int ImgXCurr,int ImgYCurr);
+
+	void DibujarObjeto(SDL_Surface* Screen, SDL_Surface* TextObj, int ImgXCurr, int ImgYCurr);
 
 	void Dibujar(Jugador* jug, SDL_Surface* Screen);
 

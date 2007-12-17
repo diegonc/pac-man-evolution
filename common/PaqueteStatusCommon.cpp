@@ -9,9 +9,14 @@ PaqueteStatusCommon::PaqueteStatusCommon(): Paquete(ID)
 
 }
 
-PaqueteStatusCommon::PaqueteStatusCommon(std::list<NovedadComestible>* Noved):Paquete(ID){
+PaqueteStatusCommon::PaqueteStatusCommon(std::list<NovedadComestible>* Noved,
+		S_ptr<ModeloCommon> modelo):Paquete(ID)
+{
 	//se copia, todas cosas estaticas, excepto el smart pointer q redefine la asignacion
 	this->Novedades=*Noved;
+	this->jugadores = modelo->get_jugadores();
+	this->ancho  = modelo->get_mundo().get_mapa_activo()->get_ancho();
+	this->alto  = modelo->get_mundo().get_mapa_activo()->get_alto();
 }
 
 void PaqueteStatusCommon::deserialize( InputBitStream& bs )
@@ -22,7 +27,7 @@ void PaqueteStatusCommon::deserialize( InputBitStream& bs )
 
 void PaqueteStatusCommon::serialize( OutputBitStream& bs )
 {
-	S_ptr<ModeloServidor> Model = ModeloServidor::get_instancia();
+//	S_ptr<ModeloServidor> Model = ModeloServidor::get_instancia();
     /*
     ____________________________________________________________________________________________
     |        Cabecera            |                       Cuerpo                                 |
@@ -69,20 +74,20 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
         Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
 
     //escribo la cantidad de jugadores
-        bs.append( 3,  Model->get_jugadores().size() ); // Escribe campo auxiliar.        
+        bs.append( 3,  jugadores.size() ); // Escribe campo auxiliar.        
 //fin cabecera
 
 //ComienzoCuerpo
     //obtengo info
     Jugador * Jug;
 
-    std::list<Jugador *> lista_jugadores = Model->get_jugadores();
-	std::list<Jugador * >::const_iterator jugadores;
+    //std::list<Jugador *> lista_jugadores = Model->get_jugadores();
+	std::list<Jugador * >::const_iterator jugit;
 	
     bool Salir=false;
     unsigned int PuntajePacman=0;
-    for(jugadores = lista_jugadores.begin();((jugadores != lista_jugadores.end()) && (!Salir)); ++jugadores){
-        Jug= *jugadores;
+    for(jugit = jugadores.begin();((jugit != jugadores.end()) && (!Salir)); ++jugit){
+        Jug= *jugit;
         if (Jug->get_personaje()->get_tipo()==Personaje::pacman){
             Salir=true;
             PuntajePacman=Jug->get_puntos();
@@ -93,17 +98,17 @@ void PaqueteStatusCommon::serialize( OutputBitStream& bs )
         bs.append( 32,  PuntajePacman );
     //Posiciones Jugadores
 
-	MundoBajoNivel& m=Model->get_mundo();
-	S_ptr<MapaBajoNivel> mapa(m.get_mapa_activo());
-	unsigned int pedo=mapa->get_ancho();
+//	MundoBajoNivel& m=Model->get_mundo();
+//	S_ptr<MapaBajoNivel> mapa(m.get_mapa_activo());
+//	unsigned int pedo=mapa->get_ancho();
 
-        unsigned int AnchoMapa=Model->get_mundo().get_mapa_activo()->get_ancho();
+        unsigned int AnchoMapa=ancho; //Model->get_mundo().get_mapa_activo()->get_ancho();
 
-        unsigned int AltoMapa=Model->get_mundo().get_mapa_activo()->get_alto();
+        unsigned int AltoMapa= alto; //Model->get_mundo().get_mapa_activo()->get_alto();
         //itero sobre los jugadores
         //jugadores=Model->get_jugadores().begin();
-        for(jugadores = lista_jugadores.begin();((jugadores != lista_jugadores.end()) ); ++jugadores){
-            Jug= *jugadores;
+        for(jugit = jugadores.begin();((jugit != jugadores.end()) ); ++jugit){
+            Jug= *jugit;
 
             Posicion P = Jug->get_posicion();
             int Fila=(int)floor(P.get_y());

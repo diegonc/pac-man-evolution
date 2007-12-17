@@ -3,6 +3,7 @@
 ////////////////////////////////////////
 #include "../common/client_socket.h"
 #include "../common/Cliente.h"
+#include "ModeloServidor.h"
 #include <stdexcept>
 #include <string>
 #include <iostream>
@@ -19,9 +20,9 @@ int main(int argc, char **argv)
 
 		//////////POR AHORA HARDCODED////////////////////
 		std::string ip("201.231.232.12");
-		unsigned int short puerto = 7777;
+		unsigned int short puerto = 7776;
 		socket->conectar(ip, puerto);
-		Cliente cliente_del_modelo(1, socket); //WHAT ?????
+		Cliente cliente_del_modelo(socket, ModeloServidor::get_instancia());
 		cliente_del_modelo.start();
 		/////////////////////////////////////////////////
 		Aplicacion APP(&cliente_del_modelo);
@@ -197,7 +198,11 @@ int main(int argc, char **argv)
 		//finalizo, libero recursos
 		APP.getAplicacionGrafica()->Deinitialize();
 		///////////////////////////////////////////////////////////////////////
-		//cliente_del_modelo.join();
+      cliente_del_modelo.get_escritor().terminar();
+  		socket->cerrar();
+      S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),0));
+      cliente_del_modelo.get_escritor().encolar_paquete(PaqTec);
+      cliente_del_modelo.join();
 		//////////////////////////////////////////////////////////////////////
 
 	}

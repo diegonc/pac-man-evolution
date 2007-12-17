@@ -7,6 +7,7 @@
 #include "../common/NovedadComestible.h"
 #include "Jugador.h"
 #include "../common/smart_pointer.h"
+#include "../common/ModeloCommon.h"
 
 //#include "MapaBajoNivel.h"
 
@@ -14,11 +15,15 @@ class PaqueteStatusCommon : public Paquete{
     protected:
         Operacion* Oper;
 	std::list<NovedadComestible> Novedades;
+	std::list<Jugador*> jugadores;
+	unsigned int ancho;
+	unsigned int alto;
 	
     public:
 		PaqueteStatusCommon();
 
-		PaqueteStatusCommon(std::list<NovedadComestible>* Novedades);
+		PaqueteStatusCommon(std::list<NovedadComestible>* Novedades,
+				S_ptr<ModeloCommon> modelo);
 
 		virtual void serialize( OutputBitStream& bs );
 
