@@ -196,24 +196,55 @@ Quesito.h
 SocketReader.cpp
 SocketReader.h
 "
+function nop()
+{
+	return 1
+}
 
 for i in $EDITOR_FILES; do
-	svn mv common/editor/$i map_editor/$i
+	svn cp common/editor/$i map_editor/$i
 done
 
 for i in $COMMON_FILES; do
-	svn mv common/common/$i common/$i
+	svn cp common/common/$i common/$i
 done
 
 for i in $SERVER_FILES; do
-	svn mv common/server/$i common/$i
+	svn cp common/server/$i common/$i
 done
 
-svn mv pme-client client
-svn mv pme-server server
+svn cp pme-client client
+svn cp pme-server server
 
 SVN_URL=https://pac-man-evolution.googlecode.com/svn/trunk/semi_stable_branch
 SVN_USER=dnietoc
 SVN_PASS=g6d9x7c4
 
 svn merge --username $SVN_USER --password $SVN_PASS -r $1:$2 $SVN_URL
+exit
+for i in $EDITOR_FILES; do
+	mv -v common/editor/$i map_editor/$i
+done
+
+for i in $COMMON_FILES; do
+	mv -v common/common/$i common/$i
+done
+
+for i in $SERVER_FILES; do
+	mv -v common/server/$i common/$i
+done
+
+$CL_FILES=`cd client; ls * | grep -v ".svn"`
+$SV_FILES=`cd server; ls * | grep -v ".svn"`
+
+for i in $CL_FILES; do
+	cp -R -v client/$i pme-client
+done
+
+for i in $SV_FILES; do
+	cp -R -v server/$i pme-server
+done
+
+rm -rfv client
+rm -rfv server
+
