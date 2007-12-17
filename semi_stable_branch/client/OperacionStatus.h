@@ -44,7 +44,7 @@ class OperacionStatus:public Operacion{
 	
 		std::list<PosicionElemento>* get_elementos();
 	
-		virtual void ejecutar(ModeloServidor &modelo);
+		virtual void ejecutar(ModeloCommon &modelo);
 
     private:
 

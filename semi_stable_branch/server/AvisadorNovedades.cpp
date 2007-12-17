@@ -1,5 +1,5 @@
 #include "AvisadorNovedades.h"
-
+#include "ModeloServidor.h"
 
 AvisadorNovedades::AvisadorNovedades(ClientPool * clientes){
 	this->clientes = clientes;
@@ -16,7 +16,7 @@ void AvisadorNovedades::run(){
 	while (! _parar ){
 
 		llave.lock();
-		S_ptr<Paquete> paquete_status(new PaqueteStatus(&novedades_comestible));
+		S_ptr<Paquete> paquete_status(new PaqueteStatus(&novedades_comestible,ModeloServidor::get_instancia()));
 		novedades_comestible.clear();
 		llave.unlock();
 		

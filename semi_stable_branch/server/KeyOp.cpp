@@ -1,6 +1,6 @@
 #include "KeyOp.h"
 
-#include "ModeloServidor.h"
+#include "../common/ModeloCommon.h"
 #include "../common/smart_pointer.h"
 #include "../common/Direccion.h"
 #include "../common/Jugador.h"
@@ -15,7 +15,7 @@ KeyOp::KeyOp(unsigned int flecha,int id ){
 	this->id = id;
 }
 
-void KeyOp::ejecutar(ModeloServidor &modelo)
+void KeyOp::ejecutar(ModeloCommon &modelo)
 {
 	//obtiene el jugador
 	Jugador * jugador = modelo.get_jugador(this->id);
