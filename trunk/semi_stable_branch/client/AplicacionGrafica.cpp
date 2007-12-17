@@ -24,15 +24,16 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
     //seteo el tipo de sombreado
     glShadeModel(GL_SMOOTH);
     //habilito el uso de luces
-    glEnable(GL_LIGHTING);
+    //glEnable(GL_LIGHTING);
     //habilito la luz del jugador
-    glEnable(GL_LIGHT0);
+    //glEnable(GL_LIGHT0);
     //habilito el uso de texturas en 2D
     glEnable( GL_TEXTURE_2D );
     //parametros para la mejor visualizacion de la perspectiva
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     //escenario.Procesar(); //<----LO COMENTE YOOOOO!!!!
-	Mapa = SDL_LoadBMP("Mapa.bmp");
+	//Mapa = SDL_LoadBMP("./MiniMapa/Mapa.bmp");
+	minimapa.CargarTexturas();
 	ModeladorOBJ.hidratar();
 	return true;
 
@@ -52,7 +53,7 @@ bool AplicacionGrafica::Initialize()
 //finalizar y liberar recursos
 void AplicacionGrafica::Deinitialize()
 {
-  	SDL_FreeSurface(Mapa); 
+//  	SDL_FreeSurface(Mapa); 
 }
 
 
@@ -173,9 +174,9 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 //dibuja en 2D
 void AplicacionGrafica::Draw2D(SDL_Surface *S)
 {
-	static SDL_Rect src1={0,0,0,0};							// We're blitting 3 rectangles,
+/*
+	SDL_Rect src1={0,0,0,0};							// We're blitting 3 rectangles,
 
-	SDL_FillRect(S, &src1, SDL_MapRGBA(S->format,0,0,0,0));
 																// That's an issue many people is having!
 																// We set up our Alpha Channel first!
 
@@ -185,10 +186,17 @@ void AplicacionGrafica::Draw2D(SDL_Surface *S)
 
 	src1.w = 260;										// Fill the rect structure
 	src1.h = 260;
+	
+	SDL_FillRect(S, &src1, SDL_MapRGBA(S->format,0,0,0,0));
+	
 	SDL_SetColorKey(Mapa, SDL_SRCCOLORKEY, 
 	  SDL_MapRGB(Mapa->format, 0, 0, 255));
 
 	SDL_BlitSurface(Mapa, NULL, S, &src1);			// And finally blit and update
-	SDL_UpdateRects(S, 1, &src1);
+	SDL_UpdateRects(S, 1, &src1);*/
+
+	if (escenario.loaded()){
+		minimapa.ejecutar(S);
+	}
 
 }

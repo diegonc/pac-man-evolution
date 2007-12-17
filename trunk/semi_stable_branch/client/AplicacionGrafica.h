@@ -17,6 +17,7 @@
 #include "CargadordeTexturas.h"
 #include "ModeladorObjetos.h"
 #include "SelectorCamara.h"
+#include "MiniMapa.h"
 #include <iostream>
 #include <string>
 #include <math.h>
@@ -30,6 +31,7 @@ class AplicacionGrafica{
         EstadoAplicacion AppEstado;
 	SelectorCamara Camara;
 	SDL_Surface* Mapa;
+	MiniMapa minimapa;
            
 	private: 
 		Escenario escenario;
