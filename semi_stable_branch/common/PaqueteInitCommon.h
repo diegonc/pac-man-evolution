@@ -19,6 +19,7 @@ class PaqueteInitCommon : public Paquete
 		void agregar_arista( int x, int y, bool norte );
 
 		void reemplazar_estructural( S_ptr<EstructuralUnitario>& e );
+		void remplazar_comestible(S_ptr<EstructuralUnitario>& e ,Comestible::Enum_Comestible tipoCom );
 
 		bool escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBitStream& bs );
 		bool escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs );
