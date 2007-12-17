@@ -8,8 +8,8 @@ MiniMapa::MiniMapa(){
 MiniMapa::~MiniMapa(){
 	SDL_FreeSurface(Mapa);
 	SDL_FreeSurface(Casillero);
-	SDL_FreeSurface(ConectorV);
-	SDL_FreeSurface(ConectorH);
+//	SDL_FreeSurface(ConectorV);
+//	SDL_FreeSurface(ConectorH);
 	SDL_FreeSurface(Pacman);
 	SDL_FreeSurface(Fantasma);
 }	
@@ -148,8 +148,8 @@ bool MiniMapa::hayEstructural(Posicion& P){
 void MiniMapa::CargarTexturas(){
 	CargarSDLSurface(&Mapa,"./MiniMapa/Mapa.bmp");
 	CargarSDLSurface(&Casillero,"./MiniMapa/Casillero.bmp");
-	CargarSDLSurface(&ConectorV,"./MiniMapa/ConectorV.bmp");
-	CargarSDLSurface(&ConectorH,"./MiniMapa/ConectorH.bmp");
+//	CargarSDLSurface(&ConectorV,"./MiniMapa/ConectorV.bmp");
+//	CargarSDLSurface(&ConectorH,"./MiniMapa/ConectorH.bmp");
 	CargarSDLSurface(&Pacman,"./MiniMapa/Pacman.bmp");
 	CargarSDLSurface(&Fantasma,"./MiniMapa/Fantasma.bmp");
 }
