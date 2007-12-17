@@ -26,7 +26,7 @@ void EscritorCliente::run(){
 	}
 	catch(std::runtime_error &e){
 		/* Si hubo error de lectura es porque el cliente se desconecto, asi que lo hago terminar. */
-		this->cliente->terminar();
+		this->terminar();
 	}
 }
 

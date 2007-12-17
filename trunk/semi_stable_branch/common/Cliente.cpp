@@ -29,37 +29,7 @@ void Cliente::run()
 	
 	escuchador->join();
 	escritor->join();
-	/* TODO: esto evita que se reutilice en el cliente del juego.
-	 *       tal vez utilizando el patron state y determinando el estado
-	 *       inicial en el constructor se puede generalizar.
-	 */
-	/* Estado: inicial ( servidor ) */
-	//Tipo_Jugador j = modelo->get_jugador( id );
-	//S_ptr<Paquete> p( new PaqueteInit( j, modelo->get_mapa() ) );
-	//enviar_mensaje( p );
-	
-	/* Estado: espera a inicio ( servidor  ) */
-	// espera con evento o algo asi. el esquema observador puede usar
-	// cola con espera pasiva pej. ( pareusar/tp4/server_SyncQueue.h )
-	// enviar_mensaje( S_ptr<Paquete>( new PaqueteStart( id ) ) );
-	
-	/* Estado: espera interacciones ( servidor ) */
-	// bucle de lectura de paquetes y su procesamiento
 
-	/* Estado: final ( sevidor ) */
-	// envia paquete quit
-	// sale de run.
-	
-	/* Transiciones: (servidor)
-	 *
-	 *                      siguiente mapa
-	 *    +-----------------------<-------------------------+
-	 *    |                                                 | no mapa
-	 * inicial---->espera a inicio---->espera interacciones----------->final
-	 *          |                   |                                    |
-	 *          +---------->--------+---------------->-------------------+
-	 *                                error en socket
-	 */
 }
 
 Cliente::~Cliente()
@@ -68,6 +38,7 @@ Cliente::~Cliente()
 		delete socket;
 	delete escritor;
 	delete escuchador;
+   this->jugador->set_invalido();
 }
 
 void Cliente::enviar_mensaje( S_ptr<Paquete> paquete )
@@ -120,8 +91,10 @@ EscritorCliente& Cliente::get_escritor(){
 Jugador * Cliente::get_jugador(){
 	return this->jugador;
 }
+
 void Cliente::terminar(){
-	this->escritor->terminar();
+	//this->escritor->terminar();
+   this->jugador->set_invalido();
 	this->socket->cerrar();
    std::cout << "LLego aca para el" << this->id << "\n";
 }
