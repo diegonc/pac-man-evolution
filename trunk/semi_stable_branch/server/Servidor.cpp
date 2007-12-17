@@ -344,7 +344,7 @@ void Servidor::actualizar(Observable * observable, void * param){
             if (this->llave_max_jugadores->esta_esperando())
                this->llave_max_jugadores->lanzar_evento();
             //Mando una senial para destrabarlo del accept, si no estaba aceptando la señal se ignora
-            this->thread_kill(Servidor::SENIAL_CANCELAR);
+            pthread_kill(this->get_hilo(), Servidor::SENIAL_CANCELAR);
          }		
       }
 	}
