@@ -23,6 +23,7 @@ class Jugador{
 		Posicion posicion;
 		Direccion  * dir;	
 		int puntos;
+		bool invalido;
 		
 	public:
 		/** @brief Constructor de la clase.

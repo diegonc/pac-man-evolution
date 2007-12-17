@@ -14,6 +14,7 @@ Jugador::Jugador(unsigned int id){
 	this->personaje = NULL;
 	this->dir = new Direccion(Direccion::Este); /* Arrancan para el este. */
 	this->puntos = 0;
+	this->invalido = false;
 }
 
 Tipo_Personaje Jugador::get_personaje(){
