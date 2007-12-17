@@ -60,11 +60,10 @@ void Jugador::set_puntos(int puntos){
 }
 void Jugador::quitar_personaje(){
    if(this->personaje != NULL)   
-   	delete this->personaje;	
+   	delete (this->personaje);	
 }
 
 void Jugador::set_invalido(){
-   std::cout << "Setteo invalido el jugador " << this->id << "\n"<<std::flush; 	
    this->invalido = true;
 }
 bool Jugador::es_invalido(){
