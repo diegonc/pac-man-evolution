@@ -151,6 +151,7 @@ void ModeloServidor::reiniciar_partida(){
             hay_pacman = true;
             std::cout << "Habia pacman y era el jugador " << (*it)->get_id() << "\n" << std::flush; 
          }
+         ++it;
       }while( (it != lista_jugadores.end() ) && (!hay_pacman) );
       //si no habia pacman, se lo asigno al primer personaje de la lista      
       if(!hay_pacman){
