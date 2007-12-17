@@ -1,5 +1,5 @@
 #include "Paquete.h"
-
+/*
 #ifndef PROGRAMA_CLIENTE
    #include "../server/PaqueteInit.h"
    #include "../server/PaqueteStart.h"
@@ -19,6 +19,7 @@
    #include "PaqueteMensaje.h"   
 #endif
 
+*/
 Paquete::Paquete()
 {
 }
@@ -35,6 +36,13 @@ char Paquete::get_tipo()
 {
 	return tipo;
 }
+
+#if 0
+Este metodo se deja para ser definido en modulos de los programas
+cliente y servidor.
+Asi, los include en el comienzo de este archivo no son necesarios,
+y se puede eliminar la compilacion condicional.
+
 Paquete* Paquete::crear( int tipo ,unsigned int id_cliente ){
 
 	Paquete * p;
@@ -65,6 +73,7 @@ Paquete* Paquete::crear( int tipo ,unsigned int id_cliente ){
 	}
 	return p;
 }
+#endif
 
 void Paquete::serialize( OutputBitStream& bs )
 {
