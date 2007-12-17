@@ -58,13 +58,15 @@ void ClientPool::quitar_cliente(unsigned int id_cliente){
    //Busco al cliente y si lo encuentro lo saco de la lista de clientes
    std::list<Cliente*>::iterator it = this->buscar_interno(id_cliente);
    if (it != clientes.end()) {	
-      Cliente* cliente = (*it);      
+      Cliente* cliente = (*it);
       this->clientes.erase(it);	   
       //Aviso a los observadores que un cliente se desconecto
 	   this->set_cambio();
 	   this->avisar_observadores(cliente);
-	   //Elimino al cliente recien removido
-	   delete(cliente);
+      //Termino el cliente
+      cliente->terminar();	   
+      //Elimino al cliente recien removido
+      //delete(cliente);
    }
 }
 

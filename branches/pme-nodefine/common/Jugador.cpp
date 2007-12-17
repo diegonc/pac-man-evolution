@@ -64,7 +64,8 @@ void Jugador::quitar_personaje(){
 }
 
 void Jugador::set_invalido(){
-	this->invalido = false;
+   std::cout << "Setteo invalido el jugador " << this->id << "\n"<<std::flush; 	
+   this->invalido = true;
 }
 bool Jugador::es_invalido(){
 	return this->invalido;

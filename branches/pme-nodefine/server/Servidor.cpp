@@ -85,7 +85,7 @@ void Servidor::run(){
 	socket->escuchar();
 
    //Arranco al modelo
-   ModeloServidor::get_instancia()->start(); 
+   ModeloServidor::get_instancia()->start();
 
    //Inicio el primer nivel
    this->iniciar_nivel();
@@ -136,6 +136,7 @@ void Servidor::set_cant_max_clientes(unsigned int cant){
 }
 
 void Servidor::finalizar_servidor(){
+   std::cout << "Cerrando Servidor" << std::endl << std::flush;
    //Le digo que se deja de ejecutar
    this->ejecutando = false;
    //Si estaba esperando evento lo destrabo
@@ -152,6 +153,7 @@ bool Servidor::esta_ejecutando(){
 }
 
 void Servidor::inicializar(){
+   std::cout << "Inicializando Servidor" << std::endl << std::flush;   
    //setteo las propieades de la senial para cortar el accept
 	set_propiedades_signal(Servidor::SENIAL_CANCELAR);
 	//asigno por defecto las cantidades minimas y maximas de jugadores
@@ -226,6 +228,7 @@ void Servidor::procesar_nivel(){
 }
 
 void Servidor::finalizar_nivel(){
+   std::cout << "finalizando nivel" << std::endl << std::flush;
    //Cuando termina un nivel freno al avisador y le hago join
 	this->avisador->parar();
 	this->avisador->join();
@@ -233,6 +236,7 @@ void Servidor::finalizar_nivel(){
 }
 
 void Servidor::cambiar_nivel(){
+   std::cout << "cambiando de nivel" << std::endl << std::flush;
    //Finalizo el nivel anterior
    this->finalizar_nivel();
    //Mando a los clientes que el pacman gano el nivel
@@ -245,13 +249,15 @@ void Servidor::cambiar_nivel(){
 void Servidor::mandar_init(Cliente* cliente){
    //Si es pacman le manda que es pacman, sino que es fantasma
 	bool es_pacman = cliente->get_jugador()->get_personaje()->get_tipo() == Personaje::pacman;
-	S_ptr<Paquete> paquete_init(new PaqueteInit(es_pacman,ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()));
+	std::cout << "Mandando paquete init a: " << cliente->get_id() << std::endl << std::flush;  
+   S_ptr<Paquete> paquete_init(new PaqueteInit(es_pacman,ModeloServidor::get_instancia()->get_mundo().get_mapa_activo()));
    //Encolo el paquete para mandar
    cliente->get_escritor().encolar_paquete(paquete_init);
 }
 
 void Servidor::mandar_start(Cliente* cliente){
      //Creo un paquete start y lo encolo en el escritor del cliente
+      std::cout << "Mandando paquete start a: " << cliente->get_id() << std::endl << std::flush;
    	S_ptr<Paquete> paquete_start(new PaqueteStart(cliente->get_id()));
 	   cliente->get_escritor().encolar_paquete(paquete_start);
 }
@@ -271,14 +277,14 @@ void Servidor::mandar_stop(const char razon){
 	int puntaje = 0; //puntaje del pacman
 	if (encontrado) puntaje = cliente->get_jugador()->get_puntos();
 	//creo el paquete stop con el puntaje obtenido y se lo mando a todos los clientes
-	S_ptr<Paquete> paquete_stop(new PaqueteStop(razon, puntaje));
-	pool.mandar_mensaje_todos(paquete_stop);
+	//S_ptr<Paquete> paquete_stop(new PaqueteStop(razon, puntaje));
+	//pool.mandar_mensaje_todos(paquete_stop);
 }
 
 void Servidor::mandar_quit(){
 	//creo el paquete quit y se lo mando a todos los clientes
-	S_ptr<Paquete> paquete_quit(new PaqueteQuit());
-	pool.mandar_mensaje_todos(paquete_quit);
+	//S_ptr<Paquete> paquete_quit(new PaqueteQuit());
+	//pool.mandar_mensaje_todos(paquete_quit);
 }
 
 void Servidor::actualizar(Observable * observable, void * param){
@@ -291,16 +297,18 @@ void Servidor::actualizar(Observable * observable, void * param){
       //Me fijo si el cliente se conecto o se desconecto
       //Si esta en el pool es porque se conecto, de lo contrario se desconecto
       if (client_pool->buscar_cliente(cliente->get_id())){
+         std::cout << "Se agrego el cliente: " << cliente->get_id() << std::cout << std::endl;
          //Si la cantidad de clientes es mayor a la minima, y el modelo esta pausado, lo despauso
-      	if ((client_pool->get_cantidad_clientes() > cant_min_clientes) 
+      	if ((client_pool->get_cantidad_clientes() >= cant_min_clientes) 
              && (ModeloServidor::get_instancia()->esta_pausado())){
+               ModeloServidor::get_instancia()->reiniciar_partida();               
                ModeloServidor::get_instancia()->despausar();
          }
       } else {
          //Si la cantidad de clientes es menor a la minima, pauso el modelo y mando un stop indicando lo sucedido
       	if (client_pool->get_cantidad_clientes() < cant_min_clientes){
             ModeloServidor::get_instancia()->pausar();
-            this->mandar_stop(PaqueteStop::cant_insuficiente);
+            //this->mandar_stop(PaqueteStop::cant_insuficiente);
          }
       	//Si el cliente que se desconecto es el pac-man, aviso a los demas clientes y reinicio el nivel
       	if (cliente->get_jugador()->get_personaje()->get_tipo() == Personaje::pacman) {
