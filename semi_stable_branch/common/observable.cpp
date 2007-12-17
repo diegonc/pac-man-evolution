@@ -19,7 +19,7 @@ void Observable::avisar_observadores(void *param){
 		//recorro todos los observadores y les aviso
 		while( it != this->observadores.end() ){
 			Observador * obs = *it;
-			obs->actualizar(this,param);
+         obs->actualizar(this,param);
 			++it;
 		}
 		this->cambio = false;
