@@ -84,7 +84,7 @@ void ClientPool::actualizar(Observable* obs, void* param){
 std::list<Cliente*>::iterator ClientPool::buscar_interno(unsigned int id_cliente){
    bool encontrado = false;
    std::list<Cliente*>::iterator it = this->clientes.begin();  
-   while( it != clientes.end() && (!encontrado) ){
+   while( (!encontrado) && (it != clientes.end()) ){
 		if( (*it)->get_id() == id_cliente )
 			encontrado = true;
 		else
