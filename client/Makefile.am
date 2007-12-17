@@ -14,6 +14,7 @@ pme_client_SOURCES = \
 	Cargadorde3DS.h \
 	CargadordeTexturas.cpp \
 	CargadordeTexturas.h \
+	CreadorPaquete.cpp \
 	ColeccionObjetos.cpp \
 	ColeccionObjetos.h \
 	Escenario.cpp \
