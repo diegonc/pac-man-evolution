@@ -36,8 +36,8 @@ void PacMan::RemovedorPowerUp::cancel()
 	if( this->corriendo() ) {
 		/* TODO: mover a Thread */
 		pthread_cancel( this->get_hilo() );
-		pthread_detach( this->get_hilo() );
-	} else this->join();
+	}
+	this->join();
 }
 
 PacMan::RemovedorPowerUp::RemovedorPowerUp( PacMan& p ) : pacman( p ) { }
