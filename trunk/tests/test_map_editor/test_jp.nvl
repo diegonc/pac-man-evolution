@@ -12,5 +12,6 @@
         <Elemento Tipo="4" Orientacion="2" PosX="6" PosY="5" />
         <Elemento Tipo="6" Orientacion="0" PosX="5" PosY="9" />
         <Elemento Tipo="8" Orientacion="0" PosX="1" PosY="4" />
+        <Elemento Tipo="7" Orientacion="0" PosX="1" PosY="3" />
     </Mapa>
 </Nivel>
