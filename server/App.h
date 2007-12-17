@@ -10,6 +10,7 @@
 */
 
 #include "../common/smart_pointer.h"
+#include "../common/Configuracion.h"
 
 class App{
 	private:
@@ -20,7 +21,22 @@ class App{
 		
 		int argc;
 		char **argv;
-	
+
+		Configuracion conf;
+
+
+		void validar_linea_comando();
+
+		void cargar_configuracion();
+
+		std::string get_mundo_xml();
+
+		unsigned int get_puerto_servidor();
+
+		unsigned int get_cl_min();
+
+		unsigned int get_cl_max();
+
 	public:
 		~App();
 		
@@ -37,7 +53,5 @@ class App{
 		 */
 		int ejecutar();		
 };
-
-
 
 #endif /* __APP_H__ */

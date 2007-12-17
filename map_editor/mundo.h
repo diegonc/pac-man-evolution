@@ -80,11 +80,11 @@ class Mundo : public Observable {
 	/* ToXML: Guarda el mundo y todos sus niveles en archivos de la extension adecuada. Se debe pasar por parametro el nombre del archivo
 	   donde guardar la info del mundo.
 	   Devuelve true si se pudo guardar, false en caso contrario. */
-	bool toXml(char* nombre);
+	bool toXml(const char* nombre);
 	
 	/* fromXML: Carga el mundo con todos sus niveles desde el un archivo cuyo nombre se pasa por parametro.
 	   Devuelve true si pudo cargar, false en caso contrario. */
-	bool fromXml(char* nombre);
+	bool fromXml(const char* nombre);
 
 };
 

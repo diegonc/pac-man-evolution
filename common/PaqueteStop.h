@@ -6,18 +6,24 @@
 class PaqueteStop : public Paquete
 {
 	private:
-		int razon;
+		char razon;
 		int puntuacion;
 		/*
 		 * Estadisticas ?
 		 */
+
+		static const char pacman_gano;
+		static const char pacman_comido;
+		static const char pacman_desconecto;
+		static const char cant_insuficiente;
+		static const char termino_juego;
 
 	public:
 		/** Construye un paquete apto para deserializar. */
 		PaqueteStop();
 
 		/** Construye un paquete apto para serializar. */
-		PaqueteStop(int razon, int puntaje);
+		PaqueteStop(const char razon, int puntaje);
 
 		void serialize( OutputBitStream& bs );
 

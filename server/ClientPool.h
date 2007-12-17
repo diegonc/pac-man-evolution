@@ -4,8 +4,9 @@
 #include <list>
 #include "../common/Cliente.h"
 #include "../common/observable.h"
+#include "../common/observador.h"
 
-class ClientPool : public Observable {
+class ClientPool : public Observable, public Observador {
 
     std::list<Cliente*> clientes;
     unsigned int num_orden;
@@ -19,13 +20,16 @@ class ClientPool : public Observable {
 
         void join_all();
 	
-		const std::list<Cliente*> get_clientes();
+	const std::list<Cliente*> get_clientes();
 	
-		void mandar_mensaje_todos(S_ptr<Paquete> mensaje);
+	void mandar_mensaje_todos(S_ptr<Paquete> mensaje);
 	
-		unsigned int get_cantidad_clientes();
+	unsigned int get_cantidad_clientes();
 	
-		void quitar_cliente(unsigned int id_cliente);
+	void quitar_cliente(unsigned int id_cliente);
+
+	void actualizar(Observable* obs, void* param);
+
 };
 
 #endif /* __CLIENTPOOL_H__ */
