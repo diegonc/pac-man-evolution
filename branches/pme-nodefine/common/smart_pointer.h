@@ -20,6 +20,8 @@
 template <class Tipo> class S_ptr{
 	protected:
 		typedef typename std::runtime_error Runtime_Error;
+
+		template<class Y> friend class S_ptr;
 		
 		Tipo* objeto; //objeto que contiene el puntero
 		int *cantidad_referencias; //conteo de las referencias para liberar desp.
@@ -69,7 +71,9 @@ template <class Tipo> class S_ptr{
 			this->llave = NULO;
 		}
 		//constructor del objeto
-		S_ptr(Tipo *objeto){
+		template<class Y>
+		S_ptr(Y *_objeto){
+			Tipo* objeto = dynamic_cast<Tipo *>(_objeto);
 			//si no mando NULO como objeto, se lo asigno y le pongo en cant 1
 			if(objeto != NULO){
 				//se crea el entero que contiene la cantidad de referencias
@@ -85,11 +89,12 @@ template <class Tipo> class S_ptr{
 				this->objeto = NULO;
 			}
 		}
-		S_ptr(const S_ptr &p){
+		template<class Y>
+		S_ptr(const S_ptr<Y> &p){
 			if( ! p.es_nulo() ) {
 				Bloqueo b(p.llave);
 				//asigno el puntero al nuevo objeto
-				this->objeto = p.objeto;
+				this->objeto = dynamic_cast<Tipo *>(p.objeto);
 				// copio la llave
 				this->llave = p.llave;
 				//copio la variable de cantidad de referencias
