@@ -42,7 +42,7 @@ void App::validar_linea_comando()
 			std::string s("Error abriendo archivo para lectura: ");
 			s += argv[1];
 			s += "\nVerifique la ruta y los permisos del archivo.";
-			throw s;
+			throw std::runtime_error(s);
 		}
 	}
 }
@@ -53,8 +53,6 @@ void App::cargar_configuracion()
 	conf.set_conf( "direccion", ConfValue( std::string("0.0.0.0") ) );
 	conf.set_conf( "min-jugadores", ConfValue( 2U ) );
 	conf.set_conf( "max-jugadores", ConfValue( 5U ) );
-	conf.set_conf( "com-fantasmas", ConfValue( false ) );
-	conf.set_conf( "vidas", ConfValue( 1U ) );
 	// Se agregan las opciones del archivo de configuracion.
 	conf.load_conf( argv[1] );
 }
@@ -105,7 +103,6 @@ int App::ejecutar(){
 	try{
 		validar_linea_comando();
 		cargar_configuracion();
-		conf.dump( std::cout ); // TODO: quitar linea.
 		//creo el mundo de alto nivel y lo cargo del xml
 		Mundo mundo_alto_nivel;
 		if( mundo_alto_nivel.fromXml( get_mundo_xml().c_str() ) ) {
