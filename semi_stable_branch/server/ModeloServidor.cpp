@@ -157,8 +157,9 @@ void ModeloServidor::reiniciar_partida(){
       if(!hay_pacman){
              std::cout << "Asginando pacman\n;"<<std::flush;           
             Personaje * p = new PacMan(*it);
-            (*it)->quitar_personaje();
-            (*it)->set_personaje(p);
+            Jugador * j = *it;
+            j->quitar_personaje();
+            j->set_personaje(p);
       }
    }
    preparar_partida();
