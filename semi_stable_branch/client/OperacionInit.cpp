@@ -5,7 +5,7 @@ OperacionInit::OperacionInit( S_ptr<MapaBajoNivel> m, bool esPac ){
 		this->m = m ;
       this->esPac = esPac;
 }
-void OperacionInit::ejecutar(ModeloCommon &modelo){
+void OperacionInit::ejecutar(ModeloServidor &modelo){
 		MundoBajoNivel& mundo = modelo.get_mundo();
 		mundo.agregar_mapa( m );
 		modelo.set_cargado();

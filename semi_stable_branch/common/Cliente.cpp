@@ -10,8 +10,7 @@
 
 #define _VERSION_ACEPTADA	0
 
-Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket, S_ptr<ModeloCommon> m)
-	: modelo( m )
+Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket)
 {
 	
 	this->id = id;
@@ -21,18 +20,6 @@ Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket, S_ptr<ModeloCommon> m)
 	this->jugador = new Jugador(id);
 	//this->jugador = Tipo_Jugador(new Jugador(id));
 	
-}
-
-Cliente::Cliente(Socket_Cliente * socket, S_ptr<ModeloCommon> m)
-	: modelo( m )
-{
-	
-	//this->id = id;
-	this->socket = socket;
-	this->escuchador = new EscuchadorCliente(this);
-	this->escritor = new EscritorCliente(this);
-	this->jugador = 0; //new Jugador(id);
-	//this->jugador = Tipo_Jugador(new Jugador(id));
 }
 
 void Cliente::run()
@@ -128,10 +115,6 @@ Cliente::Tipo_Id Cliente::get_id(){
 	return id;
 }
 
-ModeloCommon& Cliente::get_modelo()
-{
-	return *modelo;
-}
 
 EscritorCliente& Cliente::get_escritor(){
 	return *escritor;

@@ -97,7 +97,7 @@ recompilar:
 	@$(RM) ../common/Paquete.o
 	@$(RM) ../common/EscuchadorCliente.o
 
-server: $(o_files)
+server: recompilar $(o_files)
 	@if [ -z "$(o_files)" ]; \
 	then \
 		echo "No hay archivos de entrada para el cliente (archivos client*.$(extension))."; \
