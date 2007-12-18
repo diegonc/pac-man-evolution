@@ -4,11 +4,11 @@ namespace{
 	const char ID = 3;
 }
 
-const char PaqueteStopCommon::pacman_gano = 0;
-const char PaqueteStopCommon::pacman_comido = 1;
-const char PaqueteStopCommon::pacman_desconecto = 2;
-const char PaqueteStopCommon::cant_insuficiente = 3;
-const char PaqueteStopCommon::termino_juego = 4;
+const char PaqueteStopCommon::pacman_gano = RazonPacmanGano;
+const char PaqueteStopCommon::pacman_comido = RazonPacmanComido;
+const char PaqueteStopCommon::pacman_desconecto = RazonPacmanDesconecto;
+const char PaqueteStopCommon::cant_insuficiente = RazonCantidadInsuficiente;
+const char PaqueteStopCommon::termino_juego = RazonTerminoJuego;
 
 PaqueteStopCommon::PaqueteStopCommon() : Paquete( ID ) { }
 
