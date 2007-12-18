@@ -66,6 +66,29 @@ pme_client_SOURCES = \
 	Sonidos.h \
 	main.cpp
 
+pme_client_EXTRA_DIST = \
+	ABC.bmp \
+	Icon.bmp \
+	Letra.bmp \
+	Mapa.bmp \
+	banana.3DS \
+	banana.bmp \
+	cerecita.3DS \
+	cerecita.bmp \
+	fantasma.3DS \
+	fantasma.bmp \
+	font.bmp \
+	pacman.3DS \
+	pacman.bmp \
+	pared.bmp \
+	pastilla.3DS \
+	pastilla.bmp \
+	piso.bmp \
+	powerup.3DS \
+	powerup.bmp \
+	textura.bmp \
+	MiniMap
+
 ##pme_client_CPPFLAGS = @GTK_CFLAGS@
 pme_client_CPPFLAGS = \
 	-I@top_srcdir@/common

@@ -55,6 +55,8 @@ pme_editor_SOURCES = \
 	vista_mapa.cpp \
 	vista_mapa.h 
 
+pme_editor_EXTRA_DIST = imagenes
+
 pme_editor_CPPFLAGS = \
 	@GTK_CFLAGS@ \
 	-I@top_srcdir@/common
