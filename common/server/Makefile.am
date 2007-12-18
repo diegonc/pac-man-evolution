@@ -59,14 +59,14 @@ libpme_server_a_SOURCES = \
 	PaqueteInitCommon.h \
 	PaqueteMensaje.cpp \
 	PaqueteMensaje.h \
-	PaqueteQuit.cpp \
-	PaqueteQuit.h \
+	PaqueteQuitCommon.cpp \
+	PaqueteQuitCommon.h \
 	PaqueteStartCommon.cpp \
 	PaqueteStartCommon.h \
 	PaqueteStatusCommon.cpp \
 	PaqueteStatusCommon.h \
-	PaqueteStop.cpp \
-	PaqueteStop.h \
+	PaqueteStopCommon.cpp \
+	PaqueteStopCommon.h \
 	PaqueteTeclaCommon.cpp \
 	PaqueteTeclaCommon.h \
 	Personaje.cpp \
