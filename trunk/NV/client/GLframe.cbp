@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="GLframe" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<MakeCommands>
+			<Build command="make" />
+			<CompileFile command="make" />
+			<Clean command="make clean" />
+			<DistClean command="make clean all" />
+		</MakeCommands>
+		<Build>
+			<Target title="Win32 Release">
+				<Option output="/home/jpbelli/Escritorio/COsas/NeHeGL SDL/Release/GLframe" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-D_MBCS" />
+					<Add directory="c:/lib/sdl/include" />
+				</Compiler>
+				<Linker>
+					<Add library="kernel32" />
+					<Add library="user32" />
+					<Add library="gdi32" />
+					<Add library="winspool" />
+					<Add library="comdlg32" />
+					<Add library="advapi32" />
+					<Add library="shell32" />
+					<Add library="ole32" />
+					<Add library="oleaut32" />
+					<Add library="uuid" />
+					<Add library="odbc32" />
+					<Add library="odbccp32" />
+					<Add directory="c:/lib/sdl/lib" />
+				</Linker>
+				<MakeCommands>
+					<Build command="make" />
+					<CompileFile command="make" />
+					<Clean command="make clean" />
+					<DistClean command="make clean all" />
+				</MakeCommands>
+			</Target>
+			<Target title="Win32 Debug">
+				<Option output="/home/jpbelli/Escritorio/COsas/NeHeGL SDL/Debug/GLframe" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-fexceptions" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-D_MBCS" />
+					<Add option="-DFULLSCREEN_ASK" />
+					<Add directory="c:/lib/sdl/include" />
+				</Compiler>
+				<Linker>
+					<Add library="kernel32" />
+					<Add library="user32" />
+					<Add library="gdi32" />
+					<Add library="winspool" />
+					<Add library="comdlg32" />
+					<Add library="advapi32" />
+					<Add library="shell32" />
+					<Add library="ole32" />
+					<Add library="oleaut32" />
+					<Add library="uuid" />
+					<Add library="odbc32" />
+					<Add library="odbccp32" />
+					<Add directory="c:/lib/sdl/lib" />
+				</Linker>
+				<MakeCommands>
+					<Build command="make" />
+					<CompileFile command="make" />
+					<Clean command="make clean" />
+					<DistClean command="make clean all" />
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="Aplicacion.cpp" />
+		<Unit filename="Aplicacion.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="AplicacionGrafica.cpp" />
+		<Unit filename="AplicacionGrafica.h" />
+		<Unit filename="Cargadorde3DS.cpp" />
+		<Unit filename="Cargadorde3DS.h" />
+		<Unit filename="CargadordeTexturas.cpp" />
+		<Unit filename="CargadordeTexturas.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="ColeccionObjetos.cpp" />
+		<Unit filename="ColeccionObjetos.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Escenario.cpp" />
+		<Unit filename="Escenario.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="EstadoAplicacion.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="ModeladorObjetos.cpp" />
+		<Unit filename="ModeladorObjetos.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="ObjetoVisual.h" />
+		<Unit filename="PosicionGraf.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
