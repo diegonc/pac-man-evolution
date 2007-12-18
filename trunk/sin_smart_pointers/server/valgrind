@@ -1,0 +1,1926 @@
+==31206== Memcheck, a memory error detector.
+==31206== Copyright (C) 2002-2006, and GNU GPL'd, by Julian Seward et al.
+==31206== Using LibVEX rev 1658, a library for dynamic binary translation.
+==31206== Copyright (C) 2004-2006, and GNU GPL'd, by OpenWorks LLP.
+==31206== Using valgrind-3.2.1-Debian, a dynamic binary instrumentation framework.
+==31206== Copyright (C) 2000-2006, and GNU GPL'd, by Julian Seward et al.
+==31206== For more details, rerun with: -v
+==31206== 
+==31206== My PID = 31206, parent PID = 5881.  Prog and args are:
+==31206==    ./miEjecutable
+==31206==    sample.conf
+==31206== 
+==31206== Conditional jump or move depends on uninitialised value(s)
+==31206==    at 0x805C8B9: ConfValue::operator=(ConfValue const&) (ConfValue.cpp:57)
+==31206==    by 0x805AB62: Configuracion::set_conf(std::string, ConfValue) (Configuracion.cpp:8)
+==31206==    by 0x804D670: App::cargar_configuracion() (App.cpp:53)
+==31206==    by 0x804D970: App::ejecutar() (App.cpp:105)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== Conditional jump or move depends on uninitialised value(s)
+==31206==    at 0x805C8B9: ConfValue::operator=(ConfValue const&) (ConfValue.cpp:57)
+==31206==    by 0x805AB62: Configuracion::set_conf(std::string, ConfValue) (Configuracion.cpp:8)
+==31206==    by 0x805AFF8: Configuracion::load_conf(std::string) (Configuracion.cpp:121)
+==31206==    by 0x804D8E0: App::cargar_configuracion() (App.cpp:57)
+==31206==    by 0x804D970: App::ejecutar() (App.cpp:105)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== Conditional jump or move depends on uninitialised value(s)
+==31206==    at 0x8073E2A: CasaFantasmas::agregate(S_ptr<Elemento>, Mapa*) (casa_fantasmas.cpp:16)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== Conditional jump or move depends on uninitialised value(s)
+==31206==    at 0x80971CC: Salida::agregate(S_ptr<Elemento>, Mapa*) (salida.cpp:26)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== Thread 2:
+==31206== Conditional jump or move depends on uninitialised value(s)
+==31206==    at 0x80552F8: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:186)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== Thread 6:
+==31206== Invalid read of size 4
+==31206==    at 0x8058CFB: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:64)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206==  Address 0x4B87DC8 is 0 bytes inside a block of size 36 free'd
+==31206==    at 0x4020F51: operator delete(void*) (vg_replace_malloc.c:244)
+==31206==    by 0x8053CCA: PaqueteStatus::~PaqueteStatus() (PaqueteStatus.cpp:13)
+==31206==    by 0x8058D5E: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:67)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== Invalid read of size 1
+==31206==    at 0x8069722: Paquete::serialize(OutputBitStream&) (Paquete.cpp:83)
+==31206==    by 0x8058D10: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:64)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206==  Address 0x4B87DCC is 4 bytes inside a block of size 36 free'd
+==31206==    at 0x4020F51: operator delete(void*) (vg_replace_malloc.c:244)
+==31206==    by 0x8053CCA: PaqueteStatus::~PaqueteStatus() (PaqueteStatus.cpp:13)
+==31206==    by 0x8058D5E: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:67)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== Invalid read of size 4
+==31206==    at 0x8058D50: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:67)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206==  Address 0x4B87DC8 is 0 bytes inside a block of size 36 free'd
+==31206==    at 0x4020F51: operator delete(void*) (vg_replace_malloc.c:244)
+==31206==    by 0x8053CCA: PaqueteStatus::~PaqueteStatus() (PaqueteStatus.cpp:13)
+==31206==    by 0x8058D5E: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:67)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== Invalid write of size 4
+==31206==    at 0x8069758: Paquete::~Paquete() (Paquete.cpp:27)
+==31206==    by 0x8058D5E: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:67)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206==  Address 0x4B87DC8 is 0 bytes inside a block of size 36 free'd
+==31206==    at 0x4020F51: operator delete(void*) (vg_replace_malloc.c:244)
+==31206==    by 0x8053CCA: PaqueteStatus::~PaqueteStatus() (PaqueteStatus.cpp:13)
+==31206==    by 0x8058D5E: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:67)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== Invalid free() / delete / delete[]
+==31206==    at 0x4020F51: operator delete(void*) (vg_replace_malloc.c:244)
+==31206==    by 0x806976D: Paquete::~Paquete() (Paquete.cpp:29)
+==31206==    by 0x8058D5E: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:67)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206==  Address 0x4B87DC8 is 0 bytes inside a block of size 36 free'd
+==31206==    at 0x4020F51: operator delete(void*) (vg_replace_malloc.c:244)
+==31206==    by 0x8053CCA: PaqueteStatus::~PaqueteStatus() (PaqueteStatus.cpp:13)
+==31206==    by 0x8058D5E: Cliente::enviar_mensaje(Paquete*) (Cliente.cpp:67)
+==31206==    by 0x805D4FF: EscritorCliente::run() (EscritorCliente.cpp:21)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== FILE DESCRIPTORS: 6 open at exit.
+==31206== Open AF_INET socket 5: 192.168.1.100:7776 <-> 201.231.232.12:61527
+==31206==    at 0x40007F2: (within /lib/ld-2.5.so)
+==31206==    by 0x805520D: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:178)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== Open AF_INET socket 4: <unbound> <-> unbound
+==31206==    at 0x40007F2: (within /lib/ld-2.5.so)
+==31206==    by 0x806E266: Socket_Server::Socket_Server() (server_socket.cpp:3)
+==31206==    by 0x805630E: Servidor::Servidor(unsigned short) (Servidor.cpp:58)
+==31206==    by 0x804DB36: App::ejecutar() (App.cpp:121)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== Open file descriptor 3: /home/alverbner/facultad/75.41 - taller/svn_proyecto_final/semi_stable_branch/server/valgrind
+==31206==    <inherited from parent>
+==31206== 
+==31206== Open file descriptor 2: /dev/pts/0
+==31206==    <inherited from parent>
+==31206== 
+==31206== Open file descriptor 1: /dev/pts/0
+==31206==    <inherited from parent>
+==31206== 
+==31206== Open file descriptor 0: /dev/pts/0
+==31206==    <inherited from parent>
+==31206== 
+==31206== 
+==31206== ERROR SUMMARY: 277 errors from 10 contexts (suppressed: 73 from 1)
+==31206== malloc/free: in use at exit: 236,205 bytes in 5,816 blocks.
+==31206== malloc/free: 13,546 allocs, 7,783 frees, 389,147 bytes allocated.
+==31206== For counts of detected errors, rerun with: -v
+==31206== searching for pointers to 5,816 not-freed blocks.
+==31206== checked 50,920,756 bytes.
+==31206== 
+==31206== Thread 1:
+==31206== 
+==31206== 1 bytes in 1 blocks are definitely lost in loss record 1 of 153
+==31206==    at 0x4021A55: operator new[](unsigned) (vg_replace_malloc.c:195)
+==31206==    by 0x8060713: InputBitStream::grow(unsigned) (InputBitStream.cpp:45)
+==31206==    by 0x80607E7: InputBitStream::read(unsigned) (InputBitStream.cpp:61)
+==31206==    by 0x8058C20: Cliente::recibir_mensaje() (Cliente.cpp:80)
+==31206==    by 0x805F1C9: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 1 bytes in 1 blocks are still reachable in loss record 2 of 153
+==31206==    at 0x4021A55: operator new[](unsigned) (vg_replace_malloc.c:195)
+==31206==    by 0x8060713: InputBitStream::grow(unsigned) (InputBitStream.cpp:45)
+==31206==    by 0x80607E7: InputBitStream::read(unsigned) (InputBitStream.cpp:61)
+==31206==    by 0x8058C20: Cliente::recibir_mensaje() (Cliente.cpp:80)
+==31206==    by 0x805F1C9: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 3 bytes in 3 blocks are still reachable in loss record 3 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80822B5: Mapa::Mapa(int, int) (mapa.cpp:33)
+==31206==    by 0x808E335: Nivel::Nivel(std::string, int, int) (nivel.cpp:12)
+==31206==    by 0x808BD8E: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 4 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805479A: S_ptr<Reloj>::S_ptr(Reloj*) (smart_pointer.h:76)
+==31206==    by 0x805454F: Reloj::get_instancia() (reloj.cpp:8)
+==31206==    by 0x80520FE: ModeloServidor::run() (ModeloServidor.cpp:60)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 5 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x804EBE0: S_ptr<Servidor>::S_ptr(Servidor*) (smart_pointer.h:76)
+==31206==    by 0x804DB4E: App::ejecutar() (App.cpp:121)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 6 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80533AC: S_ptr<ModeloServidor>::S_ptr(ModeloServidor*) (smart_pointer.h:76)
+==31206==    by 0x8052978: ModeloServidor::get_instancia() (ModeloServidor.cpp:13)
+==31206==    by 0x804DA57: App::ejecutar() (App.cpp:115)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 7 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x804EB4C: S_ptr<MundoBajoNivel>::S_ptr(MundoBajoNivel*) (smart_pointer.h:76)
+==31206==    by 0x804DA3A: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 8 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807CFDA: S_ptr<Elemento>::S_ptr<BifSur>(BifSur*) (smart_pointer.h:101)
+==31206==    by 0x807B4AE: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:154)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 9 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807CE50: S_ptr<Elemento>::S_ptr<BifNorte>(BifNorte*) (smart_pointer.h:101)
+==31206==    by 0x807B3F1: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:149)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 10 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807E0C8: S_ptr<Elemento>::S_ptr<Cruce>(Cruce*) (smart_pointer.h:101)
+==31206==    by 0x807C1AC: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:28)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 11 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807CCC6: S_ptr<Elemento>::S_ptr<BifOeste>(BifOeste*) (smart_pointer.h:101)
+==31206==    by 0x807B33D: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:144)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 12 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807D2EE: S_ptr<Elemento>::S_ptr<CasaOeste>(CasaOeste*) (smart_pointer.h:101)
+==31206==    by 0x807B6E3: Fab_Elementos::construir_casa(int, int, Orientacion) (fab_elementos.cpp:114)
+==31206==    by 0x807C034: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:19)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4 bytes in 1 blocks are still reachable in loss record 13 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x804EC74: S_ptr<App>::S_ptr(App*) (smart_pointer.h:76)
+==31206==    by 0x804CC65: App::get_instancia(int, char**) (App.cpp:24)
+==31206==    by 0x8051AEC: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 2 blocks are still reachable in loss record 14 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8060BF6: Jugador::Jugador(unsigned) (Jugador.cpp:15)
+==31206==    by 0x805963E: Cliente::Cliente(unsigned, Socket_Cliente*, S_ptr<ModeloCommon>) (Cliente.cpp:21)
+==31206==    by 0x805094B: ClientPool::lanzar_cliente(Socket_Cliente*) (ClientPool.cpp:20)
+==31206==    by 0x805525C: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:181)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 15 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8072EE9: BifSur::BifSur(int, int) (bif_sur.cpp:15)
+==31206==    by 0x807B496: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:154)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 16 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8072E60: BifSur::BifSur(int, int) (bif_sur.cpp:14)
+==31206==    by 0x807B496: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:154)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 17 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8072DED: BifSur::BifSur(int, int) (bif_sur.cpp:13)
+==31206==    by 0x807B496: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:154)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 18 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8071C3B: BifNorte::BifNorte(int, int) (bif_norte.cpp:15)
+==31206==    by 0x807B3D9: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:149)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 19 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8071BAF: BifNorte::BifNorte(int, int) (bif_norte.cpp:14)
+==31206==    by 0x807B3D9: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:149)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 20 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8071B3C: BifNorte::BifNorte(int, int) (bif_norte.cpp:13)
+==31206==    by 0x807B3D9: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:149)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 2 blocks are still reachable in loss record 21 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807D478: S_ptr<Elemento>::S_ptr<CasaNorte>(CasaNorte*) (smart_pointer.h:101)
+==31206==    by 0x807B797: Fab_Elementos::construir_casa(int, int, Orientacion) (fab_elementos.cpp:119)
+==31206==    by 0x807C034: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:19)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 22 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80762F3: Cruce::Cruce(int, int) (cruce.cpp:18)
+==31206==    by 0x807C194: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:28)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 23 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8076280: Cruce::Cruce(int, int) (cruce.cpp:17)
+==31206==    by 0x807C194: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:28)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 24 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80761F4: Cruce::Cruce(int, int) (cruce.cpp:16)
+==31206==    by 0x807C194: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:28)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 25 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8076168: Cruce::Cruce(int, int) (cruce.cpp:15)
+==31206==    by 0x807C194: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:28)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 26 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8072587: BifOeste::BifOeste(int, int) (bif_oeste.cpp:15)
+==31206==    by 0x807B328: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:144)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 27 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80724FB: BifOeste::BifOeste(int, int) (bif_oeste.cpp:14)
+==31206==    by 0x807B328: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:144)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 28 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8072488: BifOeste::BifOeste(int, int) (bif_oeste.cpp:13)
+==31206==    by 0x807B328: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:144)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 2 blocks are still reachable in loss record 29 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807E252: S_ptr<Elemento>::S_ptr<Power_Up>(Power_Up*) (smart_pointer.h:101)
+==31206==    by 0x807C269: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:33)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 1 blocks are still reachable in loss record 30 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80745F8: CasaOeste::CasaOeste(int, int) (casa_oeste.cpp:16)
+==31206==    by 0x807B6CE: Fab_Elementos::construir_casa(int, int, Orientacion) (fab_elementos.cpp:114)
+==31206==    by 0x807C034: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:19)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 2 blocks are still reachable in loss record 31 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807CB3C: S_ptr<Elemento>::S_ptr<BifEste>(BifEste*) (smart_pointer.h:101)
+==31206==    by 0x807B28C: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:139)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 8 bytes in 2 blocks are still reachable in loss record 32 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805C8EB: ConfValue::operator=(ConfValue const&) (ConfValue.cpp:59)
+==31206==    by 0x805AB62: Configuracion::set_conf(std::string, ConfValue) (Configuracion.cpp:8)
+==31206==    by 0x804D670: App::cargar_configuracion() (App.cpp:53)
+==31206==    by 0x804D970: App::ejecutar() (App.cpp:105)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 12 bytes in 1 blocks are still reachable in loss record 33 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8051379: __gnu_cxx::new_allocator<std::_List_node<Cliente*> >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x805139C: std::_List_base<Cliente*, std::allocator<Cliente*> >::_M_get_node() (stl_list.h:316)
+==31206==    by 0x80513B1: std::list<Cliente*, std::allocator<Cliente*> >::_M_create_node(Cliente* const&) (stl_list.h:448)
+==31206==    by 0x8051411: std::list<Cliente*, std::allocator<Cliente*> >::_M_insert(std::_List_iterator<Cliente*>, Cliente* const&) (stl_list.h:1139)
+==31206==    by 0x80515A1: std::list<Cliente*, std::allocator<Cliente*> >::push_back(Cliente* const&) (stl_list.h:761)
+==31206==    by 0x80509B5: ClientPool::lanzar_cliente(Socket_Cliente*) (ClientPool.cpp:22)
+==31206==    by 0x805525C: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:181)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 12 bytes in 1 blocks are still reachable in loss record 34 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805636B: Servidor::Servidor(unsigned short) (Servidor.cpp:64)
+==31206==    by 0x804DB36: App::ejecutar() (App.cpp:121)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 12 bytes in 1 blocks are still reachable in loss record 35 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80528B2: ModeloServidor::ModeloServidor() (ModeloServidor.cpp:6)
+==31206==    by 0x8052966: ModeloServidor::get_instancia() (ModeloServidor.cpp:13)
+==31206==    by 0x804DA57: App::ejecutar() (App.cpp:115)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 12 bytes in 3 blocks are still reachable in loss record 36 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807E566: S_ptr<Elemento>::S_ptr<Salida>(Salida*) (smart_pointer.h:101)
+==31206==    by 0x807C3E3: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:43)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 12 bytes in 3 blocks are still reachable in loss record 37 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807D916: S_ptr<Elemento>::S_ptr<EsqOeste>(EsqOeste*) (smart_pointer.h:101)
+==31206==    by 0x807BA89: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:84)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 12 bytes in 3 blocks are still reachable in loss record 38 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x808CC0E: S_ptr<Nivel>::S_ptr(Nivel*) (smart_pointer.h:76)
+==31206==    by 0x808BDA0: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 12 bytes in 3 blocks are still reachable in loss record 39 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8082292: Mapa::Mapa(int, int) (mapa.cpp:31)
+==31206==    by 0x808E335: Nivel::Nivel(std::string, int, int) (nivel.cpp:12)
+==31206==    by 0x808BD8E: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 16 bytes in 1 blocks are still reachable in loss record 40 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8054536: Reloj::get_instancia() (reloj.cpp:8)
+==31206==    by 0x80520FE: ModeloServidor::run() (ModeloServidor.cpp:60)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 16 bytes in 1 blocks are still reachable in loss record 41 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8057CBB: Traductor::traducir(Mundo*) (traductor.cpp:11)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 16 bytes in 2 blocks are still reachable in loss record 42 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8074120: CasaNorte::CasaNorte(int, int) (casa_norte.cpp:16)
+==31206==    by 0x807B77F: Fab_Elementos::construir_casa(int, int, Orientacion) (fab_elementos.cpp:119)
+==31206==    by 0x807C034: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:19)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 16 bytes in 2 blocks are still reachable in loss record 43 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8070F11: BifEste::BifEste(int, int) (bif_este.cpp:15)
+==31206==    by 0x807B277: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:139)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 16 bytes in 2 blocks are still reachable in loss record 44 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8070E88: BifEste::BifEste(int, int) (bif_este.cpp:14)
+==31206==    by 0x807B277: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:139)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 16 bytes in 2 blocks are still reachable in loss record 45 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8070E15: BifEste::BifEste(int, int) (bif_este.cpp:13)
+==31206==    by 0x807B277: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:139)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 16 bytes in 4 blocks are still reachable in loss record 46 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807DAA0: S_ptr<Elemento>::S_ptr<EsqNorte>(EsqNorte*) (smart_pointer.h:101)
+==31206==    by 0x807BB3D: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:89)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 16 bytes in 4 blocks are still reachable in loss record 47 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807D78C: S_ptr<Elemento>::S_ptr<EsqEste>(EsqEste*) (smart_pointer.h:101)
+==31206==    by 0x807B9D8: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:79)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 20 bytes in 5 blocks are still reachable in loss record 48 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807DDB4: S_ptr<Elemento>::S_ptr<PasilloHoriz>(PasilloHoriz*) (smart_pointer.h:101)
+==31206==    by 0x807BD57: Fab_Elementos::construir_pasillo(int, int, Orientacion) (fab_elementos.cpp:58)
+==31206==    by 0x807BF37: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:13)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 20 bytes in 5 blocks are still reachable in loss record 49 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807DC2A: S_ptr<Elemento>::S_ptr<EsqSur>(EsqSur*) (smart_pointer.h:101)
+==31206==    by 0x807BBFA: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:94)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 24 bytes in 3 blocks are still reachable in loss record 50 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80780DC: EsqOeste::EsqOeste(int, int) (esq_oeste.cpp:14)
+==31206==    by 0x807BA74: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:84)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 24 bytes in 3 blocks are still reachable in loss record 51 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807806C: EsqOeste::EsqOeste(int, int) (esq_oeste.cpp:13)
+==31206==    by 0x807BA74: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:84)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 24 bytes in 3 blocks are still reachable in loss record 52 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8083CF5: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::Grafo() (grafo.h:37)
+==31206==    by 0x80822A0: Mapa::Mapa(int, int) (mapa.cpp:31)
+==31206==    by 0x808E335: Nivel::Nivel(std::string, int, int) (nivel.cpp:12)
+==31206==    by 0x808BD8E: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 24 bytes in 3 blocks are still reachable in loss record 53 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x808BD6B: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 28 bytes in 1 blocks are still reachable in loss record 54 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8052523: ModeloServidor::agregar_jugador(Jugador*) (ModeloServidor.cpp:30)
+==31206==    by 0x80552A0: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:183)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 28 bytes in 1 blocks are still reachable in loss record 55 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807B474: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:154)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 28 bytes in 1 blocks are still reachable in loss record 56 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807B3B7: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:149)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 28 bytes in 1 blocks are still reachable in loss record 57 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807C172: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:28)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 28 bytes in 1 blocks are still reachable in loss record 58 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807B306: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:144)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 28 bytes in 1 blocks are still reachable in loss record 59 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807B6AC: Fab_Elementos::construir_casa(int, int, Orientacion) (fab_elementos.cpp:114)
+==31206==    by 0x807C034: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:19)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 32 bytes in 2 blocks are still reachable in loss record 60 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8059596: Cliente::Cliente(unsigned, Socket_Cliente*, S_ptr<ModeloCommon>) (Cliente.cpp:19)
+==31206==    by 0x805094B: ClientPool::lanzar_cliente(Socket_Cliente*) (ClientPool.cpp:20)
+==31206==    by 0x805525C: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:181)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 32 bytes in 4 blocks are still reachable in loss record 61 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8077961: EsqNorte::EsqNorte(int, int) (esq_norte.cpp:14)
+==31206==    by 0x807BB25: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:89)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 32 bytes in 4 blocks are still reachable in loss record 62 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80778F4: EsqNorte::EsqNorte(int, int) (esq_norte.cpp:13)
+==31206==    by 0x807BB25: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:89)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 32 bytes in 4 blocks are still reachable in loss record 63 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80771ED: EsqEste::EsqEste(int, int) (esq_este.cpp:14)
+==31206==    by 0x807B9C3: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:79)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 32 bytes in 4 blocks are still reachable in loss record 64 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8077180: EsqEste::EsqEste(int, int) (esq_este.cpp:13)
+==31206==    by 0x807B9C3: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:79)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 32 bytes in 1 blocks are still reachable in loss record 65 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x804CC3E: App::get_instancia(int, char**) (App.cpp:24)
+==31206==    by 0x8051AEC: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 36 bytes in 3 blocks are still reachable in loss record 66 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8067303: __gnu_cxx::new_allocator<std::_List_node<MapaBajoNivel*> >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x8067326: std::_List_base<MapaBajoNivel*, std::allocator<MapaBajoNivel*> >::_M_get_node() (stl_list.h:316)
+==31206==    by 0x806733B: std::list<MapaBajoNivel*, std::allocator<MapaBajoNivel*> >::_M_create_node(MapaBajoNivel* const&) (stl_list.h:448)
+==31206==    by 0x806739B: std::list<MapaBajoNivel*, std::allocator<MapaBajoNivel*> >::_M_insert(std::_List_iterator<MapaBajoNivel*>, MapaBajoNivel* const&) (stl_list.h:1139)
+==31206==    by 0x80673E9: std::list<MapaBajoNivel*, std::allocator<MapaBajoNivel*> >::push_back(MapaBajoNivel* const&) (stl_list.h:761)
+==31206==    by 0x8066D4A: MundoBasicImp::agregar_mapa(MapaBajoNivel*) (MundoBasicImp.cpp:33)
+==31206==    by 0x8057D57: Traductor::traducir(Mundo*) (traductor.cpp:18)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 40 bytes in 10 blocks are still reachable in loss record 67 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807E3DC: S_ptr<Elemento>::S_ptr<Bonus>(Bonus*) (smart_pointer.h:101)
+==31206==    by 0x807C326: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:38)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 40 bytes in 5 blocks are still reachable in loss record 68 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80926EB: PasilloHoriz::PasilloHoriz(int, int) (pas_horiz.cpp:14)
+==31206==    by 0x807BD45: Fab_Elementos::construir_pasillo(int, int, Orientacion) (fab_elementos.cpp:58)
+==31206==    by 0x807BF37: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:13)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 40 bytes in 5 blocks are still reachable in loss record 69 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x809267E: PasilloHoriz::PasilloHoriz(int, int) (pas_horiz.cpp:13)
+==31206==    by 0x807BD45: Fab_Elementos::construir_pasillo(int, int, Orientacion) (fab_elementos.cpp:58)
+==31206==    by 0x807BF37: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:13)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 40 bytes in 5 blocks are still reachable in loss record 70 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8078859: EsqSur::EsqSur(int, int) (esq_sur.cpp:14)
+==31206==    by 0x807BBE2: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:94)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 40 bytes in 5 blocks are still reachable in loss record 71 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80787EC: EsqSur::EsqSur(int, int) (esq_sur.cpp:13)
+==31206==    by 0x807BBE2: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:94)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 48 bytes in 2 blocks are still reachable in loss record 72 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80660B7: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<unsigned const, Jugador*> > >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x80660DA: std::_Rb_tree<unsigned, std::pair<unsigned const, Jugador*>, std::_Select1st<std::pair<unsigned const, Jugador*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, Jugador*> > >::_M_get_node() (stl_tree.h:358)
+==31206==    by 0x80660EF: std::_Rb_tree<unsigned, std::pair<unsigned const, Jugador*>, std::_Select1st<std::pair<unsigned const, Jugador*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, Jugador*> > >::_M_create_node(std::pair<unsigned const, Jugador*> const&) (stl_tree.h:367)
+==31206==    by 0x80661ED: std::_Rb_tree<unsigned, std::pair<unsigned const, Jugador*>, std::_Select1st<std::pair<unsigned const, Jugador*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, Jugador*> > >::_M_insert(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::pair<unsigned const, Jugador*> const&) (stl_tree.h:819)
+==31206==    by 0x806634D: std::_Rb_tree<unsigned, std::pair<unsigned const, Jugador*>, std::_Select1st<std::pair<unsigned const, Jugador*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, Jugador*> > >::insert_unique(std::pair<unsigned const, Jugador*> const&) (stl_tree.h:927)
+==31206==    by 0x806650F: std::_Rb_tree<unsigned, std::pair<unsigned const, Jugador*>, std::_Select1st<std::pair<unsigned const, Jugador*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, Jugador*> > >::insert_unique(std::_Rb_tree_iterator<std::pair<unsigned const, Jugador*> >, std::pair<unsigned const, Jugador*> const&) (stl_tree.h:949)
+==31206==    by 0x8066891: std::map<unsigned, Jugador*, std::less<unsigned>, std::allocator<std::pair<unsigned const, Jugador*> > >::insert(std::_Rb_tree_iterator<std::pair<unsigned const, Jugador*> >, std::pair<unsigned const, Jugador*> const&) (stl_map.h:420)
+==31206==    by 0x806698B: std::map<unsigned, Jugador*, std::less<unsigned>, std::allocator<std::pair<unsigned const, Jugador*> > >::operator[](unsigned const&) (stl_map.h:348)
+==31206==    by 0x8064A4A: ModeloCommon::agregar_jugador(Jugador*) (ModeloCommon.cpp:31)
+==31206==    by 0x8052583: ModeloServidor::agregar_jugador(Jugador*) (ModeloServidor.cpp:34)
+==31206==    by 0x80552A0: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:183)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 48 bytes in 2 blocks are still reachable in loss record 73 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807C22F: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:33)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 48 bytes in 12 blocks are still reachable in loss record 74 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807C69E: S_ptr<Elemento>::S_ptr<PortalOeste>(PortalOeste*) (smart_pointer.h:101)
+==31206==    by 0x80938DB: PortalEste::crear_simetrico(Mapa*) (portal_este.cpp:41)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 48 bytes in 12 blocks are still reachable in loss record 75 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807C514: S_ptr<Elemento>::S_ptr<PortalEste>(PortalEste*) (smart_pointer.h:101)
+==31206==    by 0x807AEE6: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:169)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 48 bytes in 12 blocks are still reachable in loss record 76 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807C9B2: S_ptr<Elemento>::S_ptr<PortalSur>(PortalSur*) (smart_pointer.h:101)
+==31206==    by 0x809451D: PortalNorte::crear_simetrico(Mapa*) (portal_norte.cpp:40)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 48 bytes in 12 blocks are still reachable in loss record 77 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807C828: S_ptr<Elemento>::S_ptr<PortalNorte>(PortalNorte*) (smart_pointer.h:101)
+==31206==    by 0x807B04B: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:179)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 56 bytes in 1 blocks are still reachable in loss record 78 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8056228: Servidor::inicializar() (Servidor.cpp:171)
+==31206==    by 0x805635F: Servidor::Servidor(unsigned short) (Servidor.cpp:62)
+==31206==    by 0x804DB36: App::ejecutar() (App.cpp:121)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 56 bytes in 1 blocks are still reachable in loss record 79 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8056300: Servidor::Servidor(unsigned short) (Servidor.cpp:58)
+==31206==    by 0x804DB36: App::ejecutar() (App.cpp:121)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 56 bytes in 2 blocks are still reachable in loss record 80 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805A5A0: ComestibleFactory::construir(char, Posicion&) (ComestibleFactory.cpp:19)
+==31206==    by 0x805F7AC: EstructuralPasillo::set_comida(char const&) (EstructuralPasillo.cpp:28)
+==31206==    by 0x805FA0A: EstructuralPasillo::EstructuralPasillo(char const&, Posicion&) (EstructuralPasillo.cpp:6)
+==31206==    by 0x805FF3B: EstructuralUnitarioFactory::construir(Posicion&, char, char) (EstructuralUnitarioFactory.cpp:18)
+==31206==    by 0x8057AD3: Traductor::traducir_mapa(Mapa*) (traductor.cpp:54)
+==31206==    by 0x8057D3B: Traductor::traducir(Mundo*) (traductor.cpp:16)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 56 bytes in 2 blocks are still reachable in loss record 81 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807B75D: Fab_Elementos::construir_casa(int, int, Orientacion) (fab_elementos.cpp:119)
+==31206==    by 0x807C034: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:19)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 56 bytes in 2 blocks are still reachable in loss record 82 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807B255: Fab_Elementos::construir_bifurc(int, int, Orientacion) (fab_elementos.cpp:139)
+==31206==    by 0x807C0A8: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:22)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 64 bytes in 2 blocks are still reachable in loss record 83 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805E701: __gnu_cxx::new_allocator<Paquete**>::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x805E739: std::_Deque_base<Paquete*, std::allocator<Paquete*> >::_M_allocate_map(unsigned) (stl_deque.h:424)
+==31206==    by 0x805EE53: std::_Deque_base<Paquete*, std::allocator<Paquete*> >::_M_initialize_map(unsigned) (stl_deque.h:471)
+==31206==    by 0x805EF90: std::_Deque_base<Paquete*, std::allocator<Paquete*> >::_Deque_base(std::allocator<Paquete*> const&, unsigned) (stl_deque.h:368)
+==31206==    by 0x805F01B: std::deque<Paquete*, std::allocator<Paquete*> >::deque(std::deque<Paquete*, std::allocator<Paquete*> > const&) (stl_deque.h:690)
+==31206==    by 0x805F11D: std::queue<Paquete*, std::deque<Paquete*, std::allocator<Paquete*> > >::queue(std::deque<Paquete*, std::allocator<Paquete*> > const&) (stl_queue.h:146)
+==31206==    by 0x805D974: EscritorCliente::EscritorCliente(Cliente*) (EscritorCliente.cpp:5)
+==31206==    by 0x80595F6: Cliente::Cliente(unsigned, Socket_Cliente*, S_ptr<ModeloCommon>) (Cliente.cpp:20)
+==31206==    by 0x805094B: ClientPool::lanzar_cliente(Socket_Cliente*) (ClientPool.cpp:20)
+==31206==    by 0x805525C: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:181)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 72 bytes in 1 blocks are still reachable in loss record 84 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80524DB: ModeloServidor::agregar_jugador(Jugador*) (ModeloServidor.cpp:28)
+==31206==    by 0x80552A0: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:183)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 72 bytes in 2 blocks are still reachable in loss record 85 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805960B: Cliente::Cliente(unsigned, Socket_Cliente*, S_ptr<ModeloCommon>) (Cliente.cpp:21)
+==31206==    by 0x805094B: ClientPool::lanzar_cliente(Socket_Cliente*) (ClientPool.cpp:20)
+==31206==    by 0x805525C: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:181)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 72 bytes in 6 blocks are still reachable in loss record 86 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8067F9D: __gnu_cxx::new_allocator<std::_List_node<Observador*> >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x8067FC0: std::_List_base<Observador*, std::allocator<Observador*> >::_M_get_node() (stl_list.h:316)
+==31206==    by 0x8067FD5: std::list<Observador*, std::allocator<Observador*> >::_M_create_node(Observador* const&) (stl_list.h:448)
+==31206==    by 0x8068035: std::list<Observador*, std::allocator<Observador*> >::_M_insert(std::_List_iterator<Observador*>, Observador* const&) (stl_list.h:1139)
+==31206==    by 0x8068083: std::list<Observador*, std::allocator<Observador*> >::push_back(Observador* const&) (stl_list.h:761)
+==31206==    by 0x8067AED: Observable::agregar_observador(Observador*) (observable.cpp:38)
+==31206==    by 0x80561E3: Servidor::inicializar() (Servidor.cpp:167)
+==31206==    by 0x805635F: Servidor::Servidor(unsigned short) (Servidor.cpp:62)
+==31206==    by 0x804DB36: App::ejecutar() (App.cpp:121)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 72 bytes in 3 blocks are still reachable in loss record 87 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807C3A9: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:43)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 84 bytes in 3 blocks are still reachable in loss record 88 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807BA52: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:84)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 4 blocks are still reachable in loss record 89 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x806016E: Evento::Evento() (evento.cpp:4)
+==31206==    by 0x80528C0: ModeloServidor::ModeloServidor() (ModeloServidor.cpp:6)
+==31206==    by 0x8052966: ModeloServidor::get_instancia() (ModeloServidor.cpp:13)
+==31206==    by 0x804DA57: App::ejecutar() (App.cpp:115)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 90 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x809343D: PortalEste::conectar_con_simetrico(S_ptr<Elemento>, S_ptr<Elemento>, Mapa*) (portal_este.cpp:58)
+==31206==    by 0x8095521: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:30)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 91 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80957B3: PortalOeste::conectar_con_simetrico(S_ptr<Elemento>, S_ptr<Elemento>, Mapa*) (portal_oeste.cpp:57)
+==31206==    by 0x8095521: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:30)
+==31206==    by 0x8095162: Portal::agregar_simetrico(Mapa*) (portal.cpp:81)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 92 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8095DE2: PortalOeste::PortalOeste(int, int) (portal_oeste.cpp:11)
+==31206==    by 0x80938C3: PortalEste::crear_simetrico(Mapa*) (portal_este.cpp:41)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 93 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8095D5C: PortalOeste::PortalOeste(int, int) (portal_oeste.cpp:10)
+==31206==    by 0x80938C3: PortalEste::crear_simetrico(Mapa*) (portal_este.cpp:41)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 94 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8093A74: PortalEste::PortalEste(int, int) (portal_este.cpp:11)
+==31206==    by 0x807AED1: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:169)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 95 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80939EE: PortalEste::PortalEste(int, int) (portal_este.cpp:10)
+==31206==    by 0x807AED1: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:169)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 96 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8094087: PortalNorte::conectar_con_simetrico(S_ptr<Elemento>, S_ptr<Elemento>, Mapa*) (portal_norte.cpp:57)
+==31206==    by 0x8095521: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:30)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 97 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80963B1: PortalSur::conectar_con_simetrico(S_ptr<Elemento>, S_ptr<Elemento>, Mapa*) (portal_sur.cpp:57)
+==31206==    by 0x8095521: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:30)
+==31206==    by 0x8095162: Portal::agregar_simetrico(Mapa*) (portal.cpp:81)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 98 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80969E8: PortalSur::PortalSur(int, int) (portal_sur.cpp:11)
+==31206==    by 0x8094505: PortalNorte::crear_simetrico(Mapa*) (portal_norte.cpp:40)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 99 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8096962: PortalSur::PortalSur(int, int) (portal_sur.cpp:10)
+==31206==    by 0x8094505: PortalNorte::crear_simetrico(Mapa*) (portal_norte.cpp:40)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 100 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80946B6: PortalNorte::PortalNorte(int, int) (portal_norte.cpp:11)
+==31206==    by 0x807B033: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:179)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 96 bytes in 12 blocks are still reachable in loss record 101 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8094630: PortalNorte::PortalNorte(int, int) (portal_norte.cpp:10)
+==31206==    by 0x807B033: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:179)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 112 bytes in 2 blocks are still reachable in loss record 102 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x806D67F: Socket_Server::aceptar() (server_socket.cpp:78)
+==31206==    by 0x805520D: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:178)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 112 bytes in 4 blocks are still reachable in loss record 103 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807BB03: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:89)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 112 bytes in 4 blocks are still reachable in loss record 104 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807B9A1: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:79)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 120 bytes in 3 blocks are still reachable in loss record 105 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x808E319: Nivel::Nivel(std::string, int, int) (nivel.cpp:12)
+==31206==    by 0x808BD8E: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 132 bytes in 3 blocks are still reachable in loss record 106 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80579EE: Traductor::traducir_mapa(Mapa*) (traductor.cpp:47)
+==31206==    by 0x8057D3B: Traductor::traducir(Mundo*) (traductor.cpp:16)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 132 bytes in 3 blocks are still reachable in loss record 107 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x808D103: __gnu_cxx::new_allocator<std::_List_node<S_ptr<Nivel> > >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x808D126: std::_List_base<S_ptr<Nivel>, std::allocator<S_ptr<Nivel> > >::_M_get_node() (stl_list.h:316)
+==31206==    by 0x808D13B: std::list<S_ptr<Nivel>, std::allocator<S_ptr<Nivel> > >::_M_create_node(S_ptr<Nivel> const&) (stl_list.h:448)
+==31206==    by 0x808D23B: std::list<S_ptr<Nivel>, std::allocator<S_ptr<Nivel> > >::_M_insert(std::_List_iterator<S_ptr<Nivel> >, S_ptr<Nivel> const&) (stl_list.h:1139)
+==31206==    by 0x808D289: std::list<S_ptr<Nivel>, std::allocator<S_ptr<Nivel> > >::push_back(S_ptr<Nivel> const&) (stl_list.h:761)
+==31206==    by 0x808BDD8: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:23)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 140 bytes in 5 blocks are still reachable in loss record 108 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807BD29: Fab_Elementos::construir_pasillo(int, int, Orientacion) (fab_elementos.cpp:58)
+==31206==    by 0x807BF37: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:13)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 140 bytes in 5 blocks are still reachable in loss record 109 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807BBC0: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:94)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 140 bytes in 5 blocks are still reachable in loss record 110 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805BB9E: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::string const, ConfValue> > >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x805BBC2: std::_Rb_tree<std::string, std::pair<std::string const, ConfValue>, std::_Select1st<std::pair<std::string const, ConfValue> >, std::less<std::string>, std::allocator<std::pair<std::string const, ConfValue> > >::_M_get_node() (stl_tree.h:358)
+==31206==    by 0x805BBD7: std::_Rb_tree<std::string, std::pair<std::string const, ConfValue>, std::_Select1st<std::pair<std::string const, ConfValue> >, std::less<std::string>, std::allocator<std::pair<std::string const, ConfValue> > >::_M_create_node(std::pair<std::string const, ConfValue> const&) (stl_tree.h:367)
+==31206==    by 0x805BCEB: std::_Rb_tree<std::string, std::pair<std::string const, ConfValue>, std::_Select1st<std::pair<std::string const, ConfValue> >, std::less<std::string>, std::allocator<std::pair<std::string const, ConfValue> > >::_M_insert(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::pair<std::string const, ConfValue> const&) (stl_tree.h:819)
+==31206==    by 0x805BE4B: std::_Rb_tree<std::string, std::pair<std::string const, ConfValue>, std::_Select1st<std::pair<std::string const, ConfValue> >, std::less<std::string>, std::allocator<std::pair<std::string const, ConfValue> > >::insert_unique(std::pair<std::string const, ConfValue> const&) (stl_tree.h:927)
+==31206==    by 0x805C00D: std::_Rb_tree<std::string, std::pair<std::string const, ConfValue>, std::_Select1st<std::pair<std::string const, ConfValue> >, std::less<std::string>, std::allocator<std::pair<std::string const, ConfValue> > >::insert_unique(std::_Rb_tree_iterator<std::pair<std::string const, ConfValue> >, std::pair<std::string const, ConfValue> const&) (stl_tree.h:949)
+==31206==    by 0x805C38F: std::map<std::string, ConfValue, std::less<std::string>, std::allocator<std::pair<std::string const, ConfValue> > >::insert(std::_Rb_tree_iterator<std::pair<std::string const, ConfValue> >, std::pair<std::string const, ConfValue> const&) (stl_map.h:420)
+==31206==    by 0x805C491: std::map<std::string, ConfValue, std::less<std::string>, std::allocator<std::pair<std::string const, ConfValue> > >::operator[](std::string const&) (stl_map.h:348)
+==31206==    by 0x805AB51: Configuracion::set_conf(std::string, ConfValue) (Configuracion.cpp:8)
+==31206==    by 0x804D670: App::cargar_configuracion() (App.cpp:53)
+==31206==    by 0x804D970: App::ejecutar() (App.cpp:105)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 152 bytes in 1 blocks are still reachable in loss record 111 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8052958: ModeloServidor::get_instancia() (ModeloServidor.cpp:13)
+==31206==    by 0x804DA57: App::ejecutar() (App.cpp:115)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 160 bytes in 5 blocks are still reachable in loss record 112 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x809389B: PortalEste::crear_simetrico(Mapa*) (portal_este.cpp:41)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 160 bytes in 5 blocks are still reachable in loss record 113 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807AEAF: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:169)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 192 bytes in 4 blocks are still reachable in loss record 114 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8060190: Evento::Evento() (evento.cpp:5)
+==31206==    by 0x80528C0: ModeloServidor::ModeloServidor() (ModeloServidor.cpp:6)
+==31206==    by 0x8052966: ModeloServidor::get_instancia() (ModeloServidor.cpp:13)
+==31206==    by 0x804DA57: App::ejecutar() (App.cpp:115)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 192 bytes in 6 blocks are still reachable in loss record 115 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x809680F: PortalSur::crear_simetrico(Mapa*) (portal_sur.cpp:40)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 192 bytes in 6 blocks are still reachable in loss record 116 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807B0CE: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:184)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 192 bytes in 6 blocks are still reachable in loss record 117 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80944DD: PortalNorte::crear_simetrico(Mapa*) (portal_norte.cpp:40)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 192 bytes in 6 blocks are still reachable in loss record 118 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807B011: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:179)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 216 bytes in 3 blocks are still reachable in loss record 119 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80577C1: Traductor::traducir_mapa(Mapa*) (traductor.cpp:27)
+==31206==    by 0x8057D3B: Traductor::traducir(Mundo*) (traductor.cpp:16)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 216 bytes in 3 blocks are still reachable in loss record 120 of 153
+==31206==    at 0x4021A55: operator new[](unsigned) (vg_replace_malloc.c:195)
+==31206==    by 0x808207B: Mapa::Mapa(int, int) (mapa.cpp:15)
+==31206==    by 0x808E335: Nivel::Nivel(std::string, int, int) (nivel.cpp:12)
+==31206==    by 0x808BD8E: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 224 bytes in 7 blocks are still reachable in loss record 121 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8095C09: PortalOeste::crear_simetrico(Mapa*) (portal_oeste.cpp:40)
+==31206==    by 0x80950C8: Portal::agregar_simetrico(Mapa*) (portal.cpp:78)
+==31206==    by 0x809540B: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:24)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 224 bytes in 7 blocks are still reachable in loss record 122 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807AF60: Fab_Elementos::construir_portal(int, int, Orientacion) (fab_elementos.cpp:174)
+==31206==    by 0x807C11C: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:25)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 232 bytes in 2 blocks are still reachable in loss record 123 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8050928: ClientPool::lanzar_cliente(Socket_Cliente*) (ClientPool.cpp:20)
+==31206==    by 0x805525C: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:181)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 236 bytes in 10 blocks are possibly lost in loss record 124 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x47F7A0A: std::string::_Rep::_S_create(unsigned, unsigned, std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.8)
+==31206==    by 0x47F8824: (within /usr/lib/libstdc++.so.6.0.8)
+==31206==    by 0x47F8A36: std::string::string(char const*, std::allocator<char> const&) (in /usr/lib/libstdc++.so.6.0.8)
+==31206==    by 0x804D61D: App::cargar_configuracion() (App.cpp:53)
+==31206==    by 0x804D970: App::ejecutar() (App.cpp:105)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 240 bytes in 1 blocks are still reachable in loss record 125 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x804DB15: App::ejecutar() (App.cpp:121)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 240 bytes in 10 blocks are still reachable in loss record 126 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807C2EC: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:38)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 272 bytes in 2 blocks are still reachable in loss record 127 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80595C0: Cliente::Cliente(unsigned, Socket_Cliente*, S_ptr<ModeloCommon>) (Cliente.cpp:20)
+==31206==    by 0x805094B: ClientPool::lanzar_cliente(Socket_Cliente*) (ClientPool.cpp:20)
+==31206==    by 0x805525C: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:181)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 280 bytes in 10 blocks are still reachable in loss record 128 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805A633: ComestibleFactory::construir(char, Posicion&) (ComestibleFactory.cpp:25)
+==31206==    by 0x805F7AC: EstructuralPasillo::set_comida(char const&) (EstructuralPasillo.cpp:28)
+==31206==    by 0x805FA0A: EstructuralPasillo::EstructuralPasillo(char const&, Posicion&) (EstructuralPasillo.cpp:6)
+==31206==    by 0x805FF3B: EstructuralUnitarioFactory::construir(Posicion&, char, char) (EstructuralUnitarioFactory.cpp:18)
+==31206==    by 0x8057AD3: Traductor::traducir_mapa(Mapa*) (traductor.cpp:54)
+==31206==    by 0x8057D3B: Traductor::traducir(Mundo*) (traductor.cpp:16)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 312 bytes in 78 blocks are still reachable in loss record 129 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80851BA: S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> >::S_ptr(Vertice<Wrapper<DatoVertice>, Obj_Nulo>*) (smart_pointer.h:76)
+==31206==    by 0x808648C: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_vertice(Wrapper<DatoVertice>&) (grafo.h:61)
+==31206==    by 0x8081BF6: Mapa::insertar_elemento(S_ptr<Elemento>) (mapa.cpp:88)
+==31206==    by 0x8079830: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:127)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 312 bytes in 78 blocks are still reachable in loss record 130 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x808377C: Wrapper<DatoVertice>::Wrapper(DatoVertice*) (wrapper.h:46)
+==31206==    by 0x8081B8B: Mapa::insertar_elemento(S_ptr<Elemento>) (mapa.cpp:87)
+==31206==    by 0x8079830: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:127)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 624 bytes in 78 blocks are still reachable in loss record 131 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8084339: Vertice<Wrapper<DatoVertice>, Obj_Nulo>::Vertice(Wrapper<DatoVertice>&) (vertice.h:36)
+==31206==    by 0x808647A: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_vertice(Wrapper<DatoVertice>&) (grafo.h:61)
+==31206==    by 0x8081BF6: Mapa::insertar_elemento(S_ptr<Elemento>) (mapa.cpp:88)
+==31206==    by 0x8079830: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:127)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 632 bytes in 78 blocks are still reachable in loss record 132 of 153
+==31206==    at 0x4021A55: operator new[](unsigned) (vg_replace_malloc.c:195)
+==31206==    by 0x807A640: Estructural::Estructural(int, int, int, int, Orientacion) (estructural.cpp:10)
+==31206==    by 0x80770CF: EsqEste::EsqEste(int, int) (esq_este.cpp:8)
+==31206==    by 0x807B9C3: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:79)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 756 bytes in 21 blocks are still reachable in loss record 133 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805FED7: EstructuralUnitarioFactory::construir(Posicion&, char, char) (EstructuralUnitarioFactory.cpp:15)
+==31206==    by 0x8057B1A: Traductor::traducir_mapa(Mapa*) (traductor.cpp:57)
+==31206==    by 0x8057D3B: Traductor::traducir(Mundo*) (traductor.cpp:16)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 832 bytes in 208 blocks are still reachable in loss record 134 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8071756: S_ptr<Punto>::S_ptr(Punto*) (smart_pointer.h:76)
+==31206==    by 0x80771BA: EsqEste::EsqEste(int, int) (esq_este.cpp:13)
+==31206==    by 0x807B9C3: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:79)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 864 bytes in 6 blocks are possibly lost in loss record 135 of 153
+==31206==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==31206==    by 0x400FFA7: (within /lib/ld-2.5.so)
+==31206==    by 0x401006B: _dl_allocate_tls (in /lib/ld-2.5.so)
+==31206==    by 0x403CA4F: pthread_create@@GLIBC_2.1 (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x806F35C: Thread::start() (thread.cpp:5)
+==31206==    by 0x804DBF1: App::ejecutar() (App.cpp:129)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 936 bytes in 78 blocks are still reachable in loss record 136 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8086465: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_vertice(Wrapper<DatoVertice>&) (grafo.h:61)
+==31206==    by 0x8081BF6: Mapa::insertar_elemento(S_ptr<Elemento>) (mapa.cpp:88)
+==31206==    by 0x8079830: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:127)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 1,024 bytes in 2 blocks are still reachable in loss record 137 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805E7A9: __gnu_cxx::new_allocator<Paquete*>::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x805E7D6: std::_Deque_base<Paquete*, std::allocator<Paquete*> >::_M_allocate_node() (stl_deque.h:413)
+==31206==    by 0x805ED8D: std::_Deque_base<Paquete*, std::allocator<Paquete*> >::_M_create_nodes(Paquete***, Paquete***) (stl_deque.h:509)
+==31206==    by 0x805EE98: std::_Deque_base<Paquete*, std::allocator<Paquete*> >::_M_initialize_map(unsigned) (stl_deque.h:483)
+==31206==    by 0x805EF90: std::_Deque_base<Paquete*, std::allocator<Paquete*> >::_Deque_base(std::allocator<Paquete*> const&, unsigned) (stl_deque.h:368)
+==31206==    by 0x805F01B: std::deque<Paquete*, std::allocator<Paquete*> >::deque(std::deque<Paquete*, std::allocator<Paquete*> > const&) (stl_deque.h:690)
+==31206==    by 0x805F11D: std::queue<Paquete*, std::deque<Paquete*, std::allocator<Paquete*> > >::queue(std::deque<Paquete*, std::allocator<Paquete*> > const&) (stl_queue.h:146)
+==31206==    by 0x805D974: EscritorCliente::EscritorCliente(Cliente*) (EscritorCliente.cpp:5)
+==31206==    by 0x80595F6: Cliente::Cliente(unsigned, Socket_Cliente*, S_ptr<ModeloCommon>) (Cliente.cpp:20)
+==31206==    by 0x805094B: ClientPool::lanzar_cliente(Socket_Cliente*) (ClientPool.cpp:20)
+==31206==    by 0x805525C: Servidor::aceptar_nuevo_cliente() (Servidor.cpp:181)
+==31206==    by 0x8055AEA: Servidor::run() (Servidor.cpp:97)
+==31206==    by 0x806F237: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==31206==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==31206==    by 0x492B57D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 1,024 bytes in 256 blocks are still reachable in loss record 138 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8084804: S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > >::S_ptr(Arco<Obj_Nulo, Wrapper<DatoVertice> >*) (smart_pointer.h:76)
+==31206==    by 0x8085D42: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_arco_dirigido(Wrapper<DatoVertice>&, Wrapper<DatoVertice>&, Obj_Nulo&, float) (grafo.h:120)
+==31206==    by 0x808601A: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_arco_no_dirigido(Wrapper<DatoVertice>&, Wrapper<DatoVertice>&, Obj_Nulo&, float) (grafo.h:129)
+==31206==    by 0x8080EBC: Mapa::conectar(S_ptr<Elemento>, S_ptr<Elemento>) (mapa.cpp:209)
+==31206==    by 0x8079652: Estructural::conectar(S_ptr<Elemento>, Mapa*) (estructural.cpp:165)
+==31206==    by 0x8079879: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:128)
+==31206==    by 0x8095399: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:20)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 1,156 bytes in 289 blocks are still reachable in loss record 139 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807AD44: S_ptr<Componente>::S_ptr(Componente*) (smart_pointer.h:76)
+==31206==    by 0x807A7A2: Estructural::Estructural(int, int, int, int, Orientacion) (estructural.cpp:17)
+==31206==    by 0x80770CF: EsqEste::EsqEste(int, int) (esq_este.cpp:8)
+==31206==    by 0x807B9C3: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:79)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 1,560 bytes in 3 blocks are still reachable in loss record 140 of 153
+==31206==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==31206==    by 0x4888B43: (within /lib/tls/i686/cmov/libc-2.5.so)
+==31206==    by 0x4888BBF: __cxa_atexit (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206==    by 0x807FB4A: __static_initialization_and_destruction_0(int, int) (iostream:76)
+==31206==    by 0x807FB62: _GLOBAL__I__ZN11ItemGuardarC2Ev (item_guardar.cpp:20)
+==31206==    by 0x80A415A: (within /home/alverbner/facultad/75.41 - taller/svn_proyecto_final/semi_stable_branch/server/miEjecutable)
+==31206==    by 0x804BB14: (within /home/alverbner/facultad/75.41 - taller/svn_proyecto_final/semi_stable_branch/server/miEjecutable)
+==31206==    by 0x80A40E8: __libc_csu_init (in /home/alverbner/facultad/75.41 - taller/svn_proyecto_final/semi_stable_branch/server/miEjecutable)
+==31206==    by 0x4871E60: (below main) (in /lib/tls/i686/cmov/libc-2.5.so)
+==31206== 
+==31206== 
+==31206== 3,120 bytes in 78 blocks are still reachable in loss record 141 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8081B55: Mapa::insertar_elemento(S_ptr<Elemento>) (mapa.cpp:87)
+==31206==    by 0x8079830: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:127)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 3,432 bytes in 78 blocks are still reachable in loss record 142 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80861BB: __gnu_cxx::new_allocator<std::_List_node<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > > >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x80861DE: std::_List_base<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> >, std::allocator<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > > >::_M_get_node() (stl_list.h:316)
+==31206==    by 0x80861F3: std::list<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> >, std::allocator<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > > >::_M_create_node(S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > const&) (stl_list.h:448)
+==31206==    by 0x80862A9: std::list<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> >, std::allocator<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > > >::_M_insert(std::_List_iterator<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > >, S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > const&) (stl_list.h:1139)
+==31206==    by 0x8086439: std::list<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> >, std::allocator<S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > > >::push_back(S_ptr<Vertice<Wrapper<DatoVertice>, Obj_Nulo> > const&) (stl_list.h:761)
+==31206==    by 0x80864A0: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_vertice(Wrapper<DatoVertice>&) (grafo.h:62)
+==31206==    by 0x8081BF6: Mapa::insertar_elemento(S_ptr<Elemento>) (mapa.cpp:88)
+==31206==    by 0x8079830: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:127)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4,092 bytes in 93 blocks are still reachable in loss record 143 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807019B: __gnu_cxx::new_allocator<std::_List_node<S_ptr<Elemento> > >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x80701BE: std::_List_base<S_ptr<Elemento>, std::allocator<S_ptr<Elemento> > >::_M_get_node() (stl_list.h:316)
+==31206==    by 0x80702CD: std::list<S_ptr<Elemento>, std::allocator<S_ptr<Elemento> > >::_M_create_node(S_ptr<Elemento> const&) (stl_list.h:448)
+==31206==    by 0x8070383: std::list<S_ptr<Elemento>, std::allocator<S_ptr<Elemento> > >::_M_insert(std::_List_iterator<S_ptr<Elemento> >, S_ptr<Elemento> const&) (stl_list.h:1139)
+==31206==    by 0x807AD17: std::list<S_ptr<Elemento>, std::allocator<S_ptr<Elemento> > >::push_back(S_ptr<Elemento> const&) (stl_list.h:761)
+==31206==    by 0x8081C43: Mapa::insertar_elemento(S_ptr<Elemento>) (mapa.cpp:91)
+==31206==    by 0x8079830: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:127)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 4,344 bytes in 1,086 blocks are still reachable in loss record 144 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x808524E: S_ptr<Casillero>::S_ptr(Casillero*) (smart_pointer.h:76)
+==31206==    by 0x80821D6: Mapa::Mapa(int, int) (mapa.cpp:22)
+==31206==    by 0x808E335: Nivel::Nivel(std::string, int, int) (nivel.cpp:12)
+==31206==    by 0x808BD8E: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 6,072 bytes in 253 blocks are still reachable in loss record 145 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8063473: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<unsigned const, EstructuralUnitario*> > >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x8063496: std::_Rb_tree<unsigned, std::pair<unsigned const, EstructuralUnitario*>, std::_Select1st<std::pair<unsigned const, EstructuralUnitario*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::_M_get_node() (stl_tree.h:358)
+==31206==    by 0x80634AB: std::_Rb_tree<unsigned, std::pair<unsigned const, EstructuralUnitario*>, std::_Select1st<std::pair<unsigned const, EstructuralUnitario*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::_M_create_node(std::pair<unsigned const, EstructuralUnitario*> const&) (stl_tree.h:367)
+==31206==    by 0x806364B: std::_Rb_tree<unsigned, std::pair<unsigned const, EstructuralUnitario*>, std::_Select1st<std::pair<unsigned const, EstructuralUnitario*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::_M_insert(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::pair<unsigned const, EstructuralUnitario*> const&) (stl_tree.h:819)
+==31206==    by 0x80637AB: std::_Rb_tree<unsigned, std::pair<unsigned const, EstructuralUnitario*>, std::_Select1st<std::pair<unsigned const, EstructuralUnitario*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::insert_unique(std::pair<unsigned const, EstructuralUnitario*> const&) (stl_tree.h:927)
+==31206==    by 0x806396D: std::_Rb_tree<unsigned, std::pair<unsigned const, EstructuralUnitario*>, std::_Select1st<std::pair<unsigned const, EstructuralUnitario*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::insert_unique(std::_Rb_tree_iterator<std::pair<unsigned const, EstructuralUnitario*> >, std::pair<unsigned const, EstructuralUnitario*> const&) (stl_tree.h:949)
+==31206==    by 0x8063CEF: std::map<unsigned, EstructuralUnitario*, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::insert(std::_Rb_tree_iterator<std::pair<unsigned const, EstructuralUnitario*> >, std::pair<unsigned const, EstructuralUnitario*> const&) (stl_map.h:420)
+==31206==    by 0x8063DE9: std::map<unsigned, EstructuralUnitario*, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::operator[](unsigned const&) (stl_map.h:348)
+==31206==    by 0x80617F6: MapaImpSet::agregar_estructural(EstructuralUnitario*) (MapImpSet.cpp:109)
+==31206==    by 0x8057B42: Traductor::traducir_mapa(Mapa*) (traductor.cpp:59)
+==31206==    by 0x8057D3B: Traductor::traducir(Mundo*) (traductor.cpp:16)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 6,160 bytes in 220 blocks are still reachable in loss record 146 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805A5EB: ComestibleFactory::construir(char, Posicion&) (ComestibleFactory.cpp:22)
+==31206==    by 0x805F7AC: EstructuralPasillo::set_comida(char const&) (EstructuralPasillo.cpp:28)
+==31206==    by 0x805FA0A: EstructuralPasillo::EstructuralPasillo(char const&, Posicion&) (EstructuralPasillo.cpp:6)
+==31206==    by 0x805FF3B: EstructuralUnitarioFactory::construir(Posicion&, char, char) (EstructuralUnitarioFactory.cpp:18)
+==31206==    by 0x8057B1A: Traductor::traducir_mapa(Mapa*) (traductor.cpp:57)
+==31206==    by 0x8057D3B: Traductor::traducir(Mundo*) (traductor.cpp:16)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 10,076 bytes in 229 blocks are still reachable in loss record 147 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x805FF1F: EstructuralUnitarioFactory::construir(Posicion&, char, char) (EstructuralUnitarioFactory.cpp:18)
+==31206==    by 0x8057B1A: Traductor::traducir_mapa(Mapa*) (traductor.cpp:57)
+==31206==    by 0x8057D3B: Traductor::traducir(Mundo*) (traductor.cpp:16)
+==31206==    by 0x804DA2B: App::ejecutar() (App.cpp:111)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 11,036 bytes in 158 blocks are possibly lost in loss record 148 of 153
+==31206==    at 0x4021A55: operator new[](unsigned) (vg_replace_malloc.c:195)
+==31206==    by 0x807A68A: Estructural::Estructural(int, int, int, int, Orientacion) (estructural.cpp:13)
+==31206==    by 0x80770CF: EsqEste::EsqEste(int, int) (esq_este.cpp:8)
+==31206==    by 0x807B9C3: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:79)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 11,264 bytes in 256 blocks are still reachable in loss record 149 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8085A8B: __gnu_cxx::new_allocator<std::_List_node<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > > > >::allocate(unsigned, void const*) (new_allocator.h:88)
+==31206==    by 0x8085AAE: std::_List_base<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > >, std::allocator<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > > > >::_M_get_node() (stl_list.h:316)
+==31206==    by 0x8085AC3: std::list<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > >, std::allocator<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > > > >::_M_create_node(S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > > const&) (stl_list.h:448)
+==31206==    by 0x8085B79: std::list<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > >, std::allocator<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > > > >::_M_insert(std::_List_iterator<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > > >, S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > > const&) (stl_list.h:1139)
+==31206==    by 0x8085BC7: std::list<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > >, std::allocator<S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > > > >::push_back(S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > > const&) (stl_list.h:761)
+==31206==    by 0x8085BE4: Vertice<Wrapper<DatoVertice>, Obj_Nulo>::agregar_arco(S_ptr<Arco<Obj_Nulo, Wrapper<DatoVertice> > >&) (vertice.h:69)
+==31206==    by 0x8085DFF: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_arco_dirigido(Wrapper<DatoVertice>&, Wrapper<DatoVertice>&, Obj_Nulo&, float) (grafo.h:122)
+==31206==    by 0x808601A: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_arco_no_dirigido(Wrapper<DatoVertice>&, Wrapper<DatoVertice>&, Obj_Nulo&, float) (grafo.h:129)
+==31206==    by 0x8080EBC: Mapa::conectar(S_ptr<Elemento>, S_ptr<Elemento>) (mapa.cpp:209)
+==31206==    by 0x8079652: Estructural::conectar(S_ptr<Elemento>, Mapa*) (estructural.cpp:165)
+==31206==    by 0x8079879: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:128)
+==31206==    by 0x8095399: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:20)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 11,560 bytes in 289 blocks are still reachable in loss record 150 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x807A782: Estructural::Estructural(int, int, int, int, Orientacion) (estructural.cpp:17)
+==31206==    by 0x80770CF: EsqEste::EsqEste(int, int) (esq_este.cpp:8)
+==31206==    by 0x807B9C3: Fab_Elementos::construir_esquina(int, int, Orientacion) (fab_elementos.cpp:79)
+==31206==    by 0x807BFB7: Fab_Elementos::construir(TipoElem, int, int, Orientacion) (fab_elementos.cpp:16)
+==31206==    by 0x808D98E: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:30)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 20,480 bytes in 256 blocks are still reachable in loss record 151 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x8085CF8: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_arco_dirigido(Wrapper<DatoVertice>&, Wrapper<DatoVertice>&, Obj_Nulo&, float) (grafo.h:120)
+==31206==    by 0x808601A: Grafo<Wrapper<DatoVertice>, Obj_Nulo>::agregar_arco_no_dirigido(Wrapper<DatoVertice>&, Wrapper<DatoVertice>&, Obj_Nulo&, float) (grafo.h:129)
+==31206==    by 0x8080EBC: Mapa::conectar(S_ptr<Elemento>, S_ptr<Elemento>) (mapa.cpp:209)
+==31206==    by 0x8079652: Estructural::conectar(S_ptr<Elemento>, Mapa*) (estructural.cpp:165)
+==31206==    by 0x8079879: Estructural::agregate(S_ptr<Elemento>, Mapa*) (estructural.cpp:128)
+==31206==    by 0x8095399: Portal::agregate(S_ptr<Elemento>, Mapa*) (portal.cpp:20)
+==31206==    by 0x808DA0C: Nivel::agregar_elemento(TipoElem, int, int, Orientacion) (nivel.cpp:33)
+==31206==    by 0x808DE94: Nivel::fromXml(char const*) (nivel.cpp:153)
+==31206==    by 0x808C166: Mundo::fromXml(char const*) (mundo.cpp:267)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 39,312 bytes in 54 blocks are possibly lost in loss record 152 of 153
+==31206==    at 0x4021A55: operator new[](unsigned) (vg_replace_malloc.c:195)
+==31206==    by 0x80820BD: Mapa::Mapa(int, int) (mapa.cpp:18)
+==31206==    by 0x808E335: Nivel::Nivel(std::string, int, int) (nivel.cpp:12)
+==31206==    by 0x808BD8E: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== 
+==31206== 86,880 bytes in 1,086 blocks are still reachable in loss record 153 of 153
+==31206==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==31206==    by 0x80821A8: Mapa::Mapa(int, int) (mapa.cpp:22)
+==31206==    by 0x808E335: Nivel::Nivel(std::string, int, int) (nivel.cpp:12)
+==31206==    by 0x808BD8E: Mundo::agregar_nivel(std::string, int, int) (mundo.cpp:21)
+==31206==    by 0x808C108: Mundo::fromXml(char const*) (mundo.cpp:265)
+==31206==    by 0x804D9B9: App::ejecutar() (App.cpp:108)
+==31206==    by 0x8051B02: main (Main.cpp:4)
+==31206== 
+==31206== LEAK SUMMARY:
+==31206==    definitely lost: 1 bytes in 1 blocks.
+==31206==      possibly lost: 51,448 bytes in 228 blocks.
+==31206==    still reachable: 184,756 bytes in 5,587 blocks.
+==31206==         suppressed: 0 bytes in 0 blocks.

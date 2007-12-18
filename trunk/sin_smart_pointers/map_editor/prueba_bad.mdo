@@ -1,0 +1,3 @@
+<Mundo Cant_Niveles="1">
+    <Nivel Numero="1" Nombre="test" Ancho="10" Alto="10" />
+</Mundo>
