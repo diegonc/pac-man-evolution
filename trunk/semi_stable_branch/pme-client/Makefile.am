@@ -93,12 +93,14 @@ pme_client_EXTRA_DIST = \
 
 ##pme_client_CPPFLAGS = @GTK_CFLAGS@
 pme_client_CPPFLAGS = \
+	-DDEBUG -ggdb \
 	-I@top_srcdir@/common
 
 pme_client_LDADD = \
 	$(top_builddir)/common/server/libpme-server.a \
 	$(top_builddir)/common/editor/libpme-editor.a \
 	$(top_builddir)/common/common/libpme-common.a \
-	$(top_builddir)/common/tinyxml/libtinyxml.a
+	$(top_builddir)/common/tinyxml/libtinyxml.a \
+	`sdl-config --libs` -lGL -lGLU -lSDL_mixer
 
 CLEANFILES = *~
