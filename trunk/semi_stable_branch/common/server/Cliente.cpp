@@ -103,13 +103,13 @@ ModeloCommon& Cliente::get_modelo()
 EscritorCliente& Cliente::get_escritor(){
 	return *escritor;
 }
-//S_ptr<Jugador> Cliente::get_jugador(){
+
 Jugador * Cliente::get_jugador(){
 	return this->jugador;
 }
 
 void Cliente::terminar(){
-	//this->escritor->terminar();
+
    this->jugador->set_invalido();
 	this->socket->cerrar();
 }

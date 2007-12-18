@@ -55,42 +55,32 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 		int pos = bs.read( 16 );
 //		std::cout << "pos recibida: " << pos << std::endl << std::flush;
 		Posicion p( pos % ancho, pos / ancho);
-		std::cout << "seteando elemento INIT\n";
 		S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
 		if (!e.es_nulo()){
 			switch( tipo ) {
 				case 0 /* Salida Pacman */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						EstructuralPasillo* ep = (EstructuralPasillo *) &(*e);
-						std::cout << "se setea la salida pacman en el INIT\n";
 						ep->set_salida_pacman();
 					}
 					break;
 				case 1 /* Casa Fantasma */: {
 						S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
-						std::cout << "se setea la casa Fantasma en el INIT\n";
 						reemplazar_estructural( c ); 
 					}
 					break;
 				case 2 /* Power up */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						remplazar_comestible(e,Comestible::power_up);
-//						ep->set_comida( Comestible::power_up );
-//						std::cout << "seteando power up en: " << p << std::endl << std::flush;
 					}
 					break;
 				case 3 /* Bonus */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						remplazar_comestible(e,Comestible::frutita);
-						//ep->set_comida( Comestible::frutita );
-//						std::cout << "seteando frutita en: " << p << std::endl << std::flush;
 					}
 					break;
 			}
-		}else{
-			std::cout << "nietoooooooooooooo\n";
 		}
-	}
 		
 }
 void PaqueteInitCommon::remplazar_comestible(S_ptr<EstructuralUnitario>& e ,Comestible::Enum_Comestible tipoCom )
@@ -118,8 +108,7 @@ bool PaqueteInitCommon::escribir_estructural( S_ptr<EstructuralUnitario>& e, Out
 	Posicion& p = e->get_posicion();
 	unsigned int pos = (unsigned int)p.get_y() * mapa->get_ancho() + (unsigned int)p.get_x();
 	bs.append( 16, pos );
-  	std::cout << "el tipo del agregado es"<< (int)e->get_tipo() <<"\n";
-	return true;
+  	return true;
 }
 
 bool PaqueteInitCommon::escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs )
@@ -153,7 +142,6 @@ void PaqueteInitCommon::reemplazar_estructural( S_ptr<EstructuralUnitario>& e )
 		unsigned int col =  (unsigned int) floor(p.get_x());
 		unsigned int key=(fila * mapa->get_ancho()) + col;
 		mapa->refresh(key);
-//		mapa->quitar_comestible(actual->get_comida());
 		if( ! actual->get_arriba().es_nulo() ) {
 			e->set_arriba( actual->get_arriba() );
 			actual->get_arriba()->set_abajo( e );
@@ -232,11 +220,9 @@ void PaqueteInitCommon::serialize( OutputBitStream& bs )
 			if(!e.es_nulo() ) {
 				if( e->get_tipo() == EstructuralUnitario::Casa_Fantasma ){
 					 casa.push_back(e);
-					 std::cout << "adding Casa\n";
 				}
 				if( e->get_tipo() == EstructuralUnitario::Salida_Pacman ){
 					 salida = e;
-					 std::cout << "adding Salida Pacman\n";
 				}
 				bs.append( 1, !( e->get_arriba().es_nulo() ) );
 			}else
