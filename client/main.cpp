@@ -12,12 +12,13 @@
 //principal
 int main(int argc, char **argv)
 {
+   
+   S_ptr<ModeloServidor> modelo = ModeloServidor::get_instancia();
 
 	//socket
 	Socket_Cliente * socket = new Socket_Cliente(); //<<----Ponele que vaya aca
 
 	try{
-
 		//////////POR AHORA HARDCODED////////////////////
 		std::string ip("201.231.232.12");
 		unsigned int short puerto = 7776;

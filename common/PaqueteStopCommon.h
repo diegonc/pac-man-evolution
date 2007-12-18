@@ -1,9 +1,9 @@
-#ifndef __PAQUETESTOP_H__
-#define __PAQUETESTOP_H__
+#ifndef __PAQUETESTOPCOMMON_H__
+#define __PAQUETESTOPCOMMON_H__
 
 #include "Paquete.h"
 
-class PaqueteStop : public Paquete
+class PaqueteStopCommon : public Paquete
 {
 	private:
 		char razon;
@@ -21,16 +21,16 @@ class PaqueteStop : public Paquete
 		static const char termino_juego;
       
 		/** Construye un paquete apto para deserializar. */
-		PaqueteStop();
+		PaqueteStopCommon();
 
 		/** Construye un paquete apto para serializar. */
-		PaqueteStop(const char razon, int puntaje);
+		PaqueteStopCommon(const char razon, int puntaje);
 
 		void serialize( OutputBitStream& bs );
 
 		void deserialize( InputBitStream& bs );
 	
-		Operacion * get_operacion();
+		virtual Operacion * get_operacion()=0;
 };
 
 #endif

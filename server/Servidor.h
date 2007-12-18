@@ -97,9 +97,9 @@ class Servidor : public Thread, public Observador{
 
      void mandar_start(Cliente* cliente);
 	
-	  void mandar_stop(const char razon);
+	 void mandar_stop(const char razon);
 	
-	  void mandar_quit();
+	 void mandar_quit();
 	
 };
 
