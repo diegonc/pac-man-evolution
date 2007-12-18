@@ -2,8 +2,8 @@
 
 #include "PaqueteInit.h"
 #include "PaqueteStart.h"
-#include "../common/PaqueteStop.h"
-#include "../common/PaqueteQuit.h"
+#include "PaqueteStop.h"
+#include "PaqueteQuit.h"
 #include "../common/EscritorCliente.h"
 
 #define _DEFAULT_CANT_MIN	2
@@ -344,7 +344,7 @@ void Servidor::actualizar(Observable * observable, void * param){
             if (this->llave_max_jugadores->esta_esperando())
                this->llave_max_jugadores->lanzar_evento();
             //Mando una senial para destrabarlo del accept, si no estaba aceptando la señal se ignora
-            this->thread_kill(Servidor::SENIAL_CANCELAR);
+            pthread_kill(this->get_hilo(), Servidor::SENIAL_CANCELAR);
          }		
       }
 	}
