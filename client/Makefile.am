@@ -6,6 +6,8 @@
 bin_PROGRAMS = pme-client
 
 pme_client_SOURCES = \
+	Abecedario.cpp \
+	Abecedario.h \
 	Aplicacion.cpp \
 	Aplicacion.h \
 	AplicacionGrafica.cpp \
@@ -39,11 +41,17 @@ pme_client_SOURCES = \
 	PaqueteStart.h \
 	PaqueteStatus.cpp \
 	PaqueteStatus.h \
+	PaqueteStop.h \
+	PaqueteStop.cpp \
 	PaqueteTecla.cpp \
 	PaqueteTecla.h \
+	PaqueteQuit.cpp \
+	PaqueteQuit.h \
 	PosicionGraf.h \
 	SelectorCamara.cpp \
 	SelectorCamara.h \
+	Sonidos.cpp \
+	Sonidos.h \
 	main.cpp
 
 ##pme_client_CPPFLAGS = @GTK_CFLAGS@
