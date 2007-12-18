@@ -35,7 +35,7 @@ pme_client_SOURCES = \
 	ObjetoVisual.h \
 	OperacionInit.cpp \
 	OperacionInit.h \
-	OperarioncMensaje.cpp \
+	OperarionMensaje.cpp \
 	OperacionMensaje.h \
 	OperacionStart.cpp \
 	OperacionStart.h \
