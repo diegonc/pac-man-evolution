@@ -22,7 +22,7 @@ void AvisadorNovedades::run(){
 	_parar = false;	
 	
 	std::list<Cliente*>::const_iterator it;
-	std::cout << "Soy: " << pthread_self() << "<--- AVISADOR " << std::endl << std::flush;
+
 	while (! _parar ){
 		S_ptr<Paquete> paquete_status;
 		llave.lock();		
@@ -51,7 +51,6 @@ void AvisadorNovedades::run(){
 			 	++it;
 			}
 			catch(std::runtime_error &e){
-				std::cout << "QuitarCliente AvisadorNovedades (client pool)\n";
 				clientes->quitar_cliente( (*it)->get_id() );
 			}
 		}

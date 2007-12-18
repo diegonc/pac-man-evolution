@@ -108,21 +108,20 @@ void ModeloServidor::reiniciar_partida(){
    std::list<Jugador *>  lista_jugadores = get_jugadores();
    std::list<Jugador *>::iterator it = lista_jugadores.begin();
    
-   std::cout << "Reinicia la partida\n"<<std::flush;
+
    //me fijo que haya jugadores
    if(lista_jugadores.size() != 0 ){
       //busco si hay pacman si no despues se lo asigno a otro      
       do{
          if( (*it)->get_personaje()->get_tipo() == Personaje::pacman ){
             hay_pacman = true;
-            std::cout << "Habia pacman y era el jugador " << (*it)->get_id() << "\n" << std::flush; 
          }
          ++it;
       }while( (it != lista_jugadores.end() ) && (!hay_pacman) );
       //si no habia pacman, se lo asigno al primer personaje de la lista      
       if(!hay_pacman){
             it = lista_jugadores.begin();            
-            std::cout << "Asginando pacman\n;"<<std::flush;           
+
             Personaje * p = new PacMan(*it);
             Jugador * j = *it;
             j->quitar_personaje();
