@@ -34,7 +34,8 @@ class AplicacionGrafica{
 	SelectorCamara Camara;
 	MiniMapa minimapa;
 	Sonido sonidoWakaWaka;
-	Abecedario ABC;
+	Abecedario ABCEntrada;
+	Abecedario ABCSalida;
 
            
 	private: 
@@ -44,8 +45,10 @@ class AplicacionGrafica{
 		
 		bool CamaraPrimeraPersona;
     public:
-		std::string MensajeAMostrar;
-        AplicacionGrafica(): sonidoWakaWaka("waka.mp3"){
+	std::string MensajeAMostrar;
+	std::string MensajeAEnviar;
+
+        AplicacionGrafica(): sonidoWakaWaka("waka.mp3"), ABCEntrada(true), ABCSalida(false){
             CamaraPrimeraPersona=true;
         }
 		

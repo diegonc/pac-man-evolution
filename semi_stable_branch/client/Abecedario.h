@@ -20,10 +20,11 @@ class Abecedario{
 	const static int LetrasXFC= (int) (DimAbecedario/DimLetra);
 	const static int ScreenWidth=800;
 	const static int ScreenHeight=600;
+	bool arriba;
 
 	public:
 
-	Abecedario();
+	Abecedario(bool Arriba);
 
 	~Abecedario();
 
