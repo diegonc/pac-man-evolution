@@ -48,7 +48,6 @@ class AplicacionGrafica{
 		
 		
     public:
-	std::string MensajeAMostrar;
 	std::string MensajeAEnviar;
 
         AplicacionGrafica(): sonidoWakaWaka("waka.mp3"), ABCSalida(false,0){            
