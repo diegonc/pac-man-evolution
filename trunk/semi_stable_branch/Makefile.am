@@ -7,5 +7,5 @@ SUBDIRS = common pme-server map_editor pme-client
 
 AM_CPPFLAGS = -I@top_srcdir@/common
 
-EXTRA_DIST = HACKING
+EXTRA_DIST = HACKING doc
 CLEANFILES = *~
