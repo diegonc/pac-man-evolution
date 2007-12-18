@@ -20,15 +20,15 @@ int main(int argc, char **argv)
 	Socket_Cliente * socket = new Socket_Cliente(); //<<----Ponele que vaya aca
 
 	try{
+
 		//////////POR AHORA HARDCODED////////////////////
-		std::string ip("127.0.0.1\0 201.231.232.12");
+		std::string ip("201.231.232.12");
 		unsigned int short puerto = 7777;
 		socket->conectar(ip, puerto);
 		Cliente cliente_del_modelo(socket, ModeloServidor::get_instancia());
 		cliente_del_modelo.start();
-		cliente_del_modelo.join();
-		return 0;
-#if 0
+
+
 		/////////////////////////////////////////////////
 		Aplicacion APP(&cliente_del_modelo);
 		//evento
@@ -56,8 +56,7 @@ int main(int argc, char **argv)
 
 		//seteo inicialmente en fullscreen
 		//Vflags|=SDL_FULLSCREEN;
-
-
+		
 		//seteo icono de aplicacion
 		APP.SetUpIcon("Icon.bmp");
 
@@ -85,13 +84,14 @@ int main(int argc, char **argv)
 
 		//ejecuto la inicializacion de la aplicacion
 		APP.getAplicacionGrafica()->Initialize();
-
+		
 		//levanto el boolean del loop de dibujo
 		//isProgramLooping = true;
-
+			
 		//mientras este levantado el flag
 		while(APP.isProgramLooping())
 		{
+			
 						//std::cout << " evento1"<< E.type <<  std::endl;
 			//trato de chachear algun evento si es q se produjo
 
@@ -223,7 +223,7 @@ int main(int argc, char **argv)
 	      cliente_del_modelo.get_escritor().encolar_paquete(PaqTec);
 	      cliente_del_modelo.join();
 		//////////////////////////////////////////////////////////////////////
-#endif
+
 	}
 	catch(std::runtime_error &e){
 		std::cerr << e.what() << "\n";

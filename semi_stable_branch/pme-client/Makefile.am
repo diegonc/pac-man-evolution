@@ -26,6 +26,7 @@ pme_client_SOURCES = \
 	EstadoAplicacion.h \
 	JugadorLocal.cpp \
 	JugadorLocal.h \
+	MiniMapa.cpp \
 	ModeladorObjetos.cpp \
 	ModeladorObjetos.h \
 	ModeloServidor.cpp \
@@ -101,6 +102,6 @@ pme_client_LDADD = \
 	$(top_builddir)/common/editor/libpme-editor.a \
 	$(top_builddir)/common/common/libpme-common.a \
 	$(top_builddir)/common/tinyxml/libtinyxml.a \
-	`sdl-config --libs` -lGL -lGLU -lSDL_mixer
+	-lSDL -lGL -lGLU -lSDL_mixer
 
 CLEANFILES = *~
