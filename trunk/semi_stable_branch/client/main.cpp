@@ -21,11 +21,14 @@ int main(int argc, char **argv)
 
 	try{
 		//////////POR AHORA HARDCODED////////////////////
-		std::string ip("201.231.232.12");
+		std::string ip("127.0.0.1\0 201.231.232.12");
 		unsigned int short puerto = 7777;
 		socket->conectar(ip, puerto);
 		Cliente cliente_del_modelo(socket, ModeloServidor::get_instancia());
 		cliente_del_modelo.start();
+		cliente_del_modelo.join();
+		return 0;
+#if 0
 		/////////////////////////////////////////////////
 		Aplicacion APP(&cliente_del_modelo);
 		//evento
@@ -220,7 +223,7 @@ int main(int argc, char **argv)
 	      cliente_del_modelo.get_escritor().encolar_paquete(PaqTec);
 	      cliente_del_modelo.join();
 		//////////////////////////////////////////////////////////////////////
-
+#endif
 	}
 	catch(std::runtime_error &e){
 		std::cerr << e.what() << "\n";
