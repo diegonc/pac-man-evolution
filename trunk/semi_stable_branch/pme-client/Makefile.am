@@ -64,7 +64,9 @@ pme_client_SOURCES = \
 	SelectorCamara.h \
 	Sonidos.cpp \
 	Sonidos.h \
-	main.cpp
+	main.cpp \
+	$(top_srcdir)/pme-server/KeyOp.cpp \
+	$(top_srcdir)/pme-server/KeyOp.h
 
 pme_client_EXTRA_DIST = \
 	ABC.bmp \
