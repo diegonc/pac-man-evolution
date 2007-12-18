@@ -14,7 +14,7 @@ class PaqueteInitCommon : public Paquete
 
 		/** @brief MapaBajoNivel en el que se desarrolla el juego.
 		 */
-		S_ptr<MapaBajoNivel> mapa;
+		MapaBajoNivel* mapa;
 
 		void agregar_arista( int x, int y, bool norte );
 
@@ -29,7 +29,7 @@ class PaqueteInitCommon : public Paquete
 		PaqueteInitCommon();
 
 		/** Crea un paquete apto para serializar. */
-		PaqueteInitCommon( bool pacman, S_ptr<MapaBajoNivel> m );
+		PaqueteInitCommon( bool pacman, MapaBajoNivel* m );
 
 		void serialize( OutputBitStream& bs );
 

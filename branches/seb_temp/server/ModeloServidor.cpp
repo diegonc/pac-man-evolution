@@ -66,7 +66,7 @@ void ModeloServidor::run(){
                if( j != NULL ){
    					//lo muevo
    					S_ptr<MundoBajoNivel> mun = this->mundo;
-   					S_ptr<MapaBajoNivel> map = mun->get_mapa_activo();
+   					MapaBajoNivel* map = mun->get_mapa_activo();
    					Personaje* pers = j->get_personaje();
    					map->mover(*j, pers->get_velocidad() * intervalo_tiempo);
    					//reviso las colisiones

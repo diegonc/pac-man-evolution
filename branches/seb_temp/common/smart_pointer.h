@@ -155,6 +155,7 @@ template <class Tipo> class S_ptr{
 		bool es_nulo(){
 			return this->objeto == NULO;	
 		}
+
 		//operador definido para igualar objetos
 		S_ptr<Tipo>& operator=(const S_ptr &p){
 			//thread safety
@@ -178,6 +179,7 @@ template <class Tipo> class S_ptr{
 			//devuelvo lo copiado
 			return *this;
 		}
+
 		//operadores redefinidos
 		friend bool operator==(const S_ptr p1, const S_ptr p2){
 			if(p1.objeto == p2.objeto)
