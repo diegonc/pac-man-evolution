@@ -214,11 +214,11 @@ int main(int argc, char **argv)
 		APP.getAplicacionGrafica()->Deinitialize();
 
 		///////////////////////////////////////////////////////////////////////
-      cliente_del_modelo.get_escritor().terminar();
-  		socket->cerrar();
-      S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),0));
-      cliente_del_modelo.get_escritor().encolar_paquete(PaqTec);
-      cliente_del_modelo.join();
+	      cliente_del_modelo.get_escritor().terminar();
+	  		socket->cerrar();
+	      S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),0));
+	      cliente_del_modelo.get_escritor().encolar_paquete(PaqTec);
+	      cliente_del_modelo.join();
 		//////////////////////////////////////////////////////////////////////
 
 	}

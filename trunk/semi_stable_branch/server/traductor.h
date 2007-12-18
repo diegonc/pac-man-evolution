@@ -30,7 +30,7 @@ class Traductor {
 		
 	/* Traducir Mapa: Recibe un mapa de alto nivel y lo traduce a un mapa de bajo nivel, devolviendo
 	   una referencia al mismo. */
-	S_ptr<MapaBajoNivel> traducir_mapa (Mapa* mapa);
+	MapaBajoNivel* traducir_mapa (Mapa* mapa);
 	
 	/* Trad Cod Elemento: Traduce un codigo de elemento de alto nivel a un codigo de elemento de 
 	   bajo nivel. */
@@ -39,7 +39,7 @@ class Traductor {
 	/* Realizar Conexiones: Dados un mapa de alto nivel y uno de bajo nivel cargados, realiza las
 	   conexiones entre estructurales de bajo nivel, en el mapa de bajo nivel, basandose en el
 	   de alto nivel. */
-	void realizar_conexiones(Mapa* mapa, S_ptr<MapaBajoNivel> mapa_bajo_nivel);
+	void realizar_conexiones(Mapa* mapa, MapaBajoNivel* mapa_bajo_nivel);
 	
 	/* Conectar Casilleros: Conecta 2 estructurales de bajo nivel del mapa de bajo nivel, verificando 
 	   si hay conexion entre los estructurales de alto nivel contenidos en los casilleros origen y destino 
@@ -48,7 +48,7 @@ class Traductor {
 	*/
 
 	void conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> destino, Mapa* mapa_alto_nivel,
-			         S_ptr<MapaBajoNivel> mapa_bajo_nivel, Orientacion orientacion);
+			         MapaBajoNivel* mapa_bajo_nivel, Orientacion orientacion);
 
 };
 
