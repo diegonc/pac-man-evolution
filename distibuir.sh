@@ -199,7 +199,7 @@ done
 
 svn mv client pme-client
 svn mv server pme-server
-exit
+
 START_DIR=`pwd`
 DIRS="pme-client pme-server map_editor common/editor common/server"
 
