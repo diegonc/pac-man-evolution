@@ -3,9 +3,16 @@
 
 #include "Paquete.h"
 
+#define RazonPacmanGano 		0
+#define RazonPacmanComido 		1
+#define RazonPacmanDesconecto 		2
+#define RazonCantidadInsuficiente 	3
+#define RazonTerminoJuego 		4
+
+
 class PaqueteStopCommon : public Paquete
 {
-	private:
+	protected:
 		char razon;
 		int puntuacion;
 		/*

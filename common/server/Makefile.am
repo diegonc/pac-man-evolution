@@ -57,8 +57,8 @@ libpme_server_a_SOURCES = \
 	Paquete.h \
 	PaqueteInitCommon.cpp \
 	PaqueteInitCommon.h \
-	PaqueteMensaje.cpp \
-	PaqueteMensaje.h \
+	PaqueteMensajeCommon.cpp \
+	PaqueteMensajeCommon.h \
 	PaqueteQuitCommon.cpp \
 	PaqueteQuitCommon.h \
 	PaqueteStartCommon.cpp \

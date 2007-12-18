@@ -162,8 +162,8 @@ Paquete.cpp
 Paquete.h
 PaqueteInitCommon.cpp
 PaqueteInitCommon.h
-PaqueteMensaje.cpp
-PaqueteMensaje.h
+PaqueteMensajeCommon.cpp
+PaqueteMensajeCommon.h
 PaqueteStartCommon.cpp
 PaqueteStartCommon.h
 PaqueteStatusCommon.cpp

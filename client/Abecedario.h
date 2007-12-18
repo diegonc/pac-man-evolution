@@ -21,10 +21,11 @@ class Abecedario{
 	const static int ScreenWidth=800;
 	const static int ScreenHeight=600;
 	bool arriba;
+	unsigned int Unidades;
 
 	public:
 
-	Abecedario(bool Arriba);
+	Abecedario(bool Arriba,unsigned int unidades);
 
 	~Abecedario();
 

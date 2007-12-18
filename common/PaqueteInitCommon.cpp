@@ -55,17 +55,20 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 		int pos = bs.read( 16 );
 //		std::cout << "pos recibida: " << pos << std::endl << std::flush;
 		Posicion p( pos % ancho, pos / ancho);
+		std::cout << "seteando elemento INIT\n";
 		S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
 		if (!e.es_nulo()){
 			switch( tipo ) {
 				case 0 /* Salida Pacman */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						EstructuralPasillo* ep = (EstructuralPasillo *) &(*e);
+						std::cout << "se setea la salida pacman en el INIT\n";
 						ep->set_salida_pacman();
 					}
 					break;
 				case 1 /* Casa Fantasma */: {
 						S_ptr<EstructuralUnitario> c( new EstructuralCasaFantasma( p ) );
+						std::cout << "se setea la casa Fantasma en el INIT\n";
 						reemplazar_estructural( c ); 
 					}
 					break;
@@ -84,6 +87,8 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 					}
 					break;
 			}
+		}else{
+			std::cout << "nietoooooooooooooo\n";
 		}
 	}
 		
@@ -103,13 +108,17 @@ void PaqueteInitCommon::remplazar_comestible(S_ptr<EstructuralUnitario>& e ,Come
 
 bool PaqueteInitCommon::escribir_estructural( S_ptr<EstructuralUnitario>& e, OutputBitStream& bs )
 {
-	if( e.es_nulo() ) return false;
+	if( e.es_nulo() ){
+	  std::cout << "Es NULO\n";
+	 return false;
+	}
 
 	bs.append( 6, (int)e->get_tipo() );
 	bs.append( 2, Direccion::Norte);	
 	Posicion& p = e->get_posicion();
 	unsigned int pos = (unsigned int)p.get_y() * mapa->get_ancho() + (unsigned int)p.get_x();
 	bs.append( 16, pos );
+  	std::cout << "el tipo del agregado es"<< (int)e->get_tipo() <<"\n";
 	return true;
 }
 
@@ -221,8 +230,14 @@ void PaqueteInitCommon::serialize( OutputBitStream& bs )
 			Posicion p( x, y );
 			e = mapa->get_estructural( p );
 			if(!e.es_nulo() ) {
-				if( e->get_tipo() == EstructuralUnitario::Casa_Fantasma ) casa.push_back(e);
-				if( e->get_tipo() == EstructuralUnitario::Salida_Pacman ) salida = e;
+				if( e->get_tipo() == EstructuralUnitario::Casa_Fantasma ){
+					 casa.push_back(e);
+					 std::cout << "adding Casa\n";
+				}
+				if( e->get_tipo() == EstructuralUnitario::Salida_Pacman ){
+					 salida = e;
+					 std::cout << "adding Salida Pacman\n";
+				}
 				bs.append( 1, !( e->get_arriba().es_nulo() ) );
 			}else
 				bs.append( 1, 0);

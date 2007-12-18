@@ -74,8 +74,10 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 	          VerificarAbecedarioMensaje(Keys);
         	    if(Keys[SDLK_RETURN]){
         	        EscribiendoMensaje=false;
-			std::cout << "Aca se deberia enviar el mensaje: " << MensajeAEnviar  << std::endl;
-			getAplicacionGrafica()->MensajeAMostrar=MensajeAEnviar;
+//			std::cout << "Aca se deberia enviar el mensaje: " << MensajeAEnviar  << std::endl;
+			//getAplicacionGrafica()->MensajeAMostrar=MensajeAEnviar;
+			S_ptr<Paquete> PaqMens(new PaqueteMensaje(MensajeAEnviar));
+			cliente->get_escritor().encolar_paquete(PaqMens);
 			getAplicacionGrafica()->MensajeAEnviar="";
         	        Keys[SDLK_RETURN]=0;
         	    }			
@@ -84,8 +86,8 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 		//si se apreto arriba
 		if(Keys[SDLK_UP]){
 		    //creo una instancia de Key correspondiente a ARRIBA
-            S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),0));
-            cliente->get_escritor().encolar_paquete(PaqTec);
+			S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),0));
+			cliente->get_escritor().encolar_paquete(PaqTec);
 		    //kop.ejecutar(*(getAplicacionGrafica()->getModelo()));
 
             //bajo el flag

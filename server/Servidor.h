@@ -7,6 +7,7 @@
 #include "../common/thread.h"
 #include "../common/evento.h"
 #include "ModeloServidor.h"
+#include "MessageDispatcher.h"
 #include "../common/smart_pointer.h"
 #include "../common/observador.h"
 #include "AvisadorNovedades.h"

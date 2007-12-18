@@ -1,6 +1,6 @@
 #include "PaqueteStop.h"
 
-#include "../common/OperacionNula.h"
+#include "OperacionStop.h"
 
 PaqueteStop::PaqueteStop() : PaqueteStopCommon()
 {
@@ -8,6 +8,6 @@ PaqueteStop::PaqueteStop() : PaqueteStopCommon()
 }	
 
 Operacion* PaqueteStop::get_operacion(){
-   return new OperacionNula();
+   return new OperacionStop(razon,puntuacion);
 }
 
