@@ -15,7 +15,4 @@ void OperacionInit::ejecutar(ModeloCommon &modelo){
 
 		JugadorLocal::get_instancia()->set_pacman( esPac );
 		BufferMensajes::get_instancia()->add_mensaje_critico("Cambiando de Nivel");
-		/* Agrega un jugador temporario hasta el start. para que puede reconocer el nivel. 
-		JugadorLocal::get_instancia()->set_id( 2<<16 );
-		modelo. */
 }
