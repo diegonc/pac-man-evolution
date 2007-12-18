@@ -36,6 +36,9 @@ libpme_common_a_SOURCES = \
 	vertice.h \
 	wrapper.h
 
+libpme_common_a_CPPFLAGS = \
+	-I$(top_srcdir)/common
+
 #libpme_common_la_LDFLAGS = -static
 
 CLEANFILES = *~
