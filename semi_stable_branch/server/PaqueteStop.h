@@ -8,6 +8,8 @@ class PaqueteStop : public PaqueteStopCommon
 	public:
 		/** Crea un paquete apto para deserializar. */
 		PaqueteStop();
+		
+		PaqueteStop( char Razon, int Puntuacion);
 
 		Operacion * get_operacion();
 };

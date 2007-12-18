@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "AplicacionGrafica.h"
 #include "PaqueteTecla.h"
+#include "PaqueteMensaje.h"
 #include "JugadorLocal.h"
 #include "../common/smart_pointer.h"
 #include "../common/EscritorCliente.h"

@@ -6,7 +6,7 @@
 #include "PaqueteStop.h"
 #include "PaqueteQuit.h"
 #include "PaqueteTecla.h"
-#include "../common/PaqueteMensaje.h"
+#include "PaqueteMensaje.h"
 
 
 Paquete* Paquete::crear( int tipo ,unsigned int id_cliente ){

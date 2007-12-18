@@ -18,13 +18,15 @@
 #include "ModeladorObjetos.h"
 #include "SelectorCamara.h"
 #include "Sonidos.h"
+#include "BufferMensajes.h"
 #include "MiniMapa.h"
 #include "Abecedario.h"
+#include "NotificadorMensajes.h"
 #include <iostream>
 #include <string>
 #include <math.h>
 #include <map>
-#include <list>
+#include <list>	
 
 #include "../server/KeyOp.h"
 
@@ -34,22 +36,22 @@ class AplicacionGrafica{
 	SelectorCamara Camara;
 	MiniMapa minimapa;
 	Sonido sonidoWakaWaka;
-	Abecedario ABCEntrada;
+//	Abecedario ABCEntrada;
+	NotificadorMensajes NotMensajes;
 	Abecedario ABCSalida;
 
            
 	private: 
-		Escenario escenario;
+	Escenario escenario;
 
         ModeladorObjetos ModeladorOBJ;
 		
-		bool CamaraPrimeraPersona;
+		
     public:
 	std::string MensajeAMostrar;
 	std::string MensajeAEnviar;
 
-        AplicacionGrafica(): sonidoWakaWaka("waka.mp3"), ABCEntrada(true), ABCSalida(false){
-            CamaraPrimeraPersona=true;
+        AplicacionGrafica(): sonidoWakaWaka("waka.mp3"), ABCSalida(false,0){            
         }
 		
 	void CambiarCamara();
