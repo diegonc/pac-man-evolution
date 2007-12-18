@@ -34,7 +34,11 @@ libpme_common_a_SOURCES = \
 	thread.cpp \
 	thread.h \
 	vertice.h \
-	wrapper.h
+	wrapper.h \
+	ConfValue.cpp \
+	ConfValue.h \
+	Configuracion.cpp \
+	Configuracion.h
 
 libpme_common_a_CPPFLAGS = \
 	-I$(top_srcdir)/common
