@@ -17,7 +17,9 @@
 #include "CargadordeTexturas.h"
 #include "ModeladorObjetos.h"
 #include "SelectorCamara.h"
+#include "Sonidos.h"
 #include "MiniMapa.h"
+#include "Abecedario.h"
 #include <iostream>
 #include <string>
 #include <math.h>
@@ -30,8 +32,11 @@ class AplicacionGrafica{
         //estadp de la aplicaccion
         EstadoAplicacion AppEstado;
 	SelectorCamara Camara;
-	SDL_Surface* Mapa;
 	MiniMapa minimapa;
+	Sonido sonidoWakaWaka;
+	Abecedario ABCEntrada;
+	Abecedario ABCSalida;
+
            
 	private: 
 		Escenario escenario;
@@ -40,8 +45,10 @@ class AplicacionGrafica{
 		
 		bool CamaraPrimeraPersona;
     public:
+	std::string MensajeAMostrar;
+	std::string MensajeAEnviar;
 
-        AplicacionGrafica(){
+        AplicacionGrafica(): sonidoWakaWaka("waka.mp3"), ABCEntrada(true), ABCSalida(false){
             CamaraPrimeraPersona=true;
         }
 		
@@ -72,6 +79,7 @@ class AplicacionGrafica{
         //get Angulo Desde Direccion
         int getAnguloDireccion(Direccion &dir);
 
+	void DibujarModelo();
         //dibuja en 2D
         void Draw2D(SDL_Surface *S);
    

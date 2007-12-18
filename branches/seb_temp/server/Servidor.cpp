@@ -100,7 +100,7 @@ void Servidor::run(){
       if (cliente_nuevo != NULL) {
 			//si llego a la cantidad minima de clientes, le mando a todos los ya
 			//conectados el start
-			if( (pool.get_cantidad_clientes() == cant_min_clientes) && (!ya_mando_start) ){
+			if( (pool.get_cantidad_clientes() >= cant_min_clientes) && (!ya_mando_start) ){
             //Proceso el nuevo nivel
             this->procesar_nivel();
 			}
@@ -249,6 +249,8 @@ void Servidor::cambiar_nivel(){
    this->mandar_stop(PaqueteStop::pacman_gano);   
    //Inicio el nuevo nivel
    this->iniciar_nivel();
+   //Lo proceso
+   this->procesar_nivel();
    this->debo_cambiar_nivel = false;
 }
 

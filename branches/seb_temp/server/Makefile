@@ -21,7 +21,7 @@ CFLAGS = -Wall -ansi -pedantic-errors
 CFLAGS += -I..
 
 # Para valgrind o debug
-CFLAGS += -DDEBUG -ggdb -fno-inline
+CFLAGS += -DDEBUG -ggdb -fno-inline -D_GLIBCXX_DEBUG
 
 # Opciones del enlazador.
 LDFLAGS=-lm -lpthread

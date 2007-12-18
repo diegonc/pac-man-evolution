@@ -18,14 +18,21 @@ void Aplicacion::VerificarAbecedarioMensaje(Uint8 *Keys){
             	if(Keys[i]){
                     char letra=(char)(i-(int)SDLK_a+(int)a);
                     MensajeAEnviar.append(1,letra);
-                    Keys[i]=0;
+	            Keys[i]=0;
                 }
 	    }
 
-	    if(Keys[SDLK_RETURN]){
-                MensajeAEnviar.erase(MensajeAEnviar.length()-1);
-                Keys[SDLK_RETURN]=0;
+	    if(Keys[SDLK_SPACE]){
+                MensajeAEnviar.append(1,' ');
+	       Keys[SDLK_SPACE]=0;
 	    }
+
+	    if(Keys[SDLK_BACKSPACE]){
+		if (MensajeAEnviar.length()>0)
+	                MensajeAEnviar.erase(MensajeAEnviar.length()-1);
+	       Keys[SDLK_BACKSPACE]=0;
+	    }
+		getAplicacionGrafica()->MensajeAEnviar=MensajeAEnviar;
         //si la tecla escape fue presionada
 
 	}
@@ -65,10 +72,12 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
 		    }
 		}else{
 	          VerificarAbecedarioMensaje(Keys);
-        	    if(Keys[SDLK_PERIOD]){
+        	    if(Keys[SDLK_RETURN]){
         	        EscribiendoMensaje=false;
-        	        //enviar mensaje
-        	        Keys[SDLK_PERIOD]=0;
+			std::cout << "Aca se deberia enviar el mensaje: " << MensajeAEnviar  << std::endl;
+			getAplicacionGrafica()->MensajeAMostrar=MensajeAEnviar;
+			getAplicacionGrafica()->MensajeAEnviar="";
+        	        Keys[SDLK_RETURN]=0;
         	    }			
 	        }
 

@@ -26,7 +26,7 @@ CFLAGS = -I../.. -I.. -Wall -ansi -pedantic-errors -DLINUX `sdl-config --cflags`
 CFLAGS += -DDEBUG -ggdb -fno-inline
 
 # Opciones del enlazador.
-LDFLAGS=-lm -lpthread `sdl-config --libs` -lGL -lGLU
+LDFLAGS=-lm -lpthread `sdl-config --libs` -lGL -lGLU -lSDL_mixer
 
 # Usamos ccache para acelerar la cosa...
 CC=gcc 

@@ -16,7 +16,8 @@ extension = cpp
 ###########################
 
 # Opciones para el compilador C.
-CFLAGS = -Wall -ansi -pedantic-errors
+CFLAGS = -Wall -ansi -pedantic-errors -D_GLIBCXX_DEBUG
+CFLAGS += -I..
 
 # Para valgrind o debug
 CFLAGS += -DDEBUG -ggdb -fno-inline
