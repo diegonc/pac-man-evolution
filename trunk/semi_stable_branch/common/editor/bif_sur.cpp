@@ -1,5 +1,5 @@
 //Header
-#include "bif_sur.h"
+#include <editor/bif_sur.h>
 
 /* CLASE BIF SUR: Clase que representa una bifurcacion con orientacion SUR. Hereda de Estructural. */
 

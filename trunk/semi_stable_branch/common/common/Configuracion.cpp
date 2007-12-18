@@ -1,5 +1,5 @@
 
-#include "Configuracion.h"
+#include <common/Configuracion.h>
 #include <fstream>
 #include <sstream>
 

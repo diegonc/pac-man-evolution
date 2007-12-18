@@ -6,9 +6,9 @@
 *			jugadores. Pueden haber comestibles asi como la salida del pacman.
 */
 
-#include "../common/smart_pointer.h"
-#include "Comestible.h"
-#include "EstructuralUnitario.h"
+#include <common/smart_pointer.h>
+#include <server/Comestible.h>
+#include <server/EstructuralUnitario.h>
 
 class EstructuralPasillo : public EstructuralUnitario{
 	private:

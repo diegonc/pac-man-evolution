@@ -1,4 +1,4 @@
-#include "Jugador.h"
+#include <server/Jugador.h>
 
 #if 0
 Jugador::Jugador(unsigned int id, Tipo_Personaje personaje){

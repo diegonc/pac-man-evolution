@@ -1,7 +1,7 @@
 #ifndef __OPERACION_MENSAJE_H__
 #define __OPERACION_MENSAJE_H__
 
-#include "../common/Operacion.h"
+#include <server/Operacion.h>
 #include "ModeloServidor.h"
 
 class OperacionMensaje : public Operacion

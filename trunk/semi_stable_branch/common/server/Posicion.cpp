@@ -1,4 +1,4 @@
-#include "Posicion.h"
+#include <server/Posicion.h>
 
 Posicion::Posicion(Tipo_Coordenada x, Tipo_Coordenada y){
 	this->x = x;

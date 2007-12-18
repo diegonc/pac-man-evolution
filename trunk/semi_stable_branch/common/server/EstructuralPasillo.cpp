@@ -1,6 +1,6 @@
-#include "EstructuralPasillo.h"
+#include <server/EstructuralPasillo.h>
 
-#include "ComestibleFactory.h"
+#include <server/ComestibleFactory.h>
 
 EstructuralPasillo::EstructuralPasillo(Comestible::Enum_Comestible &tipo, Posicion &p):EstructuralUnitario(p){
 	set_comida( tipo );

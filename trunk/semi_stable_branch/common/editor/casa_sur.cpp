@@ -1,5 +1,5 @@
 //Header
-#include "casa_sur.h"
+#include <editor/casa_sur.h>
 
 /* CLASE CASA SUR: Clase que representa una casa de fantasmas con orientacion SUR. Hereda de CasaFantasmas. */
 

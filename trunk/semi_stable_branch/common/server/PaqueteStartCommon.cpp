@@ -1,13 +1,13 @@
-#include "PaqueteStartCommon.h"
+#include <server/PaqueteStartCommon.h>
 
-#include "MundoBajoNivel.h"
-#include "PacMan.h"
-#include "Fantasma.h"
-#include "Personaje.h"
-#include "Jugador.h"
+#include <server/MundoBajoNivel.h>
+#include <server/PacMan.h>
+#include <server/Fantasma.h>
+#include <server/Personaje.h>
+#include <server/Jugador.h>
 #include <list>
-#include "Jugador.h"
-#include "../common/smart_pointer.h"
+#include <server/Jugador.h>
+#include <common/smart_pointer.h>
 
 namespace {
 	const int ID = 1;

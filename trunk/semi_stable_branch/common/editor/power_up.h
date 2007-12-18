@@ -3,7 +3,7 @@
 #define Power_Up_h_
 
 //Incluyo las librerias necesarias
-#include "modificador.h"
+#include <editor/modificador.h>
 
 /* CLASE POWER UP: Clase que representa un power up. Desciende de modificador. Ocupa un casillero. */
 

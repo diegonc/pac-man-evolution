@@ -1,5 +1,5 @@
 //Header
-#include "casa_norte.h"
+#include <editor/casa_norte.h>
 
 /* CLASE CASA NORTE: Clase que representa una casa de fantasmas con orientacion NORTE. Hereda de CasaFantasmas. */
 

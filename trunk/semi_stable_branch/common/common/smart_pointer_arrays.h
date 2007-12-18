@@ -12,7 +12,7 @@
 -	Tiene sobrecargado los operadores * y -> para que se trabaje como si fuera
 	el objeto mismo.
 ***************************************************************************/
-#include "smart_pointer.h"
+#include <common/smart_pointer.h>
 
 template <class Tipo> class S_ptr_Array : public S_ptr <Tipo>{
 	public:

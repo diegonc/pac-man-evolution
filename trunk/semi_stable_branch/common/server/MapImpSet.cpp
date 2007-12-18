@@ -1,7 +1,7 @@
-#include "MapImpSet.h"
+#include <server/MapImpSet.h>
 
 #include <math.h>
-#include "../common/EstructuralPasillo.h"
+#include <server/EstructuralPasillo.h>
 
 #include <iostream>
 

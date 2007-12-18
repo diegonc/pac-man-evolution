@@ -3,9 +3,9 @@
 #define Estructural_h_
 
 //Incluyo las librerias necesarias
-#include "elemento.h"
-#include "componente.h"
-#include "punto.h"
+#include <editor/elemento.h>
+#include <editor/componente.h>
+#include <editor/punto.h>
 
 /* CLASE ESTRUCTURAL: Esta clase abstracta representa un elemento estructural y desciende de elemento.
    El elemento estructural esta conformado por una matriz de componentes internas. */

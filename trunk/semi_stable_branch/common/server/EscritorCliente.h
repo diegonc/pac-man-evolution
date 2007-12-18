@@ -1,12 +1,12 @@
 #ifndef __ESCRITOR_CLIENTE_H__
 #define __ESCRITOR_CLIENTE_H__
 
-#include "../common/thread.h"
-#include "../common/bloqueo.h"
-#include "../common/evento.h"
-#include "../common/observable.h"
-#include "Cliente.h"
-#include "Paquete.h"
+#include <common/thread.h>
+#include <common/bloqueo.h>
+#include <common/evento.h>
+#include <common/observable.h>
+#include <server/Cliente.h>
+#include <server/Paquete.h>
 #include <queue>
 
 

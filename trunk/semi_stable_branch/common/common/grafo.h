@@ -10,11 +10,11 @@
 *****************************************************************************/
 
 #include <list>
-#include "vertice.h"
-#include "arco.h"
-#include "smart_pointer.h"
+#include <common/vertice.h>
+#include <common/arco.h>
+#include <common/smart_pointer.h>
 #include <stdexcept>
-#include "comparador.h"
+#include <common/comparador.h>
  
 template <class ContenidoVertice, class ContenidoArco> class Grafo{
 	private:

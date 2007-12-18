@@ -1,11 +1,11 @@
 #ifndef __JUGADOR_H__
 #define __JUGADOR_H__
 
-#include "../common/smart_pointer.h"
-#include "Personaje.h"
-#include "Posicion.h"
-#include "Direccion.h"
-#include "Comestible.h"
+#include <common/smart_pointer.h>
+#include <server/Personaje.h>
+#include <server/Posicion.h>
+#include <server/Direccion.h>
+#include <server/Comestible.h>
 
 /** @brief Clase que representa al jugador.
  *

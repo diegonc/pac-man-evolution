@@ -1,8 +1,8 @@
 #include "OperacionStatus.h"
 
 #include <math.h>
-#include "../common/PacMan.h"
-#include "../common/Fantasma.h"
+#include <server/PacMan.h>
+#include <server/Fantasma.h>
 
 unsigned int OperacionStatus::get_puntuacion(){
     return Puntuacion;

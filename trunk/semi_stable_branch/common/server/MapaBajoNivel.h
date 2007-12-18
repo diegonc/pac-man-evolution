@@ -8,12 +8,12 @@
  *  La interfaz MapaBajoNivel se define para permitir el acceso a estor elementos. 
  */
 
-#include "Jugador.h"
-#include "Comestible.h"
-#include "EstructuralUnitario.h"
-#include "Posicion.h"
+#include <server/Jugador.h>
+#include <server/Comestible.h>
+#include <server/EstructuralUnitario.h>
+#include <server/Posicion.h>
 #include <list>
-#include "../common/observable.h"
+#include <common/observable.h>
 
 class MapaBajoNivel : public Observable
 {

@@ -6,9 +6,9 @@
 	cambio. No es abstracte e implementa todos los metodos necesarios.
 ***************************************************************************/
 
-#include "observador.h"
-#include "mutex.h"
-#include "bloqueo.h"
+#include <common/observador.h>
+#include <common/mutex.h>
+#include <common/bloqueo.h>
 #include <list>
 
 class Observador;

@@ -1,5 +1,5 @@
 //Header
-#include "pas_horiz.h"
+#include <editor/pas_horiz.h>
 
 /* CLASE PASILLO HORIZ: Clase que representa un pasillo horizontal. Desciende de estructural. Se conecta por las puntas.
    La orientacion es ESTE por defecto. */

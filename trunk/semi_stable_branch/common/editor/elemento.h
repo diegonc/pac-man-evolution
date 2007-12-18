@@ -3,13 +3,13 @@
 #define Elemento_h_
 
 //Incluyo las librerias necesarias
-#include "mapa.h"
-#include "definiciones.h"
-#include "punto.h"
-#include "../common/smart_pointer.h"
-#include "../common/grafo.h"
-#include "../common/vertice.h"
-#include "../common/arco.h"
+#include <editor/mapa.h>
+#include <editor/definiciones.h>
+#include <editor/punto.h>
+#include <common/smart_pointer.h>
+#include <common/grafo.h>
+#include <common/vertice.h>
+#include <common/arco.h>
 
 class Mapa;
 

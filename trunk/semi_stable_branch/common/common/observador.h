@@ -7,7 +7,7 @@
 ***************************************************************************/
 
 
-#include "observable.h"
+#include <common/observable.h>
 
 class Observable;
 

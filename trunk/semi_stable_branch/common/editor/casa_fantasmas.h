@@ -3,9 +3,9 @@
 #define Casa_fantasmas_h
 
 //Incluyo las librerias necesarias
-#include "definiciones.h"
-#include "estructural.h"
-#include "punto.h"
+#include <editor/definiciones.h>
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE CASA FANTASMA: Clase que representa una casa de fantasmas en una orientacion determinada. Hereda de estructural. */
 

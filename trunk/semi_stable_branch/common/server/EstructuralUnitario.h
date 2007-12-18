@@ -6,10 +6,10 @@
 *			estructural complejo, como sea una cruz o un pasillo (comp por 3 unidades)
 */
 
-#include "Comestible.h"
-#include "../common/smart_pointer.h"
-#include "Jugador.h"
-#include "Direccion.h"
+#include <server/Comestible.h>
+#include <common/smart_pointer.h>
+#include <server/Jugador.h>
+#include <server/Direccion.h>
 
 //definiciones
 

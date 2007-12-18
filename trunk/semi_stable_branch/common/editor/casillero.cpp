@@ -1,5 +1,5 @@
 //Header
-#include "casillero.h"
+#include <editor/casillero.h>
 
 /* CLASE CASILLERO: Esta clase representa un casillero, que es la unidad espacial minima en el mapa. Cada casillero
    puede contener una parte de un elemento estructural y ademas un modificador. El casillero ademas tiene una 

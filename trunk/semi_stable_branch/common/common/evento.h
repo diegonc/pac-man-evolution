@@ -1,7 +1,7 @@
 #ifndef CLASS_EVENTO
 #define CLASS_EVENTO
 
-#include "mutex.h"
+#include <common/mutex.h>
 
 class Evento{
 	private:

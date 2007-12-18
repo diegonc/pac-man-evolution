@@ -1,5 +1,5 @@
 //Header
-#include "modificador.h"
+#include <editor/modificador.h>
 
 /* CLASE MODIFICADOR: Esta clase abstracta representa un elemento modificador y desciende de elemento.
    Todos los modificadores tienen un tamanio de 1 x 1 y su orientacion es nula. */

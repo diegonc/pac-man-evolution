@@ -1,12 +1,12 @@
-#include "PaqueteInitCommon.h"
+#include <server/PaqueteInitCommon.h>
 
-#include "MapImpSet.h"
-#include "EstructuralPasillo.h"
-#include "EstructuralCasaFantasma.h"
-#include "Direccion.h"
-#include "Posicion.h"
-#include "Operacion.h"
-#include "MundoBajoNivel.h"
+#include <server/MapImpSet.h>
+#include <server/EstructuralPasillo.h>
+#include <server/EstructuralCasaFantasma.h>
+#include <server/Direccion.h>
+#include <server/Posicion.h>
+#include <server/Operacion.h>
+#include <server/MundoBajoNivel.h>
 
 namespace {
 	const char ID = 0;

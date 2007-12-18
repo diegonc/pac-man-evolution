@@ -1,5 +1,5 @@
 //Header
-#include "nivel.h"
+#include <editor/nivel.h>
 
 /* CLASE NIVEL: Esta clase representa un nivel, que contiene un mapa. El mismo permite agregar y quitar elementos
    estructurales y modificadores al mapa, y tambien controlar que tenga una sola componente conexa, marcando los

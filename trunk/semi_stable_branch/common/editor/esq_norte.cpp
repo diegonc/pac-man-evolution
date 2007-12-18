@@ -1,5 +1,5 @@
 //Header
-#include "esq_norte.h"
+#include <editor/esq_norte.h>
 
 /* CLASE ESQUINA NORTE: Clase que representa una esquina que conecta el NORTE con el ESTE. Su orientacion es NORTE. Hereda de estructural. */
 

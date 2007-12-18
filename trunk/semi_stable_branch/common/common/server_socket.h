@@ -7,8 +7,8 @@
 
 *****************************************************************************/
 
-#include "client_socket.h"
-#include "socket.h"
+#include <common/client_socket.h>
+#include <common/socket.h>
 
 #define NUM_CONEXIONES 5
 

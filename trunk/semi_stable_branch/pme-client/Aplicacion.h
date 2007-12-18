@@ -12,8 +12,8 @@
 #include "PaqueteTecla.h"
 #include "PaqueteMensaje.h"
 #include "JugadorLocal.h"
-#include "../common/smart_pointer.h"
-#include "../common/EscritorCliente.h"
+#include <common/smart_pointer.h>
+#include <server/EscritorCliente.h>
 
 #define APP_NAME	"Pacman-Evolution"
 #define APP_VERSION	"0.5"

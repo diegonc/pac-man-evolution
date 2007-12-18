@@ -6,9 +6,9 @@ Esta clase representa el vertice de un grafo.
 Permite cualquier tipo de contenido.
 ***************************************************************************/
 #include <list>
-#include "arco.h"
-#include "smart_pointer.h"
-#include "comparador.h"
+#include <common/arco.h>
+#include <common/smart_pointer.h>
+#include <common/comparador.h>
 
 using namespace std;
 //foward declaration para que no haya problemas con el arco

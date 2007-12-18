@@ -3,8 +3,8 @@
 #define Esq_Sur_h_
 
 //Incluyo las librerias necesarias
-#include "estructural.h"
-#include "punto.h"
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE ESQUINA SUR: Clase que representa una esquina que conecta el SUR con el OESTE. Su orientacion es SUR. Hereda de estructural. */
 

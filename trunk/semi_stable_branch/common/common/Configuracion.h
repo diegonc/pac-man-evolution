@@ -4,7 +4,7 @@
 #include <map>
 #include <iostream>
 #include <string>
-#include "ConfValue.h"
+#include <common/ConfValue.h>
 
 class Configuracion
 {

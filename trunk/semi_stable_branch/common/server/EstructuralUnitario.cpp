@@ -1,4 +1,4 @@
-#include "EstructuralUnitario.h"
+#include <server/EstructuralUnitario.h>
 #include <iostream>
 
 //definiciones

@@ -1,5 +1,5 @@
 //Header
-#include "bonus.h"
+#include <editor/bonus.h>
 
 /* CLASE BONUS: Clase que representa un bonus. Desciende de modificador. Ocupa un casillero. */
 

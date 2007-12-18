@@ -3,7 +3,7 @@
 #define Modificador_h_
 
 //Incluyo las librerias necesarias
-#include "elemento.h"
+#include <editor/elemento.h>
 
 /* CLASE MODIFICADOR: Esta clase abstracta representa un elemento modificador y desciende de elemento.
    Todos los modificadores tienen un tamanio de 1 x 1 y su orientacion es nula. */

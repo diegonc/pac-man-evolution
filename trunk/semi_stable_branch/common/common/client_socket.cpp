@@ -1,4 +1,4 @@
-#include "client_socket.h"
+#include <common/client_socket.h>
 
 Socket_Cliente::Socket_Cliente():Socket(){	
 }

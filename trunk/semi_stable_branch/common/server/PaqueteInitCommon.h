@@ -1,9 +1,9 @@
 #ifndef __PAQUETEINITCOMMON_H__
 #define __PAQUETEINITCOMMON_H__
 
-#include "Paquete.h"
-#include "MapaBajoNivel.h"
-#include "../common/smart_pointer.h"
+#include <server/Paquete.h>
+#include <server/MapaBajoNivel.h>
+#include <common/smart_pointer.h>
 
 class PaqueteInitCommon : public Paquete
 {

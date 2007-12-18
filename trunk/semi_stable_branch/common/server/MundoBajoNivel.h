@@ -5,7 +5,7 @@
 *	@brief	Define una interfaz para todos los mundos
 */
 
-#include "MapaBajoNivel.h"
+#include <server/MapaBajoNivel.h>
 
 class MundoBajoNivel
 {

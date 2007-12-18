@@ -6,14 +6,14 @@
  *
  */
 
-#include "../common/MapaBajoNivel.h"
-#include "../common/Jugador.h"
-#include "../common/Posicion.h"
-#include "ComparadorPosicion.h"
-#include "../common/Comestible.h"
-#include "../common/observable.h"
-#include "../common/NovedadComestible.h"
-#include "ComestibleFactory.h"
+#include <server/MapaBajoNivel.h>
+#include <server/Jugador.h>
+#include <server/Posicion.h>
+#include <server/ComparadorPosicion.h>
+#include <server/Comestible.h>
+#include <common/observable.h>
+#include <server/NovedadComestible.h>
+#include <server/ComestibleFactory.h>
 
 #include <map>
 #include <list>

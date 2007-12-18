@@ -1,7 +1,7 @@
 #ifndef _OPERACION_NULA_H
 #define _OPERACION_NULA_H
 
-#include "Operacion.h"
+#include <server/Operacion.h>
 
 class OperacionNula : public Operacion {
    public:

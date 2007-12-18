@@ -3,8 +3,8 @@
 #define Bif_Norte_h_
 
 //Incluyo las librerias necesarias
-#include "estructural.h"
-#include "punto.h"
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE BIF NORTE: Clase que representa una bifurcacion con orientacion NORTE. Hereda de Estructural. */
 

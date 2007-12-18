@@ -1,5 +1,5 @@
-#include "EscuchadorCliente.h"
-#include "ModeloCommon.h"
+#include <server/EscuchadorCliente.h>
+#include <server/ModeloCommon.h>
 
 EscuchadorCliente::EscuchadorCliente(Cliente * c){
 	this->cliente = c;

@@ -8,7 +8,7 @@
 	de scopes por ejemplo
 
 ***************************************************************************/
-#include "mutex.h"
+#include <common/mutex.h>
 
 class Bloqueo{
 	 

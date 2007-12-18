@@ -3,9 +3,9 @@
 #define Portal_Este_h_
 
 //Incluyo las librerias necesarias
-#include "portal.h"
-#include "portal_oeste.h"
-#include "punto.h"
+#include <editor/portal.h>
+#include <editor/portal_oeste.h>
+#include <editor/punto.h>
 
 /* CLASE PORTAL ESTE: Clase que representa un portal con orientacion ESTE. Hereda de Portal. */
 

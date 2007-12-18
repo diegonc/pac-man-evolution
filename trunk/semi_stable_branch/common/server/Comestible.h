@@ -1,9 +1,9 @@
 #ifndef __COMESTIBLE_H__
 #define __COMESTIBLE_H__
 
-#include "Personaje.h"
-#include "Direccion.h"
-#include "Posicion.h"
+#include <server/Personaje.h>
+#include <server/Direccion.h>
+#include <server/Posicion.h>
 
 //definiciones
 #define _POWER_UP	1

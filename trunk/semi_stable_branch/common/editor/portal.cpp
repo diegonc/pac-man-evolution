@@ -1,5 +1,5 @@
 //Header
-#include "portal.h"
+#include <editor/portal.h>
 
 /* CLASE PORTAL: Clase que representa un portal en una orientacion determinada. Hereda de estructural. */
 

@@ -6,7 +6,7 @@
 *			de comestibles
 */			
 
-#include "../common/Comestible.h"
+#include <server/Comestible.h>
 
 class ComestibleFactory{
 	

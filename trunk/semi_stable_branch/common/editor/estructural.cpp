@@ -1,5 +1,5 @@
 //Header
-#include "estructural.h"
+#include <editor/estructural.h>
 
 /* CLASE ESTRUCTURAL: Esta clase abstracta representa un elemento estructural y desciende de elemento. */
 

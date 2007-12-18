@@ -28,7 +28,7 @@
 #include <map>
 #include <list>	
 
-#include "../server/KeyOp.h"
+#include <pme-server/KeyOp.h>
 
 class AplicacionGrafica{
         //estadp de la aplicaccion

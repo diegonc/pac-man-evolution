@@ -1,5 +1,5 @@
 //Header
-#include "fab_elementos.h"
+#include <editor/fab_elementos.h>
 
 /* CLASE FABRICA ELEMENTOS: Clase que se encarga de encapsular la creacion de elementos de cualquier tipo (modificadores
 o estructurales). */

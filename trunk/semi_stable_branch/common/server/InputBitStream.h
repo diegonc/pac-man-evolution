@@ -1,7 +1,7 @@
 #ifndef __INPUTBITSTREAM_H__
 #define __INPUTBITSTREAM_H__
 
-#include "BufferReader.h"
+#include <server/BufferReader.h>
 
 class InputBitStream
 {

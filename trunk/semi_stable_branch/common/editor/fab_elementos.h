@@ -3,31 +3,31 @@
 #define Fab_Elementos_h_
 
 //Incluyo las librerias necesarias
-#include "definiciones.h"
-#include "../common/smart_pointer.h"
-#include "elemento.h"
-#include "pas_horiz.h"
-#include "pas_vert.h"
-#include "esq_este.h"
-#include "esq_oeste.h"
-#include "esq_norte.h"
-#include "esq_sur.h"
-#include "casa_sur.h"
-#include "casa_este.h"
-#include "casa_oeste.h"
-#include "casa_norte.h"
-#include "bif_este.h"
-#include "bif_oeste.h"
-#include "bif_sur.h"
-#include "bif_norte.h"
-#include "portal_este.h"
-#include "portal_oeste.h"
-#include "portal_sur.h"
-#include "portal_norte.h"
-#include "cruce.h"
-#include "power_up.h"
-#include "bonus.h"
-#include "salida.h"
+#include <editor/definiciones.h>
+#include <common/smart_pointer.h>
+#include <editor/elemento.h>
+#include <editor/pas_horiz.h>
+#include <editor/pas_vert.h>
+#include <editor/esq_este.h>
+#include <editor/esq_oeste.h>
+#include <editor/esq_norte.h>
+#include <editor/esq_sur.h>
+#include <editor/casa_sur.h>
+#include <editor/casa_este.h>
+#include <editor/casa_oeste.h>
+#include <editor/casa_norte.h>
+#include <editor/bif_este.h>
+#include <editor/bif_oeste.h>
+#include <editor/bif_sur.h>
+#include <editor/bif_norte.h>
+#include <editor/portal_este.h>
+#include <editor/portal_oeste.h>
+#include <editor/portal_sur.h>
+#include <editor/portal_norte.h>
+#include <editor/cruce.h>
+#include <editor/power_up.h>
+#include <editor/bonus.h>
+#include <editor/salida.h>
 
 using namespace std;
 

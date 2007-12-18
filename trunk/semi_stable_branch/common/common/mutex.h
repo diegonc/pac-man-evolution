@@ -2,7 +2,7 @@
 #define __MUTEX_H__
 
 #include <pthread.h>
-#include "errores.h"
+#include <common/errores.h>
 
 class Mutex
 {

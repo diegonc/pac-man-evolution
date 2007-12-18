@@ -7,7 +7,7 @@
 
 *****************************************************************************/
 
-#include "socket.h"
+#include <common/socket.h>
 class Socket_Cliente : public Socket{
 	
 	public:

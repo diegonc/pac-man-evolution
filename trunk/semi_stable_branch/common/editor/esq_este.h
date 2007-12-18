@@ -3,8 +3,8 @@
 #define Esq_Este_h_
 
 //Incluyo las librerias necesarias
-#include "estructural.h"
-#include "punto.h"
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE ESQUINA ESTE: Clase que representa una esquina que conecta el ESTE con el SUR. Su orientacion es ESTE. Hereda de estructural. */
 

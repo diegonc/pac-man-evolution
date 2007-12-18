@@ -1,8 +1,8 @@
 #ifndef __ESCUCHADOR_CLIENTE_H__
 #define __ESCUCHADOR_CLIENTE_H__
 
-#include "../common/thread.h"
-#include "Cliente.h"
+#include <common/thread.h>
+#include <server/Cliente.h>
 
 class EscuchadorCliente : public Thread{
 	private:

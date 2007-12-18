@@ -3,8 +3,8 @@
 #define Pas_Vert_h_
 
 //Incluyo las librerias necesarias
-#include "estructural.h"
-#include "punto.h"
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE PASILLO VERT: Clase que representa un pasillo vertical. Desciende de estructural. Se conecta por las puntas.
    La orientacion es NORTE por defecto. */

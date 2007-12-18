@@ -1,5 +1,5 @@
 //Header
-#include "punto.h"
+#include <editor/punto.h>
 
 /* CLASE PUNTO: Clase que representa un punto en un espacio de R2. Tiene coordenadas (x,y). */
 

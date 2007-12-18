@@ -3,8 +3,8 @@
 #define Casa_Sur_h_
 
 //Incluyo las librerias necesarias
-#include "casa_fantasmas.h"
-#include "punto.h"
+#include <editor/casa_fantasmas.h>
+#include <editor/punto.h>
 
 /* CLASE CASA SUR: Clase que representa una casa de fantasmas con orientacion SUR. Hereda de CasaFantasmas. */
 

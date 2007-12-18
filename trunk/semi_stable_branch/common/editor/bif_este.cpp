@@ -1,5 +1,5 @@
 //Header
-#include "bif_este.h"
+#include <editor/bif_este.h>
 
 /* CLASE BIF ESTE: Clase que representa una bifurcacion con orientacion ESTE. Hereda de Estructural. */
 

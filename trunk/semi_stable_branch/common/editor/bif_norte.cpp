@@ -1,5 +1,5 @@
 //Header
-#include "bif_norte.h"
+#include <editor/bif_norte.h>
 
 /* CLASE BIF NORTE: Clase que representa una bifurcacion con orientacion NORTE. Hereda de Estructural. */
 

@@ -1,5 +1,5 @@
 //Header
-#include "esq_sur.h"
+#include <editor/esq_sur.h>
 
 /* CLASE ESQUINA SUR: Clase que representa una esquina que conecta el SUR con el OESTE. Su orientacion es SUR. Hereda de estructural. */
 

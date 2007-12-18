@@ -3,8 +3,8 @@
 #define Cruce_h_
 
 //Incluyo las librerias necesarias
-#include "estructural.h"
-#include "punto.h"
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE CRUCE: Clase que representa una una doble bifurcacion o cruce. Hereda de Estructural. */
 

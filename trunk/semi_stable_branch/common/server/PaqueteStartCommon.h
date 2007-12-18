@@ -1,7 +1,7 @@
 #ifndef __PAQUETESTARTCOMMON_H__
 #define __PAQUETESTARTCOMMON_H__
 
-#include "Paquete.h"
+#include <server/Paquete.h>
 
 class PaqueteStartCommon: public Paquete
 {

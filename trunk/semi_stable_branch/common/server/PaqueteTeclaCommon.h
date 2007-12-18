@@ -1,7 +1,7 @@
 #ifndef __PAQUETETECLACOMMON_H__
 #define __PAQUETETECLACOMMON_H__
 
-#include "Paquete.h"
+#include <server/Paquete.h>
 
 
 class PaqueteTeclaCommon : public Paquete

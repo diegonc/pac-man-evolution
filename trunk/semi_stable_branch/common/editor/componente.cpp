@@ -1,5 +1,5 @@
 //Header
-#include "componente.h"
+#include <editor/componente.h>
 
 /* CLASE COMPONENTE: Representa un pedazo de elemento estructural que puede ser habitable o punto de conexion
    del elemento. */

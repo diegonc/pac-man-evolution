@@ -3,7 +3,7 @@
 #define Salida_h_
 
 //Incluyo las librerias necesarias
-#include "modificador.h"
+#include <editor/modificador.h>
 
 /* CLASE SALIDA: Clase que representa la salida del PacMan. Desciende de modificador. Ocupa un casillero. */
 

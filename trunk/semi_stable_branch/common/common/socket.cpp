@@ -1,4 +1,4 @@
-#include "socket.h"
+#include <common/socket.h>
 
 int Socket::TCP = SOCK_STREAM;
 int Socket::UDP = SOCK_STREAM;

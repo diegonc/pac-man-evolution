@@ -3,7 +3,7 @@
 #define Bonus_h_
 
 //Incluyo las librerias necesarias
-#include "modificador.h"
+#include <editor/modificador.h>
 
 /* CLASE BONUS: Clase que representa un bonus. Desciende de modificador. Ocupa un casillero. */
 

@@ -3,8 +3,8 @@
 #define Bif_Este_h_
 
 //Incluyo las librerias necesarias
-#include "estructural.h"
-#include "punto.h"
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE BIF ESTE: Clase que representa una bifurcacion con orientacion ESTE. Hereda de Estructural. */
 

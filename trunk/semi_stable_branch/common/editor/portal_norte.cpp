@@ -1,5 +1,5 @@
 //Header
-#include "portal_norte.h"
+#include <editor/portal_norte.h>
 
 /* CLASE PORTAL NORTE: Clase que representa un portal con orientacion NORTE. Hereda de Portal. */
 

@@ -1,8 +1,8 @@
 #include "Aplicacion.h"
 
 ////////////////////////////////////////
-#include "../common/client_socket.h"
-#include "../common/Cliente.h"
+#include <common/client_socket.h>
+#include <server/Cliente.h>
 #include "ModeloServidor.h"
 #include <stdexcept>
 #include <SDL_mixer.h>

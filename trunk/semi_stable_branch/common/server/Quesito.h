@@ -6,7 +6,7 @@
 			pacman
 */
 
-#include "Comestible.h"
+#include <server/Comestible.h>
 
 #define PUNTOS_QUESO	1
 

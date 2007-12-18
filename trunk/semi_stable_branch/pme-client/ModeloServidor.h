@@ -1,7 +1,7 @@
 #ifndef __MODELO_H__
 #define __MODELO_H__
 
-#include "../common/ModeloCommon.h"
+#include <server/ModeloCommon.h>
 
 /** @brief Esta clase define el modelo.
  *		   Hereda de thread, ya que se debe actualizar automaticamente todo

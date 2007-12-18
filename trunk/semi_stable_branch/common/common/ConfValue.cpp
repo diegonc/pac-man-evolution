@@ -1,4 +1,4 @@
-#include "ConfValue.h"
+#include <common/ConfValue.h>
 #include <cassert>
 
 ConfValue::ConfValue( unsigned int valor )
