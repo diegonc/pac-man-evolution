@@ -101,6 +101,8 @@ class ModeloCommon : public Thread, public Observable{
       */
   		void quitar_jugador(unsigned int id);
 
+      void preparar_partida();
+
       /**
       *  @brief   Settea la posicion inicial del jugador dependiendo del personaje
       *

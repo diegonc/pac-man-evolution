@@ -13,7 +13,7 @@ MundoBajoNivel* Traductor::traducir(Mundo* mundo){
 	for (unsigned int cont = 0; cont < mundo->get_cant_niveles(); cont++){
 		//Obtengo cada nivel y traduzco su mapa a mapa de bajo nivel
 		S_ptr<Nivel> nivel = mundo->get_nivel(cont+1);
-		S_ptr<MapaBajoNivel> mapa_bajo_nivel = this->traducir_mapa(nivel->get_mapa());
+		MapaBajoNivel* mapa_bajo_nivel = this->traducir_mapa(nivel->get_mapa());
 		//Agrego el mapa de bajo nivel al mundo de bajo nivel
 		mundo_bajo_nivel->agregar_mapa(mapa_bajo_nivel);
 	}
@@ -22,9 +22,9 @@ MundoBajoNivel* Traductor::traducir(Mundo* mundo){
 
 /* Traducir Mapa: */
 
-S_ptr<MapaBajoNivel> Traductor::traducir_mapa (Mapa* mapa){
+MapaBajoNivel* Traductor::traducir_mapa (Mapa* mapa){
 	//Creo un mapa de bajo nivel a devolver
-	S_ptr<MapaBajoNivel> mapa_bajo_nivel (new MapaImpSet(mapa->get_ancho(),mapa->get_alto()));
+	MapaBajoNivel* mapa_bajo_nivel =new MapaImpSet(mapa->get_ancho(),mapa->get_alto());
 	//Recorro todos los casilleros del mapa de alto nivel
 	for (int cont1 = 0; cont1 < mapa->get_alto(); cont1++)
 		for (int cont2 = 0; cont2 < mapa->get_ancho(); cont2++){
@@ -67,7 +67,7 @@ S_ptr<MapaBajoNivel> Traductor::traducir_mapa (Mapa* mapa){
 
 /* Realizar Conexiones: */
 
-void Traductor::realizar_conexiones(Mapa* mapa, S_ptr<MapaBajoNivel> mapa_bajo_nivel){
+void Traductor::realizar_conexiones(Mapa* mapa, MapaBajoNivel* mapa_bajo_nivel){
 	//Recorro todos los casilleros del mapa de alto nivel
 	for (int cont1 = 0; cont1 < mapa->get_alto(); cont1++)
 		for (int cont2 = 0; cont2 < mapa->get_ancho(); cont2++){
@@ -92,7 +92,7 @@ void Traductor::realizar_conexiones(Mapa* mapa, S_ptr<MapaBajoNivel> mapa_bajo_n
 
 /* Conectar Casilleros: */
 
-void Traductor::conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> destino, Mapa* mapa_alto_nivel, S_ptr<MapaBajoNivel> mapa_bajo_nivel, Orientacion orientacion){
+void Traductor::conectar_casilleros(S_ptr<Casillero> origen, S_ptr<Casillero> destino, Mapa* mapa_alto_nivel, MapaBajoNivel* mapa_bajo_nivel, Orientacion orientacion){
 		//Si hay casillero de origen y destino
 		if ((!origen.es_nulo()) && (!destino.es_nulo())){
 			//Obtengo los estructurales de alto nivel origen y destino

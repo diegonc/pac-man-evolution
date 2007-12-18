@@ -158,7 +158,7 @@ void MiniMapa::Dibujar(Jugador* jug, SDL_Surface* Screen){
 }
 
 bool MiniMapa::hayEstructural(Posicion& P){
-	S_ptr<MapaBajoNivel> mapa=ModeloServidor::get_instancia()->get_mundo().get_mapa_activo();
+	MapaBajoNivel* mapa=ModeloServidor::get_instancia()->get_mundo().get_mapa_activo();
 	//si la posicion en X es invalida
 	if ((P.get_x()<0) || (P.get_x()>=mapa->get_ancho())){
 		return false;

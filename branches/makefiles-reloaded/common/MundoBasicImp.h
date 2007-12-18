@@ -14,7 +14,7 @@
 class MundoBasicImp : public MundoBajoNivel
 {
 	private:
-		std::list<S_ptr<MapaBajoNivel>  > mapas;
+		std::list<MapaBajoNivel*  > mapas;
 		int cant_niveles;
 
 	public:
@@ -31,12 +31,12 @@ class MundoBasicImp : public MundoBajoNivel
 		/**
 		*	@brief Implementacion del metodo de la interfaz mundo
 		*/
-		S_ptr<MapaBajoNivel> get_mapa_activo();
+		MapaBajoNivel* get_mapa_activo();
 	
 		/**
 		*	@brief Implementacion del metodo de la interfaz mundo
 		*/
-		void agregar_mapa(S_ptr<MapaBajoNivel> mapa);
+		void agregar_mapa(MapaBajoNivel* mapa);
 	
 		/**
 		*	@brief Implementacion del metodo de la interfaz mundo

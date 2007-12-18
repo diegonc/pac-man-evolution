@@ -2,6 +2,7 @@
 #define __OPERACION_START_H__
 
 #include "../common/Operacion.h"
+#include "ModeloServidor.h"
 
 class OperacionStart : public Operacion
 	{

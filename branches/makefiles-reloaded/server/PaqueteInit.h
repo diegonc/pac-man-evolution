@@ -9,7 +9,7 @@ class PaqueteInit : public PaqueteInitCommon
 		/** Crea un paquete apto para deserializar. */
 		PaqueteInit();
 
-      PaqueteInit(bool pacman, S_ptr<MapaBajoNivel> m );
+      PaqueteInit(bool pacman, MapaBajoNivel* m );
 
 		Operacion * get_operacion();
 };
