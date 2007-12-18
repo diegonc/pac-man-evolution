@@ -3,7 +3,7 @@
 COMMON_H="`cd common/common; ls *.h`"
 EDITOR_H="`cd common/editor; ls *.h`"
 SERVER_H="`cd common/server; ls *.h`"
-DIRS="client pme-client common/common common/editor common/server"
+DIRS="pme-client common/common common/editor common/server"
 
 cat > fix-headers.sh << EOF
 #!/bin/sh
@@ -20,8 +20,8 @@ for i in $DIRS; do
 done
 
 cat >> fix-headers.sh << EOF
-sed -e 's/"\.\.\/server\/KeyOp.h"/<pme-server\/KeyOp.h>/' common/server/PaqueteTeclaCommon.cpp
-sed -e 's/"\.\.\/server\/KeyOp.h"/<pme-server\/KeyOp.h>/' pme-client/AplicacionGrafica.h
+sed -i -e 's/"\.\.\/server\/KeyOp.h"/<pme-server\/KeyOp.h>/' common/server/PaqueteTeclaCommon.cpp
+sed -i -e 's/"\.\.\/server\/KeyOp.h"/<pme-server\/KeyOp.h>/' pme-client/AplicacionGrafica.h
 
 EOF
 
