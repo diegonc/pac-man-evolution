@@ -21,8 +21,7 @@ void EscuchadorCliente::run(){
 	while(correr){
 		try{
 			paquete = cliente->recibir_mensaje();
-			if(! paquete.es_nulo() ){
-            //std::cout << "Recibiendo: " << (int) paquete->get_tipo() << std::endl << std::flush;
+			if(! paquete.es_nulo() ){            
             j++;	
             op = paquete->get_operacion();
             if (op != NULL) {				

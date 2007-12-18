@@ -119,22 +119,6 @@ class EstructuralUnitario{
 		Posicion& get_posicion();
 		
 		/**
-		*	@brief  Permite evaluar para saber si es salida de pacman o no
-		*
-		*	@return Por defecto devuelve false, si se desea, los hijos la pueden
-		*			redefnir
-		*/
-		//virtual bool es_salida_pacman();
-		
-		/**
-		*	@brief  Permite evaluar para saber si es casa de fantasmas o no
-		*
-		*	@return Por defecto devuelve false, si se desea, los hijos la pueden
-		*			redefnir
-		*/
-		//virtual bool es_casa_fantasma();
-		
-		/**
 		*	@brief	Permite saber si este estructural esta conectado a otro
 		*
 		*	@param  Estructural con el que se quiere conectar

@@ -64,12 +64,7 @@ void EstructuralUnitario::set_posicion(Posicion &p){
 Posicion& EstructuralUnitario::get_posicion(){
 	return this->posicion;
 }
-//bool EstructuralUnitario::es_salida_pacman(){
-	//return false; //por defecto	
-//}
-//bool EstructuralUnitario::es_casa_fantasma(){
-	//return false;//por defecto
-//}
+
 bool EstructuralUnitario::tiene_conexion(S_ptr<EstructuralUnitario> e){
 	if(e == get_arriba() )
 		return true;		
