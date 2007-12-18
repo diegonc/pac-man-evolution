@@ -1,7 +1,7 @@
 #include "OperacionInit.h"
 
 #include "JugadorLocal.h"
-OperacionInit::OperacionInit( S_ptr<MapaBajoNivel> m, bool esPac ){
+OperacionInit::OperacionInit( MapaBajoNivel* m, bool esPac ){
 		this->m = m ;
       this->esPac = esPac;
 }

@@ -69,17 +69,15 @@ MundoBasicImp::~MundoBasicImp()
 {
 	this->mapas.clear();
 }
-S_ptr<MapaBajoNivel> MundoBasicImp::get_mapa_activo()
+MapaBajoNivel* MundoBasicImp::get_mapa_activo()
 {
 	if(! this->mapas.empty() )
 		return mapas.front();
 
-	S_ptr<MapaBajoNivel> mapa_nulo;
-	return mapa_nulo;
-
-		
+	return NULL;		
 }
-void MundoBasicImp::agregar_mapa(S_ptr<MapaBajoNivel> mapa){
+
+void MundoBasicImp::agregar_mapa(MapaBajoNivel* mapa){
 	mapas.push_back(mapa);
 	this->cant_niveles++;
 }
