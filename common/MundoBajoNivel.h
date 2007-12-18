@@ -16,7 +16,7 @@ class MundoBajoNivel
 		*
 		*	@return	Objeto del tipo MapaBajoNivel que es el mapa activo
 		*/
-		virtual S_ptr<MapaBajoNivel> get_mapa_activo() = 0;
+		virtual MapaBajoNivel* get_mapa_activo() = 0;
 	
 		/**
 		*	@brief 	Destructor de la clase
@@ -28,7 +28,7 @@ class MundoBajoNivel
 		*
 		*	@param	Smart pointer con el mapa a agregar
 		*/		
-		virtual void agregar_mapa(S_ptr<MapaBajoNivel> mapa)=0;
+		virtual void agregar_mapa(MapaBajoNivel* mapa)=0;
 		
 		/**
 		*	@brief 	Debe retornar la cantidad de niveles del mapa

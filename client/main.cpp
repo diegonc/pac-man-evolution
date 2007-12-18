@@ -5,6 +5,7 @@
 #include "../common/Cliente.h"
 #include "ModeloServidor.h"
 #include <stdexcept>
+#include <SDL_mixer.h>
 #include <string>
 #include <iostream>
 ///////////////////////////////////////
@@ -21,7 +22,7 @@ int main(int argc, char **argv)
 	try{
 		//////////POR AHORA HARDCODED////////////////////
 		std::string ip("201.231.232.12");
-		unsigned int short puerto = 7776;
+		unsigned int short puerto = 7777;
 		socket->conectar(ip, puerto);
 		Cliente cliente_del_modelo(socket, ModeloServidor::get_instancia());
 		cliente_del_modelo.start();
@@ -45,13 +46,14 @@ int main(int argc, char **argv)
 		Vflags = SDL_HWSURFACE|SDL_OPENGLBLIT;
 
 		//inicializo SDL
-		SDL_Init(SDL_INIT_VIDEO);
+		SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO );
 
 		//le indico q cuando termine Envie un SDL_Quit
 		atexit(SDL_Quit);
 
 		//seteo inicialmente en fullscreen
 		//Vflags|=SDL_FULLSCREEN;
+
 
 		//seteo icono de aplicacion
 		APP.SetUpIcon("Icon.bmp");
@@ -61,6 +63,16 @@ int main(int argc, char **argv)
 
 		//Seteo Caption de ventana
 		SDL_WM_SetCaption(APP_NAME, NULL);
+
+		int frecuencia = 22050; // Acepta valores típicos de frecuencia : 48000, 44100, etc.
+		int canales = 2; // 1 para mono y 2 para stereo.
+		int buffer = 4096; // Este suele ser el tamaño mas comunmente dado para el buffer aunque se le puede aumentar o disminuir.
+		Uint16 formato = AUDIO_S16; // Es el más habitual y equivale a 16-bit Stereo.
+
+		//Una vez asignados estos valores se abre el dispositivo:
+		Mix_OpenAudio ( frecuencia, formato, canales, buffer );
+		
+		Mix_AllocateChannels ( 8);
 
 		//obtengo el tiempoAntes del loop
 		APP.InitTimers(&LastCount);
@@ -165,6 +177,12 @@ int main(int argc, char **argv)
 						{
 							//obtengo el estado de las teclas
 							Keys = SDL_GetKeyState(NULL);
+							//obtengo tiempo actual
+							TickCount = SDL_GetTicks();
+							//Updateo, enviendo el intervalo entre loops
+							APP.Update(TickCount-LastCount, Keys);
+							//el ultimo tiempo, pasa a ser el actual
+							LastCount = TickCount;
 							break;
 						}
 				}
@@ -179,13 +197,7 @@ int main(int argc, char **argv)
 					SDL_WaitEvent(NULL);
 				}
 				else
-				{
-					//obtengo tiempo actual
-					TickCount = SDL_GetTicks();
-					//Updateo, enviendo el intervalo entre loops
-					APP.Update(TickCount-LastCount, Keys);
-					//el ultimo tiempo, pasa a ser el actual
-					LastCount = TickCount;
+				{					
 					//llamo a la funcion de dibujo en pantalla
 					APP.getAplicacionGrafica()->Draw(APP.getScreen());
 					//intercambio los buffers (doble buffering)
@@ -193,17 +205,20 @@ int main(int argc, char **argv)
 				}
 			}
 			usleep(10000);
+
+			
 		}
 		//el programa esta finalizando
-
+		Mix_CloseAudio( );
 		//finalizo, libero recursos
 		APP.getAplicacionGrafica()->Deinitialize();
+
 		///////////////////////////////////////////////////////////////////////
-      cliente_del_modelo.get_escritor().terminar();
-  		socket->cerrar();
-      S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),0));
-      cliente_del_modelo.get_escritor().encolar_paquete(PaqTec);
-      cliente_del_modelo.join();
+	      cliente_del_modelo.get_escritor().terminar();
+	  		socket->cerrar();
+	      S_ptr<Paquete> PaqTec(new PaqueteTecla(JugadorLocal::get_instancia()->get_id(),0));
+	      cliente_del_modelo.get_escritor().encolar_paquete(PaqTec);
+	      cliente_del_modelo.join();
 		//////////////////////////////////////////////////////////////////////
 
 	}

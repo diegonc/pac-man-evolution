@@ -66,7 +66,7 @@ void ModeloServidor::run(){
                if( j != NULL ){
    					//lo muevo
    					S_ptr<MundoBajoNivel> mun = this->mundo;
-   					S_ptr<MapaBajoNivel> map = mun->get_mapa_activo();
+   					MapaBajoNivel* map = mun->get_mapa_activo();
    					Personaje* pers = j->get_personaje();
    					map->mover(*j, pers->get_velocidad() * intervalo_tiempo);
    					//reviso las colisiones
@@ -99,39 +99,6 @@ void ModeloServidor::revisar_colisiones(Jugador * j, std::list<Jugador *>& lista
       j2 = *it;
 		j->colisiono(j2);
 	}	
-}
-void ModeloServidor::preparar_partida(){
-
-	std::list<Jugador *> lista_jugadores = get_jugadores();
-	std::list<Jugador *>::iterator it_jugadores;
-	
-	Posicion p;
-
-	it_jugadores = lista_jugadores.begin();
-	while(it_jugadores != lista_jugadores.end() ){
-		set_posicion_inicial(*it_jugadores);		
-  	        ++it_jugadores;
-	}
-      //j = *it_jugadores;
-      		
-      /*if(j->get_personaje()->get_tipo() == Personaje::pacman){
-			p = salida_pacman->get_posicion();
-			p.set_x(p.get_x() + 0.5);
-			p.set_y(p.get_y() + 0.5);
-		}
-		else
-			if(j->get_personaje()->get_tipo() == Personaje::fantasma){
-				aux = *it_estucturales;
-				p = aux->get_posicion();
-				p.set_x(p.get_x() + 0.5);
-				p.set_y(p.get_y() + 0.5);
-				if(it_estucturales == casa_fantasma.end() )
-					it_estucturales = casa_fantasma.begin();
-				else
-					it_estucturales++;
-			}
-			
-		j->set_posicion(p);*/
 }
 
 void ModeloServidor::reiniciar_partida(){

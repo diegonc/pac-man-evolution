@@ -17,7 +17,7 @@ PaqueteInitCommon::PaqueteInitCommon() : Paquete( ID )
 
 }	
 
-PaqueteInitCommon::PaqueteInitCommon( bool pac, S_ptr<MapaBajoNivel> m )
+PaqueteInitCommon::PaqueteInitCommon( bool pac, MapaBajoNivel* m )
 	: Paquete( ID ), mapa( m )
 {
 	esPacman = pac;
@@ -32,7 +32,7 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 	int ancho = bs.read( 8 );
 	int alto = bs.read( 8 );
 //	std::cout << "ancho: " << ancho << " alto: " << alto << std::endl << std::flush;
-	mapa = S_ptr<MapaBajoNivel>( new MapaImpSet( ancho, alto ) );
+	mapa =  new MapaImpSet( ancho, alto ) ;
 	int long_aristas = ancho * alto * 2;
 //	std::cout << "long aristas: " << long_aristas << std::endl << std::flush;
 	bs.grow( long_aristas );

@@ -6,10 +6,10 @@
 class OperacionInit : public Operacion
 	{
 		private:
-			S_ptr<MapaBajoNivel> m;
+			MapaBajoNivel* m;
 			bool esPac;
 		public:
-			OperacionInit( S_ptr<MapaBajoNivel> m, bool esPac );
+			OperacionInit( MapaBajoNivel* m, bool esPac );
 
 			void ejecutar(ModeloCommon &modelo);
 	};
