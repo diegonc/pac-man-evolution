@@ -23,8 +23,6 @@ class ModeloServidor : public ModeloCommon, public Observador {
       bool pausado; //Determina si el modelo esta pausado en el nivel actual o no
 
       Evento* evento_despausar; //Evento que controla el despausar
-   
-		void preparar_partida();
 					
 		void revisar_colisiones(Jugador * j, std::list<Jugador *>& lista_jugadores);	
 	
