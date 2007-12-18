@@ -1,25 +1,25 @@
-#include "PaqueteMensaje.h"
+#include "PaqueteMensajeCommon.h"
 
 namespace {
 	const char ID = 6;
 }
 
-PaqueteMensaje::PaqueteMensaje(): Paquete(ID)
+PaqueteMensajeCommon::PaqueteMensajeCommon(): Paquete(ID)
 {
 
 }
-
-std::string PaqueteMensaje::get_mensaje()
+/*
+std::string PaqueteMensajeCommon::get_mensaje()
 {
     return Mensaje;
 }
 
-void PaqueteMensaje::set_mensaje(std::string msg)
+void PaqueteMensajeCommon::set_mensaje(std::string msg)
 {
     Mensaje = msg;
 }
-
-void PaqueteMensaje::deserialize( InputBitStream& bs )
+*/
+void PaqueteMensajeCommon::deserialize( InputBitStream& bs )
 {
     int TamanioCotaSup= bs.read( 3 )*10;
     bs.skip();
@@ -37,7 +37,7 @@ void PaqueteMensaje::deserialize( InputBitStream& bs )
     delete[] buffer;
 }
 
-void PaqueteMensaje::serialize( OutputBitStream& bs )
+void PaqueteMensajeCommon::serialize( OutputBitStream& bs )
 {
     Paquete::serialize( bs ); // Escribe version de protocolo e ID de paquete.
 
@@ -49,6 +49,6 @@ void PaqueteMensaje::serialize( OutputBitStream& bs )
     bs.append_string( Mensaje.c_str(), slen );
 }
 
-Operacion * PaqueteMensaje::get_operacion(){
-	//TODO
+Operacion * PaqueteMensajeCommon::get_operacion(){
+	return new OperacionNula();
 }
