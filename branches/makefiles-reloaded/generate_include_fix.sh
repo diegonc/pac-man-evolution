@@ -19,4 +19,10 @@ for i in $DIRS; do
 	grep "\#include" $i/*.{cpp,h} | awk -f sed_calls.awk
 done
 
+cat >> fix-headers.sh << EOF
+sed -e 's/"\.\.\/server\/KeyOp.h"/<pme-server\/KeyOp.h>/' common/server/PaqueteTeclaCommon.cpp
+sed -e 's/"\.\.\/server\/KeyOp.h"/<pme-server\/KeyOp.h>/' pme-client/AplicacionGrafica.h
+
+EOF
+
 chmod +x fix-headers.sh
