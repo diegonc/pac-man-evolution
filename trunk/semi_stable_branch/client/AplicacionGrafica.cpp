@@ -34,7 +34,8 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
 	//escenario.Procesar(); //<----LO COMENTE YOOOOO!!!!
 	//Mapa = SDL_LoadBMP("./MiniMapa/Mapa.bmp");
 	minimapa.CargarTexturas();
-	ABC.CargarTextura();
+	ABCEntrada.CargarTextura();
+	ABCSalida.CargarTextura();
 	ModeladorOBJ.hidratar();
 	return true;
 
@@ -185,5 +186,7 @@ void AplicacionGrafica::Draw2D(SDL_Surface *S)
 	if (escenario.loaded()){
 		minimapa.ejecutar(S);		
 	}
-	ABC.ImprimirFrase(S,MensajeAMostrar);
+	ABCEntrada.ImprimirFrase(S,MensajeAMostrar);	
+	ABCSalida.ImprimirFrase(S,MensajeAEnviar);
+	
 }

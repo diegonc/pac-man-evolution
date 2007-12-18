@@ -1,8 +1,8 @@
 #include "Abecedario.h"
 
 
-Abecedario::Abecedario(){
-
+Abecedario::Abecedario(bool arriba){
+	this->arriba=arriba;
 }
 
 Abecedario::~Abecedario(){
@@ -29,7 +29,11 @@ void Abecedario::ImprimirFrase(SDL_Surface* Screen,std::string Frase){
 	int LongCadena=Frase.length();
 	int LongXImg=LongCadena*DimLetra;
 	int InitImgX=0;//(ScreenWidth-LongXImg)/2;
-	int InitImgY=0;//ScreenHeight-DimLetra;
+	int InitImgY;
+	if (arriba)
+		InitImgY=0;//ScreenHeight-DimLetra;
+	else
+		InitImgY=ScreenHeight-DimLetra;	
 	int ImgXCurr=InitImgX;
 	int ImgYCurr=InitImgY;
 

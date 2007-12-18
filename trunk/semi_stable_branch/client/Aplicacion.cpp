@@ -32,7 +32,7 @@ void Aplicacion::VerificarAbecedarioMensaje(Uint8 *Keys){
 	                MensajeAEnviar.erase(MensajeAEnviar.length()-1);
 	       Keys[SDLK_BACKSPACE]=0;
 	    }
-
+		getAplicacionGrafica()->MensajeAEnviar=MensajeAEnviar;
         //si la tecla escape fue presionada
 
 	}
@@ -76,6 +76,7 @@ void Aplicacion::Update(Uint32 Milliseconds, Uint8 *Keys)
         	        EscribiendoMensaje=false;
 			std::cout << "Aca se deberia enviar el mensaje: " << MensajeAEnviar  << std::endl;
 			getAplicacionGrafica()->MensajeAMostrar=MensajeAEnviar;
+			getAplicacionGrafica()->MensajeAEnviar="";
         	        Keys[SDLK_RETURN]=0;
         	    }			
 	        }
