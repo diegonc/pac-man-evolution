@@ -12,8 +12,7 @@ pme_server_SOURCES = \
 	AvisadorNovedades.h \
 	ClientPool.cpp \
 	ClientPool.h \
-	CreadorPaquete \
-	DataStore.h \
+	CreadorPaquete.cpp \
 	KeyOp.cpp \
 	KeyOp.h \
 	Main.cpp \
@@ -26,8 +25,12 @@ pme_server_SOURCES = \
 	PaqueteStart.h \
 	PaqueteStatus.cpp \
 	PaqueteStatus.h \
+	PaqueteStop.cpp \
+	PaqueteStop.h \
 	PaqueteTecla.cpp \
 	PaqueteTecla.h \
+	PaqueteQuit.cpp \
+	PaqueteQuit.h \
 	Servidor.cpp \
 	Servidor.h \
 	reloj.cpp \

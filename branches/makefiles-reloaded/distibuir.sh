@@ -170,8 +170,10 @@ PaqueteStartCommon.cpp
 PaqueteStartCommon.h
 PaqueteStatusCommon.cpp
 PaqueteStatusCommon.h
-PaqueteStop.cpp
-PaqueteStop.h
+PaqueteStopCommon.cpp
+PaqueteStopCommon.h
+PaqueteQuitCommon.cpp
+PaqueteQuitCommon.h
 PaqueteTeclaCommon.cpp
 PaqueteTeclaCommon.h
 Personaje.cpp
