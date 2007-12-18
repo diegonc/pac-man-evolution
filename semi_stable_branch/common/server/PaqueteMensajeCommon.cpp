@@ -1,4 +1,4 @@
-#include "PaqueteMensajeCommon.h"
+#include <server/PaqueteMensajeCommon.h>
 
 namespace {
 	const char ID = 6;

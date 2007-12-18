@@ -3,11 +3,11 @@
 #define Mundo_h_
 
 //Incluyo las librerias necesarias
-#include "nivel.h"
-#include "definiciones.h"
+#include <editor/nivel.h>
+#include <editor/definiciones.h>
 #include <list>
-#include "../common/smart_pointer.h"
-#include "../common/observable.h"
+#include <common/smart_pointer.h>
+#include <common/observable.h>
 
 using namespace std;
 

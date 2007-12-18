@@ -1,4 +1,4 @@
-#include "EscritorCliente.h"
+#include <server/EscritorCliente.h>
 
 #define _INTERVALO_STATUS	3 //segundos
 

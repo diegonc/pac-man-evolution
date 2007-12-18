@@ -1,5 +1,5 @@
-#include "Fantasma.h"
-#include "PacMan.h"
+#include <server/Fantasma.h>
+#include <server/PacMan.h>
 #include <math.h>
 
 const double Fantasma::VELOCIDAD_FANTASMA_INICIAL 	= 5;

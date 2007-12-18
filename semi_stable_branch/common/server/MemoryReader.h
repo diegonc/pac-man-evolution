@@ -1,7 +1,7 @@
 #ifndef __MEMORYREADER_H__
 #define __MEMORYREADER_H__
 
-#include "BufferReader.h"
+#include <server/BufferReader.h>
 
 class MemoryReader : public BufferReader
 {

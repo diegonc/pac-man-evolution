@@ -1,13 +1,13 @@
 #ifndef __MODELO_COMMON_H__
 #define __MODELO_COMMON_H__
 
-#include "thread.h"
-#include "smart_pointer.h"
-#include "MundoBasicImp.h"
+#include <common/thread.h>
+#include <common/smart_pointer.h>
+#include <server/MundoBasicImp.h>
 #include <string>
 #include <map>
-#include "Jugador.h"
-#include "../common/bloqueo.h"
+#include <server/Jugador.h>
+#include <common/bloqueo.h>
 
 /** @brief Esta clase define el modelo.
  *		   Hereda de thread, ya que se debe actualizar automaticamente todo

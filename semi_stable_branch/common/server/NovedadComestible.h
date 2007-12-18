@@ -1,8 +1,8 @@
 #ifndef __NOVEDADCOMESTIBLE_H__
 #define __NOVEDADCOMESTIBLE_H__
 
-#include "smart_pointer.h"
-#include "Comestible.h"
+#include <common/smart_pointer.h>
+#include <server/Comestible.h>
 
 class NovedadComestible{
 	private:

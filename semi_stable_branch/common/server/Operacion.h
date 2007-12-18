@@ -1,7 +1,7 @@
 #ifndef __OPERACION_H__
 #define __OPERACION_H__
 
-#include "ModeloCommon.h"
+#include <server/ModeloCommon.h>
 
 /** @brief Interfaz de operaciones sobre el modelo.
  */

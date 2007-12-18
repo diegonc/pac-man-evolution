@@ -1,4 +1,4 @@
-#include "InputBitStream.h"
+#include <server/InputBitStream.h>
 #include <cassert>
 #include <stdexcept>
 #include <cstring>

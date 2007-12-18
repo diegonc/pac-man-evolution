@@ -1,15 +1,15 @@
 #ifndef __PAQUETESTATUSCOMMON_H__
 #define __PAQUETESTATUSCOMMON_H__
 
-#include "Paquete.h"
+#include <server/Paquete.h>
 #include "math.h"
 #include <list>
-#include "../common/NovedadComestible.h"
-#include "Jugador.h"
-#include "../common/smart_pointer.h"
-#include "../common/ModeloCommon.h"
+#include <server/NovedadComestible.h>
+#include <server/Jugador.h>
+#include <common/smart_pointer.h>
+#include <server/ModeloCommon.h>
 
-//#include "MapaBajoNivel.h"
+//#include <server/MapaBajoNivel.h>
 
 class PaqueteStatusCommon : public Paquete{
     protected:

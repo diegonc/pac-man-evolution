@@ -1,13 +1,13 @@
-#include "MundoBasicImp.h"
-#include "MapImpSet.h"
+#include <server/MundoBasicImp.h>
+#include <server/MapImpSet.h>
 
 //S_ptr<MundoBajoNivel> MundoBasicImp::instancia;
 
-#include "EstructuralPasillo.h"
-#include "EstructuralUnitario.h"
-#include "../common/smart_pointer.h"
-#include "ComestibleFactory.h"
-#include "EstructuralUnitarioFactory.h"
+#include <server/EstructuralPasillo.h>
+#include <server/EstructuralUnitario.h>
+#include <common/smart_pointer.h>
+#include <server/ComestibleFactory.h>
+#include <server/EstructuralUnitarioFactory.h>
 
 
 #include <iostream>

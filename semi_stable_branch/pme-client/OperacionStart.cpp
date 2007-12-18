@@ -2,8 +2,8 @@
 
 #include "JugadorLocal.h"
 #include "BufferMensajes.h"
-#include "../common/PacMan.h"
-#include "../common/Fantasma.h"
+#include <server/PacMan.h>
+#include <server/Fantasma.h>
 
 OperacionStart::OperacionStart( int id ){
 	this->id = id ;

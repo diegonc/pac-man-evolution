@@ -1,4 +1,4 @@
-#include "SocketReader.h"
+#include <server/SocketReader.h>
 
 SocketReader::SocketReader( Socket& sock ) : sock( sock )
 {

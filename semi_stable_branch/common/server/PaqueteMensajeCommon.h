@@ -1,8 +1,8 @@
 #ifndef __PAQUETEMENSAJECOMMON_H__
 #define __PAQUETEMENSAJECOMMON_H__
 
-#include "Paquete.h"
-#include "OperacionNula.h"
+#include <server/Paquete.h>
+#include <server/OperacionNula.h>
 #include <string>
 
 class PaqueteMensajeCommon: public Paquete

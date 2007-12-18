@@ -3,11 +3,11 @@
 #define Nivel_h_
 
 //Incluyo las librerias necesarias
-#include "mapa.h"
-#include "definiciones.h"
-#include "elemento.h"
-#include "fab_elementos.h"
-#include "../common/smart_pointer.h"
+#include <editor/mapa.h>
+#include <editor/definiciones.h>
+#include <editor/elemento.h>
+#include <editor/fab_elementos.h>
+#include <common/smart_pointer.h>
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #ifndef JUGADOR_LOCAL_H
 #define JUGADOR_LOCAL_H
 
-#include "../common/smart_pointer.h"
+#include <common/smart_pointer.h>
 
 class JugadorLocal{
 	private:

@@ -1,8 +1,8 @@
-#include "ComestibleFactory.h"
+#include <server/ComestibleFactory.h>
 
-#include "../common/PowerUp.h"
-#include "../common/Frutita.h"
-#include "../common/Quesito.h"
+#include <server/PowerUp.h>
+#include <server/Frutita.h>
+#include <server/Quesito.h>
 
 
 ComestibleFactory::ComestibleFactory(ComestibleFactory &c){}

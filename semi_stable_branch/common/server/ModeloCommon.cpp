@@ -1,4 +1,4 @@
-#include "ModeloCommon.h"
+#include <server/ModeloCommon.h>
 
 ModeloCommon::ModeloCommon(): llave(true){
 	//cargar_modelo(); // provisorio

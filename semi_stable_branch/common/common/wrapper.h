@@ -10,7 +10,7 @@
 #ifndef Wrapper_h_
 #define Wrapper_h_
 
-#include "contador.h"
+#include <common/contador.h>
 #include <iostream>
 #include <ostream>
 

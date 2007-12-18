@@ -16,7 +16,7 @@
 #include <iostream>
 #include <string>
 #include "ModeloServidor.h"
-#include "../common/observador.h"
+#include <common/observador.h>
 
 class Escenario : public Observador{
         GLuint ListaEscenario;

@@ -3,9 +3,9 @@
 #define Portal_Sur_h_
 
 //Incluyo las librerias necesarias
-#include "portal.h"
-#include "portal_norte.h"
-#include "punto.h"
+#include <editor/portal.h>
+#include <editor/portal_norte.h>
+#include <editor/punto.h>
 
 /* CLASE PORTAL SUR: Clase que representa un portal con orientacion SUR. Hereda de Portal. */
 

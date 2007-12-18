@@ -1,4 +1,4 @@
-#include "Direccion.h"
+#include <server/Direccion.h>
 
 const int Direccion::Norte = _NORTE;
 const int Direccion::Sur = _SUR;

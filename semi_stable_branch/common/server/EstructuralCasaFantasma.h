@@ -8,7 +8,7 @@
 *			revivan
 */
 
-#include "EstructuralUnitario.h"
+#include <server/EstructuralUnitario.h>
 
 class EstructuralCasaFantasma : public EstructuralUnitario{
 	

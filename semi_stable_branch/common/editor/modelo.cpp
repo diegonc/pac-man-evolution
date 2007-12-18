@@ -1,6 +1,6 @@
 //Header
 //Incluyo las librerias necesarias
-#include "modelo.h"
+#include <editor/modelo.h>
 
 /* CLASE MODELO: Esta clase representa el modelo del editor de mapas. Contiene la representacion del
    mundo en memoria y permite almacenarlo en el disco en formato xml. Tambien se encarga de controlar

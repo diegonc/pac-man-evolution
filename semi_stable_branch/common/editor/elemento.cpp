@@ -1,5 +1,5 @@
 //Header
-#include "elemento.h"
+#include <editor/elemento.h>
 
 /* CLASE ELEMENTO: Esta clase abstracta representa un elemento, ya sea estructural o modificador. El elemento
    contiene una coordenada de su vertice superior izq, un ancho y un alto, y una orientacion, y permite

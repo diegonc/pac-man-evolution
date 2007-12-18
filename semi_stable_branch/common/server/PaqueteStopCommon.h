@@ -1,7 +1,7 @@
 #ifndef __PAQUETESTOPCOMMON_H__
 #define __PAQUETESTOPCOMMON_H__
 
-#include "Paquete.h"
+#include <server/Paquete.h>
 
 #define RazonPacmanGano 		0
 #define RazonPacmanComido 		1

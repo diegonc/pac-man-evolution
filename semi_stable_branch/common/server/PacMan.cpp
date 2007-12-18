@@ -1,4 +1,4 @@
-#include "PacMan.h"
+#include <server/PacMan.h>
 #include <common/thread.h>
 #include <math.h>
 #include <cassert>

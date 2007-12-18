@@ -6,8 +6,8 @@
 *			EstructuralesUnitarios.
 */
 
-#include "EstructuralUnitario.h"
-#include "../common/smart_pointer.h"
+#include <server/EstructuralUnitario.h>
+#include <common/smart_pointer.h>
 
 class EstructuralUnitarioFactory{
 	

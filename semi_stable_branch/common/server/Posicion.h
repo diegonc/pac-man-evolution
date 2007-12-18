@@ -5,7 +5,7 @@
 *	@brief Esta clase representa una posicion en dos dimensiones (x,y)
 */
 
-#include "Direccion.h"
+#include <server/Direccion.h>
 
 typedef double Tipo_Coordenada;
 

@@ -3,9 +3,9 @@
 #define Portal_h
 
 //Incluyo las librerias necesarias
-#include "definiciones.h"
-#include "estructural.h"
-#include "punto.h"
+#include <editor/definiciones.h>
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE PORTAL: Clase que representa un portal generico, en una orientacion determinada. Hereda de estructural. */
 

@@ -8,7 +8,7 @@
 //TODO cambiar el puntaje para que vaya incrementandoce hasta un tome maximo
 //etcs
 
-#include "Comestible.h"
+#include <server/Comestible.h>
 
 class Frutita : public Comestible{
 	public:

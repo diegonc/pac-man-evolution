@@ -1,5 +1,5 @@
 //Header
-#include "mapa.h"
+#include <editor/mapa.h>
 
 /* CLASE MAPA: Esta clase representa un mapa, compuesto de casilleros. Un mapa ademas posee un grafo de conexiones
    entre los elementos estructurales que se encuentran en el mismo. */

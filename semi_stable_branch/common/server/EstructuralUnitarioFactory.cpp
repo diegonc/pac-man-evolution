@@ -1,7 +1,7 @@
-#include "EstructuralUnitarioFactory.h"
+#include <server/EstructuralUnitarioFactory.h>
 
-#include "EstructuralPasillo.h"
-#include "EstructuralCasaFantasma.h"
+#include <server/EstructuralPasillo.h>
+#include <server/EstructuralCasaFantasma.h>
 
 S_ptr<EstructuralUnitario> EstructuralUnitarioFactory::construir(Posicion &p,
 				EstructuralUnitario::Enum_Estructural tipo_estructural, 

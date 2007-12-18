@@ -2,7 +2,7 @@
 #define OPERACIONSTATUS_H_INCLUDED
 
 #include <list>
-#include "../common/Operacion.h"
+#include <server/Operacion.h>
 
 class OperacionStatus:public Operacion{
     public:

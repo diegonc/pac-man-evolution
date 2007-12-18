@@ -7,8 +7,8 @@
 -	Tiene referencias al vertice destino y al vertice origen.
 ***************************************************************************/
 
-#include "vertice.h"
-#include "smart_pointer.h"
+#include <common/vertice.h>
+#include <common/smart_pointer.h>
 
 //foward declaration para que no haya problemas con el vertice
 template <class ContenidoVertice, class ContenidoArco> class Vertice;

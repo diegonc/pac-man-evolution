@@ -1,6 +1,6 @@
-#include "PowerUp.h"
+#include <server/PowerUp.h>
 #include <typeinfo>
-#include "PacMan.h"
+#include <server/PacMan.h>
 #include <stdexcept>
 
 PowerUp::PowerUp(Posicion &p):Comestible(PUNTOS_POWER_UP, p){}

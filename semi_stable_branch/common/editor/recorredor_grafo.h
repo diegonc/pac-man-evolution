@@ -3,11 +3,11 @@
 #define Recorredor_Grafo_h_
 
 //Incluyo las librerias necesarias
-#include "../common/smart_pointer.h"
-#include "../common/grafo.h"
-#include "../common/vertice.h"
-#include "../common/arco.h"
-#include "obj_nulo.h"
+#include <common/smart_pointer.h>
+#include <common/grafo.h>
+#include <common/vertice.h>
+#include <common/arco.h>
+#include <editor/obj_nulo.h>
 #include <stack>
 
 using namespace std;

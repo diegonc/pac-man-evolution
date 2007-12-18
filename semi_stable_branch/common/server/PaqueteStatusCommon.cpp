@@ -1,4 +1,4 @@
-#include "PaqueteStatusCommon.h"
+#include <server/PaqueteStatusCommon.h>
 
 namespace {
 	const char ID = 2;

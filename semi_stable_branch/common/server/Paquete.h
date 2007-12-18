@@ -1,9 +1,9 @@
 #ifndef __PAQUETE_H__
 #define __PAQUETE_H__
 
-#include "InputBitStream.h"
-#include "OutputBitStream.h"
-#include "Operacion.h"
+#include <server/InputBitStream.h>
+#include <server/OutputBitStream.h>
+#include <server/Operacion.h>
 
 class Paquete
 {

@@ -1,5 +1,5 @@
 //Header
-#include "casa_oeste.h"
+#include <editor/casa_oeste.h>
 
 /* CLASE CASA OESTE: Clase que representa una casa de fantasmas con orientacion OESTE. Hereda de CasaFantasmas. */
 

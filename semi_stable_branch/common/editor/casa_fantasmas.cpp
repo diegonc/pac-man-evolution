@@ -1,5 +1,5 @@
 //Header
-#include "casa_fantasmas.h"
+#include <editor/casa_fantasmas.h>
 
 /* CLASE CASA FANTASMA: Clase que representa una casa de fantasmas en una orientacion determinada. Hereda de estructural. */
 

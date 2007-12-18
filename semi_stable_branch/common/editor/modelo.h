@@ -3,8 +3,8 @@
 #define Modelo_h_
 
 //Incluyo las librerias necesarias
-#include "mundo.h"
-#include "../common/observable.h"
+#include <editor/mundo.h>
+#include <common/observable.h>
 
 using namespace std;
 

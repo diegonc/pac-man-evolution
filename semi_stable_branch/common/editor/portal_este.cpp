@@ -1,5 +1,5 @@
 //Header
-#include "portal_este.h"
+#include <editor/portal_este.h>
 
 /* CLASE PORTAL ESTE: Clase que representa un portal con orientacion ESTE. Hereda de Portal. */
 

@@ -1,6 +1,6 @@
 #include "PaqueteTecla.h"
 
-#include "../common/OperacionNula.h"
+#include <server/OperacionNula.h>
 
 PaqueteTecla::PaqueteTecla(unsigned int id_cliente,int Flecha) : PaqueteTeclaCommon( id_cliente, Flecha )
 {

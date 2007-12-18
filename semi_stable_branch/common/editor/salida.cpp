@@ -1,5 +1,5 @@
 //Header
-#include "salida.h"
+#include <editor/salida.h>
 
 /* CLASE SALIDA: Clase que representa la salida del PacMan. Desciende de modificador. Ocupa un casillero. */
 

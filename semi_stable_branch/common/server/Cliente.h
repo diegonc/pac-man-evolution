@@ -7,13 +7,13 @@
  *	al cliente al cual esta conectado
  *	Implementado en un hilo aparte
  */
-#include "../common/client_socket.h"
-#include "../common/thread.h"
-#include "Paquete.h"
-#include "Jugador.h"
-#include "../common/bloqueo.h"
-#include "../common/smart_pointer.h"
-#include "../common/ModeloCommon.h"
+#include <common/client_socket.h>
+#include <common/thread.h>
+#include <server/Paquete.h>
+#include <server/Jugador.h>
+#include <common/bloqueo.h>
+#include <common/smart_pointer.h>
+#include <server/ModeloCommon.h>
 
 class EscritorCliente;
 class EscuchadorCliente;

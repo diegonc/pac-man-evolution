@@ -1,7 +1,7 @@
 #ifndef __PAQUETESTOP_H__
 #define __PAQUETESTOP_H__
 
-#include "../common/PaqueteStopCommon.h"
+#include <server/PaqueteStopCommon.h>
 
 class PaqueteStop : public PaqueteStopCommon
 {

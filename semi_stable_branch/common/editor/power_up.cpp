@@ -1,5 +1,5 @@
 //Header
-#include "power_up.h"
+#include <editor/power_up.h>
 
 /* CLASE POWER UP: Clase que representa un power up. Desciende de modificador. Ocupa un casillero. */
 

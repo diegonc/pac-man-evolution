@@ -1,4 +1,4 @@
-#include "Comestible.h"
+#include <server/Comestible.h>
 
 Comestible::Enum_Comestible Comestible::power_up    = _POWER_UP;
 Comestible::Enum_Comestible Comestible::quesito 	= _QUESITO;

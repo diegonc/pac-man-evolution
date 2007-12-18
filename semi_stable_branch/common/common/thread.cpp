@@ -1,4 +1,4 @@
-#include "thread.h"
+#include <common/thread.h>
 
 void Thread::start(){
 	this->set_corriendo(true);

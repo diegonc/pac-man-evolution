@@ -6,9 +6,9 @@
 */
 
 #include <list>
-#include "MundoBajoNivel.h"
-#include "MapaBajoNivel.h"
-#include "../common/smart_pointer.h"
+#include <server/MundoBajoNivel.h>
+#include <server/MapaBajoNivel.h>
+#include <common/smart_pointer.h>
 #include <string>
 
 class MundoBasicImp : public MundoBajoNivel

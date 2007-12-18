@@ -3,8 +3,8 @@
 #define Casa_Oeste_h_
 
 //Incluyo las librerias necesarias
-#include "casa_fantasmas.h"
-#include "punto.h"
+#include <editor/casa_fantasmas.h>
+#include <editor/punto.h>
 
 /* CLASE CASA OESTE: Clase que representa una casa de fantasmas con orientacion OESTE. Hereda de CasaFantasmas. */
 

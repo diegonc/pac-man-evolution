@@ -1,4 +1,4 @@
-#include "Paquete.h"
+#include <server/Paquete.h>
 /*
 #ifndef PROGRAMA_CLIENTE
    #include "../server/PaqueteInit.h"

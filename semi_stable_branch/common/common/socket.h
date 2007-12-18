@@ -15,7 +15,7 @@
 #include <string>
 #include <iostream>
 #include <errno.h>
-#include "bloqueo.h"
+#include <common/bloqueo.h>
 
 class Socket{
 	private:

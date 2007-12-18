@@ -1,7 +1,7 @@
 #ifndef __PAQUETEQUIT_H__
 #define __PAQUETEQUIT_H__
 
-#include "../common/PaqueteQuitCommon.h"
+#include <server/PaqueteQuitCommon.h>
 
 class PaqueteQuit : public PaqueteQuitCommon
 {

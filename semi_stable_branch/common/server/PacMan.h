@@ -5,11 +5,11 @@
 *	@brief	Implementacion de personaje. Reprensenta al pacman
 */
 
-#include "Personaje.h"
+#include <server/Personaje.h>
 
-#include "Jugador.h"
-#include "Comestible.h"
-#include "thread.h"
+#include <server/Jugador.h>
+#include <server/Comestible.h>
+#include <common/thread.h>
 
 class PacMan : public Personaje{
 	private:

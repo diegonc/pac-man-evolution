@@ -3,21 +3,21 @@
 #define Mapa_h_
 
 //Incluyo las librerias necesarias
-#include "casillero.h"
-#include "elemento.h"
-#include "dato_vertice.h"
-#include "recorredor_grafo.h"
+#include <editor/casillero.h>
+#include <editor/elemento.h>
+#include <editor/dato_vertice.h>
+#include <editor/recorredor_grafo.h>
 #include "../common/tinyxml/tinyxml.h"
-#include "../common/smart_pointer.h"
-#include "../common/grafo.h"
-#include "../common/vertice.h"
-#include "../common/arco.h"
+#include <common/smart_pointer.h>
+#include <common/grafo.h>
+#include <common/vertice.h>
+#include <common/arco.h>
 
 /* Se utiliza Wrapper para que en el grafo de conexiones se hagan las comparaciones
    entre los datos y no entre las referencias a los mismos */
-#include "../common/wrapper.h"
+#include <common/wrapper.h>
 
-#include "obj_nulo.h" /* Representa una clase vacia, para poner como tipo de datos de aristas */
+#include <editor/obj_nulo.h> /* Representa una clase vacia, para poner como tipo de datos de aristas */
 #include <list>
 
 class Elemento;

@@ -1,7 +1,7 @@
 #ifndef __OPERACION_STOP_H__
 #define __OPERACION_STOP_H__
 
-#include "../common/Operacion.h"
+#include <server/Operacion.h>
 #include "ModeloServidor.h"
 
 class OperacionStop : public Operacion

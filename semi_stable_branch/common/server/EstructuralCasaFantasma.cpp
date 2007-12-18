@@ -1,6 +1,6 @@
-#include "EstructuralCasaFantasma.h"
+#include <server/EstructuralCasaFantasma.h>
 
-#include "Fantasma.h"
+#include <server/Fantasma.h>
 
 EstructuralCasaFantasma::EstructuralCasaFantasma(Posicion &p):EstructuralUnitario(p){}
 	

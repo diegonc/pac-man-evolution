@@ -1,9 +1,9 @@
 #ifndef BUFFER_MENSAJES_H
 #define BUFFER_MENSAJES_H
 
-#include "../common/smart_pointer.h"
+#include <common/smart_pointer.h>
 #include <queue>
-#include "../common/bloqueo.h"
+#include <common/bloqueo.h>
 
 
 class BufferMensajes{

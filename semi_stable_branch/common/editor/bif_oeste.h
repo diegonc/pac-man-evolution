@@ -3,8 +3,8 @@
 #define Bif_Oeste_h_
 
 //Incluyo las librerias necesarias
-#include "estructural.h"
-#include "punto.h"
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE BIF OESTE: Clase que representa una bifurcacion con orientacion OESTE. Hereda de Estructural. */
 

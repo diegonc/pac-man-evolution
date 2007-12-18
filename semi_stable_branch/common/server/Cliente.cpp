@@ -1,9 +1,9 @@
-#include "Cliente.h"
+#include <server/Cliente.h>
 
-#include "InputBitStream.h"
-#include "SocketReader.h"
-#include "EscuchadorCliente.h"
-#include "EscritorCliente.h"
+#include <server/InputBitStream.h>
+#include <server/SocketReader.h>
+#include <server/EscuchadorCliente.h>
+#include <server/EscritorCliente.h>
 
 #include <iostream> //<-----------------SACARRRRRRRRRRRRR
 

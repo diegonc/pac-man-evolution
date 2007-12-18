@@ -3,8 +3,8 @@
 #define Esq_Norte_h_
 
 //Incluyo las librerias necesarias
-#include "estructural.h"
-#include "punto.h"
+#include <editor/estructural.h>
+#include <editor/punto.h>
 
 /* CLASE ESQUINA NORTE: Clase que representa una esquina que conecta el NORTE con el ESTE. Su orientacion es NORTE. Hereda de estructural. */
 

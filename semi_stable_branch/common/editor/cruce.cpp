@@ -1,5 +1,5 @@
 //Header
-#include "cruce.h"
+#include <editor/cruce.h>
 
 /* CLASE CRUCE: Clase que representa una una doble bifurcacion o cruce. Hereda de Estructural. */
 

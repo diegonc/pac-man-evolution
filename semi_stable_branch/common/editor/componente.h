@@ -2,8 +2,8 @@
 #ifndef Componente_h_
 #define Componente_h_
 
-#include "punto.h"
-#include "../common/smart_pointer.h"
+#include <editor/punto.h>
+#include <common/smart_pointer.h>
 
 /* CLASE COMPONENTE: Representa un pedazo de elemento estructural que puede ser habitable o punto de conexion
    del elemento. */

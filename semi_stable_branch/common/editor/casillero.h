@@ -3,8 +3,8 @@
 #define Casillero_h_
 
 //Incluyo las librerias necesarias
-#include "elemento.h"
-#include "../common/smart_pointer.h"
+#include <editor/elemento.h>
+#include <common/smart_pointer.h>
 
 using namespace std;
 

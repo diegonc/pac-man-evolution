@@ -5,8 +5,8 @@
 *	@brief	Esta clase es un comestible que modifica el comportamiento del pacman
 */
 
-#include "Comestible.h"
-#include "Personaje.h"
+#include <server/Comestible.h>
+#include <server/Personaje.h>
 
 //definicion
 #define PUNTOS_POWER_UP		-5

@@ -1,4 +1,4 @@
-#include "PaqueteStopCommon.h"
+#include <server/PaqueteStopCommon.h>
 
 namespace{
 	const char ID = 3;

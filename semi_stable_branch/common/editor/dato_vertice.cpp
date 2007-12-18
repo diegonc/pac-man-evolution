@@ -1,5 +1,5 @@
 //Header
-#include "dato_vertice.h"
+#include <editor/dato_vertice.h>
 
 /* CLASE DATO VERTICE: Clase que representa el contenido de un vertice para el grafo que controla
    las conexiones de elementos. */

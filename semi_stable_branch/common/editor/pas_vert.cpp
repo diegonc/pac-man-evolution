@@ -1,5 +1,5 @@
 //Header
-#include "pas_vert.h"
+#include <editor/pas_vert.h>
 
 /* CLASE PASILLO VERT: Clase que representa un pasillo vertical. Desciende de estructural. Se conecta por las puntas.
    La orientacion es NORTE por defecto. */

@@ -5,7 +5,7 @@
 *	@brief Implementacion de personaje. 
 */
 
-#include "Personaje.h"
+#include <server/Personaje.h>
 
 class Fantasma : public Personaje{
 	private:

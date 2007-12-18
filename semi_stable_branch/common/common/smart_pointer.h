@@ -13,8 +13,8 @@
 	el objeto mismo.
 ***************************************************************************/
 #include <stdexcept>
-#include "mutex.h"
-#include "bloqueo.h"
+#include <common/mutex.h>
+#include <common/bloqueo.h>
 #include <iostream>
 
 template <class Tipo> class S_ptr{

@@ -1,4 +1,4 @@
-#include "PaqueteQuitCommon.h"
+#include <server/PaqueteQuitCommon.h>
 
 namespace {
 	const char ID = 4;

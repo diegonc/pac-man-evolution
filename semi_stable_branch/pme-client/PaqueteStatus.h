@@ -1,7 +1,7 @@
 #ifndef __PAQUETESTATUS_H__
 #define __PAQUETESTATUS_H__
 
-#include "../common/PaqueteStatusCommon.h"
+#include <server/PaqueteStatusCommon.h>
 
 class PaqueteStatus: public PaqueteStatusCommon{
 	public:

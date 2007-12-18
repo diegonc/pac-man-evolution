@@ -1,5 +1,5 @@
 //Header
-#include "portal_sur.h"
+#include <editor/portal_sur.h>
 
 /* CLASE PORTAL SUR: Clase que representa un portal con orientacion SUR. Hereda de Portal. */
 

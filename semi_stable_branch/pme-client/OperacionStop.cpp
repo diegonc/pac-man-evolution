@@ -1,6 +1,6 @@
 #include "OperacionStop.h"
 
-#include "../common/PaqueteStopCommon.h"
+#include <server/PaqueteStopCommon.h>
 #include <sstream>
 #include "BufferMensajes.h"
 

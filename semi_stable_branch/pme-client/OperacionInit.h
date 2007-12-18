@@ -1,7 +1,7 @@
 #ifndef _OPERACION_INIT_COMMON_H
 #define _OPERACION_INIT_COMMON_H
 
-#include "../common/Operacion.h"
+#include <server/Operacion.h>
 
 class OperacionInit : public Operacion
 	{
