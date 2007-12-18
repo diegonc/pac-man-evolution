@@ -8,15 +8,37 @@ AvisadorNovedades::~AvisadorNovedades(){
 		
 }
 
+void AvisadorNovedades::borrar_novedades_acumuladas(){
+	novedadesAcumuladas.clear();
+}
+
+bool AvisadorNovedades::mandar_todo(){
+	_MandarTodo=true;
+}
+
+
+
 void AvisadorNovedades::run(){
 	_parar = false;	
 	
 	std::list<Cliente*>::const_iterator it;
 	std::cout << "Soy: " << pthread_self() << "<--- AVISADOR " << std::endl << std::flush;
 	while (! _parar ){
-
-		llave.lock();
-		S_ptr<Paquete> paquete_status(new PaqueteStatus(&novedades_comestible,ModeloServidor::get_instancia()));
+		S_ptr<Paquete> paquete_status;
+		llave.lock();		
+		//si no tiene q mandar todos los comestibles
+		if (!_MandarTodo){
+			//creo el paquete con las novedades actuales
+			paquete_status=new PaqueteStatus(&novedades_comestible,ModeloServidor::get_instancia());
+			//appendeo las novedades actuales a las acumuladas
+			novedadesAcumuladas.splice (novedadesAcumuladas.end(), novedades_comestible);
+		}else{ //tengo q mandar todas las novedades
+			//appendeo las novedades actuales
+			novedadesAcumuladas.splice (novedadesAcumuladas.end(), novedades_comestible);
+			//mando todas las novedades q capture
+			paquete_status=new PaqueteStatus(&novedadesAcumuladas,ModeloServidor::get_instancia());
+		}
+		_MandarTodo=false;
 		novedades_comestible.clear();
 		llave.unlock();
 		

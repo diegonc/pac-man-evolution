@@ -21,10 +21,15 @@ class AvisadorNovedades : public Thread,public Observador{
 		ClientPool * clientes;
 		
 		std::list< NovedadComestible > novedades_comestible;
+
+		std::list< NovedadComestible > novedadesAcumuladas;
 	
 		bool _parar;
+
+		bool _MandarTodo;
 	
-	public:
+	public: 
+		
 		
 		AvisadorNovedades(ClientPool * clientes);
 	
@@ -33,6 +38,10 @@ class AvisadorNovedades : public Thread,public Observador{
 		void run();
 	
 		void parar();
+
+		void borrar_novedades_acumuladas();
+
+		bool mandar_todo();
 		
 		void actualizar(Observable* Obs,void * Novedad);
 };
