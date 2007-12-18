@@ -41,9 +41,9 @@ Servidor::Servidor(std::string &direccion, unsigned short int puerto)
 		//lo bindeo
 		this->socket->bind_socket(direccion, puerto);
 		//Inicializo el servidor
-      this->inicializar();
-      //Creo la llave para max jugadores
-      this->llave_max_jugadores = new Evento();
+	      this->inicializar();
+	      //Creo la llave para max jugadores
+	      this->llave_max_jugadores = new Evento();
 	}
 	catch (std::runtime_error &e){
 		//si hubo error borro el socket que seguro se creo
@@ -165,6 +165,7 @@ void Servidor::inicializar(){
    this->debo_cambiar_nivel = false;
 	//Agrego al servidor como observador del pool de clientes
 	this->pool.agregar_observador(this);
+	MessageDispatcher::get_instancia()->set_PoolClientes(&pool);
    //Agrego al servidor como observador del modelo
    ModeloServidor::get_instancia()->agregar_observador(this);
    //Creo el avisador de novedades
@@ -285,14 +286,14 @@ void Servidor::mandar_stop(const char razon){
 	int puntaje = 0; //puntaje del pacman
 	if (encontrado) puntaje = cliente->get_jugador()->get_puntos();
 	//creo el paquete stop con el puntaje obtenido y se lo mando a todos los clientes
-	//S_ptr<Paquete> paquete_stop(new PaqueteStop(razon, puntaje));
-	//pool.mandar_mensaje_todos(paquete_stop);
+	S_ptr<Paquete> paquete_stop(new PaqueteStop(razon, puntaje));
+	pool.mandar_mensaje_todos(paquete_stop);
 }
 
 void Servidor::mandar_quit(){
 	//creo el paquete quit y se lo mando a todos los clientes
-	//S_ptr<Paquete> paquete_quit(new PaqueteQuit());
-	//pool.mandar_mensaje_todos(paquete_quit);
+	S_ptr<Paquete> paquete_quit(new PaqueteQuit());
+	pool.mandar_mensaje_todos(paquete_quit);
 }
 
 void Servidor::actualizar(Observable * observable, void * param){
@@ -322,7 +323,7 @@ void Servidor::actualizar(Observable * observable, void * param){
 				this->avisador->parar();
 				this->avisador->join();
 			}
-            //this->mandar_stop(PaqueteStop::cant_insuficiente);
+            this->mandar_stop(PaqueteStop::cant_insuficiente);
          }
       	//Si el cliente que se desconecto es el pac-man, aviso a los demas clientes y reinicio el nivel
       	if (cliente->get_jugador()->get_personaje()->get_tipo() == Personaje::pacman) {

@@ -1,6 +1,7 @@
 #include "OperacionStart.h"
 
 #include "JugadorLocal.h"
+#include "BufferMensajes.h"
 #include "../common/PacMan.h"
 #include "../common/Fantasma.h"
 
@@ -8,6 +9,7 @@ OperacionStart::OperacionStart( int id ){
 	this->id = id ;
 }
 void OperacionStart::ejecutar(ModeloCommon &modelo) {
+	BufferMensajes::get_instancia()->add_mensaje_critico("Comenzando Partida!");
 
 	bool pac = JugadorLocal::get_instancia()->get_pacman();
 

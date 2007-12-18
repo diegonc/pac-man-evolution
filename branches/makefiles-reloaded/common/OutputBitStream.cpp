@@ -30,7 +30,7 @@ void OutputBitStream::append( const unsigned int n, int val, bool grow ){
 		unsigned int index = 0;
 		while( index < n){
 			if( val  & (1 << index) ) //si hay 1
-				(*( buffer + index / 8 )) |= (1 << index); //guardo 1
+				(*( buffer + index / 8 )) |= (1 << (index%8)); //guardo 1
 			index++;
 		}
 		bit_index += n ;

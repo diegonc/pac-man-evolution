@@ -34,7 +34,6 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
 	//escenario.Procesar(); //<----LO COMENTE YOOOOO!!!!
 	//Mapa = SDL_LoadBMP("./MiniMapa/Mapa.bmp");
 	minimapa.CargarTexturas();
-	ABCEntrada.CargarTextura();
 	ABCSalida.CargarTextura();
 	ModeladorOBJ.hidratar();
 	return true;
@@ -180,13 +179,19 @@ void AplicacionGrafica::Draw3D(SDL_Surface *S)
 	}
 
 }
+
+
+
 //dibuja en 2D
 void AplicacionGrafica::Draw2D(SDL_Surface *S)
 {
 	if (escenario.loaded()){
 		minimapa.ejecutar(S);		
 	}
-	ABCEntrada.ImprimirFrase(S,MensajeAMostrar);	
+//	ABCEntrada.ImprimirFrase(S,MensajeAMostrar);	
+	NotMensajes.Ejecutar(S);
 	ABCSalida.ImprimirFrase(S,MensajeAEnviar);
 	
+	if (BufferMensajes::get_instancia()->hay_mensajes_criticos_nuevos())
+		sonidoWakaWaka.Play(1);
 }

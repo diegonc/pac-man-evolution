@@ -12,6 +12,8 @@ pme_client_SOURCES = \
 	Aplicacion.h \
 	AplicacionGrafica.cpp \
 	AplicacionGrafica.h \
+	BufferMensajes.cpp \
+	BufferMensajes.h \
 	Cargadorde3DS.cpp \
 	Cargadorde3DS.h \
 	CargadordeTexturas.cpp \
@@ -28,15 +30,25 @@ pme_client_SOURCES = \
 	ModeladorObjetos.h \
 	ModeloServidor.cpp \
 	ModeloServidor.h \
+	NotificadorMensajes.cpp \
+	NotificadorMensajes.h \
 	ObjetoVisual.h \
 	OperacionInit.cpp \
 	OperacionInit.h \
+	OperarioncMensaje.cpp \
+	OperacionMensaje.h \
 	OperacionStart.cpp \
 	OperacionStart.h \
 	OperacionStatus.cpp \
 	OperacionStatus.h \
+	OperacionStop.cpp \
+	OperacionStop.h \
+	OperacionQuit.cpp \
+	OperacionQuit.h \
 	PaqueteInit.cpp \
 	PaqueteInit.h \
+	PaqueteMensaje.h \
+	PaqueteMensaje.cpp \
 	PaqueteStart.cpp \
 	PaqueteStart.h \
 	PaqueteStatus.cpp \

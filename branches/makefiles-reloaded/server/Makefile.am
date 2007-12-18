@@ -16,11 +16,16 @@ pme_server_SOURCES = \
 	KeyOp.cpp \
 	KeyOp.h \
 	Main.cpp \
-	MapImpSet.h \
+	MessageDispatcher.cpp \
+	MessageDispatcher.h \
 	ModeloServidor.cpp \
 	ModeloServidor.h \
+	OperacionMensaje.cpp \
+	OperacionMensaje.h \
 	PaqueteInit.cpp \
 	PaqueteInit.h \
+	PaqueteMensaje.cpp \
+	PaqueteMensaje.h \
 	PaqueteStart.cpp \
 	PaqueteStart.h \
 	PaqueteStatus.cpp \
