@@ -4,16 +4,16 @@
 #define V_PRINCIPAL_H_
 
 #include <gtk/gtk.h>
-#include <editor/definiciones.h>
+#include "definiciones.h"
 #include "m_bar_factory.h"
 #include "menu.h"
 #include "vista_mapa.h"
-#include <editor/modelo.h>
+#include "modelo.h"
 #include "panel_mundo.h"
 #include "panel_elems.h"
 #include "control_seleccion.h"
-#include <common/smart_pointer.h>
-#include <common/observador.h>
+#include "../common/smart_pointer.h"
+#include "../common/observador.h"
 
 class PanelMundo;
 

@@ -4,7 +4,7 @@
 
 //Incluyo las librerias necesarias
 #include "gui.h"
-#include <editor/modelo.h>
+#include "modelo.h"
 #include <sstream>
 
 class GUI;

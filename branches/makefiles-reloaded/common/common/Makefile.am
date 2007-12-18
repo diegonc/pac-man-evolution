@@ -34,11 +34,7 @@ libpme_common_a_SOURCES = \
 	thread.cpp \
 	thread.h \
 	vertice.h \
-	wrapper.h \
-	ConfValue.cpp \
-	ConfValue.h \
-	Configuracion.cpp \
-	Configuracion.h
+	wrapper.h
 
 #libpme_common_la_LDFLAGS = -static
 
