@@ -104,3 +104,19 @@ void ModeloCommon::set_cargado(){
 	this->set_cambio();
 	this->avisar_observadores(NULL);
 }
+
+void ModeloCommon::preparar_partida(){
+
+	std::list<Jugador *> lista_jugadores = get_jugadores();
+	std::list<Jugador *>::iterator it_jugadores;
+	
+	Posicion p;
+
+	it_jugadores = lista_jugadores.begin();
+	while(it_jugadores != lista_jugadores.end() ){
+		set_posicion_inicial(*it_jugadores);		
+  	        ++it_jugadores;
+	}
+
+}
+
