@@ -4,10 +4,10 @@
 #define PANEL_ELEMS_H
 
 #include <gtk/gtk.h>
-#include "definiciones.h"
+#include <editor/definiciones.h>
 #include "item_elem.h"
-#include "../common/smart_pointer.h"
-#include "../common/observable.h"
+#include <common/smart_pointer.h>
+#include <common/observable.h>
 #include <vector>
 
 using namespace std;

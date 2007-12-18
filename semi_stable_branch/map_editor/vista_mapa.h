@@ -4,14 +4,14 @@
 #define VISTA_MAPA_H
 
 #include <gtk/gtk.h>
-#include "elemento.h"
-#include "nivel.h"
-#include "definiciones.h"
+#include <editor/elemento.h>
+#include <editor/nivel.h>
+#include <editor/definiciones.h>
 #include "control_seleccion.h"
 #include "act_marcas.h"
-#include "../common/smart_pointer.h"
-#include "../common/observable.h"
-#include "../common/observador.h"
+#include <common/smart_pointer.h>
+#include <common/observable.h>
+#include <common/observador.h>
 
 class ActualizadorMarcas;
 

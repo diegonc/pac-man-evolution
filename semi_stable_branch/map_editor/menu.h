@@ -4,9 +4,9 @@
 #define MENU_H_
 
 #include <gtk/gtk.h>
-#include "definiciones.h"
+#include <editor/definiciones.h>
 #include "item.h"
-#include "../common/smart_pointer.h"
+#include <common/smart_pointer.h>
 #include <list>
 
 class Item; //Forward Declaration
