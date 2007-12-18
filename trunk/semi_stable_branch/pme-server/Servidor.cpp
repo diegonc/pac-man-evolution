@@ -187,6 +187,10 @@ Cliente* Servidor::aceptar_nuevo_cliente(){
 		  	if ((!this->avisador->corriendo()) && (ya_mando_start)){
 				this->avisador->start();
 			}
+
+			if(ya_mando_start){
+				this->avisador->mandar_todo();
+			}			
          return cliente_nuevo; //Devuelvo el cliente creado
       } catch (std::runtime_error) {
           std::cout << "cliente falla" << std::endl << std::flush;          
@@ -246,6 +250,7 @@ void Servidor::cambiar_nivel(){
    std::cout << "cambiando de nivel" << std::endl << std::flush;
    //Finalizo el nivel anterior
    this->finalizar_nivel();
+   this->avisador->borrar_novedades_acumuladas();
    //Mando a los clientes que el pacman gano el nivel
    this->mandar_stop(PaqueteStop::pacman_gano);   
    //Inicio el nuevo nivel
