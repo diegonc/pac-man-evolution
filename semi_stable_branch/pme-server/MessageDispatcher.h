@@ -1,7 +1,7 @@
 #ifndef MESSAGEDISPATCHER_H
 #define MESSAGEDISPATCHER_H
 
-#include "../common/smart_pointer.h"
+#include <common/smart_pointer.h>
 #include "ClientPool.h"
 
 class MessageDispatcher{

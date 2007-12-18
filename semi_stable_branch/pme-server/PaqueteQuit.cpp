@@ -1,6 +1,6 @@
 #include "PaqueteQuit.h"
 
-#include "../common/OperacionNula.h"
+#include <server/OperacionNula.h>
 
 PaqueteQuit::PaqueteQuit() : PaqueteQuitCommon()
 {

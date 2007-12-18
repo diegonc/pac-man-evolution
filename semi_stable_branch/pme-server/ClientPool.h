@@ -2,9 +2,9 @@
 #define __CLIENTPOOL_H__
 
 #include <list>
-#include "../common/Cliente.h"
-#include "../common/observable.h"
-#include "../common/observador.h"
+#include <server/Cliente.h>
+#include <common/observable.h>
+#include <common/observador.h>
 
 class ClientPool : public Observable, public Observador {
 

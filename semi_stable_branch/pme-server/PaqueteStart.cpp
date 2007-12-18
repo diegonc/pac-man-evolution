@@ -1,6 +1,6 @@
 #include "PaqueteStart.h"
 
-#include "../common/OperacionNula.h"
+#include <server/OperacionNula.h>
 
 PaqueteStart::PaqueteStart() : PaqueteStartCommon()
 {

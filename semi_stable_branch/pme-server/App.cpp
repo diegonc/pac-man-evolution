@@ -6,7 +6,7 @@
 
 //para realizar las conversiones
 #include "traductor.h"
-//#include "../map_editor/mundo.h"
+//#include <editor/mundo.h>
 
 
 S_ptr<App> App::instancia;

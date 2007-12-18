@@ -3,7 +3,7 @@
 COMMON_H="`cd common/common; ls *.h`"
 EDITOR_H="`cd common/editor; ls *.h`"
 SERVER_H="`cd common/server; ls *.h`"
-DIRS="pme-client common/common common/editor common/server"
+DIRS="pme-server pme-client common/common common/editor common/server"
 
 cat > fix-headers.sh << EOF
 #!/bin/sh

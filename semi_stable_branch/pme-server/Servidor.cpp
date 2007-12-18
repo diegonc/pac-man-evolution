@@ -4,7 +4,7 @@
 #include "PaqueteStart.h"
 #include "PaqueteStop.h"
 #include "PaqueteQuit.h"
-#include "../common/EscritorCliente.h"
+#include <server/EscritorCliente.h>
 
 #define _DEFAULT_CANT_MIN	2
 #define _DEFAULT_CANT_MAX	10
