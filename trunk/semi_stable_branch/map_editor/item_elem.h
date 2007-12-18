@@ -3,7 +3,7 @@
 #ifndef ITEM_ELEM_H_
 #define ITEM_ELEM_H_
 
-#include "definiciones.h"
+#include <editor/definiciones.h>
 
 /* CLASE ITEM ELEM: Clase que simboliza un item para un panel de elementos. Contiene
    un tipo, una orientacion y una ruta para su imagen. */
