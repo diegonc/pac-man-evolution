@@ -6,7 +6,7 @@
 	que se lo inicia.
 *****************************************************************************/
 
-#include "../common/smart_pointer.h"
+#include <common/smart_pointer.h>
 #include <sys/time.h>
 
 class Reloj{

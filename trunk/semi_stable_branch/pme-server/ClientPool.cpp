@@ -1,6 +1,6 @@
 #include "ClientPool.h"
 
-#include "../common/EscritorCliente.h"
+#include <server/EscritorCliente.h>
 #include "ModeloServidor.h"
 
 ClientPool::ClientPool() : num_orden(0)

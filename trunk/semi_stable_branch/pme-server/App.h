@@ -9,8 +9,8 @@
 *	-	Implementada con smart_pointer como tecnica RAII
 */
 
-#include "../common/smart_pointer.h"
-#include "../common/Configuracion.h"
+#include <common/smart_pointer.h>
+#include <common/Configuracion.h>
 
 class App{
 	private:

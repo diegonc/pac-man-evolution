@@ -1,7 +1,7 @@
 #ifndef __PAQUETEMENSAJE_H__
 #define __PAQUETEMENSAJE_H__
 
-#include "../common/PaqueteMensajeCommon.h"
+#include <server/PaqueteMensajeCommon.h>
 #include "OperacionMensaje.h"
 
 

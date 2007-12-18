@@ -1,4 +1,4 @@
-#include "../common/Paquete.h"
+#include <server/Paquete.h>
 
 #include "PaqueteInit.h"
 #include "PaqueteStart.h"

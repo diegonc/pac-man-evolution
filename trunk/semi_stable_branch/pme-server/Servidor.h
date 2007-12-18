@@ -1,15 +1,15 @@
 #ifndef __SERVIDOR_H__
 #define __SERVIDOR_H__
 
-#include "../common/Cliente.h"
+#include <server/Cliente.h>
 #include "ClientPool.h"
-#include "../common/server_socket.h"
-#include "../common/thread.h"
-#include "../common/evento.h"
+#include <common/server_socket.h>
+#include <common/thread.h>
+#include <common/evento.h>
 #include "ModeloServidor.h"
 #include "MessageDispatcher.h"
-#include "../common/smart_pointer.h"
-#include "../common/observador.h"
+#include <common/smart_pointer.h>
+#include <common/observador.h>
 #include "AvisadorNovedades.h"
 #include <map>
 #include <string>

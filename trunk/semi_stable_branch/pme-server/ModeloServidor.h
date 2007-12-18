@@ -1,12 +1,12 @@
 #ifndef __MODELO_H__
 #define __MODELO_H__
 
-#include "../common/ModeloCommon.h"
-#include "../common/observador.h"
+#include <server/ModeloCommon.h>
+#include <common/observador.h>
 #include "reloj.h"
-#include "../common/PacMan.h"
-#include "../common/Fantasma.h"
-#include "../common/evento.h"
+#include <server/PacMan.h>
+#include <server/Fantasma.h>
+#include <common/evento.h>
 #include <cassert>
 
 /** @brief Esta clase define el modelo.

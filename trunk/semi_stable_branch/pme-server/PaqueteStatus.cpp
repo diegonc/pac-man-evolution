@@ -1,6 +1,6 @@
 #include "PaqueteStatus.h"
 
-#include "../common/OperacionNula.h"
+#include <server/OperacionNula.h>
 
 PaqueteStatus::PaqueteStatus(std::list<NovedadComestible>* Novedad, S_ptr<ModeloCommon> modelo): PaqueteStatusCommon(Novedad,modelo){
 

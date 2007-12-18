@@ -1,6 +1,6 @@
 #include "PaqueteStop.h"
 
-#include "../common/OperacionNula.h"
+#include <server/OperacionNula.h>
 
 PaqueteStop::PaqueteStop() : PaqueteStopCommon()
 {

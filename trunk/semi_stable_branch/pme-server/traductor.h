@@ -2,18 +2,18 @@
 #ifndef Traductor_h_
 #define Traductor_h_
 
-#include "../map_editor/definiciones.h"
-#include "../map_editor/estructural.h"
-#include "../map_editor/modificador.h"
-#include "../map_editor/elemento.h"
-#include "../map_editor/mundo.h"
-#include "../common/smart_pointer.h"
-#include "../common/MundoBajoNivel.h"
-#include "../common/MundoBasicImp.h"
-#include "../common/MapaBajoNivel.h"
-#include "../common/MapImpSet.h"
-#include "../common/EstructuralUnitarioFactory.h"
-#include "../common/EstructuralPasillo.h"
+#include <editor/definiciones.h>
+#include <editor/estructural.h>
+#include <editor/modificador.h>
+#include <editor/elemento.h>
+#include <editor/mundo.h>
+#include <common/smart_pointer.h>
+#include <server/MundoBajoNivel.h>
+#include <server/MundoBasicImp.h>
+#include <server/MapaBajoNivel.h>
+#include <server/MapImpSet.h>
+#include <server/EstructuralUnitarioFactory.h>
+#include <server/EstructuralPasillo.h>
 
 /* CLASE TRADUCTOR: Clase que se encarga de traducir un mundo de alto nivel (del editor),
    a un mundo de bajo nivel (para el servidor). */
