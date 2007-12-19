@@ -3,9 +3,10 @@
 
 #  robado de http://live.gnome.org/Create_a_GTK_Project_using_autotools
 
-SUBDIRS = common pme-server map_editor pme-client appdata
+SUBDIR = imagenes
 
-AM_CPPFLAGS = -I@top_srcdir@/common
+#mapeditordatadir = @datadir@/map_editor
 
-EXTRA_DIST = HACKING doc appdata
+#dist_mapeditordata_DATA = imagenes
+
 CLEANFILES = *~

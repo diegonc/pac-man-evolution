@@ -58,5 +58,10 @@ AC_CONFIG_FILES([
 	pme-server/Makefile
 	map_editor/Makefile
 	pme-client/Makefile
+	appdata/Makefile
+	appdata/pme-client/Makefile
+	appdata/pme-client/MiniMapa/Makefile
+	appdata/map_editor/Makefile
+	appdata/map_editor/imagenes/Makefile
 ])
 AC_OUTPUT
