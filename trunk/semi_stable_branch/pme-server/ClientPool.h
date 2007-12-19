@@ -2,7 +2,7 @@
 #define __CLIENTPOOL_H__
 
 #include <list>
-#include <server/Cliente.h>
+#include <server/EscuchadorCliente.h>
 #include <common/observable.h>
 #include <common/observador.h>
 

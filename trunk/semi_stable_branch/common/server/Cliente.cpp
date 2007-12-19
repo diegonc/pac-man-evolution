@@ -5,10 +5,8 @@
 #include <server/EscuchadorCliente.h>
 #include <server/EscritorCliente.h>
 
-#include <iostream> //<-----------------SACARRRRRRRRRRRRR
-
-
 #define _VERSION_ACEPTADA	0
+
 
 Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket, S_ptr<ModeloCommon> m)
 	: modelo( m )
@@ -19,7 +17,7 @@ Cliente::Cliente(Tipo_Id id, Socket_Cliente * socket, S_ptr<ModeloCommon> m)
 	this->escuchador = new EscuchadorCliente(this);
 	this->escritor = new EscritorCliente(this);
 	this->jugador = new Jugador(id);
-	
+
 }
 
 Cliente::Cliente(Socket_Cliente * socket, S_ptr<ModeloCommon> m)
@@ -102,6 +100,10 @@ ModeloCommon& Cliente::get_modelo()
 
 EscritorCliente& Cliente::get_escritor(){
 	return *escritor;
+}
+
+EscuchadorCliente& Cliente::get_escuchador(){
+	return *escuchador;
 }
 
 Jugador * Cliente::get_jugador(){

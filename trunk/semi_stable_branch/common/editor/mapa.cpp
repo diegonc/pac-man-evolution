@@ -31,6 +31,8 @@ Mapa::Mapa(int ancho, int alto){
 	this->conexiones = new Grafo<Wrapper<DatoVertice>, Obj_Nulo>();
 	//Creo el recorredor de grafos
 	this->recorredor = new RecorredorGrafo<Wrapper<DatoVertice>, Obj_Nulo>();
+	this->salida = false;
+	this->casa = false;
 }
 
 /* Destructor: */

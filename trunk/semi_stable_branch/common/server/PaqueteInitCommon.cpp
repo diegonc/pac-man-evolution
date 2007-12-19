@@ -31,10 +31,8 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 	bs.skip(); // Saltea el resto del campo auxiliar.
 	int ancho = bs.read( 8 );
 	int alto = bs.read( 8 );
-//	std::cout << "ancho: " << ancho << " alto: " << alto << std::endl << std::flush;
 	mapa =  new MapaImpSet( ancho, alto ) ;
 	int long_aristas = ancho * alto * 2;
-//	std::cout << "long aristas: " << long_aristas << std::endl << std::flush;
 	bs.grow( long_aristas );
 	for( int y=0; y < alto; y++ ) {
 		for( int x=0; x < ancho; x++ )
@@ -46,14 +44,11 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 	}
 	bs.skip();
 	unsigned int num_elems = bs.read( 16 );
-//	std::cout << "num elems: " << num_elems << std::endl << std::flush;
 	bs.grow( num_elems*24 );
 	for(unsigned int i=0; i < num_elems; i++ ) {
 		int tipo = bs.read( 6 );
-//		std::cout << "tipo recibido: " << tipo << std::endl << std::flush;
 		bs.read( 2 ); //orientacion ?
 		int pos = bs.read( 16 );
-//		std::cout << "pos recibida: " << pos << std::endl << std::flush;
 		Posicion p( pos % ancho, pos / ancho);
 		S_ptr<EstructuralUnitario> e = mapa->get_estructural( p );
 		if (!e.es_nulo()){
@@ -72,15 +67,18 @@ void PaqueteInitCommon::deserialize( InputBitStream& bs )
 				case 2 /* Power up */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						remplazar_comestible(e,Comestible::power_up);
+
 					}
 					break;
 				case 3 /* Bonus */:
 					if( e->get_tipo() == EstructuralUnitario::Pasillo ) {
 						remplazar_comestible(e,Comestible::frutita);
+
 					}
 					break;
 			}
 		}
+	}
 		
 }
 void PaqueteInitCommon::remplazar_comestible(S_ptr<EstructuralUnitario>& e ,Comestible::Enum_Comestible tipoCom )
@@ -108,7 +106,7 @@ bool PaqueteInitCommon::escribir_estructural( S_ptr<EstructuralUnitario>& e, Out
 	Posicion& p = e->get_posicion();
 	unsigned int pos = (unsigned int)p.get_y() * mapa->get_ancho() + (unsigned int)p.get_x();
 	bs.append( 16, pos );
-  	return true;
+	return true;
 }
 
 bool PaqueteInitCommon::escribir_comestible( S_ptr<Comestible>& c, OutputBitStream& bs )

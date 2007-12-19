@@ -31,8 +31,12 @@ Cliente * ClientPool::lanzar_cliente( Socket_Cliente* sock )
 void ClientPool::join_all()
 {
     std::list<Cliente*>::iterator it = clientes.begin();
-    while( it != clientes.end() )
-        (*it)->join();
+    while( it != clientes.end() ){
+		(*it)->terminar();
+		pthread_kill((*it)->get_escuchador().get_hilo(),EscuchadorCliente::SENIAL_CANCELAR);
+        	(*it)->join();
+		it++;
+	}	
 }
 
 const std::list<Cliente*> ClientPool::get_clientes(){

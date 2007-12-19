@@ -82,7 +82,7 @@ void MundoBasicImp::agregar_mapa(MapaBajoNivel* mapa){
 	this->cant_niveles++;
 }
 int MundoBasicImp::cantidad_niveles(){
-	return this->cant_niveles;
+	return this->mapas.size();
 }
 void MundoBasicImp::pasar_de_nivel(){
 	if(! this->mapas.empty() )

@@ -17,12 +17,14 @@
 
 class EscritorCliente;
 class EscuchadorCliente;
+   
 
 class Cliente : public Thread{
 	typedef unsigned int Tipo_Id;
 	//typedef Jugador * Tipo_Jugador;
-	
+
 	private:
+
 		Socket_Cliente * socket;
 		EscuchadorCliente * escuchador;
 		EscritorCliente * escritor;	
@@ -36,7 +38,6 @@ class Cliente : public Thread{
 		S_ptr<ModeloCommon> modelo;
 	
 	public:
-		
 		/** @brief Constructor de la clase
 		 *
 		 *  @param id Id del cliente
@@ -85,6 +86,8 @@ class Cliente : public Thread{
 		
 		EscritorCliente& get_escritor();
 		
+		EscuchadorCliente& get_escuchador();
+
 		Jugador * get_jugador();
 		
 		void terminar();

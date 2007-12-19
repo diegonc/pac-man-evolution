@@ -9,7 +9,9 @@ AvisadorNovedades::~AvisadorNovedades(){
 }
 
 void AvisadorNovedades::borrar_novedades_acumuladas(){
+	llave.lock();	
 	novedadesAcumuladas.clear();
+	llave.unlock();
 }
 
 bool AvisadorNovedades::mandar_todo(){
