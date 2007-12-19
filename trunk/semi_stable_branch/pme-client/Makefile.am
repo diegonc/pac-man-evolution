@@ -21,12 +21,15 @@ pme_client_SOURCES = \
 	CreadorPaquete.cpp \
 	ColeccionObjetos.cpp \
 	ColeccionObjetos.h \
+	ConfCliente.cpp \
+	ConfCliente.h \
 	Escenario.cpp \
 	Escenario.h \
 	EstadoAplicacion.h \
 	JugadorLocal.cpp \
 	JugadorLocal.h \
 	MiniMapa.cpp \
+	MiniMapa.h \
 	ModeladorObjetos.cpp \
 	ModeladorObjetos.h \
 	ModeloServidor.cpp \

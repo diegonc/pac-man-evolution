@@ -8,22 +8,23 @@
 #include <SDL_mixer.h>
 #include <string>
 #include <iostream>
+#include "ConfCliente.h"
 ///////////////////////////////////////
 
 //principal
 int main(int argc, char **argv)
 {
    
-   S_ptr<ModeloServidor> modelo = ModeloServidor::get_instancia();
+	S_ptr<ModeloServidor> modelo = ModeloServidor::get_instancia();
 
 	//socket
 	Socket_Cliente * socket = new Socket_Cliente(); //<<----Ponele que vaya aca
 
 	try{
-
-		//////////POR AHORA HARDCODED////////////////////
-		std::string ip("201.231.232.12");
-		unsigned int short puerto = 7777;
+		ConfCliente conf( argc, argv );
+		
+		std::string ip = conf.get_direccion();
+		unsigned int short puerto = conf.get_puerto();
 		socket->conectar(ip, puerto);
 		Cliente cliente_del_modelo(socket, ModeloServidor::get_instancia());
 		cliente_del_modelo.start();
