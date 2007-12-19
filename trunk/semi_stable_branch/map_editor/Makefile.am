@@ -58,6 +58,7 @@ pme_editor_SOURCES = \
 pme_editor_EXTRA_DIST = imagenes
 
 pme_editor_CPPFLAGS = \
+	-DAPP_DATA_DIR=\""$(datadir)/map_editor"\"
 	@GTK_CFLAGS@ \
 	-I@top_srcdir@/common
 

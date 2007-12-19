@@ -97,6 +97,7 @@ pme_client_EXTRA_DIST = \
 
 ##pme_client_CPPFLAGS = @GTK_CFLAGS@
 pme_client_CPPFLAGS = \
+	-DAPP_DATA_DIR=\""$(datadir)/pme-client"\" \
 	-DDEBUG -ggdb \
 	-I@top_srcdir@/common
 
