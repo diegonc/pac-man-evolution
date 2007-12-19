@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 	Socket_Cliente * socket = new Socket_Cliente(); //<<----Ponele que vaya aca
 
 	try{
+
 		ConfCliente conf( argc, argv );
 		
 		std::string ip = conf.get_direccion();
