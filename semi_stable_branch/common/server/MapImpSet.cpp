@@ -242,7 +242,6 @@ Tipo_Estructural MapaImpSet::get_salida_pacman(){
 		if( (*it_estructurales)->get_tipo() == EstructuralUnitario::Salida_Pacman ){
 			salida_pacman = *it_estructurales;
 			encontro = true;
-			std::cout << "Encontro Salida Pacman\n";
 		}
 		++it_estructurales;
 	}

@@ -19,7 +19,7 @@ void Servidor::manejador_signal(int num_signal){
 
 	switch(num_signal){
 		case Servidor::SENIAL_CANCELAR: 
-         std::cout << "entro a SIGUSR1" << std::endl << std::flush;
+         //std::cout << "entro a SIGUSR1" << std::endl << std::flush;
       break;
 		
 		default: raise(num_signal);				
@@ -119,7 +119,6 @@ void Servidor::run(){
       if (this->debo_cambiar_nivel)
          this->cambiar_nivel();
    }
-
    //Cuando termina el servidor hago join del modelo
 	ModeloServidor::get_instancia()->join();
    //Hago join con todos los clientes
@@ -138,15 +137,16 @@ void Servidor::set_cant_max_clientes(unsigned int cant){
 
 void Servidor::finalizar_servidor(){
    std::cout << "Cerrando Servidor" << std::endl << std::flush;
-   //Le digo que se deja de ejecutar
+   this->finalizar_nivel();
+   //Mando un paquete de quit a todos los clientes
+   this->mandar_quit();
+	//Le digo que se deja de ejecutar
    this->ejecutando = false;
    //Si estaba esperando evento lo destrabo
    if (this->llave_max_jugadores->esta_esperando())
       this->llave_max_jugadores->lanzar_evento();
    //Mando una senial para destrabarlo del accept, si no estaba aceptando la señal se ignora
    this->thread_kill(Servidor::SENIAL_CANCELAR);
-   //Mando un paquete de quit a todos los clientes
-   this->mandar_quit();
 }
 
 bool Servidor::esta_ejecutando(){
