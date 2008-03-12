@@ -31,5 +31,4 @@ dist_medataimagenes_DATA = \
 	salida.png \
 	vacio.png
 
-EXTRA_DIST = imagenes
 CLEANFILES = *~
