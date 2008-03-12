@@ -84,6 +84,8 @@ libpme_editor_a_SOURCES = \
 #libpme_editor_la_LDFLAGS = -static
 
 libpme_editor_a_CPPFLAGS = \
+	-DAPP_DATA_DIR="\"$(datadir)/map_editor\"" \
+	-DAPP_DATA_DIR_S="\"$(datadir)/map_editor/\"" \
 	-I@top_srcdir@/common
 
 #libpme_editor_a_LIBADD = \
