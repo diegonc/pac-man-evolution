@@ -1,0 +1,2950 @@
+==27479== Memcheck, a memory error detector.
+==27479== Copyright (C) 2002-2006, and GNU GPL'd, by Julian Seward et al.
+==27479== Using LibVEX rev 1658, a library for dynamic binary translation.
+==27479== Copyright (C) 2004-2006, and GNU GPL'd, by OpenWorks LLP.
+==27479== Using valgrind-3.2.1-Debian, a dynamic binary instrumentation framework.
+==27479== Copyright (C) 2000-2006, and GNU GPL'd, by Julian Seward et al.
+==27479== For more details, rerun with: -v
+==27479== 
+==27479== My PID = 27479, parent PID = 17285.  Prog and args are:
+==27479==    ./miEjecutable
+==27479== 
+==27479== Conditional jump or move depends on uninitialised value(s)
+==27479==    at 0x4CFDC83: MPEGaudio::Stop() (in /usr/lib/libsmpeg-0.4.so.0.1.4)
+==27479==    by 0x4CFDDE1: MPEGaudio::Rewind() (in /usr/lib/libsmpeg-0.4.so.0.1.4)
+==27479==    by 0x4D0DAB5: MPEGaudio::initialize() (in /usr/lib/libsmpeg-0.4.so.0.1.4)
+==27479==    by 0x4CFE1C6: MPEGaudio::MPEGaudio(MPEGstream*, bool) (in /usr/lib/libsmpeg-0.4.so.0.1.4)
+==27479==    by 0x4CF6F82: MPEG::parse_stream_list() (in /usr/lib/libsmpeg-0.4.so.0.1.4)
+==27479==    by 0x4CF79F5: MPEG::Init(SDL_RWops*, bool) (in /usr/lib/libsmpeg-0.4.so.0.1.4)
+==27479==    by 0x4CF7F55: MPEG::MPEG(char const*, bool) (in /usr/lib/libsmpeg-0.4.so.0.1.4)
+==27479==    by 0x4CFD781: SMPEG_new (in /usr/lib/libsmpeg-0.4.so.0.1.4)
+==27479==    by 0x41C6085: Mix_LoadMUS (in /usr/lib/libSDL_mixer-1.2.so.0.2.4)
+==27479==    by 0x8056A88: Sonido::Sonido(std::string) (Sonidos.cpp:5)
+==27479==    by 0x8051D22: AplicacionGrafica::AplicacionGrafica() (AplicacionGrafica.h:51)
+==27479==    by 0x8052034: Aplicacion::Aplicacion(Cliente*) (Aplicacion.h:43)
+==27479==    by 0x8050FA0: main (main.cpp:30)
+==27479== 
+==27479== Syscall param write(buf) points to uninitialised byte(s)
+==27479==    at 0x40007F2: (within /lib/ld-2.5.so)
+==27479==    by 0x47C264E: _X11TransWrite (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47BA526: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47BA5FA: _XReply (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47A3591: XInternAtom (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x408753B: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092DB5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40916B3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479==  Address 0x4E631EE is 14 bytes inside a block of size 16,384 alloc'd
+==27479==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27479==    by 0x47A8346: XOpenDisplay (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x40877AD: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092557: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== Invalid read of size 4
+==27479==    at 0x4014759: (within /lib/ld-2.5.so)
+==27479==    by 0x4005B69: (within /lib/ld-2.5.so)
+==27479==    by 0x4007995: (within /lib/ld-2.5.so)
+==27479==    by 0x4010D94: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F0A1: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F254: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A45E: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A54F: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1C225: __nss_group_lookup (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC7C3D: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9312: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C056F3: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==27479==  Address 0x4F160E4 is 36 bytes inside a block of size 38 alloc'd
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4007F33: (within /lib/ld-2.5.so)
+==27479==    by 0x4010D94: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F0A1: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F254: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A45E: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A54F: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1C225: __nss_group_lookup (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC7C3D: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9312: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C056F3: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479== 
+==27479== Invalid read of size 4
+==27479==    at 0x4014787: (within /lib/ld-2.5.so)
+==27479==    by 0x4005B69: (within /lib/ld-2.5.so)
+==27479==    by 0x4007995: (within /lib/ld-2.5.so)
+==27479==    by 0x400B836: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x400BA2A: (within /lib/ld-2.5.so)
+==27479==    by 0x4010DF4: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F0A1: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F254: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A45E: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A54F: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1C225: __nss_group_lookup (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC7C3D: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==  Address 0x4F1642C is 28 bytes inside a block of size 31 alloc'd
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4007F33: (within /lib/ld-2.5.so)
+==27479==    by 0x400B836: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x400BA2A: (within /lib/ld-2.5.so)
+==27479==    by 0x4010DF4: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F0A1: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F254: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A45E: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A54F: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1C225: __nss_group_lookup (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC7C3D: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479== 
+==27479== Invalid read of size 4
+==27479==    at 0x4014743: (within /lib/ld-2.5.so)
+==27479==    by 0x4005B69: (within /lib/ld-2.5.so)
+==27479==    by 0x4007995: (within /lib/ld-2.5.so)
+==27479==    by 0x4010D94: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F0A1: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F254: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A45E: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4026F8B: (within /lib/tls/i686/cmov/libnss_compat-2.5.so)
+==27479==    by 0x4027D70: _nss_compat_getgrnam_r (in /lib/tls/i686/cmov/libnss_compat-2.5.so)
+==27479==    by 0x4AC7B62: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9312: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C056F3: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==27479==  Address 0x4F16AD8 is 32 bytes inside a block of size 35 alloc'd
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4007F33: (within /lib/ld-2.5.so)
+==27479==    by 0x4010D94: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F0A1: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F254: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A45E: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4026F8B: (within /lib/tls/i686/cmov/libnss_compat-2.5.so)
+==27479==    by 0x4027D70: _nss_compat_getgrnam_r (in /lib/tls/i686/cmov/libnss_compat-2.5.so)
+==27479==    by 0x4AC7B62: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9312: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C056F3: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479== 
+==27479== Invalid read of size 4
+==27479==    at 0x4014759: (within /lib/ld-2.5.so)
+==27479==    by 0x4005B69: (within /lib/ld-2.5.so)
+==27479==    by 0x4007995: (within /lib/ld-2.5.so)
+==27479==    by 0x400B836: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x400BA2A: (within /lib/ld-2.5.so)
+==27479==    by 0x4010DF4: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F0A1: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F254: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A45E: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4026F8B: (within /lib/tls/i686/cmov/libnss_compat-2.5.so)
+==27479==    by 0x4027D70: _nss_compat_getgrnam_r (in /lib/tls/i686/cmov/libnss_compat-2.5.so)
+==27479==    by 0x4AC7B62: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==  Address 0x4F16E24 is 36 bytes inside a block of size 37 alloc'd
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4007F33: (within /lib/ld-2.5.so)
+==27479==    by 0x400B836: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x400BA2A: (within /lib/ld-2.5.so)
+==27479==    by 0x4010DF4: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F0A1: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F254: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A45E: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4026F8B: (within /lib/tls/i686/cmov/libnss_compat-2.5.so)
+==27479==    by 0x4027D70: _nss_compat_getgrnam_r (in /lib/tls/i686/cmov/libnss_compat-2.5.so)
+==27479==    by 0x4AC7B62: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479== 
+==27479== Syscall param semctl(IPC_SET, arg.buf) points to uninitialised byte(s)
+==27479==    at 0x40007F2: (within /lib/ld-2.5.so)
+==27479==    by 0x4C01417: snd_pcm_direct_semaphore_create_or_connect (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFB23D: snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBF86: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9312: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C056F3: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9341: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE569F: _snd_pcm_plug_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9341: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C0302E: _snd_pcm_asym_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==  Address 0xBEB8BCEC is on thread 1's stack
+==27479== 
+==27479== Invalid read of size 4
+==27479==    at 0x4014770: (within /lib/ld-2.5.so)
+==27479==    by 0x4005B69: (within /lib/ld-2.5.so)
+==27479==    by 0x4007995: (within /lib/ld-2.5.so)
+==27479==    by 0x4010D94: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x411C114: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x411C40A: driGetDriver (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x411C54E: driCreateDisplay (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FFBE8: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==  Address 0x4F1E2B8 is 24 bytes inside a block of size 25 alloc'd
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4006EB4: (within /lib/ld-2.5.so)
+==27479==    by 0x40078D9: (within /lib/ld-2.5.so)
+==27479==    by 0x4010D94: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x411C114: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x411C40A: driGetDriver (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x411C54E: driCreateDisplay (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FFBE8: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479== 
+==27479== Invalid read of size 4
+==27479==    at 0x4014787: (within /lib/ld-2.5.so)
+==27479==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x687E74A: _mesa_init_texture_s3tc (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x683B439: _mesa_initialize_context (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67ECD48: intelInitContext (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x68054EB: brwCreateContext (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67EF0CF: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67E3894: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479==  Address 0x7D5626C is 44 bytes inside a block of size 46 alloc'd
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x400D0B2: (within /lib/ld-2.5.so)
+==27479==    by 0x4008164: (within /lib/ld-2.5.so)
+==27479==    by 0x4010D94: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x687E74A: _mesa_init_texture_s3tc (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x683B439: _mesa_initialize_context (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67ECD48: intelInitContext (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x68054EB: brwCreateContext (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67EF0CF: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67E3894: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479== 
+==27479== Conditional jump or move depends on uninitialised value(s)
+==27479==    at 0x4014791: (within /lib/ld-2.5.so)
+==27479==    by 0x4010A9A: (within /lib/ld-2.5.so)
+==27479==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x687E74A: _mesa_init_texture_s3tc (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x683B439: _mesa_initialize_context (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67ECD48: intelInitContext (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x68054EB: brwCreateContext (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67EF0CF: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67E3894: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== Conditional jump or move depends on uninitialised value(s)
+==27479==    at 0x401479C: (within /lib/ld-2.5.so)
+==27479==    by 0x4010A9A: (within /lib/ld-2.5.so)
+==27479==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x687E74A: _mesa_init_texture_s3tc (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x683B439: _mesa_initialize_context (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67ECD48: intelInitContext (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x68054EB: brwCreateContext (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67EF0CF: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67E3894: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== Thread 5:
+==27479== Source and destination overlap in memcpy(0xAD745D8, 0xAD745D8, 4096)
+==27479==    at 0x4022ED6: memcpy (mc_replace_strmem.c:116)
+==27479==    by 0x4BCAB89: snd_pcm_area_copy (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BCAECF: snd_pcm_areas_copy (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C0638C: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C06CB3: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BD71E6: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BCA3A6: snd_pcm_mmap_commit (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE2B5F: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE2DE8: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE2F1C: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BCA3A6: snd_pcm_mmap_commit (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BD5BB1: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BCA821: snd_pcm_write_areas (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BD4D4B: snd_pcm_mmap_writei (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2B54: snd_pcm_writei (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4085EE5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055497: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x405DCEA: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40A8F3C: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479== 
+==27479== Syscall param ioctl(arg) contains uninitialised byte(s)
+==27479==    at 0x40007F2: (within /lib/ld-2.5.so)
+==27479==    by 0x4BC3321: snd_pcm_hwsync (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BF9E28: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFAE1A: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2FF1: snd_pcm_start (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BD65B4: snd_pcm_generic_start (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2FF1: snd_pcm_start (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE1C6F: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2FF1: snd_pcm_start (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BCA88C: snd_pcm_write_areas (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BD4D4B: snd_pcm_mmap_writei (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2B54: snd_pcm_writei (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4085EE5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055497: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x405DCEA: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40A8F3C: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== Syscall param ioctl(arg) contains uninitialised byte(s)
+==27479==    at 0x40007F2: (within /lib/ld-2.5.so)
+==27479==    by 0x4C097C1: snd_timer_start (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BF9E3F: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFAE1A: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2FF1: snd_pcm_start (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BD65B4: snd_pcm_generic_start (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2FF1: snd_pcm_start (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE1C6F: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2FF1: snd_pcm_start (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BCA88C: snd_pcm_write_areas (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BD4D4B: snd_pcm_mmap_writei (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2B54: snd_pcm_writei (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4085EE5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055497: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x405DCEA: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40A8F3C: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== Syscall param ioctl(arg) contains uninitialised byte(s)
+==27479==    at 0x40007F2: (within /lib/ld-2.5.so)
+==27479==    by 0x4C09761: snd_timer_stop (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFA309: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC3321: snd_pcm_hwsync (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BD6614: snd_pcm_generic_hwsync (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC3321: snd_pcm_hwsync (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE0C9C: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE2E71: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2455: snd_pcm_poll_descriptors_revents (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC85BB: snd_pcm_wait_nocheck (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC877E: snd_pcm_wait (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BCA737: snd_pcm_write_areas (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BD4D4B: snd_pcm_mmap_writei (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC2B54: snd_pcm_writei (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4085EE5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055497: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x405DCEA: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40A8F3C: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== Thread 1:
+==27479== Invalid read of size 4
+==27479==    at 0x6896E50: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x6898F51: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x689CAAF: _mesa_texstore_argb8888 (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x6898828: _mesa_store_teximage2d (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x67F4647: (within /usr/lib/dri/i965_dri.so)
+==27479==    by 0x688BF02: _mesa_TexImage2D (in /usr/lib/dri/i965_dri.so)
+==27479==    by 0x804E48D: CargadorDeTexturas::CargarTextura(unsigned*, std::string) (CargadordeTexturas.cpp:34)
+==27479==    by 0x804E5BE: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:15)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479==  Address 0xBB45025 is 786,429 bytes inside a block of size 786,432 alloc'd
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x407E813: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4079D71: SDL_LoadBMP_RW (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804E35E: CargadorDeTexturas::CargarTextura(unsigned*, std::string) (CargadordeTexturas.cpp:7)
+==27479==    by 0x804E5BE: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:15)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== Conditional jump or move depends on uninitialised value(s)
+==27479==    at 0x408A57B: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x408AE5F: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4059B06: SDL_PumpEvents (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4059FE6: SDL_PollEvent (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x80510F1: main (main.cpp:97)
+==27463== 
+==27463== Invalid read of size 4
+==27463==    at 0x4014770: (within /lib/ld-2.5.so)
+==27463==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27463==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x68115DB: brw_hal_find_symbol (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x68273A4: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x681C3A4: brw_validate_state (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6805D7C: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6806135: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6806595: brw_draw_prims (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6811C66: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x67EC8B4: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x694F779: _mesa_Clear (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x804D2A7: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:179)
+==27463==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27463==    by 0x8051334: main (main.cpp:202)
+==27463==  Address 0xC4440D8 is 72 bytes inside a block of size 74 alloc'd
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x400D0B2: (within /lib/ld-2.5.so)
+==27463==    by 0x4008164: (within /lib/ld-2.5.so)
+==27463==    by 0x4010D94: (within /lib/ld-2.5.so)
+==27463==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27463==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27463==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27463==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x68115DB: brw_hal_find_symbol (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x68273A4: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x681C3A4: brw_validate_state (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6805D7C: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6806135: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6806595: brw_draw_prims (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6811C66: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x67EC8B4: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x694F779: _mesa_Clear (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x804D2A7: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:179)
+==27463== 
+==27463== Conditional jump or move depends on uninitialised value(s)
+==27463==    at 0x401477A: (within /lib/ld-2.5.so)
+==27463==    by 0x4010A9A: (within /lib/ld-2.5.so)
+==27463==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27463==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x68115DB: brw_hal_find_symbol (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x68273A4: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x681C3A4: brw_validate_state (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6805D7C: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6806135: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6806595: brw_draw_prims (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6811C66: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x67EC8B4: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x694F779: _mesa_Clear (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x804D2A7: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:179)
+==27463==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27463==    by 0x8051334: main (main.cpp:202)
+==27463== 
+==27463== Conditional jump or move depends on uninitialised value(s)
+==27463==    at 0x4014785: (within /lib/ld-2.5.so)
+==27463==    by 0x4010A9A: (within /lib/ld-2.5.so)
+==27463==    by 0x48AAC2C: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27463==    by 0x48AB2AB: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27463==    by 0x68115DB: brw_hal_find_symbol (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x68273A4: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x681C3A4: brw_validate_state (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6805D7C: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6806135: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6806595: brw_draw_prims (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x6811C66: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x67EC8B4: (within /usr/lib/dri/i965_dri.so)
+==27463==    by 0x694F779: _mesa_Clear (in /usr/lib/dri/i965_dri.so)
+==27463==    by 0x804D2A7: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:179)
+==27463==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27463==    by 0x8051334: main (main.cpp:202)
+==27463== 
+==27463== Syscall param ioctl(arg) contains uninitialised byte(s)
+==27463==    at 0x40007F2: (within /lib/ld-2.5.so)
+==27463==    by 0x4C09761: snd_timer_stop (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BFA309: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BFAECA: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC2EB1: snd_pcm_drain (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BD6554: snd_pcm_generic_drain (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC2EB1: snd_pcm_drain (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BE2BF2: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC2EB1: snd_pcm_drain (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4085E49: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x405512A: SDL_AudioQuit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40545FB: SDL_QuitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x405515D: SDL_CloseAudio (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x41C42C7: Mix_CloseAudio (in /usr/lib/libSDL_mixer-1.2.so.0.2.4)
+==27463==    by 0x8051360: main (main.cpp:212)
+==27463== 
+==27463== Syscall param ioctl(arg) contains uninitialised byte(s)
+==27463==    at 0x40007F2: (within /lib/ld-2.5.so)
+==27463==    by 0x4C09761: snd_timer_stop (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4C00C07: snd_pcm_direct_timer_stop (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BF9E93: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC2F51: snd_pcm_drop (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BD6584: snd_pcm_generic_drop (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC2F51: snd_pcm_drop (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BD6584: snd_pcm_generic_drop (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC2F51: snd_pcm_drop (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BCA2D4: snd_pcm_close (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4085E59: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x405512A: SDL_AudioQuit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40545FB: SDL_QuitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x405515D: SDL_CloseAudio (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x41C42C7: Mix_CloseAudio (in /usr/lib/libSDL_mixer-1.2.so.0.2.4)
+==27463==    by 0x8051360: main (main.cpp:212)
+==27463== 
+==27463== FILE DESCRIPTORS: 4 open at exit.
+==27463== Open file descriptor 3: /home/alverbner/facultad/75.41 - taller/svn_proyecto_final/semi_stable_branch/client/valgrind
+==27463==    <inherited from parent>
+==27463== 
+==27463== Open file descriptor 2: /dev/pts/1
+==27463==    <inherited from parent>
+==27463== 
+==27463== Open file descriptor 1: /dev/pts/1
+==27463==    <inherited from parent>
+==27463== 
+==27463== Open file descriptor 0: /dev/pts/1
+==27463==    <inherited from parent>
+==27463== 
+==27463== 
+==27463== ERROR SUMMARY: 1030 errors from 22 contexts (suppressed: 270 from 1)
+==27463== malloc/free: in use at exit: 4,414,788 bytes in 3,601 blocks.
+==27463== malloc/free: 460,476 allocs, 456,875 frees, 52,867,203 bytes allocated.
+==27463== For counts of detected errors, rerun with: -v
+==27463== searching for pointers to 3,601 not-freed blocks.
+==27463== checked 3,064,124 bytes.
+==27463== 
+==27463== 
+==27463== 1 bytes in 1 blocks are definitely lost in loss record 1 of 131
+==27463==    at 0x4021A55: operator new[](unsigned) (vg_replace_malloc.c:195)
+==27463==    by 0x805E8AF: InputBitStream::grow(unsigned) (InputBitStream.cpp:45)
+==27463==    by 0x805E983: InputBitStream::read(unsigned) (InputBitStream.cpp:61)
+==27463==    by 0x8056C2C: Cliente::recibir_mensaje() (Cliente.cpp:79)
+==27463==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27463==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27463==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27463==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27463== 
+==27463== 
+==27463== 1 bytes in 1 blocks are still reachable in loss record 2 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47E5958: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 2 bytes in 1 blocks are still reachable in loss record 3 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47CFE67: _XlcResolveLocaleName (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D34A6: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 2 bytes in 1 blocks are still reachable in loss record 4 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47D322B: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 4 bytes in 1 blocks are definitely lost in loss record 5 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x411C4E0: driCreateDisplay (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FFBE8: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27463==    by 0x8051012: main (main.cpp:62)
+==27463== 
+==27463== 
+==27463== 5 bytes in 1 blocks are still reachable in loss record 6 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x40FCB23: __glXstrdup (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x411C13E: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x411C40A: driGetDriver (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x411C54E: driCreateDisplay (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FFBE8: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27463==    by 0x8051012: main (main.cpp:62)
+==27463== 
+==27463== 
+==27463== 7 bytes in 1 blocks are still reachable in loss record 7 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47D364F: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 8 bytes in 1 blocks are still reachable in loss record 8 of 131
+==27463==    at 0x402171B: realloc (vg_replace_malloc.c:306)
+==27463==    by 0x47E5A3B: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4091BFE: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27463==    by 0x8051012: main (main.cpp:62)
+==27463== 
+==27463== 
+==27463== 8 bytes in 1 blocks are indirectly lost in loss record 9 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x407C733: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x407E774: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4079D71: SDL_LoadBMP_RW (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BB0F: Aplicacion::SetUpIcon(char*) (Aplicacion.cpp:198)
+==27463==    by 0x8050FE2: main (main.cpp:59)
+==27463== 
+==27463== 
+==27463== 8 bytes in 1 blocks are indirectly lost in loss record 10 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x407CD12: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x407E6E5: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4079D71: SDL_LoadBMP_RW (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BB0F: Aplicacion::SetUpIcon(char*) (Aplicacion.cpp:198)
+==27463==    by 0x8050FE2: main (main.cpp:59)
+==27463== 
+==27463== 
+==27463== 8 bytes in 1 blocks are still reachable in loss record 11 of 131
+==27463==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27463==    by 0x4BA41A5: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 8 bytes in 1 blocks are still reachable in loss record 12 of 131
+==27463==    at 0x402171B: realloc (vg_replace_malloc.c:306)
+==27463==    by 0x47D0803: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D1343: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 8 bytes in 2 blocks are still reachable in loss record 13 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47D2208: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 12 bytes in 1 blocks are indirectly lost in loss record 14 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804E7B6: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:28)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 12 bytes in 1 blocks are indirectly lost in loss record 15 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804E564: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:13)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 12 bytes in 1 blocks are still reachable in loss record 16 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47D9C24: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 12 bytes in 1 blocks are still reachable in loss record 17 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47D2A07: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D31C9: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 13 bytes in 1 blocks are still reachable in loss record 18 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47E5B1C: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 13 bytes in 1 blocks are still reachable in loss record 19 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47E5AE0: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 16 bytes in 1 blocks are definitely lost in loss record 20 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x68121D2: ???
+==27463==    by 0x6805621: ???
+==27463==    by 0x67EF0CF: ???
+==27463==    by 0x67E3894: ???
+==27463==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27463==    by 0x8051012: main (main.cpp:62)
+==27463== 
+==27463== 
+==27463== 16 bytes in 1 blocks are still reachable in loss record 21 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x411C12E: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x411C40A: driGetDriver (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x411C54E: driCreateDisplay (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FFBE8: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27463==    by 0x8051012: main (main.cpp:62)
+==27463== 
+==27463== 
+==27463== 16 bytes in 1 blocks are still reachable in loss record 22 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47ED03D: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47EBFF3: _XimSetLocalIMDefaults (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47E6ED3: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 20 bytes in 1 blocks are definitely lost in loss record 23 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x6812268: ???
+==27463==    by 0x6805621: ???
+==27463==    by 0x67EF0CF: ???
+==27463==    by 0x67E3894: ???
+==27463==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27463==    by 0x8051012: main (main.cpp:62)
+==27463== 
+==27463== 
+==27463== 20 bytes in 1 blocks are still reachable in loss record 24 of 131
+==27463==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27463==    by 0x4BA41DB: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 20 bytes in 1 blocks are still reachable in loss record 25 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47D9248: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CCADB: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CCF51: _XlcOpenConverter (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47E700B: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+===27479== 
+==27479== 
+==27479== 1 bytes in 1 blocks are definitely lost in loss record 1 of 133
+==27479==    at 0x4021A55: operator new[](unsigned) (vg_replace_malloc.c:195)
+==27479==    by 0x805E8AF: InputBitStream::grow(unsigned) (InputBitStream.cpp:45)
+==27479==    by 0x805E983: InputBitStream::read(unsigned) (InputBitStream.cpp:61)
+==27479==    by 0x8056C2C: Cliente::recibir_mensaje() (Cliente.cpp:79)
+==27479==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27479==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 1 bytes in 1 blocks are still reachable in loss record 2 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47E5958: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 2 bytes in 1 blocks are still reachable in loss record 3 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CFE67: _XlcResolveLocaleName (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D34A6: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 2 bytes in 1 blocks are still reachable in loss record 4 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D322B: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 4 bytes in 1 blocks are definitely lost in loss record 5 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x411C4E0: driCreateDisplay (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FFBE8: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 5 bytes in 1 blocks are still reachable in loss record 6 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x40FCB23: __glXstrdup (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x411C13E: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x411C40A: driGetDriver (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x411C54E: driCreateDisplay (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FFBE8: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 7 bytes in 1 blocks are still reachable in loss record 7 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D364F: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 8 bytes in 1 blocks are still reachable in loss record 8 of 133
+==27479==    at 0x402171B: realloc (vg_replace_malloc.c:306)
+==27479==    by 0x47E5A3B: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091BFE: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 8 bytes in 1 blocks are indirectly lost in loss record 9 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x407C733: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x407E774: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4079D71: SDL_LoadBMP_RW (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BB0F: Aplicacion::SetUpIcon(char*) (Aplicacion.cpp:198)
+==27479==    by 0x8050FE2: main (main.cpp:59)
+==27479== 
+==27479== 
+==27479== 8 bytes in 1 blocks are indirectly lost in loss record 10 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x407CD12: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x407E6E5: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4079D71: SDL_LoadBMP_RW (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BB0F: Aplicacion::SetUpIcon(char*) (Aplicacion.cpp:198)
+==27479==    by 0x8050FE2: main (main.cpp:59)
+==27479== 
+==27479== 
+==27479== 8 bytes in 1 blocks are still reachable in loss record 11 of 133
+==27479==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27479==    by 0x4BA41A5: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 8 bytes in 1 blocks are still reachable in loss record 12 of 133
+==27479==    at 0x402171B: realloc (vg_replace_malloc.c:306)
+==27479==    by 0x47D0803: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D1343: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 8 bytes in 2 blocks are still reachable in loss record 13 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D2208: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 12 bytes in 1 blocks are indirectly lost in loss record 14 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804E7B6: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:28)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 12 bytes in 1 blocks are indirectly lost in loss record 15 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804E564: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:13)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 12 bytes in 1 blocks are still reachable in loss record 16 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D9C24: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 12 bytes in 1 blocks are still reachable in loss record 17 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D2A07: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31C9: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 13 bytes in 1 blocks are still reachable in loss record 18 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47E5B1C: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 13 bytes in 1 blocks are still reachable in loss record 19 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47E5AE0: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 16 bytes in 1 blocks are definitely lost in loss record 20 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x68121D2: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 16 bytes in 1 blocks are still reachable in loss record 21 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x411C12E: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x411C40A: driGetDriver (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x411C54E: driCreateDisplay (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FFBE8: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 16 bytes in 1 blocks are still reachable in loss record 22 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47ED03D: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47EBFF3: _XimSetLocalIMDefaults (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6ED3: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 16 bytes in 1 blocks are definitely lost in loss record 23 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x80513CD: main (main.cpp:219)
+==27479== 
+==27479== 
+==27479== 20 bytes in 1 blocks are definitely lost in loss record 24 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x6812268: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 20 bytes in 1 blocks are still reachable in loss record 25 of 133
+==27479==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27479==    by 0x4BA41DB: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 20 bytes in 1 blocks are still reachable in loss record 26 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D9248: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CCADB: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CCF51: _XlcOpenConverter (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E700B: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 20 bytes in 1 blocks are still reachable in loss record 27 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CE8CB: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D34F9: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 20 bytes in 1 blocks are still reachable in loss record 28 of 133
+==27479==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27479==    by 0x48AB31B: (within /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x48AAB63: dlopen (in /lib/tls/i686/cmov/libdl-2.5.so)
+==27479==    by 0x4084E4C: SDL_LoadObject (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4088F6E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x409249B: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081C51: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 24 bytes in 1 blocks are definitely lost in loss record 29 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x68120FE: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 24 bytes in 3 blocks are indirectly lost in loss record 30 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x67E5D36: ???
+==27479==    by 0x67E6470: ???
+==27479==    by 0x4DFB59B: (within /usr/lib/libexpat.so.1.0.0)
+==27479==    by 0x4DFC06C: (within /usr/lib/libexpat.so.1.0.0)
+==27479==    by 0x4DFD06D: (within /usr/lib/libexpat.so.1.0.0)
+==27479==    by 0x4DFDFB4: (within /usr/lib/libexpat.so.1.0.0)
+==27479==    by 0x4DF579A: XML_ParseBuffer (in /usr/lib/libexpat.so.1.0.0)
+==27479==    by 0x4DF7751: XML_Parse (in /usr/lib/libexpat.so.1.0.0)
+==27479==    by 0x67E5A06: ???
+==27479==    by 0x67EEB33: ???
+==27479==    by 0x67E36FD: ???
+==27479==    by 0x67EF179: ???
+==27479==    by 0x40FFAB0: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479== 
+==27479== 
+==27479== 24 bytes in 3 blocks are still reachable in loss record 31 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D8994: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CCADB: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CD08E: _XlcOpenConverter (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6F68: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 24 bytes in 3 blocks are still reachable in loss record 32 of 133
+==27479==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27479==    by 0x47CCFDC: _XlcOpenConverter (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6F09: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 24 bytes in 3 blocks are still reachable in loss record 33 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CCFB6: _XlcOpenConverter (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6F09: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 24 bytes in 2 blocks are still reachable in loss record 34 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x46A33BD: XextCreateExtension (in /usr/lib/libXext.so.6.4.0)
+==27479==    by 0x4087FA7: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x409E3CF: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x409E98D: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x408E083: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40925F2: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 26 bytes in 2 blocks are definitely lost in loss record 35 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47ED162: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47EC076: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47ED403: _XimSetICValueData (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6240: _XimLocalCreateIC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAB1B: XCreateIC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4091870: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091BFE: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 26 bytes in 2 blocks are still reachable in loss record 36 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47ED162: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47EC076: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47ED403: _XimSetICValueData (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6240: _XimLocalCreateIC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAB1B: XCreateIC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4091870: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 29 bytes in 3 blocks are still reachable in loss record 37 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CC48D: _XlcAddCT (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC59A: _XlcInitCTInfo (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D33B7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F4DF9: _XlcUtf8Loader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 32 bytes in 1 blocks are definitely lost in loss record 38 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x6812222: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 32 bytes in 1 blocks are indirectly lost in loss record 39 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x407C715: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x407E774: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4079D71: SDL_LoadBMP_RW (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BB0F: Aplicacion::SetUpIcon(char*) (Aplicacion.cpp:198)
+==27479==    by 0x8050FE2: main (main.cpp:59)
+==27479== 
+==27479== 
+==27479== 32 bytes in 4 blocks are still reachable in loss record 40 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47F14EA: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CCADB: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CD08E: _XlcOpenConverter (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6F09: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 32 bytes in 1 blocks are still reachable in loss record 41 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47ADC42: _XrmInternalStringToQuark (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47ADE44: XrmStringToQuark (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC71C: _XlcGetCharSet (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC28E: _XlcAddCT (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC59A: _XlcInitCTInfo (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D33B7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F4DF9: _XlcUtf8Loader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 36 bytes in 1 blocks are definitely lost in loss record 42 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x681215A: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 36 bytes in 1 blocks are still reachable in loss record 43 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47ECF9F: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47EBFF3: _XimSetLocalIMDefaults (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6ED3: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 504 bytes in 8 blocks are still reachable in loss record 44 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x400BE46: (within /lib/ld-2.5.so)
+==27479==    by 0x4010DF4: (within /lib/ld-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x40108ED: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F0A1: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x400CFA5: (within /lib/ld-2.5.so)
+==27479==    by 0x4B3F254: __libc_dlopen_mode (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4044E66: pthread_cancel_init (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4044F90: _Unwind_ForcedUnwind (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4042A60: __pthread_unwind (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x403D40F: pthread_exit (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x40A8F48: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 780 (72 direct, 708 indirect) bytes in 1 blocks are definitely lost in loss record 45 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x80688FC: PaqueteInitCommon::deserialize(InputBitStream&) (PaqueteInitCommon.cpp:35)
+==27479==    by 0x8056C87: Cliente::recibir_mensaje() (Cliente.cpp:85)
+==27479==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27479==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 432 (44 direct, 388 indirect) bytes in 1 blocks are definitely lost in loss record 46 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x8067AF8: PaqueteInitCommon::agregar_arista(int, int, bool) (PaqueteInitCommon.cpp:175)
+==27479==    by 0x8068A02: PaqueteInitCommon::deserialize(InputBitStream&) (PaqueteInitCommon.cpp:45)
+==27479==    by 0x8056C87: Cliente::recibir_mensaje() (Cliente.cpp:85)
+==27479==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27479==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 72 (44 direct, 28 indirect) bytes in 1 blocks are definitely lost in loss record 47 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x8067C21: PaqueteInitCommon::agregar_arista(int, int, bool) (PaqueteInitCommon.cpp:189)
+==27479==    by 0x8068A02: PaqueteInitCommon::deserialize(InputBitStream&) (PaqueteInitCommon.cpp:45)
+==27479==    by 0x8056C87: Cliente::recibir_mensaje() (Cliente.cpp:85)
+==27479==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27479==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 48 bytes in 1 blocks are still reachable in loss record 48 of 133
+==27479==    at 0x402171B: realloc (vg_replace_malloc.c:306)
+==27479==    by 0x47BF53E: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47C025C: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47C0780: XrmGetStringDatabase (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x479CCBB: XGetDefault (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x46C34DC: _XcursorGetDisplayInfo (in /usr/lib/libXcursor.so.1.0.2)
+==27479==    by 0x46C375C: XcursorSupportsARGB (in /usr/lib/libXcursor.so.1.0.2)
+==27479==    by 0x46C5E3B: XcursorNoticeCreateBitmap (in /usr/lib/libXcursor.so.1.0.2)
+==27479==    by 0x47969C4: _XNoticeCreateBitmap (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4796DDC: XCreatePixmap (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4086DF9: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x408F87A: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40927E2: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 52 bytes in 1 blocks are definitely lost in loss record 49 of 133
+==27479==    at 0x4020820: memalign (vg_replace_malloc.c:332)
+==27479==    by 0x402087A: posix_memalign (vg_replace_malloc.c:421)
+==27479==    by 0x6868ECE: ???
+==27479==    by 0x67E73E2: ???
+==27479==    by 0x67E9135: ???
+==27479==    by 0x67E91F6: ???
+==27479==    by 0x67EBE73: ???
+==27479==    by 0x6811ACA: ???
+==27479==    by 0x67EC8B4: ???
+==27479==    by 0x694F779: ???
+==27479==    by 0x804CB94: AplicacionGrafica::DibujarModelo() (AplicacionGrafica.cpp:112)
+==27479==    by 0x804D271: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:175)
+==27479==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27479==    by 0x8051334: main (main.cpp:202)
+==27479== 
+==27479== 
+==27479== 84 bytes in 3 blocks are still reachable in loss record 50 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CB5E9: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CCADB: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CD0F0: _XlcOpenConverter (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6F09: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 84 bytes in 1 blocks are still reachable in loss record 51 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D2A5B: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31C9: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 88 bytes in 2 blocks are indirectly lost in loss record 52 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x8067C21: PaqueteInitCommon::agregar_arista(int, int, bool) (PaqueteInitCommon.cpp:189)
+==27479==    by 0x8068A02: PaqueteInitCommon::deserialize(InputBitStream&) (PaqueteInitCommon.cpp:45)
+==27479==    by 0x8056C87: Cliente::recibir_mensaje() (Cliente.cpp:85)
+==27479==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27479==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 96 bytes in 4 blocks are still reachable in loss record 53 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47F1506: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CCADB: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CD08E: _XlcOpenConverter (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6F09: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 96 bytes in 2 blocks are still reachable in loss record 54 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D07B8: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D1343: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 96 bytes in 1 blocks are still reachable in loss record 55 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47D2A30: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31C9: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 140 bytes in 7 blocks are possibly lost in loss record 56 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4BA8B37: snd_dlobj_cache_add (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BB03B5: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA59E0: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA66D2: snd_determine_driver (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA3340: snd_config_hook_load_for_all_cards (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA37B5: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA475B: snd_config_searcha_hooks (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA4962: snd_config_search_alias_hooks (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA4B2C: snd_config_search_definition (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC91CE: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 142 bytes in 18 blocks are still reachable in loss record 57 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CD781: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CDBB7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CDCAF: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CE779: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D34F9: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 144 bytes in 18 blocks are still reachable in loss record 58 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CD7D1: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CDBB7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CDCAF: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CE779: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D34F9: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 148 bytes in 1 blocks are still reachable in loss record 59 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47ECEFF: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47EBFF3: _XimSetLocalIMDefaults (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6ED3: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 156 (36 direct, 120 indirect) bytes in 1 blocks are definitely lost in loss record 60 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4B1A687: (within /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1AED5: __nss_database_lookup (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4026F6B: ???
+==27479==    by 0x4027D70: ???
+==27479==    by 0x4AC7B62: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9312: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C056F3: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9341: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE569F: _snd_pcm_plug_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9341: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C0302E: _snd_pcm_asym_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479== 
+==27479== 
+==27479== 40 bytes in 1 blocks are definitely lost in loss record 61 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x6812316: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 40 bytes in 1 blocks are indirectly lost in loss record 62 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x407CB82: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x407E6E5: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4079D71: SDL_LoadBMP_RW (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BB0F: Aplicacion::SetUpIcon(char*) (Aplicacion.cpp:198)
+==27479==    by 0x8050FE2: main (main.cpp:59)
+==27479== 
+==27479== 
+==27479== 40 bytes in 5 blocks are indirectly lost in loss record 63 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4B1A25B: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4026F8B: ???
+==27479==    by 0x4027D70: ???
+==27479==    by 0x4AC7B62: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9312: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C056F3: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9341: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE569F: _snd_pcm_plug_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9341: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C0302E: _snd_pcm_asym_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479== 
+==27479== 
+==27479== 44 bytes in 1 blocks are indirectly lost in loss record 64 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x67E41B8: ???
+==27479==    by 0x41000CD: glXMakeContextCurrent (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x41003B2: glXMakeCurrent (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BF11: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x408C002: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 52 bytes in 1 blocks are definitely lost in loss record 65 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x6812138: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 56 bytes in 1 blocks are definitely lost in loss record 66 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x6812200: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 80 bytes in 5 blocks are indirectly lost in loss record 67 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4B07C7B: tsearch (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4B1A21D: __nss_lookup_function (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4026F8B: ???
+==27479==    by 0x4027D70: ???
+==27479==    by 0x4AC7B62: getgrnam_r (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4AC72B7: getgrnam (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BFFAD9: snd_pcm_direct_parse_open_conf (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BFBDF9: _snd_pcm_dmix_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC92A2: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9312: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C056F3: _snd_pcm_softvol_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9341: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BE569F: _snd_pcm_plug_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC9341: snd_pcm_open_slave (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4C0302E: _snd_pcm_asym_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC8BA4: (within /usr/lib/libasound.so.2.0.0)
+==27479== 
+==27479== 
+==27479== 216 bytes in 1 blocks are still reachable in loss record 68 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47E58B5: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 216 bytes in 18 blocks are still reachable in loss record 69 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CD910: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CDCAF: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CE779: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D34F9: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 240 bytes in 10 blocks are indirectly lost in loss record 70 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x80613AB: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<unsigned const, EstructuralUnitario*> > >::allocate(unsigned, void const*) (new_allocator.h:88)
+==27479==    by 0x80613CE: std::_Rb_tree<unsigned, std::pair<unsigned const, EstructuralUnitario*>, std::_Select1st<std::pair<unsigned const, EstructuralUnitario*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::_M_get_node() (stl_tree.h:358)
+==27479==    by 0x80613E3: std::_Rb_tree<unsigned, std::pair<unsigned const, EstructuralUnitario*>, std::_Select1st<std::pair<unsigned const, EstructuralUnitario*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::_M_create_node(std::pair<unsigned const, EstructuralUnitario*> const&) (stl_tree.h:367)
+==27479==    by 0x8061583: std::_Rb_tree<unsigned, std::pair<unsigned const, EstructuralUnitario*>, std::_Select1st<std::pair<unsigned const, EstructuralUnitario*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::_M_insert(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::pair<unsigned const, EstructuralUnitario*> const&) (stl_tree.h:819)
+==27479==    by 0x8061A1C: std::_Rb_tree<unsigned, std::pair<unsigned const, EstructuralUnitario*>, std::_Select1st<std::pair<unsigned const, EstructuralUnitario*> >, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::insert_unique(std::_Rb_tree_iterator<std::pair<unsigned const, EstructuralUnitario*> >, std::pair<unsigned const, EstructuralUnitario*> const&) (stl_tree.h:965)
+==27479==    by 0x8061C27: std::map<unsigned, EstructuralUnitario*, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::insert(std::_Rb_tree_iterator<std::pair<unsigned const, EstructuralUnitario*> >, std::pair<unsigned const, EstructuralUnitario*> const&) (stl_map.h:420)
+==27479==    by 0x8061D21: std::map<unsigned, EstructuralUnitario*, std::less<unsigned>, std::allocator<std::pair<unsigned const, EstructuralUnitario*> > >::operator[](unsigned const&) (stl_map.h:348)
+==27479==    by 0x805FAFA: MapaImpSet::agregar_estructural(EstructuralUnitario*) (MapImpSet.cpp:71)
+==27479==    by 0x8067B3A: PaqueteInitCommon::agregar_arista(int, int, bool) (PaqueteInitCommon.cpp:176)
+==27479==    by 0x8068A02: PaqueteInitCommon::deserialize(InputBitStream&) (PaqueteInitCommon.cpp:45)
+==27479==    by 0x8056C87: Cliente::recibir_mensaje() (Cliente.cpp:85)
+==27479==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27479==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 252 bytes in 7 blocks are indirectly lost in loss record 71 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x8068B8E: PaqueteInitCommon::deserialize(InputBitStream&) (PaqueteInitCommon.cpp:68)
+==27479==    by 0x8056C87: Cliente::recibir_mensaje() (Cliente.cpp:85)
+==27479==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27479==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 264 bytes in 6 blocks are indirectly lost in loss record 72 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x8067AF8: PaqueteInitCommon::agregar_arista(int, int, bool) (PaqueteInitCommon.cpp:175)
+==27479==    by 0x80689B0: PaqueteInitCommon::deserialize(InputBitStream&) (PaqueteInitCommon.cpp:42)
+==27479==    by 0x8056C87: Cliente::recibir_mensaje() (Cliente.cpp:85)
+==27479==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27479==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 274 bytes in 18 blocks are still reachable in loss record 73 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CDB12: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CDCAF: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CE779: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D34F9: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 280 bytes in 10 blocks are indirectly lost in loss record 74 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x8058677: ComestibleFactory::construir(char, Posicion&) (ComestibleFactory.cpp:22)
+==27479==    by 0x805D948: EstructuralPasillo::set_comida(char const&) (EstructuralPasillo.cpp:28)
+==27479==    by 0x805DBA6: EstructuralPasillo::EstructuralPasillo(char const&, Posicion&) (EstructuralPasillo.cpp:6)
+==27479==    by 0x8067B15: PaqueteInitCommon::agregar_arista(int, int, bool) (PaqueteInitCommon.cpp:175)
+==27479==    by 0x8068A02: PaqueteInitCommon::deserialize(InputBitStream&) (PaqueteInitCommon.cpp:45)
+==27479==    by 0x8056C87: Cliente::recibir_mensaje() (Cliente.cpp:85)
+==27479==    by 0x805D365: EscuchadorCliente::run() (EscuchadorCliente.cpp:23)
+==27479==    by 0x806D867: Thread::funcion_auxiliar_run(void*) (thread.cpp:29)
+==27479==    by 0x403C31A: start_thread (in /lib/tls/i686/cmov/libpthread-2.5.so)
+==27479==    by 0x4B0957D: clone (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 304 bytes in 1 blocks are still reachable in loss record 75 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CE829: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D34F9: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 344 bytes in 1 blocks are still reachable in loss record 76 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47E6012: _XimLocalCreateIC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAB1B: XCreateIC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4091870: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 360 bytes in 18 blocks are still reachable in loss record 77 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CD8BD: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CDCAF: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CE779: _XlcCreateLocaleDataBase (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D34F9: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F129A: _XlcDefaultLoader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 384 bytes in 48 blocks are still reachable in loss record 78 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CC78F: _XlcAddCharSet (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC50D: _XlcAddCT (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC59A: _XlcInitCTInfo (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D33B7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F4DF9: _XlcUtf8Loader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 615 bytes in 47 blocks are still reachable in loss record 79 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CC8A7: _XlcCreateDefaultCharSet (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC4FA: _XlcAddCT (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC59A: _XlcInitCTInfo (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D33B7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F4DF9: _XlcUtf8Loader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 630 bytes in 236 blocks are still reachable in loss record 80 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4AA795F: strdup (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4BA9339: snd_user_file (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA42B0: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 700 bytes in 1 blocks are still reachable in loss record 81 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47E611A: _XimLocalCreateIC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAB1B: XCreateIC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4091870: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 704 bytes in 22 blocks are still reachable in loss record 82 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CCE5B: _XlcSetConverter (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC60A: _XlcInitCTInfo (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D33B7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F4DF9: _XlcUtf8Loader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 840 bytes in 2 blocks are still reachable in loss record 83 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47ED6B3: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E6E4F: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 990 bytes in 48 blocks are still reachable in loss record 84 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CC838: _XlcCreateDefaultCharSet (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC4FA: _XlcAddCT (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC59A: _XlcInitCTInfo (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D33B7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F4DF9: _XlcUtf8Loader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoIn==27463==    by 0x40FCF90: (within /usr/27479==    by 0x40==27463==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL27479==  ==27463==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11274
+==27463==    by 0x4091C38: (within /usr/==27479== 
+==27479== 
+==27479== 1,536 bytes in 1 blocks are still reachable in loss record 85 of 133
+==27479==    at 0x402171B: realloc (vg_replace_malloc.c:306)
+==27479==    by 0x47E958A: _XimParseStringFile (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E7
+==27463== 
+==27463== 8,176 bytes in 1 blocks are still reachable in loss record 108 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x47AD7F9: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47ADBF9: _XrmInternalStringToQuark (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47ADE44: XrmStringToQuark (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CC71C: _XlcGetCharSet (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CC28E: _XlcAddCT (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47CC59A: _XlcInitCTInfo (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D33B7: (within /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47D105==27479== 
+==27479== 1,565 bytes in 48 blocks are still reachable in loss record 86 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CC2BC: _XlcAddCT (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC59A: _XlcInitCTInfo (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D33B7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F4DF9: _XlcUtf8Loader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/
+==27463== 
+==27463== 12,711 bytes in 1,608 blocks are still reachable in loss record 109 of 127
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x4B9EC39: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA11B7: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA17DE: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA1C61: ==27479== 
+==27479== 2,048 bytes in 1 blocks are still reachable in loss record 87 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47CE5BE: _XlcCreateLocaleDataBase (in   by 0x4BC94A8: snd_pcm_o
+==27479==    by 0x47D34F9: (within /usr/lib/li   by 0x40867E
+==27479==    by 0x47D105A: (within /usr/lib27463==    by 0x40==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX127463==    b==27479==    by 0x47F4DF9: _XlcUtf8Loader (in /usr/lib/libX11.so.6.2274
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/l==27463== 
+==27463== 
+==27463== 14,760 bytes in 410 blocks are still reachable in loss record 110 of 131
+==27463==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27463==    by 0x4B9F1E8: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA3EA7: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x40867E3: (within /usr/l
+==27479== 
+==27479== 2,048 bytes in 1 blocks are still reachable in loss record 88 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47ADA65: _XrmInternalStringToQuark (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47ADE44: XrmStringToQuark (in /usr/lib/libX11.==27463== ==227463== 
+==27463== 20,736 bytes in 1 blocks are still reachable in loss27479==    by 0x47C==27463==    at 0x402171B: realloc (vg_replace_malloc.c:   b
+==27463==    by 0x47E95D9: _XimParseStringFile (in /usr/lib/libX11.   by 0x4
+==27463==    by 0x47E7241: _XimLocalOpenIM (in /usr   by 0x47D105A: (wit
+==27463==    by 0x47E59C4: _XimOpenIM (   by 0x47D31E7: _XlcCreateL
+==27463==    by 0x47CADA9: XOpenIM (in /u   by 0x47F4DF9: _XlcUt
+==27463==    by 0x4088522: (within /usr/lib/libS   by 0x47D9C12: 
+==27463==    by 0x40917F0: (within /usr/lib/libS   by 0x47CAD7D: 
+==27463==    by 0x4092799: (within /usr/lib/lib   by 0x4088522: (
+==27463==    by 0x4081B60: SDL_VideoInit (in /u   by 0x40917F0: (within /us
+==27463==    by 0x40547A0: SDL_InitSu   by 0x4092799: (within /usr/lib/libSDL-1
+==27463==    by 0x40547   by 0x4081B60: SDL_VideoInit (in /usr/lib/lib
+==27463==    by 0x8050FC0: m   by 0x40547A0: 
+==27463== 
+==27463== 
+==27463== 21,948 bytes in 1 blocks are definitely lost in loss record 112 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x68122BE: ?==2==27463==    by 0x6805621: ???
+==27463==    by 0x67EF0CF: ???
+==27463==    by 0x67E3894: ???
+==27463==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27463==    by 0x8051012: main (main.cpp:62)
+==27463== 
+==27463== 
+==27463== 26,640 bytes in 740 blocks are possibly lost in loss record 113 of 131
+==27463==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27463==    by 0x4B9F1E8: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4B9F30F: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA1498: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA19BD: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA1C61: (within /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA3F11: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27463==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x8050FC0: main (main.cpp:49)
+==27463== 
+==27463== 
+==27463== 39,516 bytes in 1 blocks are definitely lost in loss record 114 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x68121A6: ???
+==27463==    by 0x6805621: ???
+==27463==    by 0x67EF0CF: ???
+==27463==    by 0x67E3894: ???
+==27463==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27463==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27463==    by 0x8051012: main (main.cpp:62)
+==27463== 
+==27463== 
+==27463== 1,024,212 (24 direct, 1,024,188 indirect) bytes in 2 blocks are definitely lost in loss record 115 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804E1D1: __gnu_cxx::new_allocator<std::_List_node<obj_type*> >::allocate(unsigned, void const*) (new_allocator.h:88)
+==27463==    by 0x804E1F4: std::_List_base<obj_type*, std::allocator<obj_type*> >::_M_get_node() (stl_list.h:316)
+==27463==    by 0x804E209: std::list<obj_type*, std::allocator<obj_type*> >::_M_create_node(obj_type* const&) (stl_list.h:448)
+==27463==    by 0x804E269: std::list<obj_type*, std::allocator<obj_type*> >::_M_insert(std::_List_iterator<obj_type*>, obj_type* const&) (stl_list.h:1139)
+==27463==    by 0x804E2B7: std::list<obj_type*, std::allocator<obj_type*> >::push_back(obj_type* const&) (stl_list.h:761)
+==27463==    by 0x804E0AB: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:179)
+==27463==    by 0x804E587: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:14)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 84 bytes in 7 blocks are indirectly lost in loss record 116 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804E1D1: __gnu_cxx::new_allocator<std::_List_node<obj_type*> >::allocate(unsigned, void const*) (new_allocator.h:88)
+==27463==    by 0x804E1F4: std::_List_base<obj_type*, std::allocator<obj_type*> >::_M_get_node() (stl_list.h:316)
+==27463==    by 0x804E209: std::list<obj_type*, std::allocator<obj_type*> >::_M_create_node(obj_type* const&) (stl_list.h:448)
+==27463==    by 0x804E269: std::list<obj_type*, std::allocator<obj_type*> >::_M_insert(std::_List_iterator<obj_type*>, obj_type* const&) (stl_list.h:1139)
+==27463==    by 0x804E2B7: std::list<obj_type*, std::allocator<obj_type*> >::push_back(obj_type* const&) (stl_list.h:761)
+==27463==    by 0x804DD3A: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:76)
+==27463==    by 0x804E7D9: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:29)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 256,056 (12 direct, 256,044 indirect) bytes in 1 blocks are definitely lost in loss record 117 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804E954: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:38)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 656 bytes in 4 blocks are indirectly lost in loss record 118 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x6869069: ???
+==27463==    by 0x68DC803: ???
+==27463==    by 0x68DC95B: ???
+==27463==    by 0x6811EE8: ???
+==27463==    by 0x67EC592: ???
+==27463==    by 0x694F779: ???
+==27463==    by 0x804D2A7: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:179)
+==27463==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27463==    by 0x8051334: main (main.cpp:202)
+==27463== 
+==27463== 
+==27463== 256,056 (12 direct, 256,044 indirect) bytes in 1 blocks are definitely lost in loss record 119 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804E618: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:18)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 256,056 (12 direct, 256,044 indirect) bytes in 1 blocks are definitely lost in loss record 120 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804E6E7: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:23)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 24 (12 direct, 12 indirect) bytes in 1 blocks are definitely lost in loss record 121 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804E885: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:33)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 16 bytes in 1 blocks are definitely lost in loss record 122 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x80513CD: main (main.cpp:219)
+==27463== 
+==27463== 
+==27463== 32 bytes in 2 blocks are indirectly lost in loss record 123 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x6869031: ???
+==27463==    by 0x68EB943: ???
+==27463==    by 0x68EBB29: ???
+==27463==    by 0x68D99A5: ???
+==27463==    by 0x68DA5BF: ???
+==27463==    by 0x68DAB59: ???
+==27463==    by 0x68DBAC9: ???
+==27463==    by 0x68DC831: ???
+==27463==    by 0x68DC95B: ???
+==27463==    by 0x6811F21: ???
+==27463==    by 0x67EC592: ???
+==27463==    by 0x694F779: ???
+==27463==    by 0x804D2A7: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:179)
+==27463==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27463==    by 0x8051334: main (main.cpp:202)
+==27463== 
+==27463== 
+==27463== 52 bytes in 1 blocks are definitely lost in loss record 124 of 131
+==27463==    at 0x4020820: memalign (vg_replace_malloc.c:332)
+==27463==    by 0x402087A: posix_memalign (vg_replace_malloc.c:421)
+==27463==    by 0x6868ECE: ???
+==27463==    by 0x67E73E2: ???
+==27463==    by 0x67E9135: ???
+==27463==    by 0x67E91F6: ???
+==27463==    by 0x67EBE73: ???
+==27463==    by 0x6811ACA: ???
+==27463==    by 0x67EC8B4: ???
+==27463==    by 0x694F779: ???
+==27463==    by 0x804D2A7: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:179)
+==27463==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27463==    by 0x8051334: main (main.cpp:202)
+==27463== 
+==27463== 
+==27463== 128 bytes in 1 blocks are indirectly lost in loss record 125 of 131
+==27463==    at 0x4020820: memalign (vg_replace_malloc.c:332)
+==27463==    by 0x402087A: posix_memalign (vg_replace_malloc.c:421)
+==27463==    by 0x6868ECE: ???
+==27463==    by 0x6868F03: ???
+==27463==    by 0x68EB9FE: ???
+==27463==    by 0x68EBB29: ???
+==27463==    by 0x68D99A5: ???
+==27463==    by 0x68DA5BF: ???
+==27463==    by 0x68DAB59: ???
+==27463==    by 0x68DBAC9: ???
+==27463==    by 0x68DC831: ???
+==27463==    by 0x68DC95B: ???
+==27463==    by 0x6811F21: ???
+==27463==    by 0x67EC592: ???
+==27463==    by 0x694F779: ???
+==27463==    by 0x804D2A7: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:179)
+==27463==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27463==    by 0x8051334: main (main.cpp:202)
+==27463== 
+==27463== 
+==27463== 310 bytes in 3 blocks are indirectly lost in loss record 126 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x68DC495: ???
+==27463==    by 0x68DC95B: ???
+==27463==    by 0x6811EE8: ???
+==27463==    by 0x67EC592: ???
+==27463==    by 0x694F779: ???
+==27463==    by 0x804D2A7: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:179)
+==27463==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27463==    by 0x8051334: main (main.cpp:202)
+==27463== 
+==27463== 
+==27463== 2,076 bytes in 1 blocks are still reachable in loss record 127 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x4CB7124: drmMalloc (in /usr/lib/libdrm.so.2.3.0)
+==27463==    by 0x4CB928D: drmHashCreate (in /usr/lib/libdrm.so.2.3.0)
+==27463==    by 0x4CB8C4E: drmGetEntry (in /usr/lib/libdrm.so.2.3.0)
+==27463==    by 0x4CB8D9E: drmClose (in /usr/lib/libdrm.so.2.3.0)
+==27463==    by 0x4CB8E73: drmCloseOnce (in /usr/lib/libdrm.so.2.3.0)
+==27463==    by 0x67E3DFB: ???
+==27463==    by 0x40FE8A8: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x40FE8E3: (within /usr/lib/libGL.so.1.2)
+==27463==    by 0x479B7F4: _XFreeExtData (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x47A7E15: _XFreeDisplayStructure (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4794EF9: XCloseDisplay (in /usr/lib/libX11.so.6.2.0)
+==27463==    by 0x4086C6D: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x409047B: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x407FE5F: SDL_VideoQuit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40545E4: SDL_QuitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x405465D: SDL_Quit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x4A669D8: exit (in /lib/tls/i686/cmov/libc-2.5.so)
+==27463==    by 0x4A4FEC3: (below main) (in /lib/tls/i686/cmov/libc-2.5.so)
+==27463== 
+==27463== 
+==27463== 512,064 bytes in 2 blocks are possibly lost in loss record 128 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804DD57: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:79)
+==27463==    by 0x804E587: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:14)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 768,096 bytes in 3 blocks are indirectly lost in loss record 129 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804DD46: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:77)
+==27463==    by 0x804E7D9: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:29)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 1,024,128 bytes in 4 blocks are indirectly lost in loss record 130 of 131
+==27463==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27463==    by 0x804DD57: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:79)
+==27463==    by 0x804E63B: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:19)
+==27463==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27463==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27463==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27463==    by 0x80510C8: main (main.cpp:81)
+==27463== 
+==27463== 
+==27463== 1,920,000 bytes in 1 blocks are possibly lost in loss record 131 of 131
+==27463==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27463==    by 0x407E813: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x40816A9: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27463==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27463==    by 0x8051012: main (main.cpp:62)
+==27463== 
+==27463== LEAK SUMMARY:
+==27463==    definitely lost: 71,923 bytes in 59 blocks.
+==27463==    indirectly lost: 1,804,276 bytes in 109 blocks.
+==27463==      possibly lost: 2,458,844 bytes in 750 blocks.
+==27463==    still reachable: 79,745 bytes in 2,683 blocks.
+==27463==         suppressed: 0 bytes in 0 blocks.
+  by 0x408C002: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 2,076 bytes in 1 blocks are still reachable in loss record 109 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4CB7124: drmMalloc (in /usr/lib/libdrm.so.2.3.0)
+==27479==    by 0x4CB928D: drmHashCreate (in /usr/lib/libdrm.so.2.3.0)
+==27479==    by 0x4CB8C4E: drmGetEntry (in /usr/lib/libdrm.so.2.3.0)
+==27479==    by 0x4CB8D9E: drmClose (in /usr/lib/libdrm.so.2.3.0)
+==27479==    by 0x4CB8E73: drmCloseOnce (in /usr/lib/libdrm.so.2.3.0)
+==27479==    by 0x67E3DFB: ???
+==27479==    by 0x40FE8A8: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FE8E3: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x479B7F4: _XFreeExtData (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47A7E15: _XFreeDisplayStructure (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4794EF9: XCloseDisplay (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4086C6D: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x409047B: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x407FE5F: SDL_VideoQuit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40545E4: SDL_QuitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x405465D: SDL_Quit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4A669D8: exit (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479==    by 0x4A4FEC3: (below main) (in /lib/tls/i686/cmov/libc-2.5.so)
+==27479== 
+==27479== 
+==27479== 6,152 bytes in 19 blocks are indirectly lost in loss record 110 of 133
+==27479==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27479==    by 0x6868FC8: ???
+==27479==    by 0x68703BE: ???
+==27479==    by 0x67E7896: ???
+==27479==    by 0x67ECF81: ???
+==27479==    by 0x68054EB: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 8,176 bytes in 1 blocks are still reachable in loss record 111 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x47AD7F9: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47ADBF9: _XrmInternalStringToQuark (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47ADE44: XrmStringToQuark (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC71C: _XlcGetCharSet (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC28E: _XlcAddCT (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CC59A: _XlcInitCTInfo (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D33B7: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D105A: (within /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D31E7: _XlcCreateLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47F4DF9: _XlcUtf8Loader (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47D9C12: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CAD7D: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 12,711 bytes in 1,608 blocks are still reachable in loss record 112 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x4B9EC39: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA11B7: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA17DE: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA1C61: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA3F11: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 14,760 bytes in 410 blocks are still reachable in loss record 113 of 133
+==27479==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27479==    by 0x4B9F1E8: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA3EA7: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 20,736 bytes in 1 blocks are still reachable in loss record 114 of 133
+==27479==    at 0x402171B: realloc (vg_replace_malloc.c:306)
+==27479==    by 0x47E95D9: _XimParseStringFile (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E7241: _XimLocalOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47E59C4: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x47CADA9: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==27479==    by 0x4088522: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40917F0: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4092799: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4081B60: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547A0: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 26,640 bytes in 740 blocks are possibly lost in loss record 115 of 133
+==27479==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27479==    by 0x4B9F1E8: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4B9F30F: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA1498: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA19BD: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA1C61: (within /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA3F11: snd_config_update_r (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BA4647: snd_config_update (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x4BC94A8: snd_pcm_open (in /usr/lib/libasound.so.2.0.0)
+==27479==    by 0x40867E3: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4055300: SDL_AudioInit (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40546FE: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40547E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x8050FC0: main (main.cpp:49)
+==27479== 
+==27479== 
+==27479== 41,198 (6,828 direct, 34,370 indirect) bytes in 24 blocks are definitely lost in loss record 116 of 133
+==27479==    at 0x402095F: calloc (vg_replace_malloc.c:279)
+==27479==    by 0x6868FC8: ???
+==27479==    by 0x67E5964: ???
+==27479==    by 0x67EEB33: ???
+==27479==    by 0x67E36FD: ???
+==27479==    by 0x67EF179: ???
+==27479==    by 0x40FFAB0: __glXInitialize (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FBA70: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD540: glXChooseVisual (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408C59E: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091DC5: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 21,948 bytes in 1 blocks are definitely lost in loss record 117 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x68122BE: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 39,516 bytes in 1 blocks are definitely lost in loss record 118 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x68121A6: ???
+==27479==    by 0x6805621: ???
+==27479==    by 0x67EF0CF: ???
+==27479==    by 0x67E3894: ???
+==27479==    by 0x40FCF90: (within /usr/lib/libGL.so.1.2)
+==27479==    by 0x40FD397: glXCreateContext (in /usr/lib/libGL.so.1.2)
+==27479==    by 0x408BFD1: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4091C38: (within /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x4080C42: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== 
+==27479== 1,024,212 (24 direct, 1,024,188 indirect) bytes in 2 blocks are definitely lost in loss record 119 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804E1D1: __gnu_cxx::new_allocator<std::_List_node<obj_type*> >::allocate(unsigned, void const*) (new_allocator.h:88)
+==27479==    by 0x804E1F4: std::_List_base<obj_type*, std::allocator<obj_type*> >::_M_get_node() (stl_list.h:316)
+==27479==    by 0x804E209: std::list<obj_type*, std::allocator<obj_type*> >::_M_create_node(obj_type* const&) (stl_list.h:448)
+==27479==    by 0x804E269: std::list<obj_type*, std::allocator<obj_type*> >::_M_insert(std::_List_iterator<obj_type*>, obj_type* const&) (stl_list.h:1139)
+==27479==    by 0x804E2B7: std::list<obj_type*, std::allocator<obj_type*> >::push_back(obj_type* const&) (stl_list.h:761)
+==27479==    by 0x804E0AB: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:179)
+==27479==    by 0x804E587: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:14)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 84 bytes in 7 blocks are indirectly lost in loss record 120 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804E1D1: __gnu_cxx::new_allocator<std::_List_node<obj_type*> >::allocate(unsigned, void const*) (new_allocator.h:88)
+==27479==    by 0x804E1F4: std::_List_base<obj_type*, std::allocator<obj_type*> >::_M_get_node() (stl_list.h:316)
+==27479==    by 0x804E209: std::list<obj_type*, std::allocator<obj_type*> >::_M_create_node(obj_type* const&) (stl_list.h:448)
+==27479==    by 0x804E269: std::list<obj_type*, std::allocator<obj_type*> >::_M_insert(std::_List_iterator<obj_type*>, obj_type* const&) (stl_list.h:1139)
+==27479==    by 0x804E2B7: std::list<obj_type*, std::allocator<obj_type*> >::push_back(obj_type* const&) (stl_list.h:761)
+==27479==    by 0x804E0AB: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:179)
+==27479==    by 0x804E7D9: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:29)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 912 bytes in 5 blocks are indirectly lost in loss record 121 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x6869069: ???
+==27479==    by 0x68DC803: ???
+==27479==    by 0x68DC95B: ???
+==27479==    by 0x6811EE8: ???
+==27479==    by 0x67EC592: ???
+==27479==    by 0x694F779: ???
+==27479==    by 0x804CB94: AplicacionGrafica::DibujarModelo() (AplicacionGrafica.cpp:112)
+==27479==    by 0x804D271: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:175)
+==27479==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27479==    by 0x8051334: main (main.cpp:202)
+==27479== 
+==27479== 
+==27479== 33,024 bytes in 3 blocks are indirectly lost in loss record 122 of 133
+==27479==    at 0x4020820: memalign (vg_replace_malloc.c:332)
+==27479==    by 0x402087A: posix_memalign (vg_replace_malloc.c:421)
+==27479==    by 0x6868ECE: ???
+==27479==    by 0x6868F03: ???
+==27479==    by 0x68EB9FE: ???
+==27479==    by 0x68EBB29: ???
+==27479==    by 0x68230A8: ???
+==27479==    by 0x6823113: ???
+==27479==    by 0x6823E83: ???
+==27479==    by 0x6826A8B: ???
+==27479==    by 0x681C3A4: ???
+==27479==    by 0x6805D7C: ???
+==27479==    by 0x6806135: ???
+==27479==    by 0x6806595: ???
+==27479==    by 0x680F731: ???
+==27479==    by 0x680B6F4: ???
+==27479==    by 0x680B757: ???
+==27479==    by 0x80533DD: ModeladorObjetos::DibujarObjeto(ObjTextura*) (ModeladorObjetos.cpp:69)
+==27479==    by 0x80535DE: ModeladorObjetos::DibujarObjetoObservadorPosicion(Posicion_Graf*, char) (ModeladorObjetos.cpp:96)
+==27479==    by 0x804CDF0: AplicacionGrafica::DibujarModelo() (AplicacionGrafica.cpp:136)
+==27479== 
+==27479== 
+==27479== 256,056 (12 direct, 256,044 indirect) bytes in 1 blocks are definitely lost in loss record 123 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804E618: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:18)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 310 bytes in 3 blocks are indirectly lost in loss record 124 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x68DC495: ???
+==27479==    by 0x68DC95B: ???
+==27479==    by 0x6811EE8: ???
+==27479==    by 0x67EC592: ???
+==27479==    by 0x694F779: ???
+==27479==    by 0x804CB94: AplicacionGrafica::DibujarModelo() (AplicacionGrafica.cpp:112)
+==27479==    by 0x804D271: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:175)
+==27479==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27479==    by 0x8051334: main (main.cpp:202)
+==27479== 
+==27479== 
+==27479== 256,056 (12 direct, 256,044 indirect) bytes in 1 blocks are definitely lost in loss record 125 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804E6E7: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:23)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 24 (12 direct, 12 indirect) bytes in 1 blocks are definitely lost in loss record 126 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804E885: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:33)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 36 bytes in 1 blocks are indirectly lost in loss record 127 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x67EBCBE: ???
+==27479==    by 0x6812F8C: ???
+==27479==    by 0x6817629: ???
+==27479==    by 0x6850A8A: ???
+==27479==    by 0x805041C: Escenario::Procesar() (Escenario.cpp:30)
+==27479==    by 0x80505FD: Escenario::ModelarEscenario() (Escenario.cpp:9)
+==27479==    by 0x804D1C5: AplicacionGrafica::DibujarModelo() (AplicacionGrafica.cpp:164)
+==27479==    by 0x804D271: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:175)
+==27479==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27479==    by 0x8051334: main (main.cpp:202)
+==27479== 
+==27479== 
+==27479== 156 bytes in 6 blocks are indirectly lost in loss record 128 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x6869031: ???
+==27479==    by 0x68EB943: ???
+==27479==    by 0x68EBB29: ???
+==27479==    by 0x68230A8: ???
+==27479==    by 0x6823113: ???
+==27479==    by 0x6823E83: ???
+==27479==    by 0x6826A8B: ???
+==27479==    by 0x681C3A4: ???
+==27479==    by 0x6805D7C: ???
+==27479==    by 0x6806135: ???
+==27479==    by 0x6806595: ???
+==27479==    by 0x680F731: ???
+==27479==    by 0x680B6F4: ???
+==27479==    by 0x680B757: ???
+==27479==    by 0x80533DD: ModeladorObjetos::DibujarObjeto(ObjTextura*) (ModeladorObjetos.cpp:69)
+==27479==    by 0x80535DE: ModeladorObjetos::DibujarObjetoObservadorPosicion(Posicion_Graf*, char) (ModeladorObjetos.cpp:96)
+==27479==    by 0x804CDF0: AplicacionGrafica::DibujarModelo() (AplicacionGrafica.cpp:136)
+==27479==    by 0x804D271: AplicacionGrafica::Draw3D(SDL_Surface*) (AplicacionGrafica.cpp:175)
+==27479==    by 0x804D2EB: AplicacionGrafica::Draw(SDL_Surface*) (AplicacionGrafica.cpp:91)
+==27479== 
+==27479== 
+==27479== 256,056 (12 direct, 256,044 indirect) bytes in 1 blocks are definitely lost in loss record 129 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804E954: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:38)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 512,064 bytes in 2 blocks are possibly lost in loss record 130 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804DD57: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:79)
+==27479==    by 0x804E587: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:14)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 768,096 bytes in 3 blocks are indirectly lost in loss record 131 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804DD46: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:77)
+==27479==    by 0x804E7D9: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:29)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 1,024,128 bytes in 4 blocks are indirectly lost in loss record 132 of 133
+==27479==    at 0x4021DC5: operator new(unsigned) (vg_replace_malloc.c:163)
+==27479==    by 0x804DD57: CargadorDe3DS::Cargar3DS(ObjetoVisual*, char const*) (Cargadorde3DS.cpp:79)
+==27479==    by 0x804E63B: ColeccionObjetos::CargarObjetos() (ColeccionObjetos.cpp:19)
+==27479==    by 0x804EA50: ColeccionObjetos::hidratar() (ColeccionObjetos.cpp:8)
+==27479==    by 0x8053670: ModeladorObjetos::hidratar() (ModeladorObjetos.cpp:9)
+==27479==    by 0x804D3B3: AplicacionGrafica::InitGL(SDL_Surface*) (AplicacionGrafica.cpp:39)
+==27479==    by 0x80510C8: main (main.cpp:81)
+==27479== 
+==27479== 
+==27479== 1,920,000 bytes in 1 blocks are possibly lost in loss record 133 of 133
+==27479==    at 0x4021620: malloc (vg_replace_malloc.c:149)
+==27479==    by 0x407E813: SDL_CreateRGBSurface (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x40816A9: SDL_SetVideoMode (in /usr/lib/libSDL-1.2.so.0.11.0)
+==27479==    by 0x804BD25: Aplicacion::CreateWindowGL(int, int, int, unsigned) (Aplicacion.cpp:175)
+==27479==    by 0x8051012: main (main.cpp:62)
+==27479== 
+==27479== LEAK SUMMARY:
+==27479==    definitely lost: 74,143 bytes in 63 blocks.
+==27479==    indirectly lost: 1,837,716 bytes in 121 blocks.
+==27479==      possibly lost: 2,458,844 bytes in 750 blocks.
+==27479==    still reachable: 79,745 bytes in 2,683 blocks.
+==27479==         suppressed: 0 bytes in 0 blocks.

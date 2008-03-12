@@ -1,9 +1,0 @@
-<Nivel Nombre="salvador" Ancho="15" Alto="15">
-    <Mapa>
-        <Elemento Tipo="1" Orientacion="1" PosX="0" PosY="0" />
-        <Elemento Tipo="0" Orientacion="1" PosX="0" PosY="2" />
-        <Elemento Tipo="1" Orientacion="4" PosX="0" PosY="5" />
-        <Elemento Tipo="6" Orientacion="0" PosX="0" PosY="0" />
-        <Elemento Tipo="4" Orientacion="3" PosX="2" PosY="5" />
-    </Mapa>
-</Nivel>
