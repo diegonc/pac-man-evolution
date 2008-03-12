@@ -3,7 +3,7 @@
 
 #  robado de http://live.gnome.org/Create_a_GTK_Project_using_autotools
 
-SUBDIR = imagenes
+SUBDIRS = imagenes
 
 #mapeditordatadir = @datadir@/map_editor
 
