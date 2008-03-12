@@ -1,5 +1,0 @@
-<Mundo Cant_Niveles="3">
-    <Nivel Numero="1" Nombre="chico" Ancho="10" Alto="10" />
-    <Nivel Numero="2" Nombre="medio" Ancho="19" Alto="19" />
-    <Nivel Numero="3" Nombre="grande" Ancho="25" Alto="25" />
-</Mundo>
