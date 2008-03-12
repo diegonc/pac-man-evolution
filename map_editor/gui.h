@@ -4,8 +4,8 @@
 #define GUI_H_
 
 #include <gtk/gtk.h>
-#include <editor/definiciones.h>
-#include <common/thread.h>
+#include "definiciones.h"
+#include "../common/thread.h"
 #include "v_principal.h"
 
 class VPrincipal;

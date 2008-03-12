@@ -4,11 +4,11 @@
 
 //Incluyo las librerias necesarias
 
-#include <editor/elemento.h>
-#include <editor/nivel.h>
+#include "elemento.h"
+#include "nivel.h"
 #include "vista_mapa.h"
-#include <common/smart_pointer.h>
-#include <common/observador.h>
+#include "../common/smart_pointer.h"
+#include "../common/observador.h"
 #include <list>
 
 class VistaMapa;

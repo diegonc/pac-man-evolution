@@ -4,11 +4,11 @@
 #define M_BAR_FACTORY_H_
 
 #include <gtk/gtk.h>
-#include <editor/definiciones.h>
+#include "definiciones.h"
 #include "m_arch_factory.h"
 #include "item_archivo.h"
 #include "menubar.h"
-#include <common/smart_pointer.h>
+#include "../common/smart_pointer.h"
 
 /* CLASE MENU BAR FACTORY: Clase que se ocupa de encapsular la creación de la barra de menus. */
 

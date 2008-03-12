@@ -4,13 +4,13 @@
 #define PANEL_MUNDO_H
 
 #include <gtk/gtk.h>
-#include <editor/definiciones.h>
-#include <editor/modelo.h>
+#include "definiciones.h"
+#include "modelo.h"
 #include "gui.h"
 #include "v_ingreso_datos.h"
-#include <common/smart_pointer.h>
-#include <common/observable.h>
-#include <common/observador.h>
+#include "../common/smart_pointer.h"
+#include "../common/observable.h"
+#include "../common/observador.h"
 #include <vector>
 
 /* CLASE PANEL_MUNDO: Clase que contiene una lista con todos los mapas pertenecientes
