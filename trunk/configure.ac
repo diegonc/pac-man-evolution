@@ -29,6 +29,11 @@ AC_CHECK_LIB(pthread,pthread_create)
 AC_CHECK_LIB(socket, socket)
 AC_CHECK_LIB(inet, connect)
 
+# Check for SDL_mixer library
+AC_CHECK_LIB(SDL_mixer, Mix_PlayMusic, , AC_MSG_ERROR([
+*** Unable to find SDL_mixer libary (http://www.libsdl.org/projects/SDL_mixer/)
+]))
+
 # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL
 AC_C_CONST
