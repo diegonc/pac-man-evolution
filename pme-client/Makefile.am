@@ -106,6 +106,6 @@ pme_client_LDADD = \
 	$(top_builddir)/common/editor/libpme-editor.a \
 	$(top_builddir)/common/common/libpme-common.a \
 	$(top_builddir)/common/tinyxml/libtinyxml.a \
-	-lSDL -lGL -lGLU -lSDL_mixer
+	-lGL -lGLU
 
 CLEANFILES = *~
