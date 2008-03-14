@@ -43,7 +43,7 @@ pme_server_SOURCES = \
 	traductor.cpp \
 	traductor.h
 
-pkgdata_DATA = \
+dist_pkgdata_DATA = \
 	pme-server.conf
 
 pme_server_CPPFLAGS = \

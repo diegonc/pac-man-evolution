@@ -14,7 +14,6 @@ pme_editor_SOURCES = \
 	app_editor.h \
 	control_seleccion.cpp \
 	control_seleccion.h \
-	definiciones.h \
 	editor_mapas.cpp \
 	file_chooser.cpp \
 	file_chooser.h \
@@ -54,8 +53,6 @@ pme_editor_SOURCES = \
 	v_principal.h \
 	vista_mapa.cpp \
 	vista_mapa.h 
-
-pme_editor_EXTRA_DIST = imagenes
 
 pme_editor_CPPFLAGS = \
 	-DAPP_DATA_DIR="\"$(datadir)/map_editor\"" \
