@@ -72,7 +72,7 @@ pme_client_SOURCES = \
 	$(top_srcdir)/pme-server/KeyOp.cpp \
 	$(top_srcdir)/pme-server/KeyOp.h
 
-pkgdata_DATA = \
+dist_pkgdata_DATA = \
 	pme-client.conf
 
 ##pme_client_CPPFLAGS = @GTK_CFLAGS@
@@ -80,6 +80,7 @@ pme_client_CPPFLAGS = \
 	-DAPP_DATA_DIR="\"$(datadir)/pme-client\"" \
 	-DAPP_DATA_DIR_S="\"$(datadir)/pme-client/\"" \
 	-DDEBUG -ggdb \
+	-I@top_srcdir@ \
 	-I@top_srcdir@/common
 
 pme_client_LDADD = \

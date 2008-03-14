@@ -34,6 +34,7 @@ libpme_editor_a_SOURCES = \
 	cruce.h \
 	dato_vertice.cpp \
 	dato_vertice.h \
+	definiciones.h \
 	elemento.cpp \
 	elemento.h \
 	esq_este.cpp \

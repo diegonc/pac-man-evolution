@@ -22,8 +22,6 @@ libpme_common_a_SOURCES = \
 	mutex.h \
 	observable.cpp \
 	observable.h \
-	observable.lo \
-	observable.o \
 	observador.h \
 	server_socket.cpp \
 	server_socket.h \

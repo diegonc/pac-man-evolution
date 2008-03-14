@@ -77,9 +77,10 @@ libpme_server_a_SOURCES = \
 	PowerUp.h \
 	Quesito.h \
 	SocketReader.cpp \
-	SocketReader.h 
+	SocketReader.h
 
 libpme_server_a_CPPFLAGS = \
+	-I@top_srcdir@ \
 	-I@top_srcdir@/common
 
 #libpme_server_a_LDFLAGS = -static
