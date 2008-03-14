@@ -60,7 +60,7 @@ int main(int argc, char **argv)
 		//Vflags|=SDL_FULLSCREEN;
 		
 		//seteo icono de aplicacion
-		APP.SetUpIcon("Icon.bmp");
+		APP.SetUpIcon(APP_DATA_DIR_S "Icon.bmp");
 
 		//creo ventana con los defines de tamanio y los flags de Video
 		APP.CreateWindowGL(SCREEN_W, SCREEN_H, SCREEN_BPP, Vflags);

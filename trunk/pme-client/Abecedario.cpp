@@ -100,8 +100,8 @@ void Abecedario::get_letra(char letra){
 }
 
 void Abecedario::CargarTextura(){
-	CargarSDLSurface(&TextABC,"./ABC.bmp");
-	CargarSDLSurface(&TextLetra,"./Letra.bmp");
+	CargarSDLSurface(&TextABC,APP_DATA_DIR_S "./ABC.bmp");
+	CargarSDLSurface(&TextLetra,APP_DATA_DIR_S "./Letra.bmp");
 }
 
 void Abecedario::CargarSDLSurface(SDL_Surface** Textura,char* Nombre){

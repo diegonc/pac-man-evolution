@@ -32,7 +32,7 @@ bool AplicacionGrafica::InitGL(SDL_Surface *S)
 	//parametros para la mejor visualizacion de la perspectiva
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	//escenario.Procesar(); //<----LO COMENTE YOOOOO!!!!
-	//Mapa = SDL_LoadBMP("./MiniMapa/Mapa.bmp");
+	//Mapa = SDL_LoadBMP(APP_DATA_DIR_S "./MiniMapa/Mapa.bmp");
 	minimapa.CargarTexturas();
 	ABCSalida.CargarTextura();
 	ModeladorOBJ.hidratar();

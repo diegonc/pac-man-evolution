@@ -3,7 +3,7 @@
 
 #  robado de http://live.gnome.org/Create_a_GTK_Project_using_autotools
 
-pmeclientminimapdir = @datadir@/pme-client/MiniMap
+pmeclientminimapdir = @datadir@/pme-client/MiniMapa
 
 dist_pmeclientminimap_DATA = \
 	Casillero.bmp \

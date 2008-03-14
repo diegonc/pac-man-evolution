@@ -27,6 +27,7 @@ dist_pmeclientdata_DATA = \
 	piso.bmp \
 	powerup.3DS \
 	powerup.bmp \
-	textura.bmp 
+	textura.bmp \
+	waka.mp3
 
 CLEANFILES = *~
