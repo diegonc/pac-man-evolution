@@ -50,7 +50,7 @@ class AplicacionGrafica{
     public:
 	std::string MensajeAEnviar;
 
-        AplicacionGrafica(): sonidoWakaWaka("waka.mp3"), ABCSalida(false,0){            
+        AplicacionGrafica(): sonidoWakaWaka(APP_DATA_DIR_S "waka.mp3"), ABCSalida(false,0){            
         }
 		
 	void CambiarCamara();

@@ -178,13 +178,13 @@ bool MiniMapa::hayEstructural(Posicion& P){
 }
 
 void MiniMapa::CargarTexturas(){
-	CargarSDLSurface(&Mapa,"./MiniMapa/Mapa.bmp");
-	CargarSDLSurface(&Casillero,"./MiniMapa/Casillero.bmp");
-	CargarSDLSurface(&Pacman,"./MiniMapa/Pacman.bmp");
-	CargarSDLSurface(&Fantasma,"./MiniMapa/Fantasma.bmp");
-	CargarSDLSurface(&PowerUP,"./MiniMapa/Powerup.bmp");
-	CargarSDLSurface(&Frutita,"./MiniMapa/Frutita.bmp");
-	CargarSDLSurface(&Quesito,"./MiniMapa/Quesito.bmp");
+	CargarSDLSurface(&Mapa,APP_DATA_DIR_S "./MiniMapa/Mapa.bmp");
+	CargarSDLSurface(&Casillero,APP_DATA_DIR_S "./MiniMapa/Casillero.bmp");
+	CargarSDLSurface(&Pacman,APP_DATA_DIR_S "./MiniMapa/Pacman.bmp");
+	CargarSDLSurface(&Fantasma,APP_DATA_DIR_S "./MiniMapa/Fantasma.bmp");
+	CargarSDLSurface(&PowerUP,APP_DATA_DIR_S "./MiniMapa/Powerup.bmp");
+	CargarSDLSurface(&Frutita,APP_DATA_DIR_S "./MiniMapa/Frutita.bmp");
+	CargarSDLSurface(&Quesito,APP_DATA_DIR_S "./MiniMapa/Quesito.bmp");
 }
 
 void MiniMapa::CargarSDLSurface(SDL_Surface** Textura,char* Nombre){

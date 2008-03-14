@@ -22,8 +22,8 @@ bool Escenario::loaded(){
 
 void Escenario::Procesar(){
     if (primeraVez){
-        CargadorDeTexturas::CargarTextura(&texturaPared,"pared.bmp");
-        CargadorDeTexturas::CargarTextura(&texturaPiso,"piso.bmp");
+        CargadorDeTexturas::CargarTextura(&texturaPared,APP_DATA_DIR_S "pared.bmp");
+        CargadorDeTexturas::CargarTextura(&texturaPiso,APP_DATA_DIR_S "piso.bmp");
         primeraVez=false;
     }
     ListaEscenario = glGenLists (1);
